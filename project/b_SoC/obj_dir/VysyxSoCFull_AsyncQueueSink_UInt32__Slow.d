@@ -1,3 +1,0 @@
-VysyxSoCFull_AsyncQueueSink_UInt32__Slow.o: \
- VysyxSoCFull_AsyncQueueSink_UInt32__Slow.cpp VysyxSoCFull__pch.h \
- VysyxSoCFull_AsyncQueueSink_UInt32.h VysyxSoCFull__Syms.h
