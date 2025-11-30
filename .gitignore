@@ -57,4 +57,5 @@ dkms.conf
 oss-cad-suite-linux-x64-20250830/
 project/**/obj_dir/
 
-ysyxSoC/out.metals/
+ysyxSoC/out
+.metals/
