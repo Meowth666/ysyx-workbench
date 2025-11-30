@@ -7,983 +7,492 @@ Read LEF file : /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/
 [Data config set] verilog = /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077-500MHz/ysyx_25030077.netlist.syn.v
 Read Verilog file success : /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077-500MHz/ysyx_25030077.netlist.syn.v
 WARNING: Logging before InitGoogleLogging() is written to STDERR
-I20251129 15:54:22.819584 13943 VerilogParserRustC.cc:41] load verilog file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077-500MHz/ysyx_25030077.netlist.syn.v
+I20251130 15:42:01.868849 31135 VerilogParserRustC.cc:41] load verilog file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077-500MHz/ysyx_25030077.netlist.syn.v
 r str /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077-500MHz/ysyx_25030077.netlist.syn.v
 Processed 1000 pins...
 Processed 2000 pins...
 Processed 3000 pins...
 Processed 4000 pins...
-Processed 5000 pins...
-Processed 6000 pins...
-Processed 7000 pins...
-Processed 8000 pins...
-Processed 9000 pins...
-Processed 10000 pins...
-Processed 11000 pins...
-Processed 12000 pins...
-Processed 13000 pins...
-Processed 14000 pins...
-Processed 15000 pins...
-Processed 16000 pins...
 Processed 1000 nets...
 Processed 2000 nets...
 Processed 3000 nets...
 Processed 4000 nets...
-Processed 5000 nets...
-Processed 6000 nets...
-Processed 7000 nets...
-Processed 8000 nets...
-Processed 9000 nets...
-Processed 10000 nets...
-Processed 11000 nets...
-Processed 12000 nets...
-Processed 13000 nets...
-Processed 14000 nets...
-Processed 15000 nets...
-Processed 16000 nets...
 Processed 1000 components...
 Processed 2000 components...
 Processed 3000 components...
-Processed 4000 components...
-Processed 5000 components...
-Processed 6000 components...
-Processed 7000 components...
-Processed 8000 components...
-Processed 9000 components...
-Processed 10000 components...
-Processed 11000 components...
-Processed 12000 components...
-Processed 13000 components...
-Processed 14000 components...
-I20251129 15:54:23.631309 13943 Sta.cc:309] load lib start
-I20251129 15:54:23.633556 13994 Sta.cc:287] read liberty /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib start 
-I20251129 15:54:23.633651 13994 LibParserRustC.cc:1285] load liberty file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib
+I20251130 15:42:02.021989 31135 Sta.cc:309] load lib start
+I20251130 15:42:02.023273 31186 Sta.cc:287] read liberty /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib start 
+I20251130 15:42:02.023809 31186 LibParserRustC.cc:1285] load liberty file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib
 rust read lib file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib
-I20251129 15:54:24.079248 13994 LibParserRustC.cc:1294] load liberty file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib success.
-I20251129 15:54:24.079277 13994 Sta.cc:297] read liberty /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib end 
-I20251129 15:54:24.079406 13943 Sta.cc:328] load lib end
-I20251129 15:54:24.085122 14044 LibParserRustC.cc:1304] link liberty file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib start.
-I20251129 15:54:24.086750 14044 LibParserRustC.cc:666] unkown attri name: technology in /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib line no 45
-I20251129 15:54:25.432204 14044 LibParserRustC.cc:1310] link liberty file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib success.
-I20251129 15:54:25.432328 13943 TimingIDBAdapter.cc:744] core area width -0um height -0um
-I20251129 15:54:25.435379 13943 TimingIDBAdapter.cc:829] build inst num: 1
-I20251129 15:54:25.489111 13943 TimingIDBAdapter.cc:829] build inst num: 10001
-I20251129 15:54:25.513258 13943 TimingIDBAdapter.cc:907] build net num: 1
-I20251129 15:54:25.579922 13943 TimingIDBAdapter.cc:907] build net num: 10001
-I20251129 15:54:25.624274 13943 TimingIDBAdapter.cc:926] build instance num: 14326
-I20251129 15:54:25.624303 13943 TimingIDBAdapter.cc:927] build port num: 431
-I20251129 15:54:25.624308 13943 TimingIDBAdapter.cc:928] build net num: 15902
-I20251129 15:54:25.624313 13943 Sta.cc:181] read sdc /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/default.sdc start 
-I20251129 15:54:25.628085 13943 CmdCreateClock.cc:124] create clock core_clock for pin/port: clock
-I20251129 15:54:25.628105 13943 Sta.cc:198] read sdc /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/default.sdc end 
-I20251129 15:54:25.628472 13943 StaBuildGraph.cc:315] build graph start
-I20251129 15:54:25.735599 13943 StaBuildGraph.cc:216] net io_master_awid[0] has no driver.
-I20251129 15:54:25.735621 13943 StaBuildGraph.cc:216] net io_master_awid[1] has no driver.
-I20251129 15:54:25.735627 13943 StaBuildGraph.cc:216] net io_master_awid[2] has no driver.
-I20251129 15:54:25.735632 13943 StaBuildGraph.cc:216] net io_master_awid[3] has no driver.
-I20251129 15:54:25.735636 13943 StaBuildGraph.cc:216] net io_master_awlen[0] has no driver.
-I20251129 15:54:25.735641 13943 StaBuildGraph.cc:216] net io_master_awlen[1] has no driver.
-I20251129 15:54:25.735646 13943 StaBuildGraph.cc:216] net io_master_awlen[2] has no driver.
-I20251129 15:54:25.735649 13943 StaBuildGraph.cc:216] net io_master_awlen[3] has no driver.
-I20251129 15:54:25.735654 13943 StaBuildGraph.cc:216] net io_master_awlen[4] has no driver.
-I20251129 15:54:25.735658 13943 StaBuildGraph.cc:216] net io_master_awlen[5] has no driver.
-I20251129 15:54:25.735662 13943 StaBuildGraph.cc:216] net io_master_awlen[6] has no driver.
-I20251129 15:54:25.735671 13943 StaBuildGraph.cc:216] net io_master_awlen[7] has no driver.
-I20251129 15:54:25.735692 13943 StaBuildGraph.cc:216] net io_master_awsize[2] has no driver.
-I20251129 15:54:25.735697 13943 StaBuildGraph.cc:216] net io_master_awburst[0] has no driver.
-I20251129 15:54:25.735702 13943 StaBuildGraph.cc:216] net io_master_awburst[1] has no driver.
-I20251129 15:54:25.735854 13943 StaBuildGraph.cc:216] net io_master_arid[0] has no driver.
-I20251129 15:54:25.735862 13943 StaBuildGraph.cc:216] net io_master_arid[1] has no driver.
-I20251129 15:54:25.735865 13943 StaBuildGraph.cc:216] net io_master_arid[2] has no driver.
-I20251129 15:54:25.735870 13943 StaBuildGraph.cc:216] net io_master_arid[3] has no driver.
-I20251129 15:54:25.735874 13943 StaBuildGraph.cc:216] net io_master_arlen[0] has no driver.
-I20251129 15:54:25.735893 13943 StaBuildGraph.cc:216] net io_master_arlen[1] has no driver.
-I20251129 15:54:25.735900 13943 StaBuildGraph.cc:216] net io_master_arlen[2] has no driver.
-I20251129 15:54:25.735911 13943 StaBuildGraph.cc:216] net io_master_arlen[3] has no driver.
-I20251129 15:54:25.735919 13943 StaBuildGraph.cc:216] net io_master_arlen[4] has no driver.
-I20251129 15:54:25.735929 13943 StaBuildGraph.cc:216] net io_master_arlen[5] has no driver.
-I20251129 15:54:25.735936 13943 StaBuildGraph.cc:216] net io_master_arlen[6] has no driver.
-I20251129 15:54:25.735945 13943 StaBuildGraph.cc:216] net io_master_arlen[7] has no driver.
-I20251129 15:54:25.735961 13943 StaBuildGraph.cc:216] net io_master_arsize[2] has no driver.
-I20251129 15:54:25.735971 13943 StaBuildGraph.cc:216] net io_master_arburst[1] has no driver.
-I20251129 15:54:25.735980 13943 StaBuildGraph.cc:216] net io_master_rready has no driver.
-I20251129 15:54:25.736073 13943 StaBuildGraph.cc:216] net io_master_arlock has no driver.
-I20251129 15:54:25.736083 13943 StaBuildGraph.cc:216] net io_master_arcache[0] has no driver.
-I20251129 15:54:25.736089 13943 StaBuildGraph.cc:216] net io_master_arcache[1] has no driver.
-I20251129 15:54:25.736099 13943 StaBuildGraph.cc:216] net io_master_arcache[2] has no driver.
-I20251129 15:54:25.736109 13943 StaBuildGraph.cc:216] net io_master_arcache[3] has no driver.
-I20251129 15:54:25.736117 13943 StaBuildGraph.cc:216] net io_master_arprot[0] has no driver.
-I20251129 15:54:25.736125 13943 StaBuildGraph.cc:216] net io_master_arprot[1] has no driver.
-I20251129 15:54:25.736133 13943 StaBuildGraph.cc:216] net io_master_arprot[2] has no driver.
-I20251129 15:54:25.736141 13943 StaBuildGraph.cc:216] net io_master_arqos[0] has no driver.
-I20251129 15:54:25.736151 13943 StaBuildGraph.cc:216] net io_master_arqos[1] has no driver.
-I20251129 15:54:25.736160 13943 StaBuildGraph.cc:216] net io_master_arqos[2] has no driver.
-I20251129 15:54:25.736167 13943 StaBuildGraph.cc:216] net io_master_arqos[3] has no driver.
-I20251129 15:54:25.736177 13943 StaBuildGraph.cc:216] net io_master_awlock has no driver.
-I20251129 15:54:25.736186 13943 StaBuildGraph.cc:216] net io_master_awcache[0] has no driver.
-I20251129 15:54:25.736195 13943 StaBuildGraph.cc:216] net io_master_awcache[1] has no driver.
-I20251129 15:54:25.736203 13943 StaBuildGraph.cc:216] net io_master_awcache[2] has no driver.
-I20251129 15:54:25.736212 13943 StaBuildGraph.cc:216] net io_master_awcache[3] has no driver.
-I20251129 15:54:25.736222 13943 StaBuildGraph.cc:216] net io_master_awprot[0] has no driver.
-I20251129 15:54:25.736229 13943 StaBuildGraph.cc:216] net io_master_awprot[1] has no driver.
-I20251129 15:54:25.736238 13943 StaBuildGraph.cc:216] net io_master_awprot[2] has no driver.
-I20251129 15:54:25.736249 13943 StaBuildGraph.cc:216] net io_master_awqos[0] has no driver.
-I20251129 15:54:25.736258 13943 StaBuildGraph.cc:216] net io_master_awqos[1] has no driver.
-I20251129 15:54:25.736266 13943 StaBuildGraph.cc:216] net io_master_awqos[2] has no driver.
-I20251129 15:54:25.736275 13943 StaBuildGraph.cc:216] net io_master_awqos[3] has no driver.
-I20251129 15:54:25.736292 13943 StaBuildGraph.cc:216] net io_slave_awready has no driver.
-I20251129 15:54:25.736315 13943 StaBuildGraph.cc:216] net io_slave_wready has no driver.
-I20251129 15:54:25.736335 13943 StaBuildGraph.cc:216] net io_slave_bvalid has no driver.
-I20251129 15:54:25.736342 13943 StaBuildGraph.cc:216] net io_slave_bid[0] has no driver.
-I20251129 15:54:25.736351 13943 StaBuildGraph.cc:216] net io_slave_bid[1] has no driver.
-I20251129 15:54:25.736359 13943 StaBuildGraph.cc:216] net io_slave_bid[2] has no driver.
-I20251129 15:54:25.736368 13943 StaBuildGraph.cc:216] net io_slave_bid[3] has no driver.
-I20251129 15:54:25.736377 13943 StaBuildGraph.cc:216] net io_slave_bresp[0] has no driver.
-I20251129 15:54:25.736385 13943 StaBuildGraph.cc:216] net io_slave_bresp[1] has no driver.
-I20251129 15:54:25.736394 13943 StaBuildGraph.cc:216] net io_slave_arready has no driver.
-I20251129 15:54:25.736425 13943 StaBuildGraph.cc:216] net io_slave_rvalid has no driver.
-I20251129 15:54:25.736433 13943 StaBuildGraph.cc:216] net io_slave_rdata[0] has no driver.
-I20251129 15:54:25.736442 13943 StaBuildGraph.cc:216] net io_slave_rdata[1] has no driver.
-I20251129 15:54:25.736451 13943 StaBuildGraph.cc:216] net io_slave_rdata[2] has no driver.
-I20251129 15:54:25.736459 13943 StaBuildGraph.cc:216] net io_slave_rdata[3] has no driver.
-I20251129 15:54:25.736469 13943 StaBuildGraph.cc:216] net io_slave_rdata[4] has no driver.
-I20251129 15:54:25.736477 13943 StaBuildGraph.cc:216] net io_slave_rdata[5] has no driver.
-I20251129 15:54:25.736486 13943 StaBuildGraph.cc:216] net io_slave_rdata[6] has no driver.
-I20251129 15:54:25.736495 13943 StaBuildGraph.cc:216] net io_slave_rdata[7] has no driver.
-I20251129 15:54:25.736505 13943 StaBuildGraph.cc:216] net io_slave_rdata[8] has no driver.
-I20251129 15:54:25.736512 13943 StaBuildGraph.cc:216] net io_slave_rdata[9] has no driver.
-I20251129 15:54:25.736521 13943 StaBuildGraph.cc:216] net io_slave_rdata[10] has no driver.
-I20251129 15:54:25.736531 13943 StaBuildGraph.cc:216] net io_slave_rdata[11] has no driver.
-I20251129 15:54:25.736539 13943 StaBuildGraph.cc:216] net io_slave_rdata[12] has no driver.
-I20251129 15:54:25.736548 13943 StaBuildGraph.cc:216] net io_slave_rdata[13] has no driver.
-I20251129 15:54:25.736557 13943 StaBuildGraph.cc:216] net io_slave_rdata[14] has no driver.
-I20251129 15:54:25.736567 13943 StaBuildGraph.cc:216] net io_slave_rdata[15] has no driver.
-I20251129 15:54:25.736574 13943 StaBuildGraph.cc:216] net io_slave_rdata[16] has no driver.
-I20251129 15:54:25.736582 13943 StaBuildGraph.cc:216] net io_slave_rdata[17] has no driver.
-I20251129 15:54:25.736591 13943 StaBuildGraph.cc:216] net io_slave_rdata[18] has no driver.
-I20251129 15:54:25.736601 13943 StaBuildGraph.cc:216] net io_slave_rdata[19] has no driver.
-I20251129 15:54:25.736609 13943 StaBuildGraph.cc:216] net io_slave_rdata[20] has no driver.
-I20251129 15:54:25.736618 13943 StaBuildGraph.cc:216] net io_slave_rdata[21] has no driver.
-I20251129 15:54:25.736627 13943 StaBuildGraph.cc:216] net io_slave_rdata[22] has no driver.
-I20251129 15:54:25.736636 13943 StaBuildGraph.cc:216] net io_slave_rdata[23] has no driver.
-I20251129 15:54:25.736644 13943 StaBuildGraph.cc:216] net io_slave_rdata[24] has no driver.
-I20251129 15:54:25.736653 13943 StaBuildGraph.cc:216] net io_slave_rdata[25] has no driver.
-I20251129 15:54:25.736662 13943 StaBuildGraph.cc:216] net io_slave_rdata[26] has no driver.
-I20251129 15:54:25.736671 13943 StaBuildGraph.cc:216] net io_slave_rdata[27] has no driver.
-I20251129 15:54:25.736680 13943 StaBuildGraph.cc:216] net io_slave_rdata[28] has no driver.
-I20251129 15:54:25.736688 13943 StaBuildGraph.cc:216] net io_slave_rdata[29] has no driver.
-I20251129 15:54:25.736697 13943 StaBuildGraph.cc:216] net io_slave_rdata[30] has no driver.
-I20251129 15:54:25.736706 13943 StaBuildGraph.cc:216] net io_slave_rdata[31] has no driver.
-I20251129 15:54:25.736714 13943 StaBuildGraph.cc:216] net io_slave_rid[0] has no driver.
-I20251129 15:54:25.736723 13943 StaBuildGraph.cc:216] net io_slave_rid[1] has no driver.
-I20251129 15:54:25.736732 13943 StaBuildGraph.cc:216] net io_slave_rid[2] has no driver.
-I20251129 15:54:25.736742 13943 StaBuildGraph.cc:216] net io_slave_rid[3] has no driver.
-I20251129 15:54:25.736750 13943 StaBuildGraph.cc:216] net io_slave_rlast has no driver.
-I20251129 15:54:25.736758 13943 StaBuildGraph.cc:216] net io_slave_rresp[0] has no driver.
-I20251129 15:54:25.736768 13943 StaBuildGraph.cc:216] net io_slave_rresp[1] has no driver.
-I20251129 15:54:25.794668 13943 StaBuildGraph.cc:332] build graph end
-I20251129 15:54:25.814787 13943 Sta.cc:2834] update timing start
-I20251129 15:54:25.819859 13943 StaApplySdc.cc:698] apply sdc start
-I20251129 15:54:25.819883 13943 StaApplySdc.cc:729] apply sdc end
-I20251129 15:54:25.819897 13943 StaClockPropagation.cc:324] ideal clock propagation start
-I20251129 15:54:25.819906 13943 StaClockPropagation.cc:354] clock propagation clock num: 1
-I20251129 15:54:25.819944 13943 StaClockPropagation.cc:203] clock propagate end to vertex f_gpr.regs_9_$_SDFFE_PP0P__Q:CK
-I20251129 15:54:25.823900 13943 StaClockPropagation.cc:422] ideal clock propagation end
-I20251129 15:54:25.823999 13943 StaCheck.cc:129] found loop fwd start
-I20251129 15:54:25.840906 13943 StaCheck.cc:148] found loop fwd end
-I20251129 15:54:25.840942 13943 StaCheck.cc:150] found loop bwd start
-I20251129 15:54:25.858193 13943 StaCheck.cc:172] found loop bwd end
-I20251129 15:54:25.858356 13943 StaClockSlewDelayPropagation.cc:112] clock slew delay propagation start
-I20251129 15:54:25.858376 13943 StaClockSlewDelayPropagation.cc:130] propagating current clock queue vertexes number is 1
-I20251129 15:54:25.861627 13943 StaClockSlewDelayPropagation.cc:130] propagating current clock queue vertexes number is 142
-I20251129 15:54:25.862517 13943 StaClockSlewDelayPropagation.cc:130] propagating current clock queue vertexes number is 38
-I20251129 15:54:25.863581 13943 StaClockSlewDelayPropagation.cc:130] propagating current clock queue vertexes number is 1151
-I20251129 15:54:25.868537 13943 StaClockSlewDelayPropagation.cc:163] clock slew delay propagation end
-I20251129 15:54:25.868597 13943 StaClockSlewDelayPropagation.cc:166] clock slew delay propagation memory usage 0MB
-I20251129 15:54:25.868613 13943 StaClockSlewDelayPropagation.cc:169] clock slew delay propagation time elapsed 0.010258s
-I20251129 15:54:25.889400 13943 StaClockPropagation.cc:326] propagated(kNormal) clock propagation start
-I20251129 15:54:25.889459 13943 StaClockPropagation.cc:354] clock propagation clock num: 1
-I20251129 15:54:25.889468 13943 StaClockPropagation.cc:424] propagated(kNormal) clock propagation end
-I20251129 15:54:25.889473 13943 StaApplySdc.cc:698] apply sdc start
-I20251129 15:54:25.889479 13943 StaApplySdc.cc:729] apply sdc end
-I20251129 15:54:25.889483 13943 StaClockPropagation.cc:328] propagated(kGenerated) clock propagation start
-I20251129 15:54:25.889488 13943 StaClockPropagation.cc:354] clock propagation clock num: 1
-I20251129 15:54:25.889493 13943 StaClockPropagation.cc:426] propagated(kGenerated) clock propagation end
-I20251129 15:54:25.889497 13943 StaApplySdc.cc:698] apply sdc start
-I20251129 15:54:25.889503 13943 StaApplySdc.cc:729] apply sdc end
-I20251129 15:54:25.889509 13943 StaBuildPropTag.cc:325] build propagation tag start
-I20251129 15:54:25.889592 13943 StaDataPropagation.cc:676] data fwd propagation start
-I20251129 15:54:25.889721 13943 StaDataPropagationBFS.cc:166] data fwd propagation bfs start
-I20251129 15:54:25.898813 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 1294
-I20251129 15:54:25.900003 14066 StaDataPropagationBFS.cc:82] Thread 139899448329792 date fwd propagate found start vertex.io_master_awready
-I20251129 15:54:25.900003 14067 StaDataPropagationBFS.cc:82] Thread 139899439937088 date fwd propagate found start vertex.io_master_wready
-I20251129 15:54:25.900007 14071 StaDataPropagationBFS.cc:82] Thread 139899406366272 date fwd propagate found start vertex.io_master_arready
-I20251129 15:54:25.899988 14107 StaDataPropagationBFS.cc:82] Thread 139899070658112 date fwd propagate found start vertex.reset
-[0;31mE20251129 15:54:25.900120 14090 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
-[m[0;31mE20251129 15:54:25.900120 14106 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
-[m[0;31mE20251129 15:54:25.900120 14071 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
-[mI20251129 15:54:25.900012 14058 StaDataPropagationBFS.cc:82] Thread 139899104228928 date fwd propagate found start vertex.io_master_rdata[0]
-[0;31mE20251129 15:54:25.900136 14105 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
-[m[0;31mE20251129 15:54:25.900138 14086 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
-[mI20251129 15:54:25.900015 14073 StaDataPropagationBFS.cc:82] Thread 139899389580864 date fwd propagate found start vertex.io_master_rdata[2]
-[0;31mE20251129 15:54:25.900120 14078 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
-[m[0;31mE20251129 15:54:25.900120 14101 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
-[m[0;31mE20251129 15:54:25.900120 14104 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
-[mI20251129 15:54:25.900015 14062 StaDataPropagationBFS.cc:82] Thread 139899481900608 date fwd propagate found start vertex.io_master_rvalid
-I20251129 15:54:25.900019 14074 StaDataPropagationBFS.cc:82] Thread 139899381188160 date fwd propagate found start vertex.io_master_rdata[3]
-I20251129 15:54:25.900012 14068 StaDataPropagationBFS.cc:82] Thread 139899431544384 date fwd propagate found start vertex.io_master_rdata[1]
-[0;31mE20251129 15:54:25.900120 14087 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
-[m[0;31mE20251129 15:54:25.900120 14103 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
-[mI20251129 15:54:25.900022 14075 StaDataPropagationBFS.cc:82] Thread 139899372795456 date fwd propagate found start vertex.io_master_rdata[4]
-I20251129 15:54:25.937311 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 1546
-I20251129 15:54:25.953771 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3842
-I20251129 15:54:25.980214 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 674
-I20251129 15:54:25.984579 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 1462
-I20251129 15:54:25.995682 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 240
-I20251129 15:54:25.999140 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 401
-I20251129 15:54:26.002897 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 111
-I20251129 15:54:26.005795 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 306
-I20251129 15:54:26.015347 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 73
-I20251129 15:54:26.018769 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 342
-I20251129 15:54:26.022557 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 126
-I20251129 15:54:26.028529 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 484
-I20251129 15:54:26.033244 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 137
-I20251129 15:54:26.035995 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 408
-I20251129 15:54:26.042522 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 127
-I20251129 15:54:26.046241 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 314
-I20251129 15:54:26.049891 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 101
-I20251129 15:54:26.052352 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 271
-I20251129 15:54:26.055334 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 83
-I20251129 15:54:26.061826 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 318
-I20251129 15:54:26.065764 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 89
-I20251129 15:54:26.068313 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 339
-I20251129 15:54:26.071722 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 62
-I20251129 15:54:26.079851 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 204
-I20251129 15:54:26.084298 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 81
-I20251129 15:54:26.087199 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 335
-I20251129 15:54:26.092047 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 104
-I20251129 15:54:26.096634 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 598
-I20251129 15:54:26.101109 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 167
-I20251129 15:54:26.106669 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 899
-I20251129 15:54:26.116206 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 237
-I20251129 15:54:26.120417 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 1228
-I20251129 15:54:26.131896 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 341
-I20251129 15:54:26.136101 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 1401
-I20251129 15:54:26.152261 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 447
-I20251129 15:54:26.158576 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 1577
-I20251129 15:54:26.168207 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 496
-I20251129 15:54:26.172802 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 1470
-I20251129 15:54:26.184446 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 516
-I20251129 15:54:26.188897 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 1406
-I20251129 15:54:26.207497 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 517
-I20251129 15:54:26.218037 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 1373
-I20251129 15:54:26.229835 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 524
-I20251129 15:54:26.236204 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 1257
-I20251129 15:54:26.247609 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 510
-I20251129 15:54:26.253746 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 1244
-I20251129 15:54:26.265359 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 507
-I20251129 15:54:26.269536 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 1084
-I20251129 15:54:26.283928 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 461
-I20251129 15:54:26.287582 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 883
-I20251129 15:54:26.297263 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 420
-I20251129 15:54:26.300876 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 713
-I20251129 15:54:26.321184 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 335
-I20251129 15:54:26.334575 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 498
-I20251129 15:54:26.367471 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 278
-I20251129 15:54:26.388432 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 386
-I20251129 15:54:26.395539 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 167
-I20251129 15:54:26.399019 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 209
-I20251129 15:54:26.411782 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 129
-I20251129 15:54:26.418880 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 164
-I20251129 15:54:26.429428 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 110
-I20251129 15:54:26.432857 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 125
-I20251129 15:54:26.435547 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 109
-I20251129 15:54:26.437523 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 115
-I20251129 15:54:26.442629 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 108
-I20251129 15:54:26.446825 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 112
-I20251129 15:54:26.449241 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 107
-I20251129 15:54:26.451264 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 110
-I20251129 15:54:26.453533 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 104
-I20251129 15:54:26.455520 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 105
-I20251129 15:54:26.460647 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 101
-I20251129 15:54:26.464710 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 101
-I20251129 15:54:26.467919 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 98
-I20251129 15:54:26.470489 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 98
-I20251129 15:54:26.474180 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 98
-I20251129 15:54:26.481441 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 98
-I20251129 15:54:26.484489 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 98
-I20251129 15:54:26.486610 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 114
-I20251129 15:54:26.488943 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 113
-I20251129 15:54:26.492830 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 180
-I20251129 15:54:26.497992 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 143
-I20251129 15:54:26.500850 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 245
-I20251129 15:54:26.503719 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 150
-I20251129 15:54:26.506083 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 312
-I20251129 15:54:26.513280 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 158
-I20251129 15:54:26.516716 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 435
-I20251129 15:54:26.520545 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 161
-I20251129 15:54:26.523850 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 459
-I20251129 15:54:26.532095 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 150
-I20251129 15:54:26.535244 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 405
-I20251129 15:54:26.538944 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 112
-I20251129 15:54:26.544406 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 307
-I20251129 15:54:26.549088 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 118
-I20251129 15:54:26.551512 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 287
-I20251129 15:54:26.554486 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 110
-I20251129 15:54:26.556861 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 225
-I20251129 15:54:26.560271 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 108
-I20251129 15:54:26.563460 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 193
-I20251129 15:54:26.579180 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 86
-I20251129 15:54:26.582108 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 147
-I20251129 15:54:26.584697 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 64
-I20251129 15:54:26.586810 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 117
-I20251129 15:54:26.588917 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 49
-I20251129 15:54:26.594636 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 114
-I20251129 15:54:26.598131 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 44
-I20251129 15:54:26.599965 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 89
-I20251129 15:54:26.601955 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 50
-I20251129 15:54:26.603790 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 104
-I20251129 15:54:26.605929 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 58
-I20251129 15:54:26.612495 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 143
-I20251129 15:54:26.615609 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 66
-I20251129 15:54:26.617736 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 167
-I20251129 15:54:26.620100 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 60
-I20251129 15:54:26.622118 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 121
-I20251129 15:54:26.625377 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 51
-I20251129 15:54:26.627624 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 96
-I20251129 15:54:26.633597 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 52
-I20251129 15:54:26.638805 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 138
-I20251129 15:54:26.645462 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 90
-I20251129 15:54:26.648958 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 180
-I20251129 15:54:26.651516 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 100
-I20251129 15:54:26.653695 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 230
-I20251129 15:54:26.656572 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 124
-I20251129 15:54:26.661753 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 176
-I20251129 15:54:26.665284 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 116
-I20251129 15:54:26.667462 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 190
-I20251129 15:54:26.670023 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 123
-I20251129 15:54:26.672363 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 276
-I20251129 15:54:26.679466 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 197
-I20251129 15:54:26.682981 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 531
-I20251129 15:54:26.687444 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 255
-I20251129 15:54:26.690826 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 560
-I20251129 15:54:26.702123 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 252
-I20251129 15:54:26.706353 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 440
-I20251129 15:54:26.715852 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 202
-I20251129 15:54:26.718674 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 309
-I20251129 15:54:26.721730 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 172
-I20251129 15:54:26.728667 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 243
-I20251129 15:54:26.732159 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 136
-I20251129 15:54:26.734350 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 179
-I20251129 15:54:26.736832 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 98
-I20251129 15:54:26.738953 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 120
-I20251129 15:54:26.744056 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 65
-I20251129 15:54:26.747429 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 86
-I20251129 15:54:26.749691 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 57
-I20251129 15:54:26.751726 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 77
-I20251129 15:54:26.753871 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 53
-I20251129 15:54:26.755995 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 79
-I20251129 15:54:26.759120 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 59
-I20251129 15:54:26.761086 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 76
-I20251129 15:54:26.769409 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 53
-I20251129 15:54:26.773331 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 151
-I20251129 15:54:26.779841 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 44
-I20251129 15:54:26.782860 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 204
-I20251129 15:54:26.785646 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 39
-I20251129 15:54:26.787657 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 219
-I20251129 15:54:26.791121 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 28
-I20251129 15:54:26.797361 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 317
-I20251129 15:54:26.800642 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 13
-I20251129 15:54:26.802592 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 214
-I20251129 15:54:26.805258 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 2
-I20251129 15:54:26.806927 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 31
-I20251129 15:54:26.810729 13943 StaDataPropagationBFS.cc:229] data fwd propagation bfs end
-I20251129 15:54:26.810846 13943 StaDataPropagationBFS.cc:232] data fwd propagation bfs memory usage 227.112MB
-I20251129 15:54:26.810907 13943 StaDataPropagationBFS.cc:234] data fwd propagation bfs time elapsed 0.921186s
-I20251129 15:54:26.810923 13943 StaDataPropagation.cc:695] data fwd propagation end
-I20251129 15:54:26.810940 13943 StaDataPropagation.cc:676] data fwd propagation start
-I20251129 15:54:26.811021 13943 StaDataPropagationBFS.cc:166] data fwd propagation bfs start
-I20251129 15:54:26.816510 13943 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 2
-I20251129 15:54:26.818099 13943 StaDataPropagationBFS.cc:229] data fwd propagation bfs end
-I20251129 15:54:26.818152 13943 StaDataPropagationBFS.cc:232] data fwd propagation bfs memory usage 0.272MB
-I20251129 15:54:26.818166 13943 StaDataPropagationBFS.cc:234] data fwd propagation bfs time elapsed 0.007145s
-I20251129 15:54:26.818176 13943 StaDataPropagation.cc:695] data fwd propagation end
-I20251129 15:54:26.818184 13943 StaAnalyze.cc:557] analyze timing path start
-I20251129 15:54:26.818192 13943 StaAnalyze.cc:565] analyze timing path end vertex 1 total 1507 start
-[0;31mE20251129 15:54:26.818200 13943 StaAnalyze.cc:328] The output port io_master_awvalid is not constrained
-[m[0;31mE20251129 15:54:26.818222 13943 StaAnalyze.cc:328] The output port io_master_awvalid is not constrained
-[mI20251129 15:54:26.818236 13943 StaAnalyze.cc:599] analyze timing path end vertex 1 total 1507 end
-[0;31mE20251129 15:54:26.818244 13943 StaAnalyze.cc:328] The output port io_master_awaddr[0] is not constrained
-[m[0;31mE20251129 15:54:26.818259 13943 StaAnalyze.cc:328] The output port io_master_awaddr[0] is not constrained
-[m[0;31mE20251129 15:54:26.818271 13943 StaAnalyze.cc:328] The output port io_master_awaddr[1] is not constrained
-[m[0;31mE20251129 15:54:26.818291 13943 StaAnalyze.cc:328] The output port io_master_awaddr[1] is not constrained
-[m[0;31mE20251129 15:54:26.818302 13943 StaAnalyze.cc:328] The output port io_master_awaddr[2] is not constrained
-[m[0;31mE20251129 15:54:26.818315 13943 StaAnalyze.cc:328] The output port io_master_awaddr[2] is not constrained
-[m[0;31mE20251129 15:54:26.818325 13943 StaAnalyze.cc:328] The output port io_master_awaddr[3] is not constrained
-[m[0;31mE20251129 15:54:26.818336 13943 StaAnalyze.cc:328] The output port io_master_awaddr[3] is not constrained
-[mI20251129 15:54:26.818346 13943 StaAnalyze.cc:565] analyze timing path end vertex 11 total 1507 start
-I20251129 15:54:26.818351 13943 StaAnalyze.cc:599] analyze timing path end vertex 11 total 1507 end
-I20251129 15:54:26.818356 13943 StaAnalyze.cc:565] analyze timing path end vertex 21 total 1507 start
-I20251129 15:54:26.818360 13943 StaAnalyze.cc:599] analyze timing path end vertex 21 total 1507 end
-I20251129 15:54:26.818367 13943 StaAnalyze.cc:565] analyze timing path end vertex 31 total 1507 start
-I20251129 15:54:26.818370 13943 StaAnalyze.cc:599] analyze timing path end vertex 31 total 1507 end
-I20251129 15:54:26.818375 13943 StaAnalyze.cc:565] analyze timing path end vertex 41 total 1507 start
-I20251129 15:54:26.818380 13943 StaAnalyze.cc:599] analyze timing path end vertex 41 total 1507 end
-I20251129 15:54:26.818385 13943 StaAnalyze.cc:565] analyze timing path end vertex 51 total 1507 start
-I20251129 15:54:26.818389 13943 StaAnalyze.cc:599] analyze timing path end vertex 51 total 1507 end
-I20251129 15:54:26.818394 13943 StaAnalyze.cc:565] analyze timing path end vertex 61 total 1507 start
-I20251129 15:54:26.818399 13943 StaAnalyze.cc:599] analyze timing path end vertex 61 total 1507 end
-I20251129 15:54:26.818404 13943 StaAnalyze.cc:565] analyze timing path end vertex 71 total 1507 start
-I20251129 15:54:26.818409 13943 StaAnalyze.cc:599] analyze timing path end vertex 71 total 1507 end
-I20251129 15:54:26.818414 13943 StaAnalyze.cc:565] analyze timing path end vertex 81 total 1507 start
-I20251129 15:54:26.818418 13943 StaAnalyze.cc:599] analyze timing path end vertex 81 total 1507 end
-I20251129 15:54:26.818423 13943 StaAnalyze.cc:565] analyze timing path end vertex 91 total 1507 start
-I20251129 15:54:26.818428 13943 StaAnalyze.cc:599] analyze timing path end vertex 91 total 1507 end
-I20251129 15:54:26.818434 13943 StaAnalyze.cc:565] analyze timing path end vertex 101 total 1507 start
-I20251129 15:54:26.818439 13943 StaAnalyze.cc:599] analyze timing path end vertex 101 total 1507 end
-I20251129 15:54:26.818444 13943 StaAnalyze.cc:565] analyze timing path end vertex 111 total 1507 start
-I20251129 15:54:26.818455 13943 StaAnalyze.cc:599] analyze timing path end vertex 111 total 1507 end
-I20251129 15:54:26.818461 13943 StaAnalyze.cc:565] analyze timing path end vertex 121 total 1507 start
-I20251129 15:54:26.818465 13943 StaAnalyze.cc:599] analyze timing path end vertex 121 total 1507 end
-I20251129 15:54:26.818470 13943 StaAnalyze.cc:565] analyze timing path end vertex 131 total 1507 start
-I20251129 15:54:26.818475 13943 StaAnalyze.cc:599] analyze timing path end vertex 131 total 1507 end
-I20251129 15:54:26.818480 13943 StaAnalyze.cc:565] analyze timing path end vertex 141 total 1507 start
-I20251129 15:54:26.818485 13943 StaAnalyze.cc:599] analyze timing path end vertex 141 total 1507 end
-I20251129 15:54:26.818490 13943 StaAnalyze.cc:565] analyze timing path end vertex 151 total 1507 start
-I20251129 15:54:26.818495 13943 StaAnalyze.cc:599] analyze timing path end vertex 151 total 1507 end
-I20251129 15:54:26.818500 13943 StaAnalyze.cc:565] analyze timing path end vertex 161 total 1507 start
-I20251129 15:54:26.818504 13943 StaAnalyze.cc:599] analyze timing path end vertex 161 total 1507 end
-I20251129 15:54:26.818509 13943 StaAnalyze.cc:565] analyze timing path end vertex 171 total 1507 start
-I20251129 15:54:26.818514 13943 StaAnalyze.cc:599] analyze timing path end vertex 171 total 1507 end
-I20251129 15:54:26.818519 13943 StaAnalyze.cc:565] analyze timing path end vertex 181 total 1507 start
-I20251129 15:54:26.818524 13943 StaAnalyze.cc:599] analyze timing path end vertex 181 total 1507 end
-I20251129 15:54:26.818529 13943 StaAnalyze.cc:565] analyze timing path end vertex 191 total 1507 start
-I20251129 15:54:26.818533 13943 StaAnalyze.cc:599] analyze timing path end vertex 191 total 1507 end
-I20251129 15:54:26.818539 13943 StaAnalyze.cc:565] analyze timing path end vertex 201 total 1507 start
-I20251129 15:54:26.818543 13943 StaAnalyze.cc:599] analyze timing path end vertex 201 total 1507 end
-I20251129 15:54:26.818548 13943 StaAnalyze.cc:565] analyze timing path end vertex 211 total 1507 start
-I20251129 15:54:26.818553 13943 StaAnalyze.cc:599] analyze timing path end vertex 211 total 1507 end
-I20251129 15:54:26.818596 13943 StaAnalyze.cc:565] analyze timing path end vertex 221 total 1507 start
-I20251129 15:54:26.818606 13943 StaAnalyze.cc:599] analyze timing path end vertex 221 total 1507 end
-I20251129 15:54:26.818653 13943 StaAnalyze.cc:565] analyze timing path end vertex 231 total 1507 start
-I20251129 15:54:26.818663 13943 StaAnalyze.cc:599] analyze timing path end vertex 231 total 1507 end
-I20251129 15:54:26.818711 13943 StaAnalyze.cc:565] analyze timing path end vertex 241 total 1507 start
-I20251129 15:54:26.818723 13943 StaAnalyze.cc:599] analyze timing path end vertex 241 total 1507 end
-I20251129 15:54:26.818811 13943 StaAnalyze.cc:565] analyze timing path end vertex 251 total 1507 start
-I20251129 15:54:26.818825 13943 StaAnalyze.cc:599] analyze timing path end vertex 251 total 1507 end
-I20251129 15:54:26.818848 13943 StaAnalyze.cc:303] add path data num 4 to b_ifu.reqQ.maybe_full_$_SDFFE_PP0P__Q:D
-I20251129 15:54:26.818959 13943 StaAnalyze.cc:565] analyze timing path end vertex 261 total 1507 start
-I20251129 15:54:26.818979 13943 StaAnalyze.cc:599] analyze timing path end vertex 261 total 1507 end
-I20251129 15:54:26.819065 13943 StaAnalyze.cc:565] analyze timing path end vertex 271 total 1507 start
-I20251129 15:54:26.819078 13943 StaAnalyze.cc:599] analyze timing path end vertex 271 total 1507 end
-I20251129 15:54:26.819150 13943 StaAnalyze.cc:565] analyze timing path end vertex 281 total 1507 start
-I20251129 15:54:26.819164 13943 StaAnalyze.cc:599] analyze timing path end vertex 281 total 1507 end
-I20251129 15:54:26.819216 13943 StaAnalyze.cc:565] analyze timing path end vertex 291 total 1507 start
-I20251129 15:54:26.819226 13943 StaAnalyze.cc:599] analyze timing path end vertex 291 total 1507 end
-I20251129 15:54:26.819264 13943 StaAnalyze.cc:565] analyze timing path end vertex 301 total 1507 start
-I20251129 15:54:26.819273 13943 StaAnalyze.cc:599] analyze timing path end vertex 301 total 1507 end
-I20251129 15:54:26.819290 13943 StaAnalyze.cc:303] add path data num 2 to c_arbiter.clint_reg_$_SDFF_PP0__Q_10:D
-I20251129 15:54:26.819326 13943 StaAnalyze.cc:565] analyze timing path end vertex 311 total 1507 start
-I20251129 15:54:26.819335 13943 StaAnalyze.cc:599] analyze timing path end vertex 311 total 1507 end
-I20251129 15:54:26.819376 13943 StaAnalyze.cc:565] analyze timing path end vertex 321 total 1507 start
-I20251129 15:54:26.819386 13943 StaAnalyze.cc:599] analyze timing path end vertex 321 total 1507 end
-I20251129 15:54:26.819424 13943 StaAnalyze.cc:565] analyze timing path end vertex 331 total 1507 start
-I20251129 15:54:26.819433 13943 StaAnalyze.cc:599] analyze timing path end vertex 331 total 1507 end
-I20251129 15:54:26.819473 13943 StaAnalyze.cc:565] analyze timing path end vertex 341 total 1507 start
-I20251129 15:54:26.819481 13943 StaAnalyze.cc:599] analyze timing path end vertex 341 total 1507 end
-I20251129 15:54:26.819521 13943 StaAnalyze.cc:565] analyze timing path end vertex 351 total 1507 start
-I20251129 15:54:26.819530 13943 StaAnalyze.cc:599] analyze timing path end vertex 351 total 1507 end
-I20251129 15:54:26.819541 13943 StaAnalyze.cc:303] add path data num 2 to c_arbiter.clint_reg_$_SDFF_PP0__Q_56:D
-I20251129 15:54:26.819576 13943 StaAnalyze.cc:565] analyze timing path end vertex 361 total 1507 start
-I20251129 15:54:26.819584 13943 StaAnalyze.cc:599] analyze timing path end vertex 361 total 1507 end
-I20251129 15:54:26.819617 13943 StaAnalyze.cc:565] analyze timing path end vertex 371 total 1507 start
-I20251129 15:54:26.819622 13943 StaAnalyze.cc:599] analyze timing path end vertex 371 total 1507 end
-I20251129 15:54:26.819629 13943 StaAnalyze.cc:565] analyze timing path end vertex 381 total 1507 start
-I20251129 15:54:26.819634 13943 StaAnalyze.cc:599] analyze timing path end vertex 381 total 1507 end
-I20251129 15:54:26.819641 13943 StaAnalyze.cc:565] analyze timing path end vertex 391 total 1507 start
-I20251129 15:54:26.819646 13943 StaAnalyze.cc:599] analyze timing path end vertex 391 total 1507 end
-I20251129 15:54:26.819682 13943 StaAnalyze.cc:565] analyze timing path end vertex 401 total 1507 start
-I20251129 15:54:26.819694 13943 StaAnalyze.cc:599] analyze timing path end vertex 401 total 1507 end
-I20251129 15:54:26.819710 13943 StaAnalyze.cc:303] add path data num 4 to c_arbiter.rdata_reg_$_SDFFE_PP0P__Q_14:D
-I20251129 15:54:26.819768 13943 StaAnalyze.cc:565] analyze timing path end vertex 411 total 1507 start
-I20251129 15:54:26.819782 13943 StaAnalyze.cc:599] analyze timing path end vertex 411 total 1507 end
-I20251129 15:54:26.819916 13943 StaAnalyze.cc:565] analyze timing path end vertex 421 total 1507 start
-I20251129 15:54:26.819929 13943 StaAnalyze.cc:599] analyze timing path end vertex 421 total 1507 end
-I20251129 15:54:26.820005 13943 StaAnalyze.cc:565] analyze timing path end vertex 431 total 1507 start
-I20251129 15:54:26.820016 13943 StaAnalyze.cc:599] analyze timing path end vertex 431 total 1507 end
-I20251129 15:54:26.820058 13943 StaAnalyze.cc:565] analyze timing path end vertex 441 total 1507 start
-I20251129 15:54:26.820067 13943 StaAnalyze.cc:599] analyze timing path end vertex 441 total 1507 end
-I20251129 15:54:26.820107 13943 StaAnalyze.cc:565] analyze timing path end vertex 451 total 1507 start
-I20251129 15:54:26.820116 13943 StaAnalyze.cc:599] analyze timing path end vertex 451 total 1507 end
-I20251129 15:54:26.820133 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.pc_next_reg_$_SDFFE_PP0P__Q_1:D
-I20251129 15:54:26.820191 13943 StaAnalyze.cc:565] analyze timing path end vertex 461 total 1507 start
-I20251129 15:54:26.820204 13943 StaAnalyze.cc:599] analyze timing path end vertex 461 total 1507 end
-I20251129 15:54:26.820271 13943 StaAnalyze.cc:565] analyze timing path end vertex 471 total 1507 start
-I20251129 15:54:26.820284 13943 StaAnalyze.cc:599] analyze timing path end vertex 471 total 1507 end
-I20251129 15:54:26.820353 13943 StaAnalyze.cc:565] analyze timing path end vertex 481 total 1507 start
-I20251129 15:54:26.820365 13943 StaAnalyze.cc:599] analyze timing path end vertex 481 total 1507 end
-I20251129 15:54:26.820448 13943 StaAnalyze.cc:565] analyze timing path end vertex 491 total 1507 start
-I20251129 15:54:26.820466 13943 StaAnalyze.cc:599] analyze timing path end vertex 491 total 1507 end
-I20251129 15:54:26.820544 13943 StaAnalyze.cc:565] analyze timing path end vertex 501 total 1507 start
-I20251129 15:54:26.820556 13943 StaAnalyze.cc:599] analyze timing path end vertex 501 total 1507 end
-I20251129 15:54:26.820574 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_0_$_SDFFE_PP0N__Q_27:D
-I20251129 15:54:26.820637 13943 StaAnalyze.cc:565] analyze timing path end vertex 511 total 1507 start
-I20251129 15:54:26.820649 13943 StaAnalyze.cc:599] analyze timing path end vertex 511 total 1507 end
-I20251129 15:54:26.820725 13943 StaAnalyze.cc:565] analyze timing path end vertex 521 total 1507 start
-I20251129 15:54:26.820740 13943 StaAnalyze.cc:599] analyze timing path end vertex 521 total 1507 end
-I20251129 15:54:26.820811 13943 StaAnalyze.cc:565] analyze timing path end vertex 531 total 1507 start
-I20251129 15:54:26.820824 13943 StaAnalyze.cc:599] analyze timing path end vertex 531 total 1507 end
-I20251129 15:54:26.820897 13943 StaAnalyze.cc:565] analyze timing path end vertex 541 total 1507 start
-I20251129 15:54:26.820909 13943 StaAnalyze.cc:599] analyze timing path end vertex 541 total 1507 end
-I20251129 15:54:26.821017 13943 StaAnalyze.cc:565] analyze timing path end vertex 551 total 1507 start
-I20251129 15:54:26.821033 13943 StaAnalyze.cc:599] analyze timing path end vertex 551 total 1507 end
-I20251129 15:54:26.821053 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_11_$_SDFFE_PP0P__Q_14:D
-I20251129 15:54:26.821125 13943 StaAnalyze.cc:565] analyze timing path end vertex 561 total 1507 start
-I20251129 15:54:26.821138 13943 StaAnalyze.cc:599] analyze timing path end vertex 561 total 1507 end
-I20251129 15:54:26.821211 13943 StaAnalyze.cc:565] analyze timing path end vertex 571 total 1507 start
-I20251129 15:54:26.821226 13943 StaAnalyze.cc:599] analyze timing path end vertex 571 total 1507 end
-I20251129 15:54:26.821303 13943 StaAnalyze.cc:565] analyze timing path end vertex 581 total 1507 start
-I20251129 15:54:26.821316 13943 StaAnalyze.cc:599] analyze timing path end vertex 581 total 1507 end
-I20251129 15:54:26.821472 13943 StaAnalyze.cc:565] analyze timing path end vertex 591 total 1507 start
-I20251129 15:54:26.821491 13943 StaAnalyze.cc:599] analyze timing path end vertex 591 total 1507 end
-I20251129 15:54:26.821599 13943 StaAnalyze.cc:565] analyze timing path end vertex 601 total 1507 start
-I20251129 15:54:26.821612 13943 StaAnalyze.cc:599] analyze timing path end vertex 601 total 1507 end
-I20251129 15:54:26.821635 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_12_$_SDFFE_PP0P__Q_30:D
-I20251129 15:54:26.821738 13943 StaAnalyze.cc:565] analyze timing path end vertex 611 total 1507 start
-I20251129 15:54:26.821769 13943 StaAnalyze.cc:599] analyze timing path end vertex 611 total 1507 end
-I20251129 15:54:26.821971 13943 StaAnalyze.cc:565] analyze timing path end vertex 621 total 1507 start
-I20251129 15:54:26.822005 13943 StaAnalyze.cc:599] analyze timing path end vertex 621 total 1507 end
-I20251129 15:54:26.822197 13943 StaAnalyze.cc:565] analyze timing path end vertex 631 total 1507 start
-I20251129 15:54:26.822237 13943 StaAnalyze.cc:599] analyze timing path end vertex 631 total 1507 end
-I20251129 15:54:26.822521 13943 StaAnalyze.cc:565] analyze timing path end vertex 641 total 1507 start
-I20251129 15:54:26.822546 13943 StaAnalyze.cc:599] analyze timing path end vertex 641 total 1507 end
-I20251129 15:54:26.822628 13943 StaAnalyze.cc:565] analyze timing path end vertex 651 total 1507 start
-I20251129 15:54:26.822641 13943 StaAnalyze.cc:599] analyze timing path end vertex 651 total 1507 end
-I20251129 15:54:26.822659 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_14_$_SDFFE_PP0P__Q_18:D
-I20251129 15:54:26.822736 13943 StaAnalyze.cc:565] analyze timing path end vertex 661 total 1507 start
-I20251129 15:54:26.822770 13943 StaAnalyze.cc:599] analyze timing path end vertex 661 total 1507 end
-I20251129 15:54:26.822988 13943 StaAnalyze.cc:565] analyze timing path end vertex 671 total 1507 start
-I20251129 15:54:26.823019 13943 StaAnalyze.cc:599] analyze timing path end vertex 671 total 1507 end
-I20251129 15:54:26.823220 13943 StaAnalyze.cc:565] analyze timing path end vertex 681 total 1507 start
-I20251129 15:54:26.823252 13943 StaAnalyze.cc:599] analyze timing path end vertex 681 total 1507 end
-I20251129 15:54:26.823484 13943 StaAnalyze.cc:565] analyze timing path end vertex 691 total 1507 start
-I20251129 15:54:26.823519 13943 StaAnalyze.cc:599] analyze timing path end vertex 691 total 1507 end
-I20251129 15:54:26.823729 13943 StaAnalyze.cc:565] analyze timing path end vertex 701 total 1507 start
-I20251129 15:54:26.823760 13943 StaAnalyze.cc:599] analyze timing path end vertex 701 total 1507 end
-I20251129 15:54:26.823801 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_15_$_SDFFE_PP0P__Q_6:D
-I20251129 15:54:26.823971 13943 StaAnalyze.cc:565] analyze timing path end vertex 711 total 1507 start
-I20251129 15:54:26.823999 13943 StaAnalyze.cc:599] analyze timing path end vertex 711 total 1507 end
-I20251129 15:54:26.824209 13943 StaAnalyze.cc:565] analyze timing path end vertex 721 total 1507 start
-I20251129 15:54:26.824240 13943 StaAnalyze.cc:599] analyze timing path end vertex 721 total 1507 end
-I20251129 15:54:26.824443 13943 StaAnalyze.cc:565] analyze timing path end vertex 731 total 1507 start
-I20251129 15:54:26.824474 13943 StaAnalyze.cc:599] analyze timing path end vertex 731 total 1507 end
-I20251129 15:54:26.824676 13943 StaAnalyze.cc:565] analyze timing path end vertex 741 total 1507 start
-I20251129 15:54:26.824705 13943 StaAnalyze.cc:599] analyze timing path end vertex 741 total 1507 end
-I20251129 15:54:26.824951 13943 StaAnalyze.cc:565] analyze timing path end vertex 751 total 1507 start
-I20251129 15:54:26.824990 13943 StaAnalyze.cc:599] analyze timing path end vertex 751 total 1507 end
-I20251129 15:54:26.825034 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_17_$_SDFFE_PP0P__Q_21:D
-I20251129 15:54:26.825207 13943 StaAnalyze.cc:565] analyze timing path end vertex 761 total 1507 start
-I20251129 15:54:26.825239 13943 StaAnalyze.cc:599] analyze timing path end vertex 761 total 1507 end
-I20251129 15:54:26.825331 13943 StaAnalyze.cc:565] analyze timing path end vertex 771 total 1507 start
-I20251129 15:54:26.825347 13943 StaAnalyze.cc:599] analyze timing path end vertex 771 total 1507 end
-I20251129 15:54:26.825559 13943 StaAnalyze.cc:565] analyze timing path end vertex 781 total 1507 start
-I20251129 15:54:26.825591 13943 StaAnalyze.cc:599] analyze timing path end vertex 781 total 1507 end
-I20251129 15:54:26.825796 13943 StaAnalyze.cc:565] analyze timing path end vertex 791 total 1507 start
-I20251129 15:54:26.825836 13943 StaAnalyze.cc:599] analyze timing path end vertex 791 total 1507 end
-I20251129 15:54:26.826077 13943 StaAnalyze.cc:565] analyze timing path end vertex 801 total 1507 start
-I20251129 15:54:26.826112 13943 StaAnalyze.cc:599] analyze timing path end vertex 801 total 1507 end
-I20251129 15:54:26.826156 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_19_$_SDFFE_PP0P__Q:D
-I20251129 15:54:26.826341 13943 StaAnalyze.cc:565] analyze timing path end vertex 811 total 1507 start
-I20251129 15:54:26.826375 13943 StaAnalyze.cc:599] analyze timing path end vertex 811 total 1507 end
-I20251129 15:54:26.826578 13943 StaAnalyze.cc:565] analyze timing path end vertex 821 total 1507 start
-I20251129 15:54:26.826611 13943 StaAnalyze.cc:599] analyze timing path end vertex 821 total 1507 end
-I20251129 15:54:26.826884 13943 StaAnalyze.cc:565] analyze timing path end vertex 831 total 1507 start
-I20251129 15:54:26.826908 13943 StaAnalyze.cc:599] analyze timing path end vertex 831 total 1507 end
-I20251129 15:54:26.826997 13943 StaAnalyze.cc:565] analyze timing path end vertex 841 total 1507 start
-I20251129 15:54:26.827013 13943 StaAnalyze.cc:599] analyze timing path end vertex 841 total 1507 end
-I20251129 15:54:26.827180 13943 StaAnalyze.cc:565] analyze timing path end vertex 851 total 1507 start
-I20251129 15:54:26.827224 13943 StaAnalyze.cc:599] analyze timing path end vertex 851 total 1507 end
-I20251129 15:54:26.827267 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_1_$_SDFFE_PP0P__Q_25:D
-I20251129 15:54:26.827436 13943 StaAnalyze.cc:565] analyze timing path end vertex 861 total 1507 start
-I20251129 15:54:26.827467 13943 StaAnalyze.cc:599] analyze timing path end vertex 861 total 1507 end
-I20251129 15:54:26.827679 13943 StaAnalyze.cc:565] analyze timing path end vertex 871 total 1507 start
-I20251129 15:54:26.827711 13943 StaAnalyze.cc:599] analyze timing path end vertex 871 total 1507 end
-I20251129 15:54:26.827908 13943 StaAnalyze.cc:565] analyze timing path end vertex 881 total 1507 start
-I20251129 15:54:26.827945 13943 StaAnalyze.cc:599] analyze timing path end vertex 881 total 1507 end
-I20251129 15:54:26.828176 13943 StaAnalyze.cc:565] analyze timing path end vertex 891 total 1507 start
-I20251129 15:54:26.828198 13943 StaAnalyze.cc:599] analyze timing path end vertex 891 total 1507 end
-I20251129 15:54:26.828459 13943 StaAnalyze.cc:565] analyze timing path end vertex 901 total 1507 start
-I20251129 15:54:26.828493 13943 StaAnalyze.cc:599] analyze timing path end vertex 901 total 1507 end
-I20251129 15:54:26.828540 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_21_$_SDFFE_PP0P__Q_12:D
-I20251129 15:54:26.828727 13943 StaAnalyze.cc:565] analyze timing path end vertex 911 total 1507 start
-I20251129 15:54:26.828758 13943 StaAnalyze.cc:599] analyze timing path end vertex 911 total 1507 end
-I20251129 15:54:26.828985 13943 StaAnalyze.cc:565] analyze timing path end vertex 921 total 1507 start
-I20251129 15:54:26.829020 13943 StaAnalyze.cc:599] analyze timing path end vertex 921 total 1507 end
-I20251129 15:54:26.829221 13943 StaAnalyze.cc:565] analyze timing path end vertex 931 total 1507 start
-I20251129 15:54:26.829269 13943 StaAnalyze.cc:599] analyze timing path end vertex 931 total 1507 end
-I20251129 15:54:26.829527 13943 StaAnalyze.cc:565] analyze timing path end vertex 941 total 1507 start
-I20251129 15:54:26.829568 13943 StaAnalyze.cc:599] analyze timing path end vertex 941 total 1507 end
-I20251129 15:54:26.829802 13943 StaAnalyze.cc:565] analyze timing path end vertex 951 total 1507 start
-I20251129 15:54:26.829838 13943 StaAnalyze.cc:599] analyze timing path end vertex 951 total 1507 end
-I20251129 15:54:26.829879 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_22_$_SDFFE_PP0P__Q_29:D
-I20251129 15:54:26.830032 13943 StaAnalyze.cc:565] analyze timing path end vertex 961 total 1507 start
-I20251129 15:54:26.830070 13943 StaAnalyze.cc:599] analyze timing path end vertex 961 total 1507 end
-I20251129 15:54:26.830333 13943 StaAnalyze.cc:565] analyze timing path end vertex 971 total 1507 start
-I20251129 15:54:26.830371 13943 StaAnalyze.cc:599] analyze timing path end vertex 971 total 1507 end
-I20251129 15:54:26.830595 13943 StaAnalyze.cc:565] analyze timing path end vertex 981 total 1507 start
-I20251129 15:54:26.830637 13943 StaAnalyze.cc:599] analyze timing path end vertex 981 total 1507 end
-I20251129 15:54:26.830837 13943 StaAnalyze.cc:565] analyze timing path end vertex 991 total 1507 start
-I20251129 15:54:26.830878 13943 StaAnalyze.cc:599] analyze timing path end vertex 991 total 1507 end
-I20251129 15:54:26.831301 13943 StaAnalyze.cc:565] analyze timing path end vertex 1001 total 1507 start
-I20251129 15:54:26.831365 13943 StaAnalyze.cc:599] analyze timing path end vertex 1001 total 1507 end
-I20251129 15:54:26.831452 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_24_$_SDFFE_PP0P__Q_16:D
-I20251129 15:54:26.831732 13943 StaAnalyze.cc:565] analyze timing path end vertex 1011 total 1507 start
-I20251129 15:54:26.831796 13943 StaAnalyze.cc:599] analyze timing path end vertex 1011 total 1507 end
-I20251129 15:54:26.832185 13943 StaAnalyze.cc:565] analyze timing path end vertex 1021 total 1507 start
-I20251129 15:54:26.832224 13943 StaAnalyze.cc:599] analyze timing path end vertex 1021 total 1507 end
-I20251129 15:54:26.832504 13943 StaAnalyze.cc:565] analyze timing path end vertex 1031 total 1507 start
-I20251129 15:54:26.832571 13943 StaAnalyze.cc:599] analyze timing path end vertex 1031 total 1507 end
-I20251129 15:54:26.832830 13943 StaAnalyze.cc:565] analyze timing path end vertex 1041 total 1507 start
-I20251129 15:54:26.832871 13943 StaAnalyze.cc:599] analyze timing path end vertex 1041 total 1507 end
-I20251129 15:54:26.833178 13943 StaAnalyze.cc:565] analyze timing path end vertex 1051 total 1507 start
-I20251129 15:54:26.833226 13943 StaAnalyze.cc:599] analyze timing path end vertex 1051 total 1507 end
-I20251129 15:54:26.833294 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_25_$_SDFFE_PP0P__Q_4:D
-I20251129 15:54:26.833561 13943 StaAnalyze.cc:565] analyze timing path end vertex 1061 total 1507 start
-I20251129 15:54:26.833617 13943 StaAnalyze.cc:599] analyze timing path end vertex 1061 total 1507 end
-I20251129 15:54:26.833971 13943 StaAnalyze.cc:565] analyze timing path end vertex 1071 total 1507 start
-I20251129 15:54:26.834019 13943 StaAnalyze.cc:599] analyze timing path end vertex 1071 total 1507 end
-I20251129 15:54:26.834324 13943 StaAnalyze.cc:565] analyze timing path end vertex 1081 total 1507 start
-I20251129 15:54:26.834358 13943 StaAnalyze.cc:599] analyze timing path end vertex 1081 total 1507 end
-I20251129 15:54:26.834594 13943 StaAnalyze.cc:565] analyze timing path end vertex 1091 total 1507 start
-I20251129 15:54:26.834632 13943 StaAnalyze.cc:599] analyze timing path end vertex 1091 total 1507 end
-I20251129 15:54:26.834857 13943 StaAnalyze.cc:565] analyze timing path end vertex 1101 total 1507 start
-I20251129 15:54:26.834884 13943 StaAnalyze.cc:599] analyze timing path end vertex 1101 total 1507 end
-I20251129 15:54:26.834920 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_27_$_SDFFE_PP0P__Q_2:D
-I20251129 15:54:26.835011 13943 StaAnalyze.cc:565] analyze timing path end vertex 1111 total 1507 start
-I20251129 15:54:26.835026 13943 StaAnalyze.cc:599] analyze timing path end vertex 1111 total 1507 end
-I20251129 15:54:26.835153 13943 StaAnalyze.cc:565] analyze timing path end vertex 1121 total 1507 start
-I20251129 15:54:26.835175 13943 StaAnalyze.cc:599] analyze timing path end vertex 1121 total 1507 end
-I20251129 15:54:26.835317 13943 StaAnalyze.cc:565] analyze timing path end vertex 1131 total 1507 start
-I20251129 15:54:26.835340 13943 StaAnalyze.cc:599] analyze timing path end vertex 1131 total 1507 end
-I20251129 15:54:26.835515 13943 StaAnalyze.cc:565] analyze timing path end vertex 1141 total 1507 start
-I20251129 15:54:26.835539 13943 StaAnalyze.cc:599] analyze timing path end vertex 1141 total 1507 end
-I20251129 15:54:26.835681 13943 StaAnalyze.cc:565] analyze timing path end vertex 1151 total 1507 start
-I20251129 15:54:26.835702 13943 StaAnalyze.cc:599] analyze timing path end vertex 1151 total 1507 end
-I20251129 15:54:26.835733 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_28_$_SDFFE_PP0P__Q_8:D
-I20251129 15:54:26.835867 13943 StaAnalyze.cc:565] analyze timing path end vertex 1161 total 1507 start
-I20251129 15:54:26.835887 13943 StaAnalyze.cc:599] analyze timing path end vertex 1161 total 1507 end
-I20251129 15:54:26.836062 13943 StaAnalyze.cc:565] analyze timing path end vertex 1171 total 1507 start
-I20251129 15:54:26.836105 13943 StaAnalyze.cc:599] analyze timing path end vertex 1171 total 1507 end
-I20251129 15:54:26.836263 13943 StaAnalyze.cc:565] analyze timing path end vertex 1181 total 1507 start
-I20251129 15:54:26.836282 13943 StaAnalyze.cc:599] analyze timing path end vertex 1181 total 1507 end
-I20251129 15:54:26.836457 13943 StaAnalyze.cc:565] analyze timing path end vertex 1191 total 1507 start
-I20251129 15:54:26.836489 13943 StaAnalyze.cc:599] analyze timing path end vertex 1191 total 1507 end
-I20251129 15:54:26.836652 13943 StaAnalyze.cc:565] analyze timing path end vertex 1201 total 1507 start
-I20251129 15:54:26.836673 13943 StaAnalyze.cc:599] analyze timing path end vertex 1201 total 1507 end
-I20251129 15:54:26.836706 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_2_$_SDFFE_PP1P__Q_1:D
-I20251129 15:54:26.836872 13943 StaAnalyze.cc:565] analyze timing path end vertex 1211 total 1507 start
-I20251129 15:54:26.836896 13943 StaAnalyze.cc:599] analyze timing path end vertex 1211 total 1507 end
-I20251129 15:54:26.837052 13943 StaAnalyze.cc:565] analyze timing path end vertex 1221 total 1507 start
-I20251129 15:54:26.837071 13943 StaAnalyze.cc:599] analyze timing path end vertex 1221 total 1507 end
-I20251129 15:54:26.837189 13943 StaAnalyze.cc:565] analyze timing path end vertex 1231 total 1507 start
-I20251129 15:54:26.837211 13943 StaAnalyze.cc:599] analyze timing path end vertex 1231 total 1507 end
-I20251129 15:54:26.837327 13943 StaAnalyze.cc:565] analyze timing path end vertex 1241 total 1507 start
-I20251129 15:54:26.837344 13943 StaAnalyze.cc:599] analyze timing path end vertex 1241 total 1507 end
-I20251129 15:54:26.837438 13943 StaAnalyze.cc:565] analyze timing path end vertex 1251 total 1507 start
-I20251129 15:54:26.837455 13943 StaAnalyze.cc:599] analyze timing path end vertex 1251 total 1507 end
-I20251129 15:54:26.837473 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_31_$_SDFFE_PP0P__Q_10:D
-I20251129 15:54:26.837544 13943 StaAnalyze.cc:565] analyze timing path end vertex 1261 total 1507 start
-I20251129 15:54:26.837558 13943 StaAnalyze.cc:599] analyze timing path end vertex 1261 total 1507 end
-I20251129 15:54:26.837634 13943 StaAnalyze.cc:565] analyze timing path end vertex 1271 total 1507 start
-I20251129 15:54:26.837648 13943 StaAnalyze.cc:599] analyze timing path end vertex 1271 total 1507 end
-I20251129 15:54:26.837724 13943 StaAnalyze.cc:565] analyze timing path end vertex 1281 total 1507 start
-I20251129 15:54:26.837736 13943 StaAnalyze.cc:599] analyze timing path end vertex 1281 total 1507 end
-I20251129 15:54:26.837813 13943 StaAnalyze.cc:565] analyze timing path end vertex 1291 total 1507 start
-I20251129 15:54:26.837829 13943 StaAnalyze.cc:599] analyze timing path end vertex 1291 total 1507 end
-I20251129 15:54:26.837994 13943 StaAnalyze.cc:565] analyze timing path end vertex 1301 total 1507 start
-I20251129 15:54:26.838025 13943 StaAnalyze.cc:599] analyze timing path end vertex 1301 total 1507 end
-I20251129 15:54:26.838080 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_3_$_SDFFE_PP0P__Q_27:D
-I20251129 15:54:26.838246 13943 StaAnalyze.cc:565] analyze timing path end vertex 1311 total 1507 start
-I20251129 15:54:26.838275 13943 StaAnalyze.cc:599] analyze timing path end vertex 1311 total 1507 end
-I20251129 15:54:26.838492 13943 StaAnalyze.cc:565] analyze timing path end vertex 1321 total 1507 start
-I20251129 15:54:26.838508 13943 StaAnalyze.cc:599] analyze timing path end vertex 1321 total 1507 end
-I20251129 15:54:26.838587 13943 StaAnalyze.cc:565] analyze timing path end vertex 1331 total 1507 start
-I20251129 15:54:26.838601 13943 StaAnalyze.cc:599] analyze timing path end vertex 1331 total 1507 end
-I20251129 15:54:26.838680 13943 StaAnalyze.cc:565] analyze timing path end vertex 1341 total 1507 start
-I20251129 15:54:26.838693 13943 StaAnalyze.cc:599] analyze timing path end vertex 1341 total 1507 end
-I20251129 15:54:26.838769 13943 StaAnalyze.cc:565] analyze timing path end vertex 1351 total 1507 start
-I20251129 15:54:26.838783 13943 StaAnalyze.cc:599] analyze timing path end vertex 1351 total 1507 end
-I20251129 15:54:26.838800 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_5_$_SDFFE_PP0P__Q_14:D
-I20251129 15:54:26.838863 13943 StaAnalyze.cc:565] analyze timing path end vertex 1361 total 1507 start
-I20251129 15:54:26.838876 13943 StaAnalyze.cc:599] analyze timing path end vertex 1361 total 1507 end
-I20251129 15:54:26.838956 13943 StaAnalyze.cc:565] analyze timing path end vertex 1371 total 1507 start
-I20251129 15:54:26.838971 13943 StaAnalyze.cc:599] analyze timing path end vertex 1371 total 1507 end
-I20251129 15:54:26.839048 13943 StaAnalyze.cc:565] analyze timing path end vertex 1381 total 1507 start
-I20251129 15:54:26.839061 13943 StaAnalyze.cc:599] analyze timing path end vertex 1381 total 1507 end
-I20251129 15:54:26.839138 13943 StaAnalyze.cc:565] analyze timing path end vertex 1391 total 1507 start
-I20251129 15:54:26.839161 13943 StaAnalyze.cc:599] analyze timing path end vertex 1391 total 1507 end
-I20251129 15:54:26.839311 13943 StaAnalyze.cc:565] analyze timing path end vertex 1401 total 1507 start
-I20251129 15:54:26.839324 13943 StaAnalyze.cc:599] analyze timing path end vertex 1401 total 1507 end
-I20251129 15:54:26.839342 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_6_$_SDFFE_PP0P__Q_30:D
-I20251129 15:54:26.839407 13943 StaAnalyze.cc:565] analyze timing path end vertex 1411 total 1507 start
-I20251129 15:54:26.839421 13943 StaAnalyze.cc:599] analyze timing path end vertex 1411 total 1507 end
-I20251129 15:54:26.839525 13943 StaAnalyze.cc:565] analyze timing path end vertex 1421 total 1507 start
-I20251129 15:54:26.839538 13943 StaAnalyze.cc:599] analyze timing path end vertex 1421 total 1507 end
-I20251129 15:54:26.839614 13943 StaAnalyze.cc:565] analyze timing path end vertex 1431 total 1507 start
-I20251129 15:54:26.839640 13943 StaAnalyze.cc:599] analyze timing path end vertex 1431 total 1507 end
-I20251129 15:54:26.839763 13943 StaAnalyze.cc:565] analyze timing path end vertex 1441 total 1507 start
-I20251129 15:54:26.839799 13943 StaAnalyze.cc:599] analyze timing path end vertex 1441 total 1507 end
-I20251129 15:54:26.839898 13943 StaAnalyze.cc:565] analyze timing path end vertex 1451 total 1507 start
-I20251129 15:54:26.839913 13943 StaAnalyze.cc:599] analyze timing path end vertex 1451 total 1507 end
-I20251129 15:54:26.839934 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_8_$_SDFFE_PP0P__Q_18:D
-I20251129 15:54:26.840008 13943 StaAnalyze.cc:565] analyze timing path end vertex 1461 total 1507 start
-I20251129 15:54:26.840023 13943 StaAnalyze.cc:599] analyze timing path end vertex 1461 total 1507 end
-I20251129 15:54:26.840112 13943 StaAnalyze.cc:565] analyze timing path end vertex 1471 total 1507 start
-I20251129 15:54:26.840128 13943 StaAnalyze.cc:599] analyze timing path end vertex 1471 total 1507 end
-I20251129 15:54:26.840229 13943 StaAnalyze.cc:565] analyze timing path end vertex 1481 total 1507 start
-I20251129 15:54:26.840245 13943 StaAnalyze.cc:599] analyze timing path end vertex 1481 total 1507 end
-I20251129 15:54:26.840348 13943 StaAnalyze.cc:565] analyze timing path end vertex 1491 total 1507 start
-I20251129 15:54:26.840364 13943 StaAnalyze.cc:599] analyze timing path end vertex 1491 total 1507 end
-I20251129 15:54:26.840485 13943 StaAnalyze.cc:565] analyze timing path end vertex 1501 total 1507 start
-I20251129 15:54:26.840507 13943 StaAnalyze.cc:599] analyze timing path end vertex 1501 total 1507 end
-I20251129 15:54:26.840535 13943 StaAnalyze.cc:303] add path data num 4 to f_gpr.regs_9_$_SDFFE_PP0P__Q_6:D
-I20251129 15:54:26.840598 13943 StaAnalyze.cc:603] analyze timing path end
-I20251129 15:54:26.840613 13943 StaApplySdc.cc:698] apply sdc start
-I20251129 15:54:26.840622 13943 StaApplySdc.cc:729] apply sdc end
-I20251129 15:54:26.840631 13943 StaDataPropagation.cc:698] data bwd propagation start
-I20251129 15:54:26.843933 13943 StaDataPropagation.cc:249] propagate start vertex b_ifu.reqQ.maybe_full_$_SDFFE_PP0P__Q:CK
-I20251129 15:54:26.844031 13943 StaDataPropagation.cc:172] Thread 139899537846400 data bwd propagate found end vertex._26125_:E
-I20251129 15:54:26.844074 13943 StaDataPropagation.cc:172] Thread 139899537846400 data bwd propagate found end vertex.b_ifu.reqQ.maybe_full_$_SDFFE_PP0P__Q:D
-I20251129 15:54:26.844113 13943 StaDataPropagation.cc:172] Thread 139899537846400 data bwd propagate found end vertex.c_arbiter.validReg_ar0_$_SDFF_PP0__Q:D
-I20251129 15:54:26.844154 13943 StaDataPropagation.cc:172] Thread 139899537846400 data bwd propagate found end vertex._26126_:E
-I20251129 15:54:26.844187 13943 StaDataPropagation.cc:172] Thread 139899537846400 data bwd propagate found end vertex.f_gpr.validReg_$_SDFF_PP1__Q:D
-I20251129 15:54:26.844286 13943 StaDataPropagation.cc:172] Thread 139899537846400 data bwd propagate found end vertex.c_arbiter.rdata_reg_$_SDFFE_PP0P__Q:D
-I20251129 15:54:26.844302 13943 StaDataPropagation.cc:61] the endpoint vertex c_arbiter.rdata_reg_$_SDFFE_PP0P__Q:D has negative slack
-I20251129 15:54:26.844359 13943 StaDataPropagation.cc:172] Thread 139899537846400 data bwd propagate found end vertex.c_arbiter.rdata_reg_$_SDFFE_PP0P__Q_1:D
-I20251129 15:54:26.844398 13943 StaDataPropagation.cc:172] Thread 139899537846400 data bwd propagate found end vertex.c_arbiter.rdata_reg_$_SDFFE_PP0P__Q_10:D
-I20251129 15:54:26.844442 13943 StaDataPropagation.cc:172] Thread 139899537846400 data bwd propagate found end vertex.c_arbiter.rdata_reg_$_SDFFE_PP0P__Q_11:D
-I20251129 15:54:26.844489 13943 StaDataPropagation.cc:172] Thread 139899537846400 data bwd propagate found end vertex.c_arbiter.rdata_reg_$_SDFFE_PP0P__Q_12:D
-I20251129 15:54:26.844548 13943 StaDataPropagation.cc:61] the endpoint vertex c_arbiter.rdata_reg_$_SDFFE_PP0P__Q_13:D has negative slack
-I20251129 15:54:26.844760 13943 StaDataPropagation.cc:61] the endpoint vertex c_arbiter.rdata_reg_$_SDFFE_PP0P__Q_4:D has negative slack
-I20251129 15:54:26.844941 13943 StaDataPropagation.cc:61] the endpoint vertex c_arbiter.rdata_reg_$_SDFFE_PP0P__Q_9:D has negative slack
-I20251129 15:54:26.845116 13943 StaDataPropagation.cc:61] the endpoint vertex c_arbiter.rdata_reg_$_SDFFE_PP0P__Q_23:D has negative slack
-I20251129 15:54:26.845538 13943 StaDataPropagation.cc:61] the endpoint vertex c_arbiter.rdata_reg_$_SDFFE_PP0P__Q_16:D has negative slack
-I20251129 15:54:26.845829 13943 StaDataPropagation.cc:61] the endpoint vertex c_arbiter.rdata_reg_$_SDFFE_PP0P__Q_30:D has negative slack
-I20251129 15:54:26.847718 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_10_$_SDFFE_PP0P__Q:D has negative slack
-I20251129 15:54:26.847787 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_15_$_SDFFE_PP0P__Q:D has negative slack
-I20251129 15:54:26.847811 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_1_$_SDFFE_PP0P__Q:D has negative slack
-I20251129 15:54:26.847843 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_24_$_SDFFE_PP0P__Q:D has negative slack
-I20251129 15:54:26.847874 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_29_$_SDFFE_PP0P__Q:D has negative slack
-I20251129 15:54:26.847900 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_5_$_SDFFE_PP0P__Q:D has negative slack
-I20251129 15:54:26.847949 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_31_$_SDFFE_PP0P__Q:D has negative slack
-I20251129 15:54:26.848019 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_14_$_SDFFE_PP0P__Q_31:D has negative slack
-I20251129 15:54:26.848043 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_19_$_SDFFE_PP0P__Q_31:D has negative slack
-I20251129 15:54:26.848063 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_23_$_SDFFE_PP0P__Q_31:D has negative slack
-I20251129 15:54:26.848083 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_28_$_SDFFE_PP0P__Q_31:D has negative slack
-I20251129 15:54:26.848104 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_5_$_SDFFE_PP0P__Q_31:D has negative slack
-I20251129 15:54:26.848131 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_2_$_SDFFE_PP1P__Q_16:D has negative slack
-I20251129 15:54:26.848318 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_13_$_SDFFE_PP0P__Q_24:D has negative slack
-I20251129 15:54:26.848333 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_18_$_SDFFE_PP0P__Q_24:D has negative slack
-I20251129 15:54:26.848345 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_22_$_SDFFE_PP0P__Q_24:D has negative slack
-I20251129 15:54:26.848357 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_27_$_SDFFE_PP0P__Q_24:D has negative slack
-I20251129 15:54:26.848368 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_4_$_SDFFE_PP0P__Q_24:D has negative slack
-I20251129 15:54:26.848380 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_9_$_SDFFE_PP0P__Q_24:D has negative slack
-I20251129 15:54:26.848414 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_12_$_SDFFE_PP0P__Q_8:D has negative slack
-I20251129 15:54:26.848438 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_17_$_SDFFE_PP0P__Q_8:D has negative slack
-I20251129 15:54:26.848449 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_21_$_SDFFE_PP0P__Q_8:D has negative slack
-I20251129 15:54:26.848460 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_26_$_SDFFE_PP0P__Q_8:D has negative slack
-I20251129 15:54:26.848471 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_30_$_SDFFE_PP0P__Q_8:D has negative slack
-I20251129 15:54:26.848482 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_7_$_SDFFE_PP0P__Q_8:D has negative slack
-I20251129 15:54:26.848519 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_11_$_SDFFE_PP0P__Q_16:D has negative slack
-I20251129 15:54:26.848531 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_16_$_SDFFE_PP0P__Q_16:D has negative slack
-I20251129 15:54:26.848542 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_20_$_SDFFE_PP0P__Q_16:D has negative slack
-I20251129 15:54:26.848554 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_25_$_SDFFE_PP0P__Q_16:D has negative slack
-I20251129 15:54:26.848565 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_2_$_SDFFE_PP0P__Q_12:D has negative slack
-I20251129 15:54:26.848577 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_6_$_SDFFE_PP0P__Q_16:D has negative slack
-I20251129 15:54:26.848642 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_10_$_SDFFE_PP0P__Q_1:D has negative slack
-I20251129 15:54:26.848656 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_15_$_SDFFE_PP0P__Q_1:D has negative slack
-I20251129 15:54:26.848668 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_1_$_SDFFE_PP0P__Q_1:D has negative slack
-I20251129 15:54:26.848680 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_24_$_SDFFE_PP0P__Q_1:D has negative slack
-I20251129 15:54:26.848691 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_29_$_SDFFE_PP0P__Q_1:D has negative slack
-I20251129 15:54:26.848702 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_5_$_SDFFE_PP0P__Q_1:D has negative slack
-I20251129 15:54:26.848717 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_31_$_SDFFE_PP0P__Q_1:D has negative slack
-I20251129 15:54:26.848743 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_14_$_SDFFE_PP0P__Q_12:D has negative slack
-I20251129 15:54:26.848754 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_19_$_SDFFE_PP0P__Q_12:D has negative slack
-I20251129 15:54:26.848765 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_23_$_SDFFE_PP0P__Q_12:D has negative slack
-I20251129 15:54:26.848776 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_28_$_SDFFE_PP0P__Q_12:D has negative slack
-I20251129 15:54:26.848788 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_4_$_SDFFE_PP0P__Q_12:D has negative slack
-I20251129 15:54:26.848798 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_9_$_SDFFE_PP0P__Q_12:D has negative slack
-I20251129 15:54:26.848824 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_13_$_SDFFE_PP0P__Q_28:D has negative slack
-I20251129 15:54:26.848834 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_18_$_SDFFE_PP0P__Q_28:D has negative slack
-I20251129 15:54:26.848846 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_22_$_SDFFE_PP0P__Q_28:D has negative slack
-I20251129 15:54:26.848856 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_27_$_SDFFE_PP0P__Q_28:D has negative slack
-I20251129 15:54:26.848867 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_4_$_SDFFE_PP0P__Q_28:D has negative slack
-I20251129 15:54:26.848878 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_9_$_SDFFE_PP0P__Q_28:D has negative slack
-I20251129 15:54:26.848912 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_12_$_SDFFE_PP0P__Q_18:D has negative slack
-I20251129 15:54:26.848928 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_17_$_SDFFE_PP0P__Q_18:D has negative slack
-I20251129 15:54:26.848940 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_21_$_SDFFE_PP0P__Q_18:D has negative slack
-I20251129 15:54:26.848951 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_26_$_SDFFE_PP0P__Q_18:D has negative slack
-I20251129 15:54:26.848963 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_30_$_SDFFE_PP0P__Q_18:D has negative slack
-I20251129 15:54:26.848974 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_7_$_SDFFE_PP0P__Q_18:D has negative slack
-I20251129 15:54:26.849009 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_11_$_SDFFE_PP0P__Q_5:D has negative slack
-I20251129 15:54:26.849020 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_16_$_SDFFE_PP0P__Q_5:D has negative slack
-I20251129 15:54:26.849031 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_20_$_SDFFE_PP0P__Q_5:D has negative slack
-I20251129 15:54:26.849042 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_25_$_SDFFE_PP0P__Q_5:D has negative slack
-I20251129 15:54:26.849054 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_30_$_SDFFE_PP0P__Q_5:D has negative slack
-I20251129 15:54:26.849066 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_7_$_SDFFE_PP0P__Q_5:D has negative slack
-I20251129 15:54:26.849097 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_10_$_SDFFE_PP0P__Q_11:D has negative slack
-I20251129 15:54:26.849109 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_15_$_SDFFE_PP0P__Q_11:D has negative slack
-I20251129 15:54:26.849121 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_1_$_SDFFE_PP0P__Q_11:D has negative slack
-I20251129 15:54:26.849134 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_24_$_SDFFE_PP0P__Q_11:D has negative slack
-I20251129 15:54:26.849145 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_29_$_SDFFE_PP0P__Q_11:D has negative slack
-I20251129 15:54:26.849157 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_5_$_SDFFE_PP0P__Q_11:D has negative slack
-I20251129 15:54:26.849172 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_31_$_SDFFE_PP0P__Q_11:D has negative slack
-I20251129 15:54:26.849197 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_14_$_SDFFE_PP0P__Q_27:D has negative slack
-I20251129 15:54:26.849211 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_19_$_SDFFE_PP0P__Q_27:D has negative slack
-I20251129 15:54:26.849223 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_23_$_SDFFE_PP0P__Q_27:D has negative slack
-I20251129 15:54:26.849236 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_28_$_SDFFE_PP0P__Q_27:D has negative slack
-I20251129 15:54:26.849246 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_5_$_SDFFE_PP0P__Q_27:D has negative slack
-I20251129 15:54:26.849259 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_2_$_SDFFE_PP1P__Q_12:D has negative slack
-I20251129 15:54:26.849305 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_13_$_SDFFE_PP0P__Q_20:D has negative slack
-I20251129 15:54:26.849326 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_18_$_SDFFE_PP0P__Q_20:D has negative slack
-I20251129 15:54:26.849344 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_22_$_SDFFE_PP0P__Q_20:D has negative slack
-I20251129 15:54:26.849364 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_27_$_SDFFE_PP0P__Q_20:D has negative slack
-I20251129 15:54:26.849376 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_4_$_SDFFE_PP0P__Q_20:D has negative slack
-I20251129 15:54:26.849387 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_9_$_SDFFE_PP0P__Q_20:D has negative slack
-I20251129 15:54:26.849419 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_12_$_SDFFE_PP0P__Q_4:D has negative slack
-I20251129 15:54:26.849438 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_17_$_SDFFE_PP0P__Q_4:D has negative slack
-I20251129 15:54:26.849449 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_21_$_SDFFE_PP0P__Q_4:D has negative slack
-I20251129 15:54:26.849460 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_26_$_SDFFE_PP0P__Q_4:D has negative slack
-I20251129 15:54:26.849471 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_3_$_SDFFE_PP0P__Q_4:D has negative slack
-I20251129 15:54:26.849501 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_8_$_SDFFE_PP0P__Q_4:D has negative slack
-I20251129 15:54:26.849538 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_11_$_SDFFE_PP0P__Q_17:D has negative slack
-I20251129 15:54:26.849550 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_16_$_SDFFE_PP0P__Q_17:D has negative slack
-I20251129 15:54:26.849562 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_20_$_SDFFE_PP0P__Q_17:D has negative slack
-I20251129 15:54:26.849574 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_25_$_SDFFE_PP0P__Q_17:D has negative slack
-I20251129 15:54:26.849586 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_2_$_SDFFE_PP0P__Q_13:D has negative slack
-I20251129 15:54:26.849597 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_6_$_SDFFE_PP0P__Q_17:D has negative slack
-I20251129 15:54:26.849627 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_10_$_SDFFE_PP0P__Q_21:D has negative slack
-I20251129 15:54:26.849640 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_15_$_SDFFE_PP0P__Q_21:D has negative slack
-I20251129 15:54:26.849651 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_1_$_SDFFE_PP0P__Q_21:D has negative slack
-I20251129 15:54:26.849663 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_24_$_SDFFE_PP0P__Q_21:D has negative slack
-I20251129 15:54:26.849673 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_29_$_SDFFE_PP0P__Q_21:D has negative slack
-I20251129 15:54:26.849684 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_6_$_SDFFE_PP0P__Q_21:D has negative slack
-I20251129 15:54:26.849701 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_31_$_SDFFE_PP0P__Q_21:D has negative slack
-I20251129 15:54:26.849725 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_14_$_SDFFE_PP0P__Q_22:D has negative slack
-I20251129 15:54:26.849736 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_19_$_SDFFE_PP0P__Q_22:D has negative slack
-I20251129 15:54:26.849746 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_23_$_SDFFE_PP0P__Q_22:D has negative slack
-I20251129 15:54:26.849758 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_28_$_SDFFE_PP0P__Q_22:D has negative slack
-I20251129 15:54:26.849769 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_5_$_SDFFE_PP0P__Q_22:D has negative slack
-I20251129 15:54:26.849781 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_2_$_SDFFE_PP1P__Q_7:D has negative slack
-I20251129 15:54:26.849828 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_13_$_SDFFE_PP0P__Q_19:D has negative slack
-I20251129 15:54:26.849838 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_18_$_SDFFE_PP0P__Q_19:D has negative slack
-I20251129 15:54:26.849850 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_22_$_SDFFE_PP0P__Q_19:D has negative slack
-I20251129 15:54:26.849860 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_27_$_SDFFE_PP0P__Q_19:D has negative slack
-I20251129 15:54:26.849870 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_4_$_SDFFE_PP0P__Q_19:D has negative slack
-I20251129 15:54:26.849881 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_9_$_SDFFE_PP0P__Q_19:D has negative slack
-I20251129 15:54:26.849912 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_12_$_SDFFE_PP0P__Q_2:D has negative slack
-I20251129 15:54:26.849922 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_17_$_SDFFE_PP0P__Q_2:D has negative slack
-I20251129 15:54:26.849938 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_21_$_SDFFE_PP0P__Q_2:D has negative slack
-I20251129 15:54:26.849948 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_26_$_SDFFE_PP0P__Q_2:D has negative slack
-I20251129 15:54:26.849959 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_30_$_SDFFE_PP0P__Q_2:D has negative slack
-I20251129 15:54:26.849969 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_7_$_SDFFE_PP0P__Q_2:D has negative slack
-I20251129 15:54:26.849996 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_11_$_SDFFE_PP0P__Q_6:D has negative slack
-I20251129 15:54:26.850008 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_16_$_SDFFE_PP0P__Q_6:D has negative slack
-I20251129 15:54:26.850018 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_20_$_SDFFE_PP0P__Q_6:D has negative slack
-I20251129 15:54:26.850029 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_25_$_SDFFE_PP0P__Q_6:D has negative slack
-I20251129 15:54:26.850040 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_30_$_SDFFE_PP0P__Q_6:D has negative slack
-I20251129 15:54:26.850051 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_7_$_SDFFE_PP0P__Q_6:D has negative slack
-I20251129 15:54:26.850078 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_10_$_SDFFE_PP0P__Q_7:D has negative slack
-I20251129 15:54:26.850090 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_15_$_SDFFE_PP0P__Q_7:D has negative slack
-I20251129 15:54:26.850101 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_1_$_SDFFE_PP0P__Q_7:D has negative slack
-I20251129 15:54:26.850111 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_24_$_SDFFE_PP0P__Q_7:D has negative slack
-I20251129 15:54:26.850122 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_29_$_SDFFE_PP0P__Q_7:D has negative slack
-I20251129 15:54:26.850132 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_6_$_SDFFE_PP0P__Q_7:D has negative slack
-I20251129 15:54:26.850149 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_31_$_SDFFE_PP0P__Q_7:D has negative slack
-I20251129 15:54:26.850180 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_14_$_SDFFE_PP0P__Q_3:D has negative slack
-I20251129 15:54:26.850193 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_19_$_SDFFE_PP0P__Q_3:D has negative slack
-I20251129 15:54:26.850203 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_23_$_SDFFE_PP0P__Q_3:D has negative slack
-I20251129 15:54:26.850214 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_28_$_SDFFE_PP0P__Q_3:D has negative slack
-I20251129 15:54:26.850225 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_4_$_SDFFE_PP0P__Q_3:D has negative slack
-I20251129 15:54:26.850235 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_9_$_SDFFE_PP0P__Q_3:D has negative slack
-I20251129 15:54:26.850306 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_13_$_SDFFE_PP0P__Q_10:D has negative slack
-I20251129 15:54:26.850320 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_18_$_SDFFE_PP0P__Q_10:D has negative slack
-I20251129 15:54:26.850332 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_22_$_SDFFE_PP0P__Q_10:D has negative slack
-I20251129 15:54:26.850343 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_27_$_SDFFE_PP0P__Q_10:D has negative slack
-I20251129 15:54:26.850365 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_3_$_SDFFE_PP0P__Q_10:D has negative slack
-I20251129 15:54:26.850379 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_8_$_SDFFE_PP0P__Q_10:D has negative slack
-I20251129 15:54:26.850417 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_12_$_SDFFE_PP0P__Q_9:D has negative slack
-I20251129 15:54:26.850430 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_17_$_SDFFE_PP0P__Q_9:D has negative slack
-I20251129 15:54:26.850447 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_21_$_SDFFE_PP0P__Q_9:D has negative slack
-I20251129 15:54:26.850459 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_26_$_SDFFE_PP0P__Q_9:D has negative slack
-I20251129 15:54:26.850469 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_30_$_SDFFE_PP0P__Q_9:D has negative slack
-I20251129 15:54:26.850481 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_7_$_SDFFE_PP0P__Q_9:D has negative slack
-I20251129 15:54:26.850509 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_11_$_SDFFE_PP0P__Q_13:D has negative slack
-I20251129 15:54:26.850520 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_16_$_SDFFE_PP0P__Q_13:D has negative slack
-I20251129 15:54:26.850531 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_20_$_SDFFE_PP0P__Q_13:D has negative slack
-I20251129 15:54:26.850543 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_25_$_SDFFE_PP0P__Q_13:D has negative slack
-I20251129 15:54:26.850554 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_2_$_SDFFE_PP0P__Q_9:D has negative slack
-I20251129 15:54:26.850564 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_6_$_SDFFE_PP0P__Q_13:D has negative slack
-I20251129 15:54:26.850587 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_10_$_SDFFE_PP0P__Q_14:D has negative slack
-I20251129 15:54:26.850598 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_15_$_SDFFE_PP0P__Q_14:D has negative slack
-I20251129 15:54:26.850610 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_1_$_SDFFE_PP0P__Q_14:D has negative slack
-I20251129 15:54:26.850620 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_24_$_SDFFE_PP0P__Q_14:D has negative slack
-I20251129 15:54:26.850630 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_29_$_SDFFE_PP0P__Q_14:D has negative slack
-I20251129 15:54:26.850641 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_5_$_SDFFE_PP0P__Q_14:D has negative slack
-I20251129 15:54:26.850656 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_31_$_SDFFE_PP0P__Q_14:D has negative slack
-I20251129 15:54:26.850682 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_14_$_SDFFE_PP0P__Q_15:D has negative slack
-I20251129 15:54:26.850692 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_19_$_SDFFE_PP0P__Q_15:D has negative slack
-I20251129 15:54:26.850703 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_23_$_SDFFE_PP0P__Q_15:D has negative slack
-I20251129 15:54:26.850713 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_28_$_SDFFE_PP0P__Q_15:D has negative slack
-I20251129 15:54:26.850723 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_4_$_SDFFE_PP0P__Q_15:D has negative slack
-I20251129 15:54:26.850733 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_9_$_SDFFE_PP0P__Q_15:D has negative slack
-I20251129 15:54:26.850780 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_13_$_SDFFE_PP0P__Q_25:D has negative slack
-I20251129 15:54:26.850790 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_18_$_SDFFE_PP0P__Q_25:D has negative slack
-I20251129 15:54:26.850801 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_22_$_SDFFE_PP0P__Q_25:D has negative slack
-I20251129 15:54:26.850811 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_27_$_SDFFE_PP0P__Q_25:D has negative slack
-I20251129 15:54:26.850822 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_4_$_SDFFE_PP0P__Q_25:D has negative slack
-I20251129 15:54:26.850832 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_9_$_SDFFE_PP0P__Q_25:D has negative slack
-I20251129 15:54:26.850865 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_12_$_SDFFE_PP0P__Q_26:D has negative slack
-I20251129 15:54:26.850876 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_17_$_SDFFE_PP0P__Q_26:D has negative slack
-I20251129 15:54:26.850891 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_21_$_SDFFE_PP0P__Q_26:D has negative slack
-I20251129 15:54:26.850903 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_26_$_SDFFE_PP0P__Q_26:D has negative slack
-I20251129 15:54:26.850914 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_3_$_SDFFE_PP0P__Q_26:D has negative slack
-I20251129 15:54:26.850924 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_8_$_SDFFE_PP0P__Q_26:D has negative slack
-I20251129 15:54:26.850975 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_11_$_SDFFE_PP0P__Q_29:D has negative slack
-I20251129 15:54:26.850987 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_16_$_SDFFE_PP0P__Q_29:D has negative slack
-I20251129 15:54:26.850998 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_20_$_SDFFE_PP0P__Q_29:D has negative slack
-I20251129 15:54:26.851008 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_25_$_SDFFE_PP0P__Q_29:D has negative slack
-I20251129 15:54:26.851019 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_30_$_SDFFE_PP0P__Q_29:D has negative slack
-I20251129 15:54:26.851029 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_7_$_SDFFE_PP0P__Q_29:D has negative slack
-I20251129 15:54:26.851135 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_10_$_SDFFE_PP0P__Q_23:D has negative slack
-I20251129 15:54:26.851147 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_15_$_SDFFE_PP0P__Q_23:D has negative slack
-I20251129 15:54:26.851157 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_1_$_SDFFE_PP0P__Q_23:D has negative slack
-I20251129 15:54:26.851168 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_24_$_SDFFE_PP0P__Q_23:D has negative slack
-I20251129 15:54:26.851178 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_29_$_SDFFE_PP0P__Q_23:D has negative slack
-I20251129 15:54:26.851189 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_6_$_SDFFE_PP0P__Q_23:D has negative slack
-I20251129 15:54:26.851205 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_31_$_SDFFE_PP0P__Q_23:D has negative slack
-I20251129 15:54:26.851302 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_14_$_SDFFE_PP0P__Q_30:D has negative slack
-I20251129 15:54:26.851315 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_19_$_SDFFE_PP0P__Q_30:D has negative slack
-I20251129 15:54:26.851325 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_23_$_SDFFE_PP0P__Q_30:D has negative slack
-I20251129 15:54:26.851336 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_28_$_SDFFE_PP0P__Q_30:D has negative slack
-I20251129 15:54:26.851346 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_5_$_SDFFE_PP0P__Q_30:D has negative slack
-I20251129 15:54:26.851358 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.regs_2_$_SDFFE_PP1P__Q_15:D has negative slack
-I20251129 15:54:26.880218 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.pc_next_reg_$_SDFFE_PP1P__Q_1:D has negative slack
-I20251129 15:54:26.880357 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.pc_next_reg_$_SDFFE_PP0P__Q_10:D has negative slack
-I20251129 15:54:26.880430 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.pc_next_reg_$_SDFFE_PP0P__Q_7:D has negative slack
-I20251129 15:54:26.880523 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.pc_next_reg_$_SDFFE_PP0P__Q_16:D has negative slack
-I20251129 15:54:26.880666 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.pc_next_reg_$_SDFFE_PP0P__Q_21:D has negative slack
-I20251129 15:54:26.880877 13943 StaDataPropagation.cc:61] the endpoint vertex f_gpr.pc_next_reg_$_SDFFE_PP0P__Q_27:D has negative slack
-I20251129 15:54:26.927949 13943 StaDataPropagation.cc:249] propagate start vertex f_gpr.pc_next_reg_$_SDFFE_PP0P__Q_1:CK
-I20251129 15:54:26.931628 13943 StaDataPropagation.cc:249] propagate start vertex f_gpr.regs_14_$_SDFFE_PP0P__Q_18:CK
-I20251129 15:54:26.933352 13943 StaDataPropagation.cc:249] propagate start vertex f_gpr.regs_1_$_SDFFE_PP0P__Q_25:CK
-I20251129 15:54:26.935127 13943 StaDataPropagation.cc:249] propagate start vertex f_gpr.regs_25_$_SDFFE_PP0P__Q_4:CK
-I20251129 15:54:26.936810 13943 StaDataPropagation.cc:249] propagate start vertex f_gpr.regs_31_$_SDFFE_PP0P__Q_10:CK
-I20251129 15:54:26.938498 13943 StaDataPropagation.cc:249] propagate start vertex f_gpr.regs_8_$_SDFFE_PP0P__Q_18:CK
-I20251129 15:54:26.939402 13943 StaDataPropagation.cc:703] data bwd propagation end
-I20251129 15:54:26.939419 13943 Sta.cc:2895] update timing end
-I20251129 15:54:26.939452 13943 Sta.cc:2898] update timing memory usage 228.704MB
-I20251129 15:54:26.939463 13943 Sta.cc:2900] update timing time elapsed 1.12468s
+I20251130 15:42:02.469002 31186 LibParserRustC.cc:1294] load liberty file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib success.
+I20251130 15:42:02.469033 31186 Sta.cc:297] read liberty /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib end 
+I20251130 15:42:02.469146 31135 Sta.cc:328] load lib end
+I20251130 15:42:02.470938 31244 LibParserRustC.cc:1304] link liberty file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib start.
+I20251130 15:42:02.472476 31244 LibParserRustC.cc:666] unkown attri name: technology in /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib line no 45
+I20251130 15:42:03.924935 31244 LibParserRustC.cc:1310] link liberty file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib success.
+I20251130 15:42:03.925045 31135 TimingIDBAdapter.cc:744] core area width -0um height -0um
+I20251130 15:42:03.925130 31135 TimingIDBAdapter.cc:829] build inst num: 1
+I20251130 15:42:03.945410 31135 TimingIDBAdapter.cc:907] build net num: 1
+I20251130 15:42:03.968464 31135 TimingIDBAdapter.cc:926] build instance num: 3090
+I20251130 15:42:03.968489 31135 TimingIDBAdapter.cc:927] build port num: 431
+I20251130 15:42:03.968495 31135 TimingIDBAdapter.cc:928] build net num: 3686
+I20251130 15:42:03.968499 31135 Sta.cc:181] read sdc /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/default.sdc start 
+I20251130 15:42:03.969184 31135 CmdCreateClock.cc:124] create clock core_clock for pin/port: clock
+I20251130 15:42:03.969201 31135 Sta.cc:198] read sdc /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/default.sdc end 
+I20251130 15:42:03.969215 31135 StaBuildGraph.cc:315] build graph start
+I20251130 15:42:03.991962 31135 StaBuildGraph.cc:216] net io_master_awid[0] has no driver.
+I20251130 15:42:03.991989 31135 StaBuildGraph.cc:216] net io_master_awid[1] has no driver.
+I20251130 15:42:03.991994 31135 StaBuildGraph.cc:216] net io_master_awid[2] has no driver.
+I20251130 15:42:03.991999 31135 StaBuildGraph.cc:216] net io_master_awid[3] has no driver.
+I20251130 15:42:03.992003 31135 StaBuildGraph.cc:216] net io_master_awlen[0] has no driver.
+I20251130 15:42:03.992008 31135 StaBuildGraph.cc:216] net io_master_awlen[1] has no driver.
+I20251130 15:42:03.992012 31135 StaBuildGraph.cc:216] net io_master_awlen[2] has no driver.
+I20251130 15:42:03.992017 31135 StaBuildGraph.cc:216] net io_master_awlen[3] has no driver.
+I20251130 15:42:03.992022 31135 StaBuildGraph.cc:216] net io_master_awlen[4] has no driver.
+I20251130 15:42:03.992025 31135 StaBuildGraph.cc:216] net io_master_awlen[5] has no driver.
+I20251130 15:42:03.992030 31135 StaBuildGraph.cc:216] net io_master_awlen[6] has no driver.
+I20251130 15:42:03.992035 31135 StaBuildGraph.cc:216] net io_master_awlen[7] has no driver.
+I20251130 15:42:03.992043 31135 StaBuildGraph.cc:216] net io_master_awsize[2] has no driver.
+I20251130 15:42:03.992048 31135 StaBuildGraph.cc:216] net io_master_awburst[0] has no driver.
+I20251130 15:42:03.992061 31135 StaBuildGraph.cc:216] net io_master_awburst[1] has no driver.
+I20251130 15:42:03.992076 31135 StaBuildGraph.cc:216] net io_master_wdata[1] has no driver.
+I20251130 15:42:03.992084 31135 StaBuildGraph.cc:216] net io_master_wdata[2] has no driver.
+I20251130 15:42:03.992092 31135 StaBuildGraph.cc:216] net io_master_wdata[3] has no driver.
+I20251130 15:42:03.992098 31135 StaBuildGraph.cc:216] net io_master_wdata[4] has no driver.
+I20251130 15:42:03.992106 31135 StaBuildGraph.cc:216] net io_master_wdata[5] has no driver.
+I20251130 15:42:03.992113 31135 StaBuildGraph.cc:216] net io_master_wdata[6] has no driver.
+I20251130 15:42:03.992134 31135 StaBuildGraph.cc:216] net io_master_wdata[7] has no driver.
+I20251130 15:42:03.992144 31135 StaBuildGraph.cc:216] net io_master_wdata[9] has no driver.
+I20251130 15:42:03.992151 31135 StaBuildGraph.cc:216] net io_master_wdata[10] has no driver.
+I20251130 15:42:03.992158 31135 StaBuildGraph.cc:216] net io_master_wdata[11] has no driver.
+I20251130 15:42:03.992167 31135 StaBuildGraph.cc:216] net io_master_wdata[12] has no driver.
+I20251130 15:42:03.992177 31135 StaBuildGraph.cc:216] net io_master_wdata[13] has no driver.
+I20251130 15:42:03.992184 31135 StaBuildGraph.cc:216] net io_master_wdata[14] has no driver.
+I20251130 15:42:03.992193 31135 StaBuildGraph.cc:216] net io_master_wdata[15] has no driver.
+I20251130 15:42:03.992205 31135 StaBuildGraph.cc:216] net io_master_wdata[17] has no driver.
+I20251130 15:42:03.992213 31135 StaBuildGraph.cc:216] net io_master_wdata[18] has no driver.
+I20251130 15:42:03.992220 31135 StaBuildGraph.cc:216] net io_master_wdata[19] has no driver.
+I20251130 15:42:03.992228 31135 StaBuildGraph.cc:216] net io_master_wdata[20] has no driver.
+I20251130 15:42:03.992234 31135 StaBuildGraph.cc:216] net io_master_wdata[21] has no driver.
+I20251130 15:42:03.992241 31135 StaBuildGraph.cc:216] net io_master_wdata[22] has no driver.
+I20251130 15:42:03.992249 31135 StaBuildGraph.cc:216] net io_master_wdata[23] has no driver.
+I20251130 15:42:03.992259 31135 StaBuildGraph.cc:216] net io_master_wdata[25] has no driver.
+I20251130 15:42:03.992265 31135 StaBuildGraph.cc:216] net io_master_wdata[26] has no driver.
+I20251130 15:42:03.992272 31135 StaBuildGraph.cc:216] net io_master_wdata[27] has no driver.
+I20251130 15:42:03.992280 31135 StaBuildGraph.cc:216] net io_master_wdata[28] has no driver.
+I20251130 15:42:03.992286 31135 StaBuildGraph.cc:216] net io_master_wdata[29] has no driver.
+I20251130 15:42:03.992293 31135 StaBuildGraph.cc:216] net io_master_wdata[30] has no driver.
+I20251130 15:42:03.992300 31135 StaBuildGraph.cc:216] net io_master_wdata[31] has no driver.
+I20251130 15:42:03.992437 31135 StaBuildGraph.cc:216] net io_master_arid[0] has no driver.
+I20251130 15:42:03.992447 31135 StaBuildGraph.cc:216] net io_master_arid[1] has no driver.
+I20251130 15:42:03.992455 31135 StaBuildGraph.cc:216] net io_master_arid[2] has no driver.
+I20251130 15:42:03.992461 31135 StaBuildGraph.cc:216] net io_master_arid[3] has no driver.
+I20251130 15:42:03.992468 31135 StaBuildGraph.cc:216] net io_master_arlen[0] has no driver.
+I20251130 15:42:03.992475 31135 StaBuildGraph.cc:216] net io_master_arlen[1] has no driver.
+I20251130 15:42:03.992481 31135 StaBuildGraph.cc:216] net io_master_arlen[2] has no driver.
+I20251130 15:42:03.992489 31135 StaBuildGraph.cc:216] net io_master_arlen[3] has no driver.
+I20251130 15:42:03.992496 31135 StaBuildGraph.cc:216] net io_master_arlen[4] has no driver.
+I20251130 15:42:03.992503 31135 StaBuildGraph.cc:216] net io_master_arlen[5] has no driver.
+I20251130 15:42:03.992511 31135 StaBuildGraph.cc:216] net io_master_arlen[6] has no driver.
+I20251130 15:42:03.992517 31135 StaBuildGraph.cc:216] net io_master_arlen[7] has no driver.
+I20251130 15:42:03.992529 31135 StaBuildGraph.cc:216] net io_master_arsize[2] has no driver.
+I20251130 15:42:03.992537 31135 StaBuildGraph.cc:216] net io_master_arburst[1] has no driver.
+I20251130 15:42:03.992544 31135 StaBuildGraph.cc:216] net io_master_rready has no driver.
+I20251130 15:42:03.992638 31135 StaBuildGraph.cc:216] net io_master_arlock has no driver.
+I20251130 15:42:03.992646 31135 StaBuildGraph.cc:216] net io_master_arcache[0] has no driver.
+I20251130 15:42:03.992653 31135 StaBuildGraph.cc:216] net io_master_arcache[1] has no driver.
+I20251130 15:42:03.992660 31135 StaBuildGraph.cc:216] net io_master_arcache[2] has no driver.
+I20251130 15:42:03.992667 31135 StaBuildGraph.cc:216] net io_master_arcache[3] has no driver.
+I20251130 15:42:03.992676 31135 StaBuildGraph.cc:216] net io_master_arprot[0] has no driver.
+I20251130 15:42:03.992683 31135 StaBuildGraph.cc:216] net io_master_arprot[1] has no driver.
+I20251130 15:42:03.992690 31135 StaBuildGraph.cc:216] net io_master_arprot[2] has no driver.
+I20251130 15:42:03.992705 31135 StaBuildGraph.cc:216] net io_master_arqos[0] has no driver.
+I20251130 15:42:03.992712 31135 StaBuildGraph.cc:216] net io_master_arqos[1] has no driver.
+I20251130 15:42:03.992719 31135 StaBuildGraph.cc:216] net io_master_arqos[2] has no driver.
+I20251130 15:42:03.992726 31135 StaBuildGraph.cc:216] net io_master_arqos[3] has no driver.
+I20251130 15:42:03.992733 31135 StaBuildGraph.cc:216] net io_master_awlock has no driver.
+I20251130 15:42:03.992740 31135 StaBuildGraph.cc:216] net io_master_awcache[0] has no driver.
+I20251130 15:42:03.992748 31135 StaBuildGraph.cc:216] net io_master_awcache[1] has no driver.
+I20251130 15:42:03.992754 31135 StaBuildGraph.cc:216] net io_master_awcache[2] has no driver.
+I20251130 15:42:03.992761 31135 StaBuildGraph.cc:216] net io_master_awcache[3] has no driver.
+I20251130 15:42:03.992769 31135 StaBuildGraph.cc:216] net io_master_awprot[0] has no driver.
+I20251130 15:42:03.992774 31135 StaBuildGraph.cc:216] net io_master_awprot[1] has no driver.
+I20251130 15:42:03.992781 31135 StaBuildGraph.cc:216] net io_master_awprot[2] has no driver.
+I20251130 15:42:03.992789 31135 StaBuildGraph.cc:216] net io_master_awqos[0] has no driver.
+I20251130 15:42:03.992795 31135 StaBuildGraph.cc:216] net io_master_awqos[1] has no driver.
+I20251130 15:42:03.992802 31135 StaBuildGraph.cc:216] net io_master_awqos[2] has no driver.
+I20251130 15:42:03.992810 31135 StaBuildGraph.cc:216] net io_master_awqos[3] has no driver.
+I20251130 15:42:03.992826 31135 StaBuildGraph.cc:216] net io_slave_awready has no driver.
+I20251130 15:42:03.992851 31135 StaBuildGraph.cc:216] net io_slave_wready has no driver.
+I20251130 15:42:03.992869 31135 StaBuildGraph.cc:216] net io_slave_bvalid has no driver.
+I20251130 15:42:03.992877 31135 StaBuildGraph.cc:216] net io_slave_bid[0] has no driver.
+I20251130 15:42:03.992883 31135 StaBuildGraph.cc:216] net io_slave_bid[1] has no driver.
+I20251130 15:42:03.992889 31135 StaBuildGraph.cc:216] net io_slave_bid[2] has no driver.
+I20251130 15:42:03.992897 31135 StaBuildGraph.cc:216] net io_slave_bid[3] has no driver.
+I20251130 15:42:03.992903 31135 StaBuildGraph.cc:216] net io_slave_bresp[0] has no driver.
+I20251130 15:42:03.992910 31135 StaBuildGraph.cc:216] net io_slave_bresp[1] has no driver.
+I20251130 15:42:03.992918 31135 StaBuildGraph.cc:216] net io_slave_arready has no driver.
+I20251130 15:42:03.992939 31135 StaBuildGraph.cc:216] net io_slave_rvalid has no driver.
+I20251130 15:42:03.992946 31135 StaBuildGraph.cc:216] net io_slave_rdata[0] has no driver.
+I20251130 15:42:03.992954 31135 StaBuildGraph.cc:216] net io_slave_rdata[1] has no driver.
+I20251130 15:42:03.992959 31135 StaBuildGraph.cc:216] net io_slave_rdata[2] has no driver.
+I20251130 15:42:03.992967 31135 StaBuildGraph.cc:216] net io_slave_rdata[3] has no driver.
+I20251130 15:42:03.992973 31135 StaBuildGraph.cc:216] net io_slave_rdata[4] has no driver.
+I20251130 15:42:03.992980 31135 StaBuildGraph.cc:216] net io_slave_rdata[5] has no driver.
+I20251130 15:42:03.992988 31135 StaBuildGraph.cc:216] net io_slave_rdata[6] has no driver.
+I20251130 15:42:03.992995 31135 StaBuildGraph.cc:216] net io_slave_rdata[7] has no driver.
+I20251130 15:42:03.993002 31135 StaBuildGraph.cc:216] net io_slave_rdata[8] has no driver.
+I20251130 15:42:03.993009 31135 StaBuildGraph.cc:216] net io_slave_rdata[9] has no driver.
+I20251130 15:42:03.993016 31135 StaBuildGraph.cc:216] net io_slave_rdata[10] has no driver.
+I20251130 15:42:03.993023 31135 StaBuildGraph.cc:216] net io_slave_rdata[11] has no driver.
+I20251130 15:42:03.993031 31135 StaBuildGraph.cc:216] net io_slave_rdata[12] has no driver.
+I20251130 15:42:03.993036 31135 StaBuildGraph.cc:216] net io_slave_rdata[13] has no driver.
+I20251130 15:42:03.993043 31135 StaBuildGraph.cc:216] net io_slave_rdata[14] has no driver.
+I20251130 15:42:03.993050 31135 StaBuildGraph.cc:216] net io_slave_rdata[15] has no driver.
+I20251130 15:42:03.993057 31135 StaBuildGraph.cc:216] net io_slave_rdata[16] has no driver.
+I20251130 15:42:03.993070 31135 StaBuildGraph.cc:216] net io_slave_rdata[17] has no driver.
+I20251130 15:42:03.993078 31135 StaBuildGraph.cc:216] net io_slave_rdata[18] has no driver.
+I20251130 15:42:03.993085 31135 StaBuildGraph.cc:216] net io_slave_rdata[19] has no driver.
+I20251130 15:42:03.993091 31135 StaBuildGraph.cc:216] net io_slave_rdata[20] has no driver.
+I20251130 15:42:03.993098 31135 StaBuildGraph.cc:216] net io_slave_rdata[21] has no driver.
+I20251130 15:42:03.993105 31135 StaBuildGraph.cc:216] net io_slave_rdata[22] has no driver.
+I20251130 15:42:03.993112 31135 StaBuildGraph.cc:216] net io_slave_rdata[23] has no driver.
+I20251130 15:42:03.993119 31135 StaBuildGraph.cc:216] net io_slave_rdata[24] has no driver.
+I20251130 15:42:03.993126 31135 StaBuildGraph.cc:216] net io_slave_rdata[25] has no driver.
+I20251130 15:42:03.993134 31135 StaBuildGraph.cc:216] net io_slave_rdata[26] has no driver.
+I20251130 15:42:03.993140 31135 StaBuildGraph.cc:216] net io_slave_rdata[27] has no driver.
+I20251130 15:42:03.993147 31135 StaBuildGraph.cc:216] net io_slave_rdata[28] has no driver.
+I20251130 15:42:03.993155 31135 StaBuildGraph.cc:216] net io_slave_rdata[29] has no driver.
+I20251130 15:42:03.993161 31135 StaBuildGraph.cc:216] net io_slave_rdata[30] has no driver.
+I20251130 15:42:03.993168 31135 StaBuildGraph.cc:216] net io_slave_rdata[31] has no driver.
+I20251130 15:42:03.993175 31135 StaBuildGraph.cc:216] net io_slave_rid[0] has no driver.
+I20251130 15:42:03.993183 31135 StaBuildGraph.cc:216] net io_slave_rid[1] has no driver.
+I20251130 15:42:03.993189 31135 StaBuildGraph.cc:216] net io_slave_rid[2] has no driver.
+I20251130 15:42:03.993196 31135 StaBuildGraph.cc:216] net io_slave_rid[3] has no driver.
+I20251130 15:42:03.993203 31135 StaBuildGraph.cc:216] net io_slave_rlast has no driver.
+I20251130 15:42:03.993212 31135 StaBuildGraph.cc:216] net io_slave_rresp[0] has no driver.
+I20251130 15:42:03.993220 31135 StaBuildGraph.cc:216] net io_slave_rresp[1] has no driver.
+I20251130 15:42:04.008226 31135 StaBuildGraph.cc:332] build graph end
+I20251130 15:42:04.016487 31135 Sta.cc:2834] update timing start
+I20251130 15:42:04.019294 31135 StaApplySdc.cc:698] apply sdc start
+I20251130 15:42:04.019325 31135 StaApplySdc.cc:729] apply sdc end
+I20251130 15:42:04.019332 31135 StaClockPropagation.cc:324] ideal clock propagation start
+I20251130 15:42:04.019337 31135 StaClockPropagation.cc:354] clock propagation clock num: 1
+I20251130 15:42:04.019356 31135 StaClockPropagation.cc:203] clock propagate end to vertex f_gpr.regs_9_$_SDFFE_PP0P__Q:CK
+I20251130 15:42:04.020085 31135 StaClockPropagation.cc:422] ideal clock propagation end
+I20251130 15:42:04.020095 31135 StaCheck.cc:129] found loop fwd start
+I20251130 15:42:04.022244 31135 StaCheck.cc:148] found loop fwd end
+I20251130 15:42:04.022256 31135 StaCheck.cc:150] found loop bwd start
+I20251130 15:42:04.023777 31135 StaCheck.cc:172] found loop bwd end
+I20251130 15:42:04.023819 31135 StaClockSlewDelayPropagation.cc:112] clock slew delay propagation start
+I20251130 15:42:04.023828 31135 StaClockSlewDelayPropagation.cc:130] propagating current clock queue vertexes number is 1
+I20251130 15:42:04.023970 31135 StaClockSlewDelayPropagation.cc:130] propagating current clock queue vertexes number is 126
+I20251130 15:42:04.024600 31135 StaClockSlewDelayPropagation.cc:130] propagating current clock queue vertexes number is 38
+I20251130 15:42:04.024756 31135 StaClockSlewDelayPropagation.cc:130] propagating current clock queue vertexes number is 159
+I20251130 15:42:04.025568 31135 StaClockSlewDelayPropagation.cc:163] clock slew delay propagation end
+I20251130 15:42:04.025591 31135 StaClockSlewDelayPropagation.cc:166] clock slew delay propagation memory usage 0MB
+I20251130 15:42:04.025601 31135 StaClockSlewDelayPropagation.cc:169] clock slew delay propagation time elapsed 0.001782s
+I20251130 15:42:04.028475 31135 StaClockPropagation.cc:326] propagated(kNormal) clock propagation start
+I20251130 15:42:04.028504 31135 StaClockPropagation.cc:354] clock propagation clock num: 1
+I20251130 15:42:04.028512 31135 StaClockPropagation.cc:424] propagated(kNormal) clock propagation end
+I20251130 15:42:04.028541 31135 StaApplySdc.cc:698] apply sdc start
+I20251130 15:42:04.028548 31135 StaApplySdc.cc:729] apply sdc end
+I20251130 15:42:04.028553 31135 StaClockPropagation.cc:328] propagated(kGenerated) clock propagation start
+I20251130 15:42:04.028556 31135 StaClockPropagation.cc:354] clock propagation clock num: 1
+I20251130 15:42:04.028568 31135 StaClockPropagation.cc:426] propagated(kGenerated) clock propagation end
+I20251130 15:42:04.028577 31135 StaApplySdc.cc:698] apply sdc start
+I20251130 15:42:04.028586 31135 StaApplySdc.cc:729] apply sdc end
+I20251130 15:42:04.028595 31135 StaBuildPropTag.cc:325] build propagation tag start
+I20251130 15:42:04.028606 31135 StaDataPropagation.cc:676] data fwd propagation start
+I20251130 15:42:04.028656 31135 StaDataPropagationBFS.cc:166] data fwd propagation bfs start
+I20251130 15:42:04.029712 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 285
+I20251130 15:42:04.031587 31318 StaDataPropagationBFS.cc:82] Thread 140506150327872 date fwd propagate found start vertex.reset
+I20251130 15:42:04.031623 31281 StaDataPropagationBFS.cc:82] Thread 140506494428736 date fwd propagate found start vertex.io_master_rdata[3]
+I20251130 15:42:04.031615 31269 StaDataPropagationBFS.cc:82] Thread 140506183898688 date fwd propagate found start vertex.io_master_rdata[0]
+I20251130 15:42:04.031601 31273 StaDataPropagationBFS.cc:82] Thread 140506561570368 date fwd propagate found start vertex.io_master_awready
+I20251130 15:42:04.031625 31280 StaDataPropagationBFS.cc:82] Thread 140506502821440 date fwd propagate found start vertex.io_master_rdata[1]
+I20251130 15:42:04.031626 31275 StaDataPropagationBFS.cc:82] Thread 140506544784960 date fwd propagate found start vertex.io_master_rdata[2]
+[0;31mE20251130 15:42:04.031962 31276 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[mI20251130 15:42:04.031605 31274 StaDataPropagationBFS.cc:82] Thread 140506553177664 date fwd propagate found start vertex.io_master_wready
+I20251130 15:42:04.031620 31277 StaDataPropagationBFS.cc:82] Thread 140506527999552 date fwd propagate found start vertex.io_master_arready
+[0;31mE20251130 15:42:04.031920 31314 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[mI20251130 15:42:04.031630 31279 StaDataPropagationBFS.cc:82] Thread 140506511214144 date fwd propagate found start vertex.io_master_rdata[4]
+I20251130 15:42:04.031618 31270 StaDataPropagationBFS.cc:82] Thread 140506192291392 date fwd propagate found start vertex.io_master_rvalid
+[0;31mE20251130 15:42:04.031976 31275 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251130 15:42:04.031980 31272 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251130 15:42:04.031984 31286 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251130 15:42:04.031986 31318 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251130 15:42:04.031857 31269 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251130 15:42:04.031752 31294 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251130 15:42:04.031992 31290 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251130 15:42:04.031976 31278 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[mI20251130 15:42:04.036609 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 482
+I20251130 15:42:04.042788 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 1118
+I20251130 15:42:04.053109 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 265
+I20251130 15:42:04.055761 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 546
+I20251130 15:42:04.060403 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 134
+I20251130 15:42:04.064955 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 287
+I20251130 15:42:04.068261 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 132
+I20251130 15:42:04.070487 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 221
+I20251130 15:42:04.076857 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 88
+I20251130 15:42:04.081862 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 179
+I20251130 15:42:04.086181 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 69
+I20251130 15:42:04.088840 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 204
+I20251130 15:42:04.091667 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 75
+I20251130 15:42:04.095548 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 244
+I20251130 15:42:04.099557 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 84
+I20251130 15:42:04.102025 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 218
+I20251130 15:42:04.104722 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 85
+I20251130 15:42:04.107439 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 208
+I20251130 15:42:04.111793 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 104
+I20251130 15:42:04.117760 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 247
+I20251130 15:42:04.121248 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 100
+I20251130 15:42:04.123728 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 234
+I20251130 15:42:04.126529 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 116
+I20251130 15:42:04.131453 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 299
+I20251130 15:42:04.134451 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 107
+I20251130 15:42:04.138046 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 258
+I20251130 15:42:04.146379 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 107
+I20251130 15:42:04.151921 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 285
+I20251130 15:42:04.155818 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 121
+I20251130 15:42:04.158145 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 214
+I20251130 15:42:04.162356 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 87
+I20251130 15:42:04.166435 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 144
+I20251130 15:42:04.169584 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 60
+I20251130 15:42:04.171561 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 79
+I20251130 15:42:04.173564 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 37
+I20251130 15:42:04.175259 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 46
+I20251130 15:42:04.177814 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 23
+I20251130 15:42:04.181675 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 37
+I20251130 15:42:04.185230 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 19
+I20251130 15:42:04.187350 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 30
+I20251130 15:42:04.189121 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 22
+I20251130 15:42:04.190896 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 31
+I20251130 15:42:04.193565 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 16
+I20251130 15:42:04.196815 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 27
+I20251130 15:42:04.198732 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 19
+I20251130 15:42:04.200533 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 32
+I20251130 15:42:04.202503 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 18
+I20251130 15:42:04.206743 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 27
+I20251130 15:42:04.209714 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 19
+I20251130 15:42:04.213977 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 30
+I20251130 15:42:04.217406 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 18
+I20251130 15:42:04.219316 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 27
+I20251130 15:42:04.221276 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 16
+I20251130 15:42:04.222966 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 27
+I20251130 15:42:04.225538 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 15
+I20251130 15:42:04.227767 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 22
+I20251130 15:42:04.230937 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 11
+I20251130 15:42:04.232960 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 16
+I20251130 15:42:04.234705 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 12
+I20251130 15:42:04.236363 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 18
+I20251130 15:42:04.238327 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 14
+I20251130 15:42:04.240238 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 21
+I20251130 15:42:04.241973 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 15
+I20251130 15:42:04.245718 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 21
+I20251130 15:42:04.249094 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 15
+I20251130 15:42:04.250968 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 21
+I20251130 15:42:04.252751 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 14
+I20251130 15:42:04.255232 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 17
+I20251130 15:42:04.257233 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 12
+I20251130 15:42:04.259759 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 15
+I20251130 15:42:04.263449 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 9
+I20251130 15:42:04.266530 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 14
+I20251130 15:42:04.268512 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 11
+I20251130 15:42:04.270288 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 13
+I20251130 15:42:04.273192 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 9
+I20251130 15:42:04.275804 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 15
+I20251130 15:42:04.278467 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 8
+I20251130 15:42:04.281766 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 24
+I20251130 15:42:04.283865 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 5
+I20251130 15:42:04.285754 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 19
+I20251130 15:42:04.287940 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 2
+I20251130 15:42:04.289719 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 7
+I20251130 15:42:04.291627 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 6
+I20251130 15:42:04.295841 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 44
+I20251130 15:42:04.299408 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 41
+I20251130 15:42:04.302657 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 145
+I20251130 15:42:04.305267 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 87
+I20251130 15:42:04.308043 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 177
+I20251130 15:42:04.312402 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 104
+I20251130 15:42:04.317672 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 193
+I20251130 15:42:04.321502 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 122
+I20251130 15:42:04.323681 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 167
+I20251130 15:42:04.326078 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 103
+I20251130 15:42:04.330076 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 139
+I20251130 15:42:04.333832 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 96
+I20251130 15:42:04.335986 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 126
+I20251130 15:42:04.339630 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 78
+I20251130 15:42:04.345009 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 121
+I20251130 15:42:04.351007 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 62
+I20251130 15:42:04.353786 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 89
+I20251130 15:42:04.355844 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 23
+I20251130 15:42:04.357602 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 27
+I20251130 15:42:04.359619 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 10
+I20251130 15:42:04.362509 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 17
+I20251130 15:42:04.367220 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 10
+I20251130 15:42:04.369179 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 12
+I20251130 15:42:04.370831 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 8
+I20251130 15:42:04.372509 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 39
+I20251130 15:42:04.374238 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251130 15:42:04.375757 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 11
+I20251130 15:42:04.377967 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 7
+I20251130 15:42:04.381758 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 37
+I20251130 15:42:04.384433 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 6
+I20251130 15:42:04.386174 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 33
+I20251130 15:42:04.388131 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 31
+I20251130 15:42:04.389734 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 37
+I20251130 15:42:04.391409 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 23
+I20251130 15:42:04.393217 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 32
+I20251130 15:42:04.397276 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 10
+I20251130 15:42:04.399729 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 10
+I20251130 15:42:04.401520 31135 StaDataPropagationBFS.cc:229] data fwd propagation bfs end
+I20251130 15:42:04.401569 31135 StaDataPropagationBFS.cc:232] data fwd propagation bfs memory usage 1921.62MB
+I20251130 15:42:04.401580 31135 StaDataPropagationBFS.cc:234] data fwd propagation bfs time elapsed 0.372925s
+I20251130 15:42:04.401587 31135 StaDataPropagation.cc:695] data fwd propagation end
+I20251130 15:42:04.401593 31135 StaDataPropagation.cc:676] data fwd propagation start
+I20251130 15:42:04.401611 31135 StaDataPropagationBFS.cc:166] data fwd propagation bfs start
+I20251130 15:42:04.402276 31135 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 2
+I20251130 15:42:04.405380 31135 StaDataPropagationBFS.cc:229] data fwd propagation bfs end
+I20251130 15:42:04.405870 31135 StaDataPropagationBFS.cc:232] data fwd propagation bfs memory usage 0MB
+I20251130 15:42:04.405961 31135 StaDataPropagationBFS.cc:234] data fwd propagation bfs time elapsed 0.00435s
+I20251130 15:42:04.405995 31135 StaDataPropagation.cc:695] data fwd propagation end
+I20251130 15:42:04.406040 31135 StaAnalyze.cc:557] analyze timing path start
+I20251130 15:42:04.406070 31135 StaAnalyze.cc:565] analyze timing path end vertex 1 total 499 start
+[0;31mE20251130 15:42:04.406140 31135 StaAnalyze.cc:328] The output port io_master_awvalid is not constrained
+[m[0;31mE20251130 15:42:04.406286 31135 StaAnalyze.cc:328] The output port io_master_awvalid is not constrained
+[mI20251130 15:42:04.406329 31135 StaAnalyze.cc:599] analyze timing path end vertex 1 total 499 end
+[0;31mE20251130 15:42:04.406344 31135 StaAnalyze.cc:328] The output port io_master_awaddr[0] is not constrained
+[m[0;31mE20251130 15:42:04.406390 31135 StaAnalyze.cc:328] The output port io_master_awaddr[0] is not constrained
+[m[0;31mE20251130 15:42:04.406435 31135 StaAnalyze.cc:328] The output port io_master_awaddr[1] is not constrained
+[m[0;31mE20251130 15:42:04.406461 31135 StaAnalyze.cc:328] The output port io_master_awaddr[1] is not constrained
+[m[0;31mE20251130 15:42:04.406484 31135 StaAnalyze.cc:328] The output port io_master_awaddr[2] is not constrained
+[m[0;31mE20251130 15:42:04.406507 31135 StaAnalyze.cc:328] The output port io_master_awaddr[2] is not constrained
+[m[0;31mE20251130 15:42:04.406533 31135 StaAnalyze.cc:328] The output port io_master_awaddr[3] is not constrained
+[m[0;31mE20251130 15:42:04.406569 31135 StaAnalyze.cc:328] The output port io_master_awaddr[3] is not constrained
+[mI20251130 15:42:04.406598 31135 StaAnalyze.cc:565] analyze timing path end vertex 11 total 499 start
+I20251130 15:42:04.406613 31135 StaAnalyze.cc:599] analyze timing path end vertex 11 total 499 end
+I20251130 15:42:04.406630 31135 StaAnalyze.cc:565] analyze timing path end vertex 21 total 499 start
+I20251130 15:42:04.406641 31135 StaAnalyze.cc:599] analyze timing path end vertex 21 total 499 end
+I20251130 15:42:04.406657 31135 StaAnalyze.cc:565] analyze timing path end vertex 31 total 499 start
+I20251130 15:42:04.406668 31135 StaAnalyze.cc:599] analyze timing path end vertex 31 total 499 end
+I20251130 15:42:04.406847 31135 StaAnalyze.cc:565] analyze timing path end vertex 41 total 499 start
+I20251130 15:42:04.406863 31135 StaAnalyze.cc:599] analyze timing path end vertex 41 total 499 end
+I20251130 15:42:04.406875 31135 StaAnalyze.cc:565] analyze timing path end vertex 51 total 499 start
+I20251130 15:42:04.406884 31135 StaAnalyze.cc:599] analyze timing path end vertex 51 total 499 end
+I20251130 15:42:04.406894 31135 StaAnalyze.cc:565] analyze timing path end vertex 61 total 499 start
+I20251130 15:42:04.406903 31135 StaAnalyze.cc:599] analyze timing path end vertex 61 total 499 end
+I20251130 15:42:04.406919 31135 StaAnalyze.cc:565] analyze timing path end vertex 71 total 499 start
+I20251130 15:42:04.406926 31135 StaAnalyze.cc:599] analyze timing path end vertex 71 total 499 end
+I20251130 15:42:04.406935 31135 StaAnalyze.cc:565] analyze timing path end vertex 81 total 499 start
+I20251130 15:42:04.406944 31135 StaAnalyze.cc:599] analyze timing path end vertex 81 total 499 end
+I20251130 15:42:04.406951 31135 StaAnalyze.cc:565] analyze timing path end vertex 91 total 499 start
+I20251130 15:42:04.406958 31135 StaAnalyze.cc:599] analyze timing path end vertex 91 total 499 end
+I20251130 15:42:04.406967 31135 StaAnalyze.cc:565] analyze timing path end vertex 101 total 499 start
+I20251130 15:42:04.406975 31135 StaAnalyze.cc:599] analyze timing path end vertex 101 total 499 end
+I20251130 15:42:04.406983 31135 StaAnalyze.cc:565] analyze timing path end vertex 111 total 499 start
+I20251130 15:42:04.406991 31135 StaAnalyze.cc:599] analyze timing path end vertex 111 total 499 end
+I20251130 15:42:04.407001 31135 StaAnalyze.cc:565] analyze timing path end vertex 121 total 499 start
+I20251130 15:42:04.407008 31135 StaAnalyze.cc:599] analyze timing path end vertex 121 total 499 end
+I20251130 15:42:04.407017 31135 StaAnalyze.cc:565] analyze timing path end vertex 131 total 499 start
+I20251130 15:42:04.407024 31135 StaAnalyze.cc:599] analyze timing path end vertex 131 total 499 end
+I20251130 15:42:04.407034 31135 StaAnalyze.cc:565] analyze timing path end vertex 141 total 499 start
+I20251130 15:42:04.407042 31135 StaAnalyze.cc:599] analyze timing path end vertex 141 total 499 end
+I20251130 15:42:04.407050 31135 StaAnalyze.cc:565] analyze timing path end vertex 151 total 499 start
+I20251130 15:42:04.407058 31135 StaAnalyze.cc:599] analyze timing path end vertex 151 total 499 end
+I20251130 15:42:04.407068 31135 StaAnalyze.cc:565] analyze timing path end vertex 161 total 499 start
+I20251130 15:42:04.407076 31135 StaAnalyze.cc:599] analyze timing path end vertex 161 total 499 end
+I20251130 15:42:04.407085 31135 StaAnalyze.cc:565] analyze timing path end vertex 171 total 499 start
+I20251130 15:42:04.407092 31135 StaAnalyze.cc:599] analyze timing path end vertex 171 total 499 end
+I20251130 15:42:04.407109 31135 StaAnalyze.cc:565] analyze timing path end vertex 181 total 499 start
+I20251130 15:42:04.407119 31135 StaAnalyze.cc:599] analyze timing path end vertex 181 total 499 end
+I20251130 15:42:04.407133 31135 StaAnalyze.cc:565] analyze timing path end vertex 191 total 499 start
+I20251130 15:42:04.407141 31135 StaAnalyze.cc:599] analyze timing path end vertex 191 total 499 end
+I20251130 15:42:04.407150 31135 StaAnalyze.cc:565] analyze timing path end vertex 201 total 499 start
+I20251130 15:42:04.407157 31135 StaAnalyze.cc:599] analyze timing path end vertex 201 total 499 end
+I20251130 15:42:04.407166 31135 StaAnalyze.cc:565] analyze timing path end vertex 211 total 499 start
+I20251130 15:42:04.407173 31135 StaAnalyze.cc:599] analyze timing path end vertex 211 total 499 end
+I20251130 15:42:04.407222 31135 StaAnalyze.cc:303] add path data num 4 to f_gpr.pc_next_reg_$_SDFFE_PP1P__Q:D
+I20251130 15:42:04.407361 31135 StaAnalyze.cc:565] analyze timing path end vertex 221 total 499 start
+I20251130 15:42:04.407394 31135 StaAnalyze.cc:599] analyze timing path end vertex 221 total 499 end
+I20251130 15:42:04.407622 31135 StaAnalyze.cc:565] analyze timing path end vertex 231 total 499 start
+I20251130 15:42:04.407665 31135 StaAnalyze.cc:599] analyze timing path end vertex 231 total 499 end
+I20251130 15:42:04.407905 31135 StaAnalyze.cc:565] analyze timing path end vertex 241 total 499 start
+I20251130 15:42:04.407950 31135 StaAnalyze.cc:599] analyze timing path end vertex 241 total 499 end
+I20251130 15:42:04.408272 31135 StaAnalyze.cc:565] analyze timing path end vertex 251 total 499 start
+I20251130 15:42:04.408316 31135 StaAnalyze.cc:599] analyze timing path end vertex 251 total 499 end
+I20251130 15:42:04.408525 31135 StaAnalyze.cc:565] analyze timing path end vertex 261 total 499 start
+I20251130 15:42:04.408555 31135 StaAnalyze.cc:599] analyze timing path end vertex 261 total 499 end
+I20251130 15:42:04.408721 31135 StaAnalyze.cc:565] analyze timing path end vertex 271 total 499 start
+I20251130 15:42:04.408751 31135 StaAnalyze.cc:599] analyze timing path end vertex 271 total 499 end
+I20251130 15:42:04.408928 31135 StaAnalyze.cc:565] analyze timing path end vertex 281 total 499 start
+I20251130 15:42:04.408955 31135 StaAnalyze.cc:599] analyze timing path end vertex 281 total 499 end
+I20251130 15:42:04.409241 31135 StaAnalyze.cc:565] analyze timing path end vertex 291 total 499 start
+I20251130 15:42:04.409276 31135 StaAnalyze.cc:599] analyze timing path end vertex 291 total 499 end
+I20251130 15:42:04.409582 31135 StaAnalyze.cc:565] analyze timing path end vertex 301 total 499 start
+I20251130 15:42:04.409622 31135 StaAnalyze.cc:599] analyze timing path end vertex 301 total 499 end
+I20251130 15:42:04.409677 31135 StaAnalyze.cc:303] add path data num 4 to b_ifu.reqQ.ram_addr[0]_$_DFFE_PP__Q_27:D
+I20251130 15:42:04.409880 31135 StaAnalyze.cc:565] analyze timing path end vertex 311 total 499 start
+I20251130 15:42:04.409914 31135 StaAnalyze.cc:599] analyze timing path end vertex 311 total 499 end
+I20251130 15:42:04.410187 31135 StaAnalyze.cc:565] analyze timing path end vertex 321 total 499 start
+I20251130 15:42:04.410218 31135 StaAnalyze.cc:599] analyze timing path end vertex 321 total 499 end
+I20251130 15:42:04.410399 31135 StaAnalyze.cc:565] analyze timing path end vertex 331 total 499 start
+I20251130 15:42:04.410429 31135 StaAnalyze.cc:599] analyze timing path end vertex 331 total 499 end
+I20251130 15:42:04.410625 31135 StaAnalyze.cc:565] analyze timing path end vertex 341 total 499 start
+I20251130 15:42:04.410653 31135 StaAnalyze.cc:599] analyze timing path end vertex 341 total 499 end
+I20251130 15:42:04.410925 31135 StaAnalyze.cc:565] analyze timing path end vertex 351 total 499 start
+I20251130 15:42:04.410969 31135 StaAnalyze.cc:599] analyze timing path end vertex 351 total 499 end
+I20251130 15:42:04.411019 31135 StaAnalyze.cc:303] add path data num 2 to c_arbiter.clint_reg_$_SDFF_PP0__Q_3:D
+I20251130 15:42:04.411154 31135 StaAnalyze.cc:565] analyze timing path end vertex 361 total 499 start
+I20251130 15:42:04.411212 31135 StaAnalyze.cc:599] analyze timing path end vertex 361 total 499 end
+I20251130 15:42:04.411485 31135 StaAnalyze.cc:565] analyze timing path end vertex 371 total 499 start
+I20251130 15:42:04.411608 31135 StaAnalyze.cc:599] analyze timing path end vertex 371 total 499 end
+I20251130 15:42:04.412005 31135 StaAnalyze.cc:565] analyze timing path end vertex 381 total 499 start
+I20251130 15:42:04.412055 31135 StaAnalyze.cc:599] analyze timing path end vertex 381 total 499 end
+I20251130 15:42:04.412288 31135 StaAnalyze.cc:565] analyze timing path end vertex 391 total 499 start
+I20251130 15:42:04.412325 31135 StaAnalyze.cc:599] analyze timing path end vertex 391 total 499 end
+I20251130 15:42:04.412442 31135 StaAnalyze.cc:565] analyze timing path end vertex 401 total 499 start
+I20251130 15:42:04.412454 31135 StaAnalyze.cc:599] analyze timing path end vertex 401 total 499 end
+I20251130 15:42:04.412469 31135 StaAnalyze.cc:303] add path data num 0 to c_arbiter.inst_reg_$_SDFFE_PP0P__Q_17:D
+I20251130 15:42:04.412496 31135 StaAnalyze.cc:565] analyze timing path end vertex 411 total 499 start
+I20251130 15:42:04.412509 31135 StaAnalyze.cc:599] analyze timing path end vertex 411 total 499 end
+I20251130 15:42:04.412547 31135 StaAnalyze.cc:565] analyze timing path end vertex 421 total 499 start
+I20251130 15:42:04.412556 31135 StaAnalyze.cc:599] analyze timing path end vertex 421 total 499 end
+I20251130 15:42:04.412688 31135 StaAnalyze.cc:565] analyze timing path end vertex 431 total 499 start
+I20251130 15:42:04.412722 31135 StaAnalyze.cc:599] analyze timing path end vertex 431 total 499 end
+I20251130 15:42:04.412945 31135 StaAnalyze.cc:565] analyze timing path end vertex 441 total 499 start
+I20251130 15:42:04.412974 31135 StaAnalyze.cc:599] analyze timing path end vertex 441 total 499 end
+I20251130 15:42:04.413209 31135 StaAnalyze.cc:565] analyze timing path end vertex 451 total 499 start
+I20251130 15:42:04.413244 31135 StaAnalyze.cc:599] analyze timing path end vertex 451 total 499 end
+I20251130 15:42:04.413297 31135 StaAnalyze.cc:303] add path data num 4 to c_arbiter.rdata_reg_$_SDFFE_PP0P__Q_5:D
+I20251130 15:42:04.413443 31135 StaAnalyze.cc:565] analyze timing path end vertex 461 total 499 start
+I20251130 15:42:04.413465 31135 StaAnalyze.cc:599] analyze timing path end vertex 461 total 499 end
+I20251130 15:42:04.413641 31135 StaAnalyze.cc:565] analyze timing path end vertex 471 total 499 start
+I20251130 15:42:04.413672 31135 StaAnalyze.cc:599] analyze timing path end vertex 471 total 499 end
+I20251130 15:42:04.413914 31135 StaAnalyze.cc:565] analyze timing path end vertex 481 total 499 start
+I20251130 15:42:04.413945 31135 StaAnalyze.cc:599] analyze timing path end vertex 481 total 499 end
+I20251130 15:42:04.414237 31135 StaAnalyze.cc:565] analyze timing path end vertex 491 total 499 start
+I20251130 15:42:04.414279 31135 StaAnalyze.cc:599] analyze timing path end vertex 491 total 499 end
+I20251130 15:42:04.414559 31135 StaAnalyze.cc:603] analyze timing path end
+I20251130 15:42:04.414582 31135 StaApplySdc.cc:698] apply sdc start
+I20251130 15:42:04.414595 31135 StaApplySdc.cc:729] apply sdc end
+I20251130 15:42:04.414608 31135 StaDataPropagation.cc:698] data bwd propagation start
+I20251130 15:42:04.417122 31135 StaDataPropagation.cc:249] propagate start vertex f_gpr.pc_next_reg_$_SDFFE_PP1P__Q:CK
+I20251130 15:42:04.417164 31135 StaDataPropagation.cc:172] Thread 140506596245632 data bwd propagate found end vertex.f_gpr.pc_next_reg_$_SDFFE_PP0P__Q_1:D
+I20251130 15:42:04.417289 31135 StaDataPropagation.cc:172] Thread 140506596245632 data bwd propagate found end vertex.f_gpr.pc_next_reg_$_SDFFE_PP0P__Q_2:D
+I20251130 15:42:04.417402 31135 StaDataPropagation.cc:172] Thread 140506596245632 data bwd propagate found end vertex.f_gpr.pc_next_reg_$_SDFFE_PP1P__Q:D
+I20251130 15:42:04.417716 31135 StaDataPropagation.cc:172] Thread 140506596245632 data bwd propagate found end vertex.b_ifu.reqQ.ram_addr[0]_$_DFFE_PP__Q_2:D
+I20251130 15:42:04.417788 31135 StaDataPropagation.cc:172] Thread 140506596245632 data bwd propagate found end vertex.f_gpr.regs_10_$_SDFFE_PP0P__Q:D
+I20251130 15:42:04.417809 31135 StaDataPropagation.cc:172] Thread 140506596245632 data bwd propagate found end vertex.f_gpr.regs_11_$_SDFFE_PP0P__Q:D
+I20251130 15:42:04.417826 31135 StaDataPropagation.cc:172] Thread 140506596245632 data bwd propagate found end vertex.f_gpr.regs_12_$_SDFFE_PP0P__Q:D
+I20251130 15:42:04.417845 31135 StaDataPropagation.cc:172] Thread 140506596245632 data bwd propagate found end vertex.f_gpr.regs_13_$_SDFFE_PP0P__Q:D
+I20251130 15:42:04.417866 31135 StaDataPropagation.cc:172] Thread 140506596245632 data bwd propagate found end vertex.f_gpr.regs_14_$_SDFFE_PP0P__Q:D
+I20251130 15:42:04.417887 31135 StaDataPropagation.cc:172] Thread 140506596245632 data bwd propagate found end vertex.f_gpr.regs_15_$_SDFFE_PP0P__Q:D
+I20251130 15:42:04.435024 31135 StaDataPropagation.cc:249] propagate start vertex c_arbiter.rdata_reg_$_SDFFE_PP0P__Q_5:CK
+I20251130 15:42:04.436678 31135 StaDataPropagation.cc:703] data bwd propagation end
+I20251130 15:42:04.436697 31135 Sta.cc:2895] update timing end
+I20251130 15:42:04.436733 31135 Sta.cc:2898] update timing memory usage 1921.89MB
+I20251130 15:42:04.436744 31135 Sta.cc:2900] update timing time elapsed 0.42026s
 [1;31m
   _____       _ _     _____        _         
  |_   _|     (_) |   |  __ \      | |        
@@ -1002,8 +511,8 @@ I20251129 15:54:26.939463 13943 Sta.cc:2900] update timing time elapsed 1.12468s
  |_|    |_/_/\_\ |_|  \__,_|_| |_|\___/ \__,_|\__| 
                                                    
 [0m
-I20251129 15:54:26.953193 13943 FixFanout.cpp:55] [Result: ] Find 5 Net with fanout violation.
-I20251129 15:54:26.953222 13943 FixFanout.cpp:56] [Result: ] Insert 9 Buffers.
+I20251130 15:42:04.437980 31135 FixFanout.cpp:55] [Result: ] Find 2 Net with fanout violation.
+I20251130 15:42:04.437989 31135 FixFanout.cpp:56] [Result: ] Insert 3 Buffers.
 iNO fixfanout run successfully.
-I20251129 15:54:26.953320 13943 verilog_write.cpp:59] start write verilog file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077-500MHz/ysyx_25030077.netlist.fixed.v
-I20251129 15:54:27.093951 13943 verilog_write.cpp:77] finish write verilog file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077-500MHz/ysyx_25030077.netlist.fixed.v
+I20251130 15:42:04.438071 31135 verilog_write.cpp:59] start write verilog file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077-500MHz/ysyx_25030077.netlist.fixed.v
+I20251130 15:42:04.479583 31135 verilog_write.cpp:77] finish write verilog file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077-500MHz/ysyx_25030077.netlist.fixed.v

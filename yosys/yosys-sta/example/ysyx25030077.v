@@ -1095,64 +1095,7 @@ module ysyx_25030077_gpr(
   output        io_ifu_Req_valid,
   output [31:0] io_ifu_Req_bits_addr
 );
-  wire  canAccept_prng_clock; // @[PRNG.scala 91:22]
-  wire  canAccept_prng_reset; // @[PRNG.scala 91:22]
-  wire  canAccept_prng_io_out_0; // @[PRNG.scala 91:22]
-  wire  canAccept_prng_io_out_1; // @[PRNG.scala 91:22]
-  wire  canAccept_prng_io_out_2; // @[PRNG.scala 91:22]
-  wire  canAccept_prng_io_out_3; // @[PRNG.scala 91:22]
-  wire  canAccept_prng_io_out_4; // @[PRNG.scala 91:22]
-  wire  canAccept_prng_io_out_5; // @[PRNG.scala 91:22]
-  wire  canAccept_prng_io_out_6; // @[PRNG.scala 91:22]
-  wire  canAccept_prng_io_out_7; // @[PRNG.scala 91:22]
-  wire  canAccept_prng_io_out_8; // @[PRNG.scala 91:22]
-  wire  canAccept_prng_io_out_9; // @[PRNG.scala 91:22]
-  wire  canAccept_prng_io_out_10; // @[PRNG.scala 91:22]
-  wire  canAccept_prng_io_out_11; // @[PRNG.scala 91:22]
-  wire  canAccept_prng_io_out_12; // @[PRNG.scala 91:22]
-  wire  canAccept_prng_io_out_13; // @[PRNG.scala 91:22]
-  wire  canAccept_prng_io_out_14; // @[PRNG.scala 91:22]
-  wire  canAccept_prng_io_out_15; // @[PRNG.scala 91:22]
-  reg [31:0] regs_0; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_1; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_2; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_3; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_4; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_5; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_6; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_7; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_8; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_9; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_10; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_11; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_12; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_13; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_14; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_15; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_16; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_17; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_18; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_19; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_20; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_21; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_22; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_23; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_24; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_25; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_26; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_27; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_28; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_29; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_30; // @[ysyx_25030077_gpr.scala 21:21]
-  reg [31:0] regs_31; // @[ysyx_25030077_gpr.scala 21:21]
-  reg  validReg; // @[ysyx_25030077_gpr.scala 22:25]
-  wire [7:0] canAccept_lo = {canAccept_prng_io_out_7,canAccept_prng_io_out_6,canAccept_prng_io_out_5,
-    canAccept_prng_io_out_4,canAccept_prng_io_out_3,canAccept_prng_io_out_2,canAccept_prng_io_out_1,
-    canAccept_prng_io_out_0}; // @[PRNG.scala 95:17]
-  wire [15:0] _canAccept_T = {canAccept_prng_io_out_15,canAccept_prng_io_out_14,canAccept_prng_io_out_13,
-    canAccept_prng_io_out_12,canAccept_prng_io_out_11,canAccept_prng_io_out_10,canAccept_prng_io_out_9,
-    canAccept_prng_io_out_8,canAccept_lo}; // @[PRNG.scala 95:17]
-  wire  canAccept = _canAccept_T[0]; // @[ysyx_25030077_gpr.scala 23:27]
+  wire  canAccept = 1; // @[ysyx_25030077_gpr.scala 23:27]
   reg [31:0] pc_next_reg; // @[ysyx_25030077_gpr.scala 24:28]
   wire  _validReg_T = io_mem_Req_valid & canAccept; // @[ysyx_25030077_gpr.scala 27:36]
   wire  _validReg_T_1 = io_ifu_Req_ready ? 1'h0 : validReg; // @[ysyx_25030077_gpr.scala 28:20]
@@ -1246,34 +1189,12 @@ module ysyx_25030077_gpr(
   wire [31:0] _GEN_92 = 5'h1c == io_waddr_rd ? regs_28 : _GEN_91; // @[ysyx_25030077_gpr.scala 35:{27,27}]
   wire [31:0] _GEN_93 = 5'h1d == io_waddr_rd ? regs_29 : _GEN_92; // @[ysyx_25030077_gpr.scala 35:{27,27}]
   wire [31:0] _GEN_94 = 5'h1e == io_waddr_rd ? regs_30 : _GEN_93; // @[ysyx_25030077_gpr.scala 35:{27,27}]
-  ysyx_25030077_MaxPeriodFibonacciLFSR canAccept_prng ( // @[PRNG.scala 91:22]
-    .clock(canAccept_prng_clock),
-    .reset(canAccept_prng_reset),
-    .io_out_0(canAccept_prng_io_out_0),
-    .io_out_1(canAccept_prng_io_out_1),
-    .io_out_2(canAccept_prng_io_out_2),
-    .io_out_3(canAccept_prng_io_out_3),
-    .io_out_4(canAccept_prng_io_out_4),
-    .io_out_5(canAccept_prng_io_out_5),
-    .io_out_6(canAccept_prng_io_out_6),
-    .io_out_7(canAccept_prng_io_out_7),
-    .io_out_8(canAccept_prng_io_out_8),
-    .io_out_9(canAccept_prng_io_out_9),
-    .io_out_10(canAccept_prng_io_out_10),
-    .io_out_11(canAccept_prng_io_out_11),
-    .io_out_12(canAccept_prng_io_out_12),
-    .io_out_13(canAccept_prng_io_out_13),
-    .io_out_14(canAccept_prng_io_out_14),
-    .io_out_15(canAccept_prng_io_out_15)
-  );
   assign io_mem_Req_ready = _canAccept_T[0]; // @[ysyx_25030077_gpr.scala 23:27]
   assign io_b_ready = _canAccept_T[0]; // @[ysyx_25030077_gpr.scala 23:27]
   assign io_rdata_rs1 = 5'h1f == io_raddr_rs1 ? regs_31 : _GEN_30; // @[ysyx_25030077_gpr.scala 31:{16,16}]
   assign io_rdata_rs2 = 5'h1f == io_raddr_rs2 ? regs_31 : _GEN_62; // @[ysyx_25030077_gpr.scala 32:{16,16}]
   assign io_ifu_Req_valid = validReg; // @[ysyx_25030077_gpr.scala 37:20]
   assign io_ifu_Req_bits_addr = pc_next_reg; // @[ysyx_25030077_gpr.scala 33:24]
-  assign canAccept_prng_clock = clock;
-  assign canAccept_prng_reset = reset;
   always @(posedge clock) begin
     if (reset) begin // @[ysyx_25030077_gpr.scala 21:21]
       regs_0 <= 32'h0; // @[ysyx_25030077_gpr.scala 21:21]
