@@ -1,0 +1,1456 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.56+197 (git sha1 d4c4b2106, clang++ 18.1.8 -fPIC -O3)
+
+-- Executing script file `-' --
+[TCL: yosys -import] Command name collision: found pre-existing command `cd' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `eval' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `exec' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `read' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `trace' -> skip.
+
+1. Executing Verilog-2005 frontend: /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v
+Parsing SystemVerilog input from `/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v' to AST representation.
+Generating RTLIL representation for module `\ysyx_25030077_gpr'.
+Warning: wire '\regs_0' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:122.7-122.22.
+Warning: wire '\regs_0' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:126.11-126.26.
+Warning: wire '\regs_0' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:128.11-128.32.
+Warning: wire '\regs_0' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:131.9-131.26.
+Warning: wire '\regs_0' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:133.9-133.26.
+Warning: wire '\regs_1' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:137.7-137.22.
+Warning: wire '\regs_1' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:141.11-141.26.
+Warning: wire '\regs_1' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:143.11-143.32.
+Warning: wire '\regs_1' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:146.9-146.26.
+Warning: wire '\regs_1' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:148.9-148.26.
+Warning: wire '\regs_2' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:152.7-152.29.
+Warning: wire '\regs_2' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:156.11-156.26.
+Warning: wire '\regs_2' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:158.11-158.32.
+Warning: wire '\regs_2' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:161.9-161.26.
+Warning: wire '\regs_2' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:163.9-163.26.
+Warning: wire '\regs_3' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:167.7-167.22.
+Warning: wire '\regs_3' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:171.11-171.26.
+Warning: wire '\regs_3' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:173.11-173.32.
+Warning: wire '\regs_3' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:176.9-176.26.
+Warning: wire '\regs_3' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:178.9-178.26.
+Warning: wire '\regs_4' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:182.7-182.22.
+Warning: wire '\regs_4' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:186.11-186.26.
+Warning: wire '\regs_4' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:188.11-188.32.
+Warning: wire '\regs_4' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:191.9-191.26.
+Warning: wire '\regs_4' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:193.9-193.26.
+Warning: wire '\regs_5' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:197.7-197.22.
+Warning: wire '\regs_5' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:201.11-201.26.
+Warning: wire '\regs_5' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:203.11-203.32.
+Warning: wire '\regs_5' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:206.9-206.26.
+Warning: wire '\regs_5' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:208.9-208.26.
+Warning: wire '\regs_6' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:212.7-212.22.
+Warning: wire '\regs_6' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:216.11-216.26.
+Warning: wire '\regs_6' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:218.11-218.32.
+Warning: wire '\regs_6' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:221.9-221.26.
+Warning: wire '\regs_6' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:223.9-223.26.
+Warning: wire '\regs_7' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:227.7-227.22.
+Warning: wire '\regs_7' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:231.11-231.26.
+Warning: wire '\regs_7' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:233.11-233.32.
+Warning: wire '\regs_7' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:236.9-236.26.
+Warning: wire '\regs_7' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:238.9-238.26.
+Warning: wire '\regs_8' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:242.7-242.22.
+Warning: wire '\regs_8' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:246.11-246.26.
+Warning: wire '\regs_8' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:248.11-248.32.
+Warning: wire '\regs_8' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:251.9-251.26.
+Warning: wire '\regs_8' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:253.9-253.26.
+Warning: wire '\regs_9' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:257.7-257.22.
+Warning: wire '\regs_9' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:261.11-261.26.
+Warning: wire '\regs_9' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:263.11-263.32.
+Warning: wire '\regs_9' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:266.9-266.26.
+Warning: wire '\regs_9' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:268.9-268.26.
+Warning: wire '\regs_10' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:272.7-272.23.
+Warning: wire '\regs_10' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:276.11-276.27.
+Warning: wire '\regs_10' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:278.11-278.33.
+Warning: wire '\regs_10' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:281.9-281.27.
+Warning: wire '\regs_10' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:283.9-283.27.
+Warning: wire '\regs_11' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:287.7-287.23.
+Warning: wire '\regs_11' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:291.11-291.27.
+Warning: wire '\regs_11' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:293.11-293.33.
+Warning: wire '\regs_11' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:296.9-296.27.
+Warning: wire '\regs_11' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:298.9-298.27.
+Warning: wire '\regs_12' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:302.7-302.23.
+Warning: wire '\regs_12' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:306.11-306.27.
+Warning: wire '\regs_12' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:308.11-308.33.
+Warning: wire '\regs_12' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:311.9-311.27.
+Warning: wire '\regs_12' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:313.9-313.27.
+Warning: wire '\regs_13' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:317.7-317.23.
+Warning: wire '\regs_13' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:321.11-321.27.
+Warning: wire '\regs_13' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:323.11-323.33.
+Warning: wire '\regs_13' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:326.9-326.27.
+Warning: wire '\regs_13' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:328.9-328.27.
+Warning: wire '\regs_14' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:332.7-332.23.
+Warning: wire '\regs_14' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:336.11-336.27.
+Warning: wire '\regs_14' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:338.11-338.33.
+Warning: wire '\regs_14' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:341.9-341.27.
+Warning: wire '\regs_14' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:343.9-343.27.
+Warning: wire '\regs_15' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:347.7-347.23.
+Warning: wire '\regs_15' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:351.11-351.27.
+Warning: wire '\regs_15' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:353.11-353.33.
+Warning: wire '\regs_15' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:356.9-356.27.
+Warning: wire '\regs_15' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:358.9-358.27.
+Warning: wire '\regs_16' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:362.7-362.23.
+Warning: wire '\regs_16' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:366.11-366.27.
+Warning: wire '\regs_16' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:368.11-368.33.
+Warning: wire '\regs_16' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:371.9-371.27.
+Warning: wire '\regs_16' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:373.9-373.27.
+Warning: wire '\regs_17' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:377.7-377.23.
+Warning: wire '\regs_17' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:381.11-381.27.
+Warning: wire '\regs_17' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:383.11-383.33.
+Warning: wire '\regs_17' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:386.9-386.27.
+Warning: wire '\regs_17' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:388.9-388.27.
+Warning: wire '\regs_18' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:392.7-392.23.
+Warning: wire '\regs_18' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:396.11-396.27.
+Warning: wire '\regs_18' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:398.11-398.33.
+Warning: wire '\regs_18' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:401.9-401.27.
+Warning: wire '\regs_18' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:403.9-403.27.
+Warning: wire '\regs_19' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:407.7-407.23.
+Warning: wire '\regs_19' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:411.11-411.27.
+Warning: wire '\regs_19' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:413.11-413.33.
+Warning: wire '\regs_19' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:416.9-416.27.
+Warning: wire '\regs_19' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:418.9-418.27.
+Warning: wire '\regs_20' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:422.7-422.23.
+Warning: wire '\regs_20' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:426.11-426.27.
+Warning: wire '\regs_20' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:428.11-428.33.
+Warning: wire '\regs_20' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:431.9-431.27.
+Warning: wire '\regs_20' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:433.9-433.27.
+Warning: wire '\regs_21' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:437.7-437.23.
+Warning: wire '\regs_21' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:441.11-441.27.
+Warning: wire '\regs_21' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:443.11-443.33.
+Warning: wire '\regs_21' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:446.9-446.27.
+Warning: wire '\regs_21' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:448.9-448.27.
+Warning: wire '\regs_22' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:452.7-452.23.
+Warning: wire '\regs_22' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:456.11-456.27.
+Warning: wire '\regs_22' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:458.11-458.33.
+Warning: wire '\regs_22' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:461.9-461.27.
+Warning: wire '\regs_22' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:463.9-463.27.
+Warning: wire '\regs_23' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:467.7-467.23.
+Warning: wire '\regs_23' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:471.11-471.27.
+Warning: wire '\regs_23' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:473.11-473.33.
+Warning: wire '\regs_23' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:476.9-476.27.
+Warning: wire '\regs_23' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:478.9-478.27.
+Warning: wire '\regs_24' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:482.7-482.23.
+Warning: wire '\regs_24' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:486.11-486.27.
+Warning: wire '\regs_24' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:488.11-488.33.
+Warning: wire '\regs_24' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:491.9-491.27.
+Warning: wire '\regs_24' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:493.9-493.27.
+Warning: wire '\regs_25' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:497.7-497.23.
+Warning: wire '\regs_25' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:501.11-501.27.
+Warning: wire '\regs_25' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:503.11-503.33.
+Warning: wire '\regs_25' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:506.9-506.27.
+Warning: wire '\regs_25' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:508.9-508.27.
+Warning: wire '\regs_26' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:512.7-512.23.
+Warning: wire '\regs_26' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:516.11-516.27.
+Warning: wire '\regs_26' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:518.11-518.33.
+Warning: wire '\regs_26' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:521.9-521.27.
+Warning: wire '\regs_26' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:523.9-523.27.
+Warning: wire '\regs_27' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:527.7-527.23.
+Warning: wire '\regs_27' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:531.11-531.27.
+Warning: wire '\regs_27' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:533.11-533.33.
+Warning: wire '\regs_27' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:536.9-536.27.
+Warning: wire '\regs_27' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:538.9-538.27.
+Warning: wire '\regs_28' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:542.7-542.23.
+Warning: wire '\regs_28' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:546.11-546.27.
+Warning: wire '\regs_28' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:548.11-548.33.
+Warning: wire '\regs_28' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:551.9-551.27.
+Warning: wire '\regs_28' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:553.9-553.27.
+Warning: wire '\regs_29' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:557.7-557.23.
+Warning: wire '\regs_29' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:561.11-561.27.
+Warning: wire '\regs_29' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:563.11-563.33.
+Warning: wire '\regs_29' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:566.9-566.27.
+Warning: wire '\regs_29' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:568.9-568.27.
+Warning: wire '\regs_30' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:572.7-572.23.
+Warning: wire '\regs_30' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:576.11-576.27.
+Warning: wire '\regs_30' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:578.11-578.33.
+Warning: wire '\regs_30' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:581.9-581.27.
+Warning: wire '\regs_30' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:583.9-583.27.
+Warning: wire '\regs_31' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:587.7-587.23.
+Warning: wire '\regs_31' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:591.11-591.27.
+Warning: wire '\regs_31' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:593.11-593.33.
+Warning: wire '\regs_31' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:596.9-596.27.
+Warning: wire '\validReg' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:600.7-600.23.
+Warning: wire '\validReg' is assigned in a block at /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:602.7-602.63.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:23: Warning: Identifier `\validReg' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:24: Warning: Identifier `\regs_1' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:24: Warning: Identifier `\regs_0' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:25: Warning: Identifier `\regs_2' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:26: Warning: Identifier `\regs_3' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:27: Warning: Identifier `\regs_4' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:28: Warning: Identifier `\regs_5' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:29: Warning: Identifier `\regs_6' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:30: Warning: Identifier `\regs_7' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:31: Warning: Identifier `\regs_8' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:32: Warning: Identifier `\regs_9' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:33: Warning: Identifier `\regs_10' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:34: Warning: Identifier `\regs_11' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:35: Warning: Identifier `\regs_12' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:36: Warning: Identifier `\regs_13' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:37: Warning: Identifier `\regs_14' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:38: Warning: Identifier `\regs_15' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:39: Warning: Identifier `\regs_16' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:40: Warning: Identifier `\regs_17' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:41: Warning: Identifier `\regs_18' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:42: Warning: Identifier `\regs_19' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:43: Warning: Identifier `\regs_20' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:44: Warning: Identifier `\regs_21' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:45: Warning: Identifier `\regs_22' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:46: Warning: Identifier `\regs_23' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:47: Warning: Identifier `\regs_24' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:48: Warning: Identifier `\regs_25' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:49: Warning: Identifier `\regs_26' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:50: Warning: Identifier `\regs_27' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:51: Warning: Identifier `\regs_28' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:52: Warning: Identifier `\regs_29' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:53: Warning: Identifier `\regs_30' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:114: Warning: Identifier `\_canAccept_T' is implicitly declared.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:114: Warning: Range select out of bounds on signal `\_canAccept_T': Setting result bit to undef.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:115: Warning: Range select out of bounds on signal `\_canAccept_T': Setting result bit to undef.
+/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:116: Warning: Identifier `\regs_31' is implicitly declared.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/verilog/blackbox.v
+Parsing Verilog input from `/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/verilog/blackbox.v' to AST representation.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/verilog/cells_clkgate.v
+Parsing Verilog input from `/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/verilog/cells_clkgate.v' to AST representation.
+Generating RTLIL representation for module `\OPENROAD_CLKGATE'.
+Successfully finished Verilog frontend.
+
+4. Executing SYNTH pass.
+
+4.1. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1.1. Analyzing design hierarchy..
+Top module:  \ysyx_25030077_gpr
+
+4.1.2. Analyzing design hierarchy..
+Top module:  \ysyx_25030077_gpr
+Removing unused module `\OPENROAD_CLKGATE'.
+Removed 1 unused modules.
+
+4.2. Executing PROC pass (convert processes to netlists).
+
+4.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 129 switch rules as full_case in process $proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276 in module ysyx_25030077_gpr.
+Removed a total of 0 dead cases.
+
+4.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 0 assignments to connections.
+
+4.2.4. Executing PROC_INIT pass (extract init attributes).
+
+4.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+4.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~163 debug messages>
+
+4.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+     1/34: $0\validReg[0:0]
+     2/34: $0\regs_31[0:0]
+     3/34: $0\regs_30[0:0]
+     4/34: $0\regs_29[0:0]
+     5/34: $0\regs_28[0:0]
+     6/34: $0\regs_27[0:0]
+     7/34: $0\regs_26[0:0]
+     8/34: $0\regs_25[0:0]
+     9/34: $0\regs_24[0:0]
+    10/34: $0\regs_23[0:0]
+    11/34: $0\regs_22[0:0]
+    12/34: $0\regs_21[0:0]
+    13/34: $0\regs_20[0:0]
+    14/34: $0\regs_19[0:0]
+    15/34: $0\regs_18[0:0]
+    16/34: $0\regs_17[0:0]
+    17/34: $0\regs_16[0:0]
+    18/34: $0\regs_15[0:0]
+    19/34: $0\regs_14[0:0]
+    20/34: $0\regs_13[0:0]
+    21/34: $0\regs_12[0:0]
+    22/34: $0\regs_11[0:0]
+    23/34: $0\regs_10[0:0]
+    24/34: $0\regs_9[0:0]
+    25/34: $0\regs_8[0:0]
+    26/34: $0\regs_7[0:0]
+    27/34: $0\regs_6[0:0]
+    28/34: $0\regs_5[0:0]
+    29/34: $0\regs_4[0:0]
+    30/34: $0\regs_3[0:0]
+    31/34: $0\regs_2[0:0]
+    32/34: $0\regs_0[0:0]
+    33/34: $0\regs_1[0:0]
+    34/34: $0\pc_next_reg[31:0]
+
+4.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+4.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\ysyx_25030077_gpr.\pc_next_reg' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$831' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\validReg' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$832' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_1' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$833' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_0' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$834' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_2' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$835' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_3' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$836' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_4' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$837' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_5' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$838' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_6' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$839' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_7' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$840' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_8' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$841' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_9' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$842' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_10' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$843' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_11' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$844' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_12' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$845' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_13' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$846' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_14' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$847' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_15' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$848' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_16' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$849' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_17' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$850' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_18' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$851' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_19' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$852' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_20' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$853' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_21' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$854' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_22' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$855' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_23' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$856' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_24' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$857' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_25' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$858' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_26' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$859' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_27' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$860' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_28' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$861' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_29' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$862' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_30' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$863' with positive edge clock.
+Creating register for signal `\ysyx_25030077_gpr.\regs_31' using process `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+  created $dff cell `$procdff$864' with positive edge clock.
+
+4.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 163 empty switches in `\ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+Removing empty process `ysyx_25030077_gpr.$proc$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:120$276'.
+Cleaned up 163 empty switches.
+
+4.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+<suppressed ~36 debug messages>
+
+4.3. Executing FLATTEN pass (flatten design).
+
+4.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+
+4.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_gpr..
+Removed 1 unused cells and 383 unused wires.
+<suppressed ~92 debug messages>
+
+4.6. Executing CHECK pass (checking for obvious problems).
+Checking module ysyx_25030077_gpr...
+Found and reported 0 problems.
+
+4.7. Executing OPT pass (performing simple optimizations).
+
+4.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+
+4.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_gpr'.
+<suppressed ~282 debug messages>
+Removed a total of 94 cells.
+
+4.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ysyx_25030077_gpr..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$379.
+    dead port 2/2 on $mux $procmux$803.
+Removed 2 multiplexer ports.
+<suppressed ~789 debug messages>
+
+4.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ysyx_25030077_gpr.
+Performed a total of 0 changes.
+
+4.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_gpr'.
+<suppressed ~267 debug messages>
+Removed a total of 89 cells.
+
+4.7.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.7.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_gpr..
+Removed 0 unused cells and 185 unused wires.
+<suppressed ~1 debug messages>
+
+4.7.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+
+4.7.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.7.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ysyx_25030077_gpr..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~824 debug messages>
+
+4.7.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ysyx_25030077_gpr.
+Performed a total of 0 changes.
+
+4.7.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_gpr'.
+Removed a total of 0 cells.
+
+4.7.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.7.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_gpr..
+
+4.7.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+
+4.7.16. Finished OPT passes. (There is nothing left to do.)
+
+4.8. Executing FSM pass (extract and optimize FSM).
+
+4.8.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+4.8.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+4.8.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+4.8.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_gpr..
+
+4.8.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+4.8.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+4.8.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+4.8.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+4.9. Executing OPT pass (performing simple optimizations).
+
+4.9.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+
+4.9.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_gpr'.
+Removed a total of 0 cells.
+
+4.9.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ysyx_25030077_gpr..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~824 debug messages>
+
+4.9.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ysyx_25030077_gpr.
+Performed a total of 0 changes.
+
+4.9.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_gpr'.
+Removed a total of 0 cells.
+
+4.9.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$864 ($dff) from module ysyx_25030077_gpr (D = $procmux$387_Y, Q = \regs_31, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$865 ($sdff) from module ysyx_25030077_gpr (D = $procmux$383_Y, Q = \regs_31).
+Adding SRST signal on $procdff$863 ($dff) from module ysyx_25030077_gpr (D = $procmux$401_Y, Q = \regs_30, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$869 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_30).
+Adding SRST signal on $procdff$862 ($dff) from module ysyx_25030077_gpr (D = $procmux$415_Y, Q = \regs_29, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$871 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_29).
+Adding SRST signal on $procdff$861 ($dff) from module ysyx_25030077_gpr (D = $procmux$429_Y, Q = \regs_28, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$873 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_28).
+Adding SRST signal on $procdff$860 ($dff) from module ysyx_25030077_gpr (D = $procmux$443_Y, Q = \regs_27, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$875 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_27).
+Adding SRST signal on $procdff$859 ($dff) from module ysyx_25030077_gpr (D = $procmux$457_Y, Q = \regs_26, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$877 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_26).
+Adding SRST signal on $procdff$858 ($dff) from module ysyx_25030077_gpr (D = $procmux$471_Y, Q = \regs_25, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$879 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_25).
+Adding SRST signal on $procdff$857 ($dff) from module ysyx_25030077_gpr (D = $procmux$485_Y, Q = \regs_24, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$881 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_24).
+Adding SRST signal on $procdff$856 ($dff) from module ysyx_25030077_gpr (D = $procmux$499_Y, Q = \regs_23, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$883 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_23).
+Adding SRST signal on $procdff$855 ($dff) from module ysyx_25030077_gpr (D = $procmux$513_Y, Q = \regs_22, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$885 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_22).
+Adding SRST signal on $procdff$854 ($dff) from module ysyx_25030077_gpr (D = $procmux$527_Y, Q = \regs_21, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$887 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_21).
+Adding SRST signal on $procdff$853 ($dff) from module ysyx_25030077_gpr (D = $procmux$541_Y, Q = \regs_20, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$889 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_20).
+Adding SRST signal on $procdff$852 ($dff) from module ysyx_25030077_gpr (D = $procmux$555_Y, Q = \regs_19, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$891 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_19).
+Adding SRST signal on $procdff$851 ($dff) from module ysyx_25030077_gpr (D = $procmux$569_Y, Q = \regs_18, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$893 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_18).
+Adding SRST signal on $procdff$850 ($dff) from module ysyx_25030077_gpr (D = $procmux$583_Y, Q = \regs_17, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$895 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_17).
+Adding SRST signal on $procdff$849 ($dff) from module ysyx_25030077_gpr (D = $procmux$597_Y, Q = \regs_16, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$897 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_16).
+Adding SRST signal on $procdff$848 ($dff) from module ysyx_25030077_gpr (D = $procmux$611_Y, Q = \regs_15, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$899 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_15).
+Adding SRST signal on $procdff$847 ($dff) from module ysyx_25030077_gpr (D = $procmux$625_Y, Q = \regs_14, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$901 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_14).
+Adding SRST signal on $procdff$846 ($dff) from module ysyx_25030077_gpr (D = $procmux$639_Y, Q = \regs_13, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$903 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_13).
+Adding SRST signal on $procdff$845 ($dff) from module ysyx_25030077_gpr (D = $procmux$653_Y, Q = \regs_12, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$905 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_12).
+Adding SRST signal on $procdff$844 ($dff) from module ysyx_25030077_gpr (D = $procmux$667_Y, Q = \regs_11, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$907 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_11).
+Adding SRST signal on $procdff$843 ($dff) from module ysyx_25030077_gpr (D = $procmux$681_Y, Q = \regs_10, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$909 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_10).
+Adding SRST signal on $procdff$842 ($dff) from module ysyx_25030077_gpr (D = $procmux$695_Y, Q = \regs_9, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$911 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_9).
+Adding SRST signal on $procdff$841 ($dff) from module ysyx_25030077_gpr (D = $procmux$709_Y, Q = \regs_8, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$913 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_8).
+Adding SRST signal on $procdff$840 ($dff) from module ysyx_25030077_gpr (D = $procmux$723_Y, Q = \regs_7, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$915 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_7).
+Adding SRST signal on $procdff$839 ($dff) from module ysyx_25030077_gpr (D = $procmux$737_Y, Q = \regs_6, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$917 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_6).
+Adding SRST signal on $procdff$838 ($dff) from module ysyx_25030077_gpr (D = $procmux$751_Y, Q = \regs_5, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$919 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_5).
+Adding SRST signal on $procdff$837 ($dff) from module ysyx_25030077_gpr (D = $procmux$765_Y, Q = \regs_4, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$921 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_4).
+Adding SRST signal on $procdff$836 ($dff) from module ysyx_25030077_gpr (D = $procmux$779_Y, Q = \regs_3, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$923 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_3).
+Adding SRST signal on $procdff$835 ($dff) from module ysyx_25030077_gpr (D = $procmux$793_Y, Q = \regs_2, rval = 1'1).
+Adding EN signal on $auto$ff.cc:266:slice$925 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_2).
+Adding SRST signal on $procdff$834 ($dff) from module ysyx_25030077_gpr (D = $procmux$807_Y, Q = \regs_0, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$927 ($sdff) from module ysyx_25030077_gpr (D = $procmux$805_Y, Q = \regs_0).
+Adding SRST signal on $procdff$833 ($dff) from module ysyx_25030077_gpr (D = $procmux$821_Y, Q = \regs_1, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$929 ($sdff) from module ysyx_25030077_gpr (D = $procmux$399_Y, Q = \regs_1).
+Adding SRST signal on $procdff$832 ($dff) from module ysyx_25030077_gpr (D = $or$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:602$375_Y, Q = \validReg, rval = 1'1).
+Adding SRST signal on $procdff$831 ($dff) from module ysyx_25030077_gpr (D = $procmux$826_Y, Q = \pc_next_reg, rval = 805306368).
+Adding EN signal on $auto$ff.cc:266:slice$932 ($sdff) from module ysyx_25030077_gpr (D = \io_pc_next, Q = \pc_next_reg).
+
+4.9.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_gpr..
+Removed 68 unused cells and 68 unused wires.
+<suppressed ~69 debug messages>
+
+4.9.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+
+4.9.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.9.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ysyx_25030077_gpr..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~166 debug messages>
+
+4.9.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ysyx_25030077_gpr.
+Performed a total of 0 changes.
+
+4.9.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_gpr'.
+Removed a total of 0 cells.
+
+4.9.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.9.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_gpr..
+
+4.9.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+
+4.9.16. Finished OPT passes. (There is nothing left to do.)
+
+4.10. Executing WREDUCE pass (reducing word size of cells).
+Removed top 4 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:24$3 ($eq).
+Removed top 3 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:25$5 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:25$7 ($mux).
+Removed top 3 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:26$8 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:26$10 ($mux).
+Removed top 2 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:27$11 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:27$13 ($mux).
+Removed top 2 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:28$14 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:28$16 ($mux).
+Removed top 2 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:29$17 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:29$19 ($mux).
+Removed top 2 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:30$20 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:30$22 ($mux).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:31$23 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:31$25 ($mux).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:32$26 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:32$28 ($mux).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:33$29 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:33$31 ($mux).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:34$32 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:34$34 ($mux).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:35$35 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:35$37 ($mux).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:36$38 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:36$40 ($mux).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:37$41 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:37$43 ($mux).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:38$44 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:38$46 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:39$49 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:40$52 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:41$55 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:42$58 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:43$61 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:44$64 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:45$67 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:46$70 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:47$73 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:48$76 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:49$79 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:50$82 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:51$85 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:52$88 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:53$91 ($mux).
+Removed top 4 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:54$92 ($eq).
+Removed top 3 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:55$94 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:55$96 ($mux).
+Removed top 3 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:56$97 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:56$99 ($mux).
+Removed top 2 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:57$100 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:57$102 ($mux).
+Removed top 2 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:58$103 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:58$105 ($mux).
+Removed top 2 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:59$106 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:59$108 ($mux).
+Removed top 2 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:60$109 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:60$111 ($mux).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:61$112 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:61$114 ($mux).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:62$115 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:62$117 ($mux).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:63$118 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:63$120 ($mux).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:64$121 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:64$123 ($mux).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:65$124 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:65$126 ($mux).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:66$127 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:66$129 ($mux).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:67$130 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:67$132 ($mux).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:68$133 ($eq).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:68$135 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:69$138 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:70$141 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:71$144 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:72$147 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:73$150 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:74$153 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:75$156 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:76$159 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:77$162 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:78$165 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:79$168 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:80$171 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:81$174 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:82$177 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:83$180 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:85$185 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:86$188 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:87$191 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:88$194 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:89$197 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:90$200 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:91$203 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:92$206 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:93$209 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:94$212 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:95$215 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:96$218 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:97$221 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:98$224 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:99$227 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:100$230 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:101$233 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:102$236 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:103$239 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:104$242 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:105$245 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:106$248 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:107$251 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:108$254 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:109$257 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:110$260 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:111$263 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:112$266 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:113$269 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:116$272 ($mux).
+Removed top 31 bits (of 32) from mux cell ysyx_25030077_gpr.$ternary$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:117$275 ($mux).
+Removed top 4 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:138$280 ($eq).
+Removed top 3 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:153$283 ($eq).
+Removed top 3 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:168$286 ($eq).
+Removed top 2 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:183$289 ($eq).
+Removed top 2 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:198$292 ($eq).
+Removed top 2 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:213$295 ($eq).
+Removed top 2 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:228$298 ($eq).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:243$301 ($eq).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:258$304 ($eq).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:273$307 ($eq).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:288$310 ($eq).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:303$313 ($eq).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:318$316 ($eq).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:333$319 ($eq).
+Removed top 1 bits (of 5) from port A of cell ysyx_25030077_gpr.$eq$/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/gpr.v:348$322 ($eq).
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_1.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_10.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_12.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_14.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_16.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_18.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_20.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_22.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_24.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_26.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_28.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_30.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_34.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_36.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_38.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_4.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_40.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_42.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_44.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_46.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_48.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_50.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_52.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_54.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_56.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_58.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_6.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_60.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_62.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_66.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_68.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_70.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_72.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_74.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_76.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_78.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_8.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_80.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_82.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_84.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_86.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_88.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_90.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_92.
+Removed top 31 bits (of 32) from wire ysyx_25030077_gpr._GEN_94.
+
+4.11. Executing PEEPOPT pass (run peephole optimizers).
+
+4.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_gpr..
+Removed 0 unused cells and 45 unused wires.
+<suppressed ~1 debug messages>
+
+4.13. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module ysyx_25030077_gpr:
+  created 0 $alu and 0 $macc cells.
+
+4.14. Executing SHARE pass (SAT-based resource sharing).
+
+4.15. Executing OPT pass (performing simple optimizations).
+
+4.15.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+
+4.15.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_gpr'.
+Removed a total of 0 cells.
+
+4.15.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ysyx_25030077_gpr..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~166 debug messages>
+
+4.15.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ysyx_25030077_gpr.
+Performed a total of 0 changes.
+
+4.15.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_gpr'.
+Removed a total of 0 cells.
+
+4.15.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.15.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_gpr..
+
+4.15.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+
+4.15.9. Finished OPT passes. (There is nothing left to do.)
+
+4.16. Executing MEMORY pass.
+
+4.16.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+4.16.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+4.16.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+4.16.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+4.16.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+4.16.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_gpr..
+
+4.16.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+4.16.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+4.16.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_gpr..
+
+4.16.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+4.17. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_gpr..
+
+4.18. Executing OPT pass (performing simple optimizations).
+
+4.18.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+
+4.18.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_gpr'.
+Removed a total of 0 cells.
+
+4.18.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.18.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_gpr..
+
+4.18.5. Finished fast OPT passes.
+
+4.19. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+4.20. Executing OPT pass (performing simple optimizations).
+
+4.20.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+
+4.20.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_gpr'.
+Removed a total of 0 cells.
+
+4.20.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ysyx_25030077_gpr..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~166 debug messages>
+
+4.20.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ysyx_25030077_gpr.
+Performed a total of 0 changes.
+
+4.20.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_gpr'.
+Removed a total of 0 cells.
+
+4.20.6. Executing OPT_SHARE pass.
+
+4.20.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.20.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_gpr..
+
+4.20.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+
+4.20.10. Finished OPT passes. (There is nothing left to do.)
+
+4.21. Executing TECHMAP pass (map to technology primitives).
+
+4.21.1. Executing Verilog-2005 frontend: /home/meowth/ysyx/ysyx-workbench/oss-cad-suite-linux-x64-20250830/oss-cad-suite/lib/../share/yosys/techmap.v
+Parsing Verilog input from `/home/meowth/ysyx/ysyx-workbench/oss-cad-suite-linux-x64-20250830/oss-cad-suite/lib/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+4.21.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $sdff.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $sdffe.
+No more expansions possible.
+<suppressed ~302 debug messages>
+
+4.22. Executing OPT pass (performing simple optimizations).
+
+4.22.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+<suppressed ~590 debug messages>
+
+4.22.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_gpr'.
+<suppressed ~1305 debug messages>
+Removed a total of 435 cells.
+
+4.22.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.22.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_gpr..
+Removed 93 unused cells and 627 unused wires.
+<suppressed ~94 debug messages>
+
+4.22.5. Finished fast OPT passes.
+
+4.23. Executing ABC pass (technology mapping using ABC).
+
+4.23.1. Extracting gate netlist of module `\ysyx_25030077_gpr' to `<abc-temp-dir>/input.blif'..
+Extracted 281 gates and 333 wires to a netlist network with 51 inputs and 38 outputs.
+
+4.23.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+4.23.1.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        1
+ABC RESULTS:            ANDNOT cells:       97
+ABC RESULTS:               MUX cells:       94
+ABC RESULTS:              NAND cells:        6
+ABC RESULTS:               NOT cells:       34
+ABC RESULTS:                OR cells:       55
+ABC RESULTS:             ORNOT cells:       12
+ABC RESULTS:        internal signals:      244
+ABC RESULTS:           input signals:       51
+ABC RESULTS:          output signals:       38
+Removing temp directory.
+
+4.24. Executing OPT pass (performing simple optimizations).
+
+4.24.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+<suppressed ~31 debug messages>
+
+4.24.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_gpr'.
+Removed a total of 0 cells.
+
+4.24.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.24.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_gpr..
+Removed 31 unused cells and 312 unused wires.
+<suppressed ~78 debug messages>
+
+4.24.5. Finished fast OPT passes.
+
+4.25. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `ysyx_25030077_gpr'. Setting top module to ysyx_25030077_gpr.
+
+4.25.1. Analyzing design hierarchy..
+Top module:  \ysyx_25030077_gpr
+
+4.25.2. Analyzing design hierarchy..
+Top module:  \ysyx_25030077_gpr
+Removed 0 unused modules.
+
+4.26. Printing statistics.
+
+=== ysyx_25030077_gpr ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      364 wires
+     1958 wire bits
+       98 public wires
+     1692 public wire bits
+       17 ports
+      185 port bits
+      333 cells
+       97   $_ANDNOT_
+        1   $_AND_
+       94   $_MUX_
+        6   $_NAND_
+        3   $_NOT_
+       12   $_ORNOT_
+       55   $_OR_
+       61   $_SDFFE_PP0P_
+        3   $_SDFFE_PP1P_
+        1   $_SDFF_PP1_
+
+4.27. Executing CHECK pass (checking for obvious problems).
+Checking module ysyx_25030077_gpr...
+Found and reported 0 problems.
+
+5. Executing AUTONAME pass.
+Renamed 1731 objects in module ysyx_25030077_gpr (15 iterations).
+<suppressed ~599 debug messages>
+
+6. Executing SPLITNETS pass (splitting up multi-bit signals).
+
+7. Executing OPT pass (performing simple optimizations).
+
+7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+
+7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_gpr'.
+Removed a total of 0 cells.
+
+7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ysyx_25030077_gpr..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ysyx_25030077_gpr.
+Performed a total of 0 changes.
+
+7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_gpr'.
+Removed a total of 0 cells.
+
+7.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_gpr..
+Removed 0 unused cells and 1475 unused wires.
+<suppressed ~1475 debug messages>
+
+7.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+
+7.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ysyx_25030077_gpr..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+7.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ysyx_25030077_gpr.
+Performed a total of 0 changes.
+
+7.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_gpr'.
+Removed a total of 0 cells.
+
+7.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_gpr..
+
+7.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+
+7.16. Finished OPT passes. (There is nothing left to do.)
+
+8. Executing CLOCK_GATE pass (extract clock gating out of flip flops).
+Selected rising edge ICG \CLKGATE_X1 from Liberty file
+Converted 64 FFs.
+<suppressed ~88 debug messages>
+
+9. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell DFF_X1 (noninv, pins=4, area=4.52) is a direct match for cell type $_DFF_P_.
+  cell DFFR_X1 (noninv, pins=5, area=5.32) is a direct match for cell type $_DFF_PN0_.
+  cell DFFS_X1 (noninv, pins=5, area=5.32) is a direct match for cell type $_DFF_PN1_.
+  cell DFFRS_X1 (noninv, pins=6, area=6.38) is a direct match for cell type $_DFFSR_PNN_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \DFF_X1 _DFF_P_ (.CK( C), .D( D), .Q( Q), .QN(~Q));
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \DFFR_X1 _DFF_PN0_ (.CK( C), .D( D), .Q( Q), .QN(~Q), .RN( R));
+    \DFFS_X1 _DFF_PN1_ (.CK( C), .D( D), .Q( Q), .QN(~Q), .SN( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFE_NN_
+    unmapped dff cell: $_DFFE_NP_
+    unmapped dff cell: $_DFFE_PN_
+    unmapped dff cell: $_DFFE_PP_
+    unmapped dff cell: $_DFFSR_NNN_
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    \DFFRS_X1 _DFFSR_PNN_ (.CK( C), .D( D), .Q( Q), .QN(~Q), .RN( R), .SN( S));
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+9.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+<suppressed ~8 debug messages>
+Mapping DFF cells in module `\ysyx_25030077_gpr':
+  mapped 65 $_DFF_P_ cells to \DFF_X1 cells.
+
+10. Executing OPT pass (performing simple optimizations).
+
+10.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+
+10.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_gpr'.
+<suppressed ~84 debug messages>
+Removed a total of 28 cells.
+
+10.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ysyx_25030077_gpr..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+10.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ysyx_25030077_gpr.
+Performed a total of 0 changes.
+
+10.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_gpr'.
+Removed a total of 0 cells.
+
+10.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+10.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_gpr..
+Removed 0 unused cells and 28 unused wires.
+<suppressed ~1 debug messages>
+
+10.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+
+10.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+10.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ysyx_25030077_gpr..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+10.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ysyx_25030077_gpr.
+Performed a total of 0 changes.
+
+10.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_gpr'.
+Removed a total of 0 cells.
+
+10.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+10.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_gpr..
+
+10.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_gpr.
+
+10.16. Finished OPT passes. (There is nothing left to do.)
+
+11. Executing ABC pass (technology mapping using ABC).
+
+11.1. Extracting gate netlist of module `\ysyx_25030077_gpr' to `/tmp/yosys-abc-SOrVwd/input.blif'..
+Extracted 305 gates and 391 wires to a netlist network with 84 inputs and 71 outputs.
+
+11.1.1. Executing ABC.
+Running ABC command: "/home/meowth/ysyx/ysyx-workbench/oss-cad-suite-linux-x64-20250830/oss-cad-suite/lib/yosys-abc" -s -f /tmp/yosys-abc-SOrVwd/abc.script 2>&1
+ABC: ABC command line: "source /tmp/yosys-abc-SOrVwd/abc.script".
+ABC: 
+ABC: + read_blif /tmp/yosys-abc-SOrVwd/input.blif 
+ABC: + read_lib -w /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.05 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "ANTENNA_X1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATETST_X1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATETST_X2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATETST_X4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATETST_X8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATE_X1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATE_X2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATE_X4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATE_X8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFRS_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFRS_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFR_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFR_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFS_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFS_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFF_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFF_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLH_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLH_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLL_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLL_X2".
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X2" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X4" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X8" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X16" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X32" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "LOGIC0_X1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "LOGIC1_X1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFRS_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFRS_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFR_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFR_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFS_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFS_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFF_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFF_X2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X16".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TINV_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "TLAT_X1".
+ABC: Library "NangateOpenCellLibrary" from "/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib" has 90 cells (44 skipped: 21 seq; 6 tri-state; 8 no func; 9 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.08 sec
+ABC: Memory =   11.38 MB. Time =     0.08 sec
+ABC: Warning: Detected 2 multi-output cells (for example, "FA_X1").
+ABC: + strash 
+ABC: + ifraig 
+ABC: + retime -D 1000.0 -M 6 
+ABC: + strash 
+ABC: + dch -f 
+ABC: + map -p -M 1 -D 1000.0 -f 
+ABC: + topo 
+ABC: + dnsize 
+ABC: + buffer -p 
+ABC: + upsize 
+ABC: + 
+ABC: + write_blif /tmp/yosys-abc-SOrVwd/output.blif 
+
+11.1.2. Re-integrating ABC results.
+ABC RESULTS:           AND2_X1 cells:       82
+ABC RESULTS:           AND2_X2 cells:        7
+ABC RESULTS:           AND2_X4 cells:        6
+ABC RESULTS:           AND3_X1 cells:       27
+ABC RESULTS:           AND3_X2 cells:        2
+ABC RESULTS:           AND3_X4 cells:        3
+ABC RESULTS:           AND4_X1 cells:       14
+ABC RESULTS:         AOI211_X1 cells:        3
+ABC RESULTS:         AOI211_X2 cells:        1
+ABC RESULTS:          AOI21_X1 cells:       21
+ABC RESULTS:          AOI21_X2 cells:        3
+ABC RESULTS:         AOI221_X1 cells:        6
+ABC RESULTS:         AOI221_X2 cells:        1
+ABC RESULTS:          AOI22_X1 cells:        6
+ABC RESULTS:           BUF_X16 cells:        1
+ABC RESULTS:            BUF_X2 cells:        1
+ABC RESULTS:           BUF_X32 cells:        1
+ABC RESULTS:            BUF_X4 cells:        1
+ABC RESULTS:         CLKBUF_X2 cells:        3
+ABC RESULTS:            INV_X1 cells:       33
+ABC RESULTS:           INV_X16 cells:        1
+ABC RESULTS:            INV_X2 cells:        2
+ABC RESULTS:           INV_X32 cells:       14
+ABC RESULTS:           MUX2_X1 cells:        3
+ABC RESULTS:           MUX2_X2 cells:        5
+ABC RESULTS:          NAND2_X1 cells:       24
+ABC RESULTS:          NAND2_X2 cells:        1
+ABC RESULTS:          NAND2_X4 cells:        2
+ABC RESULTS:          NAND3_X1 cells:       15
+ABC RESULTS:          NAND3_X2 cells:        2
+ABC RESULTS:          NAND3_X4 cells:        1
+ABC RESULTS:          NAND4_X1 cells:       15
+ABC RESULTS:           NOR2_X1 cells:       14
+ABC RESULTS:           NOR2_X2 cells:        5
+ABC RESULTS:           NOR2_X4 cells:       16
+ABC RESULTS:           NOR3_X1 cells:        3
+ABC RESULTS:           NOR3_X2 cells:        1
+ABC RESULTS:           NOR3_X4 cells:        1
+ABC RESULTS:           NOR4_X1 cells:        1
+ABC RESULTS:         OAI211_X1 cells:        8
+ABC RESULTS:         OAI211_X2 cells:        2
+ABC RESULTS:          OAI21_X1 cells:       18
+ABC RESULTS:          OAI21_X2 cells:        5
+ABC RESULTS:         OAI221_X1 cells:        3
+ABC RESULTS:          OAI22_X1 cells:        2
+ABC RESULTS:            OR2_X1 cells:       10
+ABC RESULTS:            OR2_X2 cells:        1
+ABC RESULTS:            OR2_X4 cells:        4
+ABC RESULTS:            OR3_X2 cells:        1
+ABC RESULTS:            OR4_X1 cells:        1
+ABC RESULTS:        internal signals:      236
+ABC RESULTS:           input signals:       84
+ABC RESULTS:          output signals:       71
+Removing temp directory.
+
+12. Executing HILOMAP pass (mapping to constant drivers).
+
+13. Executing SETUNDEF pass (replace undef values with defined constants).
+
+14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_gpr..
+Removed 0 unused cells and 390 unused wires.
+<suppressed ~235 debug messages>
+
+15. Executing Liberty frontend: /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib
+Imported 134 cell types from liberty file.
+
+16. Executing CHECK pass (checking for obvious problems).
+Checking module ysyx_25030077_gpr...
+Found and reported 0 problems.
+
+17. Printing statistics.
+
+=== ysyx_25030077_gpr ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+      716        - wires
+      716        - wire bits
+      249        - public wires
+      249        - public wire bits
+      185        - ports
+      185        - port bits
+      502 1.05E+03 cells
+       82   87.248   AND2_X1
+        7     9.31   AND2_X2
+        6   14.364   AND2_X4
+       27    35.91   AND3_X1
+        2    3.192   AND3_X2
+        3    8.778   AND3_X4
+       14   22.344   AND4_X1
+        3     3.99   AOI211_X1
+        1    2.394   AOI211_X2
+       21   22.344   AOI21_X1
+        3    5.586   AOI21_X2
+        6    9.576   AOI221_X1
+        1    2.926   AOI221_X2
+        6     7.98   AOI22_X1
+        1     6.65   BUF_X16
+        1    1.064   BUF_X2
+        1   13.034   BUF_X32
+        1    1.862   BUF_X4
+        3    3.192   CLKBUF_X2
+       33  114.114   CLKGATE_X1
+       65   293.93   DFF_X1
+       33   17.556   INV_X1
+        1    4.522   INV_X16
+        2    1.596   INV_X2
+       14  122.892   INV_X32
+        1    0.532   LOGIC0_X1
+        3    5.586   MUX2_X1
+        5    11.97   MUX2_X2
+       24   19.152   NAND2_X1
+        1     1.33   NAND2_X2
+        2    4.788   NAND2_X4
+       15    15.96   NAND3_X1
+        2    3.724   NAND3_X2
+        1    3.458   NAND3_X4
+       15    19.95   NAND4_X1
+       14   11.172   NOR2_X1
+        5     6.65   NOR2_X2
+       16   38.304   NOR2_X4
+        3    3.192   NOR3_X1
+        1    1.862   NOR3_X2
+        1    3.724   NOR3_X4
+        1     1.33   NOR4_X1
+        8    10.64   OAI211_X1
+        2    4.788   OAI211_X2
+       18   19.152   OAI21_X1
+        5     9.31   OAI21_X2
+        3    4.788   OAI221_X1
+        2     2.66   OAI22_X1
+       10    10.64   OR2_X1
+        1     1.33   OR2_X2
+        4    9.576   OR2_X4
+        1    1.596   OR3_X2
+        1    1.596   OR4_X1
+
+   Chip area for module '\ysyx_25030077_gpr': 1045.114000
+     of which used for sequential elements: 293.930000 (28.12%)
+
+18. Executing Verilog backend.
+Dumping module `\ysyx_25030077_gpr'.
+
+Warnings: 196 unique messages, 197 total
+End of script. Logfile hash: 4b85f99c9e, CPU: user 0.62s system 0.02s, MEM: 38.34 MB peak
+Yosys 0.56+197 (git sha1 d4c4b2106, clang++ 18.1.8 -fPIC -O3)
+Time spent: 35% 2x abc (0 sec), 12% 21x opt_expr (0 sec), ...

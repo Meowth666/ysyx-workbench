@@ -1,0 +1,48 @@
+
+/home/meowth/ysyx/ysyx-workbench/am-kernels/tests/cpu-tests/build/hello-riscv32-nemu.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+80000000 <_start>:
+80000000:	00000413          	li	s0,0
+80000004:	00009117          	auipc	sp,0x9
+80000008:	ffc10113          	addi	sp,sp,-4 # 80009000 <_end>
+8000000c:	060000ef          	jal	ra,8000006c <_trm_init>
+
+80000010 <main>:
+80000010:	ff010113          	addi	sp,sp,-16
+80000014:	00912223          	sw	s1,4(sp)
+80000018:	00112623          	sw	ra,12(sp)
+8000001c:	00812423          	sw	s0,8(sp)
+80000020:	00a00493          	li	s1,10
+80000024:	00000417          	auipc	s0,0x0
+80000028:	06840413          	addi	s0,s0,104 # 8000008c <_etext>
+8000002c:	04800513          	li	a0,72
+80000030:	00140413          	addi	s0,s0,1
+80000034:	02c000ef          	jal	ra,80000060 <putch>
+80000038:	00044503          	lbu	a0,0(s0)
+8000003c:	fe051ae3          	bnez	a0,80000030 <main+0x20>
+80000040:	fff48493          	addi	s1,s1,-1
+80000044:	fe0490e3          	bnez	s1,80000024 <main+0x14>
+80000048:	00c12083          	lw	ra,12(sp)
+8000004c:	00812403          	lw	s0,8(sp)
+80000050:	00412483          	lw	s1,4(sp)
+80000054:	00000513          	li	a0,0
+80000058:	01010113          	addi	sp,sp,16
+8000005c:	00008067          	ret
+
+80000060 <putch>:
+80000060:	a00007b7          	lui	a5,0xa0000
+80000064:	3ea78c23          	sb	a0,1016(a5) # a00003f8 <_end+0x1fff73f8>
+80000068:	00008067          	ret
+
+8000006c <_trm_init>:
+8000006c:	ff010113          	addi	sp,sp,-16
+80000070:	00000517          	auipc	a0,0x0
+80000074:	03850513          	addi	a0,a0,56 # 800000a8 <mainargs>
+80000078:	00112623          	sw	ra,12(sp)
+8000007c:	f95ff0ef          	jal	ra,80000010 <main>
+80000080:	00050513          	mv	a0,a0
+80000084:	00100073          	ebreak
+80000088:	0000006f          	j	80000088 <_trm_init+0x1c>

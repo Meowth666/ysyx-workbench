@@ -1,0 +1,7 @@
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/e_SoC/src/main/scala/ysyx_25030077_arbiter.scala:200:5: ')' expected but 'val' found.[0m
+[0m[[0m[31merror[0m] [0m[0m    val rdata_sram = MuxCase(0.U, Seq([0m
+[0m[[0m[31merror[0m] [0m[0m    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/e_SoC/src/main/scala/ysyx_25030077_arbiter.scala:245:7: ';' expected but '.' found.[0m
+[0m[[0m[31merror[0m] [0m[0m    io.inst         := inst_reg[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m

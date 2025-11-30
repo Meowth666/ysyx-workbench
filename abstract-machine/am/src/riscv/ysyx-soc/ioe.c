@@ -1,0 +1,84 @@
+#include <am.h>
+#include <klib-macros.h>
+#define WIDTH 640
+#define HIGH 480
+#define VGA 0x21000000
+
+void __am_timer_init();
+void __am_keymap_init();
+
+void __am_timer_rtc(AM_TIMER_RTC_T *);
+void __am_timer_uptime(AM_TIMER_UPTIME_T *);
+void __am_input_keybrd(AM_INPUT_KEYBRD_T *);
+
+static void __am_gpu_config(AM_GPU_CONFIG_T *cfg){
+    cfg->present = true;
+    cfg->has_accel = false;
+    cfg->width = WIDTH;
+    cfg->height = HIGH;
+    cfg->vmemsz = 0;
+}
+
+void __am_gpu_status(AM_GPU_STATUS_T *status){
+  status->ready = true;
+}
+
+void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl){
+    int i,j;
+    ctl->sync = true;
+    uint32_t *p = (uint32_t *)ctl->pixels; 
+    uint32_t *fb = (uint32_t *)(uintptr_t)(VGA + (ctl->y*WIDTH + ctl->x) * sizeof(uint32_t));
+    for(i = 0;i < ctl->h;i++){
+        for(j = 0;j < ctl->w;j++)
+            fb[j] = *p++;
+        fb += WIDTH;
+    }
+}
+
+
+static void __am_timer_config(AM_TIMER_CONFIG_T *cfg) { cfg->present = true; cfg->has_rtc = true; }
+static void __am_input_config(AM_INPUT_CONFIG_T *cfg) { cfg->present = true;  }
+static void __am_uart_config(AM_UART_CONFIG_T *cfg)   { cfg->present = true;  }
+#define UART_BASE  0x10000000
+#define UART_LSR   5
+#define UART_LS_DR 0x01
+#define UART_RX    0x0      // 线路状态寄存器（Line Status Register）
+
+static void __am_uart_rx(AM_UART_RX_T *rx) {
+  volatile uint8_t *lsr = (volatile uint8_t *)(UART_BASE + UART_LSR);
+  if (*lsr & UART_LS_DR) {
+    // putch(*lsr);
+    volatile uint8_t *rdata = (volatile uint8_t *)(UART_BASE + UART_RX);
+    rx->data = *rdata;
+  } 
+  else {
+    rx->data = 0xff;
+  }
+}
+
+typedef void (*handler_t)(void *buf);
+static void *lut[128] = {
+  [AM_TIMER_CONFIG] = __am_timer_config,
+  [AM_TIMER_RTC   ] = __am_timer_rtc,
+  [AM_TIMER_UPTIME] = __am_timer_uptime,
+  [AM_INPUT_CONFIG] = __am_input_config,
+  [AM_INPUT_KEYBRD] = __am_input_keybrd,
+  [AM_UART_CONFIG]  = __am_uart_config,
+  [AM_UART_RX]      = __am_uart_rx,
+  [AM_GPU_CONFIG]   = __am_gpu_config,
+  [AM_GPU_FBDRAW]   = __am_gpu_fbdraw,
+  [AM_GPU_STATUS  ] = __am_gpu_status,
+};
+
+static void fail(void *buf) { panic("access nonexist register"); }
+
+bool ioe_init() {
+  for (int i = 0; i < LENGTH(lut); i++)
+    if (!lut[i]) lut[i] = fail;
+  __am_timer_init();
+  __am_keymap_init();
+  return true;
+}
+
+void ioe_read (int reg, void *buf) { ((handler_t)lut[reg])(buf); }
+void ioe_write(int reg, void *buf) { ((handler_t)lut[reg])(buf); }

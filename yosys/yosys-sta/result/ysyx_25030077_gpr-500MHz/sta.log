@@ -1,0 +1,1126 @@
+I20251129 18:10:08.423889 117183 Sta.cc:383] read verilog file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077_gpr-500MHz/ysyx_25030077_gpr.netlist.fixed.v start
+I20251129 18:10:08.424074 117183 VerilogParserRustC.cc:41] load verilog file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077_gpr-500MHz/ysyx_25030077_gpr.netlist.fixed.v
+r str /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077_gpr-500MHz/ysyx_25030077_gpr.netlist.fixed.v
+I20251129 18:10:08.427042 117183 Sta.cc:391] read verilog end
+I20251129 18:10:08.427063 117183 Sta.cc:309] load lib start
+I20251129 18:10:08.427889 117187 Sta.cc:287] read liberty /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib start 
+I20251129 18:10:08.428491 117187 LibParserRustC.cc:1285] load liberty file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib
+rust read lib file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib
+I20251129 18:10:08.871451 117187 LibParserRustC.cc:1294] load liberty file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib success.
+I20251129 18:10:08.871483 117187 Sta.cc:297] read liberty /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib end 
+I20251129 18:10:08.871753 117183 Sta.cc:328] load lib end
+I20251129 18:10:08.871796 117183 Sta.cc:417] link design ysyx_25030077_gpr start
+I20251129 18:10:08.872838 117248 LibParserRustC.cc:1304] link liberty file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib start.
+I20251129 18:10:08.874240 117248 LibParserRustC.cc:666] unkown attri name: technology in /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib line no 45
+I20251129 18:10:10.303813 117248 LibParserRustC.cc:1310] link liberty file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib success.
+I20251129 18:10:10.310410 117183 Sta.cc:889] assign io_rdata_rs1[1] = io_rdata_rs1[10]
+I20251129 18:10:10.310434 117183 Sta.cc:889] assign io_rdata_rs1[2] = io_rdata_rs1[10]
+I20251129 18:10:10.310452 117183 Sta.cc:889] assign io_rdata_rs1[3] = io_rdata_rs1[10]
+I20251129 18:10:10.310465 117183 Sta.cc:889] assign io_rdata_rs1[4] = io_rdata_rs1[10]
+I20251129 18:10:10.310478 117183 Sta.cc:889] assign io_rdata_rs1[5] = io_rdata_rs1[10]
+I20251129 18:10:10.310492 117183 Sta.cc:889] assign io_rdata_rs1[6] = io_rdata_rs1[10]
+I20251129 18:10:10.310510 117183 Sta.cc:889] assign io_rdata_rs1[7] = io_rdata_rs1[10]
+I20251129 18:10:10.310529 117183 Sta.cc:889] assign io_rdata_rs1[8] = io_rdata_rs1[10]
+I20251129 18:10:10.310547 117183 Sta.cc:889] assign io_rdata_rs1[9] = io_rdata_rs1[10]
+I20251129 18:10:10.310565 117183 Sta.cc:889] assign io_rdata_rs1[11] = io_rdata_rs1[10]
+I20251129 18:10:10.310583 117183 Sta.cc:889] assign io_rdata_rs1[12] = io_rdata_rs1[10]
+I20251129 18:10:10.310601 117183 Sta.cc:889] assign io_rdata_rs1[13] = io_rdata_rs1[10]
+I20251129 18:10:10.310619 117183 Sta.cc:889] assign io_rdata_rs1[14] = io_rdata_rs1[10]
+I20251129 18:10:10.310640 117183 Sta.cc:889] assign io_rdata_rs1[15] = io_rdata_rs1[10]
+I20251129 18:10:10.310658 117183 Sta.cc:889] assign io_rdata_rs1[16] = io_rdata_rs1[10]
+I20251129 18:10:10.310678 117183 Sta.cc:889] assign io_rdata_rs1[17] = io_rdata_rs1[10]
+I20251129 18:10:10.310694 117183 Sta.cc:889] assign io_rdata_rs1[18] = io_rdata_rs1[10]
+I20251129 18:10:10.310714 117183 Sta.cc:889] assign io_rdata_rs1[19] = io_rdata_rs1[10]
+I20251129 18:10:10.310730 117183 Sta.cc:889] assign io_rdata_rs1[20] = io_rdata_rs1[10]
+I20251129 18:10:10.310748 117183 Sta.cc:889] assign io_rdata_rs1[21] = io_rdata_rs1[10]
+I20251129 18:10:10.310766 117183 Sta.cc:889] assign io_rdata_rs1[22] = io_rdata_rs1[10]
+I20251129 18:10:10.310784 117183 Sta.cc:889] assign io_rdata_rs1[23] = io_rdata_rs1[10]
+I20251129 18:10:10.310803 117183 Sta.cc:889] assign io_rdata_rs1[24] = io_rdata_rs1[10]
+I20251129 18:10:10.310822 117183 Sta.cc:889] assign io_rdata_rs1[25] = io_rdata_rs1[10]
+I20251129 18:10:10.310839 117183 Sta.cc:889] assign io_rdata_rs1[26] = io_rdata_rs1[10]
+I20251129 18:10:10.310858 117183 Sta.cc:889] assign io_rdata_rs1[27] = io_rdata_rs1[10]
+I20251129 18:10:10.310876 117183 Sta.cc:889] assign io_rdata_rs1[28] = io_rdata_rs1[10]
+I20251129 18:10:10.310896 117183 Sta.cc:889] assign io_rdata_rs1[29] = io_rdata_rs1[10]
+I20251129 18:10:10.311044 117183 Sta.cc:889] assign io_rdata_rs1[30] = io_rdata_rs1[10]
+I20251129 18:10:10.311064 117183 Sta.cc:889] assign io_rdata_rs1[31] = io_rdata_rs1[10]
+I20251129 18:10:10.311084 117183 Sta.cc:889] assign io_rdata_rs2[1] = io_rdata_rs1[10]
+I20251129 18:10:10.311101 117183 Sta.cc:889] assign io_rdata_rs2[2] = io_rdata_rs1[10]
+I20251129 18:10:10.311120 117183 Sta.cc:889] assign io_rdata_rs2[3] = io_rdata_rs1[10]
+I20251129 18:10:10.311136 117183 Sta.cc:889] assign io_rdata_rs2[4] = io_rdata_rs1[10]
+I20251129 18:10:10.311154 117183 Sta.cc:889] assign io_rdata_rs2[5] = io_rdata_rs1[10]
+I20251129 18:10:10.311172 117183 Sta.cc:889] assign io_rdata_rs2[6] = io_rdata_rs1[10]
+I20251129 18:10:10.311189 117183 Sta.cc:889] assign io_rdata_rs2[7] = io_rdata_rs1[10]
+I20251129 18:10:10.311208 117183 Sta.cc:889] assign io_rdata_rs2[8] = io_rdata_rs1[10]
+I20251129 18:10:10.311225 117183 Sta.cc:889] assign io_rdata_rs2[9] = io_rdata_rs1[10]
+I20251129 18:10:10.311245 117183 Sta.cc:889] assign io_rdata_rs2[10] = io_rdata_rs1[10]
+I20251129 18:10:10.311264 117183 Sta.cc:889] assign io_rdata_rs2[11] = io_rdata_rs1[10]
+I20251129 18:10:10.311285 117183 Sta.cc:889] assign io_rdata_rs2[12] = io_rdata_rs1[10]
+I20251129 18:10:10.311302 117183 Sta.cc:889] assign io_rdata_rs2[13] = io_rdata_rs1[10]
+I20251129 18:10:10.311321 117183 Sta.cc:889] assign io_rdata_rs2[14] = io_rdata_rs1[10]
+I20251129 18:10:10.311339 117183 Sta.cc:889] assign io_rdata_rs2[15] = io_rdata_rs1[10]
+I20251129 18:10:10.311357 117183 Sta.cc:889] assign io_rdata_rs2[16] = io_rdata_rs1[10]
+I20251129 18:10:10.311375 117183 Sta.cc:889] assign io_rdata_rs2[17] = io_rdata_rs1[10]
+I20251129 18:10:10.311393 117183 Sta.cc:889] assign io_rdata_rs2[18] = io_rdata_rs1[10]
+I20251129 18:10:10.311411 117183 Sta.cc:889] assign io_rdata_rs2[19] = io_rdata_rs1[10]
+I20251129 18:10:10.311429 117183 Sta.cc:889] assign io_rdata_rs2[20] = io_rdata_rs1[10]
+I20251129 18:10:10.311448 117183 Sta.cc:889] assign io_rdata_rs2[21] = io_rdata_rs1[10]
+I20251129 18:10:10.311466 117183 Sta.cc:889] assign io_rdata_rs2[22] = io_rdata_rs1[10]
+I20251129 18:10:10.311484 117183 Sta.cc:889] assign io_rdata_rs2[23] = io_rdata_rs1[10]
+I20251129 18:10:10.311501 117183 Sta.cc:889] assign io_rdata_rs2[24] = io_rdata_rs1[10]
+I20251129 18:10:10.311517 117183 Sta.cc:889] assign io_rdata_rs2[25] = io_rdata_rs1[10]
+I20251129 18:10:10.311533 117183 Sta.cc:889] assign io_rdata_rs2[26] = io_rdata_rs1[10]
+I20251129 18:10:10.311551 117183 Sta.cc:889] assign io_rdata_rs2[27] = io_rdata_rs1[10]
+I20251129 18:10:10.311568 117183 Sta.cc:889] assign io_rdata_rs2[28] = io_rdata_rs1[10]
+I20251129 18:10:10.311583 117183 Sta.cc:889] assign io_rdata_rs2[29] = io_rdata_rs1[10]
+I20251129 18:10:10.311599 117183 Sta.cc:889] assign io_rdata_rs2[30] = io_rdata_rs1[10]
+I20251129 18:10:10.311614 117183 Sta.cc:889] assign io_rdata_rs2[31] = io_rdata_rs1[10]
+I20251129 18:10:10.312107 117183 Sta.cc:1106] link design ysyx_25030077_gpr end
+I20251129 18:10:10.312116 117183 Sta.cc:1108] design ysyx_25030077_gpr inst num: 490
+I20251129 18:10:10.312129 117183 Sta.cc:1110] design ysyx_25030077_gpr net num: 704
+I20251129 18:10:10.312136 117183 Sta.cc:1112] design ysyx_25030077_gpr port num: 185
+I20251129 18:10:10.312163 117183 Sta.cc:181] read sdc /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/default.sdc start 
+I20251129 18:10:10.314028 117183 CmdCreateClock.cc:124] create clock core_clock for pin/port: clock
+I20251129 18:10:10.314066 117183 Sta.cc:198] read sdc /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/default.sdc end 
+I20251129 18:10:10.314105 117183 StaBuildGraph.cc:315] build graph start
+I20251129 18:10:10.320698 117183 StaBuildGraph.cc:216] net io_mem_Req_ready has no driver.
+I20251129 18:10:10.320731 117183 StaBuildGraph.cc:216] net io_b_ready has no driver.
+I20251129 18:10:10.320739 117183 StaBuildGraph.cc:216] net io_b_valid has no driver.
+I20251129 18:10:10.322746 117183 StaBuildGraph.cc:216] net io_gpr_b_resp[0] has no driver.
+I20251129 18:10:10.322803 117183 StaBuildGraph.cc:216] net io_gpr_b_resp[1] has no driver.
+I20251129 18:10:10.322954 117183 StaBuildGraph.cc:216] net io_wdata_rd[1] has no driver.
+I20251129 18:10:10.322966 117183 StaBuildGraph.cc:216] net io_wdata_rd[2] has no driver.
+I20251129 18:10:10.322971 117183 StaBuildGraph.cc:216] net io_wdata_rd[3] has no driver.
+I20251129 18:10:10.322978 117183 StaBuildGraph.cc:216] net io_wdata_rd[4] has no driver.
+I20251129 18:10:10.322983 117183 StaBuildGraph.cc:216] net io_wdata_rd[5] has no driver.
+I20251129 18:10:10.322988 117183 StaBuildGraph.cc:216] net io_wdata_rd[6] has no driver.
+I20251129 18:10:10.322991 117183 StaBuildGraph.cc:216] net io_wdata_rd[7] has no driver.
+I20251129 18:10:10.322997 117183 StaBuildGraph.cc:216] net io_wdata_rd[8] has no driver.
+I20251129 18:10:10.323002 117183 StaBuildGraph.cc:216] net io_wdata_rd[9] has no driver.
+I20251129 18:10:10.323007 117183 StaBuildGraph.cc:216] net io_wdata_rd[10] has no driver.
+I20251129 18:10:10.323014 117183 StaBuildGraph.cc:216] net io_wdata_rd[11] has no driver.
+I20251129 18:10:10.323019 117183 StaBuildGraph.cc:216] net io_wdata_rd[12] has no driver.
+I20251129 18:10:10.323024 117183 StaBuildGraph.cc:216] net io_wdata_rd[13] has no driver.
+I20251129 18:10:10.323027 117183 StaBuildGraph.cc:216] net io_wdata_rd[14] has no driver.
+I20251129 18:10:10.323032 117183 StaBuildGraph.cc:216] net io_wdata_rd[15] has no driver.
+I20251129 18:10:10.323037 117183 StaBuildGraph.cc:216] net io_wdata_rd[16] has no driver.
+I20251129 18:10:10.323042 117183 StaBuildGraph.cc:216] net io_wdata_rd[17] has no driver.
+I20251129 18:10:10.323047 117183 StaBuildGraph.cc:216] net io_wdata_rd[18] has no driver.
+I20251129 18:10:10.323052 117183 StaBuildGraph.cc:216] net io_wdata_rd[19] has no driver.
+I20251129 18:10:10.323057 117183 StaBuildGraph.cc:216] net io_wdata_rd[20] has no driver.
+I20251129 18:10:10.323062 117183 StaBuildGraph.cc:216] net io_wdata_rd[21] has no driver.
+I20251129 18:10:10.323066 117183 StaBuildGraph.cc:216] net io_wdata_rd[22] has no driver.
+I20251129 18:10:10.323071 117183 StaBuildGraph.cc:216] net io_wdata_rd[23] has no driver.
+I20251129 18:10:10.323077 117183 StaBuildGraph.cc:216] net io_wdata_rd[24] has no driver.
+I20251129 18:10:10.323082 117183 StaBuildGraph.cc:216] net io_wdata_rd[25] has no driver.
+I20251129 18:10:10.323087 117183 StaBuildGraph.cc:216] net io_wdata_rd[26] has no driver.
+I20251129 18:10:10.323093 117183 StaBuildGraph.cc:216] net io_wdata_rd[27] has no driver.
+I20251129 18:10:10.323098 117183 StaBuildGraph.cc:216] net io_wdata_rd[28] has no driver.
+I20251129 18:10:10.323102 117183 StaBuildGraph.cc:216] net io_wdata_rd[29] has no driver.
+I20251129 18:10:10.323107 117183 StaBuildGraph.cc:216] net io_wdata_rd[30] has no driver.
+I20251129 18:10:10.323112 117183 StaBuildGraph.cc:216] net io_wdata_rd[31] has no driver.
+I20251129 18:10:10.323168 117183 StaBuildGraph.cc:216] net io_rdata_rs1[1] has no driver.
+I20251129 18:10:10.323174 117183 StaBuildGraph.cc:216] net io_rdata_rs1[2] has no driver.
+I20251129 18:10:10.323179 117183 StaBuildGraph.cc:216] net io_rdata_rs1[3] has no driver.
+I20251129 18:10:10.323184 117183 StaBuildGraph.cc:216] net io_rdata_rs1[4] has no driver.
+I20251129 18:10:10.323189 117183 StaBuildGraph.cc:216] net io_rdata_rs1[5] has no driver.
+I20251129 18:10:10.323194 117183 StaBuildGraph.cc:216] net io_rdata_rs1[6] has no driver.
+I20251129 18:10:10.323199 117183 StaBuildGraph.cc:216] net io_rdata_rs1[7] has no driver.
+I20251129 18:10:10.323202 117183 StaBuildGraph.cc:216] net io_rdata_rs1[8] has no driver.
+I20251129 18:10:10.323207 117183 StaBuildGraph.cc:216] net io_rdata_rs1[9] has no driver.
+I20251129 18:10:10.323215 117183 StaBuildGraph.cc:216] net io_rdata_rs1[11] has no driver.
+I20251129 18:10:10.323220 117183 StaBuildGraph.cc:216] net io_rdata_rs1[12] has no driver.
+I20251129 18:10:10.323225 117183 StaBuildGraph.cc:216] net io_rdata_rs1[13] has no driver.
+I20251129 18:10:10.323228 117183 StaBuildGraph.cc:216] net io_rdata_rs1[14] has no driver.
+I20251129 18:10:10.323233 117183 StaBuildGraph.cc:216] net io_rdata_rs1[15] has no driver.
+I20251129 18:10:10.323239 117183 StaBuildGraph.cc:216] net io_rdata_rs1[16] has no driver.
+I20251129 18:10:10.323256 117183 StaBuildGraph.cc:216] net io_rdata_rs1[17] has no driver.
+I20251129 18:10:10.323261 117183 StaBuildGraph.cc:216] net io_rdata_rs1[18] has no driver.
+I20251129 18:10:10.323266 117183 StaBuildGraph.cc:216] net io_rdata_rs1[19] has no driver.
+I20251129 18:10:10.323271 117183 StaBuildGraph.cc:216] net io_rdata_rs1[20] has no driver.
+I20251129 18:10:10.323276 117183 StaBuildGraph.cc:216] net io_rdata_rs1[21] has no driver.
+I20251129 18:10:10.323282 117183 StaBuildGraph.cc:216] net io_rdata_rs1[22] has no driver.
+I20251129 18:10:10.323287 117183 StaBuildGraph.cc:216] net io_rdata_rs1[23] has no driver.
+I20251129 18:10:10.323297 117183 StaBuildGraph.cc:216] net io_rdata_rs1[24] has no driver.
+I20251129 18:10:10.323307 117183 StaBuildGraph.cc:216] net io_rdata_rs1[25] has no driver.
+I20251129 18:10:10.323316 117183 StaBuildGraph.cc:216] net io_rdata_rs1[26] has no driver.
+I20251129 18:10:10.323326 117183 StaBuildGraph.cc:216] net io_rdata_rs1[27] has no driver.
+I20251129 18:10:10.323333 117183 StaBuildGraph.cc:216] net io_rdata_rs1[28] has no driver.
+I20251129 18:10:10.323343 117183 StaBuildGraph.cc:216] net io_rdata_rs1[29] has no driver.
+I20251129 18:10:10.323352 117183 StaBuildGraph.cc:216] net io_rdata_rs1[30] has no driver.
+I20251129 18:10:10.323362 117183 StaBuildGraph.cc:216] net io_rdata_rs1[31] has no driver.
+I20251129 18:10:10.323423 117183 StaBuildGraph.cc:216] net io_rdata_rs2[1] has no driver.
+I20251129 18:10:10.323432 117183 StaBuildGraph.cc:216] net io_rdata_rs2[2] has no driver.
+I20251129 18:10:10.323441 117183 StaBuildGraph.cc:216] net io_rdata_rs2[3] has no driver.
+I20251129 18:10:10.323450 117183 StaBuildGraph.cc:216] net io_rdata_rs2[4] has no driver.
+I20251129 18:10:10.323459 117183 StaBuildGraph.cc:216] net io_rdata_rs2[5] has no driver.
+I20251129 18:10:10.323468 117183 StaBuildGraph.cc:216] net io_rdata_rs2[6] has no driver.
+I20251129 18:10:10.323478 117183 StaBuildGraph.cc:216] net io_rdata_rs2[7] has no driver.
+I20251129 18:10:10.323486 117183 StaBuildGraph.cc:216] net io_rdata_rs2[8] has no driver.
+I20251129 18:10:10.323496 117183 StaBuildGraph.cc:216] net io_rdata_rs2[9] has no driver.
+I20251129 18:10:10.323506 117183 StaBuildGraph.cc:216] net io_rdata_rs2[10] has no driver.
+I20251129 18:10:10.323514 117183 StaBuildGraph.cc:216] net io_rdata_rs2[11] has no driver.
+I20251129 18:10:10.323525 117183 StaBuildGraph.cc:216] net io_rdata_rs2[12] has no driver.
+I20251129 18:10:10.323534 117183 StaBuildGraph.cc:216] net io_rdata_rs2[13] has no driver.
+I20251129 18:10:10.323544 117183 StaBuildGraph.cc:216] net io_rdata_rs2[14] has no driver.
+I20251129 18:10:10.323552 117183 StaBuildGraph.cc:216] net io_rdata_rs2[15] has no driver.
+I20251129 18:10:10.323562 117183 StaBuildGraph.cc:216] net io_rdata_rs2[16] has no driver.
+I20251129 18:10:10.323571 117183 StaBuildGraph.cc:216] net io_rdata_rs2[17] has no driver.
+I20251129 18:10:10.323580 117183 StaBuildGraph.cc:216] net io_rdata_rs2[18] has no driver.
+I20251129 18:10:10.323589 117183 StaBuildGraph.cc:216] net io_rdata_rs2[19] has no driver.
+I20251129 18:10:10.323598 117183 StaBuildGraph.cc:216] net io_rdata_rs2[20] has no driver.
+I20251129 18:10:10.323608 117183 StaBuildGraph.cc:216] net io_rdata_rs2[21] has no driver.
+I20251129 18:10:10.323617 117183 StaBuildGraph.cc:216] net io_rdata_rs2[22] has no driver.
+I20251129 18:10:10.323626 117183 StaBuildGraph.cc:216] net io_rdata_rs2[23] has no driver.
+I20251129 18:10:10.323635 117183 StaBuildGraph.cc:216] net io_rdata_rs2[24] has no driver.
+I20251129 18:10:10.323645 117183 StaBuildGraph.cc:216] net io_rdata_rs2[25] has no driver.
+I20251129 18:10:10.323654 117183 StaBuildGraph.cc:216] net io_rdata_rs2[26] has no driver.
+I20251129 18:10:10.323663 117183 StaBuildGraph.cc:216] net io_rdata_rs2[27] has no driver.
+I20251129 18:10:10.323670 117183 StaBuildGraph.cc:216] net io_rdata_rs2[28] has no driver.
+I20251129 18:10:10.323680 117183 StaBuildGraph.cc:216] net io_rdata_rs2[29] has no driver.
+I20251129 18:10:10.323690 117183 StaBuildGraph.cc:216] net io_rdata_rs2[30] has no driver.
+I20251129 18:10:10.323707 117183 StaBuildGraph.cc:216] net io_rdata_rs2[31] has no driver.
+I20251129 18:10:10.324198 117183 StaBuildGraph.cc:332] build graph end
+I20251129 18:10:10.324281 117183 Sta.cc:2834] update timing start
+I20251129 18:10:10.324635 117183 StaApplySdc.cc:698] apply sdc start
+I20251129 18:10:10.324656 117183 StaApplySdc.cc:729] apply sdc end
+I20251129 18:10:10.324671 117183 StaClockPropagation.cc:324] ideal clock propagation start
+I20251129 18:10:10.324685 117183 StaClockPropagation.cc:354] clock propagation clock num: 1
+I20251129 18:10:10.324723 117183 StaClockPropagation.cc:203] clock propagate end to vertex regs_9_$_SDFFE_PP0P__Q:CK
+I20251129 18:10:10.325309 117183 StaClockPropagation.cc:422] ideal clock propagation end
+I20251129 18:10:10.325321 117183 StaCheck.cc:129] found loop fwd start
+I20251129 18:10:10.325924 117183 StaCheck.cc:148] found loop fwd end
+I20251129 18:10:10.325935 117183 StaCheck.cc:150] found loop bwd start
+I20251129 18:10:10.326336 117183 StaCheck.cc:172] found loop bwd end
+I20251129 18:10:10.326382 117183 StaClockSlewDelayPropagation.cc:112] clock slew delay propagation start
+I20251129 18:10:10.326390 117183 StaClockSlewDelayPropagation.cc:130] propagating current clock queue vertexes number is 1
+I20251129 18:10:10.326426 117183 StaClockSlewDelayPropagation.cc:130] propagating current clock queue vertexes number is 34
+I20251129 18:10:10.326620 117183 StaClockSlewDelayPropagation.cc:130] propagating current clock queue vertexes number is 33
+I20251129 18:10:10.326678 117183 StaClockSlewDelayPropagation.cc:130] propagating current clock queue vertexes number is 64
+I20251129 18:10:10.327160 117183 StaClockSlewDelayPropagation.cc:163] clock slew delay propagation end
+I20251129 18:10:10.327188 117183 StaClockSlewDelayPropagation.cc:166] clock slew delay propagation memory usage 0MB
+I20251129 18:10:10.327203 117183 StaClockSlewDelayPropagation.cc:169] clock slew delay propagation time elapsed 0.000821s
+I20251129 18:10:10.327557 117183 StaClockPropagation.cc:326] propagated(kNormal) clock propagation start
+I20251129 18:10:10.327566 117183 StaClockPropagation.cc:354] clock propagation clock num: 1
+I20251129 18:10:10.327574 117183 StaClockPropagation.cc:424] propagated(kNormal) clock propagation end
+I20251129 18:10:10.327585 117183 StaApplySdc.cc:698] apply sdc start
+I20251129 18:10:10.327592 117183 StaApplySdc.cc:729] apply sdc end
+I20251129 18:10:10.327602 117183 StaClockPropagation.cc:328] propagated(kGenerated) clock propagation start
+I20251129 18:10:10.327611 117183 StaClockPropagation.cc:354] clock propagation clock num: 1
+I20251129 18:10:10.327618 117183 StaClockPropagation.cc:426] propagated(kGenerated) clock propagation end
+I20251129 18:10:10.327627 117183 StaApplySdc.cc:698] apply sdc start
+I20251129 18:10:10.327636 117183 StaApplySdc.cc:729] apply sdc end
+I20251129 18:10:10.327646 117183 StaBuildPropTag.cc:325] build propagation tag start
+I20251129 18:10:10.327654 117183 StaBuildPropTag.cc:338] build propagation tag end
+I20251129 18:10:10.327663 117183 StaDataPropagation.cc:676] data fwd propagation start
+I20251129 18:10:10.327690 117183 StaDataPropagationBFS.cc:166] data fwd propagation bfs start
+I20251129 18:10:10.327783 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 117
+I20251129 18:10:10.328537 117255 StaDataPropagationBFS.cc:82] Thread 140406633932352 date fwd propagate found start vertex.io_pc_next[1]
+I20251129 18:10:10.328548 117258 StaDataPropagationBFS.cc:82] Thread 140406608754240 date fwd propagate found start vertex.io_pc_next[4]
+I20251129 18:10:10.328521 117249 StaDataPropagationBFS.cc:82] Thread 140406424114752 date fwd propagate found start vertex.io_mem_Req_valid
+I20251129 18:10:10.328539 117259 StaDataPropagationBFS.cc:82] Thread 140406600361536 date fwd propagate found start vertex.io_pc_next[3]
+I20251129 18:10:10.328531 117253 StaDataPropagationBFS.cc:82] Thread 140406650717760 date fwd propagate found start vertex.io_pc_next[0]
+I20251129 18:10:10.328549 117250 StaDataPropagationBFS.cc:82] Thread 140406432507456 date fwd propagate found start vertex.io_pc_next[6]
+I20251129 18:10:10.328538 117256 StaDataPropagationBFS.cc:82] Thread 140406625539648 date fwd propagate found start vertex.io_pc_next[2]
+I20251129 18:10:10.328528 117252 StaDataPropagationBFS.cc:82] Thread 140406449292864 date fwd propagate found start vertex.io_ifu_Req_ready
+[0;31mE20251129 18:10:10.328696 117271 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251129 18:10:10.328712 117264 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251129 18:10:10.328732 117260 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251129 18:10:10.328739 117270 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251129 18:10:10.328693 117278 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[mI20251129 18:10:10.328549 117254 StaDataPropagationBFS.cc:82] Thread 140406642325056 date fwd propagate found start vertex.io_pc_next[5]
+[0;31mE20251129 18:10:10.328730 117257 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[mI20251129 18:10:10.328521 117280 StaDataPropagationBFS.cc:82] Thread 140406390543936 date fwd propagate found start vertex.reset
+[0;31mE20251129 18:10:10.328694 117262 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251129 18:10:10.328706 117265 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251129 18:10:10.328737 117261 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251129 18:10:10.328725 117266 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[mI20251129 18:10:10.330240 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 238
+I20251129 18:10:10.331956 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 152
+I20251129 18:10:10.333596 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 160
+I20251129 18:10:10.334951 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 71
+I20251129 18:10:10.338508 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 217
+I20251129 18:10:10.340526 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 119
+I20251129 18:10:10.341746 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 192
+I20251129 18:10:10.343176 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 76
+I20251129 18:10:10.346724 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 97
+I20251129 18:10:10.348858 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 28
+I20251129 18:10:10.350910 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 29
+I20251129 18:10:10.352285 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 9
+I20251129 18:10:10.357020 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 10
+I20251129 18:10:10.358894 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.360671 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.362025 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.363006 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.363960 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.364889 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.365856 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.366842 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.367801 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.368749 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.370643 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.373134 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.374567 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.376089 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.377170 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.378163 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.379175 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.380096 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.381074 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.382025 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.382927 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.383888 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.384862 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.386061 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.388288 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.389760 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.391356 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.392699 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.393787 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.394754 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.395699 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.396628 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.397570 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.398682 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.399624 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.400547 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.401454 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.402709 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.404932 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.406214 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.407253 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251129 18:10:10.408233 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 5
+I20251129 18:10:10.409226 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 5
+I20251129 18:10:10.410302 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 33
+I20251129 18:10:10.414145 117183 StaDataPropagationBFS.cc:229] data fwd propagation bfs end
+I20251129 18:10:10.414402 117183 StaDataPropagationBFS.cc:232] data fwd propagation bfs memory usage 598.36MB
+I20251129 18:10:10.414434 117183 StaDataPropagationBFS.cc:234] data fwd propagation bfs time elapsed 0.086744s
+I20251129 18:10:10.414443 117183 StaDataPropagation.cc:695] data fwd propagation end
+I20251129 18:10:10.414453 117183 StaDataPropagation.cc:676] data fwd propagation start
+I20251129 18:10:10.414477 117183 StaDataPropagationBFS.cc:166] data fwd propagation bfs start
+I20251129 18:10:10.414605 117183 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 1
+I20251129 18:10:10.415772 117183 StaDataPropagationBFS.cc:229] data fwd propagation bfs end
+I20251129 18:10:10.415875 117183 StaDataPropagationBFS.cc:232] data fwd propagation bfs memory usage 0MB
+I20251129 18:10:10.415894 117183 StaDataPropagationBFS.cc:234] data fwd propagation bfs time elapsed 0.001416s
+I20251129 18:10:10.415903 117183 StaDataPropagation.cc:695] data fwd propagation end
+I20251129 18:10:10.415915 117183 StaAnalyze.cc:557] analyze timing path start
+I20251129 18:10:10.415923 117183 StaAnalyze.cc:565] analyze timing path end vertex 1 total 197 start
+[0;31mE20251129 18:10:10.415939 117183 StaAnalyze.cc:328] The output port io_ifu_Req_bits_addr[18] is not constrained
+[m[0;31mE20251129 18:10:10.415984 117183 StaAnalyze.cc:328] The output port io_ifu_Req_bits_addr[18] is not constrained
+[mI20251129 18:10:10.416000 117183 StaAnalyze.cc:599] analyze timing path end vertex 1 total 197 end
+[0;31mE20251129 18:10:10.416006 117183 StaAnalyze.cc:328] The output port io_ifu_Req_bits_addr[19] is not constrained
+[m[0;31mE20251129 18:10:10.416023 117183 StaAnalyze.cc:328] The output port io_ifu_Req_bits_addr[19] is not constrained
+[m[0;31mE20251129 18:10:10.416033 117183 StaAnalyze.cc:328] The output port io_ifu_Req_bits_addr[20] is not constrained
+[m[0;31mE20251129 18:10:10.416046 117183 StaAnalyze.cc:328] The output port io_ifu_Req_bits_addr[20] is not constrained
+[m[0;31mE20251129 18:10:10.416057 117183 StaAnalyze.cc:328] The output port io_ifu_Req_bits_addr[21] is not constrained
+[m[0;31mE20251129 18:10:10.416069 117183 StaAnalyze.cc:328] The output port io_ifu_Req_bits_addr[21] is not constrained
+[m[0;31mE20251129 18:10:10.416080 117183 StaAnalyze.cc:328] The output port io_ifu_Req_bits_addr[22] is not constrained
+[m[0;31mE20251129 18:10:10.416092 117183 StaAnalyze.cc:328] The output port io_ifu_Req_bits_addr[22] is not constrained
+[mI20251129 18:10:10.416105 117183 StaAnalyze.cc:565] analyze timing path end vertex 11 total 197 start
+I20251129 18:10:10.416110 117183 StaAnalyze.cc:599] analyze timing path end vertex 11 total 197 end
+I20251129 18:10:10.416119 117183 StaAnalyze.cc:565] analyze timing path end vertex 21 total 197 start
+I20251129 18:10:10.416124 117183 StaAnalyze.cc:599] analyze timing path end vertex 21 total 197 end
+I20251129 18:10:10.416131 117183 StaAnalyze.cc:565] analyze timing path end vertex 31 total 197 start
+I20251129 18:10:10.416137 117183 StaAnalyze.cc:599] analyze timing path end vertex 31 total 197 end
+I20251129 18:10:10.416142 117183 StaAnalyze.cc:565] analyze timing path end vertex 41 total 197 start
+I20251129 18:10:10.416147 117183 StaAnalyze.cc:599] analyze timing path end vertex 41 total 197 end
+I20251129 18:10:10.416154 117183 StaAnalyze.cc:565] analyze timing path end vertex 51 total 197 start
+I20251129 18:10:10.416160 117183 StaAnalyze.cc:599] analyze timing path end vertex 51 total 197 end
+I20251129 18:10:10.416167 117183 StaAnalyze.cc:565] analyze timing path end vertex 61 total 197 start
+I20251129 18:10:10.416172 117183 StaAnalyze.cc:599] analyze timing path end vertex 61 total 197 end
+I20251129 18:10:10.416179 117183 StaAnalyze.cc:565] analyze timing path end vertex 71 total 197 start
+I20251129 18:10:10.416215 117183 StaAnalyze.cc:599] analyze timing path end vertex 71 total 197 end
+I20251129 18:10:10.416229 117183 StaAnalyze.cc:565] analyze timing path end vertex 81 total 197 start
+I20251129 18:10:10.416239 117183 StaAnalyze.cc:599] analyze timing path end vertex 81 total 197 end
+I20251129 18:10:10.416247 117183 StaAnalyze.cc:565] analyze timing path end vertex 91 total 197 start
+I20251129 18:10:10.416257 117183 StaAnalyze.cc:599] analyze timing path end vertex 91 total 197 end
+I20251129 18:10:10.416275 117183 StaAnalyze.cc:565] analyze timing path end vertex 101 total 197 start
+I20251129 18:10:10.416286 117183 StaAnalyze.cc:599] analyze timing path end vertex 101 total 197 end
+I20251129 18:10:10.416321 117183 StaAnalyze.cc:565] analyze timing path end vertex 111 total 197 start
+I20251129 18:10:10.416332 117183 StaAnalyze.cc:599] analyze timing path end vertex 111 total 197 end
+I20251129 18:10:10.416370 117183 StaAnalyze.cc:565] analyze timing path end vertex 121 total 197 start
+I20251129 18:10:10.416383 117183 StaAnalyze.cc:599] analyze timing path end vertex 121 total 197 end
+I20251129 18:10:10.416420 117183 StaAnalyze.cc:565] analyze timing path end vertex 131 total 197 start
+I20251129 18:10:10.416432 117183 StaAnalyze.cc:599] analyze timing path end vertex 131 total 197 end
+I20251129 18:10:10.416450 117183 StaAnalyze.cc:303] add path data num 0 to pc_next_reg_$_SDFFE_PP0P__Q:D
+I20251129 18:10:10.416482 117183 StaAnalyze.cc:565] analyze timing path end vertex 141 total 197 start
+I20251129 18:10:10.416493 117183 StaAnalyze.cc:599] analyze timing path end vertex 141 total 197 end
+I20251129 18:10:10.416524 117183 StaAnalyze.cc:565] analyze timing path end vertex 151 total 197 start
+I20251129 18:10:10.416535 117183 StaAnalyze.cc:599] analyze timing path end vertex 151 total 197 end
+I20251129 18:10:10.416563 117183 StaAnalyze.cc:565] analyze timing path end vertex 161 total 197 start
+I20251129 18:10:10.416574 117183 StaAnalyze.cc:599] analyze timing path end vertex 161 total 197 end
+I20251129 18:10:10.416853 117183 StaAnalyze.cc:565] analyze timing path end vertex 171 total 197 start
+I20251129 18:10:10.416908 117183 StaAnalyze.cc:599] analyze timing path end vertex 171 total 197 end
+I20251129 18:10:10.417233 117183 StaAnalyze.cc:565] analyze timing path end vertex 181 total 197 start
+I20251129 18:10:10.417286 117183 StaAnalyze.cc:599] analyze timing path end vertex 181 total 197 end
+I20251129 18:10:10.417361 117183 StaAnalyze.cc:303] add path data num 4 to regs_26_$_SDFFE_PP0P__Q:D
+I20251129 18:10:10.417510 117183 StaAnalyze.cc:565] analyze timing path end vertex 191 total 197 start
+I20251129 18:10:10.417541 117183 StaAnalyze.cc:599] analyze timing path end vertex 191 total 197 end
+I20251129 18:10:10.417630 117183 StaAnalyze.cc:603] analyze timing path end
+I20251129 18:10:10.417637 117183 StaApplySdc.cc:698] apply sdc start
+I20251129 18:10:10.417644 117183 StaApplySdc.cc:729] apply sdc end
+I20251129 18:10:10.417654 117183 StaDataPropagation.cc:698] data bwd propagation start
+I20251129 18:10:10.418602 117183 StaDataPropagation.cc:249] propagate start vertex pc_next_reg_$_SDFFE_PP0P__Q:CK
+I20251129 18:10:10.418634 117183 StaDataPropagation.cc:172] Thread 140406676193408 data bwd propagate found end vertex.io_ifu_Req_bits_addr[31]
+I20251129 18:10:10.418677 117183 StaDataPropagation.cc:172] Thread 140406676193408 data bwd propagate found end vertex.io_ifu_Req_bits_addr[30]
+I20251129 18:10:10.418708 117183 StaDataPropagation.cc:172] Thread 140406676193408 data bwd propagate found end vertex.io_ifu_Req_bits_addr[19]
+I20251129 18:10:10.418745 117183 StaDataPropagation.cc:172] Thread 140406676193408 data bwd propagate found end vertex.io_ifu_Req_bits_addr[18]
+I20251129 18:10:10.418782 117183 StaDataPropagation.cc:172] Thread 140406676193408 data bwd propagate found end vertex.io_ifu_Req_bits_addr[17]
+I20251129 18:10:10.418820 117183 StaDataPropagation.cc:172] Thread 140406676193408 data bwd propagate found end vertex.io_ifu_Req_bits_addr[16]
+I20251129 18:10:10.418853 117183 StaDataPropagation.cc:172] Thread 140406676193408 data bwd propagate found end vertex.io_ifu_Req_bits_addr[15]
+I20251129 18:10:10.418906 117183 StaDataPropagation.cc:172] Thread 140406676193408 data bwd propagate found end vertex.io_ifu_Req_bits_addr[14]
+I20251129 18:10:10.418937 117183 StaDataPropagation.cc:172] Thread 140406676193408 data bwd propagate found end vertex.io_ifu_Req_bits_addr[13]
+I20251129 18:10:10.418979 117183 StaDataPropagation.cc:172] Thread 140406676193408 data bwd propagate found end vertex.io_ifu_Req_bits_addr[12]
+I20251129 18:10:10.422328 117183 StaDataPropagation.cc:703] data bwd propagation end
+I20251129 18:10:10.422418 117183 Sta.cc:2895] update timing end
+I20251129 18:10:10.422549 117183 Sta.cc:2898] update timing memory usage 598.36MB
+I20251129 18:10:10.422578 117183 Sta.cc:2900] update timing time elapsed 0.098298s
+I20251129 18:10:10.422751 117183 Sta.cc:2998] start write sta report.
+I20251129 18:10:10.422762 117183 Sta.cc:2999] output sta report path: /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077_gpr-500MHz
+I20251129 18:10:10.423928 117183 StaReport.cc:211] report the clock group core_clock 5 timing paths.
+I20251129 18:10:10.427539 117183 StaReport.cc:211] report the clock group core_clock 5 timing paths.
+I20251129 18:10:10.427644 117183 StaReport.cc:211] report the clock group core_clock 1 timing paths.
+I20251129 18:10:10.427729 117183 StaReport.cc:211] report the clock group core_clock 5 timing paths.
+I20251129 18:10:10.428500 117183 StaReport.cc:211] report the clock group core_clock 5 timing paths.
+I20251129 18:10:10.428539 117183 StaReport.cc:211] report the clock group core_clock 1 timing paths.
+I20251129 18:10:10.428550 117183 Sta.cc:1885] 
++---------------------------+-------------+------------+------------+---------------+-------+-------+-----------+
+| Endpoint                  | Clock Group | Delay Type | Path Delay | Path Required | CPPR  | Slack | Freq(MHz) |
++---------------------------+-------------+------------+------------+---------------+-------+-------+-----------+
+| regs_9_$_SDFFE_PP0P__Q:D  | core_clock  | max        | 0.986r     | 1.947         | 0.000 | 0.961 | 962.708   |
+| regs_8_$_SDFFE_PP0P__Q:D  | core_clock  | max        | 0.986r     | 1.947         | 0.000 | 0.961 | 962.708   |
+| regs_1_$_SDFFE_PP0P__Q:D  | core_clock  | max        | 0.986r     | 1.947         | 0.000 | 0.961 | 962.708   |
+| regs_14_$_SDFFE_PP0P__Q:D | core_clock  | max        | 0.986r     | 1.947         | 0.000 | 0.961 | 962.708   |
+| regs_16_$_SDFFE_PP0P__Q:D | core_clock  | max        | 0.986r     | 1.947         | 0.000 | 0.961 | 962.708   |
+| validReg_$_SDFF_PP1__Q:D  | core_clock  | min        | 0.110f     | 0.002         | 0.000 | 0.108 | NA        |
+| validReg_$_SDFF_PP1__Q:D  | core_clock  | min        | 0.123r     | 0.010         | 0.000 | 0.113 | NA        |
+| regs_0_$_SDFFE_PP0P__Q:D  | core_clock  | min        | 0.149r     | 0.008         | 0.000 | 0.141 | NA        |
+| regs_0_$_SDFFE_PP0P__Q:D  | core_clock  | min        | 0.149r     | 0.008         | 0.000 | 0.141 | NA        |
+| regs_2_$_SDFFE_PP1P__Q:D  | core_clock  | min        | 0.155r     | 0.010         | 0.000 | 0.145 | NA        |
++---------------------------+-------------+------------+------------+---------------+-------+-------+-----------+
+I20251129 18:10:10.428787 117183 Sta.cc:1886] 
++------------+------------+-------+
+| Clock      | Delay Type | TNS   |
++------------+------------+-------+
+| core_clock | max        | 0.000 |
+| core_clock | min        | 0.000 |
++------------+------------+-------+
+I20251129 18:10:10.448724 117183 NetlistWriter.cc:52] start write verilog file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077_gpr-500MHz/ysyx_25030077_gpr.v
+I20251129 18:10:10.454248 117183 NetlistWriter.cc:71] finish write verilog file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077_gpr-500MHz/ysyx_25030077_gpr.v
+I20251129 18:10:10.454713 117183 Sta.cc:3111] used lib: /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib
+I20251129 18:10:10.454751 117183 Sta.cc:3096] The timing engine run success.
+I20251129 18:10:10.454879 117183 Power.cc:854] build graph and seq graph start
+I20251129 18:10:10.454918 117183 PwrBuildGraph.cc:80] build power graph start
+I20251129 18:10:10.457672 117183 PwrBuildGraph.cc:170] build power graph end
+I20251129 18:10:10.457753 117183 PwrBuildGraph.cc:172] build power graph memory usage 0MB
+I20251129 18:10:10.457777 117183 PwrBuildGraph.cc:174] build power graph time elapsed 0.002858s
+I20251129 18:10:10.457818 117183 PwrBuildSeqGraph.cc:326] build seq graph start
+I20251129 18:10:10.484519 117183 PwrBuildSeqGraph.cc:330] build seq graph end
+I20251129 18:10:10.484546 117183 PwrBuildSeqGraph.cc:332] seq inst num: 65
+I20251129 18:10:10.484555 117183 PwrBuildSeqGraph.cc:333] input port num: 86
+I20251129 18:10:10.484561 117183 PwrBuildSeqGraph.cc:334] output port num: 99
+I20251129 18:10:10.484570 117183 PwrBuildSeqGraph.cc:335] seq macro num: 0
+I20251129 18:10:10.484617 117183 PwrBuildSeqGraph.cc:336] seq arc num: 1421
+I20251129 18:10:10.484627 117183 PwrBuildSeqGraph.cc:339] seq vertex max fanout: 65
+I20251129 18:10:10.484635 117183 PwrBuildSeqGraph.cc:340] seq vertex max fanin: 40
+I20251129 18:10:10.484686 117183 PwrBuildSeqGraph.cc:343] build seq graph memory usage 985.104MB
+I20251129 18:10:10.484704 117183 PwrBuildSeqGraph.cc:345] build seq graph time elapsed 0.026885s
+I20251129 18:10:10.484714 117183 Power.cc:861] build graph and seq graph end
+I20251129 18:10:10.484743 117183 Power.cc:863] build graph and seq graph memory usage 985.104MB
+I20251129 18:10:10.484755 117183 Power.cc:866] build graph and seq graph time elapsed 0.029876s
+I20251129 18:10:10.484786 117183 Power.cc:871] power annotate vcd start
+I20251129 18:10:10.484802 117183 Power.cc:128] annotate toggle sp start
+I20251129 18:10:10.484813 117183 Power.cc:134] annotate toggle sp end
+I20251129 18:10:10.484822 117183 Power.cc:878] power vcd annotate end
+I20251129 18:10:10.484849 117183 Power.cc:880] power vcd annotate memory usage 0MB
+I20251129 18:10:10.484860 117183 Power.cc:882] power vcd annotate time elapsed 7.4e-05s
+I20251129 18:10:10.484889 117183 Power.cc:896] power propagation start
+I20251129 18:10:10.484926 117183 PwrCheckPipelineLoop.cc:122] check pipeline loop start
+I20251129 18:10:10.485332 117183 PwrCheckPipelineLoop.cc:129] check pipeline loop end
+I20251129 18:10:10.485688 117183 PwrCheckPipelineLoop.cc:137] check pipeline loop memory usage 0MB
+I20251129 18:10:10.485703 117183 PwrCheckPipelineLoop.cc:139] check pipeline loop time elapsed 0.000778s
+I20251129 18:10:10.485798 117183 PwrLevelizeSeqGraph.cc:93] seq levelization start
+I20251129 18:10:10.485909 117183 PwrLevelizeSeqGraph.cc:101] seq levelization end
+I20251129 18:10:10.485919 117183 PwrLevelizeSeqGraph.cc:103] the seq graph's level depth 34
+I20251129 18:10:10.485960 117183 PwrLevelizeSeqGraph.cc:116] levelization memory usage 0MB
+I20251129 18:10:10.485972 117183 PwrLevelizeSeqGraph.cc:118] levelization time elapsed 0.000175s
+I20251129 18:10:10.486012 117183 PwrPropagateConst.cc:184] propagate const start
+I20251129 18:10:10.486212 117183 PwrPropagateConst.cc:109] set tie cell fanout from _879_:Z data in vertex io_rdata_rs1[10]
+I20251129 18:10:10.486312 117183 PwrPropagateConst.cc:288] propagate const end
+I20251129 18:10:10.486346 117183 PwrPropagateConst.cc:290] propagate const memory usage 0MB
+I20251129 18:10:10.486361 117183 PwrPropagateConst.cc:292] propagate const time elapsed 0.000348s
+I20251129 18:10:10.486420 117183 PwrPropagateToggleSP.cc:202] propagate toggle sp start
+I20251129 18:10:10.489142 119302 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_4:D not found launch clock domain.
+I20251129 18:10:10.489190 119295 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_8:D not found launch clock domain.
+I20251129 18:10:10.489215 119279 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_23:D not found launch clock domain.
+I20251129 18:10:10.489234 119295 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_28:D not found launch clock domain.
+I20251129 18:10:10.489239 119300 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_9:D not found launch clock domain.
+I20251129 18:10:10.489252 119306 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_11:D not found launch clock domain.
+I20251129 18:10:10.489135 119290 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_25:D not found launch clock domain.
+I20251129 18:10:10.489187 119291 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_26:D not found launch clock domain.
+I20251129 18:10:10.489128 119294 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP1P__Q_1:D not found launch clock domain.
+I20251129 18:10:10.489148 119301 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_5:D not found launch clock domain.
+I20251129 18:10:10.489212 119289 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_24:D not found launch clock domain.
+I20251129 18:10:10.489149 119293 PwrPropagateToggleSP.cc:66] power vertex regs_31_$_SDFFE_PP0P__Q:D not found launch clock domain.
+I20251129 18:10:10.489163 119287 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_1:D not found launch clock domain.
+I20251129 18:10:10.489259 119279 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_14:D not found launch clock domain.
+I20251129 18:10:10.489171 119296 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_7:D not found launch clock domain.
+I20251129 18:10:10.489180 119299 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_3:D not found launch clock domain.
+I20251129 18:10:10.489300 119303 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_10:D not found launch clock domain.
+I20251129 18:10:10.489307 119269 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_18:D not found launch clock domain.
+I20251129 18:10:10.489310 119310 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_16:D not found launch clock domain.
+I20251129 18:10:10.489135 119286 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q:D not found launch clock domain.
+I20251129 18:10:10.489347 119311 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_19:D not found launch clock domain.
+I20251129 18:10:10.489128 119282 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_21:D not found launch clock domain.
+I20251129 18:10:10.489252 119304 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_12:D not found launch clock domain.
+I20251129 18:10:10.489137 119278 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_20:D not found launch clock domain.
+I20251129 18:10:10.489169 119297 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_6:D not found launch clock domain.
+I20251129 18:10:10.489212 119280 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_22:D not found launch clock domain.
+I20251129 18:10:10.489157 119288 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP1P__Q:D not found launch clock domain.
+I20251129 18:10:10.489128 119298 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_2:D not found launch clock domain.
+I20251129 18:10:10.489182 119292 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_27:D not found launch clock domain.
+I20251129 18:10:10.489346 119272 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_29:D not found launch clock domain.
+I20251129 18:10:10.489311 119312 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_17:D not found launch clock domain.
+I20251129 18:10:10.489259 119307 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_13:D not found launch clock domain.
+I20251129 18:10:10.489310 119309 PwrPropagateToggleSP.cc:66] power vertex pc_next_reg_$_SDFFE_PP0P__Q_15:D not found launch clock domain.
+I20251129 18:10:10.494192 117183 PwrPropagateToggleSP.cc:316] propagate toggle sp end
+I20251129 18:10:10.494275 117183 PwrPropagateToggleSP.cc:319] propagate toggle sp memory usage 262.408MB
+I20251129 18:10:10.494308 117183 PwrPropagateToggleSP.cc:321] propagate toggle sp time elapsed 0.007887s
+I20251129 18:10:10.494343 117183 PwrPropagateClock.cc:68] propagate clock start
+I20251129 18:10:10.494385 117183 PwrPropagateClock.cc:80] propagate clock end
+I20251129 18:10:10.494410 117183 PwrPropagateClock.cc:82] propagate clock memory usage 0MB
+I20251129 18:10:10.494419 117183 PwrPropagateClock.cc:84] propagate clock time elapsed 7.5e-05s
+I20251129 18:10:10.494431 117183 Power.cc:914] power propagation end
+I20251129 18:10:10.494460 117183 Power.cc:916] power propagation memory usage 262.408MB
+I20251129 18:10:10.494472 117183 Power.cc:918] power propagation time elapsed 0.009583s
+I20251129 18:10:10.494506 117183 Power.cc:267] power calculation start
+I20251129 18:10:10.494534 117183 PwrCalcLeakagePower.cc:85] calc leakage power start
+I20251129 18:10:10.511693 117183 PwrCalcLeakagePower.cc:119] calc leakage power result 0.0199513mw
+I20251129 18:10:10.511722 117183 PwrCalcLeakagePower.cc:122] calc leakage power end
+I20251129 18:10:10.511773 117183 PwrCalcLeakagePower.cc:124] calc leakage power memory usage 0MB
+I20251129 18:10:10.511783 117183 PwrCalcLeakagePower.cc:126] calc leakage power time elapsed 0.01725s
+I20251129 18:10:10.511814 117183 PwrCalcInternalPower.cc:565] calc internal power start
+[0;31mE20251129 18:10:10.511832 117183 PwrCalcInternalPower.cc:205] _455_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.511905 117183 PwrCalcInternalPower.cc:205] _458_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.511948 117183 PwrCalcInternalPower.cc:205] _461_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.511991 117183 PwrCalcInternalPower.cc:205] _463_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.512055 117183 PwrCalcInternalPower.cc:205] _466_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.512107 117183 PwrCalcInternalPower.cc:205] _469_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.512157 117183 PwrCalcInternalPower.cc:205] _471_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.512209 117183 PwrCalcInternalPower.cc:205] _474_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.512274 117183 PwrCalcInternalPower.cc:205] _477_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.512326 117183 PwrCalcInternalPower.cc:205] _479_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.512387 117183 PwrCalcInternalPower.cc:205] _482_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.512436 117183 PwrCalcInternalPower.cc:205] _484_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.512487 117183 PwrCalcInternalPower.cc:205] _487_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.512542 117183 PwrCalcInternalPower.cc:205] _489_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.512609 117183 PwrCalcInternalPower.cc:205] _492_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.512671 117183 PwrCalcInternalPower.cc:205] _494_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.512746 117183 PwrCalcInternalPower.cc:205] _497_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.512853 117183 PwrCalcInternalPower.cc:205] _501_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.512935 117183 PwrCalcInternalPower.cc:205] _504_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.513018 117183 PwrCalcInternalPower.cc:205] _507_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.513087 117183 PwrCalcInternalPower.cc:205] _509_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.513139 117183 PwrCalcInternalPower.cc:205] _512_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.513216 117183 PwrCalcInternalPower.cc:205] _515_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.513271 117183 PwrCalcInternalPower.cc:205] _517_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.513337 117183 PwrCalcInternalPower.cc:205] _520_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.513407 117183 PwrCalcInternalPower.cc:205] _522_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.513470 117183 PwrCalcInternalPower.cc:205] _524_:A3 input slew is not exist.
+[m[0;31mE20251129 18:10:10.513528 117183 PwrCalcInternalPower.cc:205] _527_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.513590 117183 PwrCalcInternalPower.cc:205] _529_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.513665 117183 PwrCalcInternalPower.cc:205] _532_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.513741 117183 PwrCalcInternalPower.cc:205] _534_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.513799 117183 PwrCalcInternalPower.cc:205] _537_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.513859 117183 PwrCalcInternalPower.cc:205] _539_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.513921 117183 PwrCalcInternalPower.cc:205] _543_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.513976 117183 PwrCalcInternalPower.cc:205] _544_:A3 input slew is not exist.
+[m[0;31mE20251129 18:10:10.514038 117183 PwrCalcInternalPower.cc:205] _548_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.514163 117183 PwrCalcInternalPower.cc:205] _550_:S input slew is not exist.
+[m[0;31mE20251129 18:10:10.514273 117183 PwrCalcInternalPower.cc:205] _552_:S input slew is not exist.
+[m[0;31mE20251129 18:10:10.514400 117183 PwrCalcInternalPower.cc:205] _555_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.514497 117183 PwrCalcInternalPower.cc:205] _557_:S input slew is not exist.
+[m[0;31mE20251129 18:10:10.514560 117183 PwrCalcInternalPower.cc:205] _559_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.514664 117183 PwrCalcInternalPower.cc:205] _562_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.514788 117183 PwrCalcInternalPower.cc:205] _563_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.514873 117183 PwrCalcInternalPower.cc:205] _565_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.514937 117183 PwrCalcInternalPower.cc:205] _568_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.515074 117183 PwrCalcInternalPower.cc:205] _570_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.515156 117183 PwrCalcInternalPower.cc:205] _572_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.515383 117183 PwrCalcInternalPower.cc:205] _574_:B1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.515566 117183 PwrCalcInternalPower.cc:205] _575_:A3 input slew is not exist.
+[m[0;31mE20251129 18:10:10.515643 117183 PwrCalcInternalPower.cc:205] _577_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.515774 117183 PwrCalcInternalPower.cc:205] _581_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.515863 117183 PwrCalcInternalPower.cc:205] _583_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.515945 117183 PwrCalcInternalPower.cc:205] _585_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.516058 117183 PwrCalcInternalPower.cc:205] _587_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.516208 117183 PwrCalcInternalPower.cc:205] _590_:S input slew is not exist.
+[m[0;31mE20251129 18:10:10.516274 117183 PwrCalcInternalPower.cc:205] _593_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.516404 117183 PwrCalcInternalPower.cc:205] _594_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.516475 117183 PwrCalcInternalPower.cc:205] _597_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.516548 117183 PwrCalcInternalPower.cc:205] _601_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.516674 117183 PwrCalcInternalPower.cc:205] _602_:A3 input slew is not exist.
+[m[0;31mE20251129 18:10:10.516760 117183 PwrCalcInternalPower.cc:205] _604_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.516880 117183 PwrCalcInternalPower.cc:205] _608_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.516999 117183 PwrCalcInternalPower.cc:205] _610_:C2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.517285 117183 PwrCalcInternalPower.cc:205] _611_:C1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.517395 117183 PwrCalcInternalPower.cc:205] _613_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.517459 117183 PwrCalcInternalPower.cc:205] _615_:A3 input slew is not exist.
+[m[0;31mE20251129 18:10:10.517529 117183 PwrCalcInternalPower.cc:205] _619_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.517591 117183 PwrCalcInternalPower.cc:205] _620_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.517695 117183 PwrCalcInternalPower.cc:205] _621_:B input slew is not exist.
+[m[0;31mE20251129 18:10:10.517778 117183 PwrCalcInternalPower.cc:205] _622_:A3 input slew is not exist.
+[m[0;31mE20251129 18:10:10.517860 117183 PwrCalcInternalPower.cc:205] _624_:B input slew is not exist.
+[m[0;31mE20251129 18:10:10.517940 117183 PwrCalcInternalPower.cc:205] _626_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.518000 117183 PwrCalcInternalPower.cc:205] _628_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.518055 117183 PwrCalcInternalPower.cc:205] _631_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.518190 117183 PwrCalcInternalPower.cc:205] _632_:B1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.518273 117183 PwrCalcInternalPower.cc:205] _632_:B2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.518350 117183 PwrCalcInternalPower.cc:205] _635_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.518396 117183 PwrCalcInternalPower.cc:205] _638_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.518486 117183 PwrCalcInternalPower.cc:205] _641_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.518534 117183 PwrCalcInternalPower.cc:205] _644_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.518582 117183 PwrCalcInternalPower.cc:205] _646_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.518649 117183 PwrCalcInternalPower.cc:205] _648_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.518697 117183 PwrCalcInternalPower.cc:205] _650_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.518761 117183 PwrCalcInternalPower.cc:205] _653_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.518860 117183 PwrCalcInternalPower.cc:205] _657_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.518919 117183 PwrCalcInternalPower.cc:205] _659_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.518985 117183 PwrCalcInternalPower.cc:205] _661_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.519055 117183 PwrCalcInternalPower.cc:205] _664_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.519125 117183 PwrCalcInternalPower.cc:205] _666_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.519192 117183 PwrCalcInternalPower.cc:205] _668_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.519260 117183 PwrCalcInternalPower.cc:205] _670_:A3 input slew is not exist.
+[m[0;31mE20251129 18:10:10.519351 117183 PwrCalcInternalPower.cc:205] _672_:A3 input slew is not exist.
+[m[0;31mE20251129 18:10:10.519400 117183 PwrCalcInternalPower.cc:205] _674_:A3 input slew is not exist.
+[m[0;31mE20251129 18:10:10.519490 117183 PwrCalcInternalPower.cc:205] _676_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.519551 117183 PwrCalcInternalPower.cc:205] _678_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.519624 117183 PwrCalcInternalPower.cc:205] _681_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.520044 117183 PwrCalcInternalPower.cc:205] _683_:B1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.520292 117183 PwrCalcInternalPower.cc:205] _683_:C2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.520623 117183 PwrCalcInternalPower.cc:205] _685_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.520779 117183 PwrCalcInternalPower.cc:205] _688_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.520998 117183 PwrCalcInternalPower.cc:205] _692_:B2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.521265 117183 PwrCalcInternalPower.cc:205] _694_:B1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.521445 117183 PwrCalcInternalPower.cc:205] _694_:C2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.521636 117183 PwrCalcInternalPower.cc:205] _696_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.521746 117183 PwrCalcInternalPower.cc:205] _698_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.521831 117183 PwrCalcInternalPower.cc:205] _700_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.521950 117183 PwrCalcInternalPower.cc:205] _703_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.522343 117183 PwrCalcInternalPower.cc:205] _705_:B1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.522522 117183 PwrCalcInternalPower.cc:205] _706_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.522620 117183 PwrCalcInternalPower.cc:205] _708_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.522716 117183 PwrCalcInternalPower.cc:205] _710_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.523105 117183 PwrCalcInternalPower.cc:205] _712_:B2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.523257 117183 PwrCalcInternalPower.cc:205] _712_:C2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.523343 117183 PwrCalcInternalPower.cc:205] _714_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.523491 117183 PwrCalcInternalPower.cc:205] _716_:B2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.523701 117183 PwrCalcInternalPower.cc:205] _717_:B2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.523880 117183 PwrCalcInternalPower.cc:205] _719_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.523980 117183 PwrCalcInternalPower.cc:205] _720_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.524117 117183 PwrCalcInternalPower.cc:205] _720_:B2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.524243 117183 PwrCalcInternalPower.cc:205] _723_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.524335 117183 PwrCalcInternalPower.cc:205] _725_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.524492 117183 PwrCalcInternalPower.cc:205] _729_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.524585 117183 PwrCalcInternalPower.cc:205] _732_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.524626 117183 PwrCalcInternalPower.cc:205] _733_:B1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.524842 117183 PwrCalcInternalPower.cc:205] _736_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.524909 117183 PwrCalcInternalPower.cc:205] _738_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.524959 117183 PwrCalcInternalPower.cc:205] _740_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.525002 117183 PwrCalcInternalPower.cc:205] _742_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.525051 117183 PwrCalcInternalPower.cc:205] _744_:A3 input slew is not exist.
+[m[0;31mE20251129 18:10:10.525110 117183 PwrCalcInternalPower.cc:205] _747_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.525166 117183 PwrCalcInternalPower.cc:205] _749_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.525239 117183 PwrCalcInternalPower.cc:205] _751_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.525319 117183 PwrCalcInternalPower.cc:205] _751_:B2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.525400 117183 PwrCalcInternalPower.cc:205] _753_:A3 input slew is not exist.
+[m[0;31mE20251129 18:10:10.525441 117183 PwrCalcInternalPower.cc:205] _756_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.525483 117183 PwrCalcInternalPower.cc:205] _758_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.525530 117183 PwrCalcInternalPower.cc:205] _762_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.525563 117183 PwrCalcInternalPower.cc:205] _764_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.525630 117183 PwrCalcInternalPower.cc:205] _766_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.525684 117183 PwrCalcInternalPower.cc:205] _769_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.525717 117183 PwrCalcInternalPower.cc:205] _771_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.525753 117183 PwrCalcInternalPower.cc:205] _773_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.525794 117183 PwrCalcInternalPower.cc:205] _775_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.525828 117183 PwrCalcInternalPower.cc:205] _778_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.525878 117183 PwrCalcInternalPower.cc:205] _782_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.525910 117183 PwrCalcInternalPower.cc:205] _784_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.525959 117183 PwrCalcInternalPower.cc:205] _785_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.526000 117183 PwrCalcInternalPower.cc:205] _788_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.526044 117183 PwrCalcInternalPower.cc:205] _790_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.526087 117183 PwrCalcInternalPower.cc:205] _792_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.526182 117183 PwrCalcInternalPower.cc:205] _796_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.526335 117183 PwrCalcInternalPower.cc:205] _799_:B1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.526393 117183 PwrCalcInternalPower.cc:205] _799_:B2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.526551 117183 PwrCalcInternalPower.cc:205] _802_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.526602 117183 PwrCalcInternalPower.cc:205] _803_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.526675 117183 PwrCalcInternalPower.cc:205] _803_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.526775 117183 PwrCalcInternalPower.cc:205] _803_:B2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.527024 117183 PwrCalcInternalPower.cc:205] _809_:B1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.527076 117183 PwrCalcInternalPower.cc:205] _809_:B2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.527146 117183 PwrCalcInternalPower.cc:205] _810_:A2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.527199 117183 PwrCalcInternalPower.cc:205] _812_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.527241 117183 PwrCalcInternalPower.cc:205] _813_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.527312 117183 PwrCalcInternalPower.cc:205] _813_:B2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.527426 117183 PwrCalcInternalPower.cc:205] _818_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.527490 117183 PwrCalcInternalPower.cc:205] _818_:B2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.527539 117183 PwrCalcInternalPower.cc:205] _819_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.527613 117183 PwrCalcInternalPower.cc:205] _821_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.527658 117183 PwrCalcInternalPower.cc:205] _823_:A input slew is not exist.
+[m[0;31mE20251129 18:10:10.527724 117183 PwrCalcInternalPower.cc:205] _825_:A3 input slew is not exist.
+[m[0;31mE20251129 18:10:10.527822 117183 PwrCalcInternalPower.cc:205] _828_:B2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.527876 117183 PwrCalcInternalPower.cc:205] _831_:B1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.527958 117183 PwrCalcInternalPower.cc:205] _834_:S input slew is not exist.
+[m[0;31mE20251129 18:10:10.528038 117183 PwrCalcInternalPower.cc:205] _837_:B2 input slew is not exist.
+[m[0;31mE20251129 18:10:10.528086 117183 PwrCalcInternalPower.cc:205] _841_:A1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.528126 117183 PwrCalcInternalPower.cc:205] _842_:B1 input slew is not exist.
+[m[0;31mE20251129 18:10:10.528257 117183 PwrCalcInternalPower.cc:205] _844_:A2 input slew is not exist.
+[mI20251129 18:10:10.531297 117183 PwrCalcInternalPower.cc:605] calc internal power result 0.408771mW
+I20251129 18:10:10.531311 117183 PwrCalcInternalPower.cc:607] calc internal power end
+I20251129 18:10:10.531348 117183 PwrCalcInternalPower.cc:609] calc internal power memory usage 0MB
+I20251129 18:10:10.531355 117183 PwrCalcInternalPower.cc:611] calc internal power time elapsed 0.019541s
+I20251129 18:10:10.531376 117183 PwrCalcSwitchPower.cc:89] calc switch power start
+I20251129 18:10:10.531389 117183 PwrCalcSwitchPower.cc:99] net io_mem_Req_ready has no load, skip switch power calculation.
+I20251129 18:10:10.531395 117183 PwrCalcSwitchPower.cc:99] net io_b_ready has no load, skip switch power calculation.
+I20251129 18:10:10.531399 117183 PwrCalcSwitchPower.cc:99] net io_b_valid has no load, skip switch power calculation.
+I20251129 18:10:10.531690 117183 PwrCalcSwitchPower.cc:99] net _390_ has no load, skip switch power calculation.
+I20251129 18:10:10.531697 117183 PwrCalcSwitchPower.cc:99] net _391_ has no load, skip switch power calculation.
+I20251129 18:10:10.531701 117183 PwrCalcSwitchPower.cc:99] net _392_ has no load, skip switch power calculation.
+I20251129 18:10:10.531705 117183 PwrCalcSwitchPower.cc:99] net _393_ has no load, skip switch power calculation.
+I20251129 18:10:10.531709 117183 PwrCalcSwitchPower.cc:99] net _394_ has no load, skip switch power calculation.
+I20251129 18:10:10.531714 117183 PwrCalcSwitchPower.cc:99] net _395_ has no load, skip switch power calculation.
+I20251129 18:10:10.531718 117183 PwrCalcSwitchPower.cc:99] net _396_ has no load, skip switch power calculation.
+I20251129 18:10:10.531723 117183 PwrCalcSwitchPower.cc:99] net _397_ has no load, skip switch power calculation.
+I20251129 18:10:10.531726 117183 PwrCalcSwitchPower.cc:99] net _398_ has no load, skip switch power calculation.
+I20251129 18:10:10.531731 117183 PwrCalcSwitchPower.cc:99] net _399_ has no load, skip switch power calculation.
+I20251129 18:10:10.531735 117183 PwrCalcSwitchPower.cc:99] net _400_ has no load, skip switch power calculation.
+I20251129 18:10:10.531739 117183 PwrCalcSwitchPower.cc:99] net _401_ has no load, skip switch power calculation.
+I20251129 18:10:10.531752 117183 PwrCalcSwitchPower.cc:99] net _402_ has no load, skip switch power calculation.
+I20251129 18:10:10.531757 117183 PwrCalcSwitchPower.cc:99] net _403_ has no load, skip switch power calculation.
+I20251129 18:10:10.531761 117183 PwrCalcSwitchPower.cc:99] net _404_ has no load, skip switch power calculation.
+I20251129 18:10:10.531766 117183 PwrCalcSwitchPower.cc:99] net _405_ has no load, skip switch power calculation.
+I20251129 18:10:10.531770 117183 PwrCalcSwitchPower.cc:99] net _406_ has no load, skip switch power calculation.
+I20251129 18:10:10.531774 117183 PwrCalcSwitchPower.cc:99] net _407_ has no load, skip switch power calculation.
+I20251129 18:10:10.531780 117183 PwrCalcSwitchPower.cc:99] net _408_ has no load, skip switch power calculation.
+I20251129 18:10:10.531785 117183 PwrCalcSwitchPower.cc:99] net _409_ has no load, skip switch power calculation.
+I20251129 18:10:10.531788 117183 PwrCalcSwitchPower.cc:99] net _410_ has no load, skip switch power calculation.
+I20251129 18:10:10.531793 117183 PwrCalcSwitchPower.cc:99] net _411_ has no load, skip switch power calculation.
+I20251129 18:10:10.531797 117183 PwrCalcSwitchPower.cc:99] net _412_ has no load, skip switch power calculation.
+I20251129 18:10:10.531802 117183 PwrCalcSwitchPower.cc:99] net _413_ has no load, skip switch power calculation.
+I20251129 18:10:10.531806 117183 PwrCalcSwitchPower.cc:99] net _414_ has no load, skip switch power calculation.
+I20251129 18:10:10.531811 117183 PwrCalcSwitchPower.cc:99] net _415_ has no load, skip switch power calculation.
+I20251129 18:10:10.531816 117183 PwrCalcSwitchPower.cc:99] net _416_ has no load, skip switch power calculation.
+I20251129 18:10:10.531819 117183 PwrCalcSwitchPower.cc:99] net _417_ has no load, skip switch power calculation.
+I20251129 18:10:10.531823 117183 PwrCalcSwitchPower.cc:99] net _418_ has no load, skip switch power calculation.
+I20251129 18:10:10.531828 117183 PwrCalcSwitchPower.cc:99] net _419_ has no load, skip switch power calculation.
+I20251129 18:10:10.531832 117183 PwrCalcSwitchPower.cc:99] net _420_ has no load, skip switch power calculation.
+I20251129 18:10:10.531837 117183 PwrCalcSwitchPower.cc:99] net _421_ has no load, skip switch power calculation.
+I20251129 18:10:10.531842 117183 PwrCalcSwitchPower.cc:99] net _422_ has no load, skip switch power calculation.
+I20251129 18:10:10.531847 117183 PwrCalcSwitchPower.cc:99] net _423_ has no load, skip switch power calculation.
+I20251129 18:10:10.531852 117183 PwrCalcSwitchPower.cc:99] net _424_ has no load, skip switch power calculation.
+I20251129 18:10:10.531855 117183 PwrCalcSwitchPower.cc:99] net _425_ has no load, skip switch power calculation.
+I20251129 18:10:10.531859 117183 PwrCalcSwitchPower.cc:99] net _426_ has no load, skip switch power calculation.
+I20251129 18:10:10.531864 117183 PwrCalcSwitchPower.cc:99] net _427_ has no load, skip switch power calculation.
+I20251129 18:10:10.531868 117183 PwrCalcSwitchPower.cc:99] net _428_ has no load, skip switch power calculation.
+I20251129 18:10:10.531873 117183 PwrCalcSwitchPower.cc:99] net _429_ has no load, skip switch power calculation.
+I20251129 18:10:10.531878 117183 PwrCalcSwitchPower.cc:99] net _430_ has no load, skip switch power calculation.
+I20251129 18:10:10.531883 117183 PwrCalcSwitchPower.cc:99] net _431_ has no load, skip switch power calculation.
+I20251129 18:10:10.531886 117183 PwrCalcSwitchPower.cc:99] net _432_ has no load, skip switch power calculation.
+I20251129 18:10:10.531891 117183 PwrCalcSwitchPower.cc:99] net _433_ has no load, skip switch power calculation.
+I20251129 18:10:10.531895 117183 PwrCalcSwitchPower.cc:99] net _434_ has no load, skip switch power calculation.
+I20251129 18:10:10.531899 117183 PwrCalcSwitchPower.cc:99] net _435_ has no load, skip switch power calculation.
+I20251129 18:10:10.531905 117183 PwrCalcSwitchPower.cc:99] net _436_ has no load, skip switch power calculation.
+I20251129 18:10:10.531909 117183 PwrCalcSwitchPower.cc:99] net _437_ has no load, skip switch power calculation.
+I20251129 18:10:10.531913 117183 PwrCalcSwitchPower.cc:99] net _438_ has no load, skip switch power calculation.
+I20251129 18:10:10.531924 117183 PwrCalcSwitchPower.cc:99] net _439_ has no load, skip switch power calculation.
+I20251129 18:10:10.531927 117183 PwrCalcSwitchPower.cc:99] net _440_ has no load, skip switch power calculation.
+I20251129 18:10:10.531932 117183 PwrCalcSwitchPower.cc:99] net _441_ has no load, skip switch power calculation.
+I20251129 18:10:10.531936 117183 PwrCalcSwitchPower.cc:99] net _442_ has no load, skip switch power calculation.
+I20251129 18:10:10.531940 117183 PwrCalcSwitchPower.cc:99] net _443_ has no load, skip switch power calculation.
+I20251129 18:10:10.531945 117183 PwrCalcSwitchPower.cc:99] net _444_ has no load, skip switch power calculation.
+I20251129 18:10:10.531949 117183 PwrCalcSwitchPower.cc:99] net _445_ has no load, skip switch power calculation.
+I20251129 18:10:10.531953 117183 PwrCalcSwitchPower.cc:99] net _446_ has no load, skip switch power calculation.
+I20251129 18:10:10.531957 117183 PwrCalcSwitchPower.cc:99] net _447_ has no load, skip switch power calculation.
+I20251129 18:10:10.531962 117183 PwrCalcSwitchPower.cc:99] net _448_ has no load, skip switch power calculation.
+I20251129 18:10:10.531966 117183 PwrCalcSwitchPower.cc:99] net _449_ has no load, skip switch power calculation.
+I20251129 18:10:10.531970 117183 PwrCalcSwitchPower.cc:99] net _450_ has no load, skip switch power calculation.
+I20251129 18:10:10.531975 117183 PwrCalcSwitchPower.cc:99] net _451_ has no load, skip switch power calculation.
+I20251129 18:10:10.531980 117183 PwrCalcSwitchPower.cc:99] net _452_ has no load, skip switch power calculation.
+I20251129 18:10:10.531984 117183 PwrCalcSwitchPower.cc:99] net _453_ has no load, skip switch power calculation.
+I20251129 18:10:10.531989 117183 PwrCalcSwitchPower.cc:99] net _454_ has no load, skip switch power calculation.
+I20251129 18:10:10.532038 117183 PwrCalcSwitchPower.cc:99] net io_gpr_b_resp[0] has no load, skip switch power calculation.
+I20251129 18:10:10.532044 117183 PwrCalcSwitchPower.cc:99] net io_gpr_b_resp[1] has no load, skip switch power calculation.
+I20251129 18:10:10.532083 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[1] has no load, skip switch power calculation.
+I20251129 18:10:10.532087 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[2] has no load, skip switch power calculation.
+I20251129 18:10:10.532091 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[3] has no load, skip switch power calculation.
+I20251129 18:10:10.532095 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[4] has no load, skip switch power calculation.
+I20251129 18:10:10.532100 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[5] has no load, skip switch power calculation.
+I20251129 18:10:10.532104 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[6] has no load, skip switch power calculation.
+I20251129 18:10:10.532109 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[7] has no load, skip switch power calculation.
+I20251129 18:10:10.532112 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[8] has no load, skip switch power calculation.
+I20251129 18:10:10.532116 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[9] has no load, skip switch power calculation.
+I20251129 18:10:10.532121 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[10] has no load, skip switch power calculation.
+I20251129 18:10:10.532125 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[11] has no load, skip switch power calculation.
+I20251129 18:10:10.532130 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[12] has no load, skip switch power calculation.
+I20251129 18:10:10.532135 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[13] has no load, skip switch power calculation.
+I20251129 18:10:10.532138 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[14] has no load, skip switch power calculation.
+I20251129 18:10:10.532143 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[15] has no load, skip switch power calculation.
+I20251129 18:10:10.532147 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[16] has no load, skip switch power calculation.
+I20251129 18:10:10.532156 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[17] has no load, skip switch power calculation.
+I20251129 18:10:10.532160 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[18] has no load, skip switch power calculation.
+I20251129 18:10:10.532166 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[19] has no load, skip switch power calculation.
+I20251129 18:10:10.532169 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[20] has no load, skip switch power calculation.
+I20251129 18:10:10.532173 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[21] has no load, skip switch power calculation.
+I20251129 18:10:10.532177 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[22] has no load, skip switch power calculation.
+I20251129 18:10:10.532181 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[23] has no load, skip switch power calculation.
+I20251129 18:10:10.532186 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[24] has no load, skip switch power calculation.
+I20251129 18:10:10.532191 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[25] has no load, skip switch power calculation.
+I20251129 18:10:10.532194 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[26] has no load, skip switch power calculation.
+I20251129 18:10:10.532198 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[27] has no load, skip switch power calculation.
+I20251129 18:10:10.532203 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[28] has no load, skip switch power calculation.
+I20251129 18:10:10.532207 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[29] has no load, skip switch power calculation.
+I20251129 18:10:10.532212 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[30] has no load, skip switch power calculation.
+I20251129 18:10:10.532215 117183 PwrCalcSwitchPower.cc:99] net io_wdata_rd[31] has no load, skip switch power calculation.
+I20251129 18:10:10.532229 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[1] has no driver, skip switch power calculation.
+I20251129 18:10:10.532234 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[2] has no driver, skip switch power calculation.
+I20251129 18:10:10.532238 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[3] has no driver, skip switch power calculation.
+I20251129 18:10:10.532243 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[4] has no driver, skip switch power calculation.
+I20251129 18:10:10.532248 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[5] has no driver, skip switch power calculation.
+I20251129 18:10:10.532251 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[6] has no driver, skip switch power calculation.
+I20251129 18:10:10.532256 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[7] has no driver, skip switch power calculation.
+I20251129 18:10:10.532260 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[8] has no driver, skip switch power calculation.
+I20251129 18:10:10.532265 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[9] has no driver, skip switch power calculation.
+I20251129 18:10:10.532270 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[11] has no driver, skip switch power calculation.
+I20251129 18:10:10.532274 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[12] has no driver, skip switch power calculation.
+I20251129 18:10:10.532280 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[13] has no driver, skip switch power calculation.
+I20251129 18:10:10.532284 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[14] has no driver, skip switch power calculation.
+I20251129 18:10:10.532289 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[15] has no driver, skip switch power calculation.
+I20251129 18:10:10.532294 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[16] has no driver, skip switch power calculation.
+I20251129 18:10:10.532297 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[17] has no driver, skip switch power calculation.
+I20251129 18:10:10.532302 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[18] has no driver, skip switch power calculation.
+I20251129 18:10:10.532307 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[19] has no driver, skip switch power calculation.
+I20251129 18:10:10.532316 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[20] has no driver, skip switch power calculation.
+I20251129 18:10:10.532320 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[21] has no driver, skip switch power calculation.
+I20251129 18:10:10.532325 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[22] has no driver, skip switch power calculation.
+I20251129 18:10:10.532330 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[23] has no driver, skip switch power calculation.
+I20251129 18:10:10.532335 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[24] has no driver, skip switch power calculation.
+I20251129 18:10:10.532339 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[25] has no driver, skip switch power calculation.
+I20251129 18:10:10.532343 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[26] has no driver, skip switch power calculation.
+I20251129 18:10:10.532348 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[27] has no driver, skip switch power calculation.
+I20251129 18:10:10.532352 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[28] has no driver, skip switch power calculation.
+I20251129 18:10:10.532357 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[29] has no driver, skip switch power calculation.
+I20251129 18:10:10.532362 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[30] has no driver, skip switch power calculation.
+I20251129 18:10:10.532366 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs1[31] has no driver, skip switch power calculation.
+I20251129 18:10:10.532378 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[1] has no driver, skip switch power calculation.
+I20251129 18:10:10.532383 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[2] has no driver, skip switch power calculation.
+I20251129 18:10:10.532388 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[3] has no driver, skip switch power calculation.
+I20251129 18:10:10.532392 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[4] has no driver, skip switch power calculation.
+I20251129 18:10:10.532397 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[5] has no driver, skip switch power calculation.
+I20251129 18:10:10.532402 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[6] has no driver, skip switch power calculation.
+I20251129 18:10:10.532405 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[7] has no driver, skip switch power calculation.
+I20251129 18:10:10.532409 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[8] has no driver, skip switch power calculation.
+I20251129 18:10:10.532413 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[9] has no driver, skip switch power calculation.
+I20251129 18:10:10.532418 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[10] has no driver, skip switch power calculation.
+I20251129 18:10:10.532423 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[11] has no driver, skip switch power calculation.
+I20251129 18:10:10.532428 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[12] has no driver, skip switch power calculation.
+I20251129 18:10:10.532431 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[13] has no driver, skip switch power calculation.
+I20251129 18:10:10.532436 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[14] has no driver, skip switch power calculation.
+I20251129 18:10:10.532440 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[15] has no driver, skip switch power calculation.
+I20251129 18:10:10.532444 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[16] has no driver, skip switch power calculation.
+I20251129 18:10:10.532449 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[17] has no driver, skip switch power calculation.
+I20251129 18:10:10.532454 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[18] has no driver, skip switch power calculation.
+I20251129 18:10:10.532457 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[19] has no driver, skip switch power calculation.
+I20251129 18:10:10.532462 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[20] has no driver, skip switch power calculation.
+I20251129 18:10:10.532471 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[21] has no driver, skip switch power calculation.
+I20251129 18:10:10.532476 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[22] has no driver, skip switch power calculation.
+I20251129 18:10:10.532480 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[23] has no driver, skip switch power calculation.
+I20251129 18:10:10.532485 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[24] has no driver, skip switch power calculation.
+I20251129 18:10:10.532490 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[25] has no driver, skip switch power calculation.
+I20251129 18:10:10.532495 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[26] has no driver, skip switch power calculation.
+I20251129 18:10:10.532498 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[27] has no driver, skip switch power calculation.
+I20251129 18:10:10.532503 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[28] has no driver, skip switch power calculation.
+I20251129 18:10:10.532507 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[29] has no driver, skip switch power calculation.
+I20251129 18:10:10.532512 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[30] has no driver, skip switch power calculation.
+I20251129 18:10:10.532517 117183 PwrCalcSwitchPower.cc:106] net io_rdata_rs2[31] has no driver, skip switch power calculation.
+I20251129 18:10:10.532542 117183 PwrCalcSwitchPower.cc:173] calc switch power result 0mw
+I20251129 18:10:10.532549 117183 PwrCalcSwitchPower.cc:175] calc switch power end
+I20251129 18:10:10.532569 117183 PwrCalcSwitchPower.cc:177] calc switch power memory usage 0MB
+I20251129 18:10:10.532577 117183 PwrCalcSwitchPower.cc:179] calc switch power time elapsed 0.0012s
+I20251129 18:10:10.534353 117183 Power.cc:275] power calculation end
+I20251129 18:10:10.534379 117183 Power.cc:277] power calculation memory usage 0MB
+I20251129 18:10:10.534385 117183 Power.cc:279] power calculation time elapsed 0.03988s
+I20251129 18:10:10.534404 117183 Power.cc:981] power report start, output dir: /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077_gpr-500MHz
+I20251129 18:10:10.534541 117183 Power.cc:491] 
++---------------+----------------+--------------+---------------+-------------+-----------+
+| Power Group   | Internal Power | Switch Power | Leakage Power | Total Power | (%)       |
++---------------+----------------+--------------+---------------+-------------+-----------+
+| combinational | 2.588e-04      | 0.000e+00    | 1.621e-05     | 2.750e-04   | (64.141%) |
+| sequential    | 1.500e-04      | 0.000e+00    | 3.738e-06     | 1.537e-04   | (35.859%) |
++---------------+----------------+--------------+---------------+-------------+-----------+
+I20251129 18:10:10.534639 117183 Power.cc:543] Total Power   ==  0.000428722 W
+I20251129 18:10:10.536453 117183 Power.cc:669] Instance Power Report: 
+I20251129 18:10:10.536537 117183 Power.cc:670] 
++--------------------------------+-----------------+----------------+--------------+---------------+-------------+
+| Instance Name                  | Nominal Voltage | Internal Power | Switch Power | Leakage Power | Total Power |
++--------------------------------+-----------------+----------------+--------------+---------------+-------------+
+| _610_                          | 1.1             | 5.256e-06      | 0.000e+00    | 8.233e-08     | 5.338e-06   |
+| _593_                          | 1.1             | 5.051e-06      | 0.000e+00    | 8.321e-08     | 5.134e-06   |
+| _611_                          | 1.1             | 4.013e-06      | 0.000e+00    | 7.066e-08     | 4.084e-06   |
+| _607_                          | 1.1             | 3.643e-06      | 0.000e+00    | 7.144e-08     | 3.714e-06   |
+| _590_                          | 1.1             | 3.562e-06      | 0.000e+00    | 9.144e-08     | 3.653e-06   |
+| _497_                          | 1.1             | 2.780e-06      | 0.000e+00    | 4.593e-07     | 3.239e-06   |
+| _630_                          | 1.1             | 2.780e-06      | 0.000e+00    | 4.593e-07     | 3.239e-06   |
+| _745_                          | 1.1             | 2.780e-06      | 0.000e+00    | 4.593e-07     | 3.239e-06   |
+| _759_                          | 1.1             | 2.773e-06      | 0.000e+00    | 4.593e-07     | 3.232e-06   |
+| _634_                          | 1.1             | 2.766e-06      | 0.000e+00    | 4.593e-07     | 3.225e-06   |
+| _637_                          | 1.1             | 2.759e-06      | 0.000e+00    | 4.593e-07     | 3.218e-06   |
+| _517_                          | 1.1             | 2.759e-06      | 0.000e+00    | 4.593e-07     | 3.218e-06   |
+| _790_                          | 1.1             | 3.073e-06      | 0.000e+00    | 1.064e-07     | 3.179e-06   |
+| _562_                          | 1.1             | 2.817e-06      | 0.000e+00    | 1.022e-07     | 2.919e-06   |
+| _601_                          | 1.1             | 2.507e-06      | 0.000e+00    | 5.102e-08     | 2.558e-06   |
+| validReg_$_SDFF_PP1__Q         | 1.1             | 2.501e-06      | 0.000e+00    | 3.975e-08     | 2.541e-06   |
+| _680_                          | 1.1             | 2.264e-06      | 0.000e+00    | 5.427e-08     | 2.319e-06   |
+| _878_                          | 1.1             | 2.129e-06      | 0.000e+00    | 3.649e-08     | 2.165e-06   |
+| _597_                          | 1.1             | 2.073e-06      | 0.000e+00    | 2.405e-08     | 2.098e-06   |
+| _633_                          | 1.1             | 1.995e-06      | 0.000e+00    | 1.007e-07     | 2.095e-06   |
+| _506_                          | 1.1             | 1.963e-06      | 0.000e+00    | 1.007e-07     | 2.063e-06   |
+| _491_                          | 1.1             | 1.954e-06      | 0.000e+00    | 1.007e-07     | 2.055e-06   |
+| _756_                          | 1.1             | 1.920e-06      | 0.000e+00    | 1.007e-07     | 2.021e-06   |
+| _747_                          | 1.1             | 1.915e-06      | 0.000e+00    | 1.007e-07     | 2.015e-06   |
+| _851_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _870_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _871_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _872_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _873_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _874_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _875_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _876_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _877_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _853_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _850_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _849_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _848_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _847_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _846_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _869_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _855_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _852_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _856_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _857_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _858_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _859_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _854_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _860_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _861_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _862_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _863_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _864_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _865_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _866_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _867_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _868_                          | 1.1             | 1.944e-06      | 0.000e+00    | 3.649e-08     | 1.981e-06   |
+| _791_                          | 1.1             | 1.875e-06      | 0.000e+00    | 1.007e-07     | 1.975e-06   |
+| _560_                          | 1.1             | 1.818e-06      | 0.000e+00    | 9.188e-08     | 1.910e-06   |
+| _588_                          | 1.1             | 1.770e-06      | 0.000e+00    | 4.319e-08     | 1.814e-06   |
+| _603_                          | 1.1             | 1.714e-06      | 0.000e+00    | 3.558e-08     | 1.750e-06   |
+| _557_                          | 1.1             | 1.640e-06      | 0.000e+00    | 9.204e-08     | 1.732e-06   |
+| _660_                          | 1.1             | 1.662e-06      | 0.000e+00    | 5.319e-08     | 1.716e-06   |
+| regs_30_$_SDFFE_PP0P__Q        | 1.1             | 1.651e-06      | 0.000e+00    | 3.890e-08     | 1.690e-06   |
+| regs_17_$_SDFFE_PP0P__Q        | 1.1             | 1.646e-06      | 0.000e+00    | 3.890e-08     | 1.685e-06   |
+| regs_1_$_SDFFE_PP0P__Q         | 1.1             | 1.646e-06      | 0.000e+00    | 3.890e-08     | 1.685e-06   |
+| regs_21_$_SDFFE_PP0P__Q        | 1.1             | 1.643e-06      | 0.000e+00    | 3.890e-08     | 1.682e-06   |
+| regs_11_$_SDFFE_PP0P__Q        | 1.1             | 1.642e-06      | 0.000e+00    | 3.890e-08     | 1.681e-06   |
+| regs_5_$_SDFFE_PP0P__Q         | 1.1             | 1.642e-06      | 0.000e+00    | 3.890e-08     | 1.681e-06   |
+| regs_26_$_SDFFE_PP0P__Q        | 1.1             | 1.642e-06      | 0.000e+00    | 3.890e-08     | 1.681e-06   |
+| regs_18_$_SDFFE_PP0P__Q        | 1.1             | 1.642e-06      | 0.000e+00    | 3.890e-08     | 1.681e-06   |
+| regs_29_$_SDFFE_PP0P__Q        | 1.1             | 1.642e-06      | 0.000e+00    | 3.890e-08     | 1.681e-06   |
+| regs_16_$_SDFFE_PP0P__Q        | 1.1             | 1.642e-06      | 0.000e+00    | 3.890e-08     | 1.681e-06   |
+| regs_13_$_SDFFE_PP0P__Q        | 1.1             | 1.642e-06      | 0.000e+00    | 3.890e-08     | 1.681e-06   |
+| regs_7_$_SDFFE_PP0P__Q         | 1.1             | 1.642e-06      | 0.000e+00    | 3.890e-08     | 1.681e-06   |
+| _654_                          | 1.1             | 1.447e-06      | 0.000e+00    | 2.297e-07     | 1.677e-06   |
+| regs_3_$_SDFFE_PP0P__Q         | 1.1             | 1.638e-06      | 0.000e+00    | 3.890e-08     | 1.677e-06   |
+| regs_4_$_SDFFE_PP0P__Q         | 1.1             | 1.638e-06      | 0.000e+00    | 3.890e-08     | 1.677e-06   |
+| regs_24_$_SDFFE_PP0P__Q        | 1.1             | 1.637e-06      | 0.000e+00    | 3.890e-08     | 1.676e-06   |
+| regs_22_$_SDFFE_PP0P__Q        | 1.1             | 1.637e-06      | 0.000e+00    | 3.890e-08     | 1.676e-06   |
+| regs_8_$_SDFFE_PP0P__Q         | 1.1             | 1.637e-06      | 0.000e+00    | 3.890e-08     | 1.676e-06   |
+| regs_10_$_SDFFE_PP0P__Q        | 1.1             | 1.637e-06      | 0.000e+00    | 3.890e-08     | 1.676e-06   |
+| regs_19_$_SDFFE_PP0P__Q        | 1.1             | 1.637e-06      | 0.000e+00    | 3.890e-08     | 1.676e-06   |
+| regs_12_$_SDFFE_PP0P__Q        | 1.1             | 1.637e-06      | 0.000e+00    | 3.890e-08     | 1.676e-06   |
+| regs_27_$_SDFFE_PP0P__Q        | 1.1             | 1.637e-06      | 0.000e+00    | 3.890e-08     | 1.676e-06   |
+| regs_20_$_SDFFE_PP0P__Q        | 1.1             | 1.637e-06      | 0.000e+00    | 3.890e-08     | 1.676e-06   |
+| regs_14_$_SDFFE_PP0P__Q        | 1.1             | 1.637e-06      | 0.000e+00    | 3.890e-08     | 1.676e-06   |
+| regs_6_$_SDFFE_PP0P__Q         | 1.1             | 1.634e-06      | 0.000e+00    | 3.890e-08     | 1.673e-06   |
+| regs_23_$_SDFFE_PP0P__Q        | 1.1             | 1.634e-06      | 0.000e+00    | 3.890e-08     | 1.673e-06   |
+| regs_25_$_SDFFE_PP0P__Q        | 1.1             | 1.634e-06      | 0.000e+00    | 3.890e-08     | 1.673e-06   |
+| regs_9_$_SDFFE_PP0P__Q         | 1.1             | 1.632e-06      | 0.000e+00    | 3.890e-08     | 1.670e-06   |
+| regs_28_$_SDFFE_PP0P__Q        | 1.1             | 1.632e-06      | 0.000e+00    | 3.890e-08     | 1.670e-06   |
+| regs_15_$_SDFFE_PP0P__Q        | 1.1             | 1.632e-06      | 0.000e+00    | 3.890e-08     | 1.670e-06   |
+| _708_                          | 1.1             | 1.621e-06      | 0.000e+00    | 4.916e-08     | 1.670e-06   |
+| _569_                          | 1.1             | 1.616e-06      | 0.000e+00    | 5.112e-08     | 1.667e-06   |
+| _664_                          | 1.1             | 1.614e-06      | 0.000e+00    | 5.319e-08     | 1.667e-06   |
+| _700_                          | 1.1             | 1.608e-06      | 0.000e+00    | 5.319e-08     | 1.661e-06   |
+| _743_                          | 1.1             | 1.422e-06      | 0.000e+00    | 2.297e-07     | 1.652e-06   |
+| _735_                          | 1.1             | 1.416e-06      | 0.000e+00    | 2.297e-07     | 1.646e-06   |
+| _640_                          | 1.1             | 1.413e-06      | 0.000e+00    | 2.297e-07     | 1.643e-06   |
+| _731_                          | 1.1             | 1.565e-06      | 0.000e+00    | 5.319e-08     | 1.618e-06   |
+| _840_                          | 1.1             | 1.564e-06      | 0.000e+00    | 5.319e-08     | 1.617e-06   |
+| _574_                          | 1.1             | 1.531e-06      | 0.000e+00    | 7.547e-08     | 1.606e-06   |
+| _554_                          | 1.1             | 1.478e-06      | 0.000e+00    | 9.221e-08     | 1.570e-06   |
+| regs_2_$_SDFFE_PP1P__Q         | 1.1             | 1.504e-06      | 0.000e+00    | 3.969e-08     | 1.544e-06   |
+| _586_                          | 1.1             | 1.496e-06      | 0.000e+00    | 3.602e-08     | 1.532e-06   |
+| _583_                          | 1.1             | 1.494e-06      | 0.000e+00    | 3.514e-08     | 1.529e-06   |
+| _579_                          | 1.1             | 1.415e-06      | 0.000e+00    | 3.488e-08     | 1.449e-06   |
+| _581_                          | 1.1             | 1.406e-06      | 0.000e+00    | 3.556e-08     | 1.441e-06   |
+| regs_0_$_SDFFE_PP0P__Q         | 1.1             | 1.371e-06      | 0.000e+00    | 3.852e-08     | 1.409e-06   |
+| _552_                          | 1.1             | 1.305e-06      | 0.000e+00    | 9.238e-08     | 1.397e-06   |
+| _621_                          | 1.1             | 1.309e-06      | 0.000e+00    | 3.706e-08     | 1.346e-06   |
+| _576_                          | 1.1             | 1.287e-06      | 0.000e+00    | 3.556e-08     | 1.323e-06   |
+| _810_                          | 1.1             | 1.214e-06      | 0.000e+00    | 2.702e-08     | 1.241e-06   |
+| _713_                          | 1.1             | 1.214e-06      | 0.000e+00    | 2.702e-08     | 1.241e-06   |
+| _820_                          | 1.1             | 1.214e-06      | 0.000e+00    | 2.702e-08     | 1.241e-06   |
+| _675_                          | 1.1             | 1.214e-06      | 0.000e+00    | 2.702e-08     | 1.241e-06   |
+| _788_                          | 1.1             | 1.214e-06      | 0.000e+00    | 2.702e-08     | 1.241e-06   |
+| _677_                          | 1.1             | 1.214e-06      | 0.000e+00    | 2.702e-08     | 1.241e-06   |
+| _718_                          | 1.1             | 1.214e-06      | 0.000e+00    | 2.702e-08     | 1.241e-06   |
+| _696_                          | 1.1             | 1.214e-06      | 0.000e+00    | 2.702e-08     | 1.241e-06   |
+| _670_                          | 1.1             | 1.214e-06      | 0.000e+00    | 2.702e-08     | 1.241e-06   |
+| _707_                          | 1.1             | 1.214e-06      | 0.000e+00    | 2.702e-08     | 1.241e-06   |
+| _526_                          | 1.1             | 1.164e-06      | 0.000e+00    | 6.881e-08     | 1.232e-06   |
+| _845_                          | 1.1             | 1.177e-06      | 0.000e+00    | 2.702e-08     | 1.204e-06   |
+| _521_                          | 1.1             | 1.118e-06      | 0.000e+00    | 8.480e-08     | 1.203e-06   |
+| _631_                          | 1.1             | 1.116e-06      | 0.000e+00    | 8.480e-08     | 1.201e-06   |
+| _505_                          | 1.1             | 1.116e-06      | 0.000e+00    | 8.480e-08     | 1.201e-06   |
+| _659_                          | 1.1             | 1.114e-06      | 0.000e+00    | 8.480e-08     | 1.198e-06   |
+| _757_                          | 1.1             | 1.111e-06      | 0.000e+00    | 8.480e-08     | 1.196e-06   |
+| _739_                          | 1.1             | 1.111e-06      | 0.000e+00    | 8.480e-08     | 1.196e-06   |
+| _501_                          | 1.1             | 1.110e-06      | 0.000e+00    | 8.480e-08     | 1.194e-06   |
+| _620_                          | 1.1             | 1.148e-06      | 0.000e+00    | 3.861e-08     | 1.186e-06   |
+| _571_                          | 1.1             | 1.136e-06      | 0.000e+00    | 3.555e-08     | 1.171e-06   |
+| _702_                          | 1.1             | 1.017e-06      | 0.000e+00    | 5.728e-08     | 1.074e-06   |
+| _837_                          | 1.1             | 1.013e-06      | 0.000e+00    | 5.728e-08     | 1.070e-06   |
+| _828_                          | 1.1             | 1.009e-06      | 0.000e+00    | 5.728e-08     | 1.066e-06   |
+| regs_31_$_SDFFE_PP0P__Q        | 1.1             | 1.016e-06      | 0.000e+00    | 3.896e-08     | 1.055e-06   |
+| _711_                          | 1.1             | 9.845e-07      | 0.000e+00    | 6.680e-08     | 1.051e-06   |
+| _652_                          | 1.1             | 9.999e-07      | 0.000e+00    | 5.035e-08     | 1.050e-06   |
+| _710_                          | 1.1             | 9.802e-07      | 0.000e+00    | 6.680e-08     | 1.047e-06   |
+| pc_next_reg_$_SDFFE_PP1P__Q    | 1.1             | 9.918e-07      | 0.000e+00    | 3.976e-08     | 1.032e-06   |
+| pc_next_reg_$_SDFFE_PP1P__Q_1  | 1.1             | 9.918e-07      | 0.000e+00    | 3.976e-08     | 1.032e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_29 | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_7  | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_28 | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_6  | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_8  | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_3  | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_9  | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_4  | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q    | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_5  | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_1  | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_10 | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_11 | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_12 | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_13 | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_14 | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_15 | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_16 | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_17 | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_18 | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_19 | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_2  | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_20 | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_21 | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_22 | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_23 | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_24 | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_25 | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_26 | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| pc_next_reg_$_SDFFE_PP0P__Q_27 | 1.1             | 9.918e-07      | 0.000e+00    | 3.898e-08     | 1.031e-06   |
+| _836_                          | 1.1             | 9.261e-07      | 0.000e+00    | 7.882e-08     | 1.005e-06   |
+| _827_                          | 1.1             | 9.252e-07      | 0.000e+00    | 7.882e-08     | 1.004e-06   |
+| _564_                          | 1.1             | 9.649e-07      | 0.000e+00    | 3.554e-08     | 1.000e-06   |
+| _834_                          | 1.1             | 9.074e-07      | 0.000e+00    | 7.882e-08     | 9.862e-07   |
+| _699_                          | 1.1             | 9.543e-07      | 0.000e+00    | 1.813e-08     | 9.725e-07   |
+| _674_                          | 1.1             | 9.543e-07      | 0.000e+00    | 1.813e-08     | 9.725e-07   |
+| _724_                          | 1.1             | 9.543e-07      | 0.000e+00    | 1.813e-08     | 9.725e-07   |
+| _746_                          | 1.1             | 9.093e-07      | 0.000e+00    | 3.260e-08     | 9.419e-07   |
+| _666_                          | 1.1             | 9.019e-07      | 0.000e+00    | 2.648e-08     | 9.284e-07   |
+| _762_                          | 1.1             | 9.006e-07      | 0.000e+00    | 2.648e-08     | 9.271e-07   |
+| _629_                          | 1.1             | 9.006e-07      | 0.000e+00    | 2.648e-08     | 9.271e-07   |
+| _622_                          | 1.1             | 8.749e-07      | 0.000e+00    | 2.632e-08     | 9.012e-07   |
+| _812_                          | 1.1             | 8.735e-07      | 0.000e+00    | 2.648e-08     | 8.999e-07   |
+| _765_                          | 1.1             | 8.735e-07      | 0.000e+00    | 2.648e-08     | 8.999e-07   |
+| _738_                          | 1.1             | 8.735e-07      | 0.000e+00    | 2.648e-08     | 8.999e-07   |
+| _825_                          | 1.1             | 8.735e-07      | 0.000e+00    | 2.648e-08     | 8.999e-07   |
+| _748_                          | 1.1             | 8.735e-07      | 0.000e+00    | 2.648e-08     | 8.999e-07   |
+| _635_                          | 1.1             | 8.735e-07      | 0.000e+00    | 2.648e-08     | 8.999e-07   |
+| _667_                          | 1.1             | 8.687e-07      | 0.000e+00    | 2.648e-08     | 8.952e-07   |
+| _754_                          | 1.1             | 8.603e-07      | 0.000e+00    | 2.648e-08     | 8.868e-07   |
+| _648_                          | 1.1             | 8.357e-07      | 0.000e+00    | 2.648e-08     | 8.622e-07   |
+| _706_                          | 1.1             | 8.357e-07      | 0.000e+00    | 2.648e-08     | 8.622e-07   |
+| _829_                          | 1.1             | 8.303e-07      | 0.000e+00    | 2.648e-08     | 8.568e-07   |
+| _715_                          | 1.1             | 8.303e-07      | 0.000e+00    | 2.648e-08     | 8.568e-07   |
+| _672_                          | 1.1             | 8.303e-07      | 0.000e+00    | 2.648e-08     | 8.568e-07   |
+| _495_                          | 1.1             | 7.326e-07      | 0.000e+00    | 1.148e-07     | 8.474e-07   |
+| _515_                          | 1.1             | 7.895e-07      | 0.000e+00    | 5.335e-08     | 8.428e-07   |
+| _726_                          | 1.1             | 8.005e-07      | 0.000e+00    | 2.648e-08     | 8.270e-07   |
+| _705_                          | 1.1             | 7.218e-07      | 0.000e+00    | 8.809e-08     | 8.099e-07   |
+| _619_                          | 1.1             | 7.428e-07      | 0.000e+00    | 1.876e-08     | 7.615e-07   |
+| _624_                          | 1.1             | 6.063e-07      | 0.000e+00    | 2.621e-08     | 6.325e-07   |
+| _550_                          | 1.1             | 5.807e-07      | 0.000e+00    | 4.413e-08     | 6.248e-07   |
+| _800_                          | 1.1             | 5.785e-07      | 0.000e+00    | 3.825e-08     | 6.168e-07   |
+| _684_                          | 1.1             | 5.780e-07      | 0.000e+00    | 3.825e-08     | 6.162e-07   |
+| _695_                          | 1.1             | 5.780e-07      | 0.000e+00    | 3.825e-08     | 6.162e-07   |
+| _651_                          | 1.1             | 5.696e-07      | 0.000e+00    | 4.240e-08     | 6.120e-07   |
+| _750_                          | 1.1             | 5.688e-07      | 0.000e+00    | 4.240e-08     | 6.112e-07   |
+| _678_                          | 1.1             | 5.763e-07      | 0.000e+00    | 3.479e-08     | 6.111e-07   |
+| _512_                          | 1.1             | 5.685e-07      | 0.000e+00    | 4.240e-08     | 6.109e-07   |
+| _508_                          | 1.1             | 5.685e-07      | 0.000e+00    | 4.240e-08     | 6.109e-07   |
+| _819_                          | 1.1             | 5.694e-07      | 0.000e+00    | 3.825e-08     | 6.077e-07   |
+| _615_                          | 1.1             | 5.863e-07      | 0.000e+00    | 1.982e-08     | 6.061e-07   |
+| _769_                          | 1.1             | 5.690e-07      | 0.000e+00    | 1.810e-08     | 5.871e-07   |
+| _645_                          | 1.1             | 5.690e-07      | 0.000e+00    | 1.810e-08     | 5.871e-07   |
+| _782_                          | 1.1             | 5.690e-07      | 0.000e+00    | 1.810e-08     | 5.871e-07   |
+| _744_                          | 1.1             | 5.687e-07      | 0.000e+00    | 1.810e-08     | 5.868e-07   |
+| _793_                          | 1.1             | 5.422e-07      | 0.000e+00    | 4.240e-08     | 5.846e-07   |
+| _709_                          | 1.1             | 5.593e-07      | 0.000e+00    | 1.810e-08     | 5.774e-07   |
+| _737_                          | 1.1             | 5.496e-07      | 0.000e+00    | 2.507e-08     | 5.746e-07   |
+| _785_                          | 1.1             | 5.492e-07      | 0.000e+00    | 2.507e-08     | 5.742e-07   |
+| _626_                          | 1.1             | 5.492e-07      | 0.000e+00    | 2.507e-08     | 5.742e-07   |
+| _730_                          | 1.1             | 5.549e-07      | 0.000e+00    | 1.810e-08     | 5.730e-07   |
+| _671_                          | 1.1             | 5.459e-07      | 0.000e+00    | 2.683e-08     | 5.728e-07   |
+| _796_                          | 1.1             | 5.483e-07      | 0.000e+00    | 1.810e-08     | 5.664e-07   |
+| _665_                          | 1.1             | 5.408e-07      | 0.000e+00    | 2.507e-08     | 5.659e-07   |
+| _753_                          | 1.1             | 5.331e-07      | 0.000e+00    | 2.683e-08     | 5.599e-07   |
+| _749_                          | 1.1             | 5.340e-07      | 0.000e+00    | 2.507e-08     | 5.591e-07   |
+| _789_                          | 1.1             | 5.318e-07      | 0.000e+00    | 2.683e-08     | 5.586e-07   |
+| _656_                          | 1.1             | 5.317e-07      | 0.000e+00    | 2.683e-08     | 5.586e-07   |
+| _740_                          | 1.1             | 5.317e-07      | 0.000e+00    | 2.507e-08     | 5.567e-07   |
+| _741_                          | 1.1             | 5.317e-07      | 0.000e+00    | 2.507e-08     | 5.567e-07   |
+| _655_                          | 1.1             | 5.223e-07      | 0.000e+00    | 3.056e-08     | 5.528e-07   |
+| _770_                          | 1.1             | 5.272e-07      | 0.000e+00    | 2.507e-08     | 5.523e-07   |
+| _776_                          | 1.1             | 5.272e-07      | 0.000e+00    | 2.507e-08     | 5.523e-07   |
+| _649_                          | 1.1             | 5.249e-07      | 0.000e+00    | 2.507e-08     | 5.499e-07   |
+| _663_                          | 1.1             | 5.249e-07      | 0.000e+00    | 2.507e-08     | 5.499e-07   |
+| _627_                          | 1.1             | 5.249e-07      | 0.000e+00    | 2.507e-08     | 5.499e-07   |
+| _774_                          | 1.1             | 5.249e-07      | 0.000e+00    | 2.507e-08     | 5.499e-07   |
+| _821_                          | 1.1             | 5.161e-07      | 0.000e+00    | 2.864e-08     | 5.447e-07   |
+| _657_                          | 1.1             | 5.167e-07      | 0.000e+00    | 2.507e-08     | 5.418e-07   |
+| _697_                          | 1.1             | 5.130e-07      | 0.000e+00    | 2.864e-08     | 5.416e-07   |
+| _742_                          | 1.1             | 5.082e-07      | 0.000e+00    | 3.340e-08     | 5.416e-07   |
+| _687_                          | 1.1             | 5.129e-07      | 0.000e+00    | 2.864e-08     | 5.415e-07   |
+| _784_                          | 1.1             | 5.129e-07      | 0.000e+00    | 2.864e-08     | 5.415e-07   |
+| _647_                          | 1.1             | 5.129e-07      | 0.000e+00    | 2.864e-08     | 5.415e-07   |
+| _773_                          | 1.1             | 5.129e-07      | 0.000e+00    | 2.864e-08     | 5.415e-07   |
+| _719_                          | 1.1             | 5.128e-07      | 0.000e+00    | 2.864e-08     | 5.415e-07   |
+| _704_                          | 1.1             | 5.078e-07      | 0.000e+00    | 3.340e-08     | 5.412e-07   |
+| _802_                          | 1.1             | 5.123e-07      | 0.000e+00    | 2.864e-08     | 5.410e-07   |
+| _842_                          | 1.1             | 5.120e-07      | 0.000e+00    | 2.864e-08     | 5.407e-07   |
+| _733_                          | 1.1             | 5.120e-07      | 0.000e+00    | 2.864e-08     | 5.407e-07   |
+| _628_                          | 1.1             | 5.154e-07      | 0.000e+00    | 2.507e-08     | 5.405e-07   |
+| _766_                          | 1.1             | 5.154e-07      | 0.000e+00    | 2.507e-08     | 5.405e-07   |
+| _779_                          | 1.1             | 5.154e-07      | 0.000e+00    | 2.507e-08     | 5.405e-07   |
+| _835_                          | 1.1             | 5.154e-07      | 0.000e+00    | 2.507e-08     | 5.405e-07   |
+| _642_                          | 1.1            
+I20251129 18:10:10.549106 117183 Power.cc:1047] power report end, output dir: /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077_gpr-500MHz
+I20251129 18:10:10.549364 117183 Power.cc:1049] power report memory usage 0MB
+I20251129 18:10:10.549382 117183 Power.cc:1051] power report time elapsed 0.014979s

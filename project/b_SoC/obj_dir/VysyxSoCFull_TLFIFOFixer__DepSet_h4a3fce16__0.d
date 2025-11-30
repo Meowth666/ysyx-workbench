@@ -1,0 +1,3 @@
+VysyxSoCFull_TLFIFOFixer__DepSet_h4a3fce16__0.o: \
+ VysyxSoCFull_TLFIFOFixer__DepSet_h4a3fce16__0.cpp VysyxSoCFull__pch.h \
+ VysyxSoCFull_TLFIFOFixer.h VysyxSoCFull__Syms.h

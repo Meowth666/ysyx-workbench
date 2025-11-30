@@ -1,0 +1,15 @@
+Generate the report at 2025-11-29T16:09:32, GitVersion: aa25008b3778a76ae1975c839d4cc459f7f7b3b7.
++--------------------------------------------------------------------------------------------------+-----------+--------+-------------+-------------+------+
+| Net / Pin                                                                                        | MaxFanout | Fanout | FanoutSlack | LibCellPort | Note |
++--------------------------------------------------------------------------------------------------+-----------+--------+-------------+-------------+------+
+| f_gpr.regs_31_$_SDFFE_PP0P__Q_14_D_$_ANDNOT__Y_B_$_MUX__Y_B_$_MUX__Y_B                           |           |        |             |             |      |
+| f_gpr.pc_next_reg_$_SDFFE_PP0P__Q_12:QN                                                          | NA        | 1      | NA          | DFF_X1/QN   |      |
+| _04155_                                                                                          |           |        |             |             |      |
+| _24643_:ZN                                                                                       | NA        | 2      | NA          | NAND4_X4/ZN |      |
+| b_ifu.io_rd_Req_bits_addr[16]                                                                    |           |        |             |             |      |
+| f_gpr.pc_next_reg_$_SDFFE_PP0P__Q_13:Q                                                           | NA        | 7      | NA          | DFF_X1/Q    |      |
+| b_ifu.io_rd_Req_bits_addr[17]                                                                    |           |        |             |             |      |
+| f_gpr.pc_next_reg_$_SDFFE_PP0P__Q_12:Q                                                           | NA        | 9      | NA          | DFF_X1/Q    |      |
+| c_arbiter._clint_reg_T_1_$_XOR__Y_46_A_$_ANDNOT__Y_B_$_MUX__B_Y_$_MUX__A_Y_$_MUX__A_Y_$_MUX__A_B |           |        |             |             |      |
+| f_gpr.pc_next_reg_$_SDFFE_PP0P__Q_13:QN                                                          | NA        | 2      | NA          | DFF_X1/QN   |      |
++--------------------------------------------------------------------------------------------------+-----------+--------+-------------+-------------+------+

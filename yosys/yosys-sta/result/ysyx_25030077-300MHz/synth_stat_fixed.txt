@@ -1,0 +1,95 @@
+
+5. Printing statistics.
+
+=== ysyx_25030077 ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+    13828        - wires
+    15393        - wire bits
+    13828        - public wires
+    15393        - public wire bits
+       77        - ports
+      431        - port bits
+    13812 2.07E+04 cells
+      583  620.312   AND2_X1
+      114   151.62   AND2_X2
+       34   81.396   AND2_X4
+      733   974.89   AND3_X1
+       21   33.516   AND3_X2
+        6   17.556   AND3_X4
+      511  815.556   AND4_X1
+        4    7.448   AND4_X2
+        2    6.916   AND4_X4
+      166   220.78   AOI211_X1
+        5    11.97   AOI211_X2
+        1    2.926   AOI211_X4
+     1127  1.2E+03   AOI21_X1
+       20    37.24   AOI21_X2
+        3   10.374   AOI21_X4
+        1    2.926   AOI221_X2
+       53  183.274   AOI221_X4
+      152   202.16   AOI22_X1
+        1    2.394   AOI22_X2
+        1    4.522   AOI22_X4
+        1    0.798   BUF_X1
+        5    33.25   BUF_X16
+      632  672.448   BUF_X2
+      436  811.832   BUF_X4
+       16   55.328   BUF_X8
+      109  115.976   CLKBUF_X2
+        2     2.66   CLKBUF_X3
+       38  131.404   CLKGATE_X1
+     1255  5675.11   DFF_X1
+      976  519.232   INV_X1
+        1    4.522   INV_X16
+       23   18.354   INV_X2
+        3   26.334   INV_X32
+       14    18.62   INV_X4
+        1    2.394   INV_X8
+        1    0.532   LOGIC0_X1
+        1    0.532   LOGIC1_X1
+      185   344.47   MUX2_X1
+        9   21.546   MUX2_X2
+      495   395.01   NAND2_X1
+        8    10.64   NAND2_X2
+       10    23.94   NAND2_X4
+     1162 1.24E+03   NAND3_X1
+        4    7.448   NAND3_X2
+        3   10.374   NAND3_X4
+     1107  1472.31   NAND4_X1
+        2    4.788   NAND4_X2
+        2    9.576   NAND4_X4
+      757  604.086   NOR2_X1
+       24    31.92   NOR2_X2
+       33   79.002   NOR2_X4
+      271  288.344   NOR3_X1
+        3    5.586   NOR3_X2
+        3   11.172   NOR3_X4
+      116   154.28   NOR4_X1
+        8   38.304   NOR4_X4
+      465   618.45   OAI211_X1
+        6   14.364   OAI211_X2
+        3   13.566   OAI211_X4
+     1078 1.15E+03   OAI21_X1
+       11   20.482   OAI21_X2
+        3   10.374   OAI21_X4
+       70   111.72   OAI221_X1
+       30     39.9   OAI22_X1
+      255   271.32   OR2_X1
+        8    10.64   OR2_X2
+        6   14.364   OR2_X4
+      216   287.28   OR3_X1
+        3    4.788   OR3_X2
+        4   11.704   OR3_X4
+      143  228.228   OR4_X1
+        1    3.458   OR4_X4
+      174  277.704   XNOR2_X1
+       13    34.58   XNOR2_X2
+       65   103.74   XOR2_X1
+        4    9.576   XOR2_X2
+
+   Chip area for module '\ysyx_25030077': 20658.624000
+     of which used for sequential elements: 5675.110000 (27.47%)
+

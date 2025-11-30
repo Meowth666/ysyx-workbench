@@ -1,0 +1,964 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.56+197 (git sha1 d4c4b2106, clang++ 18.1.8 -fPIC -O3)
+
+-- Executing script file `-' --
+[TCL: yosys -import] Command name collision: found pre-existing command `cd' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `eval' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `exec' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `read' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `trace' -> skip.
+
+1. Executing Verilog-2005 frontend: /home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v
+Parsing SystemVerilog input from `/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v' to AST representation.
+Generating RTLIL representation for module `\ysyx_25030077_Queue'.
+Generating RTLIL representation for module `\ysyx_25030077_IFU'.
+Generating RTLIL representation for module `\ysyx_25030077_arbiter'.
+Generating RTLIL representation for module `\ysyx_25030077_IDU'.
+Generating RTLIL representation for module `\ysyx_25030077_imm'.
+Generating RTLIL representation for module `\ysyx_25030077_MaxPeriodFibonacciLFSR'.
+Generating RTLIL representation for module `\ysyx_25030077_gpr'.
+Generating RTLIL representation for module `\ysyx_25030077_data_control'.
+Generating RTLIL representation for module `\ysyx_25030077_alu'.
+Generating RTLIL representation for module `\ysyx_25030077_pc_next'.
+Generating RTLIL representation for module `\ysyx_25030077'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/verilog/blackbox.v
+Parsing Verilog input from `/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/verilog/blackbox.v' to AST representation.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/verilog/cells_clkgate.v
+Parsing Verilog input from `/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/verilog/cells_clkgate.v' to AST representation.
+Generating RTLIL representation for module `\OPENROAD_CLKGATE'.
+Successfully finished Verilog frontend.
+
+4. Executing SYNTH pass.
+
+4.1. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1.1. Analyzing design hierarchy..
+Top module:  \ysyx_25030077_alu
+
+4.1.2. Analyzing design hierarchy..
+Top module:  \ysyx_25030077_alu
+Removing unused module `\OPENROAD_CLKGATE'.
+Removing unused module `\ysyx_25030077'.
+Removing unused module `\ysyx_25030077_pc_next'.
+Removing unused module `\ysyx_25030077_data_control'.
+Removing unused module `\ysyx_25030077_gpr'.
+Removing unused module `\ysyx_25030077_MaxPeriodFibonacciLFSR'.
+Removing unused module `\ysyx_25030077_imm'.
+Removing unused module `\ysyx_25030077_IDU'.
+Removing unused module `\ysyx_25030077_arbiter'.
+Removing unused module `\ysyx_25030077_IFU'.
+Removing unused module `\ysyx_25030077_Queue'.
+Removed 11 unused modules.
+
+4.2. Executing PROC pass (convert processes to netlists).
+
+4.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+4.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 0 assignments to connections.
+
+4.2.4. Executing PROC_INIT pass (extract init attributes).
+
+4.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+4.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+4.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+
+4.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+4.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+4.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_alu.
+
+4.3. Executing FLATTEN pass (flatten design).
+
+4.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_alu.
+
+4.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_alu..
+Removed 0 unused cells and 31 unused wires.
+<suppressed ~1 debug messages>
+
+4.6. Executing CHECK pass (checking for obvious problems).
+Checking module ysyx_25030077_alu...
+Found and reported 0 problems.
+
+4.7. Executing OPT pass (performing simple optimizations).
+
+4.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_alu.
+
+4.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_alu'.
+Removed a total of 0 cells.
+
+4.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ysyx_25030077_alu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~22 debug messages>
+
+4.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ysyx_25030077_alu.
+Performed a total of 0 changes.
+
+4.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_alu'.
+Removed a total of 0 cells.
+
+4.7.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.7.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_alu..
+
+4.7.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_alu.
+
+4.7.9. Finished OPT passes. (There is nothing left to do.)
+
+4.8. Executing FSM pass (extract and optimize FSM).
+
+4.8.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+4.8.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+4.8.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+4.8.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_alu..
+
+4.8.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+4.8.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+4.8.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+4.8.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+4.9. Executing OPT pass (performing simple optimizations).
+
+4.9.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_alu.
+
+4.9.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_alu'.
+Removed a total of 0 cells.
+
+4.9.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ysyx_25030077_alu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~22 debug messages>
+
+4.9.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ysyx_25030077_alu.
+Performed a total of 0 changes.
+
+4.9.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_alu'.
+Removed a total of 0 cells.
+
+4.9.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.9.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_alu..
+
+4.9.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_alu.
+
+4.9.9. Finished OPT passes. (There is nothing left to do.)
+
+4.10. Executing WREDUCE pass (reducing word size of cells).
+Removed top 15 bits (of 16) from port A of cell ysyx_25030077_alu.$shl$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1793$767 ($shl).
+Removed top 3 bits (of 16) from port Y of cell ysyx_25030077_alu.$shl$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1793$767 ($shl).
+Removed top 31 bits (of 63) from port A of cell ysyx_25030077_alu.$shl$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1802$775 ($shl).
+Removed top 32 bits (of 33) from mux cell ysyx_25030077_alu.$ternary$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1815$780 ($mux).
+Removed top 1 bits (of 33) from mux cell ysyx_25030077_alu.$ternary$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1816$781 ($mux).
+Removed top 1 bits (of 33) from mux cell ysyx_25030077_alu.$ternary$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1817$782 ($mux).
+Removed top 1 bits (of 33) from mux cell ysyx_25030077_alu.$ternary$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1818$783 ($mux).
+Removed top 1 bits (of 33) from mux cell ysyx_25030077_alu.$ternary$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1819$784 ($mux).
+Removed top 1 bits (of 64) from mux cell ysyx_25030077_alu.$ternary$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1820$785 ($mux).
+Removed top 1 bits (of 33) from mux cell ysyx_25030077_alu.$ternary$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1821$786 ($mux).
+Removed top 32 bits (of 33) from mux cell ysyx_25030077_alu.$ternary$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1822$787 ($mux).
+Removed top 32 bits (of 33) from port B of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1824$789 ($or).
+Removed top 1 bits (of 33) from port B of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1825$790 ($or).
+Removed top 1 bits (of 33) from port B of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1826$791 ($or).
+Removed top 1 bits (of 33) from port B of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1827$792 ($or).
+Removed top 1 bits (of 33) from port B of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1828$793 ($or).
+Removed top 31 bits (of 64) from port A of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1830$794 ($or).
+Removed top 1 bits (of 64) from port B of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1830$794 ($or).
+Removed top 1 bits (of 64) from port Y of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1830$794 ($or).
+Removed top 1 bits (of 64) from port A of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1832$795 ($or).
+Removed top 32 bits (of 64) from port B of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1832$795 ($or).
+Removed top 1 bits (of 64) from port Y of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1832$795 ($or).
+Removed top 1 bits (of 64) from port A of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1834$796 ($or).
+Removed top 63 bits (of 64) from port B of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1834$796 ($or).
+Removed top 32 bits (of 64) from port Y of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1834$796 ($or).
+Removed top 31 bits (of 63) from port A of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1834$796 ($or).
+Removed top 31 bits (of 63) from port Y of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1832$795 ($or).
+Removed top 31 bits (of 63) from port A of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1832$795 ($or).
+Removed top 31 bits (of 63) from port Y of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1830$794 ($or).
+Removed top 1 bits (of 33) from port A of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1830$794 ($or).
+Removed top 31 bits (of 63) from port B of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1830$794 ($or).
+Removed top 31 bits (of 63) from mux cell ysyx_25030077_alu.$ternary$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1820$785 ($mux).
+Removed top 1 bits (of 33) from port Y of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1828$793 ($or).
+Removed top 1 bits (of 33) from port A of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1828$793 ($or).
+Removed top 31 bits (of 63) from port Y of cell ysyx_25030077_alu.$shl$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1802$775 ($shl).
+Removed top 1 bits (of 33) from port Y of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1827$792 ($or).
+Removed top 1 bits (of 33) from port A of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1827$792 ($or).
+Removed top 1 bits (of 33) from port Y of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1826$791 ($or).
+Removed top 1 bits (of 33) from port A of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1826$791 ($or).
+Removed top 1 bits (of 33) from port Y of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1825$790 ($or).
+Removed top 1 bits (of 33) from port A of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1825$790 ($or).
+Removed top 1 bits (of 33) from port Y of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1824$789 ($or).
+Removed top 1 bits (of 33) from port A of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1824$789 ($or).
+Removed top 1 bits (of 33) from port Y of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1823$788 ($or).
+Removed top 1 bits (of 33) from port A of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1823$788 ($or).
+Removed top 1 bits (of 33) from port B of cell ysyx_25030077_alu.$or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1823$788 ($or).
+Removed top 1 bits (of 33) from mux cell ysyx_25030077_alu.$ternary$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1813$778 ($mux).
+Removed top 1 bits (of 33) from mux cell ysyx_25030077_alu.$ternary$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1814$779 ($mux).
+Removed top 1 bits (of 33) from port Y of cell ysyx_25030077_alu.$add$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1794$768 ($add).
+Removed top 1 bits (of 33) from port Y of cell ysyx_25030077_alu.$sub$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1795$769 ($sub).
+Removed top 32 bits (of 64) from wire ysyx_25030077_alu._GEN_0.
+Removed top 32 bits (of 64) from wire ysyx_25030077_alu._GEN_1.
+Removed top 63 bits (of 64) from wire ysyx_25030077_alu._GEN_2.
+Removed top 32 bits (of 64) from wire ysyx_25030077_alu._out33_T_14.
+Removed top 1 bits (of 33) from wire ysyx_25030077_alu._out33_T_24.
+Removed top 1 bits (of 33) from wire ysyx_25030077_alu._out33_T_25.
+Removed top 1 bits (of 33) from wire ysyx_25030077_alu._out33_T_27.
+Removed top 1 bits (of 33) from wire ysyx_25030077_alu._out33_T_28.
+Removed top 1 bits (of 33) from wire ysyx_25030077_alu._out33_T_29.
+Removed top 1 bits (of 33) from wire ysyx_25030077_alu._out33_T_30.
+Removed top 32 bits (of 64) from wire ysyx_25030077_alu._out33_T_32.
+Removed top 1 bits (of 33) from wire ysyx_25030077_alu._out33_T_40.
+Removed top 1 bits (of 33) from wire ysyx_25030077_alu._out33_T_44.
+Removed top 1 bits (of 33) from wire ysyx_25030077_alu.add33.
+Removed top 3 bits (of 16) from wire ysyx_25030077_alu.oneHot.
+
+4.11. Executing PEEPOPT pass (run peephole optimizers).
+
+4.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_alu..
+Removed 0 unused cells and 15 unused wires.
+<suppressed ~1 debug messages>
+
+4.13. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module ysyx_25030077_alu:
+  creating $macc model for $add$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1794$768 ($add).
+  creating $macc model for $sub$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1795$769 ($sub).
+  creating $alu model for $macc $sub$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1795$769.
+  creating $alu model for $macc $add$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1794$768.
+  creating $alu model for $lt$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1803$776 ($lt): merged with $sub$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1795$769.
+  creating $alu model for $lt$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1804$777 ($lt): new $alu
+  creating $alu cell for $lt$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1804$777: $auto$alumacc.cc:495:replace_alu$858
+  creating $alu cell for $add$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1794$768: $auto$alumacc.cc:495:replace_alu$865
+  creating $alu cell for $sub$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1795$769, $lt$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1803$776: $auto$alumacc.cc:495:replace_alu$868
+  created 3 $alu and 0 $macc cells.
+
+4.14. Executing SHARE pass (SAT-based resource sharing).
+Found 3 cells in module ysyx_25030077_alu that may be considered for resource sharing.
+  Analyzing resource sharing options for $sshr$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1799$773 ($sshr):
+    Found 1 activation_patterns using ctrl signal { $logic_or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1835$797_Y \oneHot [5] }.
+    No candidates found.
+  Analyzing resource sharing options for $shr$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1800$774 ($shr):
+    Found 1 activation_patterns using ctrl signal { $logic_or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1835$797_Y \oneHot [9] }.
+    No candidates found.
+  Analyzing resource sharing options for $shl$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1802$775 ($shl):
+    Found 1 activation_patterns using ctrl signal { $logic_or$/home/meowth/ysyx/ysyx-workbench/project/yosys-sta/example/ysyx25030077.v:1835$797_Y \oneHot [8] }.
+    No candidates found.
+
+4.15. Executing OPT pass (performing simple optimizations).
+
+4.15.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_alu.
+
+4.15.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_alu'.
+Removed a total of 0 cells.
+
+4.15.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ysyx_25030077_alu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~22 debug messages>
+
+4.15.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ysyx_25030077_alu.
+Performed a total of 0 changes.
+
+4.15.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_alu'.
+Removed a total of 0 cells.
+
+4.15.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.15.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_alu..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+4.15.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_alu.
+
+4.15.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.15.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ysyx_25030077_alu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~22 debug messages>
+
+4.15.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ysyx_25030077_alu.
+Performed a total of 0 changes.
+
+4.15.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_alu'.
+Removed a total of 0 cells.
+
+4.15.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.15.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_alu..
+
+4.15.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_alu.
+
+4.15.16. Finished OPT passes. (There is nothing left to do.)
+
+4.16. Executing MEMORY pass.
+
+4.16.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+4.16.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+4.16.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+4.16.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+4.16.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+4.16.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_alu..
+
+4.16.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+4.16.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+4.16.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_alu..
+
+4.16.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+4.17. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_alu..
+
+4.18. Executing OPT pass (performing simple optimizations).
+
+4.18.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_alu.
+<suppressed ~41 debug messages>
+
+4.18.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_alu'.
+Removed a total of 0 cells.
+
+4.18.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.18.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_alu..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+4.18.5. Finished fast OPT passes.
+
+4.19. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+4.20. Executing OPT pass (performing simple optimizations).
+
+4.20.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_alu.
+
+4.20.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_alu'.
+Removed a total of 0 cells.
+
+4.20.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ysyx_25030077_alu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~18 debug messages>
+
+4.20.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ysyx_25030077_alu.
+Performed a total of 0 changes.
+
+4.20.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_alu'.
+Removed a total of 0 cells.
+
+4.20.6. Executing OPT_SHARE pass.
+
+4.20.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.20.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_alu..
+
+4.20.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_alu.
+
+4.20.10. Finished OPT passes. (There is nothing left to do.)
+
+4.21. Executing TECHMAP pass (map to technology primitives).
+
+4.21.1. Executing Verilog-2005 frontend: /home/meowth/ysyx/ysyx-workbench/oss-cad-suite-linux-x64-20250830/oss-cad-suite/lib/../share/yosys/techmap.v
+Parsing Verilog input from `/home/meowth/ysyx/ysyx-workbench/oss-cad-suite-linux-x64-20250830/oss-cad-suite/lib/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+4.21.2. Continuing TECHMAP pass.
+Using template $paramod$constmap:3a22be4724777dfcb7a6c5432e3d5ae8aaa366ae$paramod$11be1571daf31445db25bdd903eeb019857e91c6\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shl.
+Using template $paramod$fbc7873bff55778c0b3173955b7e4bce1d9d6834\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod$constmap:4621fcf06a436d1e2a4080e2ed9866a7d07a6e07$paramod$e765c459d3029c22a22a27989e94858fd9ebfa9c\_90_shift_ops_shr_shl_sshl_sshr for cells of type $sshr.
+Using template $paramod$constmap:4621fcf06a436d1e2a4080e2ed9866a7d07a6e07$paramod$feecc7a0dbd012970970f2858f15e786e251f677\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shr.
+Using template $paramod$constmap:4621fcf06a436d1e2a4080e2ed9866a7d07a6e07$paramod$335cfd09f1afa8139c4aafcbbe5f361887b79c5e\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shl.
+Using template $paramod$2653f68ddb8eab7b1907b4a20767b72a824a7a36\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $logic_or.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000100000 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~2154 debug messages>
+
+4.22. Executing OPT pass (performing simple optimizations).
+
+4.22.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_alu.
+<suppressed ~106 debug messages>
+
+4.22.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_alu'.
+<suppressed ~1404 debug messages>
+Removed a total of 468 cells.
+
+4.22.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.22.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_alu..
+Removed 16 unused cells and 226 unused wires.
+<suppressed ~17 debug messages>
+
+4.22.5. Finished fast OPT passes.
+
+4.23. Executing ABC pass (technology mapping using ABC).
+
+4.23.1. Extracting gate netlist of module `\ysyx_25030077_alu' to `<abc-temp-dir>/input.blif'..
+Extracted 1438 gates and 1507 wires to a netlist network with 68 inputs and 32 outputs.
+
+4.23.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+4.23.1.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:       38
+ABC RESULTS:            ANDNOT cells:      477
+ABC RESULTS:               MUX cells:      342
+ABC RESULTS:              NAND cells:       32
+ABC RESULTS:               NOR cells:       25
+ABC RESULTS:               NOT cells:       33
+ABC RESULTS:                OR cells:      331
+ABC RESULTS:             ORNOT cells:       60
+ABC RESULTS:              XNOR cells:       32
+ABC RESULTS:               XOR cells:       64
+ABC RESULTS:        internal signals:     1407
+ABC RESULTS:           input signals:       68
+ABC RESULTS:          output signals:       32
+Removing temp directory.
+
+4.24. Executing OPT pass (performing simple optimizations).
+
+4.24.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_alu.
+<suppressed ~120 debug messages>
+
+4.24.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_alu'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+4.24.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.24.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_alu..
+Removed 3 unused cells and 346 unused wires.
+<suppressed ~18 debug messages>
+
+4.24.5. Finished fast OPT passes.
+
+4.25. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `ysyx_25030077_alu'. Setting top module to ysyx_25030077_alu.
+
+4.25.1. Analyzing design hierarchy..
+Top module:  \ysyx_25030077_alu
+
+4.25.2. Analyzing design hierarchy..
+Top module:  \ysyx_25030077_alu
+Removed 0 unused modules.
+
+4.26. Printing statistics.
+
+=== ysyx_25030077_alu ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     1431 wires
+     2537 wire bits
+       33 public wires
+     1139 public wire bits
+        4 ports
+      100 port bits
+     1430 cells
+      477   $_ANDNOT_
+       38   $_AND_
+      342   $_MUX_
+       32   $_NAND_
+       25   $_NOR_
+       30   $_NOT_
+       60   $_ORNOT_
+      331   $_OR_
+       31   $_XNOR_
+       64   $_XOR_
+
+4.27. Executing CHECK pass (checking for obvious problems).
+Checking module ysyx_25030077_alu...
+Found and reported 0 problems.
+
+5. Executing AUTONAME pass.
+Renamed 10176 objects in module ysyx_25030077_alu (31 iterations).
+<suppressed ~2828 debug messages>
+
+6. Executing SPLITNETS pass (splitting up multi-bit signals).
+
+7. Executing OPT pass (performing simple optimizations).
+
+7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_alu.
+
+7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_alu'.
+Removed a total of 0 cells.
+
+7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ysyx_25030077_alu..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ysyx_25030077_alu.
+Performed a total of 0 changes.
+
+7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_alu'.
+Removed a total of 0 cells.
+
+7.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_alu..
+Removed 0 unused cells and 1039 unused wires.
+<suppressed ~1039 debug messages>
+
+7.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_alu.
+
+7.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ysyx_25030077_alu..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+7.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ysyx_25030077_alu.
+Performed a total of 0 changes.
+
+7.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_alu'.
+Removed a total of 0 cells.
+
+7.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_alu..
+
+7.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_alu.
+
+7.16. Finished OPT passes. (There is nothing left to do.)
+
+8. Executing CLOCK_GATE pass (extract clock gating out of flip flops).
+Selected rising edge ICG \CLKGATE_X1 from Liberty file
+Converted 0 FFs.
+<suppressed ~24 debug messages>
+
+9. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell DFF_X1 (noninv, pins=4, area=4.52) is a direct match for cell type $_DFF_P_.
+  cell DFFR_X1 (noninv, pins=5, area=5.32) is a direct match for cell type $_DFF_PN0_.
+  cell DFFS_X1 (noninv, pins=5, area=5.32) is a direct match for cell type $_DFF_PN1_.
+  cell DFFRS_X1 (noninv, pins=6, area=6.38) is a direct match for cell type $_DFFSR_PNN_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \DFF_X1 _DFF_P_ (.CK( C), .D( D), .Q( Q), .QN(~Q));
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \DFFR_X1 _DFF_PN0_ (.CK( C), .D( D), .Q( Q), .QN(~Q), .RN( R));
+    \DFFS_X1 _DFF_PN1_ (.CK( C), .D( D), .Q( Q), .QN(~Q), .SN( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFE_NN_
+    unmapped dff cell: $_DFFE_NP_
+    unmapped dff cell: $_DFFE_PN_
+    unmapped dff cell: $_DFFE_PP_
+    unmapped dff cell: $_DFFSR_NNN_
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    \DFFRS_X1 _DFFSR_PNN_ (.CK( C), .D( D), .Q( Q), .QN(~Q), .RN( R), .SN( S));
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+9.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+<suppressed ~8 debug messages>
+Mapping DFF cells in module `\ysyx_25030077_alu':
+
+10. Executing OPT pass (performing simple optimizations).
+
+10.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_alu.
+
+10.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_alu'.
+Removed a total of 0 cells.
+
+10.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ysyx_25030077_alu..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+10.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ysyx_25030077_alu.
+Performed a total of 0 changes.
+
+10.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ysyx_25030077_alu'.
+Removed a total of 0 cells.
+
+10.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+10.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_alu..
+
+10.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ysyx_25030077_alu.
+
+10.9. Finished OPT passes. (There is nothing left to do.)
+
+11. Executing ABC pass (technology mapping using ABC).
+
+11.1. Extracting gate netlist of module `\ysyx_25030077_alu' to `/tmp/yosys-abc-Rs5naP/input.blif'..
+Extracted 1430 gates and 1498 wires to a netlist network with 68 inputs and 32 outputs.
+
+11.1.1. Executing ABC.
+Running ABC command: "/home/meowth/ysyx/ysyx-workbench/oss-cad-suite-linux-x64-20250830/oss-cad-suite/lib/yosys-abc" -s -f /tmp/yosys-abc-Rs5naP/abc.script 2>&1
+ABC: ABC command line: "source /tmp/yosys-abc-Rs5naP/abc.script".
+ABC: 
+ABC: + read_blif /tmp/yosys-abc-Rs5naP/input.blif 
+ABC: + read_lib -w /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.05 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "ANTENNA_X1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATETST_X1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATETST_X2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATETST_X4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATETST_X8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATE_X1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATE_X2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATE_X4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "CLKGATE_X8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFRS_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFRS_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFR_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFR_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFS_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFS_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFF_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFF_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLH_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLH_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLL_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DLL_X2".
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X2" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X4" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X8" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X16" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "FILLCELL_X32" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "LOGIC0_X1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "LOGIC1_X1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFRS_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFRS_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFR_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFR_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFS_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFFS_X2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFF_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "SDFF_X2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUF_X16".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TINV_X1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "TLAT_X1".
+ABC: Library "NangateOpenCellLibrary" from "/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib" has 90 cells (44 skipped: 21 seq; 6 tri-state; 8 no func; 9 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.08 sec
+ABC: Memory =   11.38 MB. Time =     0.08 sec
+ABC: Warning: Detected 2 multi-output cells (for example, "FA_X1").
+ABC: + strash 
+ABC: + ifraig 
+ABC: + retime -D 1000.0 -M 6 
+ABC: + strash 
+ABC: + dch -f 
+ABC: + map -p -M 1 -D 1000.0 -f 
+ABC: + topo 
+ABC: + dnsize 
+ABC: + buffer -p 
+ABC: + upsize 
+ABC: + 
+ABC: + write_blif /tmp/yosys-abc-Rs5naP/output.blif 
+
+11.1.2. Re-integrating ABC results.
+ABC RESULTS:           AND2_X1 cells:      115
+ABC RESULTS:           AND2_X2 cells:        9
+ABC RESULTS:           AND2_X4 cells:        9
+ABC RESULTS:           AND3_X1 cells:       69
+ABC RESULTS:           AND3_X4 cells:        1
+ABC RESULTS:           AND4_X1 cells:       18
+ABC RESULTS:           AND4_X4 cells:        1
+ABC RESULTS:         AOI211_X1 cells:       16
+ABC RESULTS:         AOI211_X2 cells:        2
+ABC RESULTS:          AOI21_X1 cells:      158
+ABC RESULTS:          AOI21_X2 cells:        1
+ABC RESULTS:          AOI21_X4 cells:        7
+ABC RESULTS:         AOI221_X1 cells:        1
+ABC RESULTS:         AOI221_X4 cells:       11
+ABC RESULTS:          AOI22_X1 cells:        7
+ABC RESULTS:            BUF_X2 cells:       25
+ABC RESULTS:            BUF_X4 cells:       21
+ABC RESULTS:         CLKBUF_X2 cells:        1
+ABC RESULTS:         CLKBUF_X3 cells:        1
+ABC RESULTS:            INV_X1 cells:      122
+ABC RESULTS:            INV_X2 cells:        1
+ABC RESULTS:            INV_X4 cells:        4
+ABC RESULTS:           MUX2_X1 cells:       17
+ABC RESULTS:          NAND2_X1 cells:       81
+ABC RESULTS:          NAND2_X4 cells:        3
+ABC RESULTS:          NAND3_X1 cells:      110
+ABC RESULTS:          NAND3_X4 cells:        3
+ABC RESULTS:          NAND4_X1 cells:       37
+ABC RESULTS:          NAND4_X4 cells:        1
+ABC RESULTS:           NOR2_X1 cells:      116
+ABC RESULTS:           NOR2_X2 cells:        6
+ABC RESULTS:           NOR2_X4 cells:        8
+ABC RESULTS:           NOR3_X1 cells:       37
+ABC RESULTS:           NOR3_X2 cells:        1
+ABC RESULTS:           NOR3_X4 cells:        2
+ABC RESULTS:           NOR4_X1 cells:       10
+ABC RESULTS:         OAI211_X1 cells:       21
+ABC RESULTS:         OAI211_X2 cells:        1
+ABC RESULTS:          OAI21_X1 cells:      160
+ABC RESULTS:          OAI21_X2 cells:        2
+ABC RESULTS:          OAI21_X4 cells:        1
+ABC RESULTS:         OAI221_X1 cells:        7
+ABC RESULTS:         OAI221_X2 cells:        1
+ABC RESULTS:          OAI22_X1 cells:        3
+ABC RESULTS:            OR2_X1 cells:       28
+ABC RESULTS:            OR2_X2 cells:        1
+ABC RESULTS:            OR3_X1 cells:       94
+ABC RESULTS:            OR3_X4 cells:        2
+ABC RESULTS:            OR4_X1 cells:       10
+ABC RESULTS:            OR4_X2 cells:        2
+ABC RESULTS:          XNOR2_X1 cells:        1
+ABC RESULTS:           XOR2_X1 cells:       15
+ABC RESULTS:           XOR2_X2 cells:        7
+ABC RESULTS:        internal signals:     1398
+ABC RESULTS:           input signals:       68
+ABC RESULTS:          output signals:       32
+Removing temp directory.
+
+12. Executing HILOMAP pass (mapping to constant drivers).
+
+13. Executing SETUNDEF pass (replace undef values with defined constants).
+
+14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ysyx_25030077_alu..
+Removed 0 unused cells and 1498 unused wires.
+<suppressed ~1399 debug messages>
+
+15. Executing Liberty frontend: /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib
+Imported 134 cell types from liberty file.
+
+16. Executing CHECK pass (checking for obvious problems).
+Checking module ysyx_25030077_alu...
+Found and reported 0 problems.
+
+17. Printing statistics.
+
+=== ysyx_25030077_alu ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+     1456        - wires
+     1456        - wire bits
+      100        - public wires
+      100        - public wire bits
+      100        - ports
+      100        - port bits
+     1388 1.61E+03 cells
+      115   122.36   AND2_X1
+        9    11.97   AND2_X2
+        9   21.546   AND2_X4
+       69    91.77   AND3_X1
+        1    2.926   AND3_X4
+       18   28.728   AND4_X1
+        1    3.458   AND4_X4
+       16    21.28   AOI211_X1
+        2    4.788   AOI211_X2
+      158  168.112   AOI21_X1
+        1    1.862   AOI21_X2
+        7   24.206   AOI21_X4
+        1    1.596   AOI221_X1
+       11   38.038   AOI221_X4
+        7     9.31   AOI22_X1
+       25     26.6   BUF_X2
+       21   39.102   BUF_X4
+        1    1.064   CLKBUF_X2
+        1     1.33   CLKBUF_X3
+      122   64.904   INV_X1
+        1    0.798   INV_X2
+        4     5.32   INV_X4
+       17   31.654   MUX2_X1
+       81   64.638   NAND2_X1
+        3    7.182   NAND2_X4
+      110   117.04   NAND3_X1
+        3   10.374   NAND3_X4
+       37    49.21   NAND4_X1
+        1    4.788   NAND4_X4
+      116   92.568   NOR2_X1
+        6     7.98   NOR2_X2
+        8   19.152   NOR2_X4
+       37   39.368   NOR3_X1
+        1    1.862   NOR3_X2
+        2    7.448   NOR3_X4
+       10     13.3   NOR4_X1
+       21    27.93   OAI211_X1
+        1    2.394   OAI211_X2
+      160   170.24   OAI21_X1
+        2    3.724   OAI21_X2
+        1    3.458   OAI21_X4
+        7   11.172   OAI221_X1
+        1    2.926   OAI221_X2
+        3     3.99   OAI22_X1
+       28   29.792   OR2_X1
+        1     1.33   OR2_X2
+       94   125.02   OR3_X1
+        2    5.852   OR3_X4
+       10    15.96   OR4_X1
+        2    3.724   OR4_X2
+        1    1.596   XNOR2_X1
+       15    23.94   XOR2_X1
+        7   16.758   XOR2_X2
+
+   Chip area for module '\ysyx_25030077_alu': 1607.438000
+     of which used for sequential elements: 0.000000 (0.00%)
+
+18. Executing Verilog backend.
+Dumping module `\ysyx_25030077_alu'.
+
+End of script. Logfile hash: 7d590ae1eb, CPU: user 0.89s system 0.03s, MEM: 38.85 MB peak
+Yosys 0.56+197 (git sha1 d4c4b2106, clang++ 18.1.8 -fPIC -O3)
+Time spent: 36% 2x abc (0 sec), 10% 29x opt_expr (0 sec), ...

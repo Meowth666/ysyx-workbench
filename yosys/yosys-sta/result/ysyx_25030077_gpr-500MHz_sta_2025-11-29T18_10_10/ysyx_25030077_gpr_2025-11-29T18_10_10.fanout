@@ -1,0 +1,15 @@
+Generate the report at 2025-11-29T18:05:49, GitVersion: aa25008b3778a76ae1975c839d4cc459f7f7b3b7.
++---------------------------------+-----------+--------+-------------+-------------+------+
+| Net / Pin                       | MaxFanout | Fanout | FanoutSlack | LibCellPort | Note |
++---------------------------------+-----------+--------+-------------+-------------+------+
+| io_ifu_Req_bits_addr[22]        |           |        |             |             |      |
+| pc_next_reg_$_SDFFE_PP0P__Q_7:Q | NA        | 1      | NA          | DFF_X1/Q    |      |
+| io_ifu_Req_bits_addr[29]        |           |        |             |             |      |
+| pc_next_reg_$_SDFFE_PP1P__Q:Q   | NA        | 1      | NA          | DFF_X1/Q    |      |
+| _5211_                          |           |        |             |             |      |
+| regs_10_$_SDFFE_PP0P__Q_27:QN   | NA        | 0      | NA          | DFF_X1/QN   |      |
+| io_ifu_Req_bits_addr[24]        |           |        |             |             |      |
+| pc_next_reg_$_SDFFE_PP0P__Q_5:Q | NA        | 1      | NA          | DFF_X1/Q    |      |
+| _5002_                          |           |        |             |             |      |
+| regs_17_$_SDFFE_PP0P__Q_13:QN   | NA        | 0      | NA          | DFF_X1/QN   |      |
++---------------------------------+-----------+--------+-------------+-------------+------+
