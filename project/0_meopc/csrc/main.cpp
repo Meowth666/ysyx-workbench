@@ -33,7 +33,6 @@ int main(int argc, char** argv){
 	// }
 	reg_init();
 	init_monitor(argc, argv);
-	printf("\nWelcome to use ysyx-workbench!\n");
 	cpu_init(argc, argv);
 	
 	cpu_exec(2);
