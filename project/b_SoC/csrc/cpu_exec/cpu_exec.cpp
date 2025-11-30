@@ -61,7 +61,7 @@ uint64_t cnt0 = 0;
 long long inst_cnts = 0;
 long long lsu_cnts = 0;
 long long lsu_cycs = 0;
-// long long ifu_cycs = 0;
+long long ifu_cycs = 0;
 
 long long l_cnts = 0;
 long long s_cnts = 0;
@@ -618,14 +618,21 @@ int cpu_exec(int n){
 	int is_refresh;
 	bool is_lsu_r = false;
 	bool is_lsu_ar = false;
+	long long flash_cyc = 0;
+	long long flash_cnt = 0;
+	long long sdram_cyc = 0;
+	long long sdram_cnt = 0;
 	// bool is_ifu_r = false;
 	// bool is_ifu_ar = false;
 	for(int i = -3; i < 2 * n; i++){
 		if(ysyxSoCFull -> clock){
 			svScope scope = svGetScopeFromName("TOP.ysyxSoCFull.asic.cpu.cpu.c_arbiter");
 			svSetScope(scope);
-			uint32_t lsu_read = is_lsu_read();
+			uint32_t lsu_read0 = is_lsu_read();
+			uint32_t lsu_read  = lsu_read0 & 0xf;
+			uint32_t lsu_addr;
 			if(is_lsu_ar == false && lsu_read == 6){
+				lsu_addr =  (lsu_read0 & 0xf0) >> 4;
 				lsu_ar = ix;
 			}
 			is_lsu_ar = (lsu_read == 6) ? true : false;
@@ -633,6 +640,15 @@ int cpu_exec(int n){
 			if(is_lsu_r == false && lsu_read == 5){
 				lsu_cycs += (ix - lsu_ar) / 2;
 				lsu_cnts ++;
+
+				if(lsu_addr == 3){ // flash
+					flash_cyc += (ix - lsu_ar) / 2;
+					flash_cnt ++;
+				}
+				else if (lsu_addr == 10){ // sdram
+					sdram_cyc += (ix - lsu_ar) / 2;
+					sdram_cnt ++;
+				}
 			}
 			is_lsu_r = (lsu_read == 5) ? true : false;
 
@@ -669,6 +685,8 @@ int cpu_exec(int n){
 	printf("指令数：    计算 : %8lld   访存 : %8lld    跳转 : %8lld    CSR/特权 : %8lld    分支 : %8lld\n", jisuan_cnts, l_cnts + s_cnts, tiaozhuan_cnts, tequan_cnts, fenzhi_cnts);
 	printf("周期数：    计算 : %8lld   访存 : %8lld    跳转 : %8lld    CSR/特权 : %8lld    分支 : %8lld\n", cycs[3] / 2, (cycs[1] + cycs[2]) / 2, cycs[4] / 2, cycs[5] / 2, cycs[6] / 2);
 	printf("平均周期数：计算 : %8lld   访存 : %8lld    跳转 : %8lld    CSR/特权 : %8lld    分支 : %8lld\n", cycs[3] / 2 / jisuan_cnts, (cycs[1] + cycs[2]) / 2 / (l_cnts + s_cnts), cycs[4] / 2 / tiaozhuan_cnts, cycs[5] / 2 / tequan_cnts, cycs[6] / 2 / fenzhi_cnts);
+	printf("flash lsu 访问次数: %8lld  平均延迟: %8lld\n", flash_cnt, flash_cyc / flash_cnt);
+	printf("sdram lsu 访问次数: %8lld  平均延迟: %8lld\n", sdram_cnt, sdram_cyc / sdram_cnt);
 	fclose(itrace);          
 	return 0;
 }

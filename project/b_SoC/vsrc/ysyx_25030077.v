@@ -219,7 +219,7 @@ module ysyx_25030077_arbiter(
   reg [1:0] state_reg; // @[ysyx_25030077_arbiter.scala 73:28]
   export "DPI-C" function is_lsu_read;
   function int is_lsu_read();
-    return {28'd0, state_reg, io_axi_ar_valid, io_axi_r_valid};
+    return {24'd0, io_axi_ar_addr[31:28], state_reg, io_axi_ar_valid, io_axi_r_valid};
   endfunction
   reg [31:0] inst_reg; // @[ysyx_25030077_arbiter.scala 74:27]
   wire [7:0] canAccept_lo = {canAccept_prng_io_out_7,canAccept_prng_io_out_6,canAccept_prng_io_out_5,
