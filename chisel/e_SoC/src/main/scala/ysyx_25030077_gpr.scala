@@ -1,6 +1,5 @@
 import chisel3._
 import chisel3.util._
-import chisel3.util.random.LFSR
 import ChiselHelpers._
 
 class ysyx_25030077_gpr extends Module {
@@ -20,8 +19,8 @@ class ysyx_25030077_gpr extends Module {
   dontTouchBundleRecursive(io)
   val regs = RegInit(VecInit(Seq.fill(32)(0.U(32.W))))
   val validReg = RegInit(false.B)
-  val canAccept = LFSR(16)(0)
-  val pc_next_reg = RegInit("h80000000".U(32.W))
+  val canAccept = 1
+  val pc_next_reg = RegInit("h30000000".U(32.W))
 
   val reg_data_write = Mux(io.waddr_rd === 0.U, 0.U, io.wdata_rd)
   validReg := Mux(io.mem_Req.valid && canAccept, true.B,

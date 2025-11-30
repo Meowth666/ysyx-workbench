@@ -28135,11 +28135,17 @@
 0xa00001b8  lbu	a5, 5(a4)
 0xa00001bc  andi	a5, a5, 0x20
 0xa00001c0  beqz	a5, -8
+0xa00001b8  lbu	a5, 5(a4)
+0xa00001bc  andi	a5, a5, 0x20
+0xa00001c0  beqz	a5, -8
 0xa00001c4  sb	a2, 0(a4)
 0xa00001c8  addi	a3, a3, -8
 0xa00001cc  bne	a3, a1, -0x1c
 0xa00001b0  srl	a2, a0, a3
 0xa00001b4  andi	a2, a2, 0xff
+0xa00001b8  lbu	a5, 5(a4)
+0xa00001bc  andi	a5, a5, 0x20
+0xa00001c0  beqz	a5, -8
 0xa00001b8  lbu	a5, 5(a4)
 0xa00001bc  andi	a5, a5, 0x20
 0xa00001c0  beqz	a5, -8
