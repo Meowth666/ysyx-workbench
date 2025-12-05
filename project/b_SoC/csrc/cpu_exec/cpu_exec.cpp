@@ -425,7 +425,7 @@ extern "C" void sdram_read (int bank, int addr, int cnt, int* data) {
 		flag = 1;
 	}
 	if(MTRACE && cnt %2 == 0){
-		// fprintf(mtrace, "read sdram 0x%08x  data: 0x%08x\n", addr_sdram, *data);
+		fprintf(mtrace, "read sdram 0x%08x  data: 0x%08x\n", addr_sdram, *data);
 	}
 	// if(cnt % 2 == 1)
 	// 	printf("pc =0x%x  pc_pre = 0x%x\n",addr_sdram, pc_pre);
