@@ -18,8 +18,12 @@
 [0m[[0m[0mdebug[0m] [0m[0m	  /home/meowth/ysyx/ysyx-workbench/chisel/e_SoC/target/scala-2.12/classes/ysyx_25030077_gpr$$anon$1.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	ysyx_25030077_IDU.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /home/meowth/ysyx/ysyx-workbench/chisel/e_SoC/target/scala-2.12/classes/ysyx_25030077_IDU.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ysyx_25030077_icache.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/meowth/ysyx/ysyx-workbench/chisel/e_SoC/target/scala-2.12/classes/ysyx_25030077_icache.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	wReq.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /home/meowth/ysyx/ysyx-workbench/chisel/e_SoC/target/scala-2.12/classes/wReq.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ysyx_25030077_icache$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/meowth/ysyx/ysyx-workbench/chisel/e_SoC/target/scala-2.12/classes/ysyx_25030077_icache$$anon$1.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	bReq.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /home/meowth/ysyx/ysyx-workbench/chisel/e_SoC/target/scala-2.12/classes/bReq.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	ysyx_25030077_IDU$$anon$1.class[0m

@@ -5,8 +5,18 @@ import ChiselHelpers._
 
 class ysyx_25030077_arbiter extends Module {
   val io = IO(new Bundle {
-    val ifu_valid = Input(Bool())
-    val pc = Input(UInt(32.W))
+    val icache_valid = Input(Bool())
+    val icache_data  = Input(UInt(32.W))
+
+    val icache_ar_valid = Input(Bool())
+    val icache_ar_addr = Input(UInt(32.W))
+
+    val icache_aw_valid = Input(Bool())
+    val icache_aw_addr = Input(UInt(32.W))
+
+    val icache_w_valid = Input(Bool())
+    val icache_w_data = Input(UInt(32.W))
+
     val rs1_data = Input(UInt(32.W))
     val rs2_data = Input(UInt(32.W))
     val imm = Input(UInt(32.W))
@@ -54,7 +64,7 @@ class ysyx_25030077_arbiter extends Module {
     val gpr_b_ready = Input(Bool())
     val gpr_data = Output(UInt(32.W)) 
     val inst = Output(UInt(32.W))
-    val ifu_ready = Output(Bool())
+    val icache_ready = Output(Bool())
     val r_valid_lsu = Input(Bool())
   })
     io.axi_aw_id := 0.U
@@ -73,22 +83,22 @@ class ysyx_25030077_arbiter extends Module {
     val state_reg = RegInit(0.U(2.W))
     val inst_reg = RegInit(0.U(32.W))
     val axi_r_valid_delay = RegInit(0.U)
-    val canAccept = LFSR(16)(0)
+    val canAccept = true.B
     val validReg_aw1 = RegInit(false.B)
-    val validReg_ar0 = RegInit(false.B)
+//     val validReg_ar0 = RegInit(false.B)
     val validReg_ar1 = RegInit(false.B)
     val validReg_gpr = RegInit(false.B)
     val validReg_w1  = RegInit(false.B)
     val rdata_reg = RegInit(0.U(32.W))
     val clint_reg = RegInit(0.U(64.W))
 
-    validReg_ar0 :=  Mux((io.ifu_valid && canAccept), true.B,
-                            Mux(io.axi_ar_ready, false.B,validReg_ar0)) 
-    validReg_ar1 :=  Mux((io.axi_r_valid && canAccept), true.B,
+//     validReg_ar0 :=  Mux((io.ifu_valid && canAccept), true.B,
+//                             Mux(io.axi_ar_ready, false.B,validReg_ar0)) 
+    validReg_ar1 :=  Mux((io.icache_valid && canAccept), true.B,
                             Mux(io.axi_ar_ready, false.B,validReg_ar1)) 
-    validReg_aw1 :=  Mux((io.axi_r_valid && canAccept), true.B,
+    validReg_aw1 :=  Mux((io.icache_valid && canAccept), true.B,
                             Mux(io.axi_aw_ready, false.B,validReg_aw1))
-    validReg_w1  :=  Mux((io.axi_r_valid && canAccept), true.B,
+    validReg_w1  :=  Mux((io.icache_valid && canAccept), true.B,
                             Mux(io.axi_w_ready, false.B,validReg_w1)) 
     val r_addr1 = (io.rs1_data +& io.imm)(31, 0)
     val is_clint =  ((r_addr1 === 0x02000000.U) || (r_addr1 === 0x02000004.U))
@@ -98,12 +108,13 @@ class ysyx_25030077_arbiter extends Module {
                            (io.r_mask =/= 0.U && (!is_clint)) -> Mux((io.axi_r_valid && canAccept), true.B, Mux(io.gpr_r_ready, false.B,validReg_gpr)),
                            (io.r_mask === 0.U || (is_clint)) -> Mux((state_reg === 2.U && canAccept), true.B, Mux(io.gpr_r_ready, false.B,validReg_gpr)),
                      ))
-    io.axi_ar_addr := MuxCase(io.pc, Seq(
-                              (state_reg === 1.U && io.r_valid_lsu === true.B) -> r_addr1,      
+    io.axi_ar_addr := MuxCase(0.U, Seq(
+                            (state_reg === 0.U) -> io.icache_ar_addr,
+                            (state_reg === 1.U && io.r_valid_lsu === true.B) -> r_addr1,      
                       ))
     axi_r_valid_delay := io.axi_r_valid
     state_reg := MuxCase(0.U, Seq(
-        (state_reg === 0.U) -> Mux((io.axi_r_valid && canAccept), 1.U, 0.U),
+        (state_reg === 0.U) -> Mux((io.icache_valid && canAccept), 1.U, 0.U),
         (state_reg === 1.U) -> MuxCase(1.U, Seq(
                                     (io.r_valid_lsu && (io.w_mask === 0.U) &&(!is_clint)) -> Mux((io.axi_r_valid && canAccept), 2.U, 1.U),
                                     (io.r_valid_lsu && (io.w_mask === 0.U) &&( is_clint)) -> Mux(canAccept, 2.U, 1.U),
@@ -114,14 +125,16 @@ class ysyx_25030077_arbiter extends Module {
     ))
     val waddr =  (io.rs1_data +& io.imm)(31, 0);
     io.axi_aw_addr := MuxCase(0.U, Seq(
+                            (state_reg === 0.U) -> io.icache_aw_addr,
                             (state_reg === 1.U) -> waddr
                             // (state_reg === 1.U) -> 0x10000000L.U
                      ))
     io.axi_aw_valid := MuxCase(false.B, Seq(
+                              (state_reg === 0.U) -> io.icache_aw_valid,     
                               (state_reg === 1.U && io.w_mask =/= 0.U) -> validReg_aw1
                       ))
     io.axi_ar_valid := MuxCase(false.B, Seq(
-                              (state_reg === 0.U) -> validReg_ar0,      
+                              (state_reg === 0.U) -> io.icache_ar_valid,      
                               (state_reg === 1.U && io.r_mask =/= 0.U && (!is_clint)) -> validReg_ar1
                        ))           
 //     io.axi_ar_strb  := MuxCase(0.U, Seq(
@@ -129,6 +142,7 @@ class ysyx_25030077_arbiter extends Module {
 //                               (state_reg === 1.U) -> io.r_mask
 //                        ))
     io.axi_w_valid  := MuxCase(false.B, Seq(    
+                              (state_reg === 0.U) -> io.icache_w_valid,
                               (state_reg === 1.U && io.w_mask =/= 0.U) -> validReg_w1
                        ))
     val w_data = MuxCase(0.U, Seq(
@@ -144,7 +158,8 @@ class ysyx_25030077_arbiter extends Module {
                                                       (waddr(1, 0) === 3.U) -> Cat(io.rs2_data(7, 0), 0.U(24.W))
                                                      ))
                      ))
-    io.axi_w_data   := MuxCase(0.U, Seq(    
+    io.axi_w_data   := MuxCase(0.U, Seq(
+                              (state_reg === 0.U) -> io.icache_w_data,    
                               (state_reg === 1.U) -> w_data
                        ))
     val strb = MuxCase(0.U, Seq(
@@ -165,16 +180,18 @@ class ysyx_25030077_arbiter extends Module {
                               (io.w_mask === 2.U) -> 1.U,
                               (io.w_mask === 3.U) -> 0.U
                      ))  
-    io.axi_w_strb   := MuxCase(0.U, Seq(    
+    io.axi_w_strb   := MuxCase(0.U, Seq(  
+                              (state_reg === 0.U) -> 15.U,  
                               (state_reg === 1.U) -> strb
                      ))
-    io.axi_aw_size  := MuxCase(0.U, Seq(    
+    io.axi_aw_size  := MuxCase(0.U, Seq( 
+                              (state_reg === 0.U) -> 2.U,    
                               (state_reg === 1.U) -> wsize
                      ))
 
     io.axi_r_ready  := canAccept
     io.axi_b_ready  := canAccept
-    io.ifu_ready    := canAccept
+    io.icache_ready   := canAccept
 
     io.gpr_r_valid  := MuxCase(false.B, Seq(    
                               (state_reg === 2.U) -> validReg_gpr
@@ -240,7 +257,7 @@ class ysyx_25030077_arbiter extends Module {
                               (io.r_valid_lsu && (state_reg === 2.U) && (is_clint2))  -> clint_reg(63,32)
                        ))
     inst_reg         := MuxCase(inst_reg, Seq(    
-                              ((io.axi_r_valid && canAccept) && (state_reg === 0.U)) -> io.axi_r_data
+                              ((io.icache_valid && canAccept) && (state_reg === 0.U)) -> io.icache_data
                        ))
     io.inst         := inst_reg
 }

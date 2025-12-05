@@ -1,0 +1,348 @@
+
+/home/meowth/ysyx/ysyx-workbench/am-kernels/tests/cpu-tests/build/mul-longlong-riscv32e-ysyx-soc.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text.fsbl:
+
+30000000 <_start>:
+30000000:	00000413          	li	s0,0
+30000004:	df002117          	auipc	sp,0xdf002
+30000008:	afc10113          	addi	sp,sp,-1284 # f001b00 <_stack_pointer>
+3000000c:	004000ef          	jal	ra,30000010 <fsbl_load>
+
+30000010 <fsbl_load>:
+30000010:	ff410113          	addi	sp,sp,-12
+30000014:	00112423          	sw	ra,8(sp)
+30000018:	70000317          	auipc	t1,0x70000
+3000001c:	fe830313          	addi	t1,t1,-24 # a0000000 <ssbl_load>
+30000020:	70000597          	auipc	a1,0x70000
+30000024:	04458593          	addi	a1,a1,68 # a0000064 <check>
+30000028:	00000517          	auipc	a0,0x0
+3000002c:	04050513          	addi	a0,a0,64 # 30000068 <_efsbl_load>
+30000030:	02b37863          	bgeu	t1,a1,30000060 <fsbl_load+0x50>
+30000034:	00030793          	mv	a5,t1
+30000038:	00050693          	mv	a3,a0
+3000003c:	0006c703          	lbu	a4,0(a3)
+30000040:	00078613          	mv	a2,a5
+30000044:	00178793          	addi	a5,a5,1
+30000048:	0ff77713          	zext.b	a4,a4
+3000004c:	00e60023          	sb	a4,0(a2)
+30000050:	00168693          	addi	a3,a3,1
+30000054:	feb794e3          	bne	a5,a1,3000003c <fsbl_load+0x2c>
+30000058:	406787b3          	sub	a5,a5,t1
+3000005c:	00f50533          	add	a0,a0,a5
+30000060:	70000097          	auipc	ra,0x70000
+30000064:	fa0080e7          	jalr	-96(ra) # a0000000 <ssbl_load>
+
+Disassembly of section .text.ssbl:
+
+a0000000 <ssbl_load>:
+a0000000:	ff410113          	addi	sp,sp,-12
+a0000004:	00112423          	sw	ra,8(sp)
+a0000008:	00000797          	auipc	a5,0x0
+a000000c:	05c78793          	addi	a5,a5,92 # a0000064 <_essbl_load>
+a0000010:	00000617          	auipc	a2,0x0
+a0000014:	50860613          	addi	a2,a2,1288 # a0000518 <_bss_end>
+a0000018:	02c7f063          	bgeu	a5,a2,a0000038 <ssbl_load+0x38>
+a000001c:	00054703          	lbu	a4,0(a0)
+a0000020:	00078693          	mv	a3,a5
+a0000024:	00178793          	addi	a5,a5,1
+a0000028:	0ff77713          	zext.b	a4,a4
+a000002c:	00e68023          	sb	a4,0(a3)
+a0000030:	00150513          	addi	a0,a0,1
+a0000034:	fec794e3          	bne	a5,a2,a000001c <ssbl_load+0x1c>
+a0000038:	00000697          	auipc	a3,0x0
+a000003c:	4e068693          	addi	a3,a3,1248 # a0000518 <_bss_end>
+a0000040:	00000797          	auipc	a5,0x0
+a0000044:	4d878793          	addi	a5,a5,1240 # a0000518 <_bss_end>
+a0000048:	40f68733          	sub	a4,a3,a5
+a000004c:	00f68a63          	beq	a3,a5,a0000060 <ssbl_load+0x60>
+a0000050:	00e78733          	add	a4,a5,a4
+a0000054:	00078023          	sb	zero,0(a5)
+a0000058:	00178793          	addi	a5,a5,1
+a000005c:	fef71ce3          	bne	a4,a5,a0000054 <ssbl_load+0x54>
+a0000060:	264000ef          	jal	ra,a00002c4 <_trm_init>
+
+Disassembly of section .text:
+
+a0000064 <check>:
+a0000064:	00050463          	beqz	a0,a000006c <check+0x8>
+a0000068:	00008067          	ret
+a000006c:	ff410113          	addi	sp,sp,-12
+a0000070:	00100513          	li	a0,1
+a0000074:	00112423          	sw	ra,8(sp)
+a0000078:	128000ef          	jal	ra,a00001a0 <halt>
+
+a000007c <main>:
+a000007c:	fe010113          	addi	sp,sp,-32
+a0000080:	00000797          	auipc	a5,0x0
+a0000084:	48878793          	addi	a5,a5,1160 # a0000508 <test_data>
+a0000088:	00012423          	sw	zero,8(sp)
+a000008c:	00f12823          	sw	a5,16(sp)
+a0000090:	00812783          	lw	a5,8(sp)
+a0000094:	00112e23          	sw	ra,28(sp)
+a0000098:	00812c23          	sw	s0,24(sp)
+a000009c:	00912a23          	sw	s1,20(sp)
+a00000a0:	00012623          	sw	zero,12(sp)
+a00000a4:	00400713          	li	a4,4
+a00000a8:	0ce78663          	beq	a5,a4,a0000174 <main+0xf8>
+a00000ac:	01012483          	lw	s1,16(sp)
+a00000b0:	00c12783          	lw	a5,12(sp)
+a00000b4:	0004a503          	lw	a0,0(s1)
+a00000b8:	00379713          	slli	a4,a5,0x3
+a00000bc:	00000797          	auipc	a5,0x0
+a00000c0:	3fc78793          	addi	a5,a5,1020 # a00004b8 <ans>
+a00000c4:	00e78433          	add	s0,a5,a4
+a00000c8:	00040793          	mv	a5,s0
+a00000cc:	41f55593          	srai	a1,a0,0x1f
+a00000d0:	00048413          	mv	s0,s1
+a00000d4:	00050613          	mv	a2,a0
+a00000d8:	00b12223          	sw	a1,4(sp)
+a00000dc:	00078493          	mv	s1,a5
+a00000e0:	00412683          	lw	a3,4(sp)
+a00000e4:	00c12023          	sw	a2,0(sp)
+a00000e8:	00440413          	addi	s0,s0,4
+a00000ec:	2ac000ef          	jal	ra,a0000398 <__muldi3>
+a00000f0:	0004a783          	lw	a5,0(s1)
+a00000f4:	0044a683          	lw	a3,4(s1)
+a00000f8:	00848493          	addi	s1,s1,8
+a00000fc:	00a7c7b3          	xor	a5,a5,a0
+a0000100:	00b6c6b3          	xor	a3,a3,a1
+a0000104:	00d7e7b3          	or	a5,a5,a3
+a0000108:	0017b513          	seqz	a0,a5
+a000010c:	f59ff0ef          	jal	ra,a0000064 <check>
+a0000110:	00000797          	auipc	a5,0x0
+a0000114:	40878793          	addi	a5,a5,1032 # a0000518 <_bss_end>
+a0000118:	00878a63          	beq	a5,s0,a000012c <main+0xb0>
+a000011c:	00042503          	lw	a0,0(s0)
+a0000120:	00012603          	lw	a2,0(sp)
+a0000124:	41f55593          	srai	a1,a0,0x1f
+a0000128:	fb9ff06f          	j	a00000e0 <main+0x64>
+a000012c:	00c12783          	lw	a5,12(sp)
+a0000130:	00812403          	lw	s0,8(sp)
+a0000134:	00100513          	li	a0,1
+a0000138:	00478793          	addi	a5,a5,4
+a000013c:	408787b3          	sub	a5,a5,s0
+a0000140:	00f12623          	sw	a5,12(sp)
+a0000144:	f21ff0ef          	jal	ra,a0000064 <check>
+a0000148:	00300793          	li	a5,3
+a000014c:	02f40a63          	beq	s0,a5,a0000180 <main+0x104>
+a0000150:	00812783          	lw	a5,8(sp)
+a0000154:	00400713          	li	a4,4
+a0000158:	00178793          	addi	a5,a5,1
+a000015c:	00f12423          	sw	a5,8(sp)
+a0000160:	01012783          	lw	a5,16(sp)
+a0000164:	00478793          	addi	a5,a5,4
+a0000168:	00f12823          	sw	a5,16(sp)
+a000016c:	00812783          	lw	a5,8(sp)
+a0000170:	f2e79ee3          	bne	a5,a4,a00000ac <main+0x30>
+a0000174:	00100513          	li	a0,1
+a0000178:	eedff0ef          	jal	ra,a0000064 <check>
+a000017c:	fd5ff06f          	j	a0000150 <main+0xd4>
+a0000180:	00100513          	li	a0,1
+a0000184:	ee1ff0ef          	jal	ra,a0000064 <check>
+a0000188:	01c12083          	lw	ra,28(sp)
+a000018c:	01812403          	lw	s0,24(sp)
+a0000190:	01412483          	lw	s1,20(sp)
+a0000194:	00000513          	li	a0,0
+a0000198:	02010113          	addi	sp,sp,32
+a000019c:	00008067          	ret
+
+a00001a0 <halt>:
+a00001a0:	00100073          	ebreak
+a00001a4:	0000006f          	j	a00001a4 <halt+0x4>
+
+a00001a8 <id_print>:
+a00001a8:	fe410113          	addi	sp,sp,-28
+a00001ac:	00112c23          	sw	ra,24(sp)
+a00001b0:	00812a23          	sw	s0,20(sp)
+a00001b4:	00912823          	sw	s1,16(sp)
+a00001b8:	100007b7          	lui	a5,0x10000
+a00001bc:	f8000713          	li	a4,-128
+a00001c0:	00e781a3          	sb	a4,3(a5) # 10000003 <_stack_pointer+0xffe503>
+a00001c4:	00100713          	li	a4,1
+a00001c8:	00e78023          	sb	a4,0(a5)
+a00001cc:	000780a3          	sb	zero,1(a5)
+a00001d0:	00300713          	li	a4,3
+a00001d4:	00e781a3          	sb	a4,3(a5)
+a00001d8:	f1102573          	.4byte	0xf1102573
+a00001dc:	f1202473          	.4byte	0xf1202473
+a00001e0:	70002797          	auipc	a5,0x70002
+a00001e4:	e2078793          	addi	a5,a5,-480 # 10002000 <_heap_end+0x6fc01ae0>
+a00001e8:	07700693          	li	a3,119
+a00001ec:	00d78423          	sb	a3,8(a5)
+a00001f0:	70002697          	auipc	a3,0x70002
+a00001f4:	e0068ca3          	sb	zero,-487(a3) # 10002009 <_heap_end+0x6fc01ae9>
+a00001f8:	00e78523          	sb	a4,10(a5)
+a00001fc:	02500713          	li	a4,37
+a0000200:	00e785a3          	sb	a4,11(a5)
+a0000204:	01800693          	li	a3,24
+a0000208:	10000737          	lui	a4,0x10000
+a000020c:	ff800593          	li	a1,-8
+a0000210:	00d55633          	srl	a2,a0,a3
+a0000214:	0ff67613          	zext.b	a2,a2
+a0000218:	00574783          	lbu	a5,5(a4) # 10000005 <_stack_pointer+0xffe505>
+a000021c:	0207f793          	andi	a5,a5,32
+a0000220:	fe078ce3          	beqz	a5,a0000218 <id_print+0x70>
+a0000224:	00c70023          	sb	a2,0(a4)
+a0000228:	ff868693          	addi	a3,a3,-8
+a000022c:	feb692e3          	bne	a3,a1,a0000210 <id_print+0x68>
+a0000230:	00410493          	addi	s1,sp,4
+a0000234:	00048793          	mv	a5,s1
+a0000238:	00a00593          	li	a1,10
+a000023c:	00040513          	mv	a0,s0
+a0000240:	00f12023          	sw	a5,0(sp)
+a0000244:	0f0000ef          	jal	ra,a0000334 <__umodsi3>
+a0000248:	00012783          	lw	a5,0(sp)
+a000024c:	03050713          	addi	a4,a0,48
+a0000250:	00a00593          	li	a1,10
+a0000254:	00e783a3          	sb	a4,7(a5)
+a0000258:	00040513          	mv	a0,s0
+a000025c:	090000ef          	jal	ra,a00002ec <__hidden___udivsi3>
+a0000260:	00012783          	lw	a5,0(sp)
+a0000264:	ffc10713          	addi	a4,sp,-4
+a0000268:	00050413          	mv	s0,a0
+a000026c:	fff78793          	addi	a5,a5,-1
+a0000270:	fce794e3          	bne	a5,a4,a0000238 <id_print+0x90>
+a0000274:	00848593          	addi	a1,s1,8
+a0000278:	10000737          	lui	a4,0x10000
+a000027c:	0004c603          	lbu	a2,0(s1)
+a0000280:	00574783          	lbu	a5,5(a4) # 10000005 <_stack_pointer+0xffe505>
+a0000284:	0207f793          	andi	a5,a5,32
+a0000288:	fe078ce3          	beqz	a5,a0000280 <id_print+0xd8>
+a000028c:	00c70023          	sb	a2,0(a4)
+a0000290:	00148493          	addi	s1,s1,1
+a0000294:	feb494e3          	bne	s1,a1,a000027c <id_print+0xd4>
+a0000298:	10000737          	lui	a4,0x10000
+a000029c:	00574783          	lbu	a5,5(a4) # 10000005 <_stack_pointer+0xffe505>
+a00002a0:	0207f793          	andi	a5,a5,32
+a00002a4:	fe078ce3          	beqz	a5,a000029c <id_print+0xf4>
+a00002a8:	00a00793          	li	a5,10
+a00002ac:	00f70023          	sb	a5,0(a4)
+a00002b0:	01812083          	lw	ra,24(sp)
+a00002b4:	01412403          	lw	s0,20(sp)
+a00002b8:	01012483          	lw	s1,16(sp)
+a00002bc:	01c10113          	addi	sp,sp,28
+a00002c0:	00008067          	ret
+
+a00002c4 <_trm_init>:
+a00002c4:	ff410113          	addi	sp,sp,-12
+a00002c8:	00112423          	sw	ra,8(sp)
+a00002cc:	eddff0ef          	jal	ra,a00001a8 <id_print>
+a00002d0:	00000517          	auipc	a0,0x0
+a00002d4:	1a450513          	addi	a0,a0,420 # a0000474 <_etext>
+a00002d8:	da5ff0ef          	jal	ra,a000007c <main>
+a00002dc:	00100073          	ebreak
+a00002e0:	0000006f          	j	a00002e0 <_trm_init+0x1c>
+
+a00002e4 <__divsi3>:
+a00002e4:	06054063          	bltz	a0,a0000344 <__umodsi3+0x10>
+a00002e8:	0605c663          	bltz	a1,a0000354 <__umodsi3+0x20>
+
+a00002ec <__hidden___udivsi3>:
+a00002ec:	00058613          	mv	a2,a1
+a00002f0:	00050593          	mv	a1,a0
+a00002f4:	fff00513          	li	a0,-1
+a00002f8:	02060c63          	beqz	a2,a0000330 <__hidden___udivsi3+0x44>
+a00002fc:	00100693          	li	a3,1
+a0000300:	00b67a63          	bgeu	a2,a1,a0000314 <__hidden___udivsi3+0x28>
+a0000304:	00c05863          	blez	a2,a0000314 <__hidden___udivsi3+0x28>
+a0000308:	00161613          	slli	a2,a2,0x1
+a000030c:	00169693          	slli	a3,a3,0x1
+a0000310:	feb66ae3          	bltu	a2,a1,a0000304 <__hidden___udivsi3+0x18>
+a0000314:	00000513          	li	a0,0
+a0000318:	00c5e663          	bltu	a1,a2,a0000324 <__hidden___udivsi3+0x38>
+a000031c:	40c585b3          	sub	a1,a1,a2
+a0000320:	00d56533          	or	a0,a0,a3
+a0000324:	0016d693          	srli	a3,a3,0x1
+a0000328:	00165613          	srli	a2,a2,0x1
+a000032c:	fe0696e3          	bnez	a3,a0000318 <__hidden___udivsi3+0x2c>
+a0000330:	00008067          	ret
+
+a0000334 <__umodsi3>:
+a0000334:	00008293          	mv	t0,ra
+a0000338:	fb5ff0ef          	jal	ra,a00002ec <__hidden___udivsi3>
+a000033c:	00058513          	mv	a0,a1
+a0000340:	00028067          	jr	t0
+a0000344:	40a00533          	neg	a0,a0
+a0000348:	00b04863          	bgtz	a1,a0000358 <__umodsi3+0x24>
+a000034c:	40b005b3          	neg	a1,a1
+a0000350:	f9dff06f          	j	a00002ec <__hidden___udivsi3>
+a0000354:	40b005b3          	neg	a1,a1
+a0000358:	00008293          	mv	t0,ra
+a000035c:	f91ff0ef          	jal	ra,a00002ec <__hidden___udivsi3>
+a0000360:	40a00533          	neg	a0,a0
+a0000364:	00028067          	jr	t0
+
+a0000368 <__modsi3>:
+a0000368:	00008293          	mv	t0,ra
+a000036c:	0005ca63          	bltz	a1,a0000380 <__modsi3+0x18>
+a0000370:	00054c63          	bltz	a0,a0000388 <__modsi3+0x20>
+a0000374:	f79ff0ef          	jal	ra,a00002ec <__hidden___udivsi3>
+a0000378:	00058513          	mv	a0,a1
+a000037c:	00028067          	jr	t0
+a0000380:	40b005b3          	neg	a1,a1
+a0000384:	fe0558e3          	bgez	a0,a0000374 <__modsi3+0xc>
+a0000388:	40a00533          	neg	a0,a0
+a000038c:	f61ff0ef          	jal	ra,a00002ec <__hidden___udivsi3>
+a0000390:	40b00533          	neg	a0,a1
+a0000394:	00028067          	jr	t0
+
+a0000398 <__muldi3>:
+a0000398:	fe810113          	addi	sp,sp,-24
+a000039c:	00050793          	mv	a5,a0
+a00003a0:	00a12423          	sw	a0,8(sp)
+a00003a4:	00b12023          	sw	a1,0(sp)
+a00003a8:	00d12223          	sw	a3,4(sp)
+a00003ac:	00112a23          	sw	ra,20(sp)
+a00003b0:	00078693          	mv	a3,a5
+a00003b4:	00812823          	sw	s0,16(sp)
+a00003b8:	00912623          	sw	s1,12(sp)
+a00003bc:	00060513          	mv	a0,a2
+a00003c0:	00060713          	mv	a4,a2
+a00003c4:	00000793          	li	a5,0
+a00003c8:	00000593          	li	a1,0
+a00003cc:	00000313          	li	t1,0
+a00003d0:	00668633          	add	a2,a3,t1
+a00003d4:	00177393          	andi	t2,a4,1
+a00003d8:	00f58433          	add	s0,a1,a5
+a00003dc:	01f6d293          	srli	t0,a3,0x1f
+a00003e0:	00175713          	srli	a4,a4,0x1
+a00003e4:	006634b3          	sltu	s1,a2,t1
+a00003e8:	00179793          	slli	a5,a5,0x1
+a00003ec:	00038663          	beqz	t2,a00003f8 <__muldi3+0x60>
+a00003f0:	008485b3          	add	a1,s1,s0
+a00003f4:	00060313          	mv	t1,a2
+a00003f8:	00169693          	slli	a3,a3,0x1
+a00003fc:	0057e7b3          	or	a5,a5,t0
+a0000400:	fc0718e3          	bnez	a4,a00003d0 <__muldi3+0x38>
+a0000404:	00012703          	lw	a4,0(sp)
+a0000408:	00058793          	mv	a5,a1
+a000040c:	00070863          	beqz	a4,a000041c <__muldi3+0x84>
+a0000410:	00070593          	mv	a1,a4
+a0000414:	03c000ef          	jal	ra,a0000450 <__mulsi3>
+a0000418:	00a787b3          	add	a5,a5,a0
+a000041c:	00412703          	lw	a4,4(sp)
+a0000420:	00070a63          	beqz	a4,a0000434 <__muldi3+0x9c>
+a0000424:	00812503          	lw	a0,8(sp)
+a0000428:	00070593          	mv	a1,a4
+a000042c:	024000ef          	jal	ra,a0000450 <__mulsi3>
+a0000430:	00f507b3          	add	a5,a0,a5
+a0000434:	01412083          	lw	ra,20(sp)
+a0000438:	01012403          	lw	s0,16(sp)
+a000043c:	00c12483          	lw	s1,12(sp)
+a0000440:	00030513          	mv	a0,t1
+a0000444:	00078593          	mv	a1,a5
+a0000448:	01810113          	addi	sp,sp,24
+a000044c:	00008067          	ret
+
+a0000450 <__mulsi3>:
+a0000450:	00050613          	mv	a2,a0
+a0000454:	00000513          	li	a0,0
+a0000458:	0015f693          	andi	a3,a1,1
+a000045c:	00068463          	beqz	a3,a0000464 <__mulsi3+0x14>
+a0000460:	00c50533          	add	a0,a0,a2
+a0000464:	0015d593          	srli	a1,a1,0x1
+a0000468:	00161613          	slli	a2,a2,0x1
+a000046c:	fe0596e3          	bnez	a1,a0000458 <__mulsi3+0x8>
+a0000470:	00008067          	ret

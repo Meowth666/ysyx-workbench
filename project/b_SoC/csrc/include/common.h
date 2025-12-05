@@ -33,9 +33,9 @@
 #define NUM_CSR 4096
 extern uint32_t csr[NUM_CSR];
 
-#define ITRACE 1
+#define ITRACE 0
 #define FTRACE 0
-#define MTRACE 0
+#define MTRACE 1
 #define DIFFTEST 0
 
 #define MSTATUS   0x300

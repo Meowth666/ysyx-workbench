@@ -23,13 +23,23 @@ module apb_delayer(
   input  [31:0] out_prdata,
   input         out_pslverr
 );  
-  reg psel1;
+  reg in_psel1;
+  reg in_pwrite1;
+  reg [31:0] in_paddr1;
   always @(posedge clock) begin
-    if (reset) psel1 <= 1'b0;
-    else psel1 <= in_psel;
+    if (reset) begin
+      in_psel1 <= 1'b0;
+      in_pwrite1 <= 1'b0;
+      in_paddr1 <= 32'd0;
+    end
+    else begin
+      in_psel1 <= in_psel;
+      in_pwrite1 <= in_pwrite;
+      in_paddr1 <= in_paddr;
+    end
   end
   wire is_sdram_read;
-  assign is_sdram_read = (in_psel || psel1) && (!in_pwrite) && (in_paddr[31:28] == 4'ha);
+  assign is_sdram_read = (in_psel && !in_pwrite && (in_paddr[31:28] == 4'ha)) || (in_psel1 && !in_pwrite1 && (in_paddr1[31:28] == 4'ha));
   typedef enum [1:0] {ST_IDLE, ST_WAIT_READY, ST_WAIT_DELAY} state_t;
   reg [31:0] cnt1;
   reg [31:0] cnt2;

@@ -32,81 +32,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vysyx_25030077 VL_NOT_FINAL : public Verilate
     // propagate new values into/out from the Verilated model.
     VL_IN8(&clock,0,0);
     VL_IN8(&reset,0,0);
-    VL_IN8(&io_interrupt,0,0);
-    VL_IN8(&io_master_awready,0,0);
-    VL_OUT8(&io_master_awvalid,0,0);
-    VL_OUT8(&io_master_awid,3,0);
-    VL_OUT8(&io_master_awlen,7,0);
-    VL_OUT8(&io_master_awsize,2,0);
-    VL_OUT8(&io_master_awburst,1,0);
-    VL_IN8(&io_master_wready,0,0);
-    VL_OUT8(&io_master_wvalid,0,0);
-    VL_OUT8(&io_master_wstrb,3,0);
-    VL_OUT8(&io_master_wlast,0,0);
-    VL_OUT8(&io_master_bready,0,0);
-    VL_IN8(&io_master_bvalid,0,0);
-    VL_IN8(&io_master_bid,3,0);
-    VL_IN8(&io_master_bresp,1,0);
-    VL_IN8(&io_master_arready,0,0);
-    VL_OUT8(&io_master_arvalid,0,0);
-    VL_OUT8(&io_master_arid,3,0);
-    VL_OUT8(&io_master_arlen,7,0);
-    VL_OUT8(&io_master_arsize,2,0);
-    VL_OUT8(&io_master_arburst,1,0);
-    VL_OUT8(&io_master_rready,0,0);
-    VL_IN8(&io_master_rvalid,0,0);
-    VL_IN8(&io_master_rid,3,0);
-    VL_IN8(&io_master_rlast,0,0);
-    VL_IN8(&io_master_rresp,1,0);
-    VL_OUT8(&io_master_arlock,0,0);
-    VL_OUT8(&io_master_arcache,3,0);
-    VL_OUT8(&io_master_arprot,2,0);
-    VL_OUT8(&io_master_arqos,3,0);
-    VL_OUT8(&io_master_awlock,0,0);
-    VL_OUT8(&io_master_awcache,3,0);
-    VL_OUT8(&io_master_awprot,2,0);
-    VL_OUT8(&io_master_awqos,3,0);
-    VL_IN8(&io_slave_arlock,0,0);
-    VL_IN8(&io_slave_arcache,3,0);
-    VL_IN8(&io_slave_arprot,2,0);
-    VL_IN8(&io_slave_arqos,3,0);
-    VL_IN8(&io_slave_awlock,0,0);
-    VL_IN8(&io_slave_awcache,3,0);
-    VL_IN8(&io_slave_awprot,2,0);
-    VL_IN8(&io_slave_awqos,3,0);
-    VL_OUT8(&io_slave_awready,0,0);
-    VL_IN8(&io_slave_awvalid,0,0);
-    VL_IN8(&io_slave_awid,3,0);
-    VL_IN8(&io_slave_awlen,7,0);
-    VL_IN8(&io_slave_awsize,2,0);
-    VL_IN8(&io_slave_awburst,1,0);
-    VL_OUT8(&io_slave_wready,0,0);
-    VL_IN8(&io_slave_wvalid,0,0);
-    VL_IN8(&io_slave_wstrb,3,0);
-    VL_IN8(&io_slave_wlast,0,0);
-    VL_IN8(&io_slave_bready,0,0);
-    VL_OUT8(&io_slave_bvalid,0,0);
-    VL_OUT8(&io_slave_bid,3,0);
-    VL_OUT8(&io_slave_bresp,1,0);
-    VL_OUT8(&io_slave_arready,0,0);
-    VL_IN8(&io_slave_arvalid,0,0);
-    VL_IN8(&io_slave_arid,3,0);
-    VL_IN8(&io_slave_arlen,7,0);
-    VL_IN8(&io_slave_arsize,2,0);
-    VL_IN8(&io_slave_arburst,1,0);
-    VL_IN8(&io_slave_rready,0,0);
-    VL_OUT8(&io_slave_rvalid,0,0);
-    VL_OUT8(&io_slave_rid,3,0);
-    VL_OUT8(&io_slave_rlast,0,0);
-    VL_OUT8(&io_slave_rresp,1,0);
-    VL_OUT(&io_master_awaddr,31,0);
-    VL_OUT(&io_master_wdata,31,0);
-    VL_OUT(&io_master_araddr,31,0);
-    VL_IN(&io_master_rdata,31,0);
-    VL_IN(&io_slave_awaddr,31,0);
-    VL_IN(&io_slave_wdata,31,0);
-    VL_IN(&io_slave_araddr,31,0);
-    VL_OUT(&io_slave_rdata,31,0);
+    VL_OUT8(&io_is_unknown_instruction,0,0);
 
     // CELLS
     // Public to allow access to /* verilator public */ items.
@@ -149,10 +75,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vysyx_25030077 VL_NOT_FINAL : public Verilate
     const char* name() const;
 
     /// DPI Export functions
-    static int is_lsu_read();
+    static int dnpc_read_data();
     static int pc_read_data();
     static int reg_read_addr();
     static int reg_read_data();
+    static int reg_read_rs1();
+    static int reg_read_rs2();
+    static int valid_read();
+    static int wmask_read();
 
     // Abstract methods from VerilatedModel
     const char* hierName() const override final;

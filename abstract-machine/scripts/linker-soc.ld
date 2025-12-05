@@ -77,7 +77,7 @@ SECTIONS {
   _sdram_end   = _sdram_start + 0x1000;
 
   _stack_top = _sram_start;
-  . = _stack_top + _sram_size - 0x100;
+  . = _stack_top + _sram_size - 0x500;
   _stack_pointer = .;
   _psram_start = 0x80000000;
   _gpio_start  = 0x10002000;

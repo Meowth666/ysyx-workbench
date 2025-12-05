@@ -166,7 +166,7 @@ spi_top u0_spi_top (
 
 always @(posedge clock) begin
   if (xip_mode && in_pwrite && in_psel && in_penable) begin
-    $display("[%0t] ERROR: Write operation not supported in XIP mode (addr=0x%08x)", $time, in_paddr);
+    // $display("[%0t] ERROR: Write operation not supported in XIP mode (addr=0x%08x)", $time, in_paddr);
     // $stop;  // 可选：仿真时停止
   end
 end

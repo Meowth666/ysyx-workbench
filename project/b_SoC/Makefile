@@ -54,8 +54,8 @@ CXXFLAGS += -I$(abspath ./obj_dir) \
 VERILATOR_VINCLUDES += -I$(abspath /home/meowth/ysyx/ysyx-workbench/ysyxSoC/perip/uart16550/rtl)
 VERILATOR_VINCLUDES += -I$(abspath /home/meowth/ysyx/ysyx-workbench/ysyxSoC/perip/spi/rtl)
 
-IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/mem-tests/build/mem-test-sdram-riscv32e-ysyx-soc
-# IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-ysyx-soc
+# IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/mem-tests/build/mem-test-sdram-riscv32e-ysyx-soc
+IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/cpu-tests/build/pascal-riscv32e-ysyx-soc
 # IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/am-tests/build/amtest-riscv32e-ysyx-soc
 $(BIN): $(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 	@rm -rf $(OBJ_DIR)
@@ -79,7 +79,7 @@ wave_build:
 	verilator --cc --exe --trace-fst --build -j 0 nemu/main.cpp  vsrc/top.v 
 	obj_dir/Vtop
 
-wave_display:
+wave:
 	gtkwave obj_dir/wave.fst
 
 # IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/am-tests/build/amtest-riscv32e-npc

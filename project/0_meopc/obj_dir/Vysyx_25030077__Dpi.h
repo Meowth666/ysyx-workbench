@@ -16,20 +16,32 @@ extern "C" {
 
 
     // DPI EXPORTS
-    // DPI export at vsrc/ysyx_25030077.v:221:16
-    extern int is_lsu_read();
-    // DPI export at vsrc/ysyx_25030077.v:111:16
+    // DPI export at vsrc/ysyx_25030077.v:1584:16
+    extern int dnpc_read_data();
+    // DPI export at vsrc/ysyx_25030077.v:55:16
     extern int pc_read_data();
-    // DPI export at vsrc/ysyx_25030077.v:1107:16
+    // DPI export at vsrc/ysyx_25030077.v:645:16
     extern int reg_read_addr();
-    // DPI export at vsrc/ysyx_25030077.v:1112:16
+    // DPI export at vsrc/ysyx_25030077.v:650:16
     extern int reg_read_data();
+    // DPI export at vsrc/ysyx_25030077.v:1506:16
+    extern int reg_read_rs1();
+    // DPI export at vsrc/ysyx_25030077.v:1511:16
+    extern int reg_read_rs2();
+    // DPI export at vsrc/ysyx_25030077.v:1382:16
+    extern int valid_read();
+    // DPI export at vsrc/ysyx_25030077.v:1377:16
+    extern int wmask_read();
 
     // DPI IMPORTS
-    // DPI import at vsrc/ysyx_25030077.v:1773:37
+    // DPI import at vsrc/ysyx_25030077.v:1375:37
+    extern svBitVecVal addr_read(const svBitVecVal* addr_in);
+    // DPI import at vsrc/ysyx_25030077.v:1528:37
     extern svBitVecVal csr_read(const svBitVecVal* rs1, const svBitVecVal* imm, const svBitVecVal* sw);
-    // DPI import at vsrc/ysyx_25030077.v:1832:37
+    // DPI import at vsrc/ysyx_25030077.v:1587:37
     extern svBitVecVal ecall_read(const svBitVecVal* pc, const svBitVecVal* type_p);
+    // DPI import at vsrc/ysyx_25030077.v:1374:37
+    extern svBitVecVal mem_data_read(const svBitVecVal* mask, const svBitVecVal* addr_in);
 
 #ifdef __cplusplus
 }

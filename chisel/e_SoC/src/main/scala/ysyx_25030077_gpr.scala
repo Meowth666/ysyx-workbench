@@ -19,7 +19,7 @@ class ysyx_25030077_gpr extends Module {
   dontTouchBundleRecursive(io)
   val regs = RegInit(VecInit(Seq.fill(32)(0.U(32.W))))
   val validReg = RegInit(false.B)
-  val canAccept = 1
+  val canAccept = true.B
   val pc_next_reg = RegInit("h30000000".U(32.W))
 
   val reg_data_write = Mux(io.waddr_rd === 0.U, 0.U, io.wdata_rd)

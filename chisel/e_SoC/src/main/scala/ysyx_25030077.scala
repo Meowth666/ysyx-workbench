@@ -114,11 +114,28 @@ class ysyx_25030077 extends Module {
   val h_data_control = Module(new ysyx_25030077_data_control())
   val i_alu = Module(new ysyx_25030077_alu())
   val j_pc_next = Module(new ysyx_25030077_pc_next())
+  val k_icache = Module(new ysyx_25030077_icache())
 
-  b_ifu.io.ar.ready := c_arbiter.io.ifu_ready
+  b_ifu.io.ar.ready := k_icache.io.ifu_ready
 
-  c_arbiter.io.ifu_valid := b_ifu.io.ar.valid
-  c_arbiter.io.pc := b_ifu.io.ar.bits.addr
+  k_icache.io.icache_ready := c_arbiter.io.icache_ready
+  k_icache.io.ifu_valid := b_ifu.io.ar.valid
+  k_icache.io.pc := b_ifu.io.ar.bits.addr
+  k_icache.io.ar_ready := io.master_arready
+  k_icache.io.aw_ready := io.master_awready
+  k_icache.io.w_ready := io.master_wready
+  k_icache.io.r_valid := io.master_rvalid
+  k_icache.io.r_data := io.master_rdata
+
+  c_arbiter.io.icache_data := k_icache.io.icache_data
+  c_arbiter.io.icache_valid := k_icache.io.icache_valid
+  c_arbiter.io.icache_ar_addr := k_icache.io.ar_addr
+  c_arbiter.io.icache_ar_valid := k_icache.io.ar_valid
+  c_arbiter.io.icache_aw_addr := k_icache.io.aw_addr
+  c_arbiter.io.icache_aw_valid := k_icache.io.aw_valid
+  c_arbiter.io.icache_w_data := k_icache.io.w_data
+  c_arbiter.io.icache_w_valid := k_icache.io.w_valid
+
   c_arbiter.io.rs1_data := f_gpr.io.rdata_rs1
   c_arbiter.io.rs2_data := f_gpr.io.rdata_rs2
   c_arbiter.io.imm := e_imm.io.imm

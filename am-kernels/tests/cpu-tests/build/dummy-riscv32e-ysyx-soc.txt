@@ -7,7 +7,7 @@ Disassembly of section .text.fsbl:
 30000000 <_start>:
 30000000:	00000413          	li	s0,0
 30000004:	df002117          	auipc	sp,0xdf002
-30000008:	efc10113          	addi	sp,sp,-260 # f001f00 <_stack_pointer>
+30000008:	afc10113          	addi	sp,sp,-1284 # f001b00 <_stack_pointer>
 3000000c:	004000ef          	jal	ra,30000010 <fsbl_load>
 
 30000010 <fsbl_load>:
@@ -76,7 +76,7 @@ a0000074:	00812a23          	sw	s0,20(sp)
 a0000078:	00912823          	sw	s1,16(sp)
 a000007c:	100007b7          	lui	a5,0x10000
 a0000080:	f8000713          	li	a4,-128
-a0000084:	00e781a3          	sb	a4,3(a5) # 10000003 <_stack_pointer+0xffe103>
+a0000084:	00e781a3          	sb	a4,3(a5) # 10000003 <_stack_pointer+0xffe503>
 a0000088:	00100713          	li	a4,1
 a000008c:	00e78023          	sb	a4,0(a5)
 a0000090:	000780a3          	sb	zero,1(a5)
@@ -98,7 +98,7 @@ a00000cc:	10000737          	lui	a4,0x10000
 a00000d0:	ff800593          	li	a1,-8
 a00000d4:	00d55633          	srl	a2,a0,a3
 a00000d8:	0ff67613          	zext.b	a2,a2
-a00000dc:	00574783          	lbu	a5,5(a4) # 10000005 <_stack_pointer+0xffe105>
+a00000dc:	00574783          	lbu	a5,5(a4) # 10000005 <_stack_pointer+0xffe505>
 a00000e0:	0207f793          	andi	a5,a5,32
 a00000e4:	fe078ce3          	beqz	a5,a00000dc <id_print+0x70>
 a00000e8:	00c70023          	sb	a2,0(a4)
@@ -124,14 +124,14 @@ a0000134:	fce794e3          	bne	a5,a4,a00000fc <id_print+0x90>
 a0000138:	00848593          	addi	a1,s1,8
 a000013c:	10000737          	lui	a4,0x10000
 a0000140:	0004c603          	lbu	a2,0(s1)
-a0000144:	00574783          	lbu	a5,5(a4) # 10000005 <_stack_pointer+0xffe105>
+a0000144:	00574783          	lbu	a5,5(a4) # 10000005 <_stack_pointer+0xffe505>
 a0000148:	0207f793          	andi	a5,a5,32
 a000014c:	fe078ce3          	beqz	a5,a0000144 <id_print+0xd8>
 a0000150:	00c70023          	sb	a2,0(a4)
 a0000154:	00148493          	addi	s1,s1,1
 a0000158:	feb494e3          	bne	s1,a1,a0000140 <id_print+0xd4>
 a000015c:	10000737          	lui	a4,0x10000
-a0000160:	00574783          	lbu	a5,5(a4) # 10000005 <_stack_pointer+0xffe105>
+a0000160:	00574783          	lbu	a5,5(a4) # 10000005 <_stack_pointer+0xffe505>
 a0000164:	0207f793          	andi	a5,a5,32
 a0000168:	fe078ce3          	beqz	a5,a0000160 <id_print+0xf4>
 a000016c:	00a00793          	li	a5,10

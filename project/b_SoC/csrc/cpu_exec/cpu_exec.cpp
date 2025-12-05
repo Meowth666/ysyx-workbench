@@ -314,8 +314,8 @@ extern "C" void sdram_write (int bank, int addr, int dqm, int cnt, int data) {
 				}
 				break;
 		}			
-	if(MTRACE && cnt0 %4 == 0){
-		fprintf(mtrace, "write sdram 0x%08x\n", addr_sdram);
+	if(MTRACE){
+		fprintf(mtrace, "write sdram 0x%08x    data = 0x%08x\n", addr_sdram, data);
 	}
 	cnt0++;
 	if(cnt0 == 100000)
@@ -425,7 +425,7 @@ extern "C" void sdram_read (int bank, int addr, int cnt, int* data) {
 		flag = 1;
 	}
 	if(MTRACE && cnt %2 == 0){
-		fprintf(mtrace, "read sdram 0x%08x\n", addr_sdram);
+		// fprintf(mtrace, "read sdram 0x%08x  data: 0x%08x\n", addr_sdram, *data);
 	}
 	// if(cnt % 2 == 1)
 	// 	printf("pc =0x%x  pc_pre = 0x%x\n",addr_sdram, pc_pre);
@@ -681,12 +681,14 @@ int cpu_exec(int n){
 	} 
 	printf("周期 : %lld    指令数 = %lld    ipc = %lld\n", ix / 2, inst_cnts, (ix / 2) / inst_cnts);
 	printf("lsu读取数据 : %lld\n", lsu_cnts);
-	printf("lsu读取延迟 : %lld\n", lsu_cycs / lsu_cnts);
+	if(lsu_cnts > 0)
+		printf("lsu读取延迟 : %lld\n", lsu_cycs / lsu_cnts);
 	printf("指令数：    计算 : %8lld   访存 : %8lld    跳转 : %8lld    CSR/特权 : %8lld    分支 : %8lld\n", jisuan_cnts, l_cnts + s_cnts, tiaozhuan_cnts, tequan_cnts, fenzhi_cnts);
 	printf("周期数：    计算 : %8lld   访存 : %8lld    跳转 : %8lld    CSR/特权 : %8lld    分支 : %8lld\n", cycs[3] / 2, (cycs[1] + cycs[2]) / 2, cycs[4] / 2, cycs[5] / 2, cycs[6] / 2);
 	printf("平均周期数：计算 : %8lld   访存 : %8lld    跳转 : %8lld    CSR/特权 : %8lld    分支 : %8lld\n", cycs[3] / 2 / jisuan_cnts, (cycs[1] + cycs[2]) / 2 / (l_cnts + s_cnts), cycs[4] / 2 / tiaozhuan_cnts, cycs[5] / 2 / tequan_cnts, cycs[6] / 2 / fenzhi_cnts);
 	printf("flash lsu 访问次数: %8lld  平均延迟: %8lld\n", flash_cnt, flash_cyc / flash_cnt);
-	printf("sdram lsu 访问次数: %8lld  平均延迟: %8lld\n", sdram_cnt, sdram_cyc / sdram_cnt);
+	if(sdram_cnt > 0)
+		printf("sdram lsu 访问次数: %8lld  平均延迟: %8lld\n", sdram_cnt, sdram_cyc / sdram_cnt);
 	fclose(itrace);          
 	return 0;
 }
