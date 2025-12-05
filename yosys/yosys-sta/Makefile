@@ -5,7 +5,7 @@ O ?= $(PROJ_PATH)/result
 DESIGN ?= ysyx_25030077
 SDC_FILE ?= $(PROJ_PATH)/scripts/default.sdc
 RTL_FILES ?= /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/ysyx25030077.v
-export CLK_FREQ_MHZ ?= 500
+export CLK_FREQ_MHZ ?= 300
 export CLK_PORT_NAME ?= clock
 PDK = nangate45
 
