@@ -208,6 +208,10 @@ module ysyx_25030077_arbiter(
   function int is_lsu_read();
     return {24'd0, io_axi_ar_addr[31:28], state_reg, io_axi_ar_valid, io_axi_r_valid};
   endfunction
+  export "DPI-C" function inst_read;
+  function int inst_read();
+    return io_inst;
+  endfunction
   reg [31:0] inst_reg; // @[ysyx_25030077_arbiter.scala 84:27]
   reg  validReg_aw1; // @[ysyx_25030077_arbiter.scala 87:31]
   reg  validReg_ar1; // @[ysyx_25030077_arbiter.scala 89:31]

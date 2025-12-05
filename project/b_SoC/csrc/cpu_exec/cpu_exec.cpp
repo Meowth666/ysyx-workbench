@@ -17,6 +17,7 @@ extern int reg_read_addr();
 extern int reg_read_data();
 extern int pc_read_data();
 extern int is_lsu_read();
+extern int inst_read();
 void pc_new(int data);
 void print_itrace(FILE *itrace, int pc_data, uint32_t insn32);
 int is_S(int x);
@@ -378,40 +379,9 @@ extern "C" void sdram_read (int bank, int addr, int cnt, int* data) {
 			ftrace_check(pc_pre, addr_sdram, insn32);
 		}
 		pc_pre = addr_sdram;
-		inst_cnts ++;
+		// inst_cnts ++;
 		if(ITRACE)
 			print_itrace(itrace, addr_sdram, *data);
-		if((uint32_t)(*data & 0x7f) == 3){
-			cycs[type] += ix - ix0;
-			type = 1;
-			l_cnts ++;
-		}
-		if((uint32_t)(*data & 0x7f) == 35){
-			cycs[type] += ix - ix0;
-			type = 2;
-			s_cnts ++;
-		}
-		if((uint32_t)(*data & 0x7f) == 51 || (uint32_t)(*data & 0x7f) == 19 || (uint32_t)(*data & 0x7f) == 55 || (uint32_t)(*data & 0x7f) == 23){
-			jisuan_cnts ++;
-			cycs[type] += ix - ix0;
-			type = 3;
-		}
-		if((uint32_t)(*data & 0x7f) == 103 || (uint32_t)(*data & 0x7f) == 111){
-			tiaozhuan_cnts ++;
-			cycs[type] += ix - ix0;
-			type = 4;
-		}
-		if((uint32_t)(*data & 0x7f) == 115){
-			tequan_cnts ++;
-			cycs[type] += ix - ix0;
-			type = 5;
-		}
-		if((uint32_t)(*data & 0x7f) == 99){
-			fenzhi_cnts ++;
-			cycs[type] += ix - ix0;
-			type = 6;
-		}
-		ix0 = ix;
 	}
 	// else{
 	// 	if(cnt % 2 == 0)
@@ -487,7 +457,7 @@ extern "C" void flash_read(int32_t addr, int32_t *data) {
                      static_cast<uint8_t>(guest_to_host(RESET_VECTOR)[insert - 3]);
 	}
 	if(addr_flash <= text_flash_end && addr_flash >= 0x30000000){
-		inst_cnts ++;
+		// inst_cnts ++;
 		// printf("pc =0x%x  pc_pre = 0x%x\n",addr_flash, pc_pre);
 		if(FTRACE){
 			ftrace_check(pc_pre, addr_flash, insn32);
@@ -495,37 +465,6 @@ extern "C" void flash_read(int32_t addr, int32_t *data) {
 		pc_pre = addr_flash;
 		if(ITRACE)
 			print_itrace(itrace, addr_flash, *data);
-			if((uint32_t)(*data & 0x7f) == 3){
-				cycs[type] += ix - ix0;
-				type = 1;
-				l_cnts ++;
-			}
-			if((uint32_t)(*data & 0x7f) == 35){
-				cycs[type] += ix - ix0;
-				type = 2;
-				s_cnts ++;
-			}
-			if((uint32_t)(*data & 0x7f) == 51 || (uint32_t)(*data & 0x7f) == 19 || (uint32_t)(*data & 0x7f) == 55 || (uint32_t)(*data & 0x7f) == 23){
-				jisuan_cnts ++;
-				cycs[type] += ix - ix0;
-				type = 3;
-			}
-			if((uint32_t)(*data & 0x7f) == 103 || (uint32_t)(*data & 0x7f) == 111){
-				tiaozhuan_cnts ++;
-				cycs[type] += ix - ix0;
-				type = 4;
-			}
-			if((uint32_t)(*data & 0x7f) == 115){
-				tequan_cnts ++;
-				cycs[type] += ix - ix0;
-				type = 5;
-			}
-			if((uint32_t)(*data & 0x7f) == 99){
-				fenzhi_cnts ++;
-				cycs[type] += ix - ix0;
-				type = 6;
-			}
-			ix0 = ix;
 	}	
 	// else{
 	// 	lsu_cnts ++;
@@ -608,6 +547,7 @@ int cpu_init(int argc, char** argv){
 }
 long long ifu_ar;
 long long lsu_ar;
+uint32_t inst0 = 0;
 // struct section elf_section[20];
 int cpu_exec(int n){
 	// printf("%x  %x\n", text_flash_end, text_sdram_end);
@@ -631,6 +571,42 @@ int cpu_exec(int n){
 			uint32_t lsu_read0 = is_lsu_read();
 			uint32_t lsu_read  = lsu_read0 & 0xf;
 			uint32_t lsu_addr;
+			uint32_t inst = inst_read();
+			if (inst != inst0){
+				inst_cnts ++;
+				inst0 = inst;
+				if((uint32_t)(inst & 0x7f) == 3){
+					cycs[type] += ix - ix0;
+					type = 1;
+					l_cnts ++;
+				}
+				if((uint32_t)(inst & 0x7f) == 35){
+					cycs[type] += ix - ix0;
+					type = 2;
+					s_cnts ++;
+				}
+				if((uint32_t)(inst & 0x7f) == 51 || (uint32_t)(inst & 0x7f) == 19 || (uint32_t)(inst & 0x7f) == 55 || (uint32_t)(inst & 0x7f) == 23){
+					jisuan_cnts ++;
+					cycs[type] += ix - ix0;
+					type = 3;
+				}
+				if((uint32_t)(inst & 0x7f) == 103 || (uint32_t)(inst & 0x7f) == 111){
+					tiaozhuan_cnts ++;
+					cycs[type] += ix - ix0;
+					type = 4;
+				}
+				if((uint32_t)(inst & 0x7f) == 115){
+					tequan_cnts ++;
+					cycs[type] += ix - ix0;
+					type = 5;
+				}
+				if((uint32_t)(inst & 0x7f) == 99){
+					fenzhi_cnts ++;
+					cycs[type] += ix - ix0;
+					type = 6;
+				}
+				ix0 = ix;
+			}
 			if(is_lsu_ar == false && lsu_read == 6){
 				lsu_addr =  (lsu_read0 & 0xf0) >> 4;
 				lsu_ar = ix;
@@ -651,8 +627,6 @@ int cpu_exec(int n){
 				}
 			}
 			is_lsu_r = (lsu_read == 5) ? true : false;
-
-
 			if(DIFFTEST){
 				is_refresh = new_reg();
 			}

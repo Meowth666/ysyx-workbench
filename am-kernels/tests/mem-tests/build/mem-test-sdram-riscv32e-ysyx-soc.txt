@@ -7,7 +7,7 @@ Disassembly of section .text.fsbl:
 30000000 <_start>:
 30000000:	00000413          	li	s0,0
 30000004:	df002117          	auipc	sp,0xdf002
-30000008:	efc10113          	addi	sp,sp,-260 # f001f00 <_stack_pointer>
+30000008:	afc10113          	addi	sp,sp,-1284 # f001b00 <_stack_pointer>
 3000000c:	004000ef          	jal	ra,30000010 <fsbl_load>
 
 30000010 <fsbl_load>:
@@ -120,7 +120,7 @@ a0000124:	00008067          	ret
 
 a0000128 <putch>:
 a0000128:	10000737          	lui	a4,0x10000
-a000012c:	00574783          	lbu	a5,5(a4) # 10000005 <_stack_pointer+0xffe105>
+a000012c:	00574783          	lbu	a5,5(a4) # 10000005 <_stack_pointer+0xffe505>
 a0000130:	0207f793          	andi	a5,a5,32
 a0000134:	fe078ce3          	beqz	a5,a000012c <putch+0x4>
 a0000138:	00a70023          	sb	a0,0(a4)
@@ -137,7 +137,7 @@ a0000150:	00812a23          	sw	s0,20(sp)
 a0000154:	00912823          	sw	s1,16(sp)
 a0000158:	100007b7          	lui	a5,0x10000
 a000015c:	f8000713          	li	a4,-128
-a0000160:	00e781a3          	sb	a4,3(a5) # 10000003 <_stack_pointer+0xffe103>
+a0000160:	00e781a3          	sb	a4,3(a5) # 10000003 <_stack_pointer+0xffe503>
 a0000164:	00100713          	li	a4,1
 a0000168:	00e78023          	sb	a4,0(a5)
 a000016c:	000780a3          	sb	zero,1(a5)
@@ -159,7 +159,7 @@ a00001a8:	10000737          	lui	a4,0x10000
 a00001ac:	ff800593          	li	a1,-8
 a00001b0:	00d55633          	srl	a2,a0,a3
 a00001b4:	0ff67613          	zext.b	a2,a2
-a00001b8:	00574783          	lbu	a5,5(a4) # 10000005 <_stack_pointer+0xffe105>
+a00001b8:	00574783          	lbu	a5,5(a4) # 10000005 <_stack_pointer+0xffe505>
 a00001bc:	0207f793          	andi	a5,a5,32
 a00001c0:	fe078ce3          	beqz	a5,a00001b8 <id_print+0x70>
 a00001c4:	00c70023          	sb	a2,0(a4)
@@ -185,14 +185,14 @@ a0000210:	fce794e3          	bne	a5,a4,a00001d8 <id_print+0x90>
 a0000214:	00848593          	addi	a1,s1,8
 a0000218:	10000737          	lui	a4,0x10000
 a000021c:	0004c603          	lbu	a2,0(s1)
-a0000220:	00574783          	lbu	a5,5(a4) # 10000005 <_stack_pointer+0xffe105>
+a0000220:	00574783          	lbu	a5,5(a4) # 10000005 <_stack_pointer+0xffe505>
 a0000224:	0207f793          	andi	a5,a5,32
 a0000228:	fe078ce3          	beqz	a5,a0000220 <id_print+0xd8>
 a000022c:	00c70023          	sb	a2,0(a4)
 a0000230:	00148493          	addi	s1,s1,1
 a0000234:	feb494e3          	bne	s1,a1,a000021c <id_print+0xd4>
 a0000238:	10000737          	lui	a4,0x10000
-a000023c:	00574783          	lbu	a5,5(a4) # 10000005 <_stack_pointer+0xffe105>
+a000023c:	00574783          	lbu	a5,5(a4) # 10000005 <_stack_pointer+0xffe505>
 a0000240:	0207f793          	andi	a5,a5,32
 a0000244:	fe078ce3          	beqz	a5,a000023c <id_print+0xf4>
 a0000248:	00a00793          	li	a5,10
