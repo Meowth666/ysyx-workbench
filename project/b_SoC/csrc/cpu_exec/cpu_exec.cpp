@@ -18,6 +18,7 @@ extern int reg_read_data();
 extern int pc_read_data();
 extern int is_lsu_read();
 extern int inst_read();
+extern int icache_read();
 void pc_new(int data);
 void print_itrace(FILE *itrace, int pc_data, uint32_t insn32);
 int is_S(int x);
@@ -410,16 +411,6 @@ uint32_t psram_array[1048588]  = {0};
 extern "C" void psram_read(int32_t addr, int32_t *data) { 
     // printf("addr = %d\n", addr + 0x80000000);
 	*data = psram_array[addr/4];
-	// printf("pc =0x%x  instruction = 0x%x\n",addr, *data);
-	// if(*data == 1048691 && insn32 == 32871){
-	// 	//printf("instruction = %x\n", instruction);
-	// 	success = 1;
-	// }
-	// else if(*data == 1048691){
-	// 	flag = 1;
-	// }
-	// insn32 = *data;
-    // printf("size : %d  %d\n", sizeof(guest_to_host(RESET_VECTOR)[0]), sizeof(insert));
 }
 extern "C" void psram_write(int32_t addr, int32_t data) { 
 	// printf("addr = %d   data = %x\n", addr, data);
@@ -562,6 +553,10 @@ int cpu_exec(int n){
 	long long flash_cnt = 0;
 	long long sdram_cyc = 0;
 	long long sdram_cnt = 0;
+	long long hit = 0;
+	long long request = 0;
+	long long ifu_cycs = 0;
+	long long ix_ifu_valid = 0;
 	// bool is_ifu_r = false;
 	// bool is_ifu_ar = false;
 	for(int i = -3; i < 2 * n; i++){
@@ -612,11 +607,9 @@ int cpu_exec(int n){
 				lsu_ar = ix;
 			}
 			is_lsu_ar = (lsu_read == 6) ? true : false;
-
 			if(is_lsu_r == false && lsu_read == 5){
 				lsu_cycs += (ix - lsu_ar) / 2;
 				lsu_cnts ++;
-
 				if(lsu_addr == 3){ // flash
 					flash_cyc += (ix - lsu_ar) / 2;
 					flash_cnt ++;
@@ -630,6 +623,22 @@ int cpu_exec(int n){
 			if(DIFFTEST){
 				is_refresh = new_reg();
 			}
+			scope = svGetScopeFromName("TOP.ysyxSoCFull.asic.cpu.cpu.k_icache");
+			svSetScope(scope);
+			uint32_t icache_data = icache_read();
+			uint32_t state =  (icache_data & 0x38) >> 3;
+			uint32_t ifu_valid = (icache_data & 0x6) >> 1;
+			uint32_t icache_valid = (icache_data & 0x1);
+			if (ifu_valid == 3){
+				ix_ifu_valid = ix;
+				request += 1;
+			}
+			if (icache_valid == 1){
+				ifu_cycs += (ix - ix_ifu_valid) / 2;
+				if(state == 6)
+					hit += 1;
+			}
+				
 		}
 		if(ix == 23){
 			ysyxSoCFull -> reset = 0;
@@ -663,6 +672,7 @@ int cpu_exec(int n){
 	printf("flash lsu 访问次数: %8lld  平均延迟: %8lld\n", flash_cnt, flash_cyc / flash_cnt);
 	if(sdram_cnt > 0)
 		printf("sdram lsu 访问次数: %8lld  平均延迟: %8lld\n", sdram_cnt, sdram_cyc / sdram_cnt);
+	printf("ifu请求次数:    %8lld 命中次数:%8lld   ifu请求总周期:%8lld   AMAT:%8lld\n", request, hit, ifu_cycs, ifu_cycs / request);
 	fclose(itrace);          
 	return 0;
 }

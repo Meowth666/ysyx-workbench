@@ -1862,6 +1862,10 @@ module ysyx_25030077_icache(
   reg [31:0] _RAND_3;
 `endif // RANDOMIZE_REG_INIT
   reg [2:0] state_reg; // @[ysyx_25030077_icache.scala 33:28]
+  export "DPI-C" function icache_read;
+  function int icache_read();
+    return {26'd0, state_reg, io_ifu_valid, io_ifu_ready, io_icache_valid};
+  endfunction
   reg [31:0] rdata_reg; // @[ysyx_25030077_icache.scala 35:28]
   reg  ar_valid_reg; // @[ysyx_25030077_icache.scala 36:31]
   reg [31:0] ar_addr_reg; // @[ysyx_25030077_icache.scala 37:31]
