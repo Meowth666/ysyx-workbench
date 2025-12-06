@@ -672,7 +672,7 @@ int cpu_exec(int n){
 	printf("flash lsu 访问次数: %8lld  平均延迟: %8lld\n", flash_cnt, flash_cyc / flash_cnt);
 	if(sdram_cnt > 0)
 		printf("sdram lsu 访问次数: %8lld  平均延迟: %8lld\n", sdram_cnt, sdram_cyc / sdram_cnt);
-	printf("ifu请求次数:    %8lld 命中次数:%8lld   ifu请求总周期:%8lld   AMAT:%8lld\n", request, hit, ifu_cycs, ifu_cycs / request);
+	printf("ifu请求次数:    %8lld 命中次数:%8lld   ifu请求总周期:%8lld   icache命中率:  %.4lf   AMAT:%8lld\n", request, hit, ifu_cycs, (double)hit / (double)request, ifu_cycs / request);
 	fclose(itrace);          
 	return 0;
 }
