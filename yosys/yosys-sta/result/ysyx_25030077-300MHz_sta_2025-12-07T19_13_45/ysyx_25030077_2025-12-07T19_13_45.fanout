@@ -1,0 +1,15 @@
+Generate the report at 2025-12-07T18:57:09, GitVersion: aa25008b3778a76ae1975c839d4cc459f7f7b3b7.
++------------------------------------------------------------------------+-----------+--------+-------------+-------------+------+
+| Net / Pin                                                              | MaxFanout | Fanout | FanoutSlack | LibCellPort | Note |
++------------------------------------------------------------------------+-----------+--------+-------------+-------------+------+
+| f_gpr.regs_31_$_SDFFE_PP0P__Q_14_D_$_ANDNOT__Y_B_$_MUX__Y_B_$_MUX__Y_B |           |        |             |             |      |
+| f_gpr.pc_next_reg_$_SDFFE_PP0P__Q_13:QN                                | NA        | 1      | NA          | DFF_X1/QN   |      |
+| _00199_                                                                |           |        |             |             |      |
+| _24021_:ZN                                                             | NA        | 30     | NA          | NAND2_X1/ZN |      |
+| b_ifu.io_rd_Req_bits_addr[16]                                          |           |        |             |             |      |
+| f_gpr.pc_next_reg_$_SDFFE_PP0P__Q_14:Q                                 | NA        | 9      | NA          | DFF_X1/Q    |      |
+| f_gpr.regs_19[29]                                                      |           |        |             |             |      |
+| f_gpr.regs_19_$_SDFFE_PP0P__Q_2:Q                                      | NA        | 0      | NA          | DFF_X1/Q    |      |
+| b_ifu.io_rd_Req_bits_addr[13]                                          |           |        |             |             |      |
+| f_gpr.pc_next_reg_$_SDFFE_PP0P__Q_17:Q                                 | NA        | 9      | NA          | DFF_X1/Q    |      |
++------------------------------------------------------------------------+-----------+--------+-------------+-------------+------+

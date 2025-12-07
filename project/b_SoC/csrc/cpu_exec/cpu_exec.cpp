@@ -19,6 +19,7 @@ extern int pc_read_data();
 extern int is_lsu_read();
 extern int inst_read();
 extern int icache_read();
+extern int pc_read();
 void pc_new(int data);
 void print_itrace(FILE *itrace, int pc_data, uint32_t insn32);
 int is_S(int x);
@@ -380,9 +381,9 @@ extern "C" void sdram_read (int bank, int addr, int cnt, int* data) {
 			ftrace_check(pc_pre, addr_sdram, insn32);
 		}
 		pc_pre = addr_sdram;
-		// inst_cnts ++;
-		if(ITRACE)
-			print_itrace(itrace, addr_sdram, *data);
+		// // inst_cnts ++;
+		// if(ITRACE)
+		// 	print_itrace(itrace, addr_sdram, *data);
 	}
 	// else{
 	// 	if(cnt % 2 == 0)
@@ -454,8 +455,8 @@ extern "C" void flash_read(int32_t addr, int32_t *data) {
 			ftrace_check(pc_pre, addr_flash, insn32);
 		}
 		pc_pre = addr_flash;
-		if(ITRACE)
-			print_itrace(itrace, addr_flash, *data);
+		// if(ITRACE)
+		// 	print_itrace(itrace, addr_flash, *data);
 	}	
 	// else{
 	// 	lsu_cnts ++;
@@ -557,6 +558,7 @@ int cpu_exec(int n){
 	long long request = 0;
 	long long ifu_cycs = 0;
 	long long ix_ifu_valid = 0;
+	uint32_t itrace_pc = 0;
 	// bool is_ifu_r = false;
 	// bool is_ifu_ar = false;
 	for(int i = -3; i < 2 * n; i++){
@@ -568,6 +570,9 @@ int cpu_exec(int n){
 			uint32_t lsu_addr;
 			uint32_t inst = inst_read();
 			if (inst != inst0){
+				if(ITRACE){
+					print_itrace(itrace, itrace_pc, inst);
+				}
 				inst_cnts ++;
 				inst0 = inst;
 				if((uint32_t)(inst & 0x7f) == 3){
@@ -632,6 +637,7 @@ int cpu_exec(int n){
 			if (ifu_valid == 3){
 				ix_ifu_valid = ix;
 				request += 1;
+				itrace_pc = pc_read();
 			}
 			if (icache_valid == 1){
 				ifu_cycs += (ix - ix_ifu_valid) / 2;

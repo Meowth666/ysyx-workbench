@@ -155,10 +155,7 @@ module ysyx_25030077_arbiter(
   wire [1:0] rsize = _rsize_T ? 2'h2 : {{1'd0}, _rsize_T_8}; // @[Mux.scala 101:16]
   wire [1:0] _io_axi_ar_size_T_4 = _io_axi_ar_valid_T_3 ? rsize : 2'h0; // @[Mux.scala 101:16]
   wire [1:0] _io_axi_ar_size_T_5 = _io_axi_ar_addr_T ? 2'h2 : _io_axi_ar_size_T_4; // @[Mux.scala 101:16]
-  wire  is_sram = io_axi_ar_addr >= 32'hf000000 & io_axi_ar_addr < 32'hf001fff | io_axi_ar_addr >= 32'h80000000 &
-    io_axi_ar_addr < 32'h9fffffff | io_axi_ar_addr >= 32'ha0000000 & io_axi_ar_addr < 32'hbfffffff | io_axi_ar_addr >= 32'h10002000
-     & io_axi_ar_addr < 32'h1000200f | io_axi_ar_addr >= 32'h10011000 & io_axi_ar_addr < 32'h10011007 | io_axi_ar_addr
-     >= 32'hc0000000; // @[ysyx_25030077_arbiter.scala 216:392]
+  wire  is_sram = ~(io_axi_ar_addr[31:28] == 4'h3); // @[ysyx_25030077_arbiter.scala 217:19]
   wire [31:0] _rdata_sram_T_5 = {24'h0,io_axi_r_data[7:0]}; // @[Cat.scala 31:58]
   wire [31:0] _rdata_sram_T_9 = {24'h0,io_axi_r_data[15:8]}; // @[Cat.scala 31:58]
   wire [31:0] _rdata_sram_T_13 = {24'h0,io_axi_r_data[23:16]}; // @[Cat.scala 31:58]
@@ -199,14 +196,14 @@ module ysyx_25030077_arbiter(
   wire [31:0] _rdata_mrom_T_21 = _rsize_T_2 ? _rdata_sram_T_29 : _rdata_mrom_T_20; // @[Mux.scala 101:16]
   wire [31:0] _rdata_mrom_T_22 = _rsize_T_1 ? _rdata_sram_T_5 : _rdata_mrom_T_21; // @[Mux.scala 101:16]
   wire [31:0] rdata_mrom = _rsize_T ? io_axi_r_data : _rdata_mrom_T_22; // @[Mux.scala 101:16]
-  wire [63:0] _clint_reg_T_1 = clint_reg + 64'h1; // @[ysyx_25030077_arbiter.scala 253:28]
-  wire  _io_gpr_data_T_1 = io_r_valid_lsu & _validReg_gpr_T_8; // @[ysyx_25030077_arbiter.scala 255:47]
-  wire  _io_gpr_data_T_3 = io_r_valid_lsu & _validReg_gpr_T_8 & _validReg_gpr_T_1; // @[ysyx_25030077_arbiter.scala 255:70]
-  wire  _io_gpr_data_T_6 = _io_gpr_data_T_1 & _is_clint_T; // @[ysyx_25030077_arbiter.scala 256:70]
-  wire  _io_gpr_data_T_10 = _io_gpr_data_T_1 & _is_clint_T_1; // @[ysyx_25030077_arbiter.scala 257:70]
+  wire [63:0] _clint_reg_T_1 = clint_reg + 64'h1; // @[ysyx_25030077_arbiter.scala 255:28]
+  wire  _io_gpr_data_T_1 = io_r_valid_lsu & _validReg_gpr_T_8; // @[ysyx_25030077_arbiter.scala 257:47]
+  wire  _io_gpr_data_T_3 = io_r_valid_lsu & _validReg_gpr_T_8 & _validReg_gpr_T_1; // @[ysyx_25030077_arbiter.scala 257:70]
+  wire  _io_gpr_data_T_6 = _io_gpr_data_T_1 & _is_clint_T; // @[ysyx_25030077_arbiter.scala 258:70]
+  wire  _io_gpr_data_T_10 = _io_gpr_data_T_1 & _is_clint_T_1; // @[ysyx_25030077_arbiter.scala 259:70]
   wire [31:0] _io_gpr_data_T_12 = _io_gpr_data_T_10 ? clint_reg[63:32] : 32'h0; // @[Mux.scala 101:16]
   wire [31:0] _io_gpr_data_T_13 = _io_gpr_data_T_6 ? clint_reg[31:0] : _io_gpr_data_T_12; // @[Mux.scala 101:16]
-  wire  _inst_reg_T_2 = io_icache_valid & _io_axi_ar_addr_T; // @[ysyx_25030077_arbiter.scala 260:63]
+  wire  _inst_reg_T_2 = io_icache_valid & _io_axi_ar_addr_T; // @[ysyx_25030077_arbiter.scala 262:63]
   assign io_axi_ar_valid = _io_axi_ar_addr_T ? io_icache_ar_valid : _io_axi_ar_valid_T_5 & validReg_ar1; // @[Mux.scala 101:16]
   assign io_axi_ar_addr = _io_axi_ar_addr_T ? io_icache_ar_addr : _io_axi_ar_addr_T_4; // @[Mux.scala 101:16]
   assign io_axi_ar_id = 4'h0; // @[ysyx_25030077_arbiter.scala 77:18]
@@ -229,7 +226,7 @@ module ysyx_25030077_arbiter(
   assign io_gpr_r_valid = _validReg_gpr_T_8 & validReg_gpr; // @[Mux.scala 101:16]
   assign io_gpr_b_valid = _validReg_gpr_T_8 & validReg_gpr; // @[Mux.scala 101:16]
   assign io_gpr_data = _io_gpr_data_T_3 ? rdata_reg : _io_gpr_data_T_13; // @[Mux.scala 101:16]
-  assign io_inst = inst_reg; // @[ysyx_25030077_arbiter.scala 262:21]
+  assign io_inst = inst_reg; // @[ysyx_25030077_arbiter.scala 264:21]
   assign io_icache_ready = 1'h1; // @[ysyx_25030077_arbiter.scala 194:23]
   always @(posedge clock) begin
     if (reset) begin // @[ysyx_25030077_arbiter.scala 83:28]
@@ -279,8 +276,8 @@ module ysyx_25030077_arbiter(
     if (reset) begin // @[ysyx_25030077_arbiter.scala 92:28]
       rdata_reg <= 32'h0; // @[ysyx_25030077_arbiter.scala 92:28]
     end else if (_state_reg_T_5) begin // @[Mux.scala 101:16]
-      if (io_axi_r_valid) begin // @[ysyx_25030077_arbiter.scala 251:62]
-        if (is_sram) begin // @[ysyx_25030077_arbiter.scala 249:20]
+      if (io_axi_r_valid) begin // @[ysyx_25030077_arbiter.scala 253:62]
+        if (is_sram) begin // @[ysyx_25030077_arbiter.scala 250:20]
           rdata_reg <= rdata_sram;
         end else begin
           rdata_reg <= rdata_mrom;
@@ -292,7 +289,7 @@ module ysyx_25030077_arbiter(
     if (reset) begin // @[ysyx_25030077_arbiter.scala 93:28]
       clint_reg <= 64'h0; // @[ysyx_25030077_arbiter.scala 93:28]
     end else begin
-      clint_reg <= _clint_reg_T_1; // @[ysyx_25030077_arbiter.scala 253:15]
+      clint_reg <= _clint_reg_T_1; // @[ysyx_25030077_arbiter.scala 255:15]
     end
   end
 // Register and memory initialization

@@ -303,10 +303,7 @@ module ysyx_25030077_arbiter(
   wire [1:0] rsize = _rsize_T ? 2'h2 : {{1'd0}, _rsize_T_8}; // @[Mux.scala 101:16]
   wire [1:0] _io_axi_ar_size_T_4 = _io_axi_ar_valid_T_3 ? rsize : 2'h0; // @[Mux.scala 101:16]
   wire [1:0] _io_axi_ar_size_T_5 = _io_axi_ar_addr_T ? 2'h2 : _io_axi_ar_size_T_4; // @[Mux.scala 101:16]
-  wire  is_sram = io_axi_ar_addr >= 32'hf000000 & io_axi_ar_addr < 32'hf001fff | io_axi_ar_addr >= 32'h80000000 &
-    io_axi_ar_addr < 32'h9fffffff | io_axi_ar_addr >= 32'ha0000000 & io_axi_ar_addr < 32'hbfffffff | io_axi_ar_addr >= 32'h10002000
-     & io_axi_ar_addr < 32'h1000200f | io_axi_ar_addr >= 32'h10011000 & io_axi_ar_addr < 32'h10011007 | io_axi_ar_addr
-     >= 32'hc0000000; // @[ysyx_25030077_arbiter.scala 216:392]
+  wire  is_sram = ~(io_axi_ar_addr[31:28] == 4'h3); // @[ysyx_25030077_arbiter.scala 217:42]
   wire [31:0] _rdata_sram_T_5 = {24'h0,io_axi_r_data[7:0]}; // @[Cat.scala 31:58]
   wire [31:0] _rdata_sram_T_9 = {24'h0,io_axi_r_data[15:8]}; // @[Cat.scala 31:58]
   wire [31:0] _rdata_sram_T_13 = {24'h0,io_axi_r_data[23:16]}; // @[Cat.scala 31:58]
@@ -347,14 +344,14 @@ module ysyx_25030077_arbiter(
   wire [31:0] _rdata_mrom_T_21 = _rsize_T_2 ? _rdata_sram_T_29 : _rdata_mrom_T_20; // @[Mux.scala 101:16]
   wire [31:0] _rdata_mrom_T_22 = _rsize_T_1 ? _rdata_sram_T_5 : _rdata_mrom_T_21; // @[Mux.scala 101:16]
   wire [31:0] rdata_mrom = _rsize_T ? io_axi_r_data : _rdata_mrom_T_22; // @[Mux.scala 101:16]
-  wire [63:0] _clint_reg_T_1 = clint_reg + 64'h1; // @[ysyx_25030077_arbiter.scala 253:28]
-  wire  _io_gpr_data_T_1 = io_r_valid_lsu & _validReg_gpr_T_8; // @[ysyx_25030077_arbiter.scala 255:47]
-  wire  _io_gpr_data_T_3 = io_r_valid_lsu & _validReg_gpr_T_8 & _validReg_gpr_T_1; // @[ysyx_25030077_arbiter.scala 255:70]
-  wire  _io_gpr_data_T_6 = _io_gpr_data_T_1 & _is_clint_T; // @[ysyx_25030077_arbiter.scala 256:70]
-  wire  _io_gpr_data_T_10 = _io_gpr_data_T_1 & _is_clint_T_1; // @[ysyx_25030077_arbiter.scala 257:70]
+  wire [63:0] _clint_reg_T_1 = clint_reg + 64'h1; // @[ysyx_25030077_arbiter.scala 255:28]
+  wire  _io_gpr_data_T_1 = io_r_valid_lsu & _validReg_gpr_T_8; // @[ysyx_25030077_arbiter.scala 257:47]
+  wire  _io_gpr_data_T_3 = io_r_valid_lsu & _validReg_gpr_T_8 & _validReg_gpr_T_1; // @[ysyx_25030077_arbiter.scala 257:70]
+  wire  _io_gpr_data_T_6 = _io_gpr_data_T_1 & _is_clint_T; // @[ysyx_25030077_arbiter.scala 258:70]
+  wire  _io_gpr_data_T_10 = _io_gpr_data_T_1 & _is_clint_T_1; // @[ysyx_25030077_arbiter.scala 259:70]
   wire [31:0] _io_gpr_data_T_12 = _io_gpr_data_T_10 ? clint_reg[63:32] : 32'h0; // @[Mux.scala 101:16]
   wire [31:0] _io_gpr_data_T_13 = _io_gpr_data_T_6 ? clint_reg[31:0] : _io_gpr_data_T_12; // @[Mux.scala 101:16]
-  wire  _inst_reg_T_2 = io_icache_valid & _io_axi_ar_addr_T; // @[ysyx_25030077_arbiter.scala 260:63]
+  wire  _inst_reg_T_2 = io_icache_valid & _io_axi_ar_addr_T; // @[ysyx_25030077_arbiter.scala 262:63]
   assign io_axi_ar_valid = _io_axi_ar_addr_T ? io_icache_ar_valid : _io_axi_ar_valid_T_5 & validReg_ar1; // @[Mux.scala 101:16]
   assign io_axi_ar_addr = _io_axi_ar_addr_T ? io_icache_ar_addr : _io_axi_ar_addr_T_4; // @[Mux.scala 101:16]
   assign io_axi_ar_id = 4'h0; // @[ysyx_25030077_arbiter.scala 77:18]
@@ -377,7 +374,7 @@ module ysyx_25030077_arbiter(
   assign io_gpr_r_valid = _validReg_gpr_T_8 & validReg_gpr; // @[Mux.scala 101:16]
   assign io_gpr_b_valid = _validReg_gpr_T_8 & validReg_gpr; // @[Mux.scala 101:16]
   assign io_gpr_data = _io_gpr_data_T_3 ? rdata_reg : _io_gpr_data_T_13; // @[Mux.scala 101:16]
-  assign io_inst = inst_reg; // @[ysyx_25030077_arbiter.scala 262:21]
+  assign io_inst = inst_reg; // @[ysyx_25030077_arbiter.scala 264:21]
   assign io_icache_ready = 1'h1; // @[ysyx_25030077_arbiter.scala 194:23]
   always @(posedge clock) begin
     if (reset) begin // @[ysyx_25030077_arbiter.scala 83:28]
@@ -427,8 +424,8 @@ module ysyx_25030077_arbiter(
     if (reset) begin // @[ysyx_25030077_arbiter.scala 92:28]
       rdata_reg <= 32'h0; // @[ysyx_25030077_arbiter.scala 92:28]
     end else if (_state_reg_T_5) begin // @[Mux.scala 101:16]
-      if (io_axi_r_valid) begin // @[ysyx_25030077_arbiter.scala 251:62]
-        if (is_sram) begin // @[ysyx_25030077_arbiter.scala 249:20]
+      if (io_axi_r_valid) begin // @[ysyx_25030077_arbiter.scala 253:62]
+        if (is_sram) begin // @[ysyx_25030077_arbiter.scala 250:20]
           rdata_reg <= rdata_sram;
         end else begin
           rdata_reg <= rdata_mrom;
@@ -440,7 +437,7 @@ module ysyx_25030077_arbiter(
     if (reset) begin // @[ysyx_25030077_arbiter.scala 93:28]
       clint_reg <= 64'h0; // @[ysyx_25030077_arbiter.scala 93:28]
     end else begin
-      clint_reg <= _clint_reg_T_1; // @[ysyx_25030077_arbiter.scala 253:15]
+      clint_reg <= _clint_reg_T_1; // @[ysyx_25030077_arbiter.scala 255:15]
     end
   end
 // Register and memory initialization
@@ -814,231 +811,6 @@ module ysyx_25030077_imm(
   wire [31:0] _io_imm_T_3 = is_type3 ? 32'h4 : _io_imm_T_2; // @[Mux.scala 101:16]
   wire [31:0] _io_imm_T_4 = is_type2 ? Imm_type2 : _io_imm_T_3; // @[Mux.scala 101:16]
   assign io_imm = is_type1 ? Imm_type1 : _io_imm_T_4; // @[Mux.scala 101:16]
-endmodule
-module ysyx_25030077_MaxPeriodFibonacciLFSR(
-  input   clock,
-  input   reset,
-  output  io_out_0,
-  output  io_out_1,
-  output  io_out_2,
-  output  io_out_3,
-  output  io_out_4,
-  output  io_out_5,
-  output  io_out_6,
-  output  io_out_7,
-  output  io_out_8,
-  output  io_out_9,
-  output  io_out_10,
-  output  io_out_11,
-  output  io_out_12,
-  output  io_out_13,
-  output  io_out_14,
-  output  io_out_15
-);
-`ifdef RANDOMIZE_REG_INIT
-  reg [31:0] _RAND_0;
-  reg [31:0] _RAND_1;
-  reg [31:0] _RAND_2;
-  reg [31:0] _RAND_3;
-  reg [31:0] _RAND_4;
-  reg [31:0] _RAND_5;
-  reg [31:0] _RAND_6;
-  reg [31:0] _RAND_7;
-  reg [31:0] _RAND_8;
-  reg [31:0] _RAND_9;
-  reg [31:0] _RAND_10;
-  reg [31:0] _RAND_11;
-  reg [31:0] _RAND_12;
-  reg [31:0] _RAND_13;
-  reg [31:0] _RAND_14;
-  reg [31:0] _RAND_15;
-`endif // RANDOMIZE_REG_INIT
-  reg  state_0; // @[PRNG.scala 55:49]
-  reg  state_1; // @[PRNG.scala 55:49]
-  reg  state_2; // @[PRNG.scala 55:49]
-  reg  state_3; // @[PRNG.scala 55:49]
-  reg  state_4; // @[PRNG.scala 55:49]
-  reg  state_5; // @[PRNG.scala 55:49]
-  reg  state_6; // @[PRNG.scala 55:49]
-  reg  state_7; // @[PRNG.scala 55:49]
-  reg  state_8; // @[PRNG.scala 55:49]
-  reg  state_9; // @[PRNG.scala 55:49]
-  reg  state_10; // @[PRNG.scala 55:49]
-  reg  state_11; // @[PRNG.scala 55:49]
-  reg  state_12; // @[PRNG.scala 55:49]
-  reg  state_13; // @[PRNG.scala 55:49]
-  reg  state_14; // @[PRNG.scala 55:49]
-  reg  state_15; // @[PRNG.scala 55:49]
-  wire  _T_2 = state_15 ^ state_13 ^ state_12 ^ state_10; // @[LFSR.scala 15:41]
-  assign io_out_0 = state_0; // @[PRNG.scala 78:10]
-  assign io_out_1 = state_1; // @[PRNG.scala 78:10]
-  assign io_out_2 = state_2; // @[PRNG.scala 78:10]
-  assign io_out_3 = state_3; // @[PRNG.scala 78:10]
-  assign io_out_4 = state_4; // @[PRNG.scala 78:10]
-  assign io_out_5 = state_5; // @[PRNG.scala 78:10]
-  assign io_out_6 = state_6; // @[PRNG.scala 78:10]
-  assign io_out_7 = state_7; // @[PRNG.scala 78:10]
-  assign io_out_8 = state_8; // @[PRNG.scala 78:10]
-  assign io_out_9 = state_9; // @[PRNG.scala 78:10]
-  assign io_out_10 = state_10; // @[PRNG.scala 78:10]
-  assign io_out_11 = state_11; // @[PRNG.scala 78:10]
-  assign io_out_12 = state_12; // @[PRNG.scala 78:10]
-  assign io_out_13 = state_13; // @[PRNG.scala 78:10]
-  assign io_out_14 = state_14; // @[PRNG.scala 78:10]
-  assign io_out_15 = state_15; // @[PRNG.scala 78:10]
-  always @(posedge clock) begin
-    state_0 <= reset | _T_2; // @[PRNG.scala 55:{49,49}]
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_1 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_1 <= state_0;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_2 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_2 <= state_1;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_3 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_3 <= state_2;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_4 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_4 <= state_3;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_5 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_5 <= state_4;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_6 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_6 <= state_5;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_7 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_7 <= state_6;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_8 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_8 <= state_7;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_9 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_9 <= state_8;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_10 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_10 <= state_9;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_11 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_11 <= state_10;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_12 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_12 <= state_11;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_13 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_13 <= state_12;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_14 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_14 <= state_13;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_15 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_15 <= state_14;
-    end
-  end
-// Register and memory initialization
-`ifdef RANDOMIZE_GARBAGE_ASSIGN
-`define RANDOMIZE
-`endif
-`ifdef RANDOMIZE_INVALID_ASSIGN
-`define RANDOMIZE
-`endif
-`ifdef RANDOMIZE_REG_INIT
-`define RANDOMIZE
-`endif
-`ifdef RANDOMIZE_MEM_INIT
-`define RANDOMIZE
-`endif
-`ifndef RANDOM
-`define RANDOM $random
-`endif
-`ifdef RANDOMIZE_MEM_INIT
-  integer initvar;
-`endif
-`ifndef SYNTHESIS
-`ifdef FIRRTL_BEFORE_INITIAL
-`FIRRTL_BEFORE_INITIAL
-`endif
-initial begin
-  `ifdef RANDOMIZE
-    `ifdef INIT_RANDOM
-      `INIT_RANDOM
-    `endif
-    `ifndef VERILATOR
-      `ifdef RANDOMIZE_DELAY
-        #`RANDOMIZE_DELAY begin end
-      `else
-        #0.002 begin end
-      `endif
-    `endif
-`ifdef RANDOMIZE_REG_INIT
-  _RAND_0 = {1{`RANDOM}};
-  state_0 = _RAND_0[0:0];
-  _RAND_1 = {1{`RANDOM}};
-  state_1 = _RAND_1[0:0];
-  _RAND_2 = {1{`RANDOM}};
-  state_2 = _RAND_2[0:0];
-  _RAND_3 = {1{`RANDOM}};
-  state_3 = _RAND_3[0:0];
-  _RAND_4 = {1{`RANDOM}};
-  state_4 = _RAND_4[0:0];
-  _RAND_5 = {1{`RANDOM}};
-  state_5 = _RAND_5[0:0];
-  _RAND_6 = {1{`RANDOM}};
-  state_6 = _RAND_6[0:0];
-  _RAND_7 = {1{`RANDOM}};
-  state_7 = _RAND_7[0:0];
-  _RAND_8 = {1{`RANDOM}};
-  state_8 = _RAND_8[0:0];
-  _RAND_9 = {1{`RANDOM}};
-  state_9 = _RAND_9[0:0];
-  _RAND_10 = {1{`RANDOM}};
-  state_10 = _RAND_10[0:0];
-  _RAND_11 = {1{`RANDOM}};
-  state_11 = _RAND_11[0:0];
-  _RAND_12 = {1{`RANDOM}};
-  state_12 = _RAND_12[0:0];
-  _RAND_13 = {1{`RANDOM}};
-  state_13 = _RAND_13[0:0];
-  _RAND_14 = {1{`RANDOM}};
-  state_14 = _RAND_14[0:0];
-  _RAND_15 = {1{`RANDOM}};
-  state_15 = _RAND_15[0:0];
-`endif // RANDOMIZE_REG_INIT
-  `endif // RANDOMIZE
-end // initial
-`ifdef FIRRTL_AFTER_INITIAL
-`FIRRTL_AFTER_INITIAL
-`endif
-`endif // SYNTHESIS
 endmodule
 module ysyx_25030077_gpr(
   input         clock,
@@ -1865,6 +1637,10 @@ module ysyx_25030077_icache(
   export "DPI-C" function icache_read;
   function int icache_read();
     return {26'd0, state_reg, io_ifu_valid, io_ifu_ready, io_icache_valid};
+  endfunction
+  export "DPI-C" function pc_read;
+  function int pc_read();
+    return io_pc;
   endfunction
   reg [31:0] rdata_reg; // @[ysyx_25030077_icache.scala 35:28]
   reg  ar_valid_reg; // @[ysyx_25030077_icache.scala 36:31]

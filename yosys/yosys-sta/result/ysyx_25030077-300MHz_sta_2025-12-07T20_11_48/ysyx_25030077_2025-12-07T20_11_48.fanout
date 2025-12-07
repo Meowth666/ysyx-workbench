@@ -1,0 +1,15 @@
+Generate the report at 2025-12-07T20:06:55, GitVersion: aa25008b3778a76ae1975c839d4cc459f7f7b3b7.
++----------------------------------------------------------------------------+-----------+--------+-------------+-------------+------+
+| Net / Pin                                                                  | MaxFanout | Fanout | FanoutSlack | LibCellPort | Note |
++----------------------------------------------------------------------------+-----------+--------+-------------+-------------+------+
+| io_master_rdata[16]                                                        |           |        |             |             |      |
+| io_master_rdata[16]                                                        | NA        | 5      | NA          |             |      |
+| c_arbiter.inst_reg[12]                                                     |           |        |             |             |      |
+| c_arbiter.inst_reg_$_SDFFE_PP0P__Q_19:Q                                    | NA        | 8      | NA          | DFF_X1/Q    |      |
+| io_master_araddr_$_MUX__Y_12_A_$_NOR__Y_A_$_XOR__Y_B_$_XOR__Y_A_$_MUX__Y_B |           |        |             |             |      |
+| c_arbiter.inst_reg_$_SDFFE_PP0P__Q_2:QN                                    | NA        | 2      | NA          | DFF_X1/QN   |      |
+| _12514_                                                                    |           |        |             |             |      |
+| b_ifu.reqQ.ram_addr[0]_$_DFFE_PP__Q_8:QN                                   | NA        | 0      | NA          | DFF_X1/QN   |      |
+| io_master_rdata[22]                                                        |           |        |             |             |      |
+| io_master_rdata[22]                                                        | NA        | 3      | NA          |             |      |
++----------------------------------------------------------------------------+-----------+--------+-------------+-------------+------+

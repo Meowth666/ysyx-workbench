@@ -1,0 +1,100 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.56+197 (git sha1 d4c4b2106, clang++ 18.1.8 -fPIC -O3)
+
+-- Executing script file `-' --
+[TCL: yosys -import] Command name collision: found pre-existing command `cd' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `eval' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `exec' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `read' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `trace' -> skip.
+
+1. Executing Verilog-2005 frontend: /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077_icache-300MHz/ysyx_25030077_icache.netlist.fixed.v
+Parsing Verilog input from `/home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077_icache-300MHz/ysyx_25030077_icache.netlist.fixed.v' to AST representation.
+Generating RTLIL representation for module `\ysyx_25030077_icache'.
+Successfully finished Verilog frontend.
+
+2. Executing Liberty frontend: /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib
+Imported 134 cell types from liberty file.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \ysyx_25030077_icache
+
+3.2. Analyzing design hierarchy..
+Top module:  \ysyx_25030077_icache
+Removed 0 unused modules.
+
+4. Executing CHECK pass (checking for obvious problems).
+Checking module ysyx_25030077_icache...
+Found and reported 0 problems.
+
+5. Printing statistics.
+
+=== ysyx_25030077_icache ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+      325        - wires
+      513        - wire bits
+      325        - public wires
+      513        - public wire bits
+       19        - ports
+      205        - port bits
+      347  623.238 cells
+       21   22.344   AND2_X1
+        2    4.788   AND2_X4
+        9    11.97   AND3_X1
+        1    2.926   AND3_X4
+        1    1.596   AND4_X1
+       22    29.26   AOI211_X1
+        1    2.394   AOI211_X2
+       10    10.64   AOI21_X1
+        1    3.458   AOI21_X4
+       11    14.63   AOI22_X1
+        1    2.394   AOI22_X2
+        4    4.256   BUF_X2
+        9   16.758   BUF_X4
+        1    3.458   BUF_X8
+        1    1.064   CLKBUF_X2
+        2    6.916   CLKGATE_X1
+       68  307.496   DFF_X1
+       50     26.6   INV_X1
+        3    2.394   INV_X2
+        2     2.66   INV_X4
+        1    0.532   LOGIC0_X1
+        1    0.532   LOGIC1_X1
+        2    3.724   MUX2_X1
+       13   10.374   NAND2_X1
+       35    37.24   NAND3_X1
+        2     2.66   NAND4_X1
+       21   16.758   NOR2_X1
+        1    2.394   NOR2_X4
+        2    2.128   NOR3_X1
+        1    1.862   NOR3_X2
+        1    3.724   NOR3_X4
+        1     1.33   NOR4_X1
+        1     1.33   OAI211_X1
+       28   29.792   OAI21_X1
+        4    6.384   OAI221_X1
+        1    2.926   OAI221_X2
+        2     2.66   OAI22_X1
+        2    2.128   OR2_X1
+        1    2.926   OR3_X4
+        3    4.788   XNOR2_X1
+        1     2.66   XNOR2_X2
+        1    1.596   XOR2_X1
+        2    4.788   XOR2_X2
+
+   Chip area for module '\ysyx_25030077_icache': 623.238000
+     of which used for sequential elements: 307.496000 (49.34%)
+
+End of script. Logfile hash: 6e814153cc, CPU: user 0.11s system 0.02s, MEM: 31.87 MB peak
+Yosys 0.56+197 (git sha1 d4c4b2106, clang++ 18.1.8 -fPIC -O3)
+Time spent: 37% 1x stat (0 sec), 29% 2x read_liberty (0 sec), ...

@@ -40,7 +40,7 @@ class ysyx_25030077_icache extends Module {
     val tag_addr = Cat(io.pc(5,2), 0.U(2.W)) + 0x0f001800.U(32.W)
 
     io.ifu_ready    := canAccept   
-
+    
     state_reg := MuxCase(0.U, Seq(
         (state_reg === 0.U) -> Mux((io.ifu_valid && canAccept), 1.U, 0.U),
         (state_reg === 1.U) -> Mux((io.r_valid   && canAccept),  Mux(is_tag, 2.U, 3.U), 1.U),

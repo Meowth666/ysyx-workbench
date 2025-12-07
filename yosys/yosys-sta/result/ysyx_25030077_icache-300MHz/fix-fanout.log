@@ -1,0 +1,238 @@
+[Data config set] lib = /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib
+[Data config set] sdc = /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/default.sdc
+[Data config set] tech lef = /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lef/Nangate45_tech.lef
+Read LEF file : /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lef/Nangate45_tech.lef
+[Data config set] lef = /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lef/Nangate45_stdcell.lef
+Read LEF file : /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lef/Nangate45_stdcell.lef
+[Data config set] verilog = /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077_icache-300MHz/ysyx_25030077_icache.netlist.syn.v
+Read Verilog file success : /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077_icache-300MHz/ysyx_25030077_icache.netlist.syn.v
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I20251207 19:30:13.399045 155880 VerilogParserRustC.cc:41] load verilog file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077_icache-300MHz/ysyx_25030077_icache.netlist.syn.v
+r str /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077_icache-300MHz/ysyx_25030077_icache.netlist.syn.v
+I20251207 19:30:13.409493 155880 Sta.cc:309] load lib start
+I20251207 19:30:13.411042 155931 Sta.cc:287] read liberty /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib start 
+I20251207 19:30:13.411718 155931 LibParserRustC.cc:1285] load liberty file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib
+rust read lib file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib
+I20251207 19:30:13.887516 155931 LibParserRustC.cc:1294] load liberty file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib success.
+I20251207 19:30:13.887549 155931 Sta.cc:297] read liberty /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib end 
+I20251207 19:30:13.887671 155880 Sta.cc:328] load lib end
+I20251207 19:30:13.889207 155945 LibParserRustC.cc:1304] link liberty file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib start.
+I20251207 19:30:13.891158 155945 LibParserRustC.cc:666] unkown attri name: technology in /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib line no 45
+I20251207 19:30:15.305078 155945 LibParserRustC.cc:1310] link liberty file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/../pdk/nangate45/lib/Nangate45_typ.lib success.
+I20251207 19:30:15.305780 155880 TimingIDBAdapter.cc:744] core area width -0um height -0um
+I20251207 19:30:15.305871 155880 TimingIDBAdapter.cc:829] build inst num: 1
+I20251207 19:30:15.307658 155880 TimingIDBAdapter.cc:907] build net num: 1
+I20251207 19:30:15.309638 155880 TimingIDBAdapter.cc:926] build instance num: 347
+I20251207 19:30:15.309646 155880 TimingIDBAdapter.cc:927] build port num: 205
+I20251207 19:30:15.309650 155880 TimingIDBAdapter.cc:928] build net num: 513
+I20251207 19:30:15.309655 155880 Sta.cc:181] read sdc /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/default.sdc start 
+I20251207 19:30:15.310248 155880 CmdCreateClock.cc:124] create clock core_clock for pin/port: clock
+I20251207 19:30:15.310262 155880 Sta.cc:198] read sdc /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/scripts/default.sdc end 
+I20251207 19:30:15.310276 155880 StaBuildGraph.cc:315] build graph start
+I20251207 19:30:15.313406 155880 StaBuildGraph.cc:216] net io_aw_valid has no driver.
+I20251207 19:30:15.313417 155880 StaBuildGraph.cc:216] net io_aw_addr[1] has no driver.
+I20251207 19:30:15.313427 155880 StaBuildGraph.cc:216] net io_aw_addr[6] has no driver.
+I20251207 19:30:15.313432 155880 StaBuildGraph.cc:216] net io_aw_addr[7] has no driver.
+I20251207 19:30:15.313436 155880 StaBuildGraph.cc:216] net io_aw_addr[8] has no driver.
+I20251207 19:30:15.313441 155880 StaBuildGraph.cc:216] net io_aw_addr[9] has no driver.
+I20251207 19:30:15.313450 155880 StaBuildGraph.cc:216] net io_aw_addr[13] has no driver.
+I20251207 19:30:15.313455 155880 StaBuildGraph.cc:216] net io_aw_addr[14] has no driver.
+I20251207 19:30:15.313459 155880 StaBuildGraph.cc:216] net io_aw_addr[15] has no driver.
+I20251207 19:30:15.313463 155880 StaBuildGraph.cc:216] net io_aw_addr[16] has no driver.
+I20251207 19:30:15.313467 155880 StaBuildGraph.cc:216] net io_aw_addr[17] has no driver.
+I20251207 19:30:15.313472 155880 StaBuildGraph.cc:216] net io_aw_addr[18] has no driver.
+I20251207 19:30:15.313475 155880 StaBuildGraph.cc:216] net io_aw_addr[19] has no driver.
+I20251207 19:30:15.313480 155880 StaBuildGraph.cc:216] net io_aw_addr[20] has no driver.
+I20251207 19:30:15.313484 155880 StaBuildGraph.cc:216] net io_aw_addr[21] has no driver.
+I20251207 19:30:15.313488 155880 StaBuildGraph.cc:216] net io_aw_addr[22] has no driver.
+I20251207 19:30:15.313493 155880 StaBuildGraph.cc:216] net io_aw_addr[23] has no driver.
+I20251207 19:30:15.313496 155880 StaBuildGraph.cc:216] net io_aw_addr[24] has no driver.
+I20251207 19:30:15.313500 155880 StaBuildGraph.cc:216] net io_aw_addr[25] has no driver.
+I20251207 19:30:15.313504 155880 StaBuildGraph.cc:216] net io_aw_addr[26] has no driver.
+I20251207 19:30:15.313509 155880 StaBuildGraph.cc:216] net io_aw_addr[27] has no driver.
+I20251207 19:30:15.313513 155880 StaBuildGraph.cc:216] net io_aw_addr[28] has no driver.
+I20251207 19:30:15.313532 155880 StaBuildGraph.cc:216] net io_aw_addr[29] has no driver.
+I20251207 19:30:15.313537 155880 StaBuildGraph.cc:216] net io_aw_addr[30] has no driver.
+I20251207 19:30:15.313542 155880 StaBuildGraph.cc:216] net io_aw_addr[31] has no driver.
+I20251207 19:30:15.313547 155880 StaBuildGraph.cc:216] net io_w_valid has no driver.
+I20251207 19:30:15.314234 155880 StaBuildGraph.cc:332] build graph end
+I20251207 19:30:15.314678 155880 Sta.cc:2834] update timing start
+I20251207 19:30:15.314751 155880 StaApplySdc.cc:698] apply sdc start
+I20251207 19:30:15.314764 155880 StaApplySdc.cc:729] apply sdc end
+I20251207 19:30:15.314774 155880 StaClockPropagation.cc:324] ideal clock propagation start
+I20251207 19:30:15.314781 155880 StaClockPropagation.cc:354] clock propagation clock num: 1
+I20251207 19:30:15.314798 155880 StaClockPropagation.cc:203] clock propagate end to vertex rdata_reg_$_SDFFE_PP0P__Q:CK
+I20251207 19:30:15.314965 155880 StaClockPropagation.cc:422] ideal clock propagation end
+I20251207 19:30:15.314971 155880 StaCheck.cc:129] found loop fwd start
+I20251207 19:30:15.315109 155880 StaCheck.cc:148] found loop fwd end
+I20251207 19:30:15.315114 155880 StaCheck.cc:150] found loop bwd start
+I20251207 19:30:15.315237 155880 StaCheck.cc:172] found loop bwd end
+I20251207 19:30:15.315263 155880 StaClockSlewDelayPropagation.cc:112] clock slew delay propagation start
+I20251207 19:30:15.315271 155880 StaClockSlewDelayPropagation.cc:130] propagating current clock queue vertexes number is 1
+I20251207 19:30:15.315285 155880 StaClockSlewDelayPropagation.cc:130] propagating current clock queue vertexes number is 6
+I20251207 19:30:15.315315 155880 StaClockSlewDelayPropagation.cc:130] propagating current clock queue vertexes number is 2
+I20251207 19:30:15.315361 155880 StaClockSlewDelayPropagation.cc:130] propagating current clock queue vertexes number is 64
+I20251207 19:30:15.315624 155880 StaClockSlewDelayPropagation.cc:163] clock slew delay propagation end
+I20251207 19:30:15.315644 155880 StaClockSlewDelayPropagation.cc:166] clock slew delay propagation memory usage 0MB
+I20251207 19:30:15.315652 155880 StaClockSlewDelayPropagation.cc:169] clock slew delay propagation time elapsed 0.00039s
+I20251207 19:30:15.315781 155880 StaClockPropagation.cc:326] propagated(kNormal) clock propagation start
+I20251207 19:30:15.315788 155880 StaClockPropagation.cc:354] clock propagation clock num: 1
+I20251207 19:30:15.315793 155880 StaClockPropagation.cc:424] propagated(kNormal) clock propagation end
+I20251207 19:30:15.315796 155880 StaApplySdc.cc:698] apply sdc start
+I20251207 19:30:15.315800 155880 StaApplySdc.cc:729] apply sdc end
+I20251207 19:30:15.315805 155880 StaClockPropagation.cc:328] propagated(kGenerated) clock propagation start
+I20251207 19:30:15.315809 155880 StaClockPropagation.cc:354] clock propagation clock num: 1
+I20251207 19:30:15.315814 155880 StaClockPropagation.cc:426] propagated(kGenerated) clock propagation end
+I20251207 19:30:15.315819 155880 StaApplySdc.cc:698] apply sdc start
+I20251207 19:30:15.315822 155880 StaApplySdc.cc:729] apply sdc end
+I20251207 19:30:15.315827 155880 StaBuildPropTag.cc:325] build propagation tag start
+I20251207 19:30:15.315833 155880 StaDataPropagation.cc:676] data fwd propagation start
+I20251207 19:30:15.315851 155880 StaDataPropagationBFS.cc:166] data fwd propagation bfs start
+I20251207 19:30:15.315919 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 140
+I20251207 19:30:15.318212 156055 StaDataPropagationBFS.cc:82] Thread 140369559942720 date fwd propagate found start vertex.reset
+I20251207 19:30:15.318228 156009 StaDataPropagationBFS.cc:82] Thread 140369618691648 date fwd propagate found start vertex.io_pc[0]
+I20251207 19:30:15.318236 156010 StaDataPropagationBFS.cc:82] Thread 140369971185216 date fwd propagate found start vertex.io_pc[2]
+I20251207 19:30:15.318243 156014 StaDataPropagationBFS.cc:82] Thread 140369937614400 date fwd propagate found start vertex.io_pc[3]
+I20251207 19:30:15.318248 156020 StaDataPropagationBFS.cc:82] Thread 140369887258176 date fwd propagate found start vertex.io_pc[7]
+I20251207 19:30:15.318253 156011 StaDataPropagationBFS.cc:82] Thread 140369962792512 date fwd propagate found start vertex.io_pc[6]
+I20251207 19:30:15.318230 156013 StaDataPropagationBFS.cc:82] Thread 140369946007104 date fwd propagate found start vertex.io_pc[1]
+I20251207 19:30:15.318245 156015 StaDataPropagationBFS.cc:82] Thread 140369929221696 date fwd propagate found start vertex.io_pc[4]
+I20251207 19:30:15.318212 156006 StaDataPropagationBFS.cc:82] Thread 140369593513536 date fwd propagate found start vertex.io_ifu_valid
+[0;31mE20251207 19:30:15.318652 156014 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251207 19:30:15.318687 156039 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[mI20251207 19:30:15.318250 156007 StaDataPropagationBFS.cc:82] Thread 140369601906240 date fwd propagate found start vertex.io_pc[5]
+[0;31mE20251207 19:30:15.318670 156041 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251207 19:30:15.318629 156033 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251207 19:30:15.318693 156044 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251207 19:30:15.318626 156021 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251207 19:30:15.318674 156010 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251207 19:30:15.318638 156037 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251207 19:30:15.318611 156046 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[m[0;31mE20251207 19:30:15.318612 156035 Lib.cc:181] Warning: val outside table ranges:  val = 0; min_val = 0.00117378; max_val = 0.198535
+[mI20251207 19:30:15.320900 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 225
+I20251207 19:30:15.323050 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 177
+I20251207 19:30:15.325034 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 129
+I20251207 19:30:15.326850 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 59
+I20251207 19:30:15.330282 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 63
+I20251207 19:30:15.333884 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 73
+I20251207 19:30:15.338647 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 32
+I20251207 19:30:15.341591 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 60
+I20251207 19:30:15.343989 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 47
+I20251207 19:30:15.346176 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 81
+I20251207 19:30:15.348524 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 42
+I20251207 19:30:15.351329 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 49
+I20251207 19:30:15.354466 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 28
+I20251207 19:30:15.356403 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 29
+I20251207 19:30:15.358112 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 39
+I20251207 19:30:15.359758 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 29
+I20251207 19:30:15.361271 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 21
+I20251207 19:30:15.362929 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251207 19:30:15.364421 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 3
+I20251207 19:30:15.366076 155880 StaDataPropagationBFS.cc:229] data fwd propagation bfs end
+I20251207 19:30:15.366155 155880 StaDataPropagationBFS.cc:232] data fwd propagation bfs memory usage 1575.66MB
+I20251207 19:30:15.366183 155880 StaDataPropagationBFS.cc:234] data fwd propagation bfs time elapsed 0.050332s
+I20251207 19:30:15.366195 155880 StaDataPropagation.cc:695] data fwd propagation end
+I20251207 19:30:15.366209 155880 StaDataPropagation.cc:676] data fwd propagation start
+I20251207 19:30:15.366232 155880 StaDataPropagationBFS.cc:166] data fwd propagation bfs start
+I20251207 19:30:15.366428 155880 StaDataPropagationBFS.cc:190] propagating current data queue vertexes number is 2
+I20251207 19:30:15.369236 155880 StaDataPropagationBFS.cc:229] data fwd propagation bfs end
+I20251207 19:30:15.369437 155880 StaDataPropagationBFS.cc:232] data fwd propagation bfs memory usage 0MB
+I20251207 19:30:15.369479 155880 StaDataPropagationBFS.cc:234] data fwd propagation bfs time elapsed 0.003247s
+I20251207 19:30:15.369495 155880 StaDataPropagation.cc:695] data fwd propagation end
+I20251207 19:30:15.369520 155880 StaAnalyze.cc:557] analyze timing path start
+I20251207 19:30:15.369534 155880 StaAnalyze.cc:565] analyze timing path end vertex 1 total 203 start
+[0;31mE20251207 19:30:15.369547 155880 StaAnalyze.cc:328] The output port io_icache_valid is not constrained
+[m[0;31mE20251207 19:30:15.369621 155880 StaAnalyze.cc:328] The output port io_icache_valid is not constrained
+[mI20251207 19:30:15.369637 155880 StaAnalyze.cc:599] analyze timing path end vertex 1 total 203 end
+[0;31mE20251207 19:30:15.369645 155880 StaAnalyze.cc:328] The output port io_icache_data[0] is not constrained
+[m[0;31mE20251207 19:30:15.369659 155880 StaAnalyze.cc:328] The output port io_icache_data[0] is not constrained
+[m[0;31mE20251207 19:30:15.369673 155880 StaAnalyze.cc:328] The output port io_icache_data[1] is not constrained
+[m[0;31mE20251207 19:30:15.369688 155880 StaAnalyze.cc:328] The output port io_icache_data[1] is not constrained
+[m[0;31mE20251207 19:30:15.369702 155880 StaAnalyze.cc:328] The output port io_icache_data[2] is not constrained
+[m[0;31mE20251207 19:30:15.369716 155880 StaAnalyze.cc:328] The output port io_icache_data[2] is not constrained
+[m[0;31mE20251207 19:30:15.369730 155880 StaAnalyze.cc:328] The output port io_icache_data[3] is not constrained
+[m[0;31mE20251207 19:30:15.369745 155880 StaAnalyze.cc:328] The output port io_icache_data[3] is not constrained
+[mI20251207 19:30:15.369760 155880 StaAnalyze.cc:565] analyze timing path end vertex 11 total 203 start
+I20251207 19:30:15.369767 155880 StaAnalyze.cc:599] analyze timing path end vertex 11 total 203 end
+I20251207 19:30:15.369778 155880 StaAnalyze.cc:565] analyze timing path end vertex 21 total 203 start
+I20251207 19:30:15.369789 155880 StaAnalyze.cc:599] analyze timing path end vertex 21 total 203 end
+I20251207 19:30:15.369799 155880 StaAnalyze.cc:565] analyze timing path end vertex 31 total 203 start
+I20251207 19:30:15.369807 155880 StaAnalyze.cc:599] analyze timing path end vertex 31 total 203 end
+I20251207 19:30:15.369819 155880 StaAnalyze.cc:565] analyze timing path end vertex 41 total 203 start
+I20251207 19:30:15.369827 155880 StaAnalyze.cc:599] analyze timing path end vertex 41 total 203 end
+I20251207 19:30:15.369839 155880 StaAnalyze.cc:565] analyze timing path end vertex 51 total 203 start
+I20251207 19:30:15.369848 155880 StaAnalyze.cc:599] analyze timing path end vertex 51 total 203 end
+I20251207 19:30:15.369858 155880 StaAnalyze.cc:565] analyze timing path end vertex 61 total 203 start
+I20251207 19:30:15.369865 155880 StaAnalyze.cc:599] analyze timing path end vertex 61 total 203 end
+I20251207 19:30:15.369875 155880 StaAnalyze.cc:565] analyze timing path end vertex 71 total 203 start
+I20251207 19:30:15.369884 155880 StaAnalyze.cc:599] analyze timing path end vertex 71 total 203 end
+I20251207 19:30:15.369895 155880 StaAnalyze.cc:565] analyze timing path end vertex 81 total 203 start
+I20251207 19:30:15.369932 155880 StaAnalyze.cc:599] analyze timing path end vertex 81 total 203 end
+I20251207 19:30:15.369969 155880 StaAnalyze.cc:565] analyze timing path end vertex 91 total 203 start
+I20251207 19:30:15.369983 155880 StaAnalyze.cc:599] analyze timing path end vertex 91 total 203 end
+I20251207 19:30:15.370002 155880 StaAnalyze.cc:565] analyze timing path end vertex 101 total 203 start
+I20251207 19:30:15.370008 155880 StaAnalyze.cc:599] analyze timing path end vertex 101 total 203 end
+I20251207 19:30:15.370016 155880 StaAnalyze.cc:565] analyze timing path end vertex 111 total 203 start
+I20251207 19:30:15.370023 155880 StaAnalyze.cc:599] analyze timing path end vertex 111 total 203 end
+I20251207 19:30:15.370034 155880 StaAnalyze.cc:565] analyze timing path end vertex 121 total 203 start
+I20251207 19:30:15.370043 155880 StaAnalyze.cc:599] analyze timing path end vertex 121 total 203 end
+I20251207 19:30:15.370054 155880 StaAnalyze.cc:565] analyze timing path end vertex 131 total 203 start
+I20251207 19:30:15.370061 155880 StaAnalyze.cc:599] analyze timing path end vertex 131 total 203 end
+I20251207 19:30:15.370165 155880 StaAnalyze.cc:303] add path data num 4 to ar_addr_reg_$_SDFFE_PP0P__Q:D
+I20251207 19:30:15.370297 155880 StaAnalyze.cc:565] analyze timing path end vertex 141 total 203 start
+I20251207 19:30:15.370342 155880 StaAnalyze.cc:599] analyze timing path end vertex 141 total 203 end
+I20251207 19:30:15.370584 155880 StaAnalyze.cc:565] analyze timing path end vertex 151 total 203 start
+I20251207 19:30:15.370610 155880 StaAnalyze.cc:599] analyze timing path end vertex 151 total 203 end
+I20251207 19:30:15.370779 155880 StaAnalyze.cc:565] analyze timing path end vertex 161 total 203 start
+I20251207 19:30:15.370802 155880 StaAnalyze.cc:599] analyze timing path end vertex 161 total 203 end
+I20251207 19:30:15.370911 155880 StaAnalyze.cc:565] analyze timing path end vertex 171 total 203 start
+I20251207 19:30:15.370918 155880 StaAnalyze.cc:599] analyze timing path end vertex 171 total 203 end
+I20251207 19:30:15.370926 155880 StaAnalyze.cc:565] analyze timing path end vertex 181 total 203 start
+I20251207 19:30:15.370931 155880 StaAnalyze.cc:599] analyze timing path end vertex 181 total 203 end
+I20251207 19:30:15.370939 155880 StaAnalyze.cc:303] add path data num 0 to rdata_reg_$_SDFFE_PP0P__Q_24:D
+I20251207 19:30:15.370945 155880 StaAnalyze.cc:565] analyze timing path end vertex 191 total 203 start
+I20251207 19:30:15.370950 155880 StaAnalyze.cc:599] analyze timing path end vertex 191 total 203 end
+I20251207 19:30:15.370959 155880 StaAnalyze.cc:565] analyze timing path end vertex 201 total 203 start
+I20251207 19:30:15.370970 155880 StaAnalyze.cc:599] analyze timing path end vertex 201 total 203 end
+I20251207 19:30:15.370983 155880 StaAnalyze.cc:603] analyze timing path end
+I20251207 19:30:15.370990 155880 StaApplySdc.cc:698] apply sdc start
+I20251207 19:30:15.370997 155880 StaApplySdc.cc:729] apply sdc end
+I20251207 19:30:15.371003 155880 StaDataPropagation.cc:698] data bwd propagation start
+I20251207 19:30:15.372375 155880 StaDataPropagation.cc:249] propagate start vertex ar_addr_reg_$_SDFFE_PP0P__Q:CK
+I20251207 19:30:15.372388 155880 StaDataPropagation.cc:172] Thread 140370000859264 data bwd propagate found end vertex.io_ar_addr[31]
+I20251207 19:30:15.372399 155880 StaDataPropagation.cc:172] Thread 140370000859264 data bwd propagate found end vertex.io_ar_addr[30]
+I20251207 19:30:15.372408 155880 StaDataPropagation.cc:172] Thread 140370000859264 data bwd propagate found end vertex.io_ar_addr[21]
+I20251207 19:30:15.372417 155880 StaDataPropagation.cc:172] Thread 140370000859264 data bwd propagate found end vertex.io_ar_addr[20]
+I20251207 19:30:15.372426 155880 StaDataPropagation.cc:172] Thread 140370000859264 data bwd propagate found end vertex.io_ar_addr[19]
+I20251207 19:30:15.372433 155880 StaDataPropagation.cc:172] Thread 140370000859264 data bwd propagate found end vertex.io_ar_addr[18]
+I20251207 19:30:15.372442 155880 StaDataPropagation.cc:172] Thread 140370000859264 data bwd propagate found end vertex.io_ar_addr[17]
+I20251207 19:30:15.372463 155880 StaDataPropagation.cc:172] Thread 140370000859264 data bwd propagate found end vertex.io_ar_addr[16]
+I20251207 19:30:15.372471 155880 StaDataPropagation.cc:172] Thread 140370000859264 data bwd propagate found end vertex.io_ar_addr[15]
+I20251207 19:30:15.372480 155880 StaDataPropagation.cc:172] Thread 140370000859264 data bwd propagate found end vertex.io_ar_addr[14]
+I20251207 19:30:15.373615 155880 StaDataPropagation.cc:703] data bwd propagation end
+I20251207 19:30:15.373632 155880 Sta.cc:2895] update timing end
+I20251207 19:30:15.373668 155880 Sta.cc:2898] update timing memory usage 1575.8MB
+I20251207 19:30:15.373679 155880 Sta.cc:2900] update timing time elapsed 0.059001s
+[1;31m
+  _____       _ _     _____        _         
+ |_   _|     (_) |   |  __ \      | |        
+   | |  _ __  _| |_  | |  | | __ _| |_ __ _  
+   | | | '_ \| | __| | |  | |/ _` | __/ _` | 
+  _| |_| | | | | |_  | |__| | (_| | || (_| | 
+ |_____|_| |_|_|\__| |_____/ \__,_|\__\__,_| 
+                                             
+[0m
+[1;35m
+  ______ _        ______                      _    
+ |  ____(_)      |  ____|                    | |   
+ | |__   ___  __ | |__ __ _ _ __   ___  _   _| |_  
+ |  __| | \ \/ / |  __/ _` | '_ \ / _ \| | | | __| 
+ | |    | |>  <  | | | (_| | | | | (_) | |_| | |_  
+ |_|    |_/_/\_\ |_|  \__,_|_| |_|\___/ \__,_|\__| 
+                                                   
+[0m
+I20251207 19:30:15.373867 155880 FixFanout.cpp:55] [Result: ] Find 0 Net with fanout violation.
+I20251207 19:30:15.373872 155880 FixFanout.cpp:56] [Result: ] Insert 0 Buffers.
+iNO fixfanout run successfully.
+I20251207 19:30:15.396313 155880 verilog_write.cpp:59] start write verilog file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077_icache-300MHz/ysyx_25030077_icache.netlist.fixed.v
+I20251207 19:30:15.407980 155880 verilog_write.cpp:77] finish write verilog file /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/result/ysyx_25030077_icache-300MHz/ysyx_25030077_icache.netlist.fixed.v

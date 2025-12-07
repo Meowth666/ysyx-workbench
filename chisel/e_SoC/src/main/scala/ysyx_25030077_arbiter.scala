@@ -213,7 +213,8 @@ class ysyx_25030077_arbiter extends Module {
                               (state_reg === 0.U) -> 2.U, 
                               (state_reg === 1.U && io.r_mask =/= 0.U) -> rsize
                      ))   
-    val is_sram = (((io.axi_ar_addr >= "h0f000000".U) && (io.axi_ar_addr < "h0f001fff".U)) || ((io.axi_ar_addr >= "h80000000".U) && (io.axi_ar_addr < "h9fffffff".U)) || ((io.axi_ar_addr >= "ha0000000".U) && (io.axi_ar_addr < "hbfffffff".U)) || ((io.axi_ar_addr >= "h10002000".U) && (io.axi_ar_addr < "h1000200f".U)) || ((io.axi_ar_addr >= "h10011000".U) && (io.axi_ar_addr < "h10011007".U)) || ((io.axi_ar_addr >= "hc0000000".U)))
+    // val is_sram = (((io.axi_ar_addr >= "h0f000000".U) && (io.axi_ar_addr < "h0f001fff".U)) || ((io.axi_ar_addr >= "h80000000".U) && (io.axi_ar_addr < "h9fffffff".U)) || ((io.axi_ar_addr >= "ha0000000".U) && (io.axi_ar_addr < "hbfffffff".U)) || ((io.axi_ar_addr >= "h10002000".U) && (io.axi_ar_addr < "h1000200f".U)) || ((io.axi_ar_addr >= "h10011000".U) && (io.axi_ar_addr < "h10011007".U)) || ((io.axi_ar_addr >= "hc0000000".U)))
+    val is_sram = ~(io.axi_ar_addr(31,28) === "h3".U(4.W))   
     val rdata_sram = MuxCase(0.U, Seq(
                               (io.r_mask === 1.U) -> io.axi_r_data,      
                               (io.r_mask === 2.U) -> MuxCase(0.U, Seq(    
@@ -246,7 +247,8 @@ class ysyx_25030077_arbiter extends Module {
                               (io.r_mask === 5.U) -> Cat(Fill(24, io.axi_r_data(7)), io.axi_r_data(7, 0))
                             )
                      )    
-    val rdata = Mux(is_sram, rdata_sram, rdata_mrom)   
+    val rdata = Mux(is_sram, rdata_sram, rdata_mrom)  
+    // val rdata = rdata_sram
     rdata_reg := MuxCase(0.U, Seq(
               (io.r_valid_lsu && (io.w_mask === 0.U))  -> Mux((io.axi_r_valid && canAccept), rdata, rdata_reg),
     ))

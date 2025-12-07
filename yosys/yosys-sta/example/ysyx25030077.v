@@ -225,10 +225,16 @@ module ysyx_25030077_arbiter(
   wire [1:0] rsize = _rsize_T ? 2'h2 : {{1'd0}, _rsize_T_8}; // @[Mux.scala 101:16]
   wire [1:0] _io_axi_ar_size_T_4 = _io_axi_ar_valid_T_3 ? rsize : 2'h0; // @[Mux.scala 101:16]
   wire [1:0] _io_axi_ar_size_T_5 = _io_axi_ar_addr_T ? 2'h2 : _io_axi_ar_size_T_4; // @[Mux.scala 101:16]
-  wire  is_sram = io_axi_ar_addr >= 32'hf000000 & io_axi_ar_addr < 32'hf001fff | io_axi_ar_addr >= 32'h80000000 &
-    io_axi_ar_addr < 32'h9fffffff | io_axi_ar_addr >= 32'ha0000000 & io_axi_ar_addr < 32'hbfffffff | io_axi_ar_addr >= 32'h10002000
-     & io_axi_ar_addr < 32'h1000200f | io_axi_ar_addr >= 32'h10011000 & io_axi_ar_addr < 32'h10011007 | io_axi_ar_addr
-     >= 32'hc0000000; // @[ysyx_25030077_arbiter.scala 216:392]
+  wire [3:0]  addr_high4  = io_axi_ar_addr[31:28];  // 高8位：快速筛选大区间
+  wire is_sram = 
+    // 区间1: 0xf000000 ~ 0xf001fff → 高8位=0x0f + 中间12位=0x000 + 低12位<0x1fff
+    (addr_high4 == 4'h0) ||
+    // 区间2: 0x80000000 ~ 0x9fffffff → 高8位≥0x80且≤0x9f
+    (addr_high4 == 4'h8) ||
+    // 区间3: 0xa0000000 ~ 0xbfffffff → 高8位≥0xa0且≤0xbf
+    (addr_high4 == 4'ha) ||
+    // 区间4: 0x10002000 ~ 0x1000200f → 高8位=0x10 + 中间12位=0x002 + 低12位∈[0x2000,0x200f)
+    (addr_high4 == 4'h1);
   wire [31:0] _rdata_sram_T_5 = {24'h0,io_axi_r_data[7:0]}; // @[Cat.scala 31:58]
   wire [31:0] _rdata_sram_T_9 = {24'h0,io_axi_r_data[15:8]}; // @[Cat.scala 31:58]
   wire [31:0] _rdata_sram_T_13 = {24'h0,io_axi_r_data[23:16]}; // @[Cat.scala 31:58]
@@ -677,138 +683,6 @@ module ysyx_25030077_imm(
   wire [31:0] _io_imm_T_3 = is_type3 ? 32'h4 : _io_imm_T_2; // @[Mux.scala 101:16]
   wire [31:0] _io_imm_T_4 = is_type2 ? Imm_type2 : _io_imm_T_3; // @[Mux.scala 101:16]
   assign io_imm = is_type1 ? Imm_type1 : _io_imm_T_4; // @[Mux.scala 101:16]
-endmodule
-module ysyx_25030077_MaxPeriodFibonacciLFSR(
-  input   clock,
-  input   reset,
-  output  io_out_0,
-  output  io_out_1,
-  output  io_out_2,
-  output  io_out_3,
-  output  io_out_4,
-  output  io_out_5,
-  output  io_out_6,
-  output  io_out_7,
-  output  io_out_8,
-  output  io_out_9,
-  output  io_out_10,
-  output  io_out_11,
-  output  io_out_12,
-  output  io_out_13,
-  output  io_out_14,
-  output  io_out_15
-);
-  reg  state_0; // @[PRNG.scala 55:49]
-  reg  state_1; // @[PRNG.scala 55:49]
-  reg  state_2; // @[PRNG.scala 55:49]
-  reg  state_3; // @[PRNG.scala 55:49]
-  reg  state_4; // @[PRNG.scala 55:49]
-  reg  state_5; // @[PRNG.scala 55:49]
-  reg  state_6; // @[PRNG.scala 55:49]
-  reg  state_7; // @[PRNG.scala 55:49]
-  reg  state_8; // @[PRNG.scala 55:49]
-  reg  state_9; // @[PRNG.scala 55:49]
-  reg  state_10; // @[PRNG.scala 55:49]
-  reg  state_11; // @[PRNG.scala 55:49]
-  reg  state_12; // @[PRNG.scala 55:49]
-  reg  state_13; // @[PRNG.scala 55:49]
-  reg  state_14; // @[PRNG.scala 55:49]
-  reg  state_15; // @[PRNG.scala 55:49]
-  wire  _T_2 = state_15 ^ state_13 ^ state_12 ^ state_10; // @[LFSR.scala 15:41]
-  assign io_out_0 = state_0; // @[PRNG.scala 78:10]
-  assign io_out_1 = state_1; // @[PRNG.scala 78:10]
-  assign io_out_2 = state_2; // @[PRNG.scala 78:10]
-  assign io_out_3 = state_3; // @[PRNG.scala 78:10]
-  assign io_out_4 = state_4; // @[PRNG.scala 78:10]
-  assign io_out_5 = state_5; // @[PRNG.scala 78:10]
-  assign io_out_6 = state_6; // @[PRNG.scala 78:10]
-  assign io_out_7 = state_7; // @[PRNG.scala 78:10]
-  assign io_out_8 = state_8; // @[PRNG.scala 78:10]
-  assign io_out_9 = state_9; // @[PRNG.scala 78:10]
-  assign io_out_10 = state_10; // @[PRNG.scala 78:10]
-  assign io_out_11 = state_11; // @[PRNG.scala 78:10]
-  assign io_out_12 = state_12; // @[PRNG.scala 78:10]
-  assign io_out_13 = state_13; // @[PRNG.scala 78:10]
-  assign io_out_14 = state_14; // @[PRNG.scala 78:10]
-  assign io_out_15 = state_15; // @[PRNG.scala 78:10]
-  always @(posedge clock) begin
-    state_0 <= reset | _T_2; // @[PRNG.scala 55:{49,49}]
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_1 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_1 <= state_0;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_2 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_2 <= state_1;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_3 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_3 <= state_2;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_4 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_4 <= state_3;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_5 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_5 <= state_4;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_6 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_6 <= state_5;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_7 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_7 <= state_6;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_8 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_8 <= state_7;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_9 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_9 <= state_8;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_10 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_10 <= state_9;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_11 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_11 <= state_10;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_12 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_12 <= state_11;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_13 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_13 <= state_12;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_14 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_14 <= state_13;
-    end
-    if (reset) begin // @[PRNG.scala 55:49]
-      state_15 <= 1'h0; // @[PRNG.scala 55:49]
-    end else begin
-      state_15 <= state_14;
-    end
-  end
 endmodule
 module ysyx_25030077_gpr(
   input         clock,
