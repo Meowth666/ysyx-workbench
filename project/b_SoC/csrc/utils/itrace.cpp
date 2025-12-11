@@ -14,6 +14,6 @@ void print_itrace(FILE *itrace, int pc_data, uint32_t insn32){
 				};
 	char buf[160];
 	disassemble(buf, sizeof(buf), pc_data1 , code, 4);
-	// fprintf(itrace, "0x%x  %s\n",pc_data, buf);
-	fprintf(itrace, "%x\n",pc_data);
+	fprintf(itrace, "0x%x  %s\n",pc_data, buf);
+	// fprintf(itrace, "%x\n",pc_data);
 }

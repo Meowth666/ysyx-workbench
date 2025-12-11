@@ -389,13 +389,6 @@ extern "C" void sdram_read (int bank, int addr, int cnt, int* data) {
 	// 	if(cnt % 2 == 0)
 	// 		lsu_cnts ++;
 	// }
-	if(*data == 1048691 && insn32 == 32871 && (addr_sdram <= text_sdram_end && addr_sdram >= 0xa0000000)){
-		// printf("addr_sdram = %x   inst = %x\n", addr_sdram, *data);
-		success = 1;
-	}
-	else if(*data == 1048691 && (addr_sdram <= text_sdram_end && addr_sdram >= 0xa0000000)){
-		flag = 1;
-	}
 	if(MTRACE && cnt %2 == 0){
 		fprintf(mtrace, "read sdram 0x%08x  data: 0x%08x\n", addr_sdram, *data);
 	}
@@ -570,6 +563,17 @@ int cpu_exec(int n){
 			uint32_t lsu_addr;
 			uint32_t inst = inst_read();
 			if (inst != inst0){
+				// printf("%x\n", inst);
+				// printf("%x\n", inst);
+				if(inst == 1048691 && inst0 == 32871){
+					// printf("addr_sdram = %x   inst = %x\n", addr_sdram, *data);
+					success = 1;
+					break;
+				}
+				else if(inst == 1048691){
+					flag = 1;
+					break;
+				}
 				if(ITRACE){
 					print_itrace(itrace, itrace_pc, inst);
 				}

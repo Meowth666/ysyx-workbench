@@ -8,6 +8,12 @@ module ysyx_25030077_Queue(
   output        io_deq_valid,
   output [31:0] io_deq_bits_addr
 );
+`ifdef RANDOMIZE_MEM_INIT
+  reg [31:0] _RAND_0;
+`endif // RANDOMIZE_MEM_INIT
+`ifdef RANDOMIZE_REG_INIT
+  reg [31:0] _RAND_1;
+`endif // RANDOMIZE_REG_INIT
   reg [31:0] ram_addr [0:0]; // @[Decoupled.scala 259:95]
   wire  ram_addr_io_deq_bits_MPORT_en; // @[Decoupled.scala 259:95]
   wire  ram_addr_io_deq_bits_MPORT_addr; // @[Decoupled.scala 259:95]
@@ -40,6 +46,56 @@ module ysyx_25030077_Queue(
       maybe_full <= do_enq; // @[Decoupled.scala 280:16]
     end
   end
+// Register and memory initialization
+`ifdef RANDOMIZE_GARBAGE_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_INVALID_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_REG_INIT
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+`define RANDOMIZE
+`endif
+`ifndef RANDOM
+`define RANDOM $random
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+  integer initvar;
+`endif
+`ifndef SYNTHESIS
+`ifdef FIRRTL_BEFORE_INITIAL
+`FIRRTL_BEFORE_INITIAL
+`endif
+initial begin
+  `ifdef RANDOMIZE
+    `ifdef INIT_RANDOM
+      `INIT_RANDOM
+    `endif
+    `ifndef VERILATOR
+      `ifdef RANDOMIZE_DELAY
+        #`RANDOMIZE_DELAY begin end
+      `else
+        #0.002 begin end
+      `endif
+    `endif
+`ifdef RANDOMIZE_MEM_INIT
+  _RAND_0 = {1{`RANDOM}};
+  for (initvar = 0; initvar < 1; initvar = initvar+1)
+    ram_addr[initvar] = _RAND_0[31:0];
+`endif // RANDOMIZE_MEM_INIT
+`ifdef RANDOMIZE_REG_INIT
+  _RAND_1 = {1{`RANDOM}};
+  maybe_full = _RAND_1[0:0];
+`endif // RANDOMIZE_REG_INIT
+  `endif // RANDOMIZE
+end // initial
+`ifdef FIRRTL_AFTER_INITIAL
+`FIRRTL_AFTER_INITIAL
+`endif
+`endif // SYNTHESIS
 endmodule
 module ysyx_25030077_IFU(
   input         clock,
@@ -133,6 +189,16 @@ module ysyx_25030077_arbiter(
   output        io_icache_ready,
   input         io_r_valid_lsu
 );
+`ifdef RANDOMIZE_REG_INIT
+  reg [31:0] _RAND_0;
+  reg [31:0] _RAND_1;
+  reg [31:0] _RAND_2;
+  reg [31:0] _RAND_3;
+  reg [31:0] _RAND_4;
+  reg [31:0] _RAND_5;
+  reg [31:0] _RAND_6;
+  reg [63:0] _RAND_7;
+`endif // RANDOMIZE_REG_INIT
   reg [1:0] state_reg; // @[ysyx_25030077_arbiter.scala 83:28]
   reg [31:0] inst_reg; // @[ysyx_25030077_arbiter.scala 84:27]
   reg  validReg_aw1; // @[ysyx_25030077_arbiter.scala 87:31]
@@ -225,16 +291,7 @@ module ysyx_25030077_arbiter(
   wire [1:0] rsize = _rsize_T ? 2'h2 : {{1'd0}, _rsize_T_8}; // @[Mux.scala 101:16]
   wire [1:0] _io_axi_ar_size_T_4 = _io_axi_ar_valid_T_3 ? rsize : 2'h0; // @[Mux.scala 101:16]
   wire [1:0] _io_axi_ar_size_T_5 = _io_axi_ar_addr_T ? 2'h2 : _io_axi_ar_size_T_4; // @[Mux.scala 101:16]
-  wire [3:0]  addr_high4  = io_axi_ar_addr[31:28];  // 高8位：快速筛选大区间
-  wire is_sram = 
-    // 区间1: 0xf000000 ~ 0xf001fff → 高8位=0x0f + 中间12位=0x000 + 低12位<0x1fff
-    (addr_high4 == 4'h0) ||
-    // 区间2: 0x80000000 ~ 0x9fffffff → 高8位≥0x80且≤0x9f
-    (addr_high4 == 4'h8) ||
-    // 区间3: 0xa0000000 ~ 0xbfffffff → 高8位≥0xa0且≤0xbf
-    (addr_high4 == 4'ha) ||
-    // 区间4: 0x10002000 ~ 0x1000200f → 高8位=0x10 + 中间12位=0x002 + 低12位∈[0x2000,0x200f)
-    (addr_high4 == 4'h1);
+  wire  is_sram = ~(io_axi_ar_addr[31:28] == 4'h3); // @[ysyx_25030077_arbiter.scala 217:42]
   wire [31:0] _rdata_sram_T_5 = {24'h0,io_axi_r_data[7:0]}; // @[Cat.scala 31:58]
   wire [31:0] _rdata_sram_T_9 = {24'h0,io_axi_r_data[15:8]}; // @[Cat.scala 31:58]
   wire [31:0] _rdata_sram_T_13 = {24'h0,io_axi_r_data[23:16]}; // @[Cat.scala 31:58]
@@ -275,14 +332,14 @@ module ysyx_25030077_arbiter(
   wire [31:0] _rdata_mrom_T_21 = _rsize_T_2 ? _rdata_sram_T_29 : _rdata_mrom_T_20; // @[Mux.scala 101:16]
   wire [31:0] _rdata_mrom_T_22 = _rsize_T_1 ? _rdata_sram_T_5 : _rdata_mrom_T_21; // @[Mux.scala 101:16]
   wire [31:0] rdata_mrom = _rsize_T ? io_axi_r_data : _rdata_mrom_T_22; // @[Mux.scala 101:16]
-  wire [63:0] _clint_reg_T_1 = clint_reg + 64'h1; // @[ysyx_25030077_arbiter.scala 253:28]
-  wire  _io_gpr_data_T_1 = io_r_valid_lsu & _validReg_gpr_T_8; // @[ysyx_25030077_arbiter.scala 255:47]
-  wire  _io_gpr_data_T_3 = io_r_valid_lsu & _validReg_gpr_T_8 & _validReg_gpr_T_1; // @[ysyx_25030077_arbiter.scala 255:70]
-  wire  _io_gpr_data_T_6 = _io_gpr_data_T_1 & _is_clint_T; // @[ysyx_25030077_arbiter.scala 256:70]
-  wire  _io_gpr_data_T_10 = _io_gpr_data_T_1 & _is_clint_T_1; // @[ysyx_25030077_arbiter.scala 257:70]
+  wire [63:0] _clint_reg_T_1 = clint_reg + 64'h1; // @[ysyx_25030077_arbiter.scala 255:28]
+  wire  _io_gpr_data_T_1 = io_r_valid_lsu & _validReg_gpr_T_8; // @[ysyx_25030077_arbiter.scala 257:47]
+  wire  _io_gpr_data_T_3 = io_r_valid_lsu & _validReg_gpr_T_8 & _validReg_gpr_T_1; // @[ysyx_25030077_arbiter.scala 257:70]
+  wire  _io_gpr_data_T_6 = _io_gpr_data_T_1 & _is_clint_T; // @[ysyx_25030077_arbiter.scala 258:70]
+  wire  _io_gpr_data_T_10 = _io_gpr_data_T_1 & _is_clint_T_1; // @[ysyx_25030077_arbiter.scala 259:70]
   wire [31:0] _io_gpr_data_T_12 = _io_gpr_data_T_10 ? clint_reg[63:32] : 32'h0; // @[Mux.scala 101:16]
   wire [31:0] _io_gpr_data_T_13 = _io_gpr_data_T_6 ? clint_reg[31:0] : _io_gpr_data_T_12; // @[Mux.scala 101:16]
-  wire  _inst_reg_T_2 = io_icache_valid & _io_axi_ar_addr_T; // @[ysyx_25030077_arbiter.scala 260:63]
+  wire  _inst_reg_T_2 = io_icache_valid & _io_axi_ar_addr_T; // @[ysyx_25030077_arbiter.scala 262:63]
   assign io_axi_ar_valid = _io_axi_ar_addr_T ? io_icache_ar_valid : _io_axi_ar_valid_T_5 & validReg_ar1; // @[Mux.scala 101:16]
   assign io_axi_ar_addr = _io_axi_ar_addr_T ? io_icache_ar_addr : _io_axi_ar_addr_T_4; // @[Mux.scala 101:16]
   assign io_axi_ar_id = 4'h0; // @[ysyx_25030077_arbiter.scala 77:18]
@@ -305,7 +362,7 @@ module ysyx_25030077_arbiter(
   assign io_gpr_r_valid = _validReg_gpr_T_8 & validReg_gpr; // @[Mux.scala 101:16]
   assign io_gpr_b_valid = _validReg_gpr_T_8 & validReg_gpr; // @[Mux.scala 101:16]
   assign io_gpr_data = _io_gpr_data_T_3 ? rdata_reg : _io_gpr_data_T_13; // @[Mux.scala 101:16]
-  assign io_inst = inst_reg; // @[ysyx_25030077_arbiter.scala 262:21]
+  assign io_inst = inst_reg; // @[ysyx_25030077_arbiter.scala 264:21]
   assign io_icache_ready = 1'h1; // @[ysyx_25030077_arbiter.scala 194:23]
   always @(posedge clock) begin
     if (reset) begin // @[ysyx_25030077_arbiter.scala 83:28]
@@ -355,8 +412,8 @@ module ysyx_25030077_arbiter(
     if (reset) begin // @[ysyx_25030077_arbiter.scala 92:28]
       rdata_reg <= 32'h0; // @[ysyx_25030077_arbiter.scala 92:28]
     end else if (_state_reg_T_5) begin // @[Mux.scala 101:16]
-      if (io_axi_r_valid) begin // @[ysyx_25030077_arbiter.scala 251:62]
-        if (is_sram) begin // @[ysyx_25030077_arbiter.scala 249:20]
+      if (io_axi_r_valid) begin // @[ysyx_25030077_arbiter.scala 253:62]
+        if (is_sram) begin // @[ysyx_25030077_arbiter.scala 250:20]
           rdata_reg <= rdata_sram;
         end else begin
           rdata_reg <= rdata_mrom;
@@ -368,9 +425,68 @@ module ysyx_25030077_arbiter(
     if (reset) begin // @[ysyx_25030077_arbiter.scala 93:28]
       clint_reg <= 64'h0; // @[ysyx_25030077_arbiter.scala 93:28]
     end else begin
-      clint_reg <= _clint_reg_T_1; // @[ysyx_25030077_arbiter.scala 253:15]
+      clint_reg <= _clint_reg_T_1; // @[ysyx_25030077_arbiter.scala 255:15]
     end
   end
+// Register and memory initialization
+`ifdef RANDOMIZE_GARBAGE_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_INVALID_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_REG_INIT
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+`define RANDOMIZE
+`endif
+`ifndef RANDOM
+`define RANDOM $random
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+  integer initvar;
+`endif
+`ifndef SYNTHESIS
+`ifdef FIRRTL_BEFORE_INITIAL
+`FIRRTL_BEFORE_INITIAL
+`endif
+initial begin
+  `ifdef RANDOMIZE
+    `ifdef INIT_RANDOM
+      `INIT_RANDOM
+    `endif
+    `ifndef VERILATOR
+      `ifdef RANDOMIZE_DELAY
+        #`RANDOMIZE_DELAY begin end
+      `else
+        #0.002 begin end
+      `endif
+    `endif
+`ifdef RANDOMIZE_REG_INIT
+  _RAND_0 = {1{`RANDOM}};
+  state_reg = _RAND_0[1:0];
+  _RAND_1 = {1{`RANDOM}};
+  inst_reg = _RAND_1[31:0];
+  _RAND_2 = {1{`RANDOM}};
+  validReg_aw1 = _RAND_2[0:0];
+  _RAND_3 = {1{`RANDOM}};
+  validReg_ar1 = _RAND_3[0:0];
+  _RAND_4 = {1{`RANDOM}};
+  validReg_gpr = _RAND_4[0:0];
+  _RAND_5 = {1{`RANDOM}};
+  validReg_w1 = _RAND_5[0:0];
+  _RAND_6 = {1{`RANDOM}};
+  rdata_reg = _RAND_6[31:0];
+  _RAND_7 = {2{`RANDOM}};
+  clint_reg = _RAND_7[63:0];
+`endif // RANDOMIZE_REG_INIT
+  `endif // RANDOMIZE
+end // initial
+`ifdef FIRRTL_AFTER_INITIAL
+`FIRRTL_AFTER_INITIAL
+`endif
+`endif // SYNTHESIS
 endmodule
 module ysyx_25030077_IDU(
   input  [31:0] io_instruction,
@@ -1338,6 +1454,15 @@ module ysyx_25030077_data_control(
   output [31:0] io_data_1,
   output [31:0] io_data_2
 );
+  // export "DPI-C" function reg_read_rs1;
+  // function int reg_read_rs1();
+  //   return {io_rs1_data};
+  // endfunction
+
+  // export "DPI-C" function reg_read_rs2;
+  // function int reg_read_rs2();
+  //   return {io_rs2_data};
+  // endfunction
   wire  control1 = io_data_control == 3'h1; // @[ysyx_25030077_data_control.scala 18:34]
   wire  control2 = io_data_control == 3'h2; // @[ysyx_25030077_data_control.scala 19:34]
   wire  control3 = io_data_control == 3'h3; // @[ysyx_25030077_data_control.scala 20:34]
@@ -1352,8 +1477,7 @@ module ysyx_25030077_alu(
   input  [3:0]  io_sw,
   output [31:0] io_out
 );
-  // import "DPI-C" function bit[31:0] csr_read(input bit[31:0] rs1, input bit[31:0] imm, input bit[3:0] sw);
-  wire [31:0] csr_data = io_in_a;
+  wire [31:0] csr_data = 0;
   wire [15:0] oneHot = 16'h1 << io_sw; // @[OneHot.scala 64:12]
   wire [32:0] add33 = io_in_a + io_in_b; // @[ysyx_25030077_alu.scala 18:25]
   wire [32:0] sub33 = io_in_a - io_in_b; // @[ysyx_25030077_alu.scala 19:25]
@@ -1407,12 +1531,7 @@ module ysyx_25030077_pc_next(
   output [31:0] io_pc_next,
   output        io_is_unknown_instruction
 );
-  // export "DPI-C" function dnpc_read_data;
-  // function int dnpc_read_data();
-  //   return {io_pc_next};
-  // endfunction
-  // import "DPI-C" function bit[31:0] ecall_read(input bit[31:0] pc, input bit[3:0] type_p);
-  wire [31:0] ecall_dnpc = io_pc_count;
+  wire [31:0] ecall_dnpc = 0;
   wire [31:0] default_pc_next = io_pc_count + 32'h4; // @[ysyx_25030077_pc_next.scala 15:37]
   wire  is_type1 = io_pc_next_type == 4'h1; // @[ysyx_25030077_pc_next.scala 18:34]
   wire  is_type2 = io_pc_next_type == 4'h2; // @[ysyx_25030077_pc_next.scala 19:34]
@@ -1481,63 +1600,122 @@ module ysyx_25030077_icache(
   input         io_icache_ready,
   output        io_ifu_ready
 );
+`ifdef RANDOMIZE_REG_INIT
+  reg [31:0] _RAND_0;
+  reg [31:0] _RAND_1;
+  reg [31:0] _RAND_2;
+  reg [31:0] _RAND_3;
+  reg [31:0] _RAND_4;
+  reg [31:0] _RAND_5;
+  reg [31:0] _RAND_6;
+  reg [31:0] _RAND_7;
+  reg [31:0] _RAND_8;
+`endif // RANDOMIZE_REG_INIT
   reg [2:0] state_reg; // @[ysyx_25030077_icache.scala 33:28]
   reg [31:0] rdata_reg; // @[ysyx_25030077_icache.scala 35:28]
   reg  ar_valid_reg; // @[ysyx_25030077_icache.scala 36:31]
   reg [31:0] ar_addr_reg; // @[ysyx_25030077_icache.scala 37:31]
-  wire [5:0] _index_T_1 = {io_pc[5:2],2'h0}; // @[Cat.scala 31:58]
-  wire [31:0] _GEN_0 = {{26'd0}, _index_T_1}; // @[ysyx_25030077_icache.scala 38:43]
-  wire [31:0] index = _GEN_0 + 32'hf001600; // @[ysyx_25030077_icache.scala 38:43]
-  wire  is_tag = io_r_data[26:1] == io_pc[31:6] & io_r_data[0]; // @[ysyx_25030077_icache.scala 39:53]
-  wire [31:0] tag_addr = _GEN_0 + 32'hf001800; // @[ysyx_25030077_icache.scala 40:46]
-  wire  _state_reg_T = state_reg == 3'h0; // @[ysyx_25030077_icache.scala 45:20]
-  wire  _state_reg_T_3 = state_reg == 3'h1; // @[ysyx_25030077_icache.scala 46:20]
-  wire [1:0] _state_reg_T_5 = is_tag ? 2'h2 : 2'h3; // @[ysyx_25030077_icache.scala 46:69]
-  wire [1:0] _state_reg_T_6 = io_r_valid ? _state_reg_T_5 : 2'h1; // @[ysyx_25030077_icache.scala 46:35]
-  wire  _state_reg_T_7 = state_reg == 3'h2; // @[ysyx_25030077_icache.scala 47:20]
-  wire [2:0] _state_reg_T_9 = io_r_valid ? 3'h6 : 3'h2; // @[ysyx_25030077_icache.scala 47:35]
-  wire  _state_reg_T_10 = state_reg == 3'h6; // @[ysyx_25030077_icache.scala 48:20]
-  wire  _state_reg_T_11 = state_reg == 3'h3; // @[ysyx_25030077_icache.scala 49:20]
-  wire [2:0] _state_reg_T_13 = io_r_valid ? 3'h4 : 3'h3; // @[ysyx_25030077_icache.scala 49:35]
-  wire  _state_reg_T_14 = state_reg == 3'h4; // @[ysyx_25030077_icache.scala 50:20]
-  wire [2:0] _state_reg_T_15 = io_aw_ready ? 3'h5 : 3'h4; // @[ysyx_25030077_icache.scala 50:35]
-  wire  _state_reg_T_16 = state_reg == 3'h5; // @[ysyx_25030077_icache.scala 51:20]
-  wire [2:0] _state_reg_T_17 = io_w_ready ? 3'h0 : 3'h5; // @[ysyx_25030077_icache.scala 51:35]
-  wire [2:0] _state_reg_T_18 = _state_reg_T_16 ? _state_reg_T_17 : 3'h0; // @[Mux.scala 101:16]
-  wire [2:0] _state_reg_T_19 = _state_reg_T_14 ? _state_reg_T_15 : _state_reg_T_18; // @[Mux.scala 101:16]
-  wire [2:0] _state_reg_T_20 = _state_reg_T_11 ? _state_reg_T_13 : _state_reg_T_19; // @[Mux.scala 101:16]
-  wire [2:0] _state_reg_T_21 = _state_reg_T_10 ? 3'h0 : _state_reg_T_20; // @[Mux.scala 101:16]
-  wire  _ar_valid_reg_T_4 = io_ar_ready ? 1'h0 : 1'h1; // @[ysyx_25030077_icache.scala 56:53]
-  wire  _ar_valid_reg_T_10 = ar_valid_reg & io_ar_ready ? 1'h0 : ar_valid_reg; // @[ysyx_25030077_icache.scala 57:35]
-  wire [31:0] _ar_addr_reg_T_5 = is_tag ? tag_addr : io_pc; // @[ysyx_25030077_icache.scala 64:66]
-  wire [31:0] _ar_addr_reg_T_9 = _state_reg_T_11 ? ar_addr_reg : 32'h0; // @[Mux.scala 101:16]
-  wire [31:0] _io_aw_addr_T_2 = _state_reg_T_16 ? tag_addr : 32'h0; // @[Mux.scala 101:16]
-  wire [31:0] _io_w_data_T_2 = {5'h0,io_pc[31:6],1'h1}; // @[Cat.scala 31:58]
-  wire [31:0] _io_w_data_T_4 = _state_reg_T_16 ? rdata_reg : 32'h0; // @[Mux.scala 101:16]
-  assign io_icache_valid = _state_reg_T_10 | _state_reg_T_16 & io_w_ready; // @[ysyx_25030077_icache.scala 71:45]
-  assign io_icache_data = rdata_reg; // @[ysyx_25030077_icache.scala 72:21]
-  assign io_ar_valid = ar_valid_reg; // @[ysyx_25030077_icache.scala 60:17]
-  assign io_ar_addr = ar_addr_reg; // @[ysyx_25030077_icache.scala 68:17]
-  assign io_aw_valid = _state_reg_T_14 | _state_reg_T_16; // @[ysyx_25030077_icache.scala 74:41]
-  assign io_aw_addr = _state_reg_T_14 ? index : _io_aw_addr_T_2; // @[Mux.scala 101:16]
-  assign io_w_valid = _state_reg_T_14 | _state_reg_T_16; // @[ysyx_25030077_icache.scala 79:40]
-  assign io_w_data = _state_reg_T_14 ? _io_w_data_T_2 : _io_w_data_T_4; // @[Mux.scala 101:16]
-  assign io_ifu_ready = 1'h1; // @[ysyx_25030077_icache.scala 42:21]
+  wire [2:0] index = io_pc[4:2]; // @[ysyx_25030077_icache.scala 38:22]
+  reg [2:0] j; // @[ysyx_25030077_icache.scala 39:20]
+  reg [2:0] k; // @[ysyx_25030077_icache.scala 40:20]
+  reg [2:0] temp; // @[ysyx_25030077_icache.scala 41:23]
+  reg  is_full; // @[ysyx_25030077_icache.scala 42:26]
+  wire [6:0] _serach_addr_T = {index,4'h0}; // @[Cat.scala 31:58]
+  wire [31:0] _GEN_0 = {{25'd0}, _serach_addr_T}; // @[ysyx_25030077_icache.scala 43:42]
+  wire [31:0] _serach_addr_T_2 = 32'hf001600 + _GEN_0; // @[ysyx_25030077_icache.scala 43:42]
+  wire [2:0] _serach_addr_T_4 = j + 3'h1; // @[ysyx_25030077_icache.scala 43:74]
+  wire [4:0] _serach_addr_T_5 = {_serach_addr_T_4,2'h0}; // @[Cat.scala 31:58]
+  wire [31:0] _GEN_1 = {{27'd0}, _serach_addr_T_5}; // @[ysyx_25030077_icache.scala 43:65]
+  wire [31:0] serach_addr = _serach_addr_T_2 + _GEN_1; // @[ysyx_25030077_icache.scala 43:65]
+  wire  is_tag = io_r_data[27:1] == io_pc[31:5] & io_r_data[0]; // @[ysyx_25030077_icache.scala 44:53]
+  wire  is_notvalid = ~io_r_data[0]; // @[ysyx_25030077_icache.scala 45:39]
+  wire [31:0] _tag_addr_T_2 = 32'hf001680 + _GEN_0; // @[ysyx_25030077_icache.scala 46:39]
+  wire [3:0] _tag_addr_T_4 = {j[1:0],2'h0}; // @[Cat.scala 31:58]
+  wire [31:0] _GEN_3 = {{28'd0}, _tag_addr_T_4}; // @[ysyx_25030077_icache.scala 46:62]
+  wire [31:0] tag_addr = _tag_addr_T_2 + _GEN_3; // @[ysyx_25030077_icache.scala 46:62]
+  wire [3:0] _inst_addr_T_1 = {k[1:0],2'h0}; // @[Cat.scala 31:58]
+  wire [31:0] _GEN_4 = {{28'd0}, _inst_addr_T_1}; // @[ysyx_25030077_icache.scala 47:27]
+  wire [31:0] inst_addr = io_pc + _GEN_4; // @[ysyx_25030077_icache.scala 47:27]
+  wire  _state_reg_T = state_reg == 3'h0; // @[ysyx_25030077_icache.scala 53:20]
+  wire  _state_reg_T_3 = state_reg == 3'h1; // @[ysyx_25030077_icache.scala 54:20]
+  wire  _state_reg_T_5 = j == 3'h3; // @[ysyx_25030077_icache.scala 54:90]
+  wire  _state_reg_T_6 = j == 3'h3 | is_notvalid; // @[ysyx_25030077_icache.scala 54:98]
+  wire [1:0] _state_reg_T_7 = j == 3'h3 | is_notvalid ? 2'h3 : 2'h1; // @[ysyx_25030077_icache.scala 54:86]
+  wire [1:0] _state_reg_T_8 = is_tag ? 2'h2 : _state_reg_T_7; // @[ysyx_25030077_icache.scala 54:69]
+  wire [1:0] _state_reg_T_9 = io_r_valid ? _state_reg_T_8 : 2'h1; // @[ysyx_25030077_icache.scala 54:35]
+  wire  _state_reg_T_10 = state_reg == 3'h2; // @[ysyx_25030077_icache.scala 55:20]
+  wire [2:0] _state_reg_T_12 = io_r_valid ? 3'h6 : 3'h2; // @[ysyx_25030077_icache.scala 55:35]
+  wire  _state_reg_T_13 = state_reg == 3'h6; // @[ysyx_25030077_icache.scala 56:20]
+  wire  _state_reg_T_14 = state_reg == 3'h3; // @[ysyx_25030077_icache.scala 57:20]
+  wire [2:0] _state_reg_T_16 = io_r_valid ? 3'h4 : 3'h3; // @[ysyx_25030077_icache.scala 57:35]
+  wire  _state_reg_T_17 = state_reg == 3'h4; // @[ysyx_25030077_icache.scala 58:20]
+  wire [2:0] _state_reg_T_18 = io_aw_ready ? 3'h5 : 3'h4; // @[ysyx_25030077_icache.scala 58:35]
+  wire  _state_reg_T_19 = state_reg == 3'h5; // @[ysyx_25030077_icache.scala 59:20]
+  wire  _state_reg_T_20 = k == 3'h4; // @[ysyx_25030077_icache.scala 59:58]
+  wire [1:0] _state_reg_T_21 = k == 3'h4 ? 2'h0 : 2'h3; // @[ysyx_25030077_icache.scala 59:55]
+  wire [2:0] _state_reg_T_22 = io_w_ready ? {{1'd0}, _state_reg_T_21} : 3'h5; // @[ysyx_25030077_icache.scala 59:35]
+  wire [2:0] _state_reg_T_23 = _state_reg_T_19 ? _state_reg_T_22 : 3'h0; // @[Mux.scala 101:16]
+  wire [2:0] _state_reg_T_24 = _state_reg_T_17 ? _state_reg_T_18 : _state_reg_T_23; // @[Mux.scala 101:16]
+  wire [2:0] _state_reg_T_25 = _state_reg_T_14 ? _state_reg_T_16 : _state_reg_T_24; // @[Mux.scala 101:16]
+  wire [2:0] _state_reg_T_26 = _state_reg_T_13 ? 3'h0 : _state_reg_T_25; // @[Mux.scala 101:16]
+  wire [2:0] _k_T_3 = k + 3'h1; // @[ysyx_25030077_icache.scala 69:50]
+  wire [2:0] temp1 = temp + 3'h1; // @[ysyx_25030077_icache.scala 71:22]
+  wire  _temp_T_3 = _state_reg_T_19 & io_w_ready & _state_reg_T_20; // @[ysyx_25030077_icache.scala 72:49]
+  wire [2:0] _temp_T_6 = {1'h0,temp1[1:0]}; // @[Cat.scala 31:58]
+  wire  _ar_valid_reg_T_4 = io_ar_ready ? 1'h0 : 1'h1; // @[ysyx_25030077_icache.scala 75:53]
+  wire  _ar_valid_reg_T_10 = ar_valid_reg & io_ar_ready ? 1'h0 : ar_valid_reg; // @[ysyx_25030077_icache.scala 76:35]
+  wire  _ar_valid_reg_T_17 = k != 3'h4 & io_w_ready | ar_valid_reg; // @[ysyx_25030077_icache.scala 78:35]
+  wire  _ar_valid_reg_T_19 = _state_reg_T_14 ? _ar_valid_reg_T_10 : _state_reg_T_19 & _ar_valid_reg_T_17; // @[Mux.scala 101:16]
+  wire [31:0] _ar_addr_reg_T_10 = _state_reg_T_6 ? io_pc : serach_addr; // @[ysyx_25030077_icache.scala 84:88]
+  wire [31:0] _ar_addr_reg_T_11 = is_tag ? tag_addr : _ar_addr_reg_T_10; // @[ysyx_25030077_icache.scala 84:66]
+  wire [31:0] _ar_addr_reg_T_15 = _state_reg_T_19 ? inst_addr : 32'h0; // @[Mux.scala 101:16]
+  reg [31:0] rdata_w; // @[ysyx_25030077_icache.scala 94:26]
+  wire [2:0] w_index = index + k; // @[ysyx_25030077_icache.scala 100:25]
+  wire [2:0] w_index1 = w_index - 3'h1; // @[ysyx_25030077_icache.scala 101:30]
+  wire [6:0] _io_aw_addr_T_2 = {w_index,4'h0}; // @[Cat.scala 31:58]
+  wire [31:0] _GEN_6 = {{25'd0}, _io_aw_addr_T_2}; // @[ysyx_25030077_icache.scala 103:77]
+  wire [31:0] _io_aw_addr_T_4 = 32'hf001600 + _GEN_6; // @[ysyx_25030077_icache.scala 103:77]
+  wire [4:0] _io_aw_addr_T_5 = {temp,2'h0}; // @[Cat.scala 31:58]
+  wire [31:0] _GEN_7 = {{27'd0}, _io_aw_addr_T_5}; // @[ysyx_25030077_icache.scala 103:107]
+  wire [31:0] _io_aw_addr_T_7 = _io_aw_addr_T_4 + _GEN_7; // @[ysyx_25030077_icache.scala 103:107]
+  wire [2:0] _io_aw_addr_T_13 = j - 3'h1; // @[ysyx_25030077_icache.scala 103:187]
+  wire [4:0] _io_aw_addr_T_14 = {_io_aw_addr_T_13,2'h0}; // @[Cat.scala 31:58]
+  wire [31:0] _GEN_9 = {{27'd0}, _io_aw_addr_T_14}; // @[ysyx_25030077_icache.scala 103:179]
+  wire [31:0] _io_aw_addr_T_16 = _io_aw_addr_T_4 + _GEN_9; // @[ysyx_25030077_icache.scala 103:179]
+  wire [31:0] _io_aw_addr_T_17 = is_full ? _io_aw_addr_T_7 : _io_aw_addr_T_16; // @[ysyx_25030077_icache.scala 103:48]
+  wire [6:0] _io_aw_addr_T_20 = {w_index1,4'h0}; // @[Cat.scala 31:58]
+  wire [31:0] _GEN_10 = {{25'd0}, _io_aw_addr_T_20}; // @[ysyx_25030077_icache.scala 104:77]
+  wire [31:0] _io_aw_addr_T_22 = 32'hf001680 + _GEN_10; // @[ysyx_25030077_icache.scala 104:77]
+  wire [31:0] _io_aw_addr_T_25 = _io_aw_addr_T_22 + _GEN_7; // @[ysyx_25030077_icache.scala 104:108]
+  wire [31:0] _io_aw_addr_T_34 = _io_aw_addr_T_22 + _GEN_9; // @[ysyx_25030077_icache.scala 104:181]
+  wire [31:0] _io_aw_addr_T_35 = is_full ? _io_aw_addr_T_25 : _io_aw_addr_T_34; // @[ysyx_25030077_icache.scala 104:48]
+  wire [31:0] _io_aw_addr_T_36 = _state_reg_T_19 ? _io_aw_addr_T_35 : 32'h0; // @[Mux.scala 101:16]
+  wire [31:0] _io_w_data_T_2 = {4'h0,inst_addr[31:5],1'h1}; // @[Cat.scala 31:58]
+  wire [31:0] _io_w_data_T_4 = _state_reg_T_19 ? rdata_w : 32'h0; // @[Mux.scala 101:16]
+  assign io_icache_valid = _state_reg_T_13 | _temp_T_3; // @[ysyx_25030077_icache.scala 96:45]
+  assign io_icache_data = rdata_reg; // @[ysyx_25030077_icache.scala 97:21]
+  assign io_ar_valid = ar_valid_reg; // @[ysyx_25030077_icache.scala 80:17]
+  assign io_ar_addr = ar_addr_reg; // @[ysyx_25030077_icache.scala 92:17]
+  assign io_aw_valid = _state_reg_T_17 | _state_reg_T_19; // @[ysyx_25030077_icache.scala 99:41]
+  assign io_aw_addr = _state_reg_T_17 ? _io_aw_addr_T_17 : _io_aw_addr_T_36; // @[Mux.scala 101:16]
+  assign io_w_valid = _state_reg_T_17 | _state_reg_T_19; // @[ysyx_25030077_icache.scala 106:40]
+  assign io_w_data = _state_reg_T_17 ? _io_w_data_T_2 : _io_w_data_T_4; // @[Mux.scala 101:16]
+  assign io_ifu_ready = 1'h1; // @[ysyx_25030077_icache.scala 50:21]
   always @(posedge clock) begin
     if (reset) begin // @[ysyx_25030077_icache.scala 33:28]
       state_reg <= 3'h0; // @[ysyx_25030077_icache.scala 33:28]
     end else if (_state_reg_T) begin // @[Mux.scala 101:16]
       state_reg <= {{2'd0}, io_ifu_valid};
     end else if (_state_reg_T_3) begin // @[Mux.scala 101:16]
-      state_reg <= {{1'd0}, _state_reg_T_6};
-    end else if (_state_reg_T_7) begin // @[Mux.scala 101:16]
-      state_reg <= _state_reg_T_9;
+      state_reg <= {{1'd0}, _state_reg_T_9};
+    end else if (_state_reg_T_10) begin // @[Mux.scala 101:16]
+      state_reg <= _state_reg_T_12;
     end else begin
-      state_reg <= _state_reg_T_21;
+      state_reg <= _state_reg_T_26;
     end
     if (reset) begin // @[ysyx_25030077_icache.scala 35:28]
       rdata_reg <= 32'h0; // @[ysyx_25030077_icache.scala 35:28]
-    end else if ((_state_reg_T_11 | _state_reg_T_7) & io_r_valid) begin // @[ysyx_25030077_icache.scala 69:22]
+    end else if ((_state_reg_T_14 & k == 3'h0 | _state_reg_T_10) & io_r_valid) begin // @[ysyx_25030077_icache.scala 93:22]
       rdata_reg <= io_r_data;
     end
     if (reset) begin // @[ysyx_25030077_icache.scala 36:31]
@@ -1545,32 +1723,128 @@ module ysyx_25030077_icache(
     end else if (_state_reg_T) begin // @[Mux.scala 101:16]
       ar_valid_reg <= io_ifu_valid;
     end else if (_state_reg_T_3) begin // @[Mux.scala 101:16]
-      if (ar_valid_reg) begin // @[ysyx_25030077_icache.scala 56:35]
+      if (ar_valid_reg) begin // @[ysyx_25030077_icache.scala 75:35]
         ar_valid_reg <= _ar_valid_reg_T_4;
       end else begin
         ar_valid_reg <= io_r_valid;
       end
-    end else if (_state_reg_T_7) begin // @[Mux.scala 101:16]
+    end else if (_state_reg_T_10) begin // @[Mux.scala 101:16]
       ar_valid_reg <= _ar_valid_reg_T_10;
     end else begin
-      ar_valid_reg <= _state_reg_T_11 & _ar_valid_reg_T_10;
+      ar_valid_reg <= _ar_valid_reg_T_19;
     end
     if (reset) begin // @[ysyx_25030077_icache.scala 37:31]
       ar_addr_reg <= 32'h0; // @[ysyx_25030077_icache.scala 37:31]
     end else if (_state_reg_T) begin // @[Mux.scala 101:16]
-      if (io_ifu_valid) begin // @[ysyx_25030077_icache.scala 63:35]
-        ar_addr_reg <= index;
+      if (io_ifu_valid) begin // @[ysyx_25030077_icache.scala 83:35]
+        ar_addr_reg <= _serach_addr_T_2;
       end else begin
         ar_addr_reg <= 32'h0;
       end
     end else if (_state_reg_T_3) begin // @[Mux.scala 101:16]
-      if (io_r_valid) begin // @[ysyx_25030077_icache.scala 64:35]
-        ar_addr_reg <= _ar_addr_reg_T_5;
+      if (io_r_valid) begin // @[ysyx_25030077_icache.scala 84:35]
+        ar_addr_reg <= _ar_addr_reg_T_11;
       end
-    end else if (!(_state_reg_T_7)) begin // @[Mux.scala 101:16]
-      ar_addr_reg <= _ar_addr_reg_T_9;
+    end else if (!(_state_reg_T_10)) begin // @[Mux.scala 101:16]
+      ar_addr_reg <= _ar_addr_reg_T_15;
+    end
+    if (reset) begin // @[ysyx_25030077_icache.scala 39:20]
+      j <= 3'h0; // @[ysyx_25030077_icache.scala 39:20]
+    end else if (_state_reg_T) begin // @[Mux.scala 101:16]
+      j <= 3'h0;
+    end else if (_state_reg_T_3) begin // @[Mux.scala 101:16]
+      if (io_r_valid) begin // @[ysyx_25030077_icache.scala 64:35]
+        j <= _serach_addr_T_4;
+      end
+    end
+    if (reset) begin // @[ysyx_25030077_icache.scala 40:20]
+      k <= 3'h0; // @[ysyx_25030077_icache.scala 40:20]
+    end else if (_state_reg_T) begin // @[Mux.scala 101:16]
+      k <= 3'h0;
+    end else if (_state_reg_T_17) begin // @[Mux.scala 101:16]
+      if (io_w_ready) begin // @[ysyx_25030077_icache.scala 69:35]
+        k <= _k_T_3;
+      end
+    end
+    if (reset) begin // @[ysyx_25030077_icache.scala 41:23]
+      temp <= 3'h0; // @[ysyx_25030077_icache.scala 41:23]
+    end else if (_state_reg_T_19 & io_w_ready & _state_reg_T_20 & is_full) begin // @[ysyx_25030077_icache.scala 72:16]
+      temp <= _temp_T_6;
+    end
+    if (reset) begin // @[ysyx_25030077_icache.scala 42:26]
+      is_full <= 1'h0; // @[ysyx_25030077_icache.scala 42:26]
+    end else if (_state_reg_T_3) begin // @[Mux.scala 101:16]
+      if (io_r_valid) begin // @[ysyx_25030077_icache.scala 90:35]
+        is_full <= _state_reg_T_5 & ~is_notvalid;
+      end
+    end
+    if (reset) begin // @[ysyx_25030077_icache.scala 94:26]
+      rdata_w <= 32'h0; // @[ysyx_25030077_icache.scala 94:26]
+    end else if (_state_reg_T_14 & io_r_valid) begin // @[ysyx_25030077_icache.scala 95:20]
+      rdata_w <= io_r_data;
     end
   end
+// Register and memory initialization
+`ifdef RANDOMIZE_GARBAGE_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_INVALID_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_REG_INIT
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+`define RANDOMIZE
+`endif
+`ifndef RANDOM
+`define RANDOM $random
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+  integer initvar;
+`endif
+`ifndef SYNTHESIS
+`ifdef FIRRTL_BEFORE_INITIAL
+`FIRRTL_BEFORE_INITIAL
+`endif
+initial begin
+  `ifdef RANDOMIZE
+    `ifdef INIT_RANDOM
+      `INIT_RANDOM
+    `endif
+    `ifndef VERILATOR
+      `ifdef RANDOMIZE_DELAY
+        #`RANDOMIZE_DELAY begin end
+      `else
+        #0.002 begin end
+      `endif
+    `endif
+`ifdef RANDOMIZE_REG_INIT
+  _RAND_0 = {1{`RANDOM}};
+  state_reg = _RAND_0[2:0];
+  _RAND_1 = {1{`RANDOM}};
+  rdata_reg = _RAND_1[31:0];
+  _RAND_2 = {1{`RANDOM}};
+  ar_valid_reg = _RAND_2[0:0];
+  _RAND_3 = {1{`RANDOM}};
+  ar_addr_reg = _RAND_3[31:0];
+  _RAND_4 = {1{`RANDOM}};
+  j = _RAND_4[2:0];
+  _RAND_5 = {1{`RANDOM}};
+  k = _RAND_5[2:0];
+  _RAND_6 = {1{`RANDOM}};
+  temp = _RAND_6[2:0];
+  _RAND_7 = {1{`RANDOM}};
+  is_full = _RAND_7[0:0];
+  _RAND_8 = {1{`RANDOM}};
+  rdata_w = _RAND_8[31:0];
+`endif // RANDOMIZE_REG_INIT
+  `endif // RANDOMIZE
+end // initial
+`ifdef FIRRTL_AFTER_INITIAL
+`FIRRTL_AFTER_INITIAL
+`endif
+`endif // SYNTHESIS
 endmodule
 module ysyx_25030077(
   input         clock,

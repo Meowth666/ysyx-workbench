@@ -57,8 +57,8 @@ int main() {
     printf("ifu请求次数:   %d   命中次数:   %d\n", inst_cnt, zhong_cnt);
     printf("icache命中率%lf\n", (double)zhong_cnt / (double)inst_cnt);
     
-    int uint_size = 2;
-    int group_cnt = 4;
+    int uint_size = 4;
+    int group_cnt = 8;
     int group_bits = log2(group_cnt);
     int group_size = 32 / group_cnt;
     if(group_cnt * group_size != 32 || uint_size > group_cnt){
@@ -80,7 +80,10 @@ int main() {
                 break;
             }
             else if((cache_tag[index][j] & 1) == 0){
-                cache_tag[index][j] = (tag << 1) | 1;
+                for(k = 0; k < uint_size; k++){
+                    cache_tag[index][j] = (tag << 1) | 1;
+                    index = (index + 1) % group_cnt;
+                }
                 break;
             }
             else if(j == group_size - 1){
