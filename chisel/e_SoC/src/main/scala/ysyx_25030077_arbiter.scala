@@ -10,6 +10,8 @@ class ysyx_25030077_arbiter extends Module {
 
     val icache_ar_valid = Input(Bool())
     val icache_ar_addr = Input(UInt(32.W))
+    val icache_ar_brust = Input(UInt(2.W))
+    val icache_ar_len = Input(UInt(8.W))
 
     val icache_aw_valid = Input(Bool())
     val icache_aw_addr = Input(UInt(32.W))
@@ -75,9 +77,6 @@ class ysyx_25030077_arbiter extends Module {
     io.axi_w_last := true.B
 
     io.axi_ar_id := 0.U
-    io.axi_ar_len := 0.U
-//     io.axi_ar_size := 2.U
-    io.axi_ar_burst := 0.U
     
     ChiselHelpers.dontTouchBundleRecursive(io)   
     val state_reg = RegInit(0.U(2.W))
@@ -214,7 +213,14 @@ class ysyx_25030077_arbiter extends Module {
                               (state_reg === 1.U && io.r_mask =/= 0.U) -> rsize
                      ))   
     // val is_sram = (((io.axi_ar_addr >= "h0f000000".U) && (io.axi_ar_addr < "h0f001fff".U)) || ((io.axi_ar_addr >= "h80000000".U) && (io.axi_ar_addr < "h9fffffff".U)) || ((io.axi_ar_addr >= "ha0000000".U) && (io.axi_ar_addr < "hbfffffff".U)) || ((io.axi_ar_addr >= "h10002000".U) && (io.axi_ar_addr < "h1000200f".U)) || ((io.axi_ar_addr >= "h10011000".U) && (io.axi_ar_addr < "h10011007".U)) || ((io.axi_ar_addr >= "hc0000000".U)))
-    val is_sram = ~(io.axi_ar_addr(31,28) === "h3".U(4.W))   
+    val is_sram  = ~(io.axi_ar_addr(31,28) === "h3".U(4.W))  
+    io.axi_ar_len := MuxCase(0.U, Seq(   
+                              (state_reg === 0.U) -> io.icache_ar_len, 
+                     ))
+//     io.axi_ar_size := 2.U
+    io.axi_ar_burst := MuxCase(0.U, Seq(   
+                              (state_reg === 0.U) -> io.icache_ar_brust, 
+                       ))
     val rdata_sram = MuxCase(0.U, Seq(
                               (io.r_mask === 1.U) -> io.axi_r_data,      
                               (io.r_mask === 2.U) -> MuxCase(0.U, Seq(    

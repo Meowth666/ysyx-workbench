@@ -33,7 +33,7 @@ int main(int argc, char** argv){
 	// for(int i = 0; i < argc; i++){
 	// 	printf("argv[%d] = %s\n", i, argv[i]);
 	// }
-	csr_init();
+	// csr_init();
 	reg_init();
 	init_monitor(argc, argv);
 	printf("Start to execute instructions...\n");

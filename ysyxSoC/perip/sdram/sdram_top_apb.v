@@ -46,7 +46,7 @@ module sdram_top_apb (
   wire is_read  = ((in_psel && !in_penable) || (state == ST_WAIT_ACCEPT)) && !in_pwrite;
   wire is_write = ((in_psel && !in_penable) || (state == ST_WAIT_ACCEPT)) &&  in_pwrite;
   sdram_axi_core #(
-    .SDRAM_MHZ(100),
+    .SDRAM_MHZ(50),
     .SDRAM_ADDR_W(25),
     .SDRAM_COL_W(10),
     .SDRAM_READ_LATENCY(1)

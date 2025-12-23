@@ -28,7 +28,7 @@ void reg_new(int addr, int data);
 int  new_reg();
 void write_addr(uint32_t paddr, uint32_t data, int size);
 void ftrace_check(uint32_t pc, uint32_t dnpc, uint32_t inst);
-void difftest_step();
+void difftest_step(int cycle);
 void step_and_dump_wave(){
 	ysyxSoCFull->eval();
 	contextp->timeInc(1);
@@ -79,7 +79,8 @@ long long cycs[10] = {0};
 extern "C" void sdram_write (int bank, int addr, int dqm, int cnt, int data) { 
 	uint32_t dqm0 = (dqm & 0x3);
 	uint32_t dqm1 = ((dqm >> 2) & 0x3);
-	// printf("sdram_write: bank = %d, addr = %d, data = %x\n", bank, addr, data);
+	// if(addr < 30)
+	// 	printf("sdram_write: bank = %d, addr = %d, data = %x\n", bank, addr, data);
 	int col = addr & 0x3FF;
 	uint32_t addr_sdram = 0xa0000000 + ((uint32_t)((row[bank] & 0x1FFF) << 14)) | ((uint32_t)((bank & 0x3) << 12)) | (uint32_t)(col << 2);
 	uint16_t data0 = (data & 0xFFFF);
@@ -325,57 +326,58 @@ extern "C" void sdram_write (int bank, int addr, int dqm, int cnt, int data) {
 		cnt0 = 0;
 }
 uint64_t cnt = 0;
-extern "C" void sdram_read (int bank, int addr, int cnt, int* data) { 
+svBitVecVal sdram_read(const svBitVecVal* bank, const svBitVecVal* addr) { 
 	// printf("sdram_read: bank = %d, addr = %d\n", bank, addr);
-	int col = addr & 0x3FF;
+	svBitVecVal data;
+	int col = *addr & 0x3FF;
 	uint16_t data0, data1;
 	int is_overflow = 0;
-	uint32_t addr_sdram = 0xa0000000 + ((uint32_t)((row[bank] & 0x1FFF) << 14)) | ((uint32_t)((bank & 0x3) << 12)) | (uint32_t)(col << 2);
+	uint32_t addr_sdram = 0xa0000000 + ((uint32_t)((row[*bank] & 0x1FFF) << 14)) | ((uint32_t)((*bank & 0x3) << 12)) | (uint32_t)(col << 2);
 	if(col < 512)
-		switch(bank){
+		switch(*bank){
 			case 0:
-				data0 = sdram0_bank1[row[bank]][col];
-				data1 = sdram1_bank1[row[bank]][col];
+				data0 = sdram0_bank1[row[*bank]][col];
+				data1 = sdram1_bank1[row[*bank]][col];
 				break;
 			case 1:
-				data0 = sdram0_bank2[row[bank]][col];
-				data1 = sdram1_bank2[row[bank]][col];
+				data0 = sdram0_bank2[row[*bank]][col];
+				data1 = sdram1_bank2[row[*bank]][col];
 				break;
 			case 2:
-				data0 = sdram0_bank3[row[bank]][col];
-				data1 = sdram1_bank3[row[bank]][col];
+				data0 = sdram0_bank3[row[*bank]][col];
+				data1 = sdram1_bank3[row[*bank]][col];
 				break;
 			case 3:
-				data0 = sdram0_bank4[row[bank]][col];
-				data1 = sdram1_bank4[row[bank]][col];
+				data0 = sdram0_bank4[row[*bank]][col];
+				data1 = sdram1_bank4[row[*bank]][col];
 				break;
 			default:
 				break;
 		}
 	else
-		switch(bank){
+		switch(*bank){
 			case 0:
-				data0 = sdram2_bank1[row[bank]][col - 512];
-				data1 = sdram3_bank1[row[bank]][col - 512];
+				data0 = sdram2_bank1[row[*bank]][col - 512];
+				data1 = sdram3_bank1[row[*bank]][col - 512];
 				break;
 			case 1:
-				data0 = sdram2_bank2[row[bank]][col - 512];
-				data1 = sdram3_bank2[row[bank]][col - 512];
+				data0 = sdram2_bank2[row[*bank]][col - 512];
+				data1 = sdram3_bank2[row[*bank]][col - 512];
 				break;
 			case 2:	
-				data0 = sdram2_bank3[row[bank]][col - 512];
-				data1 = sdram3_bank3[row[bank]][col - 512];
+				data0 = sdram2_bank3[row[*bank]][col - 512];
+				data1 = sdram3_bank3[row[*bank]][col - 512];
 				break;
 			case 3:
-				data0 = sdram2_bank4[row[bank]][col - 512];
-				data1 = sdram3_bank4[row[bank]][col - 512];
+				data0 = sdram2_bank4[row[*bank]][col - 512];
+				data1 = sdram3_bank4[row[*bank]][col - 512];
 				break;
 			default:
 				break;
 		}
-	*data = (uint32_t)((data1 << 16) | data0);
+	data = (uint32_t)((data1 << 16) | data0);
 	// printf("addr_sdram = %x   inst = %x\n", addr_sdram, *data);
-	if(addr_sdram <= text_sdram_end && addr_sdram >= 0xa0000000 && (*data != insn32)){
+	if(addr_sdram <= text_sdram_end && addr_sdram >= 0xa0000000 && (data != insn32)){
 		// printf("pc =0x%x  pc_pre = 0x%x\n",addr_sdram, pc_pre);
 		if(FTRACE){
 			ftrace_check(pc_pre, addr_sdram, insn32);
@@ -390,14 +392,15 @@ extern "C" void sdram_read (int bank, int addr, int cnt, int* data) {
 	// 		lsu_cnts ++;
 	// }
 	if(MTRACE && cnt %2 == 0){
-		fprintf(mtrace, "read sdram 0x%08x  data: 0x%08x\n", addr_sdram, *data);
+		fprintf(mtrace, "read sdram 0x%08x  data: 0x%08x\n", addr_sdram, data);
 	}
 	// if(cnt % 2 == 1)
 	// 	printf("pc =0x%x  pc_pre = 0x%x\n",addr_sdram, pc_pre);
-	insn32 = *data;
+	insn32 = data;
 	cnt++;
 	if(cnt == 100000)
 		cnt = 0;
+	return data;
 }
 // uint32_t flash_array[20] = {0xff010113, 0x00112623, 0x00812423, 0x01010413, 0x100007b7, 0x04100713, 0x00e78023, 0x100007b7, 0x04300713, 0x00e78023, 0x100007b7, 0x04d00713, 0x00e78023, 0x0000006f};
 // uint32_t flash_array[20] = {1,1,4,5,1,4,1,9,1,9};
@@ -562,8 +565,13 @@ int cpu_exec(int n){
 			uint32_t lsu_read  = lsu_read0 & 0xf;
 			uint32_t lsu_addr;
 			uint32_t inst = inst_read();
+			
+			// if(inst == 0 && ix > 10){
+			// 	printf("ix = %llx   inst = %x\n", ix, inst);
+			// 	// flag = 1;
+			// 	// break;
+			// }
 			if (inst != inst0){
-				// printf("%x\n", inst);
 				// printf("%x\n", inst);
 				if(inst == 1048691 && inst0 == 32871){
 					// printf("addr_sdram = %x   inst = %x\n", addr_sdram, *data);
@@ -654,7 +662,7 @@ int cpu_exec(int n){
 			ysyxSoCFull -> reset = 0;
 		}
 		if (DIFFTEST && !(ysyxSoCFull -> clock) && !(ysyxSoCFull -> reset) && is_refresh){
-			difftest_step();
+			difftest_step(ix);
 		}
 		ysyxSoCFull -> clock = ~(ysyxSoCFull -> clock);
 		step_and_dump_wave();
@@ -665,7 +673,10 @@ int cpu_exec(int n){
 			i = i - 1; // 如果n < 0，表示一直执行
 		}
 		ix ++;
-		// if(ix > 2000000){
+		// if(inst_cnts % 50000 == 0 && inst_cnts > 0){
+		// 	printf("----inst %lld----\n", inst_cnts);
+		// }
+		// if(ix == 34879507){
 		// 	flag = 1;
 		// 	success = 0;
 		// 	printf("\n----Too many instructions----\n");
@@ -683,7 +694,7 @@ int cpu_exec(int n){
 	if(sdram_cnt > 0)
 		printf("sdram lsu 访问次数: %8lld  平均延迟: %8lld\n", sdram_cnt, sdram_cyc / sdram_cnt);
 	printf("ifu请求次数:    %8lld 命中次数:%8lld   ifu请求总周期:%8lld   icache命中率:  %.4lf   AMAT:%8lld\n", request, hit, ifu_cycs, (double)hit / (double)request, ifu_cycs / request);
-	fclose(itrace);          
+	fclose(itrace);
 	return 0;
 }
 

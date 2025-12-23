@@ -70,20 +70,19 @@ module sdram_axi_core
 parameter SDRAM_MHZ              = 50;
 parameter SDRAM_ADDR_W           = 25;
 parameter SDRAM_COL_W            = 10;
-parameter SDRAM_READ_LATENCY     = 1; //延迟两个周期
-
+parameter SDRAM_READ_LATENCY     = 1;
 //-----------------------------------------------------------------
 // Defines / Local params
 //-----------------------------------------------------------------
 localparam SDRAM_BANK_W          = 2;
 localparam SDRAM_DQM_W           = 4;
-localparam SDRAM_BANKS           = 2 ** SDRAM_BANK_W;
-localparam SDRAM_ROW_W           = SDRAM_ADDR_W - SDRAM_COL_W - SDRAM_BANK_W;
-localparam SDRAM_REFRESH_CNT     = 2 ** SDRAM_ROW_W;
-localparam SDRAM_START_DELAY     = 100000 / (1000 / SDRAM_MHZ); // 100uS
-localparam SDRAM_REFRESH_CYCLES  = (64000*SDRAM_MHZ) / SDRAM_REFRESH_CNT-1;
+localparam SDRAM_BANKS           = 2 ** SDRAM_BANK_W; //4
+localparam SDRAM_ROW_W           = SDRAM_ADDR_W - SDRAM_COL_W - SDRAM_BANK_W; // 25 - 10 - 2 = 13
+localparam SDRAM_REFRESH_CNT     = 2 ** SDRAM_ROW_W; // 2^13 = 8192
+localparam SDRAM_START_DELAY     = 100000 / (1000 / SDRAM_MHZ); // 5000采样点,100us
+localparam SDRAM_REFRESH_CYCLES  = (64000*SDRAM_MHZ) / SDRAM_REFRESH_CNT-1;//(64000*50)/8192-1=389
 
-localparam CMD_W             = 4;
+localparam CMD_W             = 4; // 指令长度
 localparam CMD_NOP           = 4'b0111;
 localparam CMD_ACTIVE        = 4'b0011;
 localparam CMD_READ          = 4'b0101;
@@ -94,7 +93,7 @@ localparam CMD_REFRESH       = 4'b0001;
 localparam CMD_LOAD_MODE     = 4'b0000;
 
 // Mode: Burst Length = 4 bytes, CAS=2
-localparam MODE_REG          = {3'b000,1'b0,2'b00,3'b000,1'b0,3'b000};
+localparam MODE_REG          = {3'b000,1'b0,2'b00,3'b000,1'b0,3'b010};
 
 // SM states
 localparam STATE_W           = 4;
@@ -108,18 +107,16 @@ localparam STATE_WRITE0      = 4'd6;
 // localparam STATE_WRITE1      = 4'd7;
 localparam STATE_PRECHARGE   = 4'd8;
 localparam STATE_REFRESH     = 4'd9;
-
 localparam AUTO_PRECHARGE    = 10;
 localparam ALL_BANKS         = 10;
-
 localparam SDRAM_DATA_W      = 32;
 
 localparam CYCLE_TIME_NS     = 1000 / SDRAM_MHZ; //20
 
 // SDRAM timing
-localparam SDRAM_TRCD_CYCLES = (20 + (CYCLE_TIME_NS-1)) / CYCLE_TIME_NS;
-localparam SDRAM_TRP_CYCLES  = (20 + (CYCLE_TIME_NS-1)) / CYCLE_TIME_NS;
-localparam SDRAM_TRFC_CYCLES = (60 + (CYCLE_TIME_NS-1)) / CYCLE_TIME_NS;
+localparam SDRAM_TRCD_CYCLES = (20 + (CYCLE_TIME_NS-1)) / CYCLE_TIME_NS; //(20 + (20-1)) / 20 =1
+localparam SDRAM_TRP_CYCLES  = (20 + (CYCLE_TIME_NS-1)) / CYCLE_TIME_NS; //(20 + (20-1)) / 20 =1
+localparam SDRAM_TRFC_CYCLES = (60 + (CYCLE_TIME_NS-1)) / CYCLE_TIME_NS; //(60 + (20-1)) / 20 =3
 
 //-----------------------------------------------------------------
 // External Interface
@@ -127,12 +124,12 @@ localparam SDRAM_TRFC_CYCLES = (60 + (CYCLE_TIME_NS-1)) / CYCLE_TIME_NS;
 wire [ 31:0]  ram_addr_w       = inport_addr_i;
 wire [  3:0]  ram_wr_w         = inport_wr_i;
 wire          ram_rd_w         = inport_rd_i;
-wire          ram_accept_w;
+wire          ram_accept_w; //(state_q == STATE_READ || state_q == STATE_WRITE0)
 wire [ 31:0]  ram_write_data_w = inport_write_data_i;
 wire [ 31:0]  ram_read_data_w;
 wire          ram_ack_w;
 
-wire          ram_req_w = (ram_wr_w != 4'b0) | ram_rd_w;
+wire          ram_req_w = (ram_wr_w != 4'b0) | ram_rd_w; // 检测到读写请求
 
 assign inport_ack_o       = ram_ack_w;
 assign inport_read_data_o = ram_read_data_w;
@@ -177,9 +174,9 @@ reg  [STATE_W-1:0]     target_state_q;
 reg  [STATE_W-1:0]     delay_state_q;
 
 // Address bits
-wire [SDRAM_ROW_W-1:0]  addr_col_w  = {{(SDRAM_ROW_W-SDRAM_COL_W){1'b0}}, ram_addr_w[SDRAM_COL_W + 1:2]};
-wire [SDRAM_ROW_W-1:0]  addr_row_w  = ram_addr_w[SDRAM_ADDR_W+1:SDRAM_COL_W+2+2];
-wire [SDRAM_BANK_W-1:0] addr_bank_w = ram_addr_w[SDRAM_COL_W+2+1:SDRAM_COL_W+2];
+wire [SDRAM_ROW_W-1:0]  addr_col_w  = {{(SDRAM_ROW_W-SDRAM_COL_W){1'b0}}, ram_addr_w[SDRAM_COL_W + 1:2]}; //ram_addr_w[11:2]
+wire [SDRAM_ROW_W-1:0]  addr_row_w  = ram_addr_w[SDRAM_ADDR_W+1:SDRAM_COL_W+2+2];//ram_addr_w[24:12]
+wire [SDRAM_BANK_W-1:0] addr_bank_w = ram_addr_w[SDRAM_COL_W+2+1:SDRAM_COL_W+2];//ram_addr_w[11:10]
 
 //-----------------------------------------------------------------
 // SDRAM State Machine
@@ -260,12 +257,11 @@ begin
     STATE_READ :
     begin
         next_state_r = STATE_IDLE;
-
         // Another pending read request (with no refresh pending)
         if (!refresh_q && ram_req_w && ram_rd_w)
         begin
             // Open row hit
-            if (row_open_q[addr_bank_w] && addr_row_w == active_row_q[addr_bank_w])
+            if (row_open_q[addr_bank_w] && addr_row_w == active_row_q[addr_bank_w] && cnt_4 < 3'd3 && cnt_in[1] == 1'b1)
                 next_state_r = STATE_READ;
         end
     end
@@ -291,14 +287,13 @@ begin
     begin
         // next_state_r = STATE_WRITE1;
         next_state_r = STATE_IDLE;
-
         // Another pending write request (with no refresh pending)
-        if (!refresh_q && ram_req_w && (ram_wr_w != 4'b0))
-        begin
-            // Open row hit
-            if (row_open_q[addr_bank_w] && addr_row_w == active_row_q[addr_bank_w])
-                next_state_r = STATE_WRITE0;
-        end
+        // if (!refresh_q && ram_req_w && (ram_wr_w != 4'b0))
+        // begin
+        //     // Open row hit
+        //     if (row_open_q[addr_bank_w] && addr_row_w == active_row_q[addr_bank_w])
+        //         next_state_r = STATE_WRITE0;
+        // end
     end
     //-----------------------------------------
     // STATE_WRITE1
@@ -373,7 +368,6 @@ begin
     STATE_READ :
     begin
         delay_r = SDRAM_READ_LATENCY;
-
         // Another pending read request (with no refresh pending)
         if (!refresh_q && ram_req_w && ram_rd_w)
         begin
@@ -492,7 +486,7 @@ else
 // Command Output
 //-----------------------------------------------------------------
 integer idx;
-
+// 生成输入到sdram模块的信号
 always @ (posedge clk_i or posedge rst_i)
 if (rst_i)
 begin
@@ -527,7 +521,7 @@ begin
     //-----------------------------------------
     // STATE_INIT
     //-----------------------------------------
-    STATE_INIT:
+    STATE_INIT: //初始化指令
     begin
         // Assert CKE
         if (refresh_timer_q == 50)
@@ -690,8 +684,39 @@ assign ram_read_data_w = sample_data_q;
 //-----------------------------------------------------------------
 // ACK
 //-----------------------------------------------------------------
-reg ack_q;
+reg rvalid_buffer;
 
+always @ (posedge clk_i or posedge rst_i)
+if (rst_i)
+    rvalid_buffer <= 1'b0;
+else
+    rvalid_buffer <= inport_rd_i;
+
+reg [2:0] cnt_in;
+always @ (posedge clk_i or posedge rst_i)
+    if (rst_i)
+        cnt_in   <= 3'b0;
+    else if (rvalid_buffer == 1'b0 && inport_rd_i == 1'b1)
+        cnt_in   <= inport_len_i[2:0];
+    else
+        cnt_in   <= cnt_in;
+
+
+reg ack_q;
+reg [2:0] cnt_4;
+always @ (posedge clk_i or posedge rst_i)
+    if (rst_i)
+        cnt_4   <= 3'b0;
+    else if (state_q == STATE_READ)
+        if (cnt_4 == cnt_in)
+            cnt_4   <= 3'b0;
+        else
+            cnt_4   <= cnt_4 + 1;
+    else
+        if(inport_rd_i == 1'b0)
+            cnt_4   <= 0;
+        else
+            cnt_4   <= cnt_4;
 always @ (posedge clk_i or posedge rst_i)
 if (rst_i)
     ack_q   <= 1'b0;

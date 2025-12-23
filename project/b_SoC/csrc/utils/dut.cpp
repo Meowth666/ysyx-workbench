@@ -108,7 +108,7 @@ bool static checkregs(struct CPU_state *ref_r){
     return flag;
 }
 
-void difftest_step() {
+void difftest_step(int cycle) {
   if(ref_difftest_memcpy == NULL) return;
   CPU_state ref_r;
   //printf("difftest_step\n");
@@ -128,6 +128,7 @@ void difftest_step() {
     return;
   }
   if(!checkregs(&ref_r)){
+    printf("\n\nDifftest failed at cycle %d\n", cycle);
     isa_reg_display();
     assert(0);
   }

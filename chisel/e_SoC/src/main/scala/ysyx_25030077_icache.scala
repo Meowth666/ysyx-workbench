@@ -13,6 +13,8 @@ class ysyx_25030077_icache extends Module {
     val ar_valid = Output(Bool())
     val ar_addr = Output(UInt(32.W))
     val ar_ready = Input(Bool())
+    val ar_burst = Output(UInt(2.W))
+    val ar_len   = Output(UInt(8.W))
 
     val aw_valid = Output(Bool())
     val aw_addr = Output(UInt(32.W))
@@ -46,17 +48,22 @@ class ysyx_25030077_icache extends Module {
     val tag_addr = 0x0f001680.U(32.W) + Cat(index, 0.U(4.W)) + Cat(j(1,0), 0.U(2.W))
     val inst_addr = io.pc + Cat(k(1,0), 0.U(2.W))
     
+    val data0 = RegInit(0.U(32.W))
+    val data1 = RegInit(0.U(32.W))
+    val data2 = RegInit(0.U(32.W))
+    val data3 = RegInit(0.U(32.W))
 
     io.ifu_ready    := canAccept   
     
     state_reg := MuxCase(0.U, Seq(
-        (state_reg === 0.U) -> Mux((io.ifu_valid && canAccept), 1.U, 0.U),
+        (state_reg === 0.U) -> Mux((io.ifu_valid && canAccept), Mux(io.pc(31, 28) === 0xa.U, 1.U, 7.U), 0.U),
         (state_reg === 1.U) -> Mux((io.r_valid   && canAccept),  Mux(is_tag, 2.U, Mux((j === 3.U || is_notvalid), 3.U, 1.U)), 1.U),
         (state_reg === 2.U) -> Mux((io.r_valid   && canAccept),  6.U, 2.U),
         (state_reg === 6.U) -> 0.U,
-        (state_reg === 3.U) -> Mux((io.r_valid   && canAccept),  4.U, 3.U),
-        (state_reg === 4.U) -> Mux((io.aw_ready),  5.U, 4.U),
-        (state_reg === 5.U) -> Mux((io.w_ready) ,  Mux(k === 4.U, 0.U, 3.U), 5.U),
+        (state_reg === 3.U) -> Mux((io.r_valid   && canAccept),  Mux(k === 3.U, 4.U, 3.U), 3.U),
+        (state_reg === 4.U) -> Mux((io.w_ready && io.w_valid),  5.U, 4.U),
+        (state_reg === 5.U) -> Mux((io.w_ready && io.w_valid) ,  Mux(k === 4.U, 0.U, 4.U), 5.U),
+        (state_reg === 7.U) -> Mux((io.r_valid   && canAccept),  6.U, 7.U),
     ))
 
     j := MuxCase(j, Seq(
@@ -66,47 +73,64 @@ class ysyx_25030077_icache extends Module {
 
     k := MuxCase(k, Seq(
         (state_reg === 0.U) -> 0.U,
-        (state_reg === 4.U) -> Mux(io.w_ready, k + 1.U, k)
+        (state_reg === 3.U) -> Mux((io.r_valid && canAccept), Mux(k === 3.U, 0.U, k + 1.U), k),
+        (state_reg === 4.U) -> Mux((io.w_ready && io.w_valid), (k + 1.U), k)
     ))
+
+    data0 := Mux((state_reg === 3.U && io.r_valid && k === 0.U), io.r_data, data0)
+    data1 := Mux((state_reg === 3.U && io.r_valid && k === 1.U), io.r_data, data1)
+    data2 := Mux((state_reg === 3.U && io.r_valid && k === 2.U), io.r_data, data2)
+    data3 := Mux((state_reg === 3.U && io.r_valid && k === 3.U), io.r_data, data3)
+
     val temp1 = temp + 1.U;
     temp := Mux(state_reg === 5.U && io.w_ready && k === 4.U && is_full, Cat(0.U, temp1(1,0)), temp)
     ar_valid_reg := MuxCase(false.B, Seq(
         (state_reg === 0.U) -> Mux((io.ifu_valid && canAccept), 1.U, 0.U),
         (state_reg === 1.U) -> Mux(ar_valid_reg, Mux(io.ar_ready, 0.U, 1.U), Mux((io.r_valid && canAccept), 1.U, 0.U)),
         (state_reg === 2.U) -> Mux((ar_valid_reg && io.ar_ready), 0.U, ar_valid_reg),
-        (state_reg === 3.U) -> Mux((ar_valid_reg && io.ar_ready), 0.U, ar_valid_reg),
-        (state_reg === 5.U) -> Mux(k =/= 4.U && io.w_ready, 1.U, ar_valid_reg),
+        (state_reg === 3.U) -> Mux((ar_valid_reg && io.ar_ready), 0.U, ar_valid_reg)
     ))  
     io.ar_valid := ar_valid_reg
-    
-    ar_addr_reg  := MuxCase(0.U, Seq(
-        (state_reg === 0.U) -> Mux((io.ifu_valid && canAccept), 0x0f001600.U(32.W) + Cat(index, 0.U(4.W)), 0.U),
+    ar_addr_reg  := MuxCase(ar_addr_reg, Seq(
+        (state_reg === 0.U) -> Mux((io.ifu_valid && canAccept), Mux(io.pc(31, 28) === 0xa.U, 0x0f001600.U(32.W) + Cat(index, 0.U(4.W)), io.pc), 0.U),
         (state_reg === 1.U) -> Mux((io.r_valid && canAccept), Mux(is_tag, tag_addr, Mux((j === 3.U || is_notvalid), io.pc, serach_addr)), ar_addr_reg),   
         (state_reg === 2.U) -> ar_addr_reg,
-        (state_reg === 5.U) -> inst_addr
-    ))  
-
+    ))
+    io.ar_burst := Mux(ar_addr_reg(31, 28) === 0xa.U, 1.U, 0.U)
+    io.ar_len   := Mux(ar_addr_reg(31, 28) === 0xa.U, 4.U, 0.U)
     is_full := MuxCase(is_full, Seq(
         (state_reg === 1.U) -> Mux((io.r_valid && canAccept), Mux((j === 3.U && (~is_notvalid)), true.B, false.B), is_full)
     ))
     io.ar_addr  := ar_addr_reg
-    rdata_reg :=  Mux((((state_reg === 3.U && k === 0.U) || state_reg === 2.U) && io.r_valid), io.r_data, rdata_reg)  
-    val rdata_w = RegInit(0.U(32.W))
-    rdata_w :=  Mux((state_reg === 3.U && io.r_valid), io.r_data, rdata_w)
-    io.icache_valid := ((state_reg === 6.U) || (state_reg === 5.U && io.w_ready && k === 4.U))
+    rdata_reg :=  Mux((((state_reg === 3.U && k === 0.U) || state_reg === 2.U || state_reg === 7.U) && io.r_valid), io.r_data, rdata_reg)  
+    io.icache_valid := ((state_reg === 6.U) || (state_reg === 5.U && io.w_ready && io.w_valid && k === 4.U))
     io.icache_data  := rdata_reg
 
     io.aw_valid := ((state_reg === 4.U) || (state_reg === 5.U))
+    val w_valid_reg = RegInit(false.B)
+    w_valid_reg := MuxCase(false.B, Seq(
+                   (state_reg === 4.U || state_reg === 5.U) -> Mux(w_valid_reg, Mux(io.w_ready, false.B, true.B), Mux((io.aw_ready), true.B, false.B)),
+            ))
+    val aw_valid_reg = RegInit(false.B)
+    aw_valid_reg := MuxCase(false.B, Seq(
+        (state_reg === 3.U) -> Mux((io.r_valid   && canAccept),  Mux(k === 3.U, true.B, false.B), false.B),
+        (state_reg === 4.U || state_reg === 5.U) -> Mux(aw_valid_reg, Mux(io.aw_ready, false.B, true.B), Mux(io.w_ready, true.B, false.B)),
+    ))  
+    io.aw_valid := aw_valid_reg
     val w_index = index + k
     val w_index1 = index + k - 1.U
     io.aw_addr  := MuxCase(0.U, Seq(
                      (state_reg === 4.U) -> Mux(is_full, 0x0f001600.U(32.W) + Cat(w_index(2,0), 0.U(4.W)) + Cat(temp, 0.U(2.W)), 0x0f001600.U(32.W) + Cat(w_index(2,0), 0.U(4.W)) + Cat(j - 1.U, 0.U(2.W))),
                      (state_reg === 5.U) -> Mux(is_full, 0x0f001680.U(32.W) + Cat(w_index1(2,0), 0.U(4.W)) + Cat(temp, 0.U(2.W)), 0x0f001680.U(32.W) + Cat(w_index1(2,0), 0.U(4.W)) + Cat(j - 1.U, 0.U(2.W)))
               ))
-    io.w_valid := ((state_reg === 4.U) || (state_reg === 5.U))
+    io.w_valid := w_valid_reg
     io.w_data  := MuxCase(0.U, Seq(
                      (state_reg === 4.U) -> Cat(0.U(4.W), inst_addr(31,5), 1.U(1.W)),
-                     (state_reg === 5.U) -> rdata_w
+                     (state_reg === 5.U) -> MuxCase(0.U, Seq(
+                                              (k === 1.U) -> data0,
+                                              (k === 2.U) -> data1,
+                                              (k === 3.U) -> data2,
+                                              (k === 4.U) -> data3))
               ))
 }
 

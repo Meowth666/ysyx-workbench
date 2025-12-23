@@ -131,6 +131,8 @@ class ysyx_25030077 extends Module {
   c_arbiter.io.icache_valid := k_icache.io.icache_valid
   c_arbiter.io.icache_ar_addr := k_icache.io.ar_addr
   c_arbiter.io.icache_ar_valid := k_icache.io.ar_valid
+  c_arbiter.io.icache_ar_brust := k_icache.io.ar_burst
+  c_arbiter.io.icache_ar_len := k_icache.io.ar_len
   c_arbiter.io.icache_aw_addr := k_icache.io.aw_addr
   c_arbiter.io.icache_aw_valid := k_icache.io.aw_valid
   c_arbiter.io.icache_w_data := k_icache.io.w_data

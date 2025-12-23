@@ -8,15 +8,18 @@ module sdram_top_axi(
   input  [7:0]  in_awlen,
   input  [2:0]  in_awsize,
   input  [1:0]  in_awburst,
+
   output        in_wready,
   input         in_wvalid,
   input  [31:0] in_wdata,
   input  [3:0]  in_wstrb,
   input         in_wlast,
+
   input         in_bready,
   output        in_bvalid,
   output [1:0]  in_bresp,
   output [3:0]  in_bid,
+
   output        in_arready,
   input         in_arvalid,
   input  [31:0] in_araddr,
@@ -24,6 +27,7 @@ module sdram_top_axi(
   input  [7:0]  in_arlen,
   input  [2:0]  in_arsize,
   input  [1:0]  in_arburst,
+  
   input         in_rready,
   output        in_rvalid,
   output [1:0]  in_rresp,
@@ -47,7 +51,7 @@ module sdram_top_axi(
   wire [31:0] sdram_dout;
   assign sdram_dq = sdram_dout_en ? sdram_dout : 32'bz;
   sdram_axi #(
-    .SDRAM_MHZ(100),
+    .SDRAM_MHZ(50),
     .SDRAM_ADDR_W(25),
     .SDRAM_COL_W(10),
     .SDRAM_READ_LATENCY(1)

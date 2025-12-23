@@ -34,11 +34,11 @@ CSRCS = $(shell find $(abspath ./csrc_nvboard) -name "*.c" -or -name "*.cc" -or 
 CSRCS += $(SRC_AUTO_BIND)
 CSRCS_SIM = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 
-LIBCAPSTONE = /home/meowth/ysyx/ysyx-workbench/project/0_meopc/tools/capstone/repo/libcapstone.so.5
+LIBCAPSTONE = /home/meowth/ysyx/ysyx-workbench/project/b_SoC/tools/capstone/repo/libcapstone.so.5
 #CFLAGS += -I  /home/meowth/ysyx/ysyx-workbench/project/0_meopc/tools/capstone/repo/include
-/home/meowth/ysyx/ysyx-workbench/project/0_meopc/csrc/utils/disasm.cpp: $(LIBCAPSTONE)
+/home/meowth/ysyx/ysyx-workbench/project/b_SoC/csrc/utils/disasm.cpp: $(LIBCAPSTONE)
 $(LIBCAPSTONE):
-	$(MAKE) -C /home/meowth/ysyx/ysyx-workbench/project/0_meopc/tools/capstone
+	$(MAKE) -C /home/meowth/ysyx/ysyx-workbench/project/b_SoC/tools/capstone
 
 # rules for NVBoard
 include $(NVBOARD_HOME)/scripts/nvboard.mk
@@ -48,14 +48,15 @@ INCFLAGS = $(addprefix -I, $(INC_PATH))
 CXXFLAGS += $(INCFLAGS) -DTOP_NAME="\"V$(TOPNAME)\""
 CXXFLAGS += -I$(abspath ./obj_dir) \
 			-I/usr/include/readline \
-			-I/home/meowth/ysyx/ysyx-workbench/project/0_meopc/tools/capstone/repo/include
+			-I/home/meowth/ysyx/ysyx-workbench/project/b_SoC/tools/capstone/repo/include
 
 
 VERILATOR_VINCLUDES += -I$(abspath /home/meowth/ysyx/ysyx-workbench/ysyxSoC/perip/uart16550/rtl)
 VERILATOR_VINCLUDES += -I$(abspath /home/meowth/ysyx/ysyx-workbench/ysyxSoC/perip/spi/rtl)
 
-# IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/mem-tests/build/mem-test-sdram-riscv32e-ysyx-soc
-IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/cpu-tests/build/add-riscv32e-ysyx-soc
+# IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/benchmarks/microbench/build/microbench-riscv32e-ysyx-soc
+# IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/mem-tests/build/sdram-riscv32e-ysyx-soc
+IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/cpu-tests/build/pascal-riscv32e-ysyx-soc
 # IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/am-tests/build/amtest-riscv32e-ysyx-soc
 $(BIN): $(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 	@rm -rf $(OBJ_DIR)
@@ -94,7 +95,7 @@ sim:
 	-I$(abspath /home/meowth/ysyx/ysyx-workbench/ysyxSoC/perip/uart16550/rtl) \
     -I$(abspath /home/meowth/ysyx/ysyx-workbench/ysyxSoC/perip/spi/rtl) \
 	-CFLAGS "-I/usr/include/readline \
-			 -I  /home/meowth/ysyx/ysyx-workbench/project/0_meopc/tools/capstone/repo/include" \
+			 -I  /home/meowth/ysyx/ysyx-workbench/project/b_SoC/tools/capstone/repo/include" \
 	-LDFLAGS "-lreadline -lncurses" \
 	--top-module ysyxSoCFull \
 	$(CSRCS_SIM) \

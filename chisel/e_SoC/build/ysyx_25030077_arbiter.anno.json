@@ -21,6 +21,14 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077_arbiter|ysyx_25030077_arbiter>io_icache_ar_brust"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077_arbiter|ysyx_25030077_arbiter>io_icache_ar_len"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077_arbiter|ysyx_25030077_arbiter>io_icache_aw_valid"
   },
   {
@@ -270,6 +278,20 @@
       "~ysyx_25030077_arbiter|ysyx_25030077_arbiter>io_icache_aw_addr",
       "~ysyx_25030077_arbiter|ysyx_25030077_arbiter>io_rs1_data",
       "~ysyx_25030077_arbiter|ysyx_25030077_arbiter>io_imm"
+    ]
+  },
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~ysyx_25030077_arbiter|ysyx_25030077_arbiter>io_axi_ar_burst",
+    "sources":[
+      "~ysyx_25030077_arbiter|ysyx_25030077_arbiter>io_icache_ar_brust"
+    ]
+  },
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~ysyx_25030077_arbiter|ysyx_25030077_arbiter>io_axi_ar_len",
+    "sources":[
+      "~ysyx_25030077_arbiter|ysyx_25030077_arbiter>io_icache_ar_len"
     ]
   },
   {

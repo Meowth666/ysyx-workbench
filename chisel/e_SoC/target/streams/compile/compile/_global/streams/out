@@ -1,15 +1,4 @@
-[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/e_SoC/src/main/scala/ysyx_25030077_icache.scala:92:49: type mismatch;[0m
-[0m[[0m[31merror[0m] [0m[0m found   : Boolean[0m
-[0m[[0m[31merror[0m] [0m[0m required: chisel3.Bool[0m
-[0m[[0m[31merror[0m] [0m[0m    rdata_reg :=  Mux((((state_reg === 3.U && k == 0.U) || state_reg === 2.U) && io.r_valid), io.r_data, rdata_reg)  [0m
-[0m[[0m[31merror[0m] [0m[0m                                                ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/e_SoC/src/main/scala/ysyx_25030077_icache.scala:93:5: not found: value rdata_w[0m
-[0m[[0m[31merror[0m] [0m[0m    rdata_w = RegInit(0.U(32.W))[0m
-[0m[[0m[31merror[0m] [0m[0m    ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/e_SoC/src/main/scala/ysyx_25030077_icache.scala:94:5: not found: value rdata_w[0m
-[0m[[0m[31merror[0m] [0m[0m    rdata_w :=  Mux((state_reg === 3.U && io.r_valid), io.r_data, rdata_reg)[0m
-[0m[[0m[31merror[0m] [0m[0m    ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/e_SoC/src/main/scala/ysyx_25030077_icache.scala:107:45: not found: value rdata_w[0m
-[0m[[0m[31merror[0m] [0m[0m                     (state_reg === 5.U) -> rdata_w[0m
-[0m[[0m[31merror[0m] [0m[0m                                            ^[0m
-[0m[[0m[31merror[0m] [0m[0mfour errors found[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/e_SoC/src/main/scala/ysyx_25030077_arbiter.scala:192:1: '=' expected.[0m
+[0m[[0m[31merror[0m] [0m[0m    io.axi_b_ready  := canAccept[0m
+[0m[[0m[31merror[0m] [0m[0m^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

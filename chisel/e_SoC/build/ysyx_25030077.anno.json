@@ -33,6 +33,14 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_icache>io_ar_burst"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_icache>io_ar_len"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077|ysyx_25030077_icache>io_aw_valid"
   },
   {
@@ -246,6 +254,14 @@
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077|ysyx_25030077_arbiter>io_icache_ar_addr"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_arbiter>io_icache_ar_brust"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_arbiter>io_icache_ar_len"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",

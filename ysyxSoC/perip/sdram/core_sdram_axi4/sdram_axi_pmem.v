@@ -54,7 +54,7 @@ module sdram_axi_pmem
     ,input  [  1:0]  axi_arburst_i
     ,input           axi_rready_i
     ,input           ram_accept_i
-    ,input           ram_ack_i
+    ,input           ram_ack_i //
     ,input           ram_error_i
     ,input  [ 31:0]  ram_read_data_i
 
@@ -118,7 +118,7 @@ endfunction
 //-----------------------------------------------------------------
 // Registers / Wires
 //-----------------------------------------------------------------
-reg [7:0]   req_len_q;
+reg [7:0]   req_len_q; // 
 reg [31:0]  req_addr_q;
 reg         req_rd_q;
 reg         req_wr_q;
@@ -135,19 +135,19 @@ wire        req_fifo_accept_w;
 // Sequential
 //-----------------------------------------------------------------
 always @ (posedge clk_i or posedge rst_i)
-if (rst_i)
-begin
-    req_len_q     <= 8'b0;
-    req_addr_q    <= 32'b0;
-    req_wr_q      <= 1'b0;
-    req_rd_q      <= 1'b0;
-    req_id_q      <= 4'b0;
-    req_axburst_q <= 2'b0;
-    req_axlen_q   <= 8'b0;
-    req_prio_q    <= 1'b0;
-end
-else
-begin
+    if (rst_i)
+        begin
+            req_len_q     <= 8'b0;
+            req_addr_q    <= 32'b0;
+            req_wr_q      <= 1'b0;
+            req_rd_q      <= 1'b0;
+            req_id_q      <= 4'b0;
+            req_axburst_q <= 2'b0;
+            req_axlen_q   <= 8'b0;
+            req_prio_q    <= 1'b0;
+        end
+    else
+    begin
     // Burst continuation
     if ((ram_wr_o != 4'b0 || ram_rd_o) && ram_accept_i)
     begin
@@ -301,7 +301,7 @@ wire write_prio_w   = ((req_prio_q  & !req_hold_rd_q) | req_hold_wr_q);
 wire read_prio_w    = ((!req_prio_q & !req_hold_wr_q) | req_hold_rd_q);
 
 wire write_active_w  = (axi_awvalid_i || req_wr_q) && !req_rd_q && req_fifo_accept_w && (write_prio_w || req_wr_q || !axi_arvalid_i);
-wire read_active_w   = (axi_arvalid_i || req_rd_q) && !req_wr_q && req_fifo_accept_w && (read_prio_w || req_rd_q || !axi_awvalid_i);
+wire read_active_w   = (axi_arvalid_i || req_rd_q) && !req_wr_q && req_fifo_accept_w && (read_prio_w  || req_rd_q || !axi_awvalid_i);
 
 assign axi_awready_o = write_active_w && !req_wr_q && ram_accept_i && req_fifo_accept_w;
 assign axi_wready_o  = write_active_w &&              ram_accept_i && req_fifo_accept_w;
@@ -409,7 +409,7 @@ begin
     if ((push_i & accept_o) & ~(pop_i & valid_o))
         count <= count + 1;
     // Count down
-    else if (~(push_i & accept_o) & (pop_i & valid_o))
+    else if ((pop_i & valid_o) & ~(push_i & accept_o))
         count <= count - 1;
 end
 
