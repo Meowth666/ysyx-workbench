@@ -56,7 +56,7 @@ VERILATOR_VINCLUDES += -I$(abspath /home/meowth/ysyx/ysyx-workbench/ysyxSoC/peri
 
 # IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/benchmarks/microbench/build/microbench-riscv32e-ysyx-soc
 # IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/mem-tests/build/sdram-riscv32e-ysyx-soc
-IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/cpu-tests/build/pascal-riscv32e-ysyx-soc
+IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/cpu-tests/build/mul-longlong-riscv32e-ysyx-soc
 # IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/am-tests/build/amtest-riscv32e-ysyx-soc
 $(BIN): $(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 	@rm -rf $(OBJ_DIR)

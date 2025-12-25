@@ -676,7 +676,7 @@ int cpu_exec(int n){
 		// if(inst_cnts % 50000 == 0 && inst_cnts > 0){
 		// 	printf("----inst %lld----\n", inst_cnts);
 		// }
-		// if(ix == 34879507){
+		// if(ix == 3000000){
 		// 	flag = 1;
 		// 	success = 0;
 		// 	printf("\n----Too many instructions----\n");
