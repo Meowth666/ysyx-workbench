@@ -24,7 +24,8 @@ class ysyx_25030077_pc_next extends Module{
   val is_type7 = io.pc_next_type === "b0111".U // 
   val is_type8 = io.pc_next_type === "b1000".U // 
   val is_type9 = io.pc_next_type === "b1001".U // 
-  val is_type10= io.pc_next_type === "b1010".U // 
+  val is_type10= io.pc_next_type === "b1010".U //
+  val is_type13= io.pc_next_type === "b1101".U // 
 
   val is_eql = io.rs1_data === io.rs2_data
   val is_more_equ = io.rs1_data.asSInt >= io.rs2_data.asSInt
@@ -66,7 +67,8 @@ class ysyx_25030077_pc_next extends Module{
     is_type7 -> bge_result,
     is_type8 -> bgeu_result,
     is_type9 -> blt_result,
-    is_type10 -> bltu_result
+    is_type10 -> bltu_result,
+    is_type13 -> 0x0f001700.U(32.W)
   ))
 
   io.is_unknown_instruction := MuxCase(default_is_unknown_instruction, Seq(

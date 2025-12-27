@@ -290,6 +290,8 @@ class ysyx_25030077_IDU extends Module {
   val ebreak_pc_next_type = 4.U(4.W)
   val ecall_pc_next_type = 11.U(4.W)
   val mret_pc_next_type  = 12.U(4.W)
+
+  val fencei_pc_next_type = 13.U(4.W)
   // 定义选择信号
   val isaddi = Cat(io.instruction(14,12), io.instruction(6,0)) === "b0000010011".U
   val isxori = Cat(io.instruction(14,12), io.instruction(6,0)) === "b1000010011".U
@@ -332,6 +334,7 @@ class ysyx_25030077_IDU extends Module {
   val iscsrrs   = Cat(io.instruction(14,12), io.instruction(6,0)) === "b0101110011".U
   val isebreak  = io.instruction === "b00000000000100000000000001110011".U
   val isecall   = io.instruction === "b00000000000000000000000001110011".U
+  val isfencei  = io.instruction === "b00000000000000000001000000001111".U
   val ismret    = io.instruction === "b00110000001000000000000001110011".U
 
   // 使用 Mux1H 选择输出
@@ -358,7 +361,8 @@ class ysyx_25030077_IDU extends Module {
     islh  -> lh_Imm_type,
     islhu -> lhu_Imm_type,
     islbu  -> lbu_Imm_type,
-    islb  -> lb_Imm_type
+    islb  -> lb_Imm_type,
+    isfencei -> 3.U(3.W)
   ))
 
   io.rs1 := MuxCase(defaultRs1, Seq(
@@ -452,7 +456,8 @@ class ysyx_25030077_IDU extends Module {
     isor -> or_Rd,
     issub -> sub_Rd,
     issltu -> sltu_Rd,
-    isslt -> slt_Rd
+    isslt -> slt_Rd,
+    isfencei -> 19.U(5.W)
   ))
 
   io.ALU_ctrl := MuxCase(defaultRd, Seq(
@@ -494,7 +499,8 @@ class ysyx_25030077_IDU extends Module {
     isbgeu -> bgeu_ALU,
     isbne -> bne_ALU,
     isslt -> slt_ALU,
-    issltu -> sltu_ALU
+    issltu -> sltu_ALU,
+    isfencei -> add_ALU
   ))
 
   io.data_control := MuxCase(defaultdata_control, Seq(
@@ -524,7 +530,8 @@ class ysyx_25030077_IDU extends Module {
     isbgeu -> bgeu_data_control,
     isbne -> bne_data_control,
     isslt -> slt_data_control,
-    issltu -> sltu_data_control
+    issltu -> sltu_data_control,
+    isfencei -> 1.U(3.W)
   ))
 
   io.pc_next_type := MuxCase(defaultpc_next_type, Seq(
@@ -569,7 +576,8 @@ class ysyx_25030077_IDU extends Module {
     issltu -> sltu_pc_next_type,
     isslt -> slt_pc_next_type,
     issltiu -> sltiu_pc_next_type,
-    isslti -> slti_pc_next_type
+    isslti -> slti_pc_next_type,
+    isfencei -> fencei_pc_next_type
   ))
   io.r_mask := MuxCase(defaultr_mask, Seq(
     islw -> lw_r_mask,

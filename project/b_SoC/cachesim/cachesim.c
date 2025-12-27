@@ -12,7 +12,7 @@ int main() {
     int pc[MAX_INSTR_CNT];
     // 每行的缓冲区（256字节足够容纳单行十六进制数，如64位地址仅16位字符）
     char line_buf[256];
-    FILE *file = fopen("bench.txt", "r");
+    FILE *file = fopen("itrace.txt", "r");
     int i = 0;
 
     //检查文件是否成功打开
@@ -72,62 +72,33 @@ int main() {
     int j, k;
     int temp = 0;
     for(i = 0; i < inst_cnt; i++){
-        index = ((pc[i] >> 2) & (group_cnt *2 - 1));
+        if((pc[i] & 0xf0000000) == 0x30000000){
+            continue;
+        }
+        index = ((pc[i] >> 2) & (group_cnt - 1));
         tag = pc[i] >> (2 + group_bits);
         for(j = 0; j < group_size; j++){
-            if((tag == (cache_tag[index][j] >> 1)) && ((cache_tag[index][j] & 1) != 0)){
+            if((tag == (cache_tag[j][index] >> 1)) && ((cache_tag[j][index] & 1) != 0)){
                 zhong_cnt++;
                 break;
             }
-            else if((cache_tag[index][j] & 1) == 0){
+            else if((cache_tag[j][index] & 1) == 0){
                 for(k = 0; k < uint_size; k++){
-                    cache_tag[index][j] = (tag << 1) | 1;
+                    cache_tag[j][index] = (tag << 1) | 1;
+                    printf("%x\n", cache_tag[j][index]);
                     index = (index + 1) % group_cnt;
                 }
                 break;
-            }
-            else if(j == group_size - 1){
-                for(k = 0; k < uint_size; k++){
-                    cache_tag[index][temp] = (tag << 1) | 1;
-                    index = (index + 1) % group_cnt;
-                }
-                temp = (temp + 1) % group_size;
             }
         }
-    }
-    printf("ifu请求次数:   %d   命中次数:   %d\n", inst_cnt, zhong_cnt);
-    printf("icache命中率%lf\n", (double)zhong_cnt / (double)inst_cnt);
-
-    printf("=======方案2.2:group_size路组相联,无论匹配,则替换掉最早首次进入的=======\n");
-    zhong_cnt = 0;
-    memset(cache_tag, 0, sizeof(cache_tag));
-    temp = 0;
-    for(i = 0; i < inst_cnt; i++){
-        index = ((pc[i] >> 2) & (group_cnt *2 - 1));
-        tag = pc[i] >> (2 + group_bits);
-        for(j = 0; j < group_size; j++){
-            if((tag == (cache_tag[index][j] >> 1)) && ((cache_tag[index][j] & 1) != 0)){
-                for(k = 0; k < uint_size; k++){
-                    cache_tag[index][temp] = (tag << 1) | 1;
-                    index = (index + 1) % group_cnt;
-                }
-                temp = (temp + 1) % group_size;
-                zhong_cnt++;
-                break;
+        if(j == group_size){
+            for(k = 0; k < uint_size; k++){
+                cache_tag[temp][index] = (tag << 1) | 1;
+                printf("%x\n", cache_tag[temp][index]);
+                index = (index + 1) % group_cnt;
             }
-            else if((cache_tag[index][j] & 1) == 0){
-                cache_tag[index][j] = (tag << 1) | 1;
-                break;
-            }
-            else if(j == group_size - 1){
-                for(k = 0; k < uint_size; k++){
-                    cache_tag[index][temp] = (tag << 1) | 1;
-                    index = (index + 1) % group_cnt;
-                }
-                temp = (temp + 1) % group_size;
-            }
+            temp = (temp + 1) % group_size;
         }
-
     }
     printf("ifu请求次数:   %d   命中次数:   %d\n", inst_cnt, zhong_cnt);
     printf("icache命中率%lf\n", (double)zhong_cnt / (double)inst_cnt);

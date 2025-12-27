@@ -5,6 +5,7 @@
 extern char _heap_start;
 extern char _heap_end;
 extern char _erodata;
+extern uint32_t _fence_start;
 extern char _rodata;
 extern char _data;
 extern char _edata;
@@ -89,13 +90,33 @@ void id_print(){
   putch('\n');
 }
 
+void fence_init(){
+  asm volatile("lui t0, 0x0f001;"
+               "addi t0, t0, 0x600;");
+               
+  volatile uint32_t *dst = &_fence_start;
+  for(int i = 0; i < 32; i++){
+        *dst++ = ((i & 0xfe0) << 20) |   // imm[11:5]
+        (0 << 20)               |   // rs2 = x0
+        (5 << 15)              |   // rs1 = s2
+        (2 << 12)               |   // funct3 = sw
+        ((i & 0x1f) << 7)  |   // imm[4:0]
+        0x23;  
+  }
+  *dst++ = 0x98067; // fence.i
+}
+
 void _trm_init() {
   id_print();
+  fence_init();
   int ret = main(mainargs);
   halt(ret);
 }
 
 void ssbl_load(volatile char *src) {
+  asm volatile (
+    "nop\n\t"
+  );
   volatile char *dst = &_essbl_load;
   while (dst < &_edata)
     *dst++ = *src++;
@@ -114,3 +135,4 @@ void fsbl_load() {
     *dst++ = *src++;
   ssbl_load(src);
 }
+
