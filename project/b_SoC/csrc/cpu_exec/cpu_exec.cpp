@@ -534,6 +534,8 @@ int cpu_init(int argc, char** argv){
 	return 0;
 }
 long long ifu_ar;
+int is_ifu_ar = 0;
+long long TMT = 0;
 long long lsu_ar;
 uint32_t inst0 = 0;
 // struct section elf_section[20];
@@ -551,6 +553,7 @@ int cpu_exec(int n){
 	long long sdram_cyc = 0;
 	long long sdram_cnt = 0;
 	long long hit = 0;
+	long long miss = 0;
 	long long request = 0;
 	long long ifu_cycs = 0;
 	long long ix_ifu_valid = 0;
@@ -565,12 +568,6 @@ int cpu_exec(int n){
 			uint32_t lsu_read  = lsu_read0 & 0xf;
 			uint32_t lsu_addr;
 			uint32_t inst = inst_read();
-			
-			// if(inst == 0 && ix > 10){
-			// 	printf("ix = %llx   inst = %x\n", ix, inst);
-			// 	// flag = 1;
-			// 	// break;
-			// }
 			if (inst != inst0){
 				// printf("%x\n", inst);
 				if(inst == 1048691 && inst0 == 32871){
@@ -643,6 +640,7 @@ int cpu_exec(int n){
 			scope = svGetScopeFromName("TOP.ysyxSoCFull.asic.cpu.cpu.k_icache");
 			svSetScope(scope);
 			uint32_t icache_data = icache_read();
+			uint32_t ar_valid = (icache_data & 0x80) >> 7;
 			uint32_t state =  (icache_data & 0x38) >> 3;
 			uint32_t ifu_valid = (icache_data & 0x6) >> 1;
 			uint32_t icache_valid = (icache_data & 0x1);
@@ -653,10 +651,18 @@ int cpu_exec(int n){
 			}
 			if (icache_valid == 1){
 				ifu_cycs += (ix - ix_ifu_valid) / 2;
-				if(state == 6)
+				if(state == 6 && ((itrace_pc & 0xf0000000) != 0x30000000))
 					hit += 1;
+				else if((itrace_pc & 0xf0000000) != 0x30000000){
+					miss += 1;
+					TMT = TMT + (ix - ifu_ar) / 2;
+				}
+					
 			}
-				
+			if(state == 3 && is_ifu_ar == 0 && ar_valid == 1){
+				ifu_ar = ix;
+			}
+			is_ifu_ar = ar_valid;
 		}
 		if(ix == 23){
 			ysyxSoCFull -> reset = 0;
@@ -676,7 +682,7 @@ int cpu_exec(int n){
 		// if(inst_cnts % 50000 == 0 && inst_cnts > 0){
 		// 	printf("----inst %lld----\n", inst_cnts);
 		// }
-		// if(ix == 3000000){
+		// if(ix == 2000000){
 		// 	flag = 1;
 		// 	success = 0;
 		// 	printf("\n----Too many instructions----\n");
@@ -694,6 +700,8 @@ int cpu_exec(int n){
 	if(sdram_cnt > 0)
 		printf("sdram lsu 访问次数: %8lld  平均延迟: %8lld\n", sdram_cnt, sdram_cyc / sdram_cnt);
 	printf("ifu请求次数:    %8lld 命中次数:%8lld   ifu请求总周期:%8lld   icache命中率:  %.4lf   AMAT:%8lld\n", request, hit, ifu_cycs, (double)hit / (double)request, ifu_cycs / request);
+	printf("TMT: %lld\n", TMT);
+	printf("未命中次数: %lld  平均等待周期： %.4lf\n", miss, (double)TMT / (double)miss);
 	fclose(itrace);
 	return 0;
 }

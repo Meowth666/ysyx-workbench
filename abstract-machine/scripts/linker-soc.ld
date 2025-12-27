@@ -82,6 +82,7 @@ SECTIONS {
   _psram_start = 0x80000000;
   _gpio_start  = 0x10002000;
   _gpio_end    = 0x1000200f;
+  _fence_start = 0x0f001700;
 
   _vga_start  = 0x21000000;
 }
