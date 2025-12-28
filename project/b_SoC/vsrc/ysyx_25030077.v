@@ -1058,7 +1058,7 @@ module ysyx_25030077_gpr(
       end
     end
     if (reset) begin // @[ysyx_25030077_gpr.scala 21:21]
-      regs_5 <= 32'h0; // @[ysyx_25030077_gpr.scala 21:21]
+      regs_5 <= 32'ha0000000; // @[ysyx_25030077_gpr.scala 21:21]
     end else if (5'h5 == io_waddr_rd) begin // @[ysyx_25030077_gpr.scala 35:21]
       if (_validReg_T) begin // @[ysyx_25030077_gpr.scala 35:27]
         if (io_waddr_rd == 5'h0) begin // @[ysyx_25030077_gpr.scala 26:27]
@@ -1253,7 +1253,7 @@ module ysyx_25030077_gpr(
       end
     end
     if (reset) begin // @[ysyx_25030077_gpr.scala 21:21]
-      regs_18 <= 32'h0; // @[ysyx_25030077_gpr.scala 21:21]
+      regs_18 <= 32'hf001600; // @[ysyx_25030077_gpr.scala 21:21]
     end else if (5'h12 == io_waddr_rd) begin // @[ysyx_25030077_gpr.scala 35:21]
       if (_validReg_T) begin // @[ysyx_25030077_gpr.scala 35:27]
         if (io_waddr_rd == 5'h0) begin // @[ysyx_25030077_gpr.scala 26:27]
