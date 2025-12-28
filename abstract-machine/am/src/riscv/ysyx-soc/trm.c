@@ -6,6 +6,7 @@ extern char _heap_start;
 extern char _heap_end;
 extern char _erodata;
 extern uint32_t _fence_start;
+extern uint32_t _init_start;
 extern char _rodata;
 extern char _data;
 extern char _edata;
@@ -90,33 +91,25 @@ void id_print(){
   putch('\n');
 }
 
-void fence_init(){
-  asm volatile("lui t0, 0x0f001;"
-               "addi t0, t0, 0x600;");
-               
-  volatile uint32_t *dst = &_fence_start;
-  for(int i = 0; i < 32; i++){
-        *dst++ = ((i & 0xfe0) << 20) |   // imm[11:5]
-        (0 << 20)               |   // rs2 = x0
-        (5 << 15)              |   // rs1 = s2
-        (2 << 12)               |   // funct3 = sw
-        ((i & 0x1f) << 7)  |   // imm[4:0]
-        0x23;  
-  }
-  *dst++ = 0x98067; // fence.i
-}
+// void sdram_init(){        
+//   volatile uint32_t *dst = &_init_start;
+//   for(int i = 0; i < 31; i++){
+//         *dst++ = 0x13;  
+//   } 
+//   *dst++ = (8 << 20) |   // offset
+//            (6<< 15)               |   // rs1 = t1
+//            (0 << 12)              |
+//            (0 << 7)|   // imm[4:0]
+//            0x67;
+// }
 
 void _trm_init() {
   id_print();
-  fence_init();
   int ret = main(mainargs);
   halt(ret);
 }
 
 void ssbl_load(volatile char *src) {
-  asm volatile (
-    "nop\n\t"
-  );
   volatile char *dst = &_essbl_load;
   while (dst < &_edata)
     *dst++ = *src++;
@@ -129,6 +122,20 @@ void ssbl_load(volatile char *src) {
 }
 
 void fsbl_load() {
+  // sdram_init();
+  // asm volatile("auipc t1, 0;"
+  //              "jalr  x0, 0(t0);");
+  // volatile uint32_t *dst1 = &_fence_start;
+  // for(int i = 0; i < 32; i++){
+  //     *dst1++ = (((i * 4) & 0xfe0) << 20) |   // imm[11:5]
+  //              (0 << 20)               |   // rs2 = x0
+  //              (18<< 15)               |   // rs1 = s2
+  //              (2 << 12)               |   // funct3 = sw
+  //              (((i * 4) & 0x1f) << 7) |   // imm[4:0]
+  //              0x23;  
+  //     }
+  // *dst1++ = 0x98067; // fence.i
+  // asm volatile("fence.i;");
   volatile char *src = &_efsbl_load;
   volatile char *dst = &_ssbl_load;
   while (dst < &_essbl_load)
