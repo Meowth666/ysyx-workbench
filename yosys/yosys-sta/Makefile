@@ -2,9 +2,9 @@ PROJ_PATH = $(shell pwd)
 SHELL := /bin/bash
 
 O ?= $(PROJ_PATH)/result
-DESIGN ?= ysyx_25030077
+DESIGN ?= ysyx_25030077_icache
 SDC_FILE ?= $(PROJ_PATH)/scripts/default.sdc
-RTL_FILES ?= /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/ysyx25030077.v
+RTL_FILES ?= /home/meowth/ysyx/ysyx-workbench/yosys/yosys-sta/example/icache.v
 export CLK_FREQ_MHZ ?= 300
 export CLK_PORT_NAME ?= clock
 PDK = nangate45
