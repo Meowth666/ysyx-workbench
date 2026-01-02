@@ -12,7 +12,7 @@ int main() {
     int pc[MAX_INSTR_CNT];
     // 每行的缓冲区（256字节足够容纳单行十六进制数，如64位地址仅16位字符）
     char line_buf[256];
-    FILE *file = fopen("bench.txt", "r");
+    FILE *file = fopen("LSU_sdram_trace.txt", "r");
     int i = 0;
 
     //检查文件是否成功打开
@@ -103,7 +103,11 @@ int main() {
             temp = (temp + 1) % group_size;
         }
     }
+    int miss_cnt = inst_cnt - zhong_cnt;
+    int cycs = zhong_cnt * 1 + miss_cnt * 21;
     printf("ifu请求次数:   %d   命中次数:   %d\n", inst_cnt, zhong_cnt);
     printf("icache命中率%lf\n", (double)zhong_cnt / (double)inst_cnt);
+    printf("%d\n", inst_cnt);
+    printf("需要周期： %d\n", cycs);
     return 0;
 }

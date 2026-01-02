@@ -210,6 +210,10 @@ module ysyx_25030077_arbiter(
   function int is_lsu_read();
     return {24'd0, io_axi_ar_addr[31:28], state_reg, io_axi_ar_valid, io_axi_r_valid};
   endfunction
+  export "DPI-C" function ar_addr_read;
+  function int ar_addr_read();
+    return io_axi_ar_addr;
+  endfunction
   export "DPI-C" function inst_read;
   function int inst_read();
     return io_inst;

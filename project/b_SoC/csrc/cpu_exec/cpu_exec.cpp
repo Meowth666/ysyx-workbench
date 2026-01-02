@@ -17,6 +17,7 @@ extern int reg_read_addr();
 extern int reg_read_data();
 extern int pc_read_data();
 extern int is_lsu_read();
+extern int ar_addr_read();
 extern int inst_read();
 extern int icache_read();
 extern int pc_read();
@@ -55,6 +56,7 @@ uint16_t sdram3_bank4[8210][544] = {0};
 uint32_t row[7] = {0};
 FILE *itrace=fopen("outputs/itrace.txt","w");
 FILE *mtrace=fopen("outputs/mtrace.txt","w");
+FILE *LSU_sdram_trace=fopen("outputs/LSU_sdram_trace.txt","w");
 uint32_t pc_pre;
 extern "C" void sdram_active (int bank, int addr) { 
 	// printf("sdram_active: bank = %d, addr = %d\n", bank, addr);
@@ -559,6 +561,7 @@ int cpu_exec(int n){
 			svScope scope = svGetScopeFromName("TOP.ysyxSoCFull.asic.cpu.cpu.c_arbiter");
 			svSetScope(scope);
 			uint32_t lsu_read0 = is_lsu_read();
+			uint32_t ar_addr = ar_addr_read();
 			uint32_t lsu_read  = lsu_read0 & 0xf;
 			uint32_t lsu_addr;
 			uint32_t inst = inst_read();
@@ -623,6 +626,7 @@ int cpu_exec(int n){
 					flash_cnt ++;
 				}
 				else if (lsu_addr == 10){ // sdram
+					fprintf(LSU_sdram_trace ,"%x\n", ar_addr);
 					sdram_cyc += (ix - lsu_ar) / 2;
 					sdram_cnt ++;
 				}
