@@ -552,6 +552,7 @@ int cpu_exec(int n){
 	long long request = 0;
 	long long ifu_cycs = 0;
 	long long ix_ifu_valid = 0;
+	long long ifu_sdram_cnt = 0;
 	uint32_t itrace_pc = 0;
 	for(int i = -3; i < 2 * n; i++){
 		if(ysyxSoCFull -> clock){
@@ -643,6 +644,9 @@ int cpu_exec(int n){
 				itrace_pc = pc_read();
 			}
 			if (icache_valid == 1){
+				if((itrace_pc & 0xf0000000) != 0x30000000){
+					ifu_sdram_cnt += 1;
+				}
 				ifu_cycs += (ix - ix_ifu_valid) / 2;
 				if(state == 6 && ((itrace_pc & 0xf0000000) != 0x30000000))
 					hit += 1;
@@ -692,6 +696,7 @@ int cpu_exec(int n){
 	printf("ifu请求次数:    %8lld 命中次数:%8lld   ifu请求总周期:%8lld   icache命中率:  %.4lf   AMAT:%8lld\n", request, hit, ifu_cycs, (double)hit / (double)request, ifu_cycs / request);
 	printf("TMT: %lld\n", TMT);
 	printf("未命中次数: %lld  平均等待周期： %.4lf\n", miss, (double)TMT / (double)miss);
+	printf("IFU 访问sdram次数: %lld\n", ifu_sdram_cnt);
 	fclose(itrace);
 	return 0;
 }
