@@ -540,11 +540,6 @@ long long lsu_ar;
 uint32_t inst0 = 0;
 // struct section elf_section[20];
 int cpu_exec(int n){
-	// printf("%x  %x\n", text_flash_end, text_sdram_end);
-	// printf("IN EXE Section: Name=\'%s\', Address=0x%08x, Size=%u bytes\n",
-	// 	elf_section[1].name, elf_section[1].addr, elf_section[1].size);
-	// uint32_t ssbl_start = _ssbl_load;
-	// printf("%x\n", ssbl_start);
 	int is_refresh;
 	bool is_lsu_r = false;
 	bool is_lsu_ar = false;
@@ -558,8 +553,6 @@ int cpu_exec(int n){
 	long long ifu_cycs = 0;
 	long long ix_ifu_valid = 0;
 	uint32_t itrace_pc = 0;
-	// bool is_ifu_r = false;
-	// bool is_ifu_ar = false;
 	for(int i = -3; i < 2 * n; i++){
 		if(ysyxSoCFull -> clock){
 			svScope scope = svGetScopeFromName("TOP.ysyxSoCFull.asic.cpu.cpu.c_arbiter");
@@ -616,7 +609,7 @@ int cpu_exec(int n){
 				}
 				ix0 = ix;
 			}
-			if(is_lsu_ar == false && lsu_read == 6){
+			if(is_lsu_ar == false && lsu_read == 6){ //state_reg为1时，检测到arvalid，则判定LSU要读数据
 				lsu_addr =  (lsu_read0 & 0xf0) >> 4;
 				lsu_ar = ix;
 			}
@@ -679,9 +672,6 @@ int cpu_exec(int n){
 			i = i - 1; // 如果n < 0，表示一直执行
 		}
 		ix ++;
-		// if(inst_cnts % 50000 == 0 && inst_cnts > 0){
-		// 	printf("----inst %lld----\n", inst_cnts);
-		// }
 		// if(ix == 2000000){
 		// 	flag = 1;
 		// 	success = 0;

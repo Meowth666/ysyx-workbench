@@ -12,12 +12,12 @@ int main() {
     int pc[MAX_INSTR_CNT];
     // 每行的缓冲区（256字节足够容纳单行十六进制数，如64位地址仅16位字符）
     char line_buf[256];
-    FILE *file = fopen("itrace.txt", "r");
+    FILE *file = fopen("bench.txt", "r");
     int i = 0;
 
     //检查文件是否成功打开
     if (file == NULL) {
-        perror("Error: 打开文件 outputs/itrace.txt 失败");
+        perror("Error: 打开文件失败");
         exit(EXIT_FAILURE);
     }
 
@@ -77,24 +77,27 @@ int main() {
         }
         index = ((pc[i] >> 2) & (group_cnt - 1));
         tag = pc[i] >> (2 + group_bits);
+        int flag = 0;
         for(j = 0; j < group_size; j++){
             if((tag == (cache_tag[j][index] >> 1)) && ((cache_tag[j][index] & 1) != 0)){
                 zhong_cnt++;
+                flag = 1;
                 break;
             }
             else if((cache_tag[j][index] & 1) == 0){
                 for(k = 0; k < uint_size; k++){
                     cache_tag[j][index] = (tag << 1) | 1;
-                    printf("%x\n", cache_tag[j][index]);
+                    // printf("%x\n", cache_tag[j][index]);
                     index = (index + 1) % group_cnt;
                 }
+                flag = 1;
                 break;
             }
         }
-        if(j == group_size){
+        if(flag == 0){
             for(k = 0; k < uint_size; k++){
                 cache_tag[temp][index] = (tag << 1) | 1;
-                printf("%x\n", cache_tag[temp][index]);
+                // printf("%x\n", cache_tag[temp][index]);
                 index = (index + 1) % group_cnt;
             }
             temp = (temp + 1) % group_size;
