@@ -38,9 +38,14 @@ class ysyx_25030077 extends Module {
   
   b_idu.io.rs1_data := g_gpr.io.rdata_rs1
   b_idu.io.rs2_data := g_gpr.io.rdata_rs2
-  b_idu.io.EXU_rd   := c_exu.io.out.bits.rd_addr
-  b_idu.io.LSU_rd   := d_lsu.io.out.bits.rd_addr
-  b_idu.io.WBU_rd   := e_wbu.io.rd_addr
+  b_idu.io.EXU_rd   := Mux((c_exu.io.in.bits.is_err1 || c_exu.io.in.bits.is_err2), 0.U, c_exu.io.out.bits.rd_addr)
+  b_idu.io.LSU_rd   := Mux((c_exu.io.in.bits.is_err1 || c_exu.io.in.bits.is_err2), 0.U, d_lsu.io.out.bits.rd_addr)
+  b_idu.io.WBU_rd   := Mux((c_exu.io.in.bits.is_err1 || c_exu.io.in.bits.is_err2), 0.U, e_wbu.io.rd_addr)
+  // b_idu.io.gpr_rd   := g_gpr.io.gpr_addr
+  // b_idu.io.gpr_valid := g_gpr.io.gpr_valid
+  b_idu.io.EXU_state := c_exu.io.state
+  b_idu.io.LSU_state := d_lsu.io.state
+  b_idu.io.WBU_state := e_wbu.io.state
 
   g_gpr.io.rs1_addr := b_idu.io.rs1_addr
   g_gpr.io.rs2_addr := b_idu.io.rs2_addr
@@ -50,4 +55,26 @@ class ysyx_25030077 extends Module {
   g_gpr.io.rd_valid := e_wbu.io.rd_valid
 
   e_wbu.io.out.ready := true.B
+
+  val err1_reg = RegInit(false.B)
+  val err2_reg = RegInit(false.B)
+  val pc_fix_reg = RegInit(0.U(32.W))
+
+  err1_reg := MuxCase(false.B, Seq(
+    (err1_reg ===  true.B) -> Mux((a_ifu.io.out.ready && a_ifu.io.out.valid), false.B, true.B),
+    (err1_reg === false.B) -> Mux(c_exu.io.is_err, true.B, false.B)
+  ))
+
+  err2_reg := MuxCase(false.B, Seq(
+    (err2_reg ===  true.B) -> Mux((b_idu.io.out.ready && b_idu.io.out.valid), false.B, true.B),
+    (err2_reg === false.B) -> Mux(c_exu.io.is_err, true.B, false.B)
+  ))
+
+  pc_fix_reg := Mux(c_exu.io.is_err, c_exu.io.pc_next, pc_fix_reg)
+
+  val pc = RegInit("h80000000".U(32.W))
+  pc := Mux(a_ifu.io.out.ready && a_ifu.io.out.valid, Mux(err1_reg, pc_fix_reg, pc + 4.U), pc)
+  a_ifu.io.pc := pc
+  a_ifu.io.err1_in := err1_reg
+  b_idu.io.err2_in := err2_reg
 }

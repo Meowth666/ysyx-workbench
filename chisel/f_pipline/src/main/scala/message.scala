@@ -3,7 +3,7 @@ import chisel3.util._
 class IFU_IDU extends Bundle {
   val pc   = UInt(32.W) // IFU <-> IDU
   val inst = UInt(32.W)
-  val is_err = Bool()
+  val is_err1 = Bool()
 }
 
 class IDU_EXU extends Bundle {
@@ -16,7 +16,8 @@ class IDU_EXU extends Bundle {
   val rs2_data = UInt(32.W)
   val imm_data = UInt(32.W)
   val pc_data  = UInt(32.W)
-  val is_err = Bool()
+  val is_err1 = Bool()
+  val is_err2 = Bool()
 }
 
 class EXU_LSU extends Bundle {
@@ -24,13 +25,15 @@ class EXU_LSU extends Bundle {
   val rd_addr  = UInt(5.W)
   val LSU_type = UInt(4.W)
   val rs2_data = UInt(32.W)
-  val is_err = Bool()
+  val is_err1 = Bool()
+  val is_err2 = Bool()
 }
 
 class LSU_WBU extends Bundle {
   val rd_addr = UInt(5.W) // LSU <-> WBU
   val rd_data = UInt(32.W) // EXU <-> LSU
-  val is_err = Bool()
+  val is_err1 = Bool()
+  val is_err2 = Bool()
 }
 
 class END extends Bundle {

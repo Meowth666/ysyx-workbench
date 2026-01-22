@@ -5,6 +5,7 @@ class ysyx_25030077_IFU extends Module {
   val io = IO(new Bundle {
     val rd_Req = Flipped(Decoupled(new addrReq))
     val ar  = Decoupled(new InstReq)         // 向 SRAM 发起请求
+    
   })
   dontTouchBundleRecursive(io)
   // Queue 打断环路（深度1即可）

@@ -21,6 +21,10 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077_IDU|ysyx_25030077_IDU>io_in_bits_is_err1"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077_IDU|ysyx_25030077_IDU>io_out_ready"
   },
   {
@@ -65,6 +69,14 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077_IDU|ysyx_25030077_IDU>io_out_bits_is_err1"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077_IDU|ysyx_25030077_IDU>io_out_bits_is_err2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077_IDU|ysyx_25030077_IDU>io_rs1_addr"
   },
   {
@@ -90,6 +102,22 @@
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077_IDU|ysyx_25030077_IDU>io_WBU_rd"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077_IDU|ysyx_25030077_IDU>io_EXU_state"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077_IDU|ysyx_25030077_IDU>io_LSU_state"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077_IDU|ysyx_25030077_IDU>io_WBU_state"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077_IDU|ysyx_25030077_IDU>io_err2_in"
   },
   {
     "class":"firrtl.transforms.BlackBoxTargetDirAnno",
@@ -132,6 +160,20 @@
   },
   {
     "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~ysyx_25030077_IDU|ysyx_25030077_IDU>io_out_bits_is_err2",
+    "sources":[
+      "~ysyx_25030077_IDU|ysyx_25030077_IDU>io_err2_in"
+    ]
+  },
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~ysyx_25030077_IDU|ysyx_25030077_IDU>io_out_bits_is_err1",
+    "sources":[
+      "~ysyx_25030077_IDU|ysyx_25030077_IDU>io_in_bits_is_err1"
+    ]
+  },
+  {
+    "class":"firrtl.transforms.CombinationalPath",
     "sink":"~ysyx_25030077_IDU|ysyx_25030077_IDU>io_out_bits_exu_type",
     "sources":[
       "~ysyx_25030077_IDU|ysyx_25030077_IDU>io_in_bits_inst"
@@ -142,6 +184,13 @@
     "sink":"~ysyx_25030077_IDU|ysyx_25030077_IDU>io_out_bits_pc_data",
     "sources":[
       "~ysyx_25030077_IDU|ysyx_25030077_IDU>io_in_bits_pc"
+    ]
+  },
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~ysyx_25030077_IDU|ysyx_25030077_IDU>io_out_valid",
+    "sources":[
+      "~ysyx_25030077_IDU|ysyx_25030077_IDU>reset"
     ]
   },
   {

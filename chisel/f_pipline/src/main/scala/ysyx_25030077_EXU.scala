@@ -7,6 +7,7 @@ class ysyx_25030077_EXU extends Module {
     val out = Decoupled(new EXU_LSU)
     val pc_next = Output(UInt(32.W))
     val is_err = Output(Bool())
+    val state = Output(Bool())
   })
   ChiselHelpers.dontTouchBundleRecursive(io)
   val data1 = MuxCase(io.in.bits.rs1_data, Seq(
@@ -14,13 +15,12 @@ class ysyx_25030077_EXU extends Module {
     (io.in.bits.data_type === 4.U(4.W)) -> io.in.bits.pc_data, 
     (io.in.bits.data_type === 5.U(4.W)) -> io.in.bits.pc_data, 
     (io.in.bits.data_type === 6.U(4.W)) -> io.in.bits.pc_data, 
-    (io.in.bits.data_type === 7.U(4.W)) -> 0.U
   ))
   val data2 = MuxCase(io.in.bits.imm_data, Seq(
     (io.in.bits.data_type === 3.U(4.W)) -> io.in.bits.rs2_data,        
     (io.in.bits.data_type === 5.U(4.W)) -> 4.U,
     (io.in.bits.data_type === 6.U(4.W)) -> 4.U,
-    (io.in.bits.data_type === 7.U(4.W)) -> 0.U
+    (io.in.bits.data_type === 7.U(4.W)) -> io.in.bits.rs2_data
   ))
   val pc_est = io.in.bits.pc_data + 4.U
   val pc_next = MuxCase(pc_est, Seq(
@@ -44,14 +44,30 @@ class ysyx_25030077_EXU extends Module {
     (io.in.bits.exu_type === 8.U(4.W)) -> Cat(0.U(32.W), (data1 < data2)), 
     (io.in.bits.exu_type === 9.U(4.W)) -> (data1 -& data2)
   ))
+  val valid_out_reg = RegInit(false.B)
+  valid_out_reg := MuxCase(false.B, Seq(
+    valid_out_reg -> Mux(io.out.ready, false.B, true.B),
+    (valid_out_reg === false.B) -> Mux(io.in.valid, true.B, false.B)
+  ))
+  io.out.valid := valid_out_reg
   io.in.ready := true.B
-  io.out.valid := io.in.valid
   io.out.bits.result := out33(31,0)
   io.out.bits.rd_addr := io.in.bits.rd_addr
   io.out.bits.LSU_type := io.in.bits.LSU_type
   io.out.bits.rs2_data := io.in.bits.rs2_data
+  io.out.bits.is_err1 := io.in.bits.is_err1
+  io.out.bits.is_err2 := io.in.bits.is_err2
+  val is_err_in = ~(io.in.bits.is_err1 || io.in.bits.is_err2)
   io.pc_next := pc_next
-
-  val is_err = (pc_est =/= pc_next)
+  val is_err0_dly = RegInit(false.B)
+  val is_err0 = (pc_est =/= pc_next) && is_err_in
+  is_err0_dly := is_err0
+  io.is_err := is_err0 && (~is_err0_dly)
+  val state_reg = RegInit(false.B)
+  state_reg := MuxCase(false.B, Seq(
+    state_reg -> Mux(io.out.valid && io.out.ready, false.B, true.B),
+    (state_reg === false.B) -> Mux(io.in.valid && io.in.ready, true.B, false.B)
+  ))
+  io.state := state_reg && is_err_in
 }
 

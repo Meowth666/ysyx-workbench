@@ -11,7 +11,11 @@ class ysyx_25030077_IDU extends Module {
     val rs2_data = Input(UInt(32.W))
     val EXU_rd   = Input(UInt(5.W))
     val LSU_rd   = Input(UInt(5.W)) 
-    val WBU_rd   = Input(UInt(5.W))  
+    val WBU_rd   = Input(UInt(5.W)) 
+    val EXU_state = Input(Bool())
+    val LSU_state = Input(Bool())
+    val WBU_state = Input(Bool())
+    val err2_in = Input(Bool()) 
   })
   ChiselHelpers.dontTouchBundleRecursive(io)
 
@@ -62,15 +66,16 @@ class ysyx_25030077_IDU extends Module {
   val isebreak  = io.in.bits.inst === "b00000000000100000000000001110011".U
 
   val inst_type = MuxCase(0.U(4.W), Seq(
-    (io.in.bits.inst(6,0) === "b0010011".U)  -> 1.U(4.W), //addi,xori,ori,andi,slli,srli,srai,slti,sltiu
-    (io.in.bits.inst(6,0) === "b0110111".U)  -> 2.U(4.W), //lui
-    (io.in.bits.inst(6,0) === "b0110011".U)  -> 3.U(4.W), //add,sub,xor,or,and,sll,srl,sra,slt,sltu
-    (io.in.bits.inst(6,0) === "b0010111".U)  -> 4.U(4.W), //auipc
-    (io.in.bits.inst(6,0) === "b1101111".U)  -> 5.U(4.W), //jal
-    (io.in.bits.inst(6,0) === "b1100111".U)  -> 6.U(4.W), //jalr
-    (io.in.bits.inst(6,0) === "b1100011".U)  -> 7.U(4.W), //beq,bne,blt,bge,bltu,bgeu
-    (io.in.bits.inst(6,0) === "b0100011".U)  -> 8.U(4.W), //sw,sh,sb
-    (io.in.bits.inst(6,0) === "b0000011".U)  -> 9.U(4.W), //lb,lbu,lh,lhu,lw
+    (isaddi || isxori || isori || isandi || isslti || issltiu)  -> 1.U(4.W), //addi,xori,ori,andi,slti,sltiu
+    (islui)  -> 2.U(4.W), //lui
+    (isadd || isxor || isor || isand || isslt || issltu || issll || issra || issub || issrl)  -> 3.U(4.W), //add,sub,xor,or,and,sll,srl,sra,slt,sltu
+    (isauipc)  -> 4.U(4.W), //auipc
+    (isjal)  -> 5.U(4.W), //jal
+    (isjalr)  -> 6.U(4.W), //jalr
+    (isbeq || isbne || isblt || isbge || isbltu || isbgeu)  -> 7.U(4.W), //beq,bne,blt,bge,bltu,bgeu
+    (issw || issb || issh)  -> 8.U(4.W), //sw,sh,sb
+    (islw || islb || islh || islbu || islhu)  -> 9.U(4.W), //lb,lbu,lh,lhu,lw
+    (issrai || isslli || issrli)  -> 10.U(4.W) //slli,srli,srai
   ))
   
   val imm = MuxCase(0.U(32.W), Seq(
@@ -82,6 +87,7 @@ class ysyx_25030077_IDU extends Module {
     (inst_type === 7.U(4.W)) -> Cat(Fill(19, io.in.bits.inst(31)), io.in.bits.inst(31), io.in.bits.inst(7), io.in.bits.inst(30,25), io.in.bits.inst(11,8), 0.U), // B 型
     (inst_type === 8.U(4.W)) -> Cat(Fill(20, io.in.bits.inst(31)), io.in.bits.inst(31,25), io.in.bits.inst(11,7)), // S 型
     (inst_type === 9.U(4.W)) -> Cat(Fill(20, io.in.bits.inst(31)), io.in.bits.inst(31,20)), // I 型
+    (inst_type ===10.U(4.W)) -> io.in.bits.inst(25,20), // I 型
   ))
 
   io.out.bits.exu_type := MuxCase(0.U(4.W), Seq(
@@ -124,18 +130,25 @@ class ysyx_25030077_IDU extends Module {
   io.out.bits.rs2_data := io.rs2_data
   io.out.bits.data_type := inst_type
   io.out.bits.pc_data  := io.in.bits.pc
+  io.out.bits.is_err1 := io.in.bits.is_err1
 
-
-  val isRAW = (io.rs1_addr =/= 0.U && (io.rs1_addr === io.EXU_rd || io.rs1_addr === io.LSU_rd || io.rs1_addr === io.WBU_rd)) ||
-              (io.rs2_addr =/= 0.U && (io.rs2_addr === io.EXU_rd || io.rs2_addr === io.LSU_rd || io.rs2_addr === io.WBU_rd))
+  val isRAW1 = (io.EXU_state === true.B) && (io.in.bits.is_err1 === false.B) && ((io.rs1_addr =/= 0.U && (io.rs1_addr === io.EXU_rd)) || (io.rs2_addr =/= 0.U && (io.rs2_addr === io.EXU_rd)))
+  val isRAW2 = (io.LSU_state === true.B) && (io.in.bits.is_err1 === false.B) && ((io.rs1_addr =/= 0.U && (io.rs1_addr === io.LSU_rd)) || (io.rs2_addr =/= 0.U && (io.rs2_addr === io.LSU_rd)))
+  val isRAW3 = (io.WBU_state === true.B) && (io.in.bits.is_err1 === false.B) && ((io.rs1_addr =/= 0.U && (io.rs1_addr === io.WBU_rd)) || (io.rs2_addr =/= 0.U && (io.rs2_addr === io.WBU_rd)))
 
   val ready_in_reg = RegInit(true.B)
+  val ready_in_reg_dly = RegInit(false.B)
   ready_in_reg := MuxCase(false.B, Seq(
-    ready_in_reg -> false.B,
-    (ready_in_reg === false.B) -> MuxCase(Mux(io.in.valid, true.B, false.B), Seq(
-                                  isRAW  -> Mux(io.in.valid && ((io.WBU_rd === io.rs1_addr) || (io.WBU_rd === io.rs2_addr)), true.B, false.B)
-                                ))
+    ready_in_reg -> Mux(io.in.valid, false.B, true.B),
+    (ready_in_reg === false.B) -> Mux((isRAW1 || isRAW2 || isRAW3) === false.B, true.B, false.B)
   ))
+  ready_in_reg_dly := ready_in_reg
+  // valid_out_reg := MuxCase(false.B, Seq(
+  //   valid_out_reg -> Mux(io.out.ready, false.B, true.B),
+  //   (valid_out_reg === false.B) -> MuxCase(true.B, Seq(
+  //                                   isRAW  -> Mux(io.in.valid && ((io.WBU_rd === io.rs1_addr) || (io.WBU_rd === io.rs2_addr)), true.B, false.B)
+  //                                 ))
+  // ))
   io.out.bits.pc_next_type := MuxCase(0.U, Seq(
     isjal  -> 1.U(4.W),
     isjalr -> 2.U(4.W),
@@ -146,8 +159,9 @@ class ysyx_25030077_IDU extends Module {
     isbltu -> 7.U(4.W),
     isbgeu -> 8.U(4.W)
   ))
-  io.out.valid := ready_in_reg
+  io.out.valid := ((ready_in_reg && (~ready_in_reg_dly)) && (reset.asBool === false.B))
   // ready 反压
   io.in.ready := ready_in_reg
+  io.out.bits.is_err2 := io.err2_in
 }
 
