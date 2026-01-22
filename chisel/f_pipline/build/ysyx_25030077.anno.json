@@ -21,6 +21,14 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_WBU>io_in_bits_is_err1"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_WBU>io_in_bits_is_err2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077|ysyx_25030077_WBU>io_rd_addr"
   },
   {
@@ -38,6 +46,10 @@
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077|ysyx_25030077_WBU>io_out_valid"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_WBU>io_state"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -65,6 +77,14 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_LSU>io_in_bits_is_err1"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_LSU>io_in_bits_is_err2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077|ysyx_25030077_LSU>io_out_ready"
   },
   {
@@ -78,6 +98,18 @@
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077|ysyx_25030077_LSU>io_out_bits_rd_data"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_LSU>io_out_bits_is_err1"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_LSU>io_out_bits_is_err2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_LSU>io_state"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -125,6 +157,14 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_EXU>io_in_bits_is_err1"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_EXU>io_in_bits_is_err2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077|ysyx_25030077_EXU>io_out_ready"
   },
   {
@@ -149,7 +189,23 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_EXU>io_out_bits_is_err1"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_EXU>io_out_bits_is_err2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077|ysyx_25030077_EXU>io_pc_next"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_EXU>io_is_err"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_EXU>io_state"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -197,6 +253,10 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_IDU>io_in_bits_is_err1"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077|ysyx_25030077_IDU>io_out_ready"
   },
   {
@@ -241,6 +301,14 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_IDU>io_out_bits_is_err1"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_IDU>io_out_bits_is_err2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077|ysyx_25030077_IDU>io_rs1_addr"
   },
   {
@@ -269,6 +337,30 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_IDU>io_EXU_state"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_IDU>io_LSU_state"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_IDU>io_WBU_state"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_IDU>io_err2_in"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_IFU>io_err1_in"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_IFU>io_pc"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077|ysyx_25030077_IFU>io_out_ready"
   },
   {
@@ -282,6 +374,10 @@
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077|ysyx_25030077_IFU>io_out_bits_inst"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_IFU>io_out_bits_is_err1"
   },
   {
     "class":"firrtl.transforms.BlackBoxTargetDirAnno",

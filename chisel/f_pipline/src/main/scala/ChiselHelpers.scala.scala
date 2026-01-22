@@ -22,11 +22,7 @@ object ChiselHelpers {
     // ready 反向传播
     prevOut.ready := thisIn.ready
     // valid 寄存器
-    val validReg = RegInit(false.B)
-    when (thisIn.ready) {
-      validReg := prevOut.valid
-    }
-    thisIn.valid := validReg
+    thisIn.valid := prevOut.valid
     // 数据寄存（只有 fire 才更新）
     thisIn.bits := RegEnable(prevOut.bits, prevOut.valid && thisIn.ready)
   }
