@@ -9,8 +9,8 @@ module ysyx_25030077_IFU(
   output [31:0] io_out_bits_inst,
   output        io_out_bits_is_err1
 );
-  assign io_out_valid = 1'h1; // @[ysyx_25030077_IFU.scala 12:16]
-  assign io_out_bits_pc = io_pc; // @[ysyx_25030077_IFU.scala 13:20]
-  assign io_out_bits_inst = io_pc; // @[ysyx_25030077_IFU.scala 14:20]
-  assign io_out_bits_is_err1 = io_err1_in; // @[ysyx_25030077_IFU.scala 15:23]
+  assign io_out_valid = 1'h1; // @[ysyx_25030077_IFU.scala 20:16]
+  assign io_out_bits_pc = io_pc; // @[ysyx_25030077_IFU.scala 21:20]
+  assign io_out_bits_inst = io_pc; // @[ysyx_25030077_IFU.scala 22:20]
+  assign io_out_bits_is_err1 = io_err1_in; // @[ysyx_25030077_IFU.scala 23:23]
 endmodule

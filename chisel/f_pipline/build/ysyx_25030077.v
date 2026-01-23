@@ -7,10 +7,10 @@ module ysyx_25030077_IFU(
   output [31:0] io_out_bits_inst,
   output        io_out_bits_is_err1
 );
-  assign io_out_valid = 1'h1; // @[ysyx_25030077_IFU.scala 12:16]
-  assign io_out_bits_pc = io_pc; // @[ysyx_25030077_IFU.scala 13:20]
-  assign io_out_bits_inst = io_pc; // @[ysyx_25030077_IFU.scala 14:20]
-  assign io_out_bits_is_err1 = io_err1_in; // @[ysyx_25030077_IFU.scala 15:23]
+  assign io_out_valid = 1'h1; // @[ysyx_25030077_IFU.scala 20:16]
+  assign io_out_bits_pc = io_pc; // @[ysyx_25030077_IFU.scala 21:20]
+  assign io_out_bits_inst = io_pc; // @[ysyx_25030077_IFU.scala 22:20]
+  assign io_out_bits_is_err1 = io_err1_in; // @[ysyx_25030077_IFU.scala 23:23]
 endmodule
 module ysyx_25030077_IDU(
   input         clock,
@@ -48,6 +48,7 @@ module ysyx_25030077_IDU(
 `ifdef RANDOMIZE_REG_INIT
   reg [31:0] _RAND_0;
   reg [31:0] _RAND_1;
+  reg [31:0] _RAND_2;
 `endif // RANDOMIZE_REG_INIT
   wire [9:0] _isaddi_T_2 = {io_in_bits_inst[14:12],io_in_bits_inst[6:0]}; // @[Cat.scala 31:58]
   wire  isaddi = _isaddi_T_2 == 10'h13; // @[ysyx_25030077_IDU.scala 22:66]
@@ -167,12 +168,18 @@ module ysyx_25030077_IDU(
     io_LSU_rd); // @[ysyx_25030077_IDU.scala 136:78]
   wire  isRAW3 = io_WBU_state & _isRAW1_T_1 & (_isRAW1_T_3 & io_rs1_addr == io_WBU_rd | _isRAW1_T_6 & io_rs2_addr ==
     io_WBU_rd); // @[ysyx_25030077_IDU.scala 137:78]
+  reg  valid_out_reg; // @[ysyx_25030077_IDU.scala 138:30]
   reg  ready_in_reg; // @[ysyx_25030077_IDU.scala 139:29]
-  reg  ready_in_reg_dly; // @[ysyx_25030077_IDU.scala 140:33]
-  wire  _ready_in_reg_T = io_in_valid ? 1'h0 : 1'h1; // @[ysyx_25030077_IDU.scala 142:24]
-  wire  _ready_in_reg_T_1 = ~ready_in_reg; // @[ysyx_25030077_IDU.scala 143:19]
-  wire  _ready_in_reg_T_4 = ~(isRAW1 | isRAW2 | isRAW3); // @[ysyx_25030077_IDU.scala 143:68]
-  wire  _ready_in_reg_T_7 = ready_in_reg ? _ready_in_reg_T : _ready_in_reg_T_1 & _ready_in_reg_T_4; // @[Mux.scala 101:16]
+  wire  _ready_in_reg_T = io_in_valid ? 1'h0 : 1'h1; // @[ysyx_25030077_IDU.scala 141:24]
+  wire  _ready_in_reg_T_1 = ~ready_in_reg; // @[ysyx_25030077_IDU.scala 142:19]
+  wire  _ready_in_reg_T_5 = ~(isRAW1 | isRAW2 | isRAW3); // @[ysyx_25030077_IDU.scala 142:104]
+  wire  _ready_in_reg_T_6 = valid_out_reg & io_out_ready & ~(isRAW1 | isRAW2 | isRAW3); // @[ysyx_25030077_IDU.scala 142:71]
+  wire  _ready_in_reg_T_9 = ready_in_reg ? _ready_in_reg_T : _ready_in_reg_T_1 & _ready_in_reg_T_6; // @[Mux.scala 101:16]
+  reg  valid_in_reg; // @[ysyx_25030077_IDU.scala 144:29]
+  wire  _valid_in_reg_T_4 = ~valid_in_reg; // @[ysyx_25030077_IDU.scala 147:19]
+  wire  _valid_in_reg_T_5 = io_in_valid & ready_in_reg; // @[ysyx_25030077_IDU.scala 147:51]
+  wire  _valid_out_reg_T_1 = ~valid_out_reg; // @[ysyx_25030077_IDU.scala 151:20]
+  wire  _valid_out_reg_T_5 = valid_in_reg & _ready_in_reg_T_5; // @[ysyx_25030077_IDU.scala 151:53]
   wire [3:0] _io_out_bits_pc_next_type_T = isbgeu ? 4'h8 : 4'h0; // @[Mux.scala 101:16]
   wire [3:0] _io_out_bits_pc_next_type_T_1 = isbltu ? 4'h7 : _io_out_bits_pc_next_type_T; // @[Mux.scala 101:16]
   wire [3:0] _io_out_bits_pc_next_type_T_2 = isbge ? 4'h6 : _io_out_bits_pc_next_type_T_1; // @[Mux.scala 101:16]
@@ -180,8 +187,8 @@ module ysyx_25030077_IDU(
   wire [3:0] _io_out_bits_pc_next_type_T_4 = isbne ? 4'h4 : _io_out_bits_pc_next_type_T_3; // @[Mux.scala 101:16]
   wire [3:0] _io_out_bits_pc_next_type_T_5 = isbeq ? 4'h3 : _io_out_bits_pc_next_type_T_4; // @[Mux.scala 101:16]
   wire [3:0] _io_out_bits_pc_next_type_T_6 = isjalr ? 4'h2 : _io_out_bits_pc_next_type_T_5; // @[Mux.scala 101:16]
-  assign io_in_ready = ready_in_reg; // @[ysyx_25030077_IDU.scala 164:15]
-  assign io_out_valid = ready_in_reg & ~ready_in_reg_dly & ~reset; // @[ysyx_25030077_IDU.scala 162:58]
+  assign io_in_ready = ready_in_reg; // @[ysyx_25030077_IDU.scala 165:15]
+  assign io_out_valid = valid_out_reg; // @[ysyx_25030077_IDU.scala 163:16]
   assign io_out_bits_exu_type = _io_out_bits_exu_type_T ? 4'h1 : _io_out_bits_exu_type_T_15; // @[Mux.scala 101:16]
   assign io_out_bits_data_type = _inst_type_T_4 ? 4'h1 : _inst_type_T_35; // @[Mux.scala 101:16]
   assign io_out_bits_pc_next_type = isjal ? 4'h1 : _io_out_bits_pc_next_type_T_6; // @[Mux.scala 101:16]
@@ -192,15 +199,32 @@ module ysyx_25030077_IDU(
   assign io_out_bits_imm_data = _imm_T ? _imm_T_5 : _imm_T_60; // @[Mux.scala 101:16]
   assign io_out_bits_pc_data = io_in_bits_pc; // @[ysyx_25030077_IDU.scala 132:24]
   assign io_out_bits_is_err1 = io_in_bits_is_err1; // @[ysyx_25030077_IDU.scala 133:23]
-  assign io_out_bits_is_err2 = io_err2_in; // @[ysyx_25030077_IDU.scala 165:23]
+  assign io_out_bits_is_err2 = io_err2_in; // @[ysyx_25030077_IDU.scala 166:23]
   assign io_rs1_addr = _io_rs1_addr_T_5 ? 5'h0 : io_in_bits_inst[19:15]; // @[Mux.scala 101:16]
   assign io_rs2_addr = _io_rs2_addr_T_4 ? io_in_bits_inst[24:20] : 5'h0; // @[Mux.scala 101:16]
   always @(posedge clock) begin
-    ready_in_reg <= reset | _ready_in_reg_T_7; // @[ysyx_25030077_IDU.scala 139:{29,29} 141:16]
-    if (reset) begin // @[ysyx_25030077_IDU.scala 140:33]
-      ready_in_reg_dly <= 1'h0; // @[ysyx_25030077_IDU.scala 140:33]
+    if (reset) begin // @[ysyx_25030077_IDU.scala 138:30]
+      valid_out_reg <= 1'h0; // @[ysyx_25030077_IDU.scala 138:30]
+    end else if (valid_out_reg) begin // @[Mux.scala 101:16]
+      if (io_out_ready) begin // @[ysyx_25030077_IDU.scala 150:25]
+        valid_out_reg <= 1'h0;
+      end else begin
+        valid_out_reg <= 1'h1;
+      end
     end else begin
-      ready_in_reg_dly <= ready_in_reg; // @[ysyx_25030077_IDU.scala 145:20]
+      valid_out_reg <= _valid_out_reg_T_1 & _valid_out_reg_T_5;
+    end
+    ready_in_reg <= reset | _ready_in_reg_T_9; // @[ysyx_25030077_IDU.scala 139:{29,29} 140:16]
+    if (reset) begin // @[ysyx_25030077_IDU.scala 144:29]
+      valid_in_reg <= 1'h0; // @[ysyx_25030077_IDU.scala 144:29]
+    end else if (valid_in_reg) begin // @[Mux.scala 101:16]
+      if (_ready_in_reg_T_5) begin // @[ysyx_25030077_IDU.scala 146:24]
+        valid_in_reg <= 1'h0;
+      end else begin
+        valid_in_reg <= 1'h1;
+      end
+    end else begin
+      valid_in_reg <= _valid_in_reg_T_4 & _valid_in_reg_T_5;
     end
   end
 // Register and memory initialization
@@ -240,9 +264,11 @@ initial begin
     `endif
 `ifdef RANDOMIZE_REG_INIT
   _RAND_0 = {1{`RANDOM}};
-  ready_in_reg = _RAND_0[0:0];
+  valid_out_reg = _RAND_0[0:0];
   _RAND_1 = {1{`RANDOM}};
-  ready_in_reg_dly = _RAND_1[0:0];
+  ready_in_reg = _RAND_1[0:0];
+  _RAND_2 = {1{`RANDOM}};
+  valid_in_reg = _RAND_2[0:0];
 `endif // RANDOMIZE_REG_INIT
   `endif // RANDOMIZE
 end // initial
@@ -756,6 +782,7 @@ module ysyx_25030077_EXU(
   reg [31:0] _RAND_0;
   reg [31:0] _RAND_1;
   reg [31:0] _RAND_2;
+  reg [31:0] _RAND_3;
 `endif // RANDOMIZE_REG_INIT
   wire  _data1_T = io_in_bits_data_type == 4'h2; // @[ysyx_25030077_EXU.scala 14:27]
   wire  _data1_T_1 = io_in_bits_data_type == 4'h4; // @[ysyx_25030077_EXU.scala 15:27]
@@ -838,23 +865,28 @@ module ysyx_25030077_EXU(
   wire [63:0] out33 = _out33_T_1 ? {{31'd0}, _out33_T_3} : _out33_T_41; // @[Mux.scala 101:16]
   reg  valid_out_reg; // @[ysyx_25030077_EXU.scala 47:30]
   wire  _valid_out_reg_T_1 = ~valid_out_reg; // @[ysyx_25030077_EXU.scala 50:20]
-  wire  is_err_in = ~(io_in_bits_is_err1 | io_in_bits_is_err2); // @[ysyx_25030077_EXU.scala 60:19]
-  reg  is_err0_dly; // @[ysyx_25030077_EXU.scala 62:28]
-  wire  is_err0 = pc_est != pc_next & is_err_in; // @[ysyx_25030077_EXU.scala 63:38]
-  reg  state_reg; // @[ysyx_25030077_EXU.scala 66:26]
-  wire  _state_reg_T_2 = ~state_reg; // @[ysyx_25030077_EXU.scala 69:16]
-  wire  _state_reg_T_3 = io_in_valid & io_in_ready; // @[ysyx_25030077_EXU.scala 69:48]
-  assign io_in_ready = 1'h1; // @[ysyx_25030077_EXU.scala 53:15]
-  assign io_out_valid = valid_out_reg; // @[ysyx_25030077_EXU.scala 52:16]
-  assign io_out_bits_result = out33[31:0]; // @[ysyx_25030077_EXU.scala 54:30]
-  assign io_out_bits_rd_addr = io_in_bits_rd_addr; // @[ysyx_25030077_EXU.scala 55:23]
-  assign io_out_bits_LSU_type = io_in_bits_LSU_type; // @[ysyx_25030077_EXU.scala 56:24]
-  assign io_out_bits_rs2_data = io_in_bits_rs2_data; // @[ysyx_25030077_EXU.scala 57:24]
-  assign io_out_bits_is_err1 = io_in_bits_is_err1; // @[ysyx_25030077_EXU.scala 58:23]
-  assign io_out_bits_is_err2 = io_in_bits_is_err2; // @[ysyx_25030077_EXU.scala 59:23]
+  reg  ready_in_reg; // @[ysyx_25030077_EXU.scala 52:29]
+  wire  _ready_in_reg_T = io_in_valid ? 1'h0 : 1'h1; // @[ysyx_25030077_EXU.scala 54:24]
+  wire  _ready_in_reg_T_1 = ~ready_in_reg; // @[ysyx_25030077_EXU.scala 55:19]
+  wire  _ready_in_reg_T_2 = valid_out_reg & io_out_ready; // @[ysyx_25030077_EXU.scala 55:53]
+  wire  _ready_in_reg_T_5 = ready_in_reg ? _ready_in_reg_T : _ready_in_reg_T_1 & _ready_in_reg_T_2; // @[Mux.scala 101:16]
+  wire  is_err_in = ~(io_in_bits_is_err1 | io_in_bits_is_err2); // @[ysyx_25030077_EXU.scala 65:19]
+  reg  is_err0_dly; // @[ysyx_25030077_EXU.scala 67:28]
+  wire  is_err0 = pc_est != pc_next & is_err_in; // @[ysyx_25030077_EXU.scala 68:38]
+  reg  state_reg; // @[ysyx_25030077_EXU.scala 71:26]
+  wire  _state_reg_T_2 = ~state_reg; // @[ysyx_25030077_EXU.scala 74:16]
+  wire  _state_reg_T_3 = io_in_valid & io_in_ready; // @[ysyx_25030077_EXU.scala 74:48]
+  assign io_in_ready = ready_in_reg; // @[ysyx_25030077_EXU.scala 58:15]
+  assign io_out_valid = valid_out_reg; // @[ysyx_25030077_EXU.scala 57:16]
+  assign io_out_bits_result = out33[31:0]; // @[ysyx_25030077_EXU.scala 59:30]
+  assign io_out_bits_rd_addr = io_in_bits_rd_addr; // @[ysyx_25030077_EXU.scala 60:23]
+  assign io_out_bits_LSU_type = io_in_bits_LSU_type; // @[ysyx_25030077_EXU.scala 61:24]
+  assign io_out_bits_rs2_data = io_in_bits_rs2_data; // @[ysyx_25030077_EXU.scala 62:24]
+  assign io_out_bits_is_err1 = io_in_bits_is_err1; // @[ysyx_25030077_EXU.scala 63:23]
+  assign io_out_bits_is_err2 = io_in_bits_is_err2; // @[ysyx_25030077_EXU.scala 64:23]
   assign io_pc_next = _pc_next_T ? _pc_next_T_2 : _pc_next_T_49; // @[Mux.scala 101:16]
-  assign io_is_err = is_err0 & ~is_err0_dly; // @[ysyx_25030077_EXU.scala 65:24]
-  assign io_state = state_reg & is_err_in; // @[ysyx_25030077_EXU.scala 71:25]
+  assign io_is_err = is_err0 & ~is_err0_dly; // @[ysyx_25030077_EXU.scala 70:24]
+  assign io_state = state_reg & is_err_in; // @[ysyx_25030077_EXU.scala 76:25]
   always @(posedge clock) begin
     if (reset) begin // @[ysyx_25030077_EXU.scala 47:30]
       valid_out_reg <= 1'h0; // @[ysyx_25030077_EXU.scala 47:30]
@@ -867,15 +899,16 @@ module ysyx_25030077_EXU(
     end else begin
       valid_out_reg <= _valid_out_reg_T_1 & io_in_valid;
     end
-    if (reset) begin // @[ysyx_25030077_EXU.scala 62:28]
-      is_err0_dly <= 1'h0; // @[ysyx_25030077_EXU.scala 62:28]
+    ready_in_reg <= reset | _ready_in_reg_T_5; // @[ysyx_25030077_EXU.scala 52:{29,29} 53:16]
+    if (reset) begin // @[ysyx_25030077_EXU.scala 67:28]
+      is_err0_dly <= 1'h0; // @[ysyx_25030077_EXU.scala 67:28]
     end else begin
-      is_err0_dly <= is_err0; // @[ysyx_25030077_EXU.scala 64:15]
+      is_err0_dly <= is_err0; // @[ysyx_25030077_EXU.scala 69:15]
     end
-    if (reset) begin // @[ysyx_25030077_EXU.scala 66:26]
-      state_reg <= 1'h0; // @[ysyx_25030077_EXU.scala 66:26]
+    if (reset) begin // @[ysyx_25030077_EXU.scala 71:26]
+      state_reg <= 1'h0; // @[ysyx_25030077_EXU.scala 71:26]
     end else if (state_reg) begin // @[Mux.scala 101:16]
-      if (io_out_valid & io_out_ready) begin // @[ysyx_25030077_EXU.scala 68:21]
+      if (io_out_valid & io_out_ready) begin // @[ysyx_25030077_EXU.scala 73:21]
         state_reg <= 1'h0;
       end else begin
         state_reg <= 1'h1;
@@ -923,9 +956,11 @@ initial begin
   _RAND_0 = {1{`RANDOM}};
   valid_out_reg = _RAND_0[0:0];
   _RAND_1 = {1{`RANDOM}};
-  is_err0_dly = _RAND_1[0:0];
+  ready_in_reg = _RAND_1[0:0];
   _RAND_2 = {1{`RANDOM}};
-  state_reg = _RAND_2[0:0];
+  is_err0_dly = _RAND_2[0:0];
+  _RAND_3 = {1{`RANDOM}};
+  state_reg = _RAND_3[0:0];
 `endif // RANDOMIZE_REG_INIT
   `endif // RANDOMIZE
 end // initial
@@ -1317,11 +1352,12 @@ module ysyx_25030077(
   reg  err1_reg; // @[ysyx_25030077.scala 59:25]
   reg  err2_reg; // @[ysyx_25030077.scala 60:25]
   reg [31:0] pc_fix_reg; // @[ysyx_25030077.scala 61:27]
+  wire  _err1_reg_T_1 = a_ifu_io_out_ready & a_ifu_io_out_valid; // @[ysyx_25030077.scala 64:55]
   wire  _err1_reg_T_3 = ~err1_reg; // @[ysyx_25030077.scala 65:15]
   wire  _err1_reg_T_4 = c_exu_io_is_err; // @[ysyx_25030077.scala 65:34]
   wire  _err2_reg_T_3 = ~err2_reg; // @[ysyx_25030077.scala 70:15]
   reg [31:0] pc; // @[ysyx_25030077.scala 75:19]
-  wire [31:0] _pc_T_1 = pc + 32'h4; // @[ysyx_25030077.scala 76:62]
+  wire [31:0] _pc_T_2 = pc + 32'h4; // @[ysyx_25030077.scala 76:84]
   ysyx_25030077_IFU a_ifu ( // @[ysyx_25030077.scala 7:21]
     .io_err1_in(a_ifu_io_err1_in),
     .io_pc(a_ifu_io_pc),
@@ -1599,11 +1635,11 @@ module ysyx_25030077(
     end
     if (reset) begin // @[ysyx_25030077.scala 75:19]
       pc <= 32'h80000000; // @[ysyx_25030077.scala 75:19]
-    end else if (a_ifu_io_out_ready) begin // @[ysyx_25030077.scala 76:12]
-      if (err1_reg) begin // @[ysyx_25030077.scala 76:36]
+    end else if (_err1_reg_T_1) begin // @[ysyx_25030077.scala 76:12]
+      if (err1_reg) begin // @[ysyx_25030077.scala 76:58]
         pc <= pc_fix_reg;
       end else begin
-        pc <= _pc_T_1;
+        pc <= _pc_T_2;
       end
     end
   end

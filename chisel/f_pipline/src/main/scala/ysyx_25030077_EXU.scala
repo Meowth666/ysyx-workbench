@@ -49,8 +49,13 @@ class ysyx_25030077_EXU extends Module {
     valid_out_reg -> Mux(io.out.ready, false.B, true.B),
     (valid_out_reg === false.B) -> Mux(io.in.valid, true.B, false.B)
   ))
+  val ready_in_reg = RegInit(true.B)
+  ready_in_reg := MuxCase(false.B, Seq(
+    ready_in_reg -> Mux(io.in.valid, false.B, true.B),
+    (ready_in_reg === false.B) -> Mux(valid_out_reg && io.out.ready, true.B, false.B)
+  ))
   io.out.valid := valid_out_reg
-  io.in.ready := true.B
+  io.in.ready := ready_in_reg
   io.out.bits.result := out33(31,0)
   io.out.bits.rd_addr := io.in.bits.rd_addr
   io.out.bits.LSU_type := io.in.bits.LSU_type

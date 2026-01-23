@@ -188,13 +188,6 @@
   },
   {
     "class":"firrtl.transforms.CombinationalPath",
-    "sink":"~ysyx_25030077_IDU|ysyx_25030077_IDU>io_out_valid",
-    "sources":[
-      "~ysyx_25030077_IDU|ysyx_25030077_IDU>reset"
-    ]
-  },
-  {
-    "class":"firrtl.transforms.CombinationalPath",
     "sink":"~ysyx_25030077_IDU|ysyx_25030077_IDU>io_out_bits_rd_addr",
     "sources":[
       "~ysyx_25030077_IDU|ysyx_25030077_IDU>io_in_bits_inst"
