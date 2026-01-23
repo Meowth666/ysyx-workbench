@@ -1,6 +1,4 @@
-[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IDU.scala:143:72: type mismatch;[0m
-[0m[[0m[31merror[0m] [0m[0m found   : Boolean(false)[0m
-[0m[[0m[31merror[0m] [0m[0m required: chisel3.UInt[0m
-[0m[[0m[31merror[0m] [0m[0m    (ready_in_reg === false.B) -> Mux((isRAW1 || isRAW2 || isRAW3) === false, false.B, true.B)[0m
-[0m[[0m[31merror[0m] [0m[0m                                                                       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:22:26: value r_data is not a member of chisel3.Bundle{val err1_in: chisel3.Bool; val pc: chisel3.UInt; val out: chisel3.util.DecoupledIO[IFU_IDU]}[0m
+[0m[[0m[31merror[0m] [0m[0m  io.out.bits.inst := io.r_data[0m
+[0m[[0m[31merror[0m] [0m[0m                         ^[0m
 [0m[[0m[31merror[0m] [0m[0mone error found[0m

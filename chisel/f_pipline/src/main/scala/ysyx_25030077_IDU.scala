@@ -131,24 +131,25 @@ class ysyx_25030077_IDU extends Module {
   io.out.bits.data_type := inst_type
   io.out.bits.pc_data  := io.in.bits.pc
   io.out.bits.is_err1 := io.in.bits.is_err1
-
+  
   val isRAW1 = (io.EXU_state === true.B) && (io.in.bits.is_err1 === false.B) && ((io.rs1_addr =/= 0.U && (io.rs1_addr === io.EXU_rd)) || (io.rs2_addr =/= 0.U && (io.rs2_addr === io.EXU_rd)))
   val isRAW2 = (io.LSU_state === true.B) && (io.in.bits.is_err1 === false.B) && ((io.rs1_addr =/= 0.U && (io.rs1_addr === io.LSU_rd)) || (io.rs2_addr =/= 0.U && (io.rs2_addr === io.LSU_rd)))
   val isRAW3 = (io.WBU_state === true.B) && (io.in.bits.is_err1 === false.B) && ((io.rs1_addr =/= 0.U && (io.rs1_addr === io.WBU_rd)) || (io.rs2_addr =/= 0.U && (io.rs2_addr === io.WBU_rd)))
-
+  val valid_out_reg = RegInit(false.B)
   val ready_in_reg = RegInit(true.B)
-  val ready_in_reg_dly = RegInit(false.B)
   ready_in_reg := MuxCase(false.B, Seq(
     ready_in_reg -> Mux(io.in.valid, false.B, true.B),
-    (ready_in_reg === false.B) -> Mux((isRAW1 || isRAW2 || isRAW3) === false.B, true.B, false.B)
+    (ready_in_reg === false.B) -> Mux((valid_out_reg && io.out.ready) && ((isRAW1 || isRAW2 || isRAW3) === false.B), true.B, false.B)
   ))
-  ready_in_reg_dly := ready_in_reg
-  // valid_out_reg := MuxCase(false.B, Seq(
-  //   valid_out_reg -> Mux(io.out.ready, false.B, true.B),
-  //   (valid_out_reg === false.B) -> MuxCase(true.B, Seq(
-  //                                   isRAW  -> Mux(io.in.valid && ((io.WBU_rd === io.rs1_addr) || (io.WBU_rd === io.rs2_addr)), true.B, false.B)
-  //                                 ))
-  // ))
+  val valid_in_reg = RegInit(false.B)
+  valid_in_reg := MuxCase(false.B, Seq(
+    valid_in_reg -> Mux((isRAW1 || isRAW2 || isRAW3) === false.B, false.B, true.B),
+    (valid_in_reg === false.B) -> Mux(io.in.valid && ready_in_reg, true.B, false.B)
+  ))
+  valid_out_reg := MuxCase(false.B, Seq(
+    valid_out_reg -> Mux(io.out.ready, false.B, true.B),
+    (valid_out_reg === false.B) -> Mux(valid_in_reg && ((isRAW1 || isRAW2 || isRAW3) === false.B), true.B, false.B)
+  ))
   io.out.bits.pc_next_type := MuxCase(0.U, Seq(
     isjal  -> 1.U(4.W),
     isjalr -> 2.U(4.W),
@@ -159,7 +160,7 @@ class ysyx_25030077_IDU extends Module {
     isbltu -> 7.U(4.W),
     isbgeu -> 8.U(4.W)
   ))
-  io.out.valid := ((ready_in_reg && (~ready_in_reg_dly)) && (reset.asBool === false.B))
+  io.out.valid := valid_out_reg
   // ready 反压
   io.in.ready := ready_in_reg
   io.out.bits.is_err2 := io.err2_in

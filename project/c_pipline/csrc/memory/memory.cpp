@@ -78,6 +78,9 @@ svBitVecVal lsu_wr(const svBitVecVal* rs2, const svBitVecVal* lsu_type, const sv
 	// printf("lsu_type = %d\n", type);
 	// printf("data = %x\n", *data);
 	// printf("rs2 = %x\n", *rs2);
+	if(*data < 0x80000000 || *data >= 0x8fffffff){
+		return *data;
+	}
 	switch (type)
 	{
 		case 1://SW
