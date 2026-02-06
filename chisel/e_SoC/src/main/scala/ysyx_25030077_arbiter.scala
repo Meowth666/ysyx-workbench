@@ -71,11 +71,8 @@ class ysyx_25030077_arbiter extends Module {
   })
     io.axi_aw_id := 0.U
     io.axi_aw_len := 0.U
-//     io.axi_aw_size := 0.U
     io.axi_aw_burst := 0.U   
-
     io.axi_w_last := true.B
-
     io.axi_ar_id := 0.U
     
     ChiselHelpers.dontTouchBundleRecursive(io)   

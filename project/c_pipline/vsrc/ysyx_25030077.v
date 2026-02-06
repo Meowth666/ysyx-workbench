@@ -1000,29 +1000,35 @@ module ysyx_25030077_LSU(
 `ifdef RANDOMIZE_REG_INIT
   reg [31:0] _RAND_0;
   reg [31:0] _RAND_1;
+  reg [31:0] _RAND_2;
 `endif // RANDOMIZE_REG_INIT
-  wire  _io_out_bits_rd_addr_T = io_in_bits_is_err1 | io_in_bits_is_err2; // @[ysyx_25030077_LSU.scala 12:50]
-  reg  valid_out_reg; // @[ysyx_25030077_LSU.scala 16:30]
-  wire  _valid_out_reg_T_1 = ~valid_out_reg; // @[ysyx_25030077_LSU.scala 19:20]
-  wire  is_err_in = ~_io_out_bits_rd_addr_T; // @[ysyx_25030077_LSU.scala 22:19]
-  reg  state_reg; // @[ysyx_25030077_LSU.scala 23:26]
-  wire  _state_reg_T_2 = ~state_reg; // @[ysyx_25030077_LSU.scala 26:16]
-  wire  _state_reg_T_3 = io_in_valid & io_in_ready; // @[ysyx_25030077_LSU.scala 26:48]
-  assign io_in_ready = 1'h1; // @[ysyx_25030077_LSU.scala 11:15]
-  assign io_out_valid = valid_out_reg; // @[ysyx_25030077_LSU.scala 21:16]
-  assign io_out_bits_rd_addr = io_in_bits_is_err1 | io_in_bits_is_err2 ? 5'h0 : io_in_bits_rd_addr; // @[ysyx_25030077_LSU.scala 12:29]
+  wire  _io_out_bits_rd_addr_T = io_in_bits_is_err1 | io_in_bits_is_err2; // @[ysyx_25030077_LSU.scala 11:50]
+  reg  valid_out_reg; // @[ysyx_25030077_LSU.scala 15:30]
+  wire  _valid_out_reg_T_1 = ~valid_out_reg; // @[ysyx_25030077_LSU.scala 18:20]
+  reg  ready_in_reg; // @[ysyx_25030077_LSU.scala 20:29]
+  wire  _ready_in_reg_T = io_in_valid ? 1'h0 : 1'h1; // @[ysyx_25030077_LSU.scala 22:24]
+  wire  _ready_in_reg_T_1 = ~ready_in_reg; // @[ysyx_25030077_LSU.scala 23:19]
+  wire  _ready_in_reg_T_2 = valid_out_reg & io_out_ready; // @[ysyx_25030077_LSU.scala 23:53]
+  wire  _ready_in_reg_T_5 = ready_in_reg ? _ready_in_reg_T : _ready_in_reg_T_1 & _ready_in_reg_T_2; // @[Mux.scala 101:16]
+  wire  is_err_in = ~_io_out_bits_rd_addr_T; // @[ysyx_25030077_LSU.scala 27:19]
+  reg  state_reg; // @[ysyx_25030077_LSU.scala 28:26]
+  wire  _state_reg_T_2 = ~state_reg; // @[ysyx_25030077_LSU.scala 31:16]
+  wire  _state_reg_T_3 = io_in_valid & io_in_ready; // @[ysyx_25030077_LSU.scala 31:48]
+  assign io_in_ready = ready_in_reg; // @[ysyx_25030077_LSU.scala 25:16]
+  assign io_out_valid = valid_out_reg; // @[ysyx_25030077_LSU.scala 26:16]
+  assign io_out_bits_rd_addr = io_in_bits_is_err1 | io_in_bits_is_err2 ? 5'h0 : io_in_bits_rd_addr; // @[ysyx_25030077_LSU.scala 11:29]
   wire [31:0] data_dpi;
   import "DPI-C" function bit[31:0] lsu_wr(input bit[31:0] rs2, input bit[31:0] lsu_type, input bit[31:0] data);
   assign data_dpi = lsu_wr(io_in_bits_rs2_data, {24'd0, io_out_valid, io_out_ready, io_out_bits_is_err1, io_out_bits_is_err2, io_in_bits_LSU_type}, io_in_bits_result);
-  assign io_out_bits_rd_data = _io_out_bits_rd_addr_T ? 32'h0 : data_dpi; // @[ysyx_25030077_LSU.scala 12:29]
-  assign io_out_bits_is_err1 = io_in_bits_is_err1; // @[ysyx_25030077_LSU.scala 14:23]
-  assign io_out_bits_is_err2 = io_in_bits_is_err2; // @[ysyx_25030077_LSU.scala 15:23]
-  assign io_state = state_reg & is_err_in; // @[ysyx_25030077_LSU.scala 28:25]
+  assign io_out_bits_rd_data = _io_out_bits_rd_addr_T ? 32'h0 : data_dpi;
+  assign io_out_bits_is_err1 = io_in_bits_is_err1; // @[ysyx_25030077_LSU.scala 13:23]
+  assign io_out_bits_is_err2 = io_in_bits_is_err2; // @[ysyx_25030077_LSU.scala 14:23]
+  assign io_state = state_reg & is_err_in; // @[ysyx_25030077_LSU.scala 33:25]
   always @(posedge clock) begin
-    if (reset) begin // @[ysyx_25030077_LSU.scala 16:30]
-      valid_out_reg <= 1'h0; // @[ysyx_25030077_LSU.scala 16:30]
+    if (reset) begin // @[ysyx_25030077_LSU.scala 15:30]
+      valid_out_reg <= 1'h0; // @[ysyx_25030077_LSU.scala 15:30]
     end else if (valid_out_reg) begin // @[Mux.scala 101:16]
-      if (io_out_ready) begin // @[ysyx_25030077_LSU.scala 18:25]
+      if (io_out_ready) begin // @[ysyx_25030077_LSU.scala 17:25]
         valid_out_reg <= 1'h0;
       end else begin
         valid_out_reg <= 1'h1;
@@ -1030,10 +1036,11 @@ module ysyx_25030077_LSU(
     end else begin
       valid_out_reg <= _valid_out_reg_T_1 & io_in_valid;
     end
-    if (reset) begin // @[ysyx_25030077_LSU.scala 23:26]
-      state_reg <= 1'h0; // @[ysyx_25030077_LSU.scala 23:26]
+    ready_in_reg <= reset | _ready_in_reg_T_5; // @[ysyx_25030077_LSU.scala 20:{29,29} 21:16]
+    if (reset) begin // @[ysyx_25030077_LSU.scala 28:26]
+      state_reg <= 1'h0; // @[ysyx_25030077_LSU.scala 28:26]
     end else if (state_reg) begin // @[Mux.scala 101:16]
-      if (io_out_valid & io_out_ready) begin // @[ysyx_25030077_LSU.scala 25:21]
+      if (io_out_valid & io_out_ready) begin // @[ysyx_25030077_LSU.scala 30:21]
         state_reg <= 1'h0;
       end else begin
         state_reg <= 1'h1;
@@ -1081,7 +1088,9 @@ initial begin
   _RAND_0 = {1{`RANDOM}};
   valid_out_reg = _RAND_0[0:0];
   _RAND_1 = {1{`RANDOM}};
-  state_reg = _RAND_1[0:0];
+  ready_in_reg = _RAND_1[0:0];
+  _RAND_2 = {1{`RANDOM}};
+  state_reg = _RAND_2[0:0];
 `endif // RANDOMIZE_REG_INIT
   `endif // RANDOMIZE
 end // initial
