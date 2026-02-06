@@ -1,5 +1,7 @@
 [0m[[0m[0mdebug[0m] [0m[0mPackaging /home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/target/scala-2.12/f_pipline_2.12-0.1.0-SNAPSHOT.jar ...[0m
 [0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ysyx_25030077_arbiter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/target/scala-2.12/classes/ysyx_25030077_arbiter.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	GenerateVerilog$delayedInit$body.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/target/scala-2.12/classes/GenerateVerilog$delayedInit$body.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	END.class[0m
@@ -40,6 +42,8 @@
 [0m[[0m[0mdebug[0m] [0m[0m	  /home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/target/scala-2.12/classes/ysyx_25030077_WBU$$anon$1.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	ysyx_25030077_LSU$$anon$1.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/target/scala-2.12/classes/ysyx_25030077_LSU$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ysyx_25030077_arbiter$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/target/scala-2.12/classes/ysyx_25030077_arbiter$$anon$1.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	IFU_IDU.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/target/scala-2.12/classes/IFU_IDU.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	ysyx_25030077$$anon$1.class[0m

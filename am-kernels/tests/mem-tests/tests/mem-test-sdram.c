@@ -9,7 +9,7 @@ int main() {
     uint8_t *sdram_start = (uint8_t*)&_sdram_start;
     uint8_t *sdram_end   = (uint8_t*)&_sdram_end;
     uint32_t sdram_size  = sdram_end - sdram_start;
-    printf("sdram Size:         %u bytes\n", sdram_size);
+    // printf("sdram Size:         %u bytes\n", sdram_size);
     for (uint32_t i = 0; i < sdram_size / 200; i++) {
         // 写入的数据 = 偏移量（0~0xfff），确保每个字节数据唯一且可预测
         sdram_start[i] = (uint8_t)(i & 0xff);  // 取低8位，避免溢出

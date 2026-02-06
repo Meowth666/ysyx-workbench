@@ -687,20 +687,20 @@ int cpu_exec(int n){
 		// 	break;
 		// }
 	} 
-	printf("周期 : %lld    指令数 = %lld    ipc = %lld\n", ix / 2, inst_cnts, (ix / 2) / inst_cnts);
-	printf("lsu读取数据 : %lld\n", lsu_cnts);
-	if(lsu_cnts > 0)
-		printf("lsu读取延迟 : %lld\n", lsu_cycs / lsu_cnts);
-	printf("指令数：    计算 : %8lld   访存 : %8lld    跳转 : %8lld    CSR/特权 : %8lld    分支 : %8lld\n", jisuan_cnts, l_cnts + s_cnts, tiaozhuan_cnts, tequan_cnts, fenzhi_cnts);
-	printf("周期数：    计算 : %8lld   访存 : %8lld    跳转 : %8lld    CSR/特权 : %8lld    分支 : %8lld\n", cycs[3] / 2, (cycs[1] + cycs[2]) / 2, cycs[4] / 2, cycs[5] / 2, cycs[6] / 2);
-	printf("平均周期数：计算 : %8lld   访存 : %8lld    跳转 : %8lld    CSR/特权 : %8lld    分支 : %8lld\n", cycs[3] / 2 / jisuan_cnts, (cycs[1] + cycs[2]) / 2 / (l_cnts + s_cnts), cycs[4] / 2 / tiaozhuan_cnts, cycs[5] / 2 / tequan_cnts, cycs[6] / 2 / fenzhi_cnts);
-	printf("flash lsu 访问次数: %8lld  平均延迟: %8lld\n", flash_cnt, flash_cyc / flash_cnt);
-	if(sdram_cnt > 0)
-		printf("sdram lsu 访问次数: %8lld  平均延迟: %8lld\n", sdram_cnt, sdram_cyc / sdram_cnt);
-	printf("ifu请求次数:    %8lld 命中次数:%8lld   ifu请求总周期:%8lld   icache命中率:  %.4lf   AMAT:%8lld\n", request, hit, ifu_cycs, (double)hit / (double)request, ifu_cycs / request);
-	printf("TMT: %lld\n", TMT);
-	printf("未命中次数: %lld  平均等待周期： %.4lf\n", miss, (double)TMT / (double)miss);
-	printf("IFU 访问sdram次数: %lld\n", ifu_sdram_cnt);
+	// printf("周期 : %lld    指令数 = %lld    ipc = %lld\n", ix / 2, inst_cnts, (ix / 2) / inst_cnts);
+	// printf("lsu读取数据 : %lld\n", lsu_cnts);
+	// if(lsu_cnts > 0)
+	// 	printf("lsu读取延迟 : %lld\n", lsu_cycs / lsu_cnts);
+	// printf("指令数：    计算 : %8lld   访存 : %8lld    跳转 : %8lld    CSR/特权 : %8lld    分支 : %8lld\n", jisuan_cnts, l_cnts + s_cnts, tiaozhuan_cnts, tequan_cnts, fenzhi_cnts);
+	// printf("周期数：    计算 : %8lld   访存 : %8lld    跳转 : %8lld    CSR/特权 : %8lld    分支 : %8lld\n", cycs[3] / 2, (cycs[1] + cycs[2]) / 2, cycs[4] / 2, cycs[5] / 2, cycs[6] / 2);
+	// printf("平均周期数：计算 : %8lld   访存 : %8lld    跳转 : %8lld    CSR/特权 : %8lld    分支 : %8lld\n", cycs[3] / 2 / jisuan_cnts, (cycs[1] + cycs[2]) / 2 / (l_cnts + s_cnts), cycs[4] / 2 / tiaozhuan_cnts, cycs[5] / 2 / tequan_cnts, cycs[6] / 2 / fenzhi_cnts);
+	// printf("flash lsu 访问次数: %8lld  平均延迟: %8lld\n", flash_cnt, flash_cyc / flash_cnt);
+	// if(sdram_cnt > 0)
+	// 	printf("sdram lsu 访问次数: %8lld  平均延迟: %8lld\n", sdram_cnt, sdram_cyc / sdram_cnt);
+	// printf("ifu请求次数:    %8lld 命中次数:%8lld   ifu请求总周期:%8lld   icache命中率:  %.4lf   AMAT:%8lld\n", request, hit, ifu_cycs, (double)hit / (double)request, ifu_cycs / request);
+	// printf("TMT: %lld\n", TMT);
+	// printf("未命中次数: %lld  平均等待周期： %.4lf\n", miss, (double)TMT / (double)miss);
+	// printf("IFU 访问sdram次数: %lld\n", ifu_sdram_cnt);
 	fclose(itrace);
 	return 0;
 }
