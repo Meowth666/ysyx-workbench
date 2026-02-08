@@ -45,6 +45,10 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077_IFU|ysyx_25030077_IFU>io_ar_burst"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077_IFU|ysyx_25030077_IFU>io_r_valid"
   },
   {
@@ -56,12 +60,44 @@
     "target":"~ysyx_25030077_IFU|ysyx_25030077_IFU>io_r_ready"
   },
   {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077_IFU|ysyx_25030077_IFU>io_b_valid"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077_IFU|ysyx_25030077_IFU>io_b_ready"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077_IFU|ysyx_25030077_IFU>io_aw_valid"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077_IFU|ysyx_25030077_IFU>io_aw_addr"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077_IFU|ysyx_25030077_IFU>io_aw_ready"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077_IFU|ysyx_25030077_IFU>io_w_valid"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077_IFU|ysyx_25030077_IFU>io_w_data"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077_IFU|ysyx_25030077_IFU>io_w_ready"
+  },
+  {
     "class":"firrtl.transforms.BlackBoxTargetDirAnno",
     "targetDir":"build"
   },
   {
     "class":"firrtl.transforms.CombinationalPath",
-    "sink":"~ysyx_25030077_IFU|ysyx_25030077_IFU>io_ar_addr",
+    "sink":"~ysyx_25030077_IFU|ysyx_25030077_IFU>io_aw_addr",
     "sources":[
       "~ysyx_25030077_IFU|ysyx_25030077_IFU>io_pc"
     ]
@@ -71,6 +107,13 @@
     "sink":"~ysyx_25030077_IFU|ysyx_25030077_IFU>io_out_bits_is_err1",
     "sources":[
       "~ysyx_25030077_IFU|ysyx_25030077_IFU>io_err1_in"
+    ]
+  },
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~ysyx_25030077_IFU|ysyx_25030077_IFU>io_w_data",
+    "sources":[
+      "~ysyx_25030077_IFU|ysyx_25030077_IFU>io_pc"
     ]
   },
   {

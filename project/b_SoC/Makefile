@@ -55,10 +55,10 @@ VERILATOR_VINCLUDES += -I$(abspath /home/meowth/ysyx/ysyx-workbench/ysyxSoC/peri
 VERILATOR_VINCLUDES += -I$(abspath /home/meowth/ysyx/ysyx-workbench/ysyxSoC/perip/spi/rtl)
 
 # IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/benchmarks/microbench/build/microbench-riscv32e-ysyx-soc
-IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/mem-tests/build/hello-riscv32e-ysyx-soc
+# IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/mem-tests/build/hello-riscv32e-ysyx-soc
 
 # IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/am-tests/build/amtest-riscv32e-ysyx-soc
-# IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/cpu-tests/build/add-riscv32e-ysyx-soc
+IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-ysyx-soc
 # IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/cache_tests/build/cache-riscv32e-ysyx-soc
 
 $(BIN): $(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)

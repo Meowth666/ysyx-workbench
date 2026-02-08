@@ -11,48 +11,273 @@ module ysyx_25030077_IFU(
   output [31:0] io_ar_addr,
   output        io_ar_valid,
   input         io_ar_ready,
+  output [1:0]  io_ar_burst,
   input         io_r_valid,
   input  [31:0] io_r_data,
-  output        io_r_ready
+  output        io_r_ready,
+  input         io_b_valid,
+  output        io_b_ready,
+  output        io_aw_valid,
+  output [31:0] io_aw_addr,
+  input         io_aw_ready,
+  output        io_w_valid,
+  output [31:0] io_w_data,
+  input         io_w_ready
 );
 `ifdef RANDOMIZE_REG_INIT
   reg [31:0] _RAND_0;
   reg [31:0] _RAND_1;
   reg [31:0] _RAND_2;
+  reg [31:0] _RAND_3;
+  reg [31:0] _RAND_4;
+  reg [31:0] _RAND_5;
+  reg [31:0] _RAND_6;
+  reg [31:0] _RAND_7;
+  reg [31:0] _RAND_8;
+  reg [31:0] _RAND_9;
+  reg [31:0] _RAND_10;
+  reg [31:0] _RAND_11;
+  reg [31:0] _RAND_12;
+  reg [31:0] _RAND_13;
 `endif // RANDOMIZE_REG_INIT
-  reg  ar_valid_reg; // @[ysyx_25030077_IFU.scala 21:30]
-  reg  valid_out_reg; // @[ysyx_25030077_IFU.scala 22:30]
-  wire  _ar_valid_reg_T = io_ar_ready ? 1'h0 : 1'h1; // @[ysyx_25030077_IFU.scala 27:24]
-  wire  _ar_valid_reg_T_1 = ~ar_valid_reg; // @[ysyx_25030077_IFU.scala 28:19]
-  wire  _ar_valid_reg_T_2 = valid_out_reg & io_out_ready; // @[ysyx_25030077_IFU.scala 28:54]
-  wire  _ar_valid_reg_T_4 = _ar_valid_reg_T_1 ? _ar_valid_reg_T_2 : 1'h1; // @[Mux.scala 101:16]
-  wire  _ar_valid_reg_T_5 = ar_valid_reg ? _ar_valid_reg_T : _ar_valid_reg_T_4; // @[Mux.scala 101:16]
-  wire  _valid_out_reg_T_1 = ~valid_out_reg; // @[ysyx_25030077_IFU.scala 33:20]
-  reg [31:0] out_data; // @[ysyx_25030077_IFU.scala 35:25]
-  assign io_out_valid = valid_out_reg; // @[ysyx_25030077_IFU.scala 37:16]
-  assign io_out_bits_pc = io_pc; // @[ysyx_25030077_IFU.scala 38:20]
-  assign io_out_bits_inst = out_data; // @[ysyx_25030077_IFU.scala 39:20]
-  assign io_out_bits_is_err1 = io_err1_in; // @[ysyx_25030077_IFU.scala 40:23]
-  assign io_ar_addr = io_pc; // @[ysyx_25030077_IFU.scala 18:15]
-  assign io_ar_valid = ar_valid_reg; // @[ysyx_25030077_IFU.scala 24:15]
-  assign io_r_ready = 1'h1; // @[ysyx_25030077_IFU.scala 19:15]
+  reg [2:0] state_reg; // @[ysyx_25030077_IFU.scala 34:28]
+  reg [31:0] rdata_reg; // @[ysyx_25030077_IFU.scala 35:28]
+  reg  ar_valid_reg; // @[ysyx_25030077_IFU.scala 36:31]
+  reg [31:0] ar_addr_reg; // @[ysyx_25030077_IFU.scala 37:31]
+  wire [2:0] index = io_pc[4:2]; // @[ysyx_25030077_IFU.scala 38:22]
+  reg [2:0] j; // @[ysyx_25030077_IFU.scala 39:20]
+  reg [2:0] k; // @[ysyx_25030077_IFU.scala 40:20]
+  reg [2:0] temp; // @[ysyx_25030077_IFU.scala 41:23]
+  reg  is_full; // @[ysyx_25030077_IFU.scala 42:26]
+  wire [6:0] _serach_addr_T = {index,4'h0}; // @[Cat.scala 31:58]
+  wire [31:0] _GEN_0 = {{25'd0}, _serach_addr_T}; // @[ysyx_25030077_IFU.scala 43:42]
+  wire [31:0] _serach_addr_T_2 = 32'hf001600 + _GEN_0; // @[ysyx_25030077_IFU.scala 43:42]
+  wire [2:0] _serach_addr_T_4 = j + 3'h1; // @[ysyx_25030077_IFU.scala 43:74]
+  wire [4:0] _serach_addr_T_5 = {_serach_addr_T_4,2'h0}; // @[Cat.scala 31:58]
+  wire [31:0] _GEN_1 = {{27'd0}, _serach_addr_T_5}; // @[ysyx_25030077_IFU.scala 43:65]
+  wire [31:0] serach_addr = _serach_addr_T_2 + _GEN_1; // @[ysyx_25030077_IFU.scala 43:65]
+  wire  is_tag = io_r_data[27:1] == io_pc[31:5] & io_r_data[0]; // @[ysyx_25030077_IFU.scala 44:53]
+  wire  is_notvalid = ~io_r_data[0]; // @[ysyx_25030077_IFU.scala 45:39]
+  wire [31:0] _tag_addr_T_2 = 32'hf001680 + _GEN_0; // @[ysyx_25030077_IFU.scala 46:39]
+  wire [3:0] _tag_addr_T_4 = {j[1:0],2'h0}; // @[Cat.scala 31:58]
+  wire [31:0] _GEN_3 = {{28'd0}, _tag_addr_T_4}; // @[ysyx_25030077_IFU.scala 46:62]
+  wire [31:0] tag_addr = _tag_addr_T_2 + _GEN_3; // @[ysyx_25030077_IFU.scala 46:62]
+  wire [3:0] _inst_addr_T_1 = {k[1:0],2'h0}; // @[Cat.scala 31:58]
+  wire [31:0] _GEN_4 = {{28'd0}, _inst_addr_T_1}; // @[ysyx_25030077_IFU.scala 47:27]
+  wire [31:0] inst_addr = io_pc + _GEN_4; // @[ysyx_25030077_IFU.scala 47:27]
+  reg [31:0] data0; // @[ysyx_25030077_IFU.scala 48:24]
+  reg [31:0] data1; // @[ysyx_25030077_IFU.scala 49:24]
+  reg [31:0] data2; // @[ysyx_25030077_IFU.scala 50:24]
+  reg [31:0] data3; // @[ysyx_25030077_IFU.scala 51:24]
+  wire  _state_reg_T = state_reg == 3'h0; // @[ysyx_25030077_IFU.scala 54:20]
+  wire  _state_reg_T_2 = io_pc[31:28] == 4'ha; // @[ysyx_25030077_IFU.scala 54:50]
+  wire  _state_reg_T_4 = state_reg == 3'h1; // @[ysyx_25030077_IFU.scala 55:20]
+  wire  _state_reg_T_5 = j == 3'h3; // @[ysyx_25030077_IFU.scala 55:72]
+  wire  _state_reg_T_6 = j == 3'h3 | is_notvalid; // @[ysyx_25030077_IFU.scala 55:80]
+  wire [1:0] _state_reg_T_7 = j == 3'h3 | is_notvalid ? 2'h3 : 2'h1; // @[ysyx_25030077_IFU.scala 55:68]
+  wire [1:0] _state_reg_T_8 = is_tag ? 2'h2 : _state_reg_T_7; // @[ysyx_25030077_IFU.scala 55:51]
+  wire [1:0] _state_reg_T_9 = io_r_valid ? _state_reg_T_8 : 2'h1; // @[ysyx_25030077_IFU.scala 55:35]
+  wire  _state_reg_T_10 = state_reg == 3'h2; // @[ysyx_25030077_IFU.scala 56:20]
+  wire [2:0] _state_reg_T_11 = io_r_valid ? 3'h6 : 3'h2; // @[ysyx_25030077_IFU.scala 56:35]
+  wire  _state_reg_T_12 = state_reg == 3'h6; // @[ysyx_25030077_IFU.scala 57:20]
+  wire [2:0] _state_reg_T_13 = io_out_ready ? 3'h0 : 3'h6; // @[ysyx_25030077_IFU.scala 57:35]
+  wire  _state_reg_T_14 = state_reg == 3'h3; // @[ysyx_25030077_IFU.scala 58:20]
+  wire  _state_reg_T_15 = k == 3'h3; // @[ysyx_25030077_IFU.scala 58:54]
+  wire [2:0] _state_reg_T_16 = k == 3'h3 ? 3'h4 : 3'h3; // @[ysyx_25030077_IFU.scala 58:51]
+  wire [2:0] _state_reg_T_17 = io_r_valid ? _state_reg_T_16 : 3'h3; // @[ysyx_25030077_IFU.scala 58:35]
+  wire  _state_reg_T_18 = state_reg == 3'h4; // @[ysyx_25030077_IFU.scala 59:20]
+  wire [2:0] _state_reg_T_19 = io_b_valid ? 3'h5 : 3'h4; // @[ysyx_25030077_IFU.scala 59:35]
+  wire  _state_reg_T_20 = state_reg == 3'h5; // @[ysyx_25030077_IFU.scala 60:20]
+  wire  _state_reg_T_21 = k == 3'h4; // @[ysyx_25030077_IFU.scala 60:54]
+  wire [2:0] _state_reg_T_22 = k == 3'h4 ? 3'h6 : 3'h4; // @[ysyx_25030077_IFU.scala 60:51]
+  wire [2:0] _state_reg_T_23 = io_b_valid ? _state_reg_T_22 : 3'h5; // @[ysyx_25030077_IFU.scala 60:35]
+  wire  _state_reg_T_24 = state_reg == 3'h7; // @[ysyx_25030077_IFU.scala 61:20]
+  wire [2:0] _state_reg_T_25 = io_r_valid ? 3'h6 : 3'h7; // @[ysyx_25030077_IFU.scala 61:35]
+  wire [2:0] _state_reg_T_26 = _state_reg_T_24 ? _state_reg_T_25 : 3'h0; // @[Mux.scala 101:16]
+  wire [2:0] _state_reg_T_27 = _state_reg_T_20 ? _state_reg_T_23 : _state_reg_T_26; // @[Mux.scala 101:16]
+  wire [2:0] _state_reg_T_28 = _state_reg_T_18 ? _state_reg_T_19 : _state_reg_T_27; // @[Mux.scala 101:16]
+  wire [2:0] _state_reg_T_29 = _state_reg_T_14 ? _state_reg_T_17 : _state_reg_T_28; // @[Mux.scala 101:16]
+  wire [2:0] _state_reg_T_30 = _state_reg_T_12 ? _state_reg_T_13 : _state_reg_T_29; // @[Mux.scala 101:16]
+  wire [2:0] _k_T_4 = k + 3'h1; // @[ysyx_25030077_IFU.scala 70:70]
+  wire [2:0] _k_T_5 = _state_reg_T_15 ? 3'h0 : _k_T_4; // @[ysyx_25030077_IFU.scala 70:51]
+  wire [2:0] _k_T_10 = io_b_valid ? _k_T_4 : k; // @[ysyx_25030077_IFU.scala 71:35]
+  wire  _data0_T_1 = _state_reg_T_14 & io_r_valid; // @[ysyx_25030077_IFU.scala 74:37]
+  wire  _data0_T_2 = k == 3'h0; // @[ysyx_25030077_IFU.scala 74:56]
+  wire  _data1_T_2 = k == 3'h1; // @[ysyx_25030077_IFU.scala 75:56]
+  wire  _data2_T_2 = k == 3'h2; // @[ysyx_25030077_IFU.scala 76:56]
+  wire [2:0] temp1 = temp + 3'h1; // @[ysyx_25030077_IFU.scala 79:22]
+  wire [2:0] _temp_T_6 = {1'h0,temp1[1:0]}; // @[Cat.scala 31:58]
+  wire  _ar_valid_reg_T_2 = io_ar_ready ? 1'h0 : 1'h1; // @[ysyx_25030077_IFU.scala 84:53]
+  wire  _ar_valid_reg_T_4 = ar_valid_reg ? _ar_valid_reg_T_2 : io_r_valid; // @[ysyx_25030077_IFU.scala 84:35]
+  wire  _ar_valid_reg_T_9 = _state_reg_T_10 | _state_reg_T_14 | _state_reg_T_24; // @[ysyx_25030077_IFU.scala 85:49]
+  wire  _ar_valid_reg_T_11 = ar_valid_reg & io_ar_ready ? 1'h0 : ar_valid_reg; // @[ysyx_25030077_IFU.scala 85:77]
+  wire  _ar_valid_reg_T_13 = _state_reg_T_4 ? _ar_valid_reg_T_4 : _ar_valid_reg_T_9 & _ar_valid_reg_T_11; // @[Mux.scala 101:16]
+  wire  _ar_valid_reg_T_14 = _state_reg_T | _ar_valid_reg_T_13; // @[Mux.scala 101:16]
+  wire [31:0] _ar_addr_reg_T_10 = _state_reg_T_6 ? io_pc : serach_addr; // @[ysyx_25030077_IFU.scala 90:73]
+  wire [31:0] _ar_addr_reg_T_11 = is_tag ? tag_addr : _ar_addr_reg_T_10; // @[ysyx_25030077_IFU.scala 90:51]
+  reg  aw_valid_reg; // @[ysyx_25030077_IFU.scala 101:31]
+  wire  _aw_valid_reg_T_2 = io_r_valid & _state_reg_T_15; // @[ysyx_25030077_IFU.scala 103:48]
+  wire  _aw_valid_reg_T_5 = io_aw_ready ? 1'h0 : 1'h1; // @[ysyx_25030077_IFU.scala 104:53]
+  wire  _aw_valid_reg_T_11 = io_b_valid & k != 3'h4; // @[ysyx_25030077_IFU.scala 105:101]
+  wire  _aw_valid_reg_T_13 = aw_valid_reg ? _aw_valid_reg_T_5 : io_b_valid & k != 3'h4; // @[ysyx_25030077_IFU.scala 105:35]
+  wire [2:0] w_index = index + k; // @[ysyx_25030077_IFU.scala 107:25]
+  wire [2:0] w_index1 = w_index - 3'h1; // @[ysyx_25030077_IFU.scala 108:30]
+  wire [6:0] _io_aw_addr_T_2 = {w_index,4'h0}; // @[Cat.scala 31:58]
+  wire [31:0] _GEN_6 = {{25'd0}, _io_aw_addr_T_2}; // @[ysyx_25030077_IFU.scala 111:64]
+  wire [31:0] _io_aw_addr_T_4 = 32'hf001600 + _GEN_6; // @[ysyx_25030077_IFU.scala 111:64]
+  wire [4:0] _io_aw_addr_T_5 = {temp,2'h0}; // @[Cat.scala 31:58]
+  wire [31:0] _GEN_7 = {{27'd0}, _io_aw_addr_T_5}; // @[ysyx_25030077_IFU.scala 111:94]
+  wire [31:0] _io_aw_addr_T_7 = _io_aw_addr_T_4 + _GEN_7; // @[ysyx_25030077_IFU.scala 111:94]
+  wire [2:0] _io_aw_addr_T_13 = j - 3'h1; // @[ysyx_25030077_IFU.scala 111:174]
+  wire [4:0] _io_aw_addr_T_14 = {_io_aw_addr_T_13,2'h0}; // @[Cat.scala 31:58]
+  wire [31:0] _GEN_9 = {{27'd0}, _io_aw_addr_T_14}; // @[ysyx_25030077_IFU.scala 111:166]
+  wire [31:0] _io_aw_addr_T_16 = _io_aw_addr_T_4 + _GEN_9; // @[ysyx_25030077_IFU.scala 111:166]
+  wire [31:0] _io_aw_addr_T_17 = is_full ? _io_aw_addr_T_7 : _io_aw_addr_T_16; // @[ysyx_25030077_IFU.scala 111:35]
+  wire [6:0] _io_aw_addr_T_20 = {w_index1,4'h0}; // @[Cat.scala 31:58]
+  wire [31:0] _GEN_10 = {{25'd0}, _io_aw_addr_T_20}; // @[ysyx_25030077_IFU.scala 112:64]
+  wire [31:0] _io_aw_addr_T_22 = 32'hf001680 + _GEN_10; // @[ysyx_25030077_IFU.scala 112:64]
+  wire [31:0] _io_aw_addr_T_25 = _io_aw_addr_T_22 + _GEN_7; // @[ysyx_25030077_IFU.scala 112:95]
+  wire [31:0] _io_aw_addr_T_34 = _io_aw_addr_T_22 + _GEN_9; // @[ysyx_25030077_IFU.scala 112:168]
+  wire [31:0] _io_aw_addr_T_35 = is_full ? _io_aw_addr_T_25 : _io_aw_addr_T_34; // @[ysyx_25030077_IFU.scala 112:35]
+  wire [31:0] _io_aw_addr_T_36 = _state_reg_T_20 ? _io_aw_addr_T_35 : 32'h0; // @[Mux.scala 101:16]
+  reg  w_valid_reg; // @[ysyx_25030077_IFU.scala 115:30]
+  wire  _w_valid_reg_T_5 = io_w_ready ? 1'h0 : 1'h1; // @[ysyx_25030077_IFU.scala 118:52]
+  wire  _w_valid_reg_T_13 = w_valid_reg ? _w_valid_reg_T_5 : _aw_valid_reg_T_11; // @[ysyx_25030077_IFU.scala 119:35]
+  wire [31:0] _io_w_data_T_2 = {4'h0,inst_addr[31:5],1'h1}; // @[Cat.scala 31:58]
+  wire [31:0] _io_w_data_T_8 = _state_reg_T_21 ? data3 : 32'h0; // @[Mux.scala 101:16]
+  wire [31:0] _io_w_data_T_9 = _state_reg_T_15 ? data2 : _io_w_data_T_8; // @[Mux.scala 101:16]
+  wire [31:0] _io_w_data_T_10 = _data2_T_2 ? data1 : _io_w_data_T_9; // @[Mux.scala 101:16]
+  wire [31:0] _io_w_data_T_11 = _data1_T_2 ? data0 : _io_w_data_T_10; // @[Mux.scala 101:16]
+  wire [31:0] _io_w_data_T_12 = _state_reg_T_20 ? _io_w_data_T_11 : 32'h0; // @[Mux.scala 101:16]
+  assign io_out_valid = state_reg == 3'h6; // @[ysyx_25030077_IFU.scala 130:32]
+  assign io_out_bits_pc = io_pc; // @[ysyx_25030077_IFU.scala 131:22]
+  assign io_out_bits_inst = rdata_reg; // @[ysyx_25030077_IFU.scala 132:22]
+  assign io_out_bits_is_err1 = io_err1_in; // @[ysyx_25030077_IFU.scala 133:25]
+  assign io_ar_addr = ar_addr_reg; // @[ysyx_25030077_IFU.scala 93:17]
+  assign io_ar_valid = ar_valid_reg; // @[ysyx_25030077_IFU.scala 87:17]
+  assign io_ar_burst = {{1'd0}, ar_addr_reg[31:28] == 4'ha}; // @[ysyx_25030077_IFU.scala 94:17]
+  assign io_r_ready = 1'h1; // @[ysyx_25030077_IFU.scala 32:16]
+  assign io_b_ready = 1'h1; // @[ysyx_25030077_IFU.scala 33:16]
+  assign io_aw_valid = aw_valid_reg; // @[ysyx_25030077_IFU.scala 109:17]
+  assign io_aw_addr = _state_reg_T_18 ? _io_aw_addr_T_17 : _io_aw_addr_T_36; // @[Mux.scala 101:16]
+  assign io_w_valid = w_valid_reg; // @[ysyx_25030077_IFU.scala 121:16]
+  assign io_w_data = _state_reg_T_18 ? _io_w_data_T_2 : _io_w_data_T_12; // @[Mux.scala 101:16]
   always @(posedge clock) begin
-    ar_valid_reg <= reset | _ar_valid_reg_T_5; // @[ysyx_25030077_IFU.scala 21:{30,30} 26:16]
-    if (reset) begin // @[ysyx_25030077_IFU.scala 22:30]
-      valid_out_reg <= 1'h0; // @[ysyx_25030077_IFU.scala 22:30]
-    end else if (valid_out_reg) begin // @[Mux.scala 101:16]
-      if (io_out_ready) begin // @[ysyx_25030077_IFU.scala 32:25]
-        valid_out_reg <= 1'h0;
+    if (reset) begin // @[ysyx_25030077_IFU.scala 34:28]
+      state_reg <= 3'h0; // @[ysyx_25030077_IFU.scala 34:28]
+    end else if (_state_reg_T) begin // @[Mux.scala 101:16]
+      if (io_pc[31:28] == 4'ha) begin // @[ysyx_25030077_IFU.scala 54:35]
+        state_reg <= 3'h1;
       end else begin
-        valid_out_reg <= 1'h1;
+        state_reg <= 3'h7;
+      end
+    end else if (_state_reg_T_4) begin // @[Mux.scala 101:16]
+      state_reg <= {{1'd0}, _state_reg_T_9};
+    end else if (_state_reg_T_10) begin // @[Mux.scala 101:16]
+      state_reg <= _state_reg_T_11;
+    end else begin
+      state_reg <= _state_reg_T_30;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 35:28]
+      rdata_reg <= 32'h0; // @[ysyx_25030077_IFU.scala 35:28]
+    end else if ((_state_reg_T_14 & _data0_T_2 | _state_reg_T_10 | _state_reg_T_24) & io_r_valid) begin // @[ysyx_25030077_IFU.scala 99:22]
+      rdata_reg <= io_r_data;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 36:31]
+      ar_valid_reg <= 1'h0; // @[ysyx_25030077_IFU.scala 36:31]
+    end else begin
+      ar_valid_reg <= _ar_valid_reg_T_14; // @[ysyx_25030077_IFU.scala 82:18]
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 37:31]
+      ar_addr_reg <= 32'h0; // @[ysyx_25030077_IFU.scala 37:31]
+    end else if (_state_reg_T) begin // @[Mux.scala 101:16]
+      if (_state_reg_T_2) begin // @[ysyx_25030077_IFU.scala 89:35]
+        ar_addr_reg <= _serach_addr_T_2;
+      end else begin
+        ar_addr_reg <= io_pc;
+      end
+    end else if (_state_reg_T_4) begin // @[Mux.scala 101:16]
+      if (io_r_valid) begin // @[ysyx_25030077_IFU.scala 90:35]
+        ar_addr_reg <= _ar_addr_reg_T_11;
+      end
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 39:20]
+      j <= 3'h0; // @[ysyx_25030077_IFU.scala 39:20]
+    end else if (_state_reg_T) begin // @[Mux.scala 101:16]
+      j <= 3'h0;
+    end else if (_state_reg_T_4) begin // @[Mux.scala 101:16]
+      if (io_r_valid) begin // @[ysyx_25030077_IFU.scala 66:35]
+        j <= _serach_addr_T_4;
+      end
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 40:20]
+      k <= 3'h0; // @[ysyx_25030077_IFU.scala 40:20]
+    end else if (_state_reg_T) begin // @[Mux.scala 101:16]
+      k <= 3'h0;
+    end else if (_state_reg_T_14) begin // @[Mux.scala 101:16]
+      if (io_r_valid) begin // @[ysyx_25030077_IFU.scala 70:35]
+        k <= _k_T_5;
+      end
+    end else if (_state_reg_T_18) begin // @[Mux.scala 101:16]
+      k <= _k_T_10;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 41:23]
+      temp <= 3'h0; // @[ysyx_25030077_IFU.scala 41:23]
+    end else if (_state_reg_T_20 & io_w_ready & _state_reg_T_21 & is_full) begin // @[ysyx_25030077_IFU.scala 80:16]
+      temp <= _temp_T_6;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 42:26]
+      is_full <= 1'h0; // @[ysyx_25030077_IFU.scala 42:26]
+    end else if (_state_reg_T_4) begin // @[Mux.scala 101:16]
+      if (io_r_valid) begin // @[ysyx_25030077_IFU.scala 97:35]
+        is_full <= _state_reg_T_5 & ~is_notvalid;
+      end
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 48:24]
+      data0 <= 32'h0; // @[ysyx_25030077_IFU.scala 48:24]
+    end else if (_state_reg_T_14 & io_r_valid & k == 3'h0) begin // @[ysyx_25030077_IFU.scala 74:17]
+      data0 <= io_r_data;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 49:24]
+      data1 <= 32'h0; // @[ysyx_25030077_IFU.scala 49:24]
+    end else if (_data0_T_1 & k == 3'h1) begin // @[ysyx_25030077_IFU.scala 75:17]
+      data1 <= io_r_data;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 50:24]
+      data2 <= 32'h0; // @[ysyx_25030077_IFU.scala 50:24]
+    end else if (_data0_T_1 & k == 3'h2) begin // @[ysyx_25030077_IFU.scala 76:17]
+      data2 <= io_r_data;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 51:24]
+      data3 <= 32'h0; // @[ysyx_25030077_IFU.scala 51:24]
+    end else if (_data0_T_1 & _state_reg_T_15) begin // @[ysyx_25030077_IFU.scala 77:17]
+      data3 <= io_r_data;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 101:31]
+      aw_valid_reg <= 1'h0; // @[ysyx_25030077_IFU.scala 101:31]
+    end else if (_state_reg_T_14) begin // @[Mux.scala 101:16]
+      aw_valid_reg <= _aw_valid_reg_T_2;
+    end else if (_state_reg_T_18) begin // @[Mux.scala 101:16]
+      if (aw_valid_reg) begin // @[ysyx_25030077_IFU.scala 104:35]
+        aw_valid_reg <= _aw_valid_reg_T_5;
+      end else begin
+        aw_valid_reg <= io_b_valid;
       end
     end else begin
-      valid_out_reg <= _valid_out_reg_T_1 & io_r_valid;
+      aw_valid_reg <= _state_reg_T_20 & _aw_valid_reg_T_13;
     end
-    if (reset) begin // @[ysyx_25030077_IFU.scala 35:25]
-      out_data <= 32'h0; // @[ysyx_25030077_IFU.scala 35:25]
-    end else if (io_r_valid) begin // @[ysyx_25030077_IFU.scala 36:18]
-      out_data <= io_r_data;
+    if (reset) begin // @[ysyx_25030077_IFU.scala 115:30]
+      w_valid_reg <= 1'h0; // @[ysyx_25030077_IFU.scala 115:30]
+    end else if (_state_reg_T_14) begin // @[Mux.scala 101:16]
+      w_valid_reg <= _aw_valid_reg_T_2;
+    end else if (_state_reg_T_18) begin // @[Mux.scala 101:16]
+      if (w_valid_reg) begin // @[ysyx_25030077_IFU.scala 118:35]
+        w_valid_reg <= _w_valid_reg_T_5;
+      end else begin
+        w_valid_reg <= io_b_valid;
+      end
+    end else begin
+      w_valid_reg <= _state_reg_T_20 & _w_valid_reg_T_13;
     end
   end
 // Register and memory initialization
@@ -92,11 +317,33 @@ initial begin
     `endif
 `ifdef RANDOMIZE_REG_INIT
   _RAND_0 = {1{`RANDOM}};
-  ar_valid_reg = _RAND_0[0:0];
+  state_reg = _RAND_0[2:0];
   _RAND_1 = {1{`RANDOM}};
-  valid_out_reg = _RAND_1[0:0];
+  rdata_reg = _RAND_1[31:0];
   _RAND_2 = {1{`RANDOM}};
-  out_data = _RAND_2[31:0];
+  ar_valid_reg = _RAND_2[0:0];
+  _RAND_3 = {1{`RANDOM}};
+  ar_addr_reg = _RAND_3[31:0];
+  _RAND_4 = {1{`RANDOM}};
+  j = _RAND_4[2:0];
+  _RAND_5 = {1{`RANDOM}};
+  k = _RAND_5[2:0];
+  _RAND_6 = {1{`RANDOM}};
+  temp = _RAND_6[2:0];
+  _RAND_7 = {1{`RANDOM}};
+  is_full = _RAND_7[0:0];
+  _RAND_8 = {1{`RANDOM}};
+  data0 = _RAND_8[31:0];
+  _RAND_9 = {1{`RANDOM}};
+  data1 = _RAND_9[31:0];
+  _RAND_10 = {1{`RANDOM}};
+  data2 = _RAND_10[31:0];
+  _RAND_11 = {1{`RANDOM}};
+  data3 = _RAND_11[31:0];
+  _RAND_12 = {1{`RANDOM}};
+  aw_valid_reg = _RAND_12[0:0];
+  _RAND_13 = {1{`RANDOM}};
+  w_valid_reg = _RAND_13[0:0];
 `endif // RANDOMIZE_REG_INIT
   `endif // RANDOMIZE
 end // initial
@@ -533,7 +780,7 @@ module ysyx_25030077_gpr(
       end
     end
     if (reset) begin // @[ysyx_25030077_gpr.scala 16:21]
-      regs_2 <= 32'h0; // @[ysyx_25030077_gpr.scala 16:21]
+      regs_2 <= 32'h0f001fff; // @[ysyx_25030077_gpr.scala 16:21]
     end else if (io_rd_valid & io_rd_addr != 5'h0) begin // @[ysyx_25030077_gpr.scala 19:46]
       if (5'h2 == io_rd_addr) begin // @[ysyx_25030077_gpr.scala 20:22]
         regs_2 <= io_rd_data; // @[ysyx_25030077_gpr.scala 20:22]
@@ -554,7 +801,7 @@ module ysyx_25030077_gpr(
       end
     end
     if (reset) begin // @[ysyx_25030077_gpr.scala 16:21]
-      regs_5 <= 32'h0; // @[ysyx_25030077_gpr.scala 16:21]
+      regs_5 <= 32'ha0000000; // @[ysyx_25030077_gpr.scala 16:21]
     end else if (io_rd_valid & io_rd_addr != 5'h0) begin // @[ysyx_25030077_gpr.scala 19:46]
       if (5'h5 == io_rd_addr) begin // @[ysyx_25030077_gpr.scala 20:22]
         regs_5 <= io_rd_data; // @[ysyx_25030077_gpr.scala 20:22]
@@ -645,7 +892,7 @@ module ysyx_25030077_gpr(
       end
     end
     if (reset) begin // @[ysyx_25030077_gpr.scala 16:21]
-      regs_18 <= 32'h0; // @[ysyx_25030077_gpr.scala 16:21]
+      regs_18 <= 32'h0f001600; // @[ysyx_25030077_gpr.scala 16:21]
     end else if (io_rd_valid & io_rd_addr != 5'h0) begin // @[ysyx_25030077_gpr.scala 19:46]
       if (5'h12 == io_rd_addr) begin // @[ysyx_25030077_gpr.scala 20:22]
         regs_18 <= io_rd_data; // @[ysyx_25030077_gpr.scala 20:22]
@@ -1018,57 +1265,6 @@ module ysyx_25030077_EXU(
       state_reg <= _state_reg_T_2 & _state_reg_T_3;
     end
   end
-// Register and memory initialization
-`ifdef RANDOMIZE_GARBAGE_ASSIGN
-`define RANDOMIZE
-`endif
-`ifdef RANDOMIZE_INVALID_ASSIGN
-`define RANDOMIZE
-`endif
-`ifdef RANDOMIZE_REG_INIT
-`define RANDOMIZE
-`endif
-`ifdef RANDOMIZE_MEM_INIT
-`define RANDOMIZE
-`endif
-`ifndef RANDOM
-`define RANDOM $random
-`endif
-`ifdef RANDOMIZE_MEM_INIT
-  integer initvar;
-`endif
-`ifndef SYNTHESIS
-`ifdef FIRRTL_BEFORE_INITIAL
-`FIRRTL_BEFORE_INITIAL
-`endif
-initial begin
-  `ifdef RANDOMIZE
-    `ifdef INIT_RANDOM
-      `INIT_RANDOM
-    `endif
-    `ifndef VERILATOR
-      `ifdef RANDOMIZE_DELAY
-        #`RANDOMIZE_DELAY begin end
-      `else
-        #0.002 begin end
-      `endif
-    `endif
-`ifdef RANDOMIZE_REG_INIT
-  _RAND_0 = {1{`RANDOM}};
-  valid_out_reg = _RAND_0[0:0];
-  _RAND_1 = {1{`RANDOM}};
-  ready_in_reg = _RAND_1[0:0];
-  _RAND_2 = {1{`RANDOM}};
-  is_err0_dly = _RAND_2[0:0];
-  _RAND_3 = {1{`RANDOM}};
-  state_reg = _RAND_3[0:0];
-`endif // RANDOMIZE_REG_INIT
-  `endif // RANDOMIZE
-end // initial
-`ifdef FIRRTL_AFTER_INITIAL
-`FIRRTL_AFTER_INITIAL
-`endif
-`endif // SYNTHESIS
 endmodule
 module ysyx_25030077_LSU(
   input         clock,
@@ -1465,10 +1661,19 @@ module ysyx_25030077_arbiter(
   input         reset,
   input         io_IFU_ar_valid,
   input  [31:0] io_IFU_ar_addr,
+  input  [1:0]  io_IFU_ar_brust,
   output        io_IFU_ar_ready,
   input         io_IFU_r_ready,
   output        io_IFU_r_valid,
   output [31:0] io_IFU_r_data,
+  input         io_IFU_b_ready,
+  output        io_IFU_b_valid,
+  input         io_IFU_aw_valid,
+  input  [31:0] io_IFU_aw_addr,
+  output        io_IFU_aw_ready,
+  input         io_IFU_w_valid,
+  input  [31:0] io_IFU_w_data,
+  output        io_IFU_w_ready,
   input         io_LSU_ar_valid,
   input  [31:0] io_LSU_ar_addr,
   output        io_LSU_ar_ready,
@@ -1516,46 +1721,60 @@ module ysyx_25030077_arbiter(
 );
 `ifdef RANDOMIZE_REG_INIT
   reg [31:0] _RAND_0;
+  reg [31:0] _RAND_1;
+  reg [31:0] _RAND_2;
 `endif // RANDOMIZE_REG_INIT
-  reg [2:0] state; // @[ysyx_25030077_arbiter.scala 70:22]
-  wire  _state_T = state == 3'h0; // @[ysyx_25030077_arbiter.scala 72:16]
-  wire [2:0] _state_T_4 = io_IFU_ar_valid & io_axi_ar_ready ? 3'h1 : 3'h0; // @[ysyx_25030077_arbiter.scala 74:40]
-  wire  _state_T_7 = state == 3'h1; // @[ysyx_25030077_arbiter.scala 75:16]
-  wire  _state_T_10 = state == 3'h2; // @[ysyx_25030077_arbiter.scala 76:16]
-  wire [2:0] _state_T_12 = io_LSU_r_ready & io_axi_r_valid ? 3'h0 : 3'h2; // @[ysyx_25030077_arbiter.scala 76:31]
-  wire  _state_T_13 = state == 3'h3; // @[ysyx_25030077_arbiter.scala 77:16]
-  wire [2:0] _state_T_15 = io_LSU_b_ready & io_axi_b_valid ? 3'h0 : 3'h3; // @[ysyx_25030077_arbiter.scala 77:31]
-  wire [2:0] _state_T_16 = _state_T_13 ? _state_T_15 : state; // @[Mux.scala 101:16]
-  wire [31:0] _io_axi_ar_addr_T_2 = _state_T_7 ? io_IFU_ar_addr : 32'h0; // @[ysyx_25030077_arbiter.scala 81:61]
-  wire  _rsize_T = io_LSU_rw_type == 4'h4; // @[ysyx_25030077_arbiter.scala 88:29]
-  wire  _rsize_T_1 = io_LSU_rw_type == 4'h5; // @[ysyx_25030077_arbiter.scala 89:29]
-  wire  _rsize_T_2 = io_LSU_rw_type == 4'h6; // @[ysyx_25030077_arbiter.scala 90:29]
-  wire  _rsize_T_3 = io_LSU_rw_type == 4'h7; // @[ysyx_25030077_arbiter.scala 91:29]
-  wire  _rsize_T_4 = io_LSU_rw_type == 4'h8; // @[ysyx_25030077_arbiter.scala 92:29]
+  reg [2:0] state; // @[ysyx_25030077_arbiter.scala 79:22]
+  reg [1:0] r_cnt; // @[ysyx_25030077_arbiter.scala 80:22]
+  reg [1:0] ar_len; // @[ysyx_25030077_arbiter.scala 81:23]
+  wire  _state_T = state == 3'h0; // @[ysyx_25030077_arbiter.scala 83:16]
+  wire [2:0] _state_T_5 = io_IFU_aw_valid & io_axi_aw_ready ? 3'h4 : 3'h0; // @[ysyx_25030077_arbiter.scala 86:44]
+  wire [2:0] _state_T_6 = io_IFU_ar_valid & io_axi_ar_ready ? 3'h1 : _state_T_5; // @[ysyx_25030077_arbiter.scala 85:40]
+  wire  _state_T_9 = state == 3'h1; // @[ysyx_25030077_arbiter.scala 87:16]
+  wire  _state_T_10 = io_IFU_r_ready & io_axi_r_valid; // @[ysyx_25030077_arbiter.scala 87:47]
+  wire  _state_T_14 = state == 3'h2; // @[ysyx_25030077_arbiter.scala 88:16]
+  wire [2:0] _state_T_16 = io_LSU_r_ready & io_axi_r_valid ? 3'h0 : 3'h2; // @[ysyx_25030077_arbiter.scala 88:31]
+  wire  _state_T_17 = state == 3'h3; // @[ysyx_25030077_arbiter.scala 89:16]
+  wire [2:0] _state_T_19 = io_LSU_b_ready & io_axi_b_valid ? 3'h0 : 3'h3; // @[ysyx_25030077_arbiter.scala 89:31]
+  wire  _state_T_20 = state == 3'h4; // @[ysyx_25030077_arbiter.scala 90:16]
+  wire [2:0] _state_T_22 = io_IFU_b_ready & io_axi_b_valid ? 3'h0 : 3'h4; // @[ysyx_25030077_arbiter.scala 90:31]
+  wire [2:0] _state_T_23 = _state_T_20 ? _state_T_22 : state; // @[Mux.scala 101:16]
+  wire [2:0] _state_T_24 = _state_T_17 ? _state_T_19 : _state_T_23; // @[Mux.scala 101:16]
+  wire [31:0] _io_axi_ar_addr_T_2 = _state_T_9 ? io_IFU_ar_addr : 32'h0; // @[ysyx_25030077_arbiter.scala 94:61]
+  wire  _rsize_T = io_LSU_rw_type == 4'h4; // @[ysyx_25030077_arbiter.scala 102:29]
+  wire  _rsize_T_1 = io_LSU_rw_type == 4'h5; // @[ysyx_25030077_arbiter.scala 103:29]
+  wire  _rsize_T_2 = io_LSU_rw_type == 4'h6; // @[ysyx_25030077_arbiter.scala 104:29]
+  wire  _rsize_T_3 = io_LSU_rw_type == 4'h7; // @[ysyx_25030077_arbiter.scala 105:29]
+  wire  _rsize_T_4 = io_LSU_rw_type == 4'h8; // @[ysyx_25030077_arbiter.scala 106:29]
   wire [1:0] _rsize_T_5 = _rsize_T_4 ? 2'h2 : 2'h0; // @[Mux.scala 101:16]
   wire [1:0] _rsize_T_6 = _rsize_T_3 ? 2'h1 : _rsize_T_5; // @[Mux.scala 101:16]
   wire [1:0] _rsize_T_7 = _rsize_T_2 ? 2'h1 : _rsize_T_6; // @[Mux.scala 101:16]
   wire [1:0] _rsize_T_8 = _rsize_T_1 ? 2'h0 : _rsize_T_7; // @[Mux.scala 101:16]
   wire [1:0] rsize = _rsize_T ? 2'h0 : _rsize_T_8; // @[Mux.scala 101:16]
-  wire [1:0] _io_axi_ar_size_T_2 = _state_T_7 ? 2'h2 : 2'h0; // @[ysyx_25030077_arbiter.scala 94:51]
-  wire [1:0] _io_axi_ar_size_T_3 = _state_T_10 ? rsize : _io_axi_ar_size_T_2; // @[ysyx_25030077_arbiter.scala 94:25]
-  wire  _wsize_T = io_LSU_rw_type == 4'h1; // @[ysyx_25030077_arbiter.scala 101:39]
-  wire  _wsize_T_1 = io_LSU_rw_type == 4'h2; // @[ysyx_25030077_arbiter.scala 102:39]
-  wire  _wsize_T_2 = io_LSU_rw_type == 4'h3; // @[ysyx_25030077_arbiter.scala 103:39]
+  wire [1:0] _io_axi_ar_size_T_2 = _state_T_9 ? 2'h2 : 2'h0; // @[ysyx_25030077_arbiter.scala 108:51]
+  wire [1:0] _io_axi_ar_size_T_3 = _state_T_14 ? rsize : _io_axi_ar_size_T_2; // @[ysyx_25030077_arbiter.scala 108:25]
+  wire [1:0] _io_axi_ar_len_T_2 = io_IFU_ar_brust == 2'h1 ? 2'h3 : 2'h0; // @[ysyx_25030077_arbiter.scala 109:42]
+  wire [1:0] _io_axi_ar_len_T_3 = _state_T_9 ? _io_axi_ar_len_T_2 : 2'h0; // @[ysyx_25030077_arbiter.scala 109:23]
+  wire [1:0] _r_cnt_T_4 = r_cnt + 2'h1; // @[ysyx_25030077_arbiter.scala 112:98]
+  wire [31:0] _io_axi_aw_addr_T_2 = _state_T_20 ? io_IFU_aw_addr : 32'h0; // @[ysyx_25030077_arbiter.scala 115:61]
+  wire  _wsize_T = io_LSU_rw_type == 4'h1; // @[ysyx_25030077_arbiter.scala 119:39]
+  wire  _wsize_T_1 = io_LSU_rw_type == 4'h2; // @[ysyx_25030077_arbiter.scala 120:39]
+  wire  _wsize_T_2 = io_LSU_rw_type == 4'h3; // @[ysyx_25030077_arbiter.scala 121:39]
   wire [1:0] wsize = _wsize_T ? 2'h2 : {{1'd0}, _wsize_T_1}; // @[Mux.scala 101:16]
-  wire [1:0] _io_axi_aw_size_T_1 = _state_T_13 ? wsize : 2'h0; // @[ysyx_25030077_arbiter.scala 105:25]
-  wire  _w_data_T_3 = ~io_LSU_aw_addr[1]; // @[ysyx_25030077_arbiter.scala 111:74]
+  wire [1:0] _io_axi_aw_size_T_2 = _state_T_20 ? 2'h2 : 2'h0; // @[ysyx_25030077_arbiter.scala 123:51]
+  wire [1:0] _io_axi_aw_size_T_3 = _state_T_17 ? wsize : _io_axi_aw_size_T_2; // @[ysyx_25030077_arbiter.scala 123:25]
+  wire  _w_data_T_3 = ~io_LSU_aw_addr[1]; // @[ysyx_25030077_arbiter.scala 128:74]
   wire [31:0] _w_data_T_5 = {16'h0,io_LSU_w_data[15:0]}; // @[Cat.scala 31:58]
   wire [31:0] _w_data_T_9 = {io_LSU_w_data[15:0],16'h0}; // @[Cat.scala 31:58]
   wire [31:0] _w_data_T_10 = io_LSU_aw_addr[1] ? _w_data_T_9 : 32'h0; // @[Mux.scala 101:16]
   wire [31:0] _w_data_T_11 = _w_data_T_3 ? _w_data_T_5 : _w_data_T_10; // @[Mux.scala 101:16]
-  wire  _w_data_T_14 = io_LSU_aw_addr[1:0] == 2'h0; // @[ysyx_25030077_arbiter.scala 115:77]
+  wire  _w_data_T_14 = io_LSU_aw_addr[1:0] == 2'h0; // @[ysyx_25030077_arbiter.scala 132:77]
   wire [31:0] _w_data_T_16 = {24'h0,io_LSU_w_data[7:0]}; // @[Cat.scala 31:58]
-  wire  _w_data_T_18 = io_LSU_aw_addr[1:0] == 2'h1; // @[ysyx_25030077_arbiter.scala 116:77]
+  wire  _w_data_T_18 = io_LSU_aw_addr[1:0] == 2'h1; // @[ysyx_25030077_arbiter.scala 133:77]
   wire [31:0] _w_data_T_20 = {16'h0,io_LSU_w_data[7:0],8'h0}; // @[Cat.scala 31:58]
-  wire  _w_data_T_22 = io_LSU_aw_addr[1:0] == 2'h2; // @[ysyx_25030077_arbiter.scala 117:77]
+  wire  _w_data_T_22 = io_LSU_aw_addr[1:0] == 2'h2; // @[ysyx_25030077_arbiter.scala 134:77]
   wire [31:0] _w_data_T_24 = {8'h0,io_LSU_w_data[7:0],16'h0}; // @[Cat.scala 31:58]
-  wire  _w_data_T_26 = io_LSU_aw_addr[1:0] == 2'h3; // @[ysyx_25030077_arbiter.scala 118:77]
+  wire  _w_data_T_26 = io_LSU_aw_addr[1:0] == 2'h3; // @[ysyx_25030077_arbiter.scala 135:77]
   wire [31:0] _w_data_T_28 = {io_LSU_w_data[7:0],24'h0}; // @[Cat.scala 31:58]
   wire [31:0] _w_data_T_29 = _w_data_T_26 ? _w_data_T_28 : 32'h0; // @[Mux.scala 101:16]
   wire [31:0] _w_data_T_30 = _w_data_T_22 ? _w_data_T_24 : _w_data_T_29; // @[Mux.scala 101:16]
@@ -1564,6 +1783,7 @@ module ysyx_25030077_arbiter(
   wire [31:0] _w_data_T_33 = _wsize_T_2 ? _w_data_T_32 : 32'h0; // @[Mux.scala 101:16]
   wire [31:0] _w_data_T_34 = _wsize_T_1 ? _w_data_T_11 : _w_data_T_33; // @[Mux.scala 101:16]
   wire [31:0] w_data = _wsize_T ? io_LSU_w_data : _w_data_T_34; // @[Mux.scala 101:16]
+  wire [31:0] _io_axi_w_data_T_2 = _state_T_20 ? io_IFU_w_data : 32'h0; // @[ysyx_25030077_arbiter.scala 138:52]
   wire [3:0] _strb_T_6 = io_LSU_aw_addr[1] ? 4'hc : 4'h0; // @[Mux.scala 101:16]
   wire [3:0] _strb_T_7 = _w_data_T_3 ? 4'h3 : _strb_T_6; // @[Mux.scala 101:16]
   wire [3:0] _strb_T_17 = _w_data_T_26 ? 4'h8 : 4'h0; // @[Mux.scala 101:16]
@@ -1573,20 +1793,20 @@ module ysyx_25030077_arbiter(
   wire [3:0] _strb_T_21 = _wsize_T_2 ? _strb_T_20 : 4'h0; // @[Mux.scala 101:16]
   wire [3:0] _strb_T_22 = _wsize_T_1 ? _strb_T_7 : _strb_T_21; // @[Mux.scala 101:16]
   wire [3:0] strb = _wsize_T ? 4'hf : _strb_T_22; // @[Mux.scala 101:16]
-  wire  is_sram = ~(io_axi_ar_addr[31:28] == 4'h3); // @[ysyx_25030077_arbiter.scala 136:18]
-  wire  _rdata_sram_T_3 = io_axi_ar_addr[1:0] == 2'h0; // @[ysyx_25030077_arbiter.scala 140:79]
+  wire  is_sram = ~(io_axi_ar_addr[31:28] == 4'h3); // @[ysyx_25030077_arbiter.scala 154:18]
+  wire  _rdata_sram_T_3 = io_axi_ar_addr[1:0] == 2'h0; // @[ysyx_25030077_arbiter.scala 158:79]
   wire [31:0] _rdata_sram_T_5 = {24'h0,io_axi_r_data[7:0]}; // @[Cat.scala 31:58]
-  wire  _rdata_sram_T_7 = io_axi_ar_addr[1:0] == 2'h1; // @[ysyx_25030077_arbiter.scala 141:79]
+  wire  _rdata_sram_T_7 = io_axi_ar_addr[1:0] == 2'h1; // @[ysyx_25030077_arbiter.scala 159:79]
   wire [31:0] _rdata_sram_T_9 = {24'h0,io_axi_r_data[15:8]}; // @[Cat.scala 31:58]
-  wire  _rdata_sram_T_11 = io_axi_ar_addr[1:0] == 2'h2; // @[ysyx_25030077_arbiter.scala 142:79]
+  wire  _rdata_sram_T_11 = io_axi_ar_addr[1:0] == 2'h2; // @[ysyx_25030077_arbiter.scala 160:79]
   wire [31:0] _rdata_sram_T_13 = {24'h0,io_axi_r_data[23:16]}; // @[Cat.scala 31:58]
-  wire  _rdata_sram_T_15 = io_axi_ar_addr[1:0] == 2'h3; // @[ysyx_25030077_arbiter.scala 143:79]
+  wire  _rdata_sram_T_15 = io_axi_ar_addr[1:0] == 2'h3; // @[ysyx_25030077_arbiter.scala 161:79]
   wire [31:0] _rdata_sram_T_17 = {24'h0,io_axi_r_data[31:24]}; // @[Cat.scala 31:58]
   wire [31:0] _rdata_sram_T_18 = _rdata_sram_T_15 ? _rdata_sram_T_17 : 32'h0; // @[Mux.scala 101:16]
   wire [31:0] _rdata_sram_T_19 = _rdata_sram_T_11 ? _rdata_sram_T_13 : _rdata_sram_T_18; // @[Mux.scala 101:16]
   wire [31:0] _rdata_sram_T_20 = _rdata_sram_T_7 ? _rdata_sram_T_9 : _rdata_sram_T_19; // @[Mux.scala 101:16]
   wire [31:0] _rdata_sram_T_21 = _rdata_sram_T_3 ? _rdata_sram_T_5 : _rdata_sram_T_20; // @[Mux.scala 101:16]
-  wire  _rdata_sram_T_24 = ~io_axi_ar_addr[1]; // @[ysyx_25030077_arbiter.scala 146:76]
+  wire  _rdata_sram_T_24 = ~io_axi_ar_addr[1]; // @[ysyx_25030077_arbiter.scala 164:76]
   wire [15:0] _rdata_sram_T_27 = io_axi_r_data[15] ? 16'hffff : 16'h0; // @[Bitwise.scala 74:12]
   wire [31:0] _rdata_sram_T_29 = {_rdata_sram_T_27,io_axi_r_data[15:0]}; // @[Cat.scala 31:58]
   wire [15:0] _rdata_sram_T_34 = io_axi_r_data[31] ? 16'hffff : 16'h0; // @[Bitwise.scala 74:12]
@@ -1619,55 +1839,83 @@ module ysyx_25030077_arbiter(
   wire [31:0] _rdata_mrom_T_21 = _rsize_T_2 ? _rdata_sram_T_29 : _rdata_mrom_T_20; // @[Mux.scala 101:16]
   wire [31:0] _rdata_mrom_T_22 = _rsize_T_1 ? _rdata_sram_T_5 : _rdata_mrom_T_21; // @[Mux.scala 101:16]
   wire [31:0] rdata_mrom = _rsize_T_4 ? io_axi_r_data : _rdata_mrom_T_22; // @[Mux.scala 101:16]
-  wire [31:0] rdata = is_sram ? rdata_sram : rdata_mrom; // @[ysyx_25030077_arbiter.scala 169:18]
-  assign io_IFU_ar_ready = _state_T_7 & io_axi_ar_ready; // @[ysyx_25030077_arbiter.scala 82:25]
-  assign io_IFU_r_valid = _state_T_7 & io_axi_r_valid; // @[ysyx_25030077_arbiter.scala 172:24]
-  assign io_IFU_r_data = _state_T_7 ? io_axi_r_data : 32'h0; // @[ysyx_25030077_arbiter.scala 174:24]
-  assign io_LSU_ar_ready = _state_T_10 & io_axi_ar_ready; // @[ysyx_25030077_arbiter.scala 83:25]
-  assign io_LSU_r_valid = _state_T_10 & io_axi_r_valid; // @[ysyx_25030077_arbiter.scala 173:24]
-  assign io_LSU_r_data = _state_T_10 ? rdata : 32'h0; // @[ysyx_25030077_arbiter.scala 175:24]
-  assign io_LSU_b_valid = _state_T_13 & io_axi_b_valid; // @[ysyx_25030077_arbiter.scala 178:24]
-  assign io_LSU_aw_ready = _state_T_13 & io_axi_aw_ready; // @[ysyx_25030077_arbiter.scala 99:25]
-  assign io_LSU_w_ready = _state_T_13 & io_axi_w_ready; // @[ysyx_25030077_arbiter.scala 122:24]
-  assign io_axi_ar_valid = _state_T_10 ? io_LSU_ar_valid : _state_T_7 & io_IFU_ar_valid; // @[ysyx_25030077_arbiter.scala 80:25]
-  assign io_axi_ar_addr = _state_T_10 ? io_LSU_ar_addr : _io_axi_ar_addr_T_2; // @[ysyx_25030077_arbiter.scala 81:25]
-  assign io_axi_ar_id = 4'h0; // @[ysyx_25030077_arbiter.scala 68:16]
-  assign io_axi_ar_len = 8'h0; // @[ysyx_25030077_arbiter.scala 86:17]
-  assign io_axi_ar_size = {{1'd0}, _io_axi_ar_size_T_3}; // @[ysyx_25030077_arbiter.scala 94:19]
-  assign io_axi_ar_burst = 2'h0; // @[ysyx_25030077_arbiter.scala 95:19]
-  assign io_axi_aw_valid = _state_T_13 & io_LSU_aw_valid; // @[ysyx_25030077_arbiter.scala 97:25]
-  assign io_axi_aw_addr = _state_T_13 ? io_LSU_aw_addr : 32'h0; // @[ysyx_25030077_arbiter.scala 98:25]
-  assign io_axi_aw_id = 4'h0; // @[ysyx_25030077_arbiter.scala 64:16]
-  assign io_axi_aw_len = 8'h0; // @[ysyx_25030077_arbiter.scala 65:17]
-  assign io_axi_aw_size = {{1'd0}, _io_axi_aw_size_T_1}; // @[ysyx_25030077_arbiter.scala 105:19]
-  assign io_axi_aw_burst = 2'h0; // @[ysyx_25030077_arbiter.scala 66:19]
-  assign io_axi_w_valid = _state_T_13 & io_LSU_w_valid; // @[ysyx_25030077_arbiter.scala 107:24]
-  assign io_axi_w_data = _state_T_13 ? w_data : 32'h0; // @[ysyx_25030077_arbiter.scala 121:24]
-  assign io_axi_w_strb = _state_T_13 ? strb : 4'h0; // @[ysyx_25030077_arbiter.scala 170:23]
-  assign io_axi_w_last = 1'h1; // @[ysyx_25030077_arbiter.scala 67:17]
-  assign io_axi_r_ready = _state_T_7 ? io_IFU_r_ready : _state_T_10 & io_LSU_r_ready; // @[ysyx_25030077_arbiter.scala 176:24]
-  assign io_axi_b_ready = _state_T_13 & io_LSU_b_ready; // @[ysyx_25030077_arbiter.scala 179:24]
+  wire [31:0] rdata = is_sram ? rdata_sram : rdata_mrom; // @[ysyx_25030077_arbiter.scala 187:18]
+  wire [3:0] _io_axi_w_strb_T_2 = _state_T_20 ? 4'hf : 4'h0; // @[ysyx_25030077_arbiter.scala 188:48]
+  assign io_IFU_ar_ready = _state_T_9 & io_axi_ar_ready; // @[ysyx_25030077_arbiter.scala 95:25]
+  assign io_IFU_r_valid = _state_T_9 & io_axi_r_valid; // @[ysyx_25030077_arbiter.scala 190:24]
+  assign io_IFU_r_data = _state_T_9 ? io_axi_r_data : 32'h0; // @[ysyx_25030077_arbiter.scala 192:24]
+  assign io_IFU_b_valid = _state_T_20 & io_axi_b_valid; // @[ysyx_25030077_arbiter.scala 197:24]
+  assign io_IFU_aw_ready = _state_T_20 & io_axi_aw_ready; // @[ysyx_25030077_arbiter.scala 117:25]
+  assign io_IFU_w_ready = _state_T_20 & io_axi_w_ready; // @[ysyx_25030077_arbiter.scala 140:24]
+  assign io_LSU_ar_ready = _state_T_14 & io_axi_ar_ready; // @[ysyx_25030077_arbiter.scala 98:25]
+  assign io_LSU_r_valid = _state_T_14 & io_axi_r_valid; // @[ysyx_25030077_arbiter.scala 191:24]
+  assign io_LSU_r_data = _state_T_14 ? rdata : 32'h0; // @[ysyx_25030077_arbiter.scala 193:24]
+  assign io_LSU_b_valid = _state_T_17 & io_axi_b_valid; // @[ysyx_25030077_arbiter.scala 196:24]
+  assign io_LSU_aw_ready = _state_T_17 & io_axi_aw_ready; // @[ysyx_25030077_arbiter.scala 116:25]
+  assign io_LSU_w_ready = _state_T_17 & io_axi_w_ready; // @[ysyx_25030077_arbiter.scala 139:24]
+  assign io_axi_ar_valid = _state_T_14 ? io_LSU_ar_valid : _state_T_9 & io_IFU_ar_valid; // @[ysyx_25030077_arbiter.scala 93:25]
+  assign io_axi_ar_addr = _state_T_14 ? io_LSU_ar_addr : _io_axi_ar_addr_T_2; // @[ysyx_25030077_arbiter.scala 94:25]
+  assign io_axi_ar_id = 4'h0; // @[ysyx_25030077_arbiter.scala 77:16]
+  assign io_axi_ar_len = {{6'd0}, _io_axi_ar_len_T_3}; // @[ysyx_25030077_arbiter.scala 109:17]
+  assign io_axi_ar_size = {{1'd0}, _io_axi_ar_size_T_3}; // @[ysyx_25030077_arbiter.scala 108:19]
+  assign io_axi_ar_burst = _state_T_9 ? io_IFU_ar_brust : 2'h0; // @[ysyx_25030077_arbiter.scala 110:25]
+  assign io_axi_aw_valid = _state_T_17 ? io_LSU_aw_valid : _state_T_20 & io_IFU_aw_valid; // @[ysyx_25030077_arbiter.scala 114:25]
+  assign io_axi_aw_addr = _state_T_17 ? io_LSU_aw_addr : _io_axi_aw_addr_T_2; // @[ysyx_25030077_arbiter.scala 115:25]
+  assign io_axi_aw_id = 4'h0; // @[ysyx_25030077_arbiter.scala 73:16]
+  assign io_axi_aw_len = 8'h0; // @[ysyx_25030077_arbiter.scala 74:17]
+  assign io_axi_aw_size = {{1'd0}, _io_axi_aw_size_T_3}; // @[ysyx_25030077_arbiter.scala 123:19]
+  assign io_axi_aw_burst = 2'h0; // @[ysyx_25030077_arbiter.scala 75:19]
+  assign io_axi_w_valid = _state_T_17 ? io_LSU_w_valid : _state_T_20 & io_IFU_w_valid; // @[ysyx_25030077_arbiter.scala 124:24]
+  assign io_axi_w_data = _state_T_17 ? w_data : _io_axi_w_data_T_2; // @[ysyx_25030077_arbiter.scala 138:24]
+  assign io_axi_w_strb = _state_T_17 ? strb : _io_axi_w_strb_T_2; // @[ysyx_25030077_arbiter.scala 188:23]
+  assign io_axi_w_last = 1'h1; // @[ysyx_25030077_arbiter.scala 76:17]
+  assign io_axi_r_ready = _state_T_9 ? io_IFU_r_ready : _state_T_14 & io_LSU_r_ready; // @[ysyx_25030077_arbiter.scala 194:24]
+  assign io_axi_b_ready = _state_T_17 ? io_LSU_b_ready : _state_T_20 & io_IFU_b_ready; // @[ysyx_25030077_arbiter.scala 198:24]
   always @(posedge clock) begin
-    if (reset) begin // @[ysyx_25030077_arbiter.scala 70:22]
-      state <= 3'h0; // @[ysyx_25030077_arbiter.scala 70:22]
+    if (reset) begin // @[ysyx_25030077_arbiter.scala 79:22]
+      state <= 3'h0; // @[ysyx_25030077_arbiter.scala 79:22]
     end else if (_state_T) begin // @[Mux.scala 101:16]
-      if (io_LSU_ar_valid & io_axi_ar_ready) begin // @[ysyx_25030077_arbiter.scala 72:31]
+      if (io_LSU_ar_valid & io_axi_ar_ready) begin // @[ysyx_25030077_arbiter.scala 83:31]
         state <= 3'h2;
-      end else if (io_LSU_aw_valid & io_axi_aw_ready) begin // @[ysyx_25030077_arbiter.scala 73:35]
+      end else if (io_LSU_aw_valid & io_axi_aw_ready) begin // @[ysyx_25030077_arbiter.scala 84:35]
         state <= 3'h3;
       end else begin
-        state <= _state_T_4;
+        state <= _state_T_6;
       end
-    end else if (_state_T_7) begin // @[Mux.scala 101:16]
-      if (io_IFU_r_ready & io_axi_r_valid) begin // @[ysyx_25030077_arbiter.scala 75:31]
+    end else if (_state_T_9) begin // @[Mux.scala 101:16]
+      if (io_IFU_r_ready & io_axi_r_valid & ar_len == r_cnt) begin // @[ysyx_25030077_arbiter.scala 87:31]
         state <= 3'h0;
       end else begin
         state <= 3'h1;
       end
-    end else if (_state_T_10) begin // @[Mux.scala 101:16]
-      state <= _state_T_12;
-    end else begin
+    end else if (_state_T_14) begin // @[Mux.scala 101:16]
       state <= _state_T_16;
+    end else begin
+      state <= _state_T_24;
+    end
+    if (reset) begin // @[ysyx_25030077_arbiter.scala 80:22]
+      r_cnt <= 2'h0; // @[ysyx_25030077_arbiter.scala 80:22]
+    end else if (_state_T_9) begin // @[ysyx_25030077_arbiter.scala 112:16]
+      if (_state_T_10) begin // @[ysyx_25030077_arbiter.scala 112:35]
+        if (r_cnt != ar_len) begin // @[ysyx_25030077_arbiter.scala 112:73]
+          r_cnt <= _r_cnt_T_4;
+        end else begin
+          r_cnt <= 2'h0;
+        end
+      end
+    end else begin
+      r_cnt <= 2'h0;
+    end
+    if (reset) begin // @[ysyx_25030077_arbiter.scala 81:23]
+      ar_len <= 2'h0; // @[ysyx_25030077_arbiter.scala 81:23]
+    end else if (_state_T_9) begin // @[ysyx_25030077_arbiter.scala 109:23]
+      if (io_IFU_ar_brust == 2'h1) begin // @[ysyx_25030077_arbiter.scala 109:42]
+        ar_len <= 2'h3;
+      end else begin
+        ar_len <= 2'h0;
+      end
+    end else begin
+      ar_len <= 2'h0;
     end
   end
 // Register and memory initialization
@@ -1708,6 +1956,10 @@ initial begin
 `ifdef RANDOMIZE_REG_INIT
   _RAND_0 = {1{`RANDOM}};
   state = _RAND_0[2:0];
+  _RAND_1 = {1{`RANDOM}};
+  r_cnt = _RAND_1[1:0];
+  _RAND_2 = {1{`RANDOM}};
+  ar_len = _RAND_2[1:0];
 `endif // RANDOMIZE_REG_INIT
   `endif // RANDOMIZE
 end // initial
@@ -1837,9 +2089,18 @@ module ysyx_25030077(
   wire [31:0] a_ifu_io_ar_addr; // @[ysyx_25030077.scala 87:21]
   wire  a_ifu_io_ar_valid; // @[ysyx_25030077.scala 87:21]
   wire  a_ifu_io_ar_ready; // @[ysyx_25030077.scala 87:21]
+  wire [1:0] a_ifu_io_ar_burst; // @[ysyx_25030077.scala 87:21]
   wire  a_ifu_io_r_valid; // @[ysyx_25030077.scala 87:21]
   wire [31:0] a_ifu_io_r_data; // @[ysyx_25030077.scala 87:21]
   wire  a_ifu_io_r_ready; // @[ysyx_25030077.scala 87:21]
+  wire  a_ifu_io_b_valid; // @[ysyx_25030077.scala 87:21]
+  wire  a_ifu_io_b_ready; // @[ysyx_25030077.scala 87:21]
+  wire  a_ifu_io_aw_valid; // @[ysyx_25030077.scala 87:21]
+  wire [31:0] a_ifu_io_aw_addr; // @[ysyx_25030077.scala 87:21]
+  wire  a_ifu_io_aw_ready; // @[ysyx_25030077.scala 87:21]
+  wire  a_ifu_io_w_valid; // @[ysyx_25030077.scala 87:21]
+  wire [31:0] a_ifu_io_w_data; // @[ysyx_25030077.scala 87:21]
+  wire  a_ifu_io_w_ready; // @[ysyx_25030077.scala 87:21]
   wire  b_idu_clock; // @[ysyx_25030077.scala 88:21]
   wire  b_idu_reset; // @[ysyx_25030077.scala 88:21]
   wire  b_idu_io_in_ready; // @[ysyx_25030077.scala 88:21]
@@ -1956,10 +2217,19 @@ module ysyx_25030077(
   wire  f_arbiter_reset; // @[ysyx_25030077.scala 93:25]
   wire  f_arbiter_io_IFU_ar_valid; // @[ysyx_25030077.scala 93:25]
   wire [31:0] f_arbiter_io_IFU_ar_addr; // @[ysyx_25030077.scala 93:25]
+  wire [1:0] f_arbiter_io_IFU_ar_brust; // @[ysyx_25030077.scala 93:25]
   wire  f_arbiter_io_IFU_ar_ready; // @[ysyx_25030077.scala 93:25]
   wire  f_arbiter_io_IFU_r_ready; // @[ysyx_25030077.scala 93:25]
   wire  f_arbiter_io_IFU_r_valid; // @[ysyx_25030077.scala 93:25]
   wire [31:0] f_arbiter_io_IFU_r_data; // @[ysyx_25030077.scala 93:25]
+  wire  f_arbiter_io_IFU_b_ready; // @[ysyx_25030077.scala 93:25]
+  wire  f_arbiter_io_IFU_b_valid; // @[ysyx_25030077.scala 93:25]
+  wire  f_arbiter_io_IFU_aw_valid; // @[ysyx_25030077.scala 93:25]
+  wire [31:0] f_arbiter_io_IFU_aw_addr; // @[ysyx_25030077.scala 93:25]
+  wire  f_arbiter_io_IFU_aw_ready; // @[ysyx_25030077.scala 93:25]
+  wire  f_arbiter_io_IFU_w_valid; // @[ysyx_25030077.scala 93:25]
+  wire [31:0] f_arbiter_io_IFU_w_data; // @[ysyx_25030077.scala 93:25]
+  wire  f_arbiter_io_IFU_w_ready; // @[ysyx_25030077.scala 93:25]
   wire  f_arbiter_io_LSU_ar_valid; // @[ysyx_25030077.scala 93:25]
   wire [31:0] f_arbiter_io_LSU_ar_addr; // @[ysyx_25030077.scala 93:25]
   wire  f_arbiter_io_LSU_ar_ready; // @[ysyx_25030077.scala 93:25]
@@ -2032,16 +2302,16 @@ module ysyx_25030077(
   reg [31:0] e_wbu_io_in_bits_r_rd_data; // @[Reg.scala 16:16]
   reg  e_wbu_io_in_bits_r_is_err1; // @[Reg.scala 16:16]
   reg  e_wbu_io_in_bits_r_is_err2; // @[Reg.scala 16:16]
-  wire  _b_idu_io_EXU_rd_T = c_exu_io_in_bits_is_err1 | c_exu_io_in_bits_is_err2; // @[ysyx_25030077.scala 125:54]
-  reg  err1_reg; // @[ysyx_25030077.scala 214:25]
-  reg  err2_reg; // @[ysyx_25030077.scala 215:25]
-  reg [31:0] pc_fix_reg; // @[ysyx_25030077.scala 216:27]
-  wire  _err1_reg_T_1 = a_ifu_io_out_ready & a_ifu_io_out_valid; // @[ysyx_25030077.scala 219:55]
-  wire  _err1_reg_T_3 = ~err1_reg; // @[ysyx_25030077.scala 220:15]
-  wire  _err1_reg_T_4 = c_exu_io_is_err; // @[ysyx_25030077.scala 220:34]
-  wire  _err2_reg_T_3 = ~err2_reg; // @[ysyx_25030077.scala 225:15]
-  reg [31:0] pc; // @[ysyx_25030077.scala 230:19]
-  wire [31:0] _pc_T_2 = pc + 32'h4; // @[ysyx_25030077.scala 231:84]
+  wire  _b_idu_io_EXU_rd_T = c_exu_io_in_bits_is_err1 | c_exu_io_in_bits_is_err2; // @[ysyx_25030077.scala 128:54]
+  reg  err1_reg; // @[ysyx_25030077.scala 223:25]
+  reg  err2_reg; // @[ysyx_25030077.scala 224:25]
+  reg [31:0] pc_fix_reg; // @[ysyx_25030077.scala 225:27]
+  wire  _err1_reg_T_1 = a_ifu_io_out_ready & a_ifu_io_out_valid; // @[ysyx_25030077.scala 228:55]
+  wire  _err1_reg_T_3 = ~err1_reg; // @[ysyx_25030077.scala 229:15]
+  wire  _err1_reg_T_4 = c_exu_io_is_err; // @[ysyx_25030077.scala 229:34]
+  wire  _err2_reg_T_3 = ~err2_reg; // @[ysyx_25030077.scala 234:15]
+  reg [31:0] pc; // @[ysyx_25030077.scala 239:19]
+  wire [31:0] _pc_T_2 = pc + 32'h4; // @[ysyx_25030077.scala 240:84]
   ysyx_25030077_IFU a_ifu ( // @[ysyx_25030077.scala 87:21]
     .clock(a_ifu_clock),
     .reset(a_ifu_reset),
@@ -2055,9 +2325,18 @@ module ysyx_25030077(
     .io_ar_addr(a_ifu_io_ar_addr),
     .io_ar_valid(a_ifu_io_ar_valid),
     .io_ar_ready(a_ifu_io_ar_ready),
+    .io_ar_burst(a_ifu_io_ar_burst),
     .io_r_valid(a_ifu_io_r_valid),
     .io_r_data(a_ifu_io_r_data),
-    .io_r_ready(a_ifu_io_r_ready)
+    .io_r_ready(a_ifu_io_r_ready),
+    .io_b_valid(a_ifu_io_b_valid),
+    .io_b_ready(a_ifu_io_b_ready),
+    .io_aw_valid(a_ifu_io_aw_valid),
+    .io_aw_addr(a_ifu_io_aw_addr),
+    .io_aw_ready(a_ifu_io_aw_ready),
+    .io_w_valid(a_ifu_io_w_valid),
+    .io_w_data(a_ifu_io_w_data),
+    .io_w_ready(a_ifu_io_w_ready)
   );
   ysyx_25030077_IDU b_idu ( // @[ysyx_25030077.scala 88:21]
     .clock(b_idu_clock),
@@ -2186,10 +2465,19 @@ module ysyx_25030077(
     .reset(f_arbiter_reset),
     .io_IFU_ar_valid(f_arbiter_io_IFU_ar_valid),
     .io_IFU_ar_addr(f_arbiter_io_IFU_ar_addr),
+    .io_IFU_ar_brust(f_arbiter_io_IFU_ar_brust),
     .io_IFU_ar_ready(f_arbiter_io_IFU_ar_ready),
     .io_IFU_r_ready(f_arbiter_io_IFU_r_ready),
     .io_IFU_r_valid(f_arbiter_io_IFU_r_valid),
     .io_IFU_r_data(f_arbiter_io_IFU_r_data),
+    .io_IFU_b_ready(f_arbiter_io_IFU_b_ready),
+    .io_IFU_b_valid(f_arbiter_io_IFU_b_valid),
+    .io_IFU_aw_valid(f_arbiter_io_IFU_aw_valid),
+    .io_IFU_aw_addr(f_arbiter_io_IFU_aw_addr),
+    .io_IFU_aw_ready(f_arbiter_io_IFU_aw_ready),
+    .io_IFU_w_valid(f_arbiter_io_IFU_w_valid),
+    .io_IFU_w_data(f_arbiter_io_IFU_w_data),
+    .io_IFU_w_ready(f_arbiter_io_IFU_w_ready),
     .io_LSU_ar_valid(f_arbiter_io_LSU_ar_valid),
     .io_LSU_ar_addr(f_arbiter_io_LSU_ar_addr),
     .io_LSU_ar_ready(f_arbiter_io_LSU_ar_ready),
@@ -2235,51 +2523,54 @@ module ysyx_25030077(
     .io_axi_b_resp(f_arbiter_io_axi_b_resp),
     .io_axi_b_id(f_arbiter_io_axi_b_id)
   );
-  assign io_master_awvalid = f_arbiter_io_axi_aw_valid; // @[ysyx_25030077.scala 175:21]
-  assign io_master_awaddr = f_arbiter_io_axi_aw_addr; // @[ysyx_25030077.scala 176:20]
-  assign io_master_awid = f_arbiter_io_axi_aw_id; // @[ysyx_25030077.scala 177:18]
-  assign io_master_awlen = f_arbiter_io_axi_aw_len; // @[ysyx_25030077.scala 178:19]
-  assign io_master_awsize = f_arbiter_io_axi_aw_size; // @[ysyx_25030077.scala 179:20]
-  assign io_master_awburst = f_arbiter_io_axi_aw_burst; // @[ysyx_25030077.scala 180:21]
-  assign io_master_wvalid = f_arbiter_io_axi_w_valid; // @[ysyx_25030077.scala 181:20]
-  assign io_master_wdata = f_arbiter_io_axi_w_data; // @[ysyx_25030077.scala 182:19]
-  assign io_master_wstrb = f_arbiter_io_axi_w_strb; // @[ysyx_25030077.scala 183:19]
-  assign io_master_wlast = f_arbiter_io_axi_w_last; // @[ysyx_25030077.scala 184:19]
-  assign io_master_bready = f_arbiter_io_axi_b_ready; // @[ysyx_25030077.scala 185:20]
-  assign io_master_arvalid = f_arbiter_io_axi_ar_valid; // @[ysyx_25030077.scala 186:21]
-  assign io_master_araddr = f_arbiter_io_axi_ar_addr; // @[ysyx_25030077.scala 187:20]
-  assign io_master_arid = f_arbiter_io_axi_ar_id; // @[ysyx_25030077.scala 188:18]
-  assign io_master_arlen = f_arbiter_io_axi_ar_len; // @[ysyx_25030077.scala 189:19]
-  assign io_master_arsize = f_arbiter_io_axi_ar_size; // @[ysyx_25030077.scala 190:20]
-  assign io_master_arburst = f_arbiter_io_axi_ar_burst; // @[ysyx_25030077.scala 191:21]
-  assign io_master_rready = f_arbiter_io_axi_r_ready; // @[ysyx_25030077.scala 192:20]
-  assign io_master_arlock = 1'h0; // @[ysyx_25030077.scala 194:20]
-  assign io_master_arcache = 4'h0; // @[ysyx_25030077.scala 195:21]
-  assign io_master_arprot = 3'h0; // @[ysyx_25030077.scala 196:20]
-  assign io_master_arqos = 4'h0; // @[ysyx_25030077.scala 197:19]
-  assign io_master_awlock = 1'h0; // @[ysyx_25030077.scala 198:20]
-  assign io_master_awcache = 4'h0; // @[ysyx_25030077.scala 199:21]
-  assign io_master_awprot = 3'h0; // @[ysyx_25030077.scala 200:20]
-  assign io_master_awqos = 4'h0; // @[ysyx_25030077.scala 201:19]
-  assign io_slave_awready = 1'h0; // @[ysyx_25030077.scala 202:20]
-  assign io_slave_wready = 1'h0; // @[ysyx_25030077.scala 203:19]
-  assign io_slave_bvalid = 1'h0; // @[ysyx_25030077.scala 204:19]
-  assign io_slave_bid = 4'h0; // @[ysyx_25030077.scala 205:16]
-  assign io_slave_bresp = 2'h0; // @[ysyx_25030077.scala 206:18]
-  assign io_slave_arready = 1'h0; // @[ysyx_25030077.scala 207:20]
-  assign io_slave_rvalid = 1'h0; // @[ysyx_25030077.scala 208:19]
-  assign io_slave_rdata = 32'h0; // @[ysyx_25030077.scala 209:18]
-  assign io_slave_rid = 4'h0; // @[ysyx_25030077.scala 210:16]
-  assign io_slave_rlast = 1'h0; // @[ysyx_25030077.scala 211:18]
-  assign io_slave_rresp = 2'h0; // @[ysyx_25030077.scala 212:18]
+  assign io_master_awvalid = f_arbiter_io_axi_aw_valid; // @[ysyx_25030077.scala 184:21]
+  assign io_master_awaddr = f_arbiter_io_axi_aw_addr; // @[ysyx_25030077.scala 185:20]
+  assign io_master_awid = f_arbiter_io_axi_aw_id; // @[ysyx_25030077.scala 186:18]
+  assign io_master_awlen = f_arbiter_io_axi_aw_len; // @[ysyx_25030077.scala 187:19]
+  assign io_master_awsize = f_arbiter_io_axi_aw_size; // @[ysyx_25030077.scala 188:20]
+  assign io_master_awburst = f_arbiter_io_axi_aw_burst; // @[ysyx_25030077.scala 189:21]
+  assign io_master_wvalid = f_arbiter_io_axi_w_valid; // @[ysyx_25030077.scala 190:20]
+  assign io_master_wdata = f_arbiter_io_axi_w_data; // @[ysyx_25030077.scala 191:19]
+  assign io_master_wstrb = f_arbiter_io_axi_w_strb; // @[ysyx_25030077.scala 192:19]
+  assign io_master_wlast = f_arbiter_io_axi_w_last; // @[ysyx_25030077.scala 193:19]
+  assign io_master_bready = f_arbiter_io_axi_b_ready; // @[ysyx_25030077.scala 194:20]
+  assign io_master_arvalid = f_arbiter_io_axi_ar_valid; // @[ysyx_25030077.scala 195:21]
+  assign io_master_araddr = f_arbiter_io_axi_ar_addr; // @[ysyx_25030077.scala 196:20]
+  assign io_master_arid = f_arbiter_io_axi_ar_id; // @[ysyx_25030077.scala 197:18]
+  assign io_master_arlen = f_arbiter_io_axi_ar_len; // @[ysyx_25030077.scala 198:19]
+  assign io_master_arsize = f_arbiter_io_axi_ar_size; // @[ysyx_25030077.scala 199:20]
+  assign io_master_arburst = f_arbiter_io_axi_ar_burst; // @[ysyx_25030077.scala 200:21]
+  assign io_master_rready = f_arbiter_io_axi_r_ready; // @[ysyx_25030077.scala 201:20]
+  assign io_master_arlock = 1'h0; // @[ysyx_25030077.scala 203:20]
+  assign io_master_arcache = 4'h0; // @[ysyx_25030077.scala 204:21]
+  assign io_master_arprot = 3'h0; // @[ysyx_25030077.scala 205:20]
+  assign io_master_arqos = 4'h0; // @[ysyx_25030077.scala 206:19]
+  assign io_master_awlock = 1'h0; // @[ysyx_25030077.scala 207:20]
+  assign io_master_awcache = 4'h0; // @[ysyx_25030077.scala 208:21]
+  assign io_master_awprot = 3'h0; // @[ysyx_25030077.scala 209:20]
+  assign io_master_awqos = 4'h0; // @[ysyx_25030077.scala 210:19]
+  assign io_slave_awready = 1'h0; // @[ysyx_25030077.scala 211:20]
+  assign io_slave_wready = 1'h0; // @[ysyx_25030077.scala 212:19]
+  assign io_slave_bvalid = 1'h0; // @[ysyx_25030077.scala 213:19]
+  assign io_slave_bid = 4'h0; // @[ysyx_25030077.scala 214:16]
+  assign io_slave_bresp = 2'h0; // @[ysyx_25030077.scala 215:18]
+  assign io_slave_arready = 1'h0; // @[ysyx_25030077.scala 216:20]
+  assign io_slave_rvalid = 1'h0; // @[ysyx_25030077.scala 217:19]
+  assign io_slave_rdata = 32'h0; // @[ysyx_25030077.scala 218:18]
+  assign io_slave_rid = 4'h0; // @[ysyx_25030077.scala 219:16]
+  assign io_slave_rlast = 1'h0; // @[ysyx_25030077.scala 220:18]
+  assign io_slave_rresp = 2'h0; // @[ysyx_25030077.scala 221:18]
   assign a_ifu_clock = clock;
   assign a_ifu_reset = reset;
-  assign a_ifu_io_err1_in = err1_reg; // @[ysyx_25030077.scala 233:20]
-  assign a_ifu_io_pc = pc; // @[ysyx_25030077.scala 232:15]
+  assign a_ifu_io_err1_in = err1_reg; // @[ysyx_25030077.scala 242:20]
+  assign a_ifu_io_pc = pc; // @[ysyx_25030077.scala 241:15]
   assign a_ifu_io_out_ready = b_idu_io_in_ready; // @[ChiselHelpers.scala.scala 23:19]
   assign a_ifu_io_ar_ready = f_arbiter_io_IFU_ar_ready; // @[ysyx_25030077.scala 119:21]
   assign a_ifu_io_r_valid = f_arbiter_io_IFU_r_valid; // @[ysyx_25030077.scala 120:21]
   assign a_ifu_io_r_data = f_arbiter_io_IFU_r_data; // @[ysyx_25030077.scala 121:21]
+  assign a_ifu_io_b_valid = f_arbiter_io_IFU_b_valid; // @[ysyx_25030077.scala 122:21]
+  assign a_ifu_io_aw_ready = f_arbiter_io_IFU_aw_ready; // @[ysyx_25030077.scala 123:21]
+  assign a_ifu_io_w_ready = f_arbiter_io_IFU_w_ready; // @[ysyx_25030077.scala 124:21]
   assign b_idu_clock = clock;
   assign b_idu_reset = reset;
   assign b_idu_io_in_valid = a_ifu_io_out_valid; // @[ChiselHelpers.scala.scala 25:18]
@@ -2287,22 +2578,22 @@ module ysyx_25030077(
   assign b_idu_io_in_bits_inst = b_idu_io_in_bits_r_inst; // @[ChiselHelpers.scala.scala 27:17]
   assign b_idu_io_in_bits_is_err1 = b_idu_io_in_bits_r_is_err1; // @[ChiselHelpers.scala.scala 27:17]
   assign b_idu_io_out_ready = c_exu_io_in_ready; // @[ChiselHelpers.scala.scala 23:19]
-  assign b_idu_io_rs1_data = g_gpr_io_rdata_rs1; // @[ysyx_25030077.scala 123:21]
-  assign b_idu_io_rs2_data = g_gpr_io_rdata_rs2; // @[ysyx_25030077.scala 124:21]
-  assign b_idu_io_EXU_rd = c_exu_io_in_bits_is_err1 | c_exu_io_in_bits_is_err2 ? 5'h0 : c_exu_io_in_bits_rd_addr; // @[ysyx_25030077.scala 125:27]
-  assign b_idu_io_LSU_rd = _b_idu_io_EXU_rd_T ? 5'h0 : d_lsu_io_in_bits_rd_addr; // @[ysyx_25030077.scala 126:27]
-  assign b_idu_io_WBU_rd = _b_idu_io_EXU_rd_T ? 5'h0 : e_wbu_io_in_bits_rd_addr; // @[ysyx_25030077.scala 127:27]
-  assign b_idu_io_EXU_state = c_exu_io_state; // @[ysyx_25030077.scala 130:22]
-  assign b_idu_io_LSU_state = d_lsu_io_state; // @[ysyx_25030077.scala 131:22]
-  assign b_idu_io_WBU_state = e_wbu_io_state; // @[ysyx_25030077.scala 132:22]
-  assign b_idu_io_err2_in = err2_reg; // @[ysyx_25030077.scala 234:20]
+  assign b_idu_io_rs1_data = g_gpr_io_rdata_rs1; // @[ysyx_25030077.scala 126:21]
+  assign b_idu_io_rs2_data = g_gpr_io_rdata_rs2; // @[ysyx_25030077.scala 127:21]
+  assign b_idu_io_EXU_rd = c_exu_io_in_bits_is_err1 | c_exu_io_in_bits_is_err2 ? 5'h0 : c_exu_io_in_bits_rd_addr; // @[ysyx_25030077.scala 128:27]
+  assign b_idu_io_LSU_rd = _b_idu_io_EXU_rd_T ? 5'h0 : d_lsu_io_in_bits_rd_addr; // @[ysyx_25030077.scala 129:27]
+  assign b_idu_io_WBU_rd = _b_idu_io_EXU_rd_T ? 5'h0 : e_wbu_io_in_bits_rd_addr; // @[ysyx_25030077.scala 130:27]
+  assign b_idu_io_EXU_state = c_exu_io_state; // @[ysyx_25030077.scala 133:22]
+  assign b_idu_io_LSU_state = d_lsu_io_state; // @[ysyx_25030077.scala 134:22]
+  assign b_idu_io_WBU_state = e_wbu_io_state; // @[ysyx_25030077.scala 135:22]
+  assign b_idu_io_err2_in = err2_reg; // @[ysyx_25030077.scala 243:20]
   assign g_gpr_clock = clock;
   assign g_gpr_reset = reset;
-  assign g_gpr_io_rs1_addr = b_idu_io_rs1_addr; // @[ysyx_25030077.scala 141:21]
-  assign g_gpr_io_rs2_addr = b_idu_io_rs2_addr; // @[ysyx_25030077.scala 142:21]
-  assign g_gpr_io_rd_addr = e_wbu_io_rd_addr; // @[ysyx_25030077.scala 144:21]
-  assign g_gpr_io_rd_data = e_wbu_io_rd_data; // @[ysyx_25030077.scala 145:21]
-  assign g_gpr_io_rd_valid = e_wbu_io_rd_valid; // @[ysyx_25030077.scala 146:21]
+  assign g_gpr_io_rs1_addr = b_idu_io_rs1_addr; // @[ysyx_25030077.scala 144:21]
+  assign g_gpr_io_rs2_addr = b_idu_io_rs2_addr; // @[ysyx_25030077.scala 145:21]
+  assign g_gpr_io_rd_addr = e_wbu_io_rd_addr; // @[ysyx_25030077.scala 147:21]
+  assign g_gpr_io_rd_data = e_wbu_io_rd_data; // @[ysyx_25030077.scala 148:21]
+  assign g_gpr_io_rd_valid = e_wbu_io_rd_valid; // @[ysyx_25030077.scala 149:21]
   assign c_exu_clock = clock;
   assign c_exu_reset = reset;
   assign c_exu_io_in_valid = b_idu_io_out_valid; // @[ChiselHelpers.scala.scala 25:18]
@@ -2328,12 +2619,12 @@ module ysyx_25030077(
   assign d_lsu_io_in_bits_is_err1 = d_lsu_io_in_bits_r_is_err1; // @[ChiselHelpers.scala.scala 27:17]
   assign d_lsu_io_in_bits_is_err2 = d_lsu_io_in_bits_r_is_err2; // @[ChiselHelpers.scala.scala 27:17]
   assign d_lsu_io_out_ready = e_wbu_io_in_ready; // @[ChiselHelpers.scala.scala 23:19]
-  assign d_lsu_io_ar_ready = f_arbiter_io_LSU_ar_ready; // @[ysyx_25030077.scala 134:21]
-  assign d_lsu_io_r_valid = f_arbiter_io_LSU_r_valid; // @[ysyx_25030077.scala 135:21]
-  assign d_lsu_io_r_data = f_arbiter_io_LSU_r_data; // @[ysyx_25030077.scala 136:21]
-  assign d_lsu_io_b_valid = f_arbiter_io_LSU_b_valid; // @[ysyx_25030077.scala 137:21]
-  assign d_lsu_io_aw_ready = f_arbiter_io_LSU_aw_ready; // @[ysyx_25030077.scala 138:21]
-  assign d_lsu_io_w_ready = f_arbiter_io_LSU_w_ready; // @[ysyx_25030077.scala 139:21]
+  assign d_lsu_io_ar_ready = f_arbiter_io_LSU_ar_ready; // @[ysyx_25030077.scala 137:21]
+  assign d_lsu_io_r_valid = f_arbiter_io_LSU_r_valid; // @[ysyx_25030077.scala 138:21]
+  assign d_lsu_io_r_data = f_arbiter_io_LSU_r_data; // @[ysyx_25030077.scala 139:21]
+  assign d_lsu_io_b_valid = f_arbiter_io_LSU_b_valid; // @[ysyx_25030077.scala 140:21]
+  assign d_lsu_io_aw_ready = f_arbiter_io_LSU_aw_ready; // @[ysyx_25030077.scala 141:21]
+  assign d_lsu_io_w_ready = f_arbiter_io_LSU_w_ready; // @[ysyx_25030077.scala 142:21]
   assign e_wbu_clock = clock;
   assign e_wbu_reset = reset;
   assign e_wbu_io_in_valid = d_lsu_io_out_valid; // @[ChiselHelpers.scala.scala 25:18]
@@ -2341,32 +2632,38 @@ module ysyx_25030077(
   assign e_wbu_io_in_bits_rd_data = e_wbu_io_in_bits_r_rd_data; // @[ChiselHelpers.scala.scala 27:17]
   assign e_wbu_io_in_bits_is_err1 = e_wbu_io_in_bits_r_is_err1; // @[ChiselHelpers.scala.scala 27:17]
   assign e_wbu_io_in_bits_is_err2 = e_wbu_io_in_bits_r_is_err2; // @[ChiselHelpers.scala.scala 27:17]
-  assign e_wbu_io_out_ready = 1'h1; // @[ysyx_25030077.scala 148:22]
+  assign e_wbu_io_out_ready = 1'h1; // @[ysyx_25030077.scala 151:22]
   assign f_arbiter_clock = clock;
   assign f_arbiter_reset = reset;
-  assign f_arbiter_io_IFU_ar_valid = a_ifu_io_ar_valid; // @[ysyx_25030077.scala 151:29]
-  assign f_arbiter_io_IFU_ar_addr = a_ifu_io_ar_addr; // @[ysyx_25030077.scala 150:28]
-  assign f_arbiter_io_IFU_r_ready = a_ifu_io_r_ready; // @[ysyx_25030077.scala 154:28]
-  assign f_arbiter_io_LSU_ar_valid = d_lsu_io_ar_valid; // @[ysyx_25030077.scala 153:29]
-  assign f_arbiter_io_LSU_ar_addr = d_lsu_io_ar_addr; // @[ysyx_25030077.scala 152:28]
-  assign f_arbiter_io_LSU_r_ready = d_lsu_io_r_ready; // @[ysyx_25030077.scala 155:28]
-  assign f_arbiter_io_LSU_rw_type = d_lsu_io_rw_type; // @[ysyx_25030077.scala 160:28]
-  assign f_arbiter_io_LSU_b_ready = d_lsu_io_b_ready; // @[ysyx_25030077.scala 161:28]
-  assign f_arbiter_io_LSU_aw_valid = d_lsu_io_aw_valid; // @[ysyx_25030077.scala 157:29]
-  assign f_arbiter_io_LSU_aw_addr = d_lsu_io_aw_addr; // @[ysyx_25030077.scala 156:28]
-  assign f_arbiter_io_LSU_w_valid = d_lsu_io_w_valid; // @[ysyx_25030077.scala 159:28]
-  assign f_arbiter_io_LSU_w_data = d_lsu_io_w_data; // @[ysyx_25030077.scala 158:27]
-  assign f_arbiter_io_axi_ar_ready = io_master_arready; // @[ysyx_25030077.scala 163:29]
-  assign f_arbiter_io_axi_aw_ready = io_master_awready; // @[ysyx_25030077.scala 164:29]
-  assign f_arbiter_io_axi_w_ready = io_master_wready; // @[ysyx_25030077.scala 165:28]
-  assign f_arbiter_io_axi_r_valid = io_master_rvalid; // @[ysyx_25030077.scala 166:28]
-  assign f_arbiter_io_axi_r_data = io_master_rdata; // @[ysyx_25030077.scala 167:27]
-  assign f_arbiter_io_axi_r_resp = io_master_rresp; // @[ysyx_25030077.scala 168:27]
-  assign f_arbiter_io_axi_r_id = io_master_rid; // @[ysyx_25030077.scala 169:25]
-  assign f_arbiter_io_axi_r_last = io_master_rlast; // @[ysyx_25030077.scala 170:27]
-  assign f_arbiter_io_axi_b_valid = io_master_bvalid; // @[ysyx_25030077.scala 171:28]
-  assign f_arbiter_io_axi_b_resp = io_master_bresp; // @[ysyx_25030077.scala 172:27]
-  assign f_arbiter_io_axi_b_id = io_master_bid; // @[ysyx_25030077.scala 173:25]
+  assign f_arbiter_io_IFU_ar_valid = a_ifu_io_ar_valid; // @[ysyx_25030077.scala 154:28]
+  assign f_arbiter_io_IFU_ar_addr = a_ifu_io_ar_addr; // @[ysyx_25030077.scala 153:28]
+  assign f_arbiter_io_IFU_ar_brust = a_ifu_io_ar_burst; // @[ysyx_25030077.scala 155:28]
+  assign f_arbiter_io_IFU_r_ready = a_ifu_io_r_ready; // @[ysyx_25030077.scala 158:28]
+  assign f_arbiter_io_IFU_b_ready = a_ifu_io_b_ready; // @[ysyx_25030077.scala 170:28]
+  assign f_arbiter_io_IFU_aw_valid = a_ifu_io_aw_valid; // @[ysyx_25030077.scala 163:28]
+  assign f_arbiter_io_IFU_aw_addr = a_ifu_io_aw_addr; // @[ysyx_25030077.scala 162:28]
+  assign f_arbiter_io_IFU_w_valid = a_ifu_io_w_valid; // @[ysyx_25030077.scala 167:28]
+  assign f_arbiter_io_IFU_w_data = a_ifu_io_w_data; // @[ysyx_25030077.scala 166:28]
+  assign f_arbiter_io_LSU_ar_valid = d_lsu_io_ar_valid; // @[ysyx_25030077.scala 157:28]
+  assign f_arbiter_io_LSU_ar_addr = d_lsu_io_ar_addr; // @[ysyx_25030077.scala 156:28]
+  assign f_arbiter_io_LSU_r_ready = d_lsu_io_r_ready; // @[ysyx_25030077.scala 159:28]
+  assign f_arbiter_io_LSU_rw_type = d_lsu_io_rw_type; // @[ysyx_25030077.scala 168:28]
+  assign f_arbiter_io_LSU_b_ready = d_lsu_io_b_ready; // @[ysyx_25030077.scala 169:28]
+  assign f_arbiter_io_LSU_aw_valid = d_lsu_io_aw_valid; // @[ysyx_25030077.scala 161:28]
+  assign f_arbiter_io_LSU_aw_addr = d_lsu_io_aw_addr; // @[ysyx_25030077.scala 160:28]
+  assign f_arbiter_io_LSU_w_valid = d_lsu_io_w_valid; // @[ysyx_25030077.scala 165:28]
+  assign f_arbiter_io_LSU_w_data = d_lsu_io_w_data; // @[ysyx_25030077.scala 164:28]
+  assign f_arbiter_io_axi_ar_ready = io_master_arready; // @[ysyx_25030077.scala 172:29]
+  assign f_arbiter_io_axi_aw_ready = io_master_awready; // @[ysyx_25030077.scala 173:29]
+  assign f_arbiter_io_axi_w_ready = io_master_wready; // @[ysyx_25030077.scala 174:28]
+  assign f_arbiter_io_axi_r_valid = io_master_rvalid; // @[ysyx_25030077.scala 175:28]
+  assign f_arbiter_io_axi_r_data = io_master_rdata; // @[ysyx_25030077.scala 176:27]
+  assign f_arbiter_io_axi_r_resp = io_master_rresp; // @[ysyx_25030077.scala 177:27]
+  assign f_arbiter_io_axi_r_id = io_master_rid; // @[ysyx_25030077.scala 178:25]
+  assign f_arbiter_io_axi_r_last = io_master_rlast; // @[ysyx_25030077.scala 179:27]
+  assign f_arbiter_io_axi_b_valid = io_master_bvalid; // @[ysyx_25030077.scala 180:28]
+  assign f_arbiter_io_axi_b_resp = io_master_bresp; // @[ysyx_25030077.scala 181:27]
+  assign f_arbiter_io_axi_b_id = io_master_bid; // @[ysyx_25030077.scala 182:25]
   always @(posedge clock) begin
     if (_b_idu_io_in_bits_T) begin // @[Reg.scala 17:18]
       b_idu_io_in_bits_r_pc <= a_ifu_io_out_bits_pc; // @[Reg.scala 17:22]
@@ -2440,10 +2737,10 @@ module ysyx_25030077(
     if (_e_wbu_io_in_bits_T) begin // @[Reg.scala 17:18]
       e_wbu_io_in_bits_r_is_err2 <= d_lsu_io_out_bits_is_err2; // @[Reg.scala 17:22]
     end
-    if (reset) begin // @[ysyx_25030077.scala 214:25]
-      err1_reg <= 1'h0; // @[ysyx_25030077.scala 214:25]
+    if (reset) begin // @[ysyx_25030077.scala 223:25]
+      err1_reg <= 1'h0; // @[ysyx_25030077.scala 223:25]
     end else if (err1_reg) begin // @[Mux.scala 101:16]
-      if (a_ifu_io_out_ready & a_ifu_io_out_valid) begin // @[ysyx_25030077.scala 219:34]
+      if (a_ifu_io_out_ready & a_ifu_io_out_valid) begin // @[ysyx_25030077.scala 228:34]
         err1_reg <= 1'h0;
       end else begin
         err1_reg <= 1'h1;
@@ -2451,10 +2748,10 @@ module ysyx_25030077(
     end else begin
       err1_reg <= _err1_reg_T_3 & _err1_reg_T_4;
     end
-    if (reset) begin // @[ysyx_25030077.scala 215:25]
-      err2_reg <= 1'h0; // @[ysyx_25030077.scala 215:25]
+    if (reset) begin // @[ysyx_25030077.scala 224:25]
+      err2_reg <= 1'h0; // @[ysyx_25030077.scala 224:25]
     end else if (err2_reg) begin // @[Mux.scala 101:16]
-      if (b_idu_io_out_ready & b_idu_io_out_valid) begin // @[ysyx_25030077.scala 224:34]
+      if (b_idu_io_out_ready & b_idu_io_out_valid) begin // @[ysyx_25030077.scala 233:34]
         err2_reg <= 1'h0;
       end else begin
         err2_reg <= 1'h1;
@@ -2462,15 +2759,15 @@ module ysyx_25030077(
     end else begin
       err2_reg <= _err2_reg_T_3 & _err1_reg_T_4;
     end
-    if (reset) begin // @[ysyx_25030077.scala 216:27]
-      pc_fix_reg <= 32'h0; // @[ysyx_25030077.scala 216:27]
-    end else if (c_exu_io_is_err) begin // @[ysyx_25030077.scala 228:20]
+    if (reset) begin // @[ysyx_25030077.scala 225:27]
+      pc_fix_reg <= 32'h0; // @[ysyx_25030077.scala 225:27]
+    end else if (c_exu_io_is_err) begin // @[ysyx_25030077.scala 237:20]
       pc_fix_reg <= c_exu_io_pc_next;
     end
-    if (reset) begin // @[ysyx_25030077.scala 230:19]
-      pc <= 32'h30000000; // @[ysyx_25030077.scala 230:19]
-    end else if (_err1_reg_T_1) begin // @[ysyx_25030077.scala 231:12]
-      if (err1_reg) begin // @[ysyx_25030077.scala 231:58]
+    if (reset) begin // @[ysyx_25030077.scala 239:19]
+      pc <= 32'h30000000; // @[ysyx_25030077.scala 239:19]
+    end else if (_err1_reg_T_1) begin // @[ysyx_25030077.scala 240:12]
+      if (err1_reg) begin // @[ysyx_25030077.scala 240:58]
         pc <= pc_fix_reg;
       end else begin
         pc <= _pc_T_2;
