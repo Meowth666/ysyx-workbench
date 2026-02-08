@@ -13,6 +13,10 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_arbiter>io_IFU_ar_brust"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077|ysyx_25030077_arbiter>io_IFU_ar_ready"
   },
   {
@@ -26,6 +30,38 @@
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077|ysyx_25030077_arbiter>io_IFU_r_data"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_arbiter>io_IFU_b_ready"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_arbiter>io_IFU_b_valid"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_arbiter>io_IFU_aw_valid"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_arbiter>io_IFU_aw_addr"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_arbiter>io_IFU_aw_ready"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_arbiter>io_IFU_w_valid"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_arbiter>io_IFU_w_data"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_arbiter>io_IFU_w_ready"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -653,6 +689,10 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_IFU>io_ar_burst"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077|ysyx_25030077_IFU>io_r_valid"
   },
   {
@@ -662,6 +702,38 @@
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ysyx_25030077|ysyx_25030077_IFU>io_r_ready"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_IFU>io_b_valid"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_IFU>io_b_ready"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_IFU>io_aw_valid"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_IFU>io_aw_addr"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_IFU>io_aw_ready"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_IFU>io_w_valid"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_IFU>io_w_data"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ysyx_25030077|ysyx_25030077_IFU>io_w_ready"
   },
   {
     "class":"firrtl.transforms.BlackBoxTargetDirAnno",

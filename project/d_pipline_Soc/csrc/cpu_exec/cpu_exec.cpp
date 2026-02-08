@@ -520,10 +520,10 @@ int cpu_exec(int n){
 			i = i - 1; // 如果n < 0，表示一直执行
 		}
 		ix ++;
-		// if(ix > 6000000){
+		// if(ix > 2000000){
 		// 	flag = 1;
 		// 	success = 0;
-		//  printf("Too many instructions\n");
+		//  	printf("Too many instructions\n");
 		// 	break;
 		// }
 	}
