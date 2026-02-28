@@ -8,7 +8,7 @@ VERILATOR_CFLAGS += -MMD --build -cc  \
 
 BUILD_DIR = ./build
 OBJ_DIR = $(BUILD_DIR)/obj_dir
-BIN = $(BUILD_DIR)/$(TOPNAME)
+BIN = $(BUILD_DIR)/$(TOPNAME) #./build/top
 
 default: $(BIN)
 
@@ -28,7 +28,7 @@ CSRCS += $(SRC_AUTO_BIND)
 include $(NVBOARD_HOME)/scripts/nvboard.mk
 
 # rules for verilator
-INCFLAGS = $(addprefix -I, $(INC_PATH))
+INCFLAGS = $(addprefix -I, $(INC_PATH))  #为INC_PATH添加-I前缀
 CXXFLAGS += $(INCFLAGS) -DTOP_NAME="\"V$(TOPNAME)\""
 
 $(BIN): $(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
@@ -40,8 +40,8 @@ $(BIN): $(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 
 all: default
 
-run: $(BIN)
-	@$^
+run: $(BIN) #  @：静默执行，即执行时不显示命令
+	@$^  
 
 clean:
 	rm -rf $(BUILD_DIR)

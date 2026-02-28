@@ -99,6 +99,6 @@ initial begin
 end
 
 assign vga_data = vga_mem[{h_addr, v_addr}];
-assign {vga_r, vga_g, vga_b} = vga_data;
+// assign {vga_r, vga_g, vga_b} = vga_data;
 
 endmodule

@@ -389,7 +389,7 @@ module ysyx_25030077_IDU(
   reg [31:0] _RAND_0;
   reg [31:0] _RAND_1;
   reg [31:0] _RAND_2;
-`endif // RANDOMIZE_REG_INIT
+`endif // RANDOMIZE_REG_INITcd yo
   wire [9:0] _isaddi_T_2 = {io_in_bits_inst[14:12],io_in_bits_inst[6:0]}; // @[Cat.scala 31:58]
   wire  isaddi = _isaddi_T_2 == 10'h13; // @[ysyx_25030077_IDU.scala 22:66]
   wire  isxori = _isaddi_T_2 == 10'h213; // @[ysyx_25030077_IDU.scala 23:66]

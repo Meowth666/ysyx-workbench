@@ -55,10 +55,10 @@ VERILATOR_VINCLUDES += -I$(abspath /home/meowth/ysyx/ysyx-workbench/ysyxSoC/peri
 VERILATOR_VINCLUDES += -I$(abspath /home/meowth/ysyx/ysyx-workbench/ysyxSoC/perip/spi/rtl)
 
 # IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/benchmarks/microbench/build/microbench-riscv32e-ysyx-soc
-# IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/mem-tests/build/hello-riscv32e-ysyx-soc
+IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/mem-tests/build/hello-riscv32e-ysyx-soc
 
 # IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/am-tests/build/amtest-riscv32e-ysyx-soc
-IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-ysyx-soc
+# IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-ysyx-soc
 # IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/cache_tests/build/cache-riscv32e-ysyx-soc
 
 $(BIN): $(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
@@ -101,13 +101,13 @@ sim:
 			 -I  /home/meowth/ysyx/ysyx-workbench/project/b_SoC/tools/capstone/repo/include" \
 	-LDFLAGS "-lreadline -lncurses" \
 	--top-module ysyxSoCFull \
-	$(CSRCS_SIM) \
+	$(CSRCS) \
 	$(VSRCS)
 	obj_dir/VysyxSoCFull -e $(IMAGE).elf -d $(DIFF_SO) $(IMAGE).bin mainargs=1
 	gtkwave obj_dir/wave.fst
 
 test:
-	verilator --cc --exe --trace-fst --build -j 0 $(CSRCS_SIM)  vsrc/*.v 
+	verilator --cc --exe --trace-fst --build -j 0 $(CSRCS)  vsrc/*.v 
 	obj_dir/Vtop /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-npc.bin
 
 .PHONY: default all clean run
