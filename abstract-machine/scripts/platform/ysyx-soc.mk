@@ -25,13 +25,15 @@ image: image-dep
 	@echo + OBJCOPY "->" $(IMAGE_REL).bin
 	@$(OBJCOPY) -S --set-section-flags .bss=alloc,contents -O binary $(IMAGE).elf $(IMAGE).bin
 
-SOC_HOME = /home/meowth/ysyx/ysyx-workbench/project/d_pipline_Soc
+SOC_HOME = /home/meowth/ysyx/ysyx-workbench/project/b_SoC
 DIFF_SO = /home/meowth/ysyx/ysyx-workbench/nemu/build/riscv32-nemu-interpreter-so
+# wave
 run: insert-arg
 	@cd $(SOC_HOME) && \
     $(SOC_HOME)/obj_dir/VysyxSoCFull -e $(IMAGE).elf -d $(DIFF_SO) $(IMAGE).bin mainargs=1
 
-# run_nv: insert-arg
+# nvboard
+# run: insert-arg
 # 	@cd $(SOC_HOME) && \
 #     $(SOC_HOME)/build/ysyxSoCFull -e $(IMAGE).elf -d $(DIFF_SO) $(IMAGE).bin mainargs=1
 

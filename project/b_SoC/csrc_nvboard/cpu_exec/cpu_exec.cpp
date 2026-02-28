@@ -297,73 +297,57 @@ extern "C" void sdram_write (int bank, int addr, int dqm, int cnt, int data) {
 		}			
 }
 uint64_t data_save = 0;
-extern "C" void sdram_read (int bank, int addr, int cnt, int* data) { 
+svBitVecVal sdram_read(const svBitVecVal* bank, const svBitVecVal* addr) { 
 	// printf("sdram_read: bank = %d, addr = %d\n", bank, addr);
-	int col = addr & 0x3FF;
+	svBitVecVal data;
+	int col = *addr & 0x3FF;
 	uint16_t data0, data1;
 	int is_overflow = 0;
+	uint32_t addr_sdram = 0xa0000000 + ((uint32_t)((row[*bank] & 0x1FFF) << 14)) | ((uint32_t)((*bank & 0x3) << 12)) | (uint32_t)(col << 2);
 	if(col < 512)
-		switch(bank){
+		switch(*bank){
 			case 0:
-				data0 = sdram0_bank1[row[bank]][col];
-				data1 = sdram1_bank1[row[bank]][col];
+				data0 = sdram0_bank1[row[*bank]][col];
+				data1 = sdram1_bank1[row[*bank]][col];
 				break;
 			case 1:
-				data0 = sdram0_bank2[row[bank]][col];
-				data1 = sdram1_bank2[row[bank]][col];
+				data0 = sdram0_bank2[row[*bank]][col];
+				data1 = sdram1_bank2[row[*bank]][col];
 				break;
 			case 2:
-				data0 = sdram0_bank3[row[bank]][col];
-				data1 = sdram1_bank3[row[bank]][col];
+				data0 = sdram0_bank3[row[*bank]][col];
+				data1 = sdram1_bank3[row[*bank]][col];
 				break;
 			case 3:
-				data0 = sdram0_bank4[row[bank]][col];
-				data1 = sdram1_bank4[row[bank]][col];
+				data0 = sdram0_bank4[row[*bank]][col];
+				data1 = sdram1_bank4[row[*bank]][col];
 				break;
 			default:
 				break;
 		}
 	else
-		switch(bank){
+		switch(*bank){
 			case 0:
-				data0 = sdram2_bank1[row[bank]][col - 512];
-				data1 = sdram3_bank1[row[bank]][col - 512];
+				data0 = sdram2_bank1[row[*bank]][col - 512];
+				data1 = sdram3_bank1[row[*bank]][col - 512];
 				break;
 			case 1:
-				data0 = sdram2_bank2[row[bank]][col - 512];
-				data1 = sdram3_bank2[row[bank]][col - 512];
+				data0 = sdram2_bank2[row[*bank]][col - 512];
+				data1 = sdram3_bank2[row[*bank]][col - 512];
 				break;
 			case 2:	
-				data0 = sdram2_bank3[row[bank]][col - 512];
-				data1 = sdram3_bank3[row[bank]][col - 512];
+				data0 = sdram2_bank3[row[*bank]][col - 512];
+				data1 = sdram3_bank3[row[*bank]][col - 512];
 				break;
 			case 3:
-				data0 = sdram2_bank4[row[bank]][col - 512];
-				data1 = sdram3_bank4[row[bank]][col - 512];
+				data0 = sdram2_bank4[row[*bank]][col - 512];
+				data1 = sdram3_bank4[row[*bank]][col - 512];
 				break;
 			default:
 				break;
 		}
-	*data = (uint32_t)((data1 << 16) | data0);
-	if(*data == 1048691 && insn32 == 32871){
-		//printf("instruction = %x\n", instruction);
-		success = 1;
-	}
-	else if(*data == 1048691){
-		flag = 1;
-	}
-	insn32 = *data;
-	// data_save = (data_save >> 16) | ((uint64_t)(*data & 0xFFFF) << 48);
-	// uint32_t insn32 = (uint32_t)(data_save & 0xFFFFFFFF);
-	// uint32_t ins_now = (uint32_t)((data_save >> 32) & 0xFFFFFFFF);
-	// // printf("data_save = %x ins_now = %x, insn32 = %x\n",data_save, ins_now, insn32);
-	// if(ins_now == 1048691 && insn32 == 32871){
-	// 	//printf("instruction = %x\n", instruction);
-	// 	success = 1;
-	// }
-	// else if(ins_now == 1048691){
-	// 	flag = 1;
-	// }
+	data = (uint32_t)((data1 << 16) | data0);
+	return data;
 }
 // uint32_t flash_array[20] = {0xff010113, 0x00112623, 0x00812423, 0x01010413, 0x100007b7, 0x04100713, 0x00e78023, 0x100007b7, 0x04300713, 0x00e78023, 0x100007b7, 0x04d00713, 0x00e78023, 0x0000006f};
 // uint32_t flash_array[20] = {1,1,4,5,1,4,1,9,1,9};
