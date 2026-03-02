@@ -1,3 +1,4 @@
+#进行编译与链接
 .DEFAULT_GOAL = app
 
 # Add necessary options if the target is a shared library
@@ -25,16 +26,17 @@ INCLUDES = $(addprefix -I, $(INC_PATH))
 CFLAGS  := -O2 -MMD -Wall -Werror $(INCLUDES) $(CFLAGS)
 LDFLAGS := -O2 $(LDFLAGS)
 
+#确认即将生成的.o文件
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o) $(CXXSRC:%.cc=$(OBJ_DIR)/%.o)
 
 # Compilation patterns
-$(OBJ_DIR)/%.o: %.c
+$(OBJ_DIR)/%.o: %.c #c文件
 	@echo + CC $<
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c -o $@ $<
 	$(call call_fixdep, $(@:.o=.d), $@)
 
-$(OBJ_DIR)/%.o: %.cc
+$(OBJ_DIR)/%.o: %.cc #c++文件
 	@echo + CXX $<
 	@mkdir -p $(dir $@)
 	@$(CXX) $(CFLAGS) $(CXXFLAGS) -c -o $@ $<
