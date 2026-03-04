@@ -1,3 +1,3 @@
-NAME = fib
-SRCS = tests/fib.c
+NAME = switch
+SRCS = tests/switch.c
 include /home/meowth/ysyx/ysyx-workbench/abstract-machine/Makefile

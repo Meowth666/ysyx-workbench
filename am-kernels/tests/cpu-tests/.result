@@ -23,3 +23,4 @@
 [         dummy] [1;32mPASS[0m
 [         mov-c] [1;32mPASS[0m
 [         shift] [1;32mPASS[0m
+[           fib] [1;32mPASS[0m
