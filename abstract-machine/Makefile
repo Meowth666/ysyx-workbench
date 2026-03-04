@@ -5,15 +5,15 @@ html:
 	cat Makefile | sed 's/^\([^#]\)/    \1/g' | markdown_py > Makefile.html
 .PHONY: html
 
-## 1. Basic Setup and Checks
-
+## 1. Basic Setup and Checks 基础环境检查
 ### Default to create a bare-metal kernel image
+# 设置默认为make
 ifeq ($(MAKECMDGOALS),)
   MAKECMDGOALS  = image
   .DEFAULT_GOAL = image
 endif
 
-### Override checks when `make clean/clean-all/html`
+### Override checks when `make clean/clean-all/html`如果执行结果不是clean|clean-all|html，才进行环境检查，这三个操作无需进行环境校验
 ifeq ($(findstring $(MAKECMDGOALS),clean|clean-all|html),)
 
 ### Print build info message
@@ -26,6 +26,7 @@ endif
 
 ### Check: environment variable `$ARCH` must be in the supported list
 ARCHS = $(basename $(notdir $(shell ls $(AM_HOME)/scripts/*.mk)))
+#filter $(ARCHS), $(ARCH)： 在ARCHS中找与ARCH匹配的
 ifeq ($(filter $(ARCHS), $(ARCH)), )
   $(error Expected $$ARCH in {$(ARCHS)}, Got "$(ARCH)")
 endif
