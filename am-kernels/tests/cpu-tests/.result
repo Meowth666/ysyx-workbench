@@ -19,3 +19,4 @@
 [       unalign] [1;32mPASS[0m
 [           bit] [1;32mPASS[0m
 [      mersenne] [1;32mPASS[0m
+[  sub-longlong] [1;32mPASS[0m
