@@ -23,7 +23,7 @@ $(ALL): %: Makefile.%
 #Makefile.<目标名>依赖于对应的.c文件
 #latest作用：即使.c文件未改变，每次依然重新编译，因为latest永远是“最新的”，不会对应实际文件，所以 Make 会 认为依赖可能变化。
 #向Makefile.add中输入NAME = $*\nSRCS = $<\ninclude $${AM_HOME}/Makefile，构建临时Makefile
-#在Makefile.add执行make ARCH=$(ARCH) $(MAKECMDGOALS);
+#在Makefile.add执行make ARCH=$(ARCH) $(MAKECMDGOALS); $(MAKECMDGOALS)就相当与run或gdb
 #执行之后向临时文件.result中写入运行结果
 Makefile.%: tests/%.c latest
 	@/bin/echo -e "NAME = $*\nSRCS = $<\ninclude $${AM_HOME}/Makefile" > $@
@@ -32,7 +32,7 @@ Makefile.%: tests/%.c latest
 	else \
 		printf "[%14s] $(COLOR_RED)***FAIL***$(COLOR_NONE)\n" $* >> $(RESULT); \
 	fi
-	-@rm -f Makefile.$*
+#	-@rm -f Makefile.$*
 #显示运行结果
 run: all
 	@cat $(RESULT)
