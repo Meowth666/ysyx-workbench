@@ -46,14 +46,14 @@ int main(int argc, char *argv[]) {
   for (i = 0; i < loop; i ++) {
     gen_rand_expr();
 
-    sprintf(code_buf, code_format, buf);
+    sprintf(code_buf, code_format, buf); //用buf替换code_format中的占位符
 
-    FILE *fp = fopen("/tmp/.code.c", "w");
+    FILE *fp = fopen("/tmp/.code.c", "w"); //code.c临时 C 文件
     assert(fp != NULL);
     fputs(code_buf, fp);
     fclose(fp);
 
-    int ret = system("gcc /tmp/.code.c -o /tmp/.expr");
+    int ret = system("gcc /tmp/.code.c -o /tmp/.expr");//执行系统终端命令编译临时 C 文件
     if (ret != 0) continue;
 
     fp = popen("/tmp/.expr", "r");

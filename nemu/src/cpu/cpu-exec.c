@@ -87,10 +87,9 @@ static void exec_once(Decode *s, vaddr_t pc) {
 }
 
 static void execute(uint64_t n) {
-  Decode s;
+  Decode s; //存放一条指令在执行过程中所需的信息，包括指令的PC, 下一条指令的PC等
   for (;n > 0; n --) {
     exec_once(&s, cpu.pc);
-    
     g_nr_guest_inst ++;
     trace_and_difftest(&s, cpu.pc);
     //printf("cpu_exec: n = %ld\n", n);
