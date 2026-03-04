@@ -24,3 +24,4 @@
 [         mov-c] [1;32mPASS[0m
 [         shift] [1;32mPASS[0m
 [           fib] [1;32mPASS[0m
+[        switch] [1;32mPASS[0m
