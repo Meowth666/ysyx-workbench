@@ -28,3 +28,4 @@
 [         movsx] [1;32mPASS[0m
 [          min3] [1;32mPASS[0m
 [      goldbach] [1;32mPASS[0m
+[  add-longlong] [1;32mPASS[0m
