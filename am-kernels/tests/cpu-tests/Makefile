@@ -14,7 +14,7 @@ ALL = $(basename $(notdir $(shell find tests/. -name "*.c")))
 
 #依赖：Makefile.$(ALL)
 all: $(addprefix Makefile., $(ALL))
-	echo "test list [$(words $(ALL)) item(s)]:" $(ALL)
+	@echo "test list [$(words $(ALL)) item(s)]:" $(ALL)
 
 #对于 ALL 中的每个目标，
 #它依赖于一个名为 Makefile.<目标名> 的文件。
