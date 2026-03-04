@@ -1,0 +1,3 @@
+NAME = dummy
+SRCS = tests/dummy.c
+include /home/meowth/ysyx/ysyx-workbench/abstract-machine/Makefile
