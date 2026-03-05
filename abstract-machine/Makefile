@@ -142,7 +142,6 @@ endif
 
 ### Rule (link): objects (`*.o`) and libraries (`*.a`) -> `IMAGE.elf`, the final ELF binary to be packed into image (ld)
 $(IMAGE).elf: $(LINKAGE) $(LDSCRIPTS)
-	echo 2222 = $(LINKAGE)
 	@echo \# Creating image [$(ARCH)]
 	@echo + LD "->" $(IMAGE_REL).elf
 ifneq ($(filter $(ARCH),native),)
