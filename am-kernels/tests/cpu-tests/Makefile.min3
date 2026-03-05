@@ -1,0 +1,3 @@
+NAME = min3
+SRCS = tests/min3.c
+include /home/meowth/ysyx/ysyx-workbench/abstract-machine/Makefile

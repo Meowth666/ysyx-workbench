@@ -1,0 +1,3 @@
+NAME = add-longlong
+SRCS = tests/add-longlong.c
+include /home/meowth/ysyx/ysyx-workbench/abstract-machine/Makefile

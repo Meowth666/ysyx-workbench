@@ -1,0 +1,3 @@
+NAME = unalign
+SRCS = tests/unalign.c
+include /home/meowth/ysyx/ysyx-workbench/abstract-machine/Makefile
