@@ -129,7 +129,7 @@ void init_monitor(int argc, char *argv[]) {
 
   /* Initialize differential testing. */
   // printf("111\n");
-  printf("%s\n", diff_so_file);
+  // printf("%s\n", diff_so_file);
   init_difftest(diff_so_file, img_size, difftest_port);
 
   /* Initialize the simple debugger. */

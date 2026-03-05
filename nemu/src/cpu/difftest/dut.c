@@ -63,9 +63,10 @@ void init_difftest(char *ref_so_file, long img_size, int port) {
   assert(ref_so_file != NULL);
 
   void *handle;
-  handle = dlopen(ref_so_file, RTLD_LAZY);
+  handle = dlopen(ref_so_file, RTLD_LAZY);//打开spike 的 shared library，让nemu可以调用spike的参考库
   assert(handle);
 
+  //获取spike函数的参考接口
   ref_difftest_memcpy = dlsym(handle, "difftest_memcpy");
   assert(ref_difftest_memcpy);
 
@@ -85,7 +86,7 @@ void init_difftest(char *ref_so_file, long img_size, int port) {
   Log("The result of every instruction will be compared with %s. "
       "This will help you a lot for debugging, but also significantly reduce the performance. "
       "If it is not necessary, you can turn it off in menuconfig.", ref_so_file);
-
+  //初始化参考模拟器，同步内存与寄存器
   ref_difftest_init(port);
   ref_difftest_memcpy(RESET_VECTOR, guest_to_host(RESET_VECTOR), img_size, DIFFTEST_TO_REF);
   ref_difftest_regcpy(&cpu, DIFFTEST_TO_REF);
@@ -102,6 +103,7 @@ static void checkregs(CPU_state *ref, vaddr_t pc) {
 void difftest_step(vaddr_t pc, vaddr_t npc) {
   CPU_state ref_r;
   if (skip_dut_nr_inst > 0) {
+    printf("213213\n");
     ref_difftest_regcpy(&ref_r, DIFFTEST_TO_DUT);
     if (ref_r.pc == npc) {
       skip_dut_nr_inst = 0;
