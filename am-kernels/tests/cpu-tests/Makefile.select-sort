@@ -1,0 +1,3 @@
+NAME = select-sort
+SRCS = tests/select-sort.c
+include /home/meowth/ysyx/ysyx-workbench/abstract-machine/Makefile

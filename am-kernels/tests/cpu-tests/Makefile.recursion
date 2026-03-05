@@ -1,0 +1,3 @@
+NAME = recursion
+SRCS = tests/recursion.c
+include /home/meowth/ysyx/ysyx-workbench/abstract-machine/Makefile

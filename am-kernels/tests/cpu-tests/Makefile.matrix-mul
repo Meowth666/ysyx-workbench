@@ -1,0 +1,3 @@
+NAME = matrix-mul
+SRCS = tests/matrix-mul.c
+include /home/meowth/ysyx/ysyx-workbench/abstract-machine/Makefile

@@ -1,0 +1,3 @@
+NAME = crc32
+SRCS = tests/crc32.c
+include /home/meowth/ysyx/ysyx-workbench/abstract-machine/Makefile

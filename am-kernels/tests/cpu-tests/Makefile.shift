@@ -1,0 +1,3 @@
+NAME = shift
+SRCS = tests/shift.c
+include /home/meowth/ysyx/ysyx-workbench/abstract-machine/Makefile
