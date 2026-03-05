@@ -46,23 +46,27 @@ endif
 
 ## 2. General Compilation Targets
 
-### Create the destination directory (`build/$ARCH`)
+### Create the destination directory (`build/$ARCH`)目标文件夹创建
+#pwd: 当前文件夹
 WORK_DIR  = $(shell pwd)
 DST_DIR   = $(WORK_DIR)/build/$(ARCH)
 $(shell mkdir -p $(DST_DIR))
 
-### Compilation targets (a binary image or archive)
+### Compilation targets (a binary image or archive)目标文件命名
 IMAGE_REL = build/$(NAME)-$(ARCH)
 IMAGE     = $(abspath $(IMAGE_REL))
 ARCHIVE   = $(WORK_DIR)/build/$(NAME)-$(ARCH).a
 
 ### Collect the files to be linked: object files (`.o`) and libraries (`.a`)
+#OBJS：收集生成的.o文件的完整路径
+#LIBS：库文件
 OBJS      = $(addprefix $(DST_DIR)/, $(addsuffix .o, $(basename $(SRCS))))
 LIBS     := $(sort $(LIBS) am klib) # lazy evaluation ("=") causes infinite recursions
 LINKAGE   = $(OBJS)  # library archives are added by LIB_TEMPLATE below
 
 ## 3. General Compilation Flags
-
+# 编译工具链 + 编译参数的核心控制区
+# $(CROSS_COMPILE)引用于-include $(AM_HOME)/scripts/$(ARCH).mk
 ### (Cross) compilers, e.g., mips-linux-gnu-g++
 AS        = $(CROSS_COMPILE)gcc
 CC        = $(CROSS_COMPILE)gcc
@@ -74,10 +78,12 @@ OBJCOPY   = $(CROSS_COMPILE)objcopy
 READELF   = $(CROSS_COMPILE)readelf
 
 ### Compilation flags
+# 头文件搜索  $(AM_HOME)/$(LIBS)/include   $(WORK_DIR)/include
 INC_PATH += $(WORK_DIR)/include $(addsuffix /include/, $(addprefix $(AM_HOME)/, $(LIBS)))
 INCFLAGS += $(addprefix -I, $(INC_PATH))
 
 ARCH_H := arch/$(ARCH).h
+#通过 -D__ISA__、-D__PLATFORM__ 等将架构信息传入代码，使得 C 代码中可以用 #ifdef __ISA_x86_64__ 来写条件编译
 CFLAGS   += -O2 -MMD -Wall -Werror $(INCFLAGS) \
             -D__ISA__=\"$(ISA)\" -D__ISA_$(shell echo $(ISA) | tr a-z A-Z)__ \
             -D__ARCH__=$(ARCH) -D__ARCH_$(shell echo $(ARCH) | tr a-z A-Z | tr - _) \
@@ -90,7 +96,7 @@ ASFLAGS  += -MMD $(INCFLAGS)
 LDFLAGS  += -z noexecstack $(addprefix -T, $(LDSCRIPTS))
 
 ## 4. Arch-Specific Configurations
-
+#对应指令集、架构的配置
 ### Paste in arch-specific configurations (e.g., from `scripts/x86_64-qemu.mk`)
 -include $(AM_HOME)/scripts/$(ARCH).mk
 
@@ -122,6 +128,7 @@ $(ARCHIVE): $(OBJS)
 	@echo + AR "->" $(shell realpath $@ --relative-to .)
 	@$(AR) rcs $@ $^
 else
+# 生成并添加am与klib的链接库
 # $(1): library name
 define LIB_TEMPLATE =
 $$(AM_HOME)/$(1)/build/$(1)-$$(ARCH).a: force
