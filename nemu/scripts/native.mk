@@ -38,7 +38,6 @@ print-binary:
 	
 run: run-env
 	$(call git_commit, "run NEMU")
-	echo $(ARGS_DIFF)
 	$(NEMU_EXEC)
 	$(info [Makefile] NEMU_EXEC = $(NEMU_EXEC)) 
 
