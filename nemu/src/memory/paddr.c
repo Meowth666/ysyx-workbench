@@ -74,11 +74,11 @@ word_t paddr_read(paddr_t addr, int len) {
   }
   // printf("paddr_read addr = %x, len = %d\n", addr, len);
   // printf("%x\n", pmem_read(addr, len));
-  // if (likely(in_pmem(addr))) 
+  if (likely(in_pmem(addr))) 
   return pmem_read(addr, len);
-  // IFDEF(CONFIG_DEVICE, return mmio_read(addr, len));
-  // out_of_bound(addr);
-  // return 0;
+  IFDEF(CONFIG_DEVICE, return mmio_read(addr, len));
+  out_of_bound(addr);
+  return 0;
 }
 
 void paddr_write(paddr_t addr, int len, word_t data) {
