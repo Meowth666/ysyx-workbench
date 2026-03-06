@@ -55,5 +55,9 @@ bool ioe_init() {
   return true;
 }
 
-void ioe_read (int reg, void *buf) { ((handler_t)lut[reg])(buf); }
+void ioe_read (int reg, void *buf) { 
+  //lut[reg]是void*类型，无法直接调用
+  //先将lut[reg]转换为函数指针，再进行调用
+  ((handler_t)lut[reg])(buf); 
+}
 void ioe_write(int reg, void *buf) { ((handler_t)lut[reg])(buf); }
