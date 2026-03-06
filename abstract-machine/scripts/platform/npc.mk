@@ -25,11 +25,14 @@ image: image-dep
 	@echo + OBJCOPY "->" $(IMAGE_REL).bin
 	@$(OBJCOPY) -S --set-section-flags .bss=alloc,contents -O binary $(IMAGE).elf $(IMAGE).bin
 
-NPC_HOME = /home/meowth/ysyx/ysyx-workbench/project/c_pipline
+NPC_HOME = /home/meowth/ysyx/ysyx-workbench/project/0_meopc
+# NPC_HOME = /home/meowth/ysyx/ysyx-workbench/project/c_pipline
 DIFF_SO = /home/meowth/ysyx/ysyx-workbench/nemu/build/riscv32-nemu-interpreter-so
+# run: insert-arg
+# 	@cd $(NPC_HOME) && \
+# 	$(NPC_HOME)/obj_dir/Vysyx_25030077 -e $(IMAGE).elf -d $(DIFF_SO) $(IMAGE).bin \
+#     gtkwave $(NPC_HOME)/obj_dir/wave.fst
 run: insert-arg
-	@cd $(NPC_HOME) && \
-	$(NPC_HOME)/obj_dir/Vysyx_25030077 -e $(IMAGE).elf -d $(DIFF_SO) $(IMAGE).bin \
-    gtkwave $(NPC_HOME)/obj_dir/wave.fst
-
+    # $(info [Makefile] NEMUFLAGS = $(NEMUFLAGS)) 
+	$(MAKE) -C $(NEMU_HOME) ISA=$(ISA) run ARGS="$(NEMUFLAGS)" IMG=$(IMAGE).bin
 .PHONY: insert-arg

@@ -73,8 +73,7 @@ class ysyx_25030077_arbiter extends Module {
   io.axi_aw_id := 0.U
   io.axi_aw_len := 0.U
   io.axi_aw_burst := 0.U   
-  io.axi_w_last := true.B
-  io.axi_ar_id := 0.U  
+  io.axi_w_last := true.B  
 
   val state = RegInit(0.U(3.W))
   val r_cnt = RegInit(0.U(2.W))
@@ -92,6 +91,7 @@ class ysyx_25030077_arbiter extends Module {
 
   io.axi_ar_valid := Mux(state === 2.U, io.LSU_ar_valid, Mux(state === 1.U, io.IFU_ar_valid, 0.U))
   io.axi_ar_addr  := Mux(state === 2.U, io.LSU_ar_addr , Mux(state === 1.U, io.IFU_ar_addr, 0.U))
+  io.axi_ar_id    := Mux(state === 2.U, 1.U , Mux(state === 1.U, 2.U , 0.U))
   io.IFU_ar_ready := Mux(state === 1.U, io.axi_ar_ready, false.B)
   io.IFU_aw_ready := Mux(state === 4.U, io.axi_aw_ready, false.B)
   io.IFU_w_ready  := Mux(state === 4.U, io.axi_w_ready , false.B)

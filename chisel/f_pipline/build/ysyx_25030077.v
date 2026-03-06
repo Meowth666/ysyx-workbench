@@ -1767,23 +1767,23 @@ module ysyx_25030077_arbiter(
   reg [31:0] _RAND_1;
   reg [31:0] _RAND_2;
 `endif // RANDOMIZE_REG_INIT
-  reg [2:0] state; // @[ysyx_25030077_arbiter.scala 79:22]
-  reg [1:0] r_cnt; // @[ysyx_25030077_arbiter.scala 80:22]
-  reg [1:0] ar_len; // @[ysyx_25030077_arbiter.scala 81:23]
-  wire  _state_T = state == 3'h0; // @[ysyx_25030077_arbiter.scala 83:16]
-  wire [2:0] _state_T_5 = io_IFU_aw_valid & io_axi_aw_ready ? 3'h4 : 3'h0; // @[ysyx_25030077_arbiter.scala 86:44]
-  wire [2:0] _state_T_6 = io_IFU_ar_valid & io_axi_ar_ready ? 3'h1 : _state_T_5; // @[ysyx_25030077_arbiter.scala 85:40]
-  wire  _state_T_9 = state == 3'h1; // @[ysyx_25030077_arbiter.scala 87:16]
-  wire  _state_T_10 = io_IFU_r_ready & io_axi_r_valid; // @[ysyx_25030077_arbiter.scala 87:47]
-  wire  _state_T_14 = state == 3'h2; // @[ysyx_25030077_arbiter.scala 88:16]
-  wire [2:0] _state_T_16 = io_LSU_r_ready & io_axi_r_valid ? 3'h0 : 3'h2; // @[ysyx_25030077_arbiter.scala 88:31]
-  wire  _state_T_17 = state == 3'h3; // @[ysyx_25030077_arbiter.scala 89:16]
-  wire [2:0] _state_T_19 = io_LSU_b_ready & io_axi_b_valid ? 3'h0 : 3'h3; // @[ysyx_25030077_arbiter.scala 89:31]
-  wire  _state_T_20 = state == 3'h4; // @[ysyx_25030077_arbiter.scala 90:16]
-  wire [2:0] _state_T_22 = io_IFU_b_ready & io_axi_b_valid ? 3'h0 : 3'h4; // @[ysyx_25030077_arbiter.scala 90:31]
+  reg [2:0] state; // @[ysyx_25030077_arbiter.scala 78:22]
+  reg [1:0] r_cnt; // @[ysyx_25030077_arbiter.scala 79:22]
+  reg [1:0] ar_len; // @[ysyx_25030077_arbiter.scala 80:23]
+  wire  _state_T = state == 3'h0; // @[ysyx_25030077_arbiter.scala 82:16]
+  wire [2:0] _state_T_5 = io_IFU_aw_valid & io_axi_aw_ready ? 3'h4 : 3'h0; // @[ysyx_25030077_arbiter.scala 85:44]
+  wire [2:0] _state_T_6 = io_IFU_ar_valid & io_axi_ar_ready ? 3'h1 : _state_T_5; // @[ysyx_25030077_arbiter.scala 84:40]
+  wire  _state_T_9 = state == 3'h1; // @[ysyx_25030077_arbiter.scala 86:16]
+  wire  _state_T_10 = io_IFU_r_ready & io_axi_r_valid; // @[ysyx_25030077_arbiter.scala 86:47]
+  wire  _state_T_14 = state == 3'h2; // @[ysyx_25030077_arbiter.scala 87:16]
+  wire [2:0] _state_T_16 = io_LSU_r_ready & io_axi_r_valid ? 3'h0 : 3'h2; // @[ysyx_25030077_arbiter.scala 87:31]
+  wire  _state_T_17 = state == 3'h3; // @[ysyx_25030077_arbiter.scala 88:16]
+  wire [2:0] _state_T_19 = io_LSU_b_ready & io_axi_b_valid ? 3'h0 : 3'h3; // @[ysyx_25030077_arbiter.scala 88:31]
+  wire  _state_T_20 = state == 3'h4; // @[ysyx_25030077_arbiter.scala 89:16]
+  wire [2:0] _state_T_22 = io_IFU_b_ready & io_axi_b_valid ? 3'h0 : 3'h4; // @[ysyx_25030077_arbiter.scala 89:31]
   wire [2:0] _state_T_23 = _state_T_20 ? _state_T_22 : state; // @[Mux.scala 101:16]
   wire [2:0] _state_T_24 = _state_T_17 ? _state_T_19 : _state_T_23; // @[Mux.scala 101:16]
-  wire [31:0] _io_axi_ar_addr_T_2 = _state_T_9 ? io_IFU_ar_addr : 32'h0; // @[ysyx_25030077_arbiter.scala 94:61]
+  wire [31:0] _io_axi_ar_addr_T_2 = _state_T_9 ? io_IFU_ar_addr : 32'h0; // @[ysyx_25030077_arbiter.scala 93:61]
   wire  _rsize_T = io_LSU_rw_type == 4'h4; // @[ysyx_25030077_arbiter.scala 102:29]
   wire  _rsize_T_1 = io_LSU_rw_type == 4'h5; // @[ysyx_25030077_arbiter.scala 103:29]
   wire  _rsize_T_2 = io_LSU_rw_type == 4'h6; // @[ysyx_25030077_arbiter.scala 104:29]
@@ -1896,9 +1896,9 @@ module ysyx_25030077_arbiter(
   assign io_LSU_b_valid = _state_T_17 & io_axi_b_valid; // @[ysyx_25030077_arbiter.scala 196:24]
   assign io_LSU_aw_ready = _state_T_17 & io_axi_aw_ready; // @[ysyx_25030077_arbiter.scala 116:25]
   assign io_LSU_w_ready = _state_T_17 & io_axi_w_ready; // @[ysyx_25030077_arbiter.scala 139:24]
-  assign io_axi_ar_valid = _state_T_14 ? io_LSU_ar_valid : _state_T_9 & io_IFU_ar_valid; // @[ysyx_25030077_arbiter.scala 93:25]
-  assign io_axi_ar_addr = _state_T_14 ? io_LSU_ar_addr : _io_axi_ar_addr_T_2; // @[ysyx_25030077_arbiter.scala 94:25]
-  assign io_axi_ar_id = 4'h0; // @[ysyx_25030077_arbiter.scala 77:16]
+  assign io_axi_ar_valid = _state_T_14 ? io_LSU_ar_valid : _state_T_9 & io_IFU_ar_valid; // @[ysyx_25030077_arbiter.scala 92:25]
+  assign io_axi_ar_addr = _state_T_14 ? io_LSU_ar_addr : _io_axi_ar_addr_T_2; // @[ysyx_25030077_arbiter.scala 93:25]
+  assign io_axi_ar_id = 4'h0; // @[ysyx_25030077_arbiter.scala 94:19]
   assign io_axi_ar_len = {{6'd0}, _io_axi_ar_len_T_3}; // @[ysyx_25030077_arbiter.scala 109:17]
   assign io_axi_ar_size = {{1'd0}, _io_axi_ar_size_T_3}; // @[ysyx_25030077_arbiter.scala 108:19]
   assign io_axi_ar_burst = _state_T_9 ? io_IFU_ar_brust : 2'h0; // @[ysyx_25030077_arbiter.scala 110:25]
@@ -1915,18 +1915,18 @@ module ysyx_25030077_arbiter(
   assign io_axi_r_ready = _state_T_9 ? io_IFU_r_ready : _state_T_14 & io_LSU_r_ready; // @[ysyx_25030077_arbiter.scala 194:24]
   assign io_axi_b_ready = _state_T_17 ? io_LSU_b_ready : _state_T_20 & io_IFU_b_ready; // @[ysyx_25030077_arbiter.scala 198:24]
   always @(posedge clock) begin
-    if (reset) begin // @[ysyx_25030077_arbiter.scala 79:22]
-      state <= 3'h0; // @[ysyx_25030077_arbiter.scala 79:22]
+    if (reset) begin // @[ysyx_25030077_arbiter.scala 78:22]
+      state <= 3'h0; // @[ysyx_25030077_arbiter.scala 78:22]
     end else if (_state_T) begin // @[Mux.scala 101:16]
-      if (io_LSU_ar_valid & io_axi_ar_ready) begin // @[ysyx_25030077_arbiter.scala 83:31]
+      if (io_LSU_ar_valid & io_axi_ar_ready) begin // @[ysyx_25030077_arbiter.scala 82:31]
         state <= 3'h2;
-      end else if (io_LSU_aw_valid & io_axi_aw_ready) begin // @[ysyx_25030077_arbiter.scala 84:35]
+      end else if (io_LSU_aw_valid & io_axi_aw_ready) begin // @[ysyx_25030077_arbiter.scala 83:35]
         state <= 3'h3;
       end else begin
         state <= _state_T_6;
       end
     end else if (_state_T_9) begin // @[Mux.scala 101:16]
-      if (io_IFU_r_ready & io_axi_r_valid & ar_len == r_cnt) begin // @[ysyx_25030077_arbiter.scala 87:31]
+      if (io_IFU_r_ready & io_axi_r_valid & ar_len == r_cnt) begin // @[ysyx_25030077_arbiter.scala 86:31]
         state <= 3'h0;
       end else begin
         state <= 3'h1;
@@ -1936,8 +1936,8 @@ module ysyx_25030077_arbiter(
     end else begin
       state <= _state_T_24;
     end
-    if (reset) begin // @[ysyx_25030077_arbiter.scala 80:22]
-      r_cnt <= 2'h0; // @[ysyx_25030077_arbiter.scala 80:22]
+    if (reset) begin // @[ysyx_25030077_arbiter.scala 79:22]
+      r_cnt <= 2'h0; // @[ysyx_25030077_arbiter.scala 79:22]
     end else if (_state_T_9) begin // @[ysyx_25030077_arbiter.scala 112:16]
       if (_state_T_10) begin // @[ysyx_25030077_arbiter.scala 112:35]
         if (r_cnt != ar_len) begin // @[ysyx_25030077_arbiter.scala 112:73]
@@ -1949,8 +1949,8 @@ module ysyx_25030077_arbiter(
     end else begin
       r_cnt <= 2'h0;
     end
-    if (reset) begin // @[ysyx_25030077_arbiter.scala 81:23]
-      ar_len <= 2'h0; // @[ysyx_25030077_arbiter.scala 81:23]
+    if (reset) begin // @[ysyx_25030077_arbiter.scala 80:23]
+      ar_len <= 2'h0; // @[ysyx_25030077_arbiter.scala 80:23]
     end else if (_state_T_9) begin // @[ysyx_25030077_arbiter.scala 109:23]
       if (io_IFU_ar_brust == 2'h1) begin // @[ysyx_25030077_arbiter.scala 109:42]
         ar_len <= 2'h3;
