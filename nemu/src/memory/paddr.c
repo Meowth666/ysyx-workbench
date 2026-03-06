@@ -82,7 +82,7 @@ word_t paddr_read(paddr_t addr, int len) {
 }
 
 void paddr_write(paddr_t addr, int len, word_t data) {
-  printf("paddr_write addr = %x, len = %d, data = %x\n", addr, len, data);
+  // printf("paddr_write addr = %x, len = %d, data = %x\n", addr, len, data);
   if(CONFIG_MTRACE){
     mtrace_Write=fopen("outputs/memory_trace.txt","a");
     fprintf(mtrace_Write, "write   %x\n", addr);
@@ -90,7 +90,7 @@ void paddr_write(paddr_t addr, int len, word_t data) {
   }
   pmem_write(addr, len, data); 
   return;
-  // if (likely(in_pmem(addr))) { pmem_write(addr, len, data); return; }
-  // IFDEF(CONFIG_DEVICE, mmio_write(addr, len, data); return);
+  if (likely(in_pmem(addr))) { pmem_write(addr, len, data); return; }
+  IFDEF(CONFIG_DEVICE, mmio_write(addr, len, data); return);
   out_of_bound(addr);
 }
