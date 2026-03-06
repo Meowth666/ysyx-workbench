@@ -33,7 +33,7 @@ void write_addr(uint32_t paddr, uint32_t data, int size) {
 		//printf("write_addr: paddr = %x, data = %x, size = %d\n", paddr, data, size);
 		return;
 	}
-	printf("write_addr: paddr = %x, data = %x, size = %d\n", paddr, data, size);
+	// printf("write_addr: paddr = %x, data = %x, size = %d\n", paddr, data, size);
 	if(MTRACE){
 		mtrace_Write=fopen("outputs/mtrace.txt","a");
 		fprintf(mtrace_Write, "write   %x\n", paddr);
