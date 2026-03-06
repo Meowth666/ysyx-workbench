@@ -37,7 +37,6 @@ void device_update() {
   static uint64_t last = 0;
   uint64_t now = get_time();
   if (now - last < 1000000 / TIMER_HZ) {
-    printf("111\n");
     return;
   }
   last = now;
