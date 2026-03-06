@@ -12,9 +12,9 @@ CFLAGS    += -fdata-sections -ffunction-sections
 LDSCRIPTS += $(AM_HOME)/scripts/linker.ld
 LDFLAGS   += --defsym=_pmem_start=0x80000000 --defsym=_entry_offset=0x0
 LDFLAGS   += --gc-sections -e _start
-# NEMUFLAGS += --l $(shell dirname $(IMAGE).elf)/nemu-log.txt
-# NEMUFLAGS += --b
-NEMUFLAGS += --e $(IMAGE).elf
+NPCFLAGS += --l $(shell dirname $(IMAGE).elf)/nemu-log.txt
+NPCFLAGS += --b
+NPCFLAGS += --e $(IMAGE).elf
 
 MAINARGS_MAX_LEN = 64
 MAINARGS_PLACEHOLDER = the_insert-arg_rule_in_Makefile_will_insert_mainargs_here
@@ -31,11 +31,11 @@ image: image-dep
 NPC_HOME = /home/meowth/ysyx/ysyx-workbench/project/0_meopc
 # NPC_HOME = /home/meowth/ysyx/ysyx-workbench/project/c_pipline
 DIFF_SO = /home/meowth/ysyx/ysyx-workbench/nemu/build/riscv32-nemu-interpreter-so
-# run: insert-arg
-# 	@cd $(NPC_HOME) && \
-# 	$(NPC_HOME)/obj_dir/Vysyx_25030077 -e $(IMAGE).elf -d $(DIFF_SO) $(IMAGE).bin \
-#     gtkwave $(NPC_HOME)/obj_dir/wave.fst
 run: insert-arg
-    # $(info [Makefile] NEMUFLAGS = $(NEMUFLAGS)) 
-	$(MAKE) -C $(NEMU_HOME) ISA=$(ISA) run ARGS="$(NEMUFLAGS)" IMG=$(IMAGE).bin
+	@cd $(NPC_HOME) && \
+	$(NPC_HOME)/obj_dir/Vysyx_25030077 -e $(IMAGE).elf -d $(DIFF_SO) $(IMAGE).bin \
+    gtkwave $(NPC_HOME)/obj_dir/wave.fst
+# run: insert-arg
+#     # $(info [Makefile] NEMUFLAGS = $(NEMUFLAGS)) 
+# 	$(MAKE) -C $(NPC_HOME) sim IMAGE=$(IMAGE).bin
 .PHONY: insert-arg
