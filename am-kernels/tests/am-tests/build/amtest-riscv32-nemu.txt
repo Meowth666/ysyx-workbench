@@ -390,9 +390,9 @@ Disassembly of section .text:
 800005c8:	00700513          	li	a0,7
 800005cc:	3e8000ef          	jal	ra,800009b4 <ioe_read>
 800005d0:	00100513          	li	a0,1
-800005d4:	00002437          	lui	s0,0x2
+800005d4:	000f4437          	lui	s0,0xf4
 800005d8:	640000ef          	jal	ra,80000c18 <iset>
-800005dc:	70f40413          	addi	s0,s0,1807 # 270f <_entry_offset+0x270f>
+800005dc:	23f40413          	addi	s0,s0,575 # f423f <_entry_offset+0xf423f>
 800005e0:	00012623          	sw	zero,12(sp)
 800005e4:	00c12783          	lw	a5,12(sp)
 800005e8:	00f44c63          	blt	s0,a5,80000600 <hello_intr+0x60>
