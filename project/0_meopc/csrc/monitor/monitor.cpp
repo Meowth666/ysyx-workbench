@@ -89,7 +89,6 @@ void init_monitor(int argc, char *argv[]) {
     init_difftest(diff_so_file, img_size);
     // init_sdb();
     IFDEF(ITRACE, init_disasm());
-    // init_disasm();
     // welcome();
     return;
   }

@@ -23,7 +23,7 @@ struct diff_context_t {
   word_t gpr[MUXDEF(CONFIG_RVE, 16, 32)];
   word_t pc;
 };
-
+//__EXPORT宏：将函数导出到外部动态库中
 __EXPORT void difftest_memcpy(paddr_t addr, void *buf, size_t n, bool direction) {
   void *nemu_buf = (void *)guest_to_host(addr);
   printf("difftest_memcpy: addr = %x, n = %ld, direction = %d \n", addr, n, direction);

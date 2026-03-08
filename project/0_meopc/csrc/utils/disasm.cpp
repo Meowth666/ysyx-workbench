@@ -36,7 +36,7 @@ assert(cs_free_dl);
 
   cs_arch arch = CS_ARCH_RISCV;
   cs_mode mode = CS_MODE_RISCV32;
-	int ret = cs_open_dl(arch, mode, &handle);
+	int ret = cs_open_dl(arch, mode, &handle); //初始化一个反汇编器handle
   assert(ret == CS_ERR_OK);
 
 #ifdef CONFIG_ISA_x86
