@@ -50,7 +50,7 @@ Disassembly of section .text:
 80000098:	00f12623          	sw	a5,12(sp)
 8000009c:	00c12783          	lw	a5,12(sp)
 800000a0:	fef458e3          	bge	s0,a5,80000090 <f+0x4c>
-800000a4:	204000ef          	jal	ra,800002a8 <yield>
+800000a4:	208000ef          	jal	ra,800002ac <yield>
 800000a8:	fd5ff06f          	j	8000007c <f+0x38>
 
 800000ac <main>:
@@ -81,7 +81,7 @@ Disassembly of section .text:
 8000010c:	00f4a023          	sw	a5,0(s1)
 80000110:	178000ef          	jal	ra,80000288 <kcontext>
 80000114:	00a42023          	sw	a0,0(s0)
-80000118:	190000ef          	jal	ra,800002a8 <yield>
+80000118:	194000ef          	jal	ra,800002ac <yield>
 8000011c:	00000417          	auipc	s0,0x0
 80000120:	75c40413          	addi	s0,s0,1884 # 80000878 <_etext+0x4>
 80000124:	04100513          	li	a0,65
@@ -185,21 +185,20 @@ Disassembly of section .text:
 80000284:	00008067          	ret
 
 80000288 <kcontext>:
-80000288:	000017b7          	lui	a5,0x1
-8000028c:	ff010113          	addi	sp,sp,-16
-80000290:	fec5ac23          	sw	a2,-8(a1)
-80000294:	fef5aa23          	sw	a5,-12(a1)
-80000298:	f8d5ac23          	sw	a3,-104(a1)
-8000029c:	f7058513          	addi	a0,a1,-144
-800002a0:	01010113          	addi	sp,sp,16
-800002a4:	00008067          	ret
+80000288:	000027b7          	lui	a5,0x2
+8000028c:	80078793          	addi	a5,a5,-2048 # 1800 <_entry_offset+0x1800>
+80000290:	ff010113          	addi	sp,sp,-16
+80000294:	fec5ac23          	sw	a2,-8(a1)
+80000298:	fef5aa23          	sw	a5,-12(a1)
+8000029c:	f8d5ac23          	sw	a3,-104(a1)
+800002a0:	f7058513          	addi	a0,a1,-144
+800002a4:	01010113          	addi	sp,sp,16
+800002a8:	00008067          	ret
 
-800002a8 <yield>:
-800002a8:	fff00893          	li	a7,-1
-800002ac:	00000073          	ecall
-800002b0:	00008067          	ret
-800002b4:	0000                	.2byte	0x0
-	...
+800002ac <yield>:
+800002ac:	fff00893          	li	a7,-1
+800002b0:	00000073          	ecall
+800002b4:	00008067          	ret
 
 800002b8 <__am_asm_trap>:
 800002b8:	f7410113          	addi	sp,sp,-140
@@ -365,7 +364,7 @@ Disassembly of section .text:
 80000524:	01b40433          	add	s0,s0,s11
 80000528:	00044783          	lbu	a5,0(s0)
 8000052c:	11778663          	beq	a5,s7,80000638 <vprintf+0x1f4>
-80000530:	f9d78793          	addi	a5,a5,-99 # f9d <_entry_offset+0xf9d>
+80000530:	f9d78793          	addi	a5,a5,-99
 80000534:	0ff7f793          	zext.b	a5,a5
 80000538:	01200713          	li	a4,18
 8000053c:	00f76c63          	bltu	a4,a5,80000554 <vprintf+0x110>
