@@ -3,7 +3,7 @@
 #include <klib.h>
 
 static Context* (*user_handler)(Event, Context*) = NULL;
-
+//RISCV中函數參數約定在寄存器a0當中,也就是說*c指向在trap.S中設定的sp棧空間，也就是存儲當前程序上下文的結構提
 Context* __am_irq_handle(Context *c) {
   if (user_handler) {
     Event ev = {0};
