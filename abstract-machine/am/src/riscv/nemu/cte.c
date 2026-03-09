@@ -32,8 +32,8 @@ bool cte_init(Context*(*handler)(Event, Context*)) {
 }
 
 Context *kcontext(Area kstack, void (*entry)(void *), void *arg) {
-  Context *c = (Context *)kstack.end - 1; //先设定上下文地址在栈底
-  c->mepc = (uintptr_t)entry;
+  Context *c = (Context *)kstack.end - 1; //讓cp指向棧頂向下一個Context大小的位置，即上下文的起始
+  c->mepc = (uintptr_t)entry; //執行完返回entry函數
   c->mstatus = 0x1800;//mret后进入Machine模式
   c->gpr[10] = (uintptr_t)arg;//设置寄存器a0为参数arg，将参数arg传给即将执行的entry()函数
   return c;
