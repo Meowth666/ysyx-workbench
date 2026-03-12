@@ -25,12 +25,6 @@ void sdb_mainloop(int is_batch_mode);
 
 int main(int argc, char** argv){
 	Verilated::commandArgs(argc, argv);
-	//load_img("dummy-riscv32e-npc.bin");
-	//int i,j,k,l;
-	// printf("argc = %d\n", argc);
-	// for(int i = 0; i < argc; i++){
-	// 	printf("argv[%d] = %s\n", i, argv[i]);
-	// }
 	reg_init();
 	init_monitor(argc, argv);
 	cpu_init(argc, argv);

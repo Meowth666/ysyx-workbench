@@ -1,3 +1,0 @@
-NAME = switch
-SRCS = tests/switch.c
-include /home/meowth/ysyx/ysyx-workbench/abstract-machine/Makefile

@@ -24,8 +24,8 @@ image: image-dep
 	@$(OBJDUMP) -d $(IMAGE).elf > $(IMAGE).txt
 	@echo + OBJCOPY "->" $(IMAGE_REL).bin
 	@$(OBJCOPY) -S --set-section-flags .bss=alloc,contents -O binary $(IMAGE).elf $(IMAGE).bin
-
-SOC_HOME = /home/meowth/ysyx/ysyx-workbench/project/d_pipline_Soc
+SOC_HOME = /home/meowth/ysyx/ysyx-workbench/project/b_SoC
+# SOC_HOME = /home/meowth/ysyx/ysyx-workbench/project/d_pipline_Soc
 DIFF_SO = /home/meowth/ysyx/ysyx-workbench/nemu/build/riscv32-nemu-interpreter-so
 # wave
 run: insert-arg

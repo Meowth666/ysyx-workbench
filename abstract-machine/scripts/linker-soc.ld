@@ -80,6 +80,7 @@ SECTIONS {
   . = _stack_top + _sram_size - 0x500;
   _stack_pointer = .;
   _psram_start = 0x80000000;
+  _psram_end  = 0x80000100;
   _gpio_start  = 0x10002000;
   _gpio_end    = 0x1000200f;
 

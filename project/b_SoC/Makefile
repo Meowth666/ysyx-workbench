@@ -55,9 +55,10 @@ VERILATOR_VINCLUDES += -I$(abspath /home/meowth/ysyx/ysyx-workbench/ysyxSoC/peri
 VERILATOR_VINCLUDES += -I$(abspath /home/meowth/ysyx/ysyx-workbench/ysyxSoC/perip/spi/rtl)
 
 # IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/benchmarks/microbench/build/microbench-riscv32e-ysyx-soc
-IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/mem-tests/build/hello-riscv32e-ysyx-soc
-
-# IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/am-tests/build/amtest-riscv32e-ysyx-soc
+# IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/mem-tests/build/hello-riscv32e-ysyx-soc
+# IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/IO-tests/build/gpio_led-riscv32e-ysyx-soc
+# IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/mem-tests/build/psram-riscv32e-ysyx-soc
+IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/am-tests/build/amtest-riscv32e-ysyx-soc
 # IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv32e-ysyx-soc
 # IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/cache_tests/build/cache-riscv32e-ysyx-soc
 
@@ -101,7 +102,7 @@ sim:
 			 -I  /home/meowth/ysyx/ysyx-workbench/project/b_SoC/tools/capstone/repo/include" \
 	-LDFLAGS "-lreadline -lncurses" \
 	--top-module ysyxSoCFull \
-	$(CSRCS) \
+	$(CSRCS_SIM) \
 	$(VSRCS)
 	obj_dir/VysyxSoCFull -e $(IMAGE).elf -d $(DIFF_SO) $(IMAGE).bin mainargs=1
 	gtkwave obj_dir/wave.fst

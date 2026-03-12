@@ -105,8 +105,8 @@ wire [4:0] spi_adr = xip_mode ?
 
 // 写入SPI控制器的数据（根据状态生成）
 wire [31:0] spi_dat = xip_mode ? 
-  (state == S_TX0   ? 32'h0 :  // Flash读命令（0x03为标准读命令）
-   state == S_TX1   ? {8'h3, flash_addr[23:0]} :  // 高3位保留，低24位为Flash地址
+  (state == S_TX0   ? 32'h0 :  // 
+   state == S_TX1   ? {8'h3, flash_addr[23:0]} :  // Flash读命令（0x03为标准读命令）.低24位为Flash地址
    state == S_DIV   ? 32'h00000001 :  // 分频系数1（SCLK = 系统时钟/2）
    state == S_CTRL  ? 32'h00002040 :   
    state == S_SS    ? 32'h00000001 :  // 片选使能（bit0=1选中第一个从机）

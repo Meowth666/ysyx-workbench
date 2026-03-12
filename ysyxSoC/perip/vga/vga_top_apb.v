@@ -21,8 +21,6 @@ module vga_top_apb(
 );
 
   reg [23:0] vga_mem [524287:0];
-  // import "DPI-C" function void vga_write (input int addr, input int data);
-  // import "DPI-C" function void vga_read  (input int w_addr, input int h_addr, output int data);
   parameter h_frontporch = 96;
   parameter h_active = 144;
   parameter h_backporch = 784;
@@ -45,10 +43,7 @@ module vga_top_apb(
         // vga_write(addr1, {8'd0, in_pwdata[23:0]});
     end
   end
-  reg pclk;
-  always@(posedge clock) begin
-    pclk = ~pclk;
-  end
+
   reg [9:0] x_cnt;
   reg [9:0] y_cnt;
   wire h_valid;
@@ -69,25 +64,6 @@ module vga_top_apb(
     end
   end
 
-  // always @(posedge clock) begin
-  //   if(reset) begin
-  //     x_cnt <= 1;
-  //     y_cnt <= 1;
-  //   end
-  //   else if(pclk) begin
-  //     if(x_cnt == h_total)begin
-  //       x_cnt <= 1;
-  //       if(y_cnt == v_total) y_cnt <= 1;
-  //       else y_cnt <= y_cnt + 1;
-  //     end
-  //     else x_cnt <= x_cnt + 1;
-  //   end
-  //   else begin
-  //     x_cnt <= x_cnt;
-  //     y_cnt <= y_cnt;
-  //   end
-  // end
-
   assign vga_hsync = (x_cnt > h_frontporch);
   assign vga_vsync = (y_cnt > v_frontporch);
   assign h_valid = (x_cnt > h_active) & (x_cnt <= h_backporch);
@@ -95,17 +71,7 @@ module vga_top_apb(
   assign vga_valid = h_valid & v_valid;
   wire [9:0] h_addr;
   wire [9:0] v_addr;
-  // wire [31:0] vga_data;
-  // reg [31:0] vga_data;
   assign h_addr = h_valid ? (x_cnt - 10'd145) : 10'd0;
   assign v_addr = v_valid ? (y_cnt - 10'd36) : 10'd0;
-  // always@(posedge clock) begin
-  //   if (reset)
-  //     vga_data <= 32'd0;
-  //   else begin
-  //     vga_read({22'd0, v_addr}, {22'd0, h_addr}, vga_data);
-  //   end
-  // end
-  // assign {vga_r, vga_g, vga_b} = vga_data[23:0];
   assign {vga_r, vga_g, vga_b} = vga_mem[h_addr + v_addr * 640];
 endmodule
