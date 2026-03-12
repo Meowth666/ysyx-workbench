@@ -52,7 +52,7 @@ static void exec_once(Decode *s, vaddr_t pc) {
     isa_exec_once(s);
     // printf("%d\n",ff);
     cpu.pc = s->dnpc;
-    FILE *itrace_Write =fopen("outputs/itrace.txt","w");
+    FILE *itrace_Write =fopen("outputs/itrace.txt","a");
     fprintf(itrace_Write,"%x\n", pc);
     fclose(itrace_Write);
   #ifdef CONFIG_ITRACE
