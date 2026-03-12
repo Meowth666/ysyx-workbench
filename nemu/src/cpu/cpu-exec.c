@@ -137,18 +137,21 @@ void cpu_exec(uint64_t n) {
   }
   execute(n);
   FILE *iringbuf_Write=fopen("outputs/iringbuf.txt","w");
-  if(instruction_count < 25){
-    for(int i = 0; i < instruction_count; i++){
-      fprintf(iringbuf_Write,"0x%x  %s\n", iringbuf_pc[i], iringbuf[i]);
-    }
-  }
-  else{
-    for(int i = ring_id,j = 0; j < 25; j++){
-      fprintf(iringbuf_Write,"0x%x  %s\n", iringbuf_pc[i], iringbuf[i]);
-      i ++;
-      if(i == 25) i = 0;
-    }
-  }
+  for(int i = 0; i < instruction_count; i++){
+        fprintf(iringbuf_Write,"0x%x  %s\n", iringbuf_pc[i], iringbuf[i]);
+      }
+  // if(instruction_count < 25){
+  //   for(int i = 0; i < instruction_count; i++){
+  //     fprintf(iringbuf_Write,"0x%x  %s\n", iringbuf_pc[i], iringbuf[i]);
+  //   }
+  // }
+  // else{
+  //   for(int i = ring_id,j = 0; j < 25; j++){
+  //     fprintf(iringbuf_Write,"0x%x  %s\n", iringbuf_pc[i], iringbuf[i]);
+  //     i ++;
+  //     if(i == 25) i = 0;
+  //   }
+  // }
   fclose(iringbuf_Write);
   uint64_t timer_end = get_time();
   g_timer += timer_end - timer_start;
