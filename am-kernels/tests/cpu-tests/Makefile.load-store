@@ -1,3 +1,0 @@
-NAME = load-store
-SRCS = tests/load-store.c
-include /home/meowth/ysyx/ysyx-workbench/abstract-machine/Makefile

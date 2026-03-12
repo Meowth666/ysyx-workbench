@@ -14,7 +14,7 @@ static uint32_t canvas[N][N];
 static int used[N][N];
 
 static uint32_t color_buf[32 * 32]; //存储每个区域内的颜色信息
-//将整个屏幕划分为若干32×32的块
+//将整个屏幕划分为32×32块
 void redraw() {
   int w = io_read(AM_GPU_CONFIG).width / N;
   int h = io_read(AM_GPU_CONFIG).height / N;

@@ -1,3 +1,0 @@
-NAME = to-lower-case
-SRCS = tests/to-lower-case.c
-include /home/meowth/ysyx/ysyx-workbench/abstract-machine/Makefile

@@ -1,3 +1,0 @@
-NAME = quick-sort
-SRCS = tests/quick-sort.c
-include /home/meowth/ysyx/ysyx-workbench/abstract-machine/Makefile

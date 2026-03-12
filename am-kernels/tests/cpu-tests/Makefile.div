@@ -1,3 +1,0 @@
-NAME = div
-SRCS = tests/div.c
-include /home/meowth/ysyx/ysyx-workbench/abstract-machine/Makefile
