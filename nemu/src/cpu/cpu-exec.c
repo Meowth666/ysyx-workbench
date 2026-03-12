@@ -52,6 +52,9 @@ static void exec_once(Decode *s, vaddr_t pc) {
     isa_exec_once(s);
     // printf("%d\n",ff);
     cpu.pc = s->dnpc;
+    FILE *itrace_Write =fopen("outputs/itrace.txt","w");
+    fprintf(itrace_Write,"%x\n", pc);
+    fclose(itrace_Write);
   #ifdef CONFIG_ITRACE
     char *p = s->logbuf;
     p += snprintf(p, sizeof(s->logbuf), FMT_WORD ":", s->pc);//sprintf将格式化字符串输出到指定缓冲区当中，且有最大字节数限制
@@ -137,9 +140,7 @@ void cpu_exec(uint64_t n) {
   }
   execute(n);
   FILE *iringbuf_Write=fopen("outputs/iringbuf.txt","w");
-  for(int i = 0; i < instruction_count; i++){
-        fprintf(iringbuf_Write,"0x%x  %s\n", iringbuf_pc[i], iringbuf[i]);
-      }
+
   // if(instruction_count < 25){
   //   for(int i = 0; i < instruction_count; i++){
   //     fprintf(iringbuf_Write,"0x%x  %s\n", iringbuf_pc[i], iringbuf[i]);
