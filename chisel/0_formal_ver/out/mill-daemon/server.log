@@ -1,0 +1,32 @@
+pid:15055 2026-03-12T16:34:03.753149198 [t1] running server in /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon
+pid:15055 2026-03-12T16:34:03.782662092 [t1] acceptTimeout=Some(30 minutes)
+pid:15055 2026-03-12T16:34:03.796297287 [t1] server file locked
+pid:15055 2026-03-12T16:34:03.808382754 [t1] listening on port 34073
+pid:15055 2026-03-12T16:34:03.81591873 [t1] handling run for Socket[addr=/127.0.0.1,port=38642,localport=34073]
+pid:15055 2026-03-12T16:34:03.81940237 [t24] prepareConnection Socket[addr=/127.0.0.1,port=38642,localport=34073]
+pid:15055 2026-03-12T16:34:03.825199614 [t24] 1 active connections
+pid:15055 2026-03-12T16:34:03.83303547 [t25] handleConnection: starting RPC server
+pid:15055 2026-03-12T16:34:03.87603118 [t25] handleConnection: running RPC server
+pid:15055 2026-03-12T16:34:03.876895192 [t25] [MillDaemon-Socket[addr=/127.0.0.1,port=38642,localport=34073]] Initializing Mill RPC server... Waiting for the `initialize` message.
+pid:15055 2026-03-12T16:34:03.96855029 [t25] [MillDaemon-Socket[addr=/127.0.0.1,port=38642,localport=34073]] Initialized, waiting for messages.
+pid:15055 2026-03-12T16:34:04.630216443 [t25] [MillDaemon-Socket[addr=/127.0.0.1,port=38642,localport=34073]] Transport wire broken.
+pid:15055 2026-03-12T16:34:04.630925044 [t25] handleConnection: RPC server finished normally, exitCode=0
+pid:15055 2026-03-12T16:34:04.631753812 [t24] done=true, idle=true, lastClientAlive=true
+pid:15055 2026-03-12T16:34:04.633839825 [t24] 0 active connections
+pid:15055 2026-03-12T16:37:15.074288552 [t1] handling run for Socket[addr=/127.0.0.1,port=43336,localport=34073]
+pid:15055 2026-03-12T16:37:15.075123065 [t42] prepareConnection Socket[addr=/127.0.0.1,port=43336,localport=34073]
+pid:15055 2026-03-12T16:37:15.075599582 [t42] 1 active connections
+pid:15055 2026-03-12T16:37:15.075973887 [t43] handleConnection: starting RPC server
+pid:15055 2026-03-12T16:37:15.076274829 [t43] handleConnection: running RPC server
+pid:15055 2026-03-12T16:37:15.076435692 [t43] [MillDaemon-Socket[addr=/127.0.0.1,port=43336,localport=34073]] Initializing Mill RPC server... Waiting for the `initialize` message.
+pid:15055 2026-03-12T16:37:15.078273047 [t43] [MillDaemon-Socket[addr=/127.0.0.1,port=43336,localport=34073]] Initialized, waiting for messages.
+pid:15055 2026-03-12T16:37:15.270150922 [t43] [MillDaemon-Socket[addr=/127.0.0.1,port=43336,localport=34073]] Transport wire broken.
+pid:15055 2026-03-12T16:37:15.270593742 [t43] handleConnection: RPC server finished normally, exitCode=0
+pid:15055 2026-03-12T16:37:15.270882178 [t42] done=true, idle=true, lastClientAlive=true
+pid:15055 2026-03-12T16:37:15.271292157 [t42] 0 active connections
+pid:15055 2026-03-12T17:07:15.272723426 [t23] shutting down due inactivity
+pid:15055 2026-03-12T17:07:15.277053388 [t1] removing /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/socketPort
+pid:15055 2026-03-12T17:07:15.277847714 [t1] removed /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/socketPort
+pid:15055 2026-03-12T17:07:15.277989862 [t1] releasing daemonLock
+pid:15055 2026-03-12T17:07:15.278612777 [t1] daemonLock released
+pid:15055 2026-03-12T17:07:15.278741536 [t1] exiting server
