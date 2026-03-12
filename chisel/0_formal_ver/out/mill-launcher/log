@@ -1,0 +1,133 @@
+2026-03-12T08:34:03Z launchOrConnectToServer: mill.client.lock.Locks@3bac047d
+2026-03-12T08:34:03Z Acquiring the launcher lock: PidLock{@7ef44f6, path='/home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/launcherLock'}
+2026-03-12T08:34:03Z launchOrConnectToServer attempt
+2026-03-12T08:34:03Z Checking if the daemon lock is available: PidLock{@13efdf41, path='/home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/daemonLock'}
+2026-03-12T08:34:03Z The daemon lock is available, starting the server.
+2026-03-12T08:34:03Z The server has started: OsProcess(15055)
+2026-03-12T08:34:03Z Waiting for the server to take the daemon lock: PidLock{@13efdf41, path='/home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/daemonLock'}
+2026-03-12T08:34:03Z The server OsProcess(15055) has taken the daemon lock: PidLock{@13efdf41, path='/home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/daemonLock'}
+2026-03-12T08:34:03Z Reading server port: /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon
+2026-03-12T08:34:03Z launchOrConnectToServer attempt
+2026-03-12T08:34:03Z Checking if the daemon lock is available: PidLock{@13efdf41, path='/home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/daemonLock'}
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID exception
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID: 15055
+2026-03-12T08:34:03Z Reading server port: /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon
+2026-03-12T08:34:03Z launchOrConnectToServer attempt
+2026-03-12T08:34:03Z Checking if the daemon lock is available: PidLock{@13efdf41, path='/home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/daemonLock'}
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID: 15055
+2026-03-12T08:34:03Z Reading server port: /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon
+2026-03-12T08:34:03Z launchOrConnectToServer attempt
+2026-03-12T08:34:03Z Checking if the daemon lock is available: PidLock{@13efdf41, path='/home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/daemonLock'}
+2026-03-12T08:34:03Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:34:03Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:34:03Z Read PID: 15055
+2026-03-12T08:34:03Z Reading server port: /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon
+2026-03-12T08:34:03Z Read server port
+2026-03-12T08:34:03Z Connecting: 34073
+2026-03-12T08:34:03Z runWithConnection (RPC): Launched(34073,Some(Socket[addr=localhost/127.0.0.1,port=34073,localport=38642]),OsProcess(15055))
+2026-03-12T08:34:04Z runWithConnection exit code: 0
+2026-03-12T08:37:15Z launchOrConnectToServer: mill.client.lock.Locks@9334b95
+2026-03-12T08:37:15Z Acquiring the launcher lock: PidLock{@77a32073, path='/home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/launcherLock'}
+2026-03-12T08:37:15Z launchOrConnectToServer attempt
+2026-03-12T08:37:15Z Checking if the daemon lock is available: PidLock{@703d2ea, path='/home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/daemonLock'}
+2026-03-12T08:37:15Z The daemon lock is not available, there is already a server running.
+2026-03-12T08:37:15Z Trying to read the process ID of a running daemon from /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon/processId
+2026-03-12T08:37:15Z Read PID: 15055
+2026-03-12T08:37:15Z Reading server port: /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/out/mill-daemon
+2026-03-12T08:37:15Z Read server port
+2026-03-12T08:37:15Z Connecting: 34073
+2026-03-12T08:37:15Z runWithConnection (RPC): Launched(34073,Some(Socket[addr=localhost/127.0.0.1,port=34073,localport=43336]),OsProcess(15055))
+2026-03-12T08:37:15Z runWithConnection exit code: 0
