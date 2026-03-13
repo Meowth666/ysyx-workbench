@@ -1,113 +1,138 @@
 #include <stdio.h>
-#include <stdlib.h>  // 用于exit函数（处理文件打开失败）
+#include <stdlib.h>
+#include <stdint.h>
 #include <math.h>
-#include <string.h> // 用于memset函数
 
-// 定义数组最大长度，方便后续修改，避免魔法数字
-#define MAX_INSTR_CNT 800000
-#define MAX_INDEX_CNT 16
+typedef struct {
+    int valid;
+    uint64_t tag;
+    int lru;  // LRU计数
+} cache_line;
 
-int main() {
-    // 存储读取的指令地址
-    int pc[MAX_INSTR_CNT];
-    // 每行的缓冲区（256字节足够容纳单行十六进制数，如64位地址仅16位字符）
-    char line_buf[256];
-    FILE *file = fopen("LSU_sdram_trace.txt", "r");
-    int i = 0;
+typedef struct {
+    cache_line *lines;
+} cache_set;
 
-    //检查文件是否成功打开
-    if (file == NULL) {
-        perror("Error: 打开文件失败");
-        exit(EXIT_FAILURE);
+typedef struct {
+    cache_set *sets;
+    int set_num;
+    int assoc;
+    int block_size; // 单位: word数或字节, 这里按字节计算
+} cache;
+
+// 计算2的整数对数（block_size, set_num必须是2的幂）
+int log2_int(int x) {
+    return __builtin_ctz(x);
+}
+
+// 初始化cache
+cache *cache_init(int cache_size, int block_size, int assoc) {
+    cache *c = malloc(sizeof(cache));
+
+    int line_num = cache_size / block_size;
+    c->set_num = line_num / assoc;
+    c->assoc = assoc;
+    c->block_size = block_size;
+
+    c->sets = malloc(sizeof(cache_set) * c->set_num);
+    for (int i = 0; i < c->set_num; i++) {
+        c->sets[i].lines = malloc(sizeof(cache_line) * assoc);
+        for (int j = 0; j < assoc; j++) {
+            c->sets[i].lines[j].valid = 0;
+            c->sets[i].lines[j].lru = 0;
+        }
     }
 
-    // 逐行读取文件：fgets返回NULL表示读取完毕/出错
-    while (fgets(line_buf, sizeof(line_buf), file) != NULL) {
-        if (i >= MAX_INSTR_CNT) {
-            fprintf(stderr, "Warning: 数组已达最大容量 %d，停止读取\n", MAX_INSTR_CNT);
+    return c;
+}
+
+// 访问cache，miss时一次填充整个block
+int cache_access_block(cache *c, uint64_t addr) {
+    int offset_bits = log2_int(c->block_size);
+    int index_bits = log2_int(c->set_num);
+
+    // block基地址（对齐block）
+    uint64_t block_base = addr & ~(c->block_size - 1);
+    uint64_t index = (block_base >> offset_bits) & ((1 << index_bits) - 1);
+    uint64_t tag = block_base >> (offset_bits + index_bits);
+
+    cache_set *set = &c->sets[index];
+    int hit = 0;
+
+    // 检查block是否命中
+    for (int i = 0; i < c->assoc; i++) {
+        if (set->lines[i].valid && set->lines[i].tag == tag) {
+            hit = 1;
+            // 更新LRU
+            set->lines[i].lru = 0;
+            for (int j = 0; j < c->assoc; j++)
+                if (j != i) set->lines[j].lru++;
             break;
         }
-        // 从当前行解析十六进制数（%x 兼容大小写，如a1b2/A1B2）
-        // sscanf返回成功解析的变量数，等于1表示解析成功
-        if (sscanf(line_buf, "%x", &pc[i]) == 1) {
-            i++;  // 仅解析成功时计数+1
-        } else {
-            // 打印解析失败的行（便于调试无效行）
-            fprintf(stderr, "Warning: 第 %d 行解析失败，内容：%s", i+1, line_buf);
-        }
     }
-    fclose(file);
-    
-    int inst_cnt = i;  // 实际读取的指令数量
 
-    printf("=======方案1:根据index查找,若冲突直接替换=======\n");
-    int yuan_data[200] = {0};
-    int index, tag;
-    int zhong_cnt = 0;
-    for(i = 0; i < inst_cnt; i++){
-        index = (pc[i] & 0x3c) >> 2;
-        tag = (pc[i] >> 6);
-        if((tag == (yuan_data[index] >> 1)) && ((yuan_data[index] & 1) != 0)){
-            zhong_cnt++;
-        }
-        else{
-            yuan_data[index] = (tag << 1) | 1;
-        }
-    }
-    printf("ifu请求次数:   %d   命中次数:   %d\n", inst_cnt, zhong_cnt);
-    printf("icache命中率%lf\n", (double)zhong_cnt / (double)inst_cnt);
-    
-    int uint_size = 4;
-    int group_cnt = 8;
-    int group_bits = log2(group_cnt);
-    int group_size = 32 / group_cnt;
-    if(group_cnt * group_size != 32 || uint_size > group_cnt){
-        printf("配置错误!\n");
-        return -1;
-    }
-    printf("组数 = %d  块大小 = %d\n", group_cnt, uint_size);
-    printf("=======方案2.1:group_size路组相联,若无匹配,则替换掉最早首次进入的=======\n");
-    zhong_cnt = 0;
-    int cache_tag[100][100] = {0};
-    int j, k;
-    int temp = 0;
-    for(i = 0; i < inst_cnt; i++){
-        if((pc[i] & 0xf0000000) == 0x30000000){
-            continue;
-        }
-        index = ((pc[i] >> 2) & (group_cnt - 1));
-        tag = pc[i] >> (2 + group_bits);
-        int flag = 0;
-        for(j = 0; j < group_size; j++){
-            if((tag == (cache_tag[j][index] >> 1)) && ((cache_tag[j][index] & 1) != 0)){
-                zhong_cnt++;
-                flag = 1;
-                break;
-            }
-            else if((cache_tag[j][index] & 1) == 0){
-                for(k = 0; k < uint_size; k++){
-                    cache_tag[j][index] = (tag << 1) | 1;
-                    // printf("%x\n", cache_tag[j][index]);
-                    index = (index + 1) % group_cnt;
-                }
-                flag = 1;
-                break;
+    // miss → 替换LRU line并填充block
+    if (!hit) {
+        int lru_victim = 0;
+        int max_lru = -1;
+        for (int i = 0; i < c->assoc; i++) {
+            if (set->lines[i].lru > max_lru) {
+                max_lru = set->lines[i].lru;
+                lru_victim = i;
             }
         }
-        if(flag == 0){
-            for(k = 0; k < uint_size; k++){
-                cache_tag[temp][index] = (tag << 1) | 1;
-                // printf("%x\n", cache_tag[temp][index]);
-                index = (index + 1) % group_cnt;
+        set->lines[lru_victim].valid = 1;
+        set->lines[lru_victim].tag = tag;
+        set->lines[lru_victim].lru = 0;
+        for (int j = 0; j < c->assoc; j++)
+            if (j != lru_victim) set->lines[j].lru++;
+    }
+
+    return hit;
+}
+
+// 仿真函数
+void simulate(char *filename, int cache_size, int block_size, int assoc) {
+    FILE *fp = fopen(filename, "r");
+    if (!fp) {
+        perror("file open error");
+        exit(1);
+    }
+
+    cache *c = cache_init(cache_size, block_size, assoc);
+    uint64_t pc;
+    long total = 0;
+    long hit = 0;
+
+    while (fscanf(fp, "%lx", &pc) == 1) {
+        total++;
+        if (cache_access_block(c, pc))
+            hit++;
+    }
+    printf("Total: %ld\n", total);
+    printf("HIT:   %ld\n", hit);
+    printf("Cache Size: %dB, Block Size: %dB, Associativity: %d, Hit Rate: %.4f\n",
+           cache_size, block_size, assoc, (double)hit / total);
+
+    fclose(fp);
+}
+
+int main() {
+    // 测试不同的cache参数
+    int cache_sizes[] = {64}; // 单位字节
+    int block_sizes[] = {4};  // 单位字节
+    int assocs[] = {1, 2, 4, 8};
+
+    for (int i = 0; i < 1; i++) {
+        for (int j = 0; j < 1; j++) {
+            for (int k = 0; k < 4; k++) {
+                simulate("train_soc_itrace.txt",
+                         cache_sizes[i],
+                         block_sizes[j],
+                         assocs[k]);
             }
-            temp = (temp + 1) % group_size;
         }
     }
-    int miss_cnt = inst_cnt - zhong_cnt;
-    int cycs = zhong_cnt * 1 + miss_cnt * 21;
-    printf("ifu请求次数:   %d   命中次数:   %d\n", inst_cnt, zhong_cnt);
-    printf("icache命中率%lf\n", (double)zhong_cnt / (double)inst_cnt);
-    printf("%d\n", inst_cnt);
-    printf("需要周期： %d\n", cycs);
+
     return 0;
 }
