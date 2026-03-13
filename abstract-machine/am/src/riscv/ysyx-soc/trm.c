@@ -2,6 +2,9 @@
 #include <klib-macros.h>
 #include "ysyx-soc.h"
 #include <stdio.h>
+// #ifndef MYVAR
+//   #define MYVAR 50
+// #endif
 extern char _heap_start;
 extern char _heap_end;
 extern char _erodata;
@@ -68,27 +71,29 @@ void halt(int code) {
 
 void id_print(){
   uart_set_baud_rate();
-  // unsigned int mvendorid, marchid;
-  // asm volatile("csrr %0, mvendorid" : "=r"(mvendorid));
-  // asm volatile("csrr %0, marchid" : "=r"(marchid));
-  // uint8_t *gpio_start = _gpio_start;
-  // gpio_start[8]  = 0x77;
-  // gpio_start[9]  = 0x00;
-  // gpio_start[10] = 0x03;
-  // gpio_start[11] = 0x25;
-  // for(int i = 3; i >= 0; i--){
-  //   char ch = (char)((mvendorid >> (i * 8)) & 0xFF);
-  //   putch(ch);
+  // if(MYVAR == 10){
+  //   unsigned int mvendorid, marchid;
+  //   asm volatile("csrr %0, mvendorid" : "=r"(mvendorid));
+  //   asm volatile("csrr %0, marchid" : "=r"(marchid));
+  //   uint8_t *gpio_start = _gpio_start;
+  //   gpio_start[8]  = 0x77;
+  //   gpio_start[9]  = 0x00;
+  //   gpio_start[10] = 0x03;
+  //   gpio_start[11] = 0x25;
+  //   for(int i = 3; i >= 0; i--){
+  //     char ch = (char)((mvendorid >> (i * 8)) & 0xFF);
+  //     putch(ch);
+  //   }
+  //   char id[10];
+  //   for(int i = 7; i >= 0; i--){
+  //     id[i] = marchid % 10 + '0';
+  //     marchid = marchid /10;
+  //   }
+  //   for(int i = 0; i < 8; i++){
+  //     putch(id[i]);
+  //   }
+  //   putch('\n');
   // }
-  // char id[10];
-  // for(int i = 7; i >= 0; i--){
-  //   id[i] = marchid % 10 + '0';
-  //   marchid = marchid /10;
-  // }
-  // for(int i = 0; i < 8; i++){
-  //   putch(id[i]);
-  // }
-  // putch('\n');
 }
 
 // void sdram_init(){        

@@ -27,5 +27,6 @@ int main() {
         }
         for (volatile int j = 0; j < 3000; j++);
     }
+    printf("end!\n");
     return 0;
 }

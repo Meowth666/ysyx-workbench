@@ -9,7 +9,6 @@
 #include "verilated_vcd_c.h"
 #include "include/common.h"
 #include "include/memory.h"
-
 // void wave_simulation(){
 
 // }
@@ -33,6 +32,7 @@ int main(int argc, char** argv){
 	// for(int i = 0; i < argc; i++){
 	// 	printf("argv[%d] = %s\n", i, argv[i]);
 	// }
+	// if(MYVAR == 10)
 	// csr_init();
 	reg_init();
 	init_monitor(argc, argv);
