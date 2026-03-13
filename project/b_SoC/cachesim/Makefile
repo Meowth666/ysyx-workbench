@@ -27,7 +27,7 @@ $(OBJ_DIR):
 
 # 链接 .o 文件生成可执行文件
 $(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS)  -o $(TARGET)
+	$(CC) $(CFLAGS) $(OBJS) -o $(TARGET)
 
 # 编译 .c 文件生成 .o 文件
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c

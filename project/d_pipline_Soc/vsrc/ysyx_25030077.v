@@ -392,7 +392,7 @@ module ysyx_25030077_IDU(
 `endif // RANDOMIZE_REG_INIT
   export "DPI-C" function err_read;
   function int err_read();
-    return {29'd0, ~io_out_valid, io_out_bits_is_err1, io_out_bits_is_err2};
+    return {28'd0, io_in_valid, ~io_out_valid, io_out_bits_is_err1, io_out_bits_is_err2};
   endfunction
   export "DPI-C" function inst_read;
   function int inst_read();

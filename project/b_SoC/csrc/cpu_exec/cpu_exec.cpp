@@ -687,7 +687,7 @@ int cpu_exec(int n){
 		// 	break;
 		// }
 	} 
-	// printf("周期 : %lld    指令数 = %lld    ipc = %lld\n", ix / 2, inst_cnts, (ix / 2) / inst_cnts);
+	printf("周期 : %lld    指令数 = %lld    ipc = %lld\n", ix / 2, inst_cnts, (ix / 2) / inst_cnts);
 	// printf("lsu读取数据 : %lld\n", lsu_cnts);
 	// if(lsu_cnts > 0)
 	// 	printf("lsu读取延迟 : %lld\n", lsu_cycs / lsu_cnts);
