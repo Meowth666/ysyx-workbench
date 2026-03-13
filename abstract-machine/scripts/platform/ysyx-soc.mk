@@ -24,14 +24,17 @@ image: image-dep
 	@$(OBJDUMP) -d $(IMAGE).elf > $(IMAGE).txt
 	@echo + OBJCOPY "->" $(IMAGE_REL).bin
 	@$(OBJCOPY) -S --set-section-flags .bss=alloc,contents -O binary $(IMAGE).elf $(IMAGE).bin
-SOC_HOME = /home/meowth/ysyx/ysyx-workbench/project/b_SoC
-# SOC_HOME = /home/meowth/ysyx/ysyx-workbench/project/d_pipline_Soc
+# 默认值
+SOC_HOME ?= /home/meowth/ysyx/ysyx-workbench/project/b_SoC
+# 根据用户传入的 TARGET 设置不同路径
+ifeq ($(TARGET),pipline)
+    SOC_HOME := /home/meowth/ysyx/ysyx-workbench/project/d_pipline_Soc
+endif
 DIFF_SO = /home/meowth/ysyx/ysyx-workbench/nemu/build/riscv32-nemu-interpreter-so
 # wave
 run: insert-arg
 	@cd $(SOC_HOME) && \
     $(SOC_HOME)/obj_dir/VysyxSoCFull -e $(IMAGE).elf -d $(DIFF_SO) $(IMAGE).bin mainargs=1
-
 # nvboard
 # run: insert-arg
 # 	@cd $(SOC_HOME) && \

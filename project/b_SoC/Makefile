@@ -8,7 +8,6 @@ VERILATOR_CFLAGS += -MMD --build -cc  \
 				--timescale "1ns/1ns"  \
 				--no-timing  \
 
-
 BUILD_DIR = ./build
 OBJ_DIR = $(BUILD_DIR)/obj_dir
 BIN = $(BUILD_DIR)/$(TOPNAME)
@@ -23,7 +22,6 @@ $(SRC_AUTO_BIND): $(NXDC_FILES)
 	python3 $(NVBOARD_HOME)/scripts/auto_pin_bind.py $^ $@
 
 # project source
-# VSRCS = $(shell find $(abspath ./vsrc) -name "*.v")
 VSRCS = $(shell find \
 	$(abspath /home/meowth/ysyx/ysyx-workbench/project/b_SoC/vsrc) \
 	$(abspath /home/meowth/ysyx/ysyx-workbench/ysyxSoC/perip) \
@@ -35,7 +33,6 @@ CSRCS += $(SRC_AUTO_BIND)
 CSRCS_SIM = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 
 LIBCAPSTONE = /home/meowth/ysyx/ysyx-workbench/project/b_SoC/tools/capstone/repo/libcapstone.so.5
-#CFLAGS += -I  /home/meowth/ysyx/ysyx-workbench/project/0_meopc/tools/capstone/repo/include
 /home/meowth/ysyx/ysyx-workbench/project/b_SoC/csrc/utils/disasm.cpp: $(LIBCAPSTONE)
 $(LIBCAPSTONE):
 	$(MAKE) -C /home/meowth/ysyx/ysyx-workbench/project/b_SoC/tools/capstone
@@ -49,7 +46,6 @@ CXXFLAGS += $(INCFLAGS) -DTOP_NAME="\"V$(TOPNAME)\""
 CXXFLAGS += -I$(abspath ./obj_dir) \
 			-I/usr/include/readline \
 			-I/home/meowth/ysyx/ysyx-workbench/project/b_SoC/tools/capstone/repo/include
-
 
 VERILATOR_VINCLUDES += -I$(abspath /home/meowth/ysyx/ysyx-workbench/ysyxSoC/perip/uart16550/rtl)
 VERILATOR_VINCLUDES += -I$(abspath /home/meowth/ysyx/ysyx-workbench/ysyxSoC/perip/spi/rtl)
@@ -86,10 +82,6 @@ wave_build:
 
 wave:
 	gtkwave obj_dir/wave.fst
-
-# IMAGE = /home/meowth/ysyx/ysyx-workbench/am-kernels/tests/am-tests/build/amtest-riscv32e-npc
-
-# IMAGE = /home/meowth/ysyx/ysyx-workbench/project/a_ifu_sram/csrc/char-test
 
 DIFF_SO = /home/meowth/ysyx/ysyx-workbench/nemu/build/riscv32-nemu-interpreter-so
 sim:
