@@ -51,6 +51,7 @@ extern "C" void sdram_active (int bank, int addr) {
 	row[bank] = addr;
 }
 long long inst_cnts = 0;
+long long pc_read = 0;
 long long lsu_cnts = 0;
 long long lsu_cycs = 0;
 long long ifu_cycs = 0;
@@ -493,6 +494,10 @@ int cpu_exec(int n){
 			svSetScope(scope);
 			uint32_t err = err_read();
 			uint32_t inst = inst_read();
+			uint32_t err0 = err & 0x7;
+			uint32_t out_valid = err & 0x8;
+			if(out_valid != 0)
+				pc_read += 1;
 			if(err == 0){
 				if(inst == 0x100073 && inst_pre == 0x8067){
 					flag = 1;
@@ -527,8 +532,8 @@ int cpu_exec(int n){
 		// 	break;
 		// }
 	}
-	printf("Total cycs: %lld\n", cycs);
-	printf("Total insts: %lld\n", inst_cnts);
+	printf("周期 : %lld    指令数 = %lld    ipc = %lld\n", cycs, inst_cnts, cycs / inst_cnts);
+	printf("IFU尝试读指令数 = %lld  平均每次延迟 = %lld\n", pc_read, cycs / pc_read);
 	fclose(itrace);          
 	return 0;
 }
