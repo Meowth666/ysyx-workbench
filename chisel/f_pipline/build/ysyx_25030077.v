@@ -14,15 +14,7 @@ module ysyx_25030077_IFU(
   output [1:0]  io_ar_burst,
   input         io_r_valid,
   input  [31:0] io_r_data,
-  output        io_r_ready,
-  input         io_b_valid,
-  output        io_b_ready,
-  output        io_aw_valid,
-  output [31:0] io_aw_addr,
-  input         io_aw_ready,
-  output        io_w_valid,
-  output [31:0] io_w_data,
-  input         io_w_ready
+  output        io_r_ready
 );
 `ifdef RANDOMIZE_REG_INIT
   reg [31:0] _RAND_0;
@@ -39,245 +31,1411 @@ module ysyx_25030077_IFU(
   reg [31:0] _RAND_11;
   reg [31:0] _RAND_12;
   reg [31:0] _RAND_13;
+  reg [31:0] _RAND_14;
+  reg [31:0] _RAND_15;
+  reg [31:0] _RAND_16;
+  reg [31:0] _RAND_17;
+  reg [31:0] _RAND_18;
+  reg [31:0] _RAND_19;
+  reg [31:0] _RAND_20;
+  reg [31:0] _RAND_21;
+  reg [31:0] _RAND_22;
+  reg [31:0] _RAND_23;
+  reg [31:0] _RAND_24;
+  reg [31:0] _RAND_25;
+  reg [31:0] _RAND_26;
+  reg [31:0] _RAND_27;
+  reg [31:0] _RAND_28;
+  reg [31:0] _RAND_29;
+  reg [31:0] _RAND_30;
+  reg [31:0] _RAND_31;
+  reg [31:0] _RAND_32;
+  reg [31:0] _RAND_33;
+  reg [31:0] _RAND_34;
+  reg [31:0] _RAND_35;
+  reg [31:0] _RAND_36;
+  reg [31:0] _RAND_37;
+  reg [31:0] _RAND_38;
+  reg [31:0] _RAND_39;
+  reg [31:0] _RAND_40;
+  reg [31:0] _RAND_41;
+  reg [31:0] _RAND_42;
+  reg [31:0] _RAND_43;
+  reg [31:0] _RAND_44;
+  reg [31:0] _RAND_45;
+  reg [31:0] _RAND_46;
+  reg [31:0] _RAND_47;
+  reg [31:0] _RAND_48;
+  reg [31:0] _RAND_49;
+  reg [31:0] _RAND_50;
+  reg [31:0] _RAND_51;
+  reg [31:0] _RAND_52;
+  reg [31:0] _RAND_53;
+  reg [31:0] _RAND_54;
+  reg [31:0] _RAND_55;
+  reg [31:0] _RAND_56;
+  reg [31:0] _RAND_57;
+  reg [31:0] _RAND_58;
+  reg [31:0] _RAND_59;
 `endif // RANDOMIZE_REG_INIT
-  reg [2:0] state_reg; // @[ysyx_25030077_IFU.scala 34:28]
-  reg [31:0] rdata_reg; // @[ysyx_25030077_IFU.scala 35:28]
-  reg  ar_valid_reg; // @[ysyx_25030077_IFU.scala 36:31]
-  reg [31:0] ar_addr_reg; // @[ysyx_25030077_IFU.scala 37:31]
-  wire [2:0] index = io_pc[4:2]; // @[ysyx_25030077_IFU.scala 38:22]
-  reg [2:0] j; // @[ysyx_25030077_IFU.scala 39:20]
-  reg [2:0] k; // @[ysyx_25030077_IFU.scala 40:20]
-  reg [2:0] temp; // @[ysyx_25030077_IFU.scala 41:23]
-  reg  is_full; // @[ysyx_25030077_IFU.scala 42:26]
-  wire [6:0] _serach_addr_T = {index,4'h0}; // @[Cat.scala 31:58]
-  wire [31:0] _GEN_0 = {{25'd0}, _serach_addr_T}; // @[ysyx_25030077_IFU.scala 43:42]
-  wire [31:0] _serach_addr_T_2 = 32'hf001600 + _GEN_0; // @[ysyx_25030077_IFU.scala 43:42]
-  wire [2:0] _serach_addr_T_4 = j + 3'h1; // @[ysyx_25030077_IFU.scala 43:74]
-  wire [4:0] _serach_addr_T_5 = {_serach_addr_T_4,2'h0}; // @[Cat.scala 31:58]
-  wire [31:0] _GEN_1 = {{27'd0}, _serach_addr_T_5}; // @[ysyx_25030077_IFU.scala 43:65]
-  wire [31:0] serach_addr = _serach_addr_T_2 + _GEN_1; // @[ysyx_25030077_IFU.scala 43:65]
-  wire  is_tag = io_r_data[27:1] == io_pc[31:5] & io_r_data[0]; // @[ysyx_25030077_IFU.scala 44:53]
-  wire  is_notvalid = ~io_r_data[0]; // @[ysyx_25030077_IFU.scala 45:39]
-  wire [31:0] _tag_addr_T_2 = 32'hf001680 + _GEN_0; // @[ysyx_25030077_IFU.scala 46:39]
-  wire [3:0] _tag_addr_T_4 = {j[1:0],2'h0}; // @[Cat.scala 31:58]
-  wire [31:0] _GEN_3 = {{28'd0}, _tag_addr_T_4}; // @[ysyx_25030077_IFU.scala 46:62]
-  wire [31:0] tag_addr = _tag_addr_T_2 + _GEN_3; // @[ysyx_25030077_IFU.scala 46:62]
-  wire [3:0] _inst_addr_T_1 = {k[1:0],2'h0}; // @[Cat.scala 31:58]
-  wire [31:0] _GEN_4 = {{28'd0}, _inst_addr_T_1}; // @[ysyx_25030077_IFU.scala 47:27]
-  wire [31:0] inst_addr = io_pc + _GEN_4; // @[ysyx_25030077_IFU.scala 47:27]
-  reg [31:0] data0; // @[ysyx_25030077_IFU.scala 48:24]
-  reg [31:0] data1; // @[ysyx_25030077_IFU.scala 49:24]
-  reg [31:0] data2; // @[ysyx_25030077_IFU.scala 50:24]
-  reg [31:0] data3; // @[ysyx_25030077_IFU.scala 51:24]
-  wire  _state_reg_T = state_reg == 3'h0; // @[ysyx_25030077_IFU.scala 54:20]
-  wire  _state_reg_T_2 = io_pc[31:28] == 4'ha; // @[ysyx_25030077_IFU.scala 54:50]
-  wire  _state_reg_T_4 = state_reg == 3'h1; // @[ysyx_25030077_IFU.scala 55:20]
-  wire  _state_reg_T_5 = j == 3'h3; // @[ysyx_25030077_IFU.scala 55:72]
-  wire  _state_reg_T_6 = j == 3'h3 | is_notvalid; // @[ysyx_25030077_IFU.scala 55:80]
-  wire [1:0] _state_reg_T_7 = j == 3'h3 | is_notvalid ? 2'h3 : 2'h1; // @[ysyx_25030077_IFU.scala 55:68]
-  wire [1:0] _state_reg_T_8 = is_tag ? 2'h2 : _state_reg_T_7; // @[ysyx_25030077_IFU.scala 55:51]
-  wire [1:0] _state_reg_T_9 = io_r_valid ? _state_reg_T_8 : 2'h1; // @[ysyx_25030077_IFU.scala 55:35]
-  wire  _state_reg_T_10 = state_reg == 3'h2; // @[ysyx_25030077_IFU.scala 56:20]
-  wire [2:0] _state_reg_T_11 = io_r_valid ? 3'h6 : 3'h2; // @[ysyx_25030077_IFU.scala 56:35]
-  wire  _state_reg_T_12 = state_reg == 3'h6; // @[ysyx_25030077_IFU.scala 57:20]
-  wire [2:0] _state_reg_T_13 = io_out_ready ? 3'h0 : 3'h6; // @[ysyx_25030077_IFU.scala 57:35]
-  wire  _state_reg_T_14 = state_reg == 3'h3; // @[ysyx_25030077_IFU.scala 58:20]
-  wire  _state_reg_T_15 = k == 3'h3; // @[ysyx_25030077_IFU.scala 58:54]
-  wire [2:0] _state_reg_T_16 = k == 3'h3 ? 3'h4 : 3'h3; // @[ysyx_25030077_IFU.scala 58:51]
-  wire [2:0] _state_reg_T_17 = io_r_valid ? _state_reg_T_16 : 3'h3; // @[ysyx_25030077_IFU.scala 58:35]
-  wire  _state_reg_T_18 = state_reg == 3'h4; // @[ysyx_25030077_IFU.scala 59:20]
-  wire [2:0] _state_reg_T_19 = io_b_valid ? 3'h5 : 3'h4; // @[ysyx_25030077_IFU.scala 59:35]
-  wire  _state_reg_T_20 = state_reg == 3'h5; // @[ysyx_25030077_IFU.scala 60:20]
-  wire  _state_reg_T_21 = k == 3'h4; // @[ysyx_25030077_IFU.scala 60:54]
-  wire [2:0] _state_reg_T_22 = k == 3'h4 ? 3'h6 : 3'h4; // @[ysyx_25030077_IFU.scala 60:51]
-  wire [2:0] _state_reg_T_23 = io_b_valid ? _state_reg_T_22 : 3'h5; // @[ysyx_25030077_IFU.scala 60:35]
-  wire  _state_reg_T_24 = state_reg == 3'h7; // @[ysyx_25030077_IFU.scala 61:20]
-  wire [2:0] _state_reg_T_25 = io_r_valid ? 3'h6 : 3'h7; // @[ysyx_25030077_IFU.scala 61:35]
-  wire [2:0] _state_reg_T_26 = _state_reg_T_24 ? _state_reg_T_25 : 3'h0; // @[Mux.scala 101:16]
-  wire [2:0] _state_reg_T_27 = _state_reg_T_20 ? _state_reg_T_23 : _state_reg_T_26; // @[Mux.scala 101:16]
-  wire [2:0] _state_reg_T_28 = _state_reg_T_18 ? _state_reg_T_19 : _state_reg_T_27; // @[Mux.scala 101:16]
-  wire [2:0] _state_reg_T_29 = _state_reg_T_14 ? _state_reg_T_17 : _state_reg_T_28; // @[Mux.scala 101:16]
-  wire [2:0] _state_reg_T_30 = _state_reg_T_12 ? _state_reg_T_13 : _state_reg_T_29; // @[Mux.scala 101:16]
-  wire [2:0] _k_T_4 = k + 3'h1; // @[ysyx_25030077_IFU.scala 70:70]
-  wire [2:0] _k_T_5 = _state_reg_T_15 ? 3'h0 : _k_T_4; // @[ysyx_25030077_IFU.scala 70:51]
-  wire [2:0] _k_T_10 = io_b_valid ? _k_T_4 : k; // @[ysyx_25030077_IFU.scala 71:35]
-  wire  _data0_T_1 = _state_reg_T_14 & io_r_valid; // @[ysyx_25030077_IFU.scala 74:37]
-  wire  _data0_T_2 = k == 3'h0; // @[ysyx_25030077_IFU.scala 74:56]
-  wire  _data1_T_2 = k == 3'h1; // @[ysyx_25030077_IFU.scala 75:56]
-  wire  _data2_T_2 = k == 3'h2; // @[ysyx_25030077_IFU.scala 76:56]
-  wire [2:0] temp1 = temp + 3'h1; // @[ysyx_25030077_IFU.scala 79:22]
-  wire [2:0] _temp_T_6 = {1'h0,temp1[1:0]}; // @[Cat.scala 31:58]
-  wire  _ar_valid_reg_T_2 = io_ar_ready ? 1'h0 : 1'h1; // @[ysyx_25030077_IFU.scala 84:53]
-  wire  _ar_valid_reg_T_4 = ar_valid_reg ? _ar_valid_reg_T_2 : io_r_valid; // @[ysyx_25030077_IFU.scala 84:35]
-  wire  _ar_valid_reg_T_9 = _state_reg_T_10 | _state_reg_T_14 | _state_reg_T_24; // @[ysyx_25030077_IFU.scala 85:49]
-  wire  _ar_valid_reg_T_11 = ar_valid_reg & io_ar_ready ? 1'h0 : ar_valid_reg; // @[ysyx_25030077_IFU.scala 85:77]
-  wire  _ar_valid_reg_T_13 = _state_reg_T_4 ? _ar_valid_reg_T_4 : _ar_valid_reg_T_9 & _ar_valid_reg_T_11; // @[Mux.scala 101:16]
-  wire  _ar_valid_reg_T_14 = _state_reg_T | _ar_valid_reg_T_13; // @[Mux.scala 101:16]
-  wire [31:0] _ar_addr_reg_T_10 = _state_reg_T_6 ? io_pc : serach_addr; // @[ysyx_25030077_IFU.scala 90:73]
-  wire [31:0] _ar_addr_reg_T_11 = is_tag ? tag_addr : _ar_addr_reg_T_10; // @[ysyx_25030077_IFU.scala 90:51]
-  reg  aw_valid_reg; // @[ysyx_25030077_IFU.scala 101:31]
-  wire  _aw_valid_reg_T_2 = io_r_valid & _state_reg_T_15; // @[ysyx_25030077_IFU.scala 103:48]
-  wire  _aw_valid_reg_T_5 = io_aw_ready ? 1'h0 : 1'h1; // @[ysyx_25030077_IFU.scala 104:53]
-  wire  _aw_valid_reg_T_11 = io_b_valid & k != 3'h4; // @[ysyx_25030077_IFU.scala 105:101]
-  wire  _aw_valid_reg_T_13 = aw_valid_reg ? _aw_valid_reg_T_5 : io_b_valid & k != 3'h4; // @[ysyx_25030077_IFU.scala 105:35]
-  wire [2:0] w_index = index + k; // @[ysyx_25030077_IFU.scala 107:25]
-  wire [2:0] w_index1 = w_index - 3'h1; // @[ysyx_25030077_IFU.scala 108:30]
-  wire [6:0] _io_aw_addr_T_2 = {w_index,4'h0}; // @[Cat.scala 31:58]
-  wire [31:0] _GEN_6 = {{25'd0}, _io_aw_addr_T_2}; // @[ysyx_25030077_IFU.scala 111:64]
-  wire [31:0] _io_aw_addr_T_4 = 32'hf001600 + _GEN_6; // @[ysyx_25030077_IFU.scala 111:64]
-  wire [4:0] _io_aw_addr_T_5 = {temp,2'h0}; // @[Cat.scala 31:58]
-  wire [31:0] _GEN_7 = {{27'd0}, _io_aw_addr_T_5}; // @[ysyx_25030077_IFU.scala 111:94]
-  wire [31:0] _io_aw_addr_T_7 = _io_aw_addr_T_4 + _GEN_7; // @[ysyx_25030077_IFU.scala 111:94]
-  wire [2:0] _io_aw_addr_T_13 = j - 3'h1; // @[ysyx_25030077_IFU.scala 111:174]
-  wire [4:0] _io_aw_addr_T_14 = {_io_aw_addr_T_13,2'h0}; // @[Cat.scala 31:58]
-  wire [31:0] _GEN_9 = {{27'd0}, _io_aw_addr_T_14}; // @[ysyx_25030077_IFU.scala 111:166]
-  wire [31:0] _io_aw_addr_T_16 = _io_aw_addr_T_4 + _GEN_9; // @[ysyx_25030077_IFU.scala 111:166]
-  wire [31:0] _io_aw_addr_T_17 = is_full ? _io_aw_addr_T_7 : _io_aw_addr_T_16; // @[ysyx_25030077_IFU.scala 111:35]
-  wire [6:0] _io_aw_addr_T_20 = {w_index1,4'h0}; // @[Cat.scala 31:58]
-  wire [31:0] _GEN_10 = {{25'd0}, _io_aw_addr_T_20}; // @[ysyx_25030077_IFU.scala 112:64]
-  wire [31:0] _io_aw_addr_T_22 = 32'hf001680 + _GEN_10; // @[ysyx_25030077_IFU.scala 112:64]
-  wire [31:0] _io_aw_addr_T_25 = _io_aw_addr_T_22 + _GEN_7; // @[ysyx_25030077_IFU.scala 112:95]
-  wire [31:0] _io_aw_addr_T_34 = _io_aw_addr_T_22 + _GEN_9; // @[ysyx_25030077_IFU.scala 112:168]
-  wire [31:0] _io_aw_addr_T_35 = is_full ? _io_aw_addr_T_25 : _io_aw_addr_T_34; // @[ysyx_25030077_IFU.scala 112:35]
-  wire [31:0] _io_aw_addr_T_36 = _state_reg_T_20 ? _io_aw_addr_T_35 : 32'h0; // @[Mux.scala 101:16]
-  reg  w_valid_reg; // @[ysyx_25030077_IFU.scala 115:30]
-  wire  _w_valid_reg_T_5 = io_w_ready ? 1'h0 : 1'h1; // @[ysyx_25030077_IFU.scala 118:52]
-  wire  _w_valid_reg_T_13 = w_valid_reg ? _w_valid_reg_T_5 : _aw_valid_reg_T_11; // @[ysyx_25030077_IFU.scala 119:35]
-  wire [31:0] _io_w_data_T_2 = {4'h0,inst_addr[31:5],1'h1}; // @[Cat.scala 31:58]
-  wire [31:0] _io_w_data_T_8 = _state_reg_T_21 ? data3 : 32'h0; // @[Mux.scala 101:16]
-  wire [31:0] _io_w_data_T_9 = _state_reg_T_15 ? data2 : _io_w_data_T_8; // @[Mux.scala 101:16]
-  wire [31:0] _io_w_data_T_10 = _data2_T_2 ? data1 : _io_w_data_T_9; // @[Mux.scala 101:16]
-  wire [31:0] _io_w_data_T_11 = _data1_T_2 ? data0 : _io_w_data_T_10; // @[Mux.scala 101:16]
-  wire [31:0] _io_w_data_T_12 = _state_reg_T_20 ? _io_w_data_T_11 : 32'h0; // @[Mux.scala 101:16]
-  assign io_out_valid = state_reg == 3'h6; // @[ysyx_25030077_IFU.scala 130:32]
-  assign io_out_bits_pc = io_pc; // @[ysyx_25030077_IFU.scala 131:22]
-  assign io_out_bits_inst = rdata_reg; // @[ysyx_25030077_IFU.scala 132:22]
-  assign io_out_bits_is_err1 = io_err1_in; // @[ysyx_25030077_IFU.scala 133:25]
-  assign io_ar_addr = ar_addr_reg; // @[ysyx_25030077_IFU.scala 93:17]
-  assign io_ar_valid = ar_valid_reg; // @[ysyx_25030077_IFU.scala 87:17]
-  assign io_ar_burst = {{1'd0}, ar_addr_reg[31:28] == 4'ha}; // @[ysyx_25030077_IFU.scala 94:17]
-  assign io_r_ready = 1'h1; // @[ysyx_25030077_IFU.scala 32:16]
-  assign io_b_ready = 1'h1; // @[ysyx_25030077_IFU.scala 33:16]
-  assign io_aw_valid = aw_valid_reg; // @[ysyx_25030077_IFU.scala 109:17]
-  assign io_aw_addr = _state_reg_T_18 ? _io_aw_addr_T_17 : _io_aw_addr_T_36; // @[Mux.scala 101:16]
-  assign io_w_valid = w_valid_reg; // @[ysyx_25030077_IFU.scala 121:16]
-  assign io_w_data = _state_reg_T_18 ? _io_w_data_T_2 : _io_w_data_T_12; // @[Mux.scala 101:16]
+  reg [21:0] sram_tag_0; // @[ysyx_25030077_IFU.scala 21:28]
+  reg [21:0] sram_tag_1; // @[ysyx_25030077_IFU.scala 21:28]
+  reg [21:0] sram_tag_2; // @[ysyx_25030077_IFU.scala 21:28]
+  reg [21:0] sram_tag_3; // @[ysyx_25030077_IFU.scala 21:28]
+  reg [21:0] sram_tag_4; // @[ysyx_25030077_IFU.scala 21:28]
+  reg [21:0] sram_tag_5; // @[ysyx_25030077_IFU.scala 21:28]
+  reg [21:0] sram_tag_6; // @[ysyx_25030077_IFU.scala 21:28]
+  reg [21:0] sram_tag_7; // @[ysyx_25030077_IFU.scala 21:28]
+  reg [21:0] sram_tag_8; // @[ysyx_25030077_IFU.scala 21:28]
+  reg [21:0] sram_tag_9; // @[ysyx_25030077_IFU.scala 21:28]
+  reg [21:0] sram_tag_10; // @[ysyx_25030077_IFU.scala 21:28]
+  reg [21:0] sram_tag_11; // @[ysyx_25030077_IFU.scala 21:28]
+  reg [21:0] sram_tag_12; // @[ysyx_25030077_IFU.scala 21:28]
+  reg [21:0] sram_tag_13; // @[ysyx_25030077_IFU.scala 21:28]
+  reg [21:0] sram_tag_14; // @[ysyx_25030077_IFU.scala 21:28]
+  reg [21:0] sram_tag_15; // @[ysyx_25030077_IFU.scala 21:28]
+  reg [31:0] sram_inst_0; // @[ysyx_25030077_IFU.scala 22:28]
+  reg [31:0] sram_inst_1; // @[ysyx_25030077_IFU.scala 22:28]
+  reg [31:0] sram_inst_2; // @[ysyx_25030077_IFU.scala 22:28]
+  reg [31:0] sram_inst_3; // @[ysyx_25030077_IFU.scala 22:28]
+  reg [31:0] sram_inst_4; // @[ysyx_25030077_IFU.scala 22:28]
+  reg [31:0] sram_inst_5; // @[ysyx_25030077_IFU.scala 22:28]
+  reg [31:0] sram_inst_6; // @[ysyx_25030077_IFU.scala 22:28]
+  reg [31:0] sram_inst_7; // @[ysyx_25030077_IFU.scala 22:28]
+  reg [31:0] sram_inst_8; // @[ysyx_25030077_IFU.scala 22:28]
+  reg [31:0] sram_inst_9; // @[ysyx_25030077_IFU.scala 22:28]
+  reg [31:0] sram_inst_10; // @[ysyx_25030077_IFU.scala 22:28]
+  reg [31:0] sram_inst_11; // @[ysyx_25030077_IFU.scala 22:28]
+  reg [31:0] sram_inst_12; // @[ysyx_25030077_IFU.scala 22:28]
+  reg [31:0] sram_inst_13; // @[ysyx_25030077_IFU.scala 22:28]
+  reg [31:0] sram_inst_14; // @[ysyx_25030077_IFU.scala 22:28]
+  reg [31:0] sram_inst_15; // @[ysyx_25030077_IFU.scala 22:28]
+  reg [31:0] sdram_data_0; // @[ysyx_25030077_IFU.scala 23:29]
+  reg [31:0] sdram_data_1; // @[ysyx_25030077_IFU.scala 23:29]
+  reg [31:0] sdram_data_2; // @[ysyx_25030077_IFU.scala 23:29]
+  reg [31:0] sdram_data_3; // @[ysyx_25030077_IFU.scala 23:29]
+  reg  sram_valid_0; // @[ysyx_25030077_IFU.scala 24:30]
+  reg  sram_valid_1; // @[ysyx_25030077_IFU.scala 24:30]
+  reg  sram_valid_2; // @[ysyx_25030077_IFU.scala 24:30]
+  reg  sram_valid_3; // @[ysyx_25030077_IFU.scala 24:30]
+  reg  sram_valid_4; // @[ysyx_25030077_IFU.scala 24:30]
+  reg  sram_valid_5; // @[ysyx_25030077_IFU.scala 24:30]
+  reg  sram_valid_6; // @[ysyx_25030077_IFU.scala 24:30]
+  reg  sram_valid_7; // @[ysyx_25030077_IFU.scala 24:30]
+  reg  sram_valid_8; // @[ysyx_25030077_IFU.scala 24:30]
+  reg  sram_valid_9; // @[ysyx_25030077_IFU.scala 24:30]
+  reg  sram_valid_10; // @[ysyx_25030077_IFU.scala 24:30]
+  reg  sram_valid_11; // @[ysyx_25030077_IFU.scala 24:30]
+  reg  sram_valid_12; // @[ysyx_25030077_IFU.scala 24:30]
+  reg  sram_valid_13; // @[ysyx_25030077_IFU.scala 24:30]
+  reg  sram_valid_14; // @[ysyx_25030077_IFU.scala 24:30]
+  reg  sram_valid_15; // @[ysyx_25030077_IFU.scala 24:30]
+  wire [21:0] tag = io_pc[27:6]; // @[ysyx_25030077_IFU.scala 25:20]
+  wire [1:0] index = io_pc[5:4]; // @[ysyx_25030077_IFU.scala 26:22]
+  wire [1:0] offset = io_pc[3:2]; // @[ysyx_25030077_IFU.scala 27:23]
+  reg [1:0] j; // @[ysyx_25030077_IFU.scala 28:20]
+  reg [1:0] k; // @[ysyx_25030077_IFU.scala 29:20]
+  reg [1:0] q; // @[ysyx_25030077_IFU.scala 30:20]
+  reg [31:0] rdata_reg; // @[ysyx_25030077_IFU.scala 31:28]
+  reg  ar_valid_reg; // @[ysyx_25030077_IFU.scala 32:31]
+  reg [31:0] ar_addr_reg; // @[ysyx_25030077_IFU.scala 33:31]
+  reg [4:0] state_reg; // @[ysyx_25030077_IFU.scala 35:28]
+  wire [3:0] _is_hit_T = {index,offset}; // @[Cat.scala 31:58]
+  wire [21:0] _GEN_1 = 4'h1 == _is_hit_T ? sram_tag_1 : sram_tag_0; // @[ysyx_25030077_IFU.scala 36:{49,49}]
+  wire [21:0] _GEN_2 = 4'h2 == _is_hit_T ? sram_tag_2 : _GEN_1; // @[ysyx_25030077_IFU.scala 36:{49,49}]
+  wire [21:0] _GEN_3 = 4'h3 == _is_hit_T ? sram_tag_3 : _GEN_2; // @[ysyx_25030077_IFU.scala 36:{49,49}]
+  wire [21:0] _GEN_4 = 4'h4 == _is_hit_T ? sram_tag_4 : _GEN_3; // @[ysyx_25030077_IFU.scala 36:{49,49}]
+  wire [21:0] _GEN_5 = 4'h5 == _is_hit_T ? sram_tag_5 : _GEN_4; // @[ysyx_25030077_IFU.scala 36:{49,49}]
+  wire [21:0] _GEN_6 = 4'h6 == _is_hit_T ? sram_tag_6 : _GEN_5; // @[ysyx_25030077_IFU.scala 36:{49,49}]
+  wire [21:0] _GEN_7 = 4'h7 == _is_hit_T ? sram_tag_7 : _GEN_6; // @[ysyx_25030077_IFU.scala 36:{49,49}]
+  wire [21:0] _GEN_8 = 4'h8 == _is_hit_T ? sram_tag_8 : _GEN_7; // @[ysyx_25030077_IFU.scala 36:{49,49}]
+  wire [21:0] _GEN_9 = 4'h9 == _is_hit_T ? sram_tag_9 : _GEN_8; // @[ysyx_25030077_IFU.scala 36:{49,49}]
+  wire [21:0] _GEN_10 = 4'ha == _is_hit_T ? sram_tag_10 : _GEN_9; // @[ysyx_25030077_IFU.scala 36:{49,49}]
+  wire [21:0] _GEN_11 = 4'hb == _is_hit_T ? sram_tag_11 : _GEN_10; // @[ysyx_25030077_IFU.scala 36:{49,49}]
+  wire [21:0] _GEN_12 = 4'hc == _is_hit_T ? sram_tag_12 : _GEN_11; // @[ysyx_25030077_IFU.scala 36:{49,49}]
+  wire [21:0] _GEN_13 = 4'hd == _is_hit_T ? sram_tag_13 : _GEN_12; // @[ysyx_25030077_IFU.scala 36:{49,49}]
+  wire [21:0] _GEN_14 = 4'he == _is_hit_T ? sram_tag_14 : _GEN_13; // @[ysyx_25030077_IFU.scala 36:{49,49}]
+  wire [21:0] _GEN_15 = 4'hf == _is_hit_T ? sram_tag_15 : _GEN_14; // @[ysyx_25030077_IFU.scala 36:{49,49}]
+  wire  _GEN_17 = 4'h1 == _is_hit_T ? sram_valid_1 : sram_valid_0; // @[ysyx_25030077_IFU.scala 36:{93,93}]
+  wire  _GEN_18 = 4'h2 == _is_hit_T ? sram_valid_2 : _GEN_17; // @[ysyx_25030077_IFU.scala 36:{93,93}]
+  wire  _GEN_19 = 4'h3 == _is_hit_T ? sram_valid_3 : _GEN_18; // @[ysyx_25030077_IFU.scala 36:{93,93}]
+  wire  _GEN_20 = 4'h4 == _is_hit_T ? sram_valid_4 : _GEN_19; // @[ysyx_25030077_IFU.scala 36:{93,93}]
+  wire  _GEN_21 = 4'h5 == _is_hit_T ? sram_valid_5 : _GEN_20; // @[ysyx_25030077_IFU.scala 36:{93,93}]
+  wire  _GEN_22 = 4'h6 == _is_hit_T ? sram_valid_6 : _GEN_21; // @[ysyx_25030077_IFU.scala 36:{93,93}]
+  wire  _GEN_23 = 4'h7 == _is_hit_T ? sram_valid_7 : _GEN_22; // @[ysyx_25030077_IFU.scala 36:{93,93}]
+  wire  _GEN_24 = 4'h8 == _is_hit_T ? sram_valid_8 : _GEN_23; // @[ysyx_25030077_IFU.scala 36:{93,93}]
+  wire  _GEN_25 = 4'h9 == _is_hit_T ? sram_valid_9 : _GEN_24; // @[ysyx_25030077_IFU.scala 36:{93,93}]
+  wire  _GEN_26 = 4'ha == _is_hit_T ? sram_valid_10 : _GEN_25; // @[ysyx_25030077_IFU.scala 36:{93,93}]
+  wire  _GEN_27 = 4'hb == _is_hit_T ? sram_valid_11 : _GEN_26; // @[ysyx_25030077_IFU.scala 36:{93,93}]
+  wire  _GEN_28 = 4'hc == _is_hit_T ? sram_valid_12 : _GEN_27; // @[ysyx_25030077_IFU.scala 36:{93,93}]
+  wire  _GEN_29 = 4'hd == _is_hit_T ? sram_valid_13 : _GEN_28; // @[ysyx_25030077_IFU.scala 36:{93,93}]
+  wire  _GEN_30 = 4'he == _is_hit_T ? sram_valid_14 : _GEN_29; // @[ysyx_25030077_IFU.scala 36:{93,93}]
+  wire  _GEN_31 = 4'hf == _is_hit_T ? sram_valid_15 : _GEN_30; // @[ysyx_25030077_IFU.scala 36:{93,93}]
+  wire  is_hit = _GEN_15 == tag & _GEN_31; // @[ysyx_25030077_IFU.scala 36:58]
+  wire  _state_reg_T = state_reg == 5'h1; // @[ysyx_25030077_IFU.scala 38:20]
+  wire  _state_reg_T_2 = io_pc[31:28] == 4'ha; // @[ysyx_25030077_IFU.scala 38:62]
+  wire  _state_reg_T_5 = state_reg == 5'h2; // @[ysyx_25030077_IFU.scala 39:20]
+  wire  _state_reg_T_6 = k == 2'h3; // @[ysyx_25030077_IFU.scala 39:66]
+  wire [4:0] _state_reg_T_7 = k == 2'h3 ? 5'h4 : 5'h2; // @[ysyx_25030077_IFU.scala 39:63]
+  wire  _state_reg_T_9 = state_reg == 5'h4; // @[ysyx_25030077_IFU.scala 40:20]
+  wire  _state_reg_T_10 = q == 2'h3; // @[ysyx_25030077_IFU.scala 40:50]
+  wire [4:0] _state_reg_T_11 = q == 2'h3 ? 5'h10 : 5'h4; // @[ysyx_25030077_IFU.scala 40:47]
+  wire  _state_reg_T_12 = state_reg == 5'h8; // @[ysyx_25030077_IFU.scala 41:20]
+  wire [4:0] _state_reg_T_13 = io_r_valid ? 5'h10 : 5'h8; // @[ysyx_25030077_IFU.scala 41:47]
+  wire  _state_reg_T_14 = state_reg == 5'h10; // @[ysyx_25030077_IFU.scala 42:20]
+  wire [4:0] _state_reg_T_15 = io_out_ready ? 5'h1 : 5'h10; // @[ysyx_25030077_IFU.scala 42:47]
+  wire [4:0] _state_reg_T_16 = _state_reg_T_14 ? _state_reg_T_15 : 5'h1; // @[Mux.scala 101:16]
+  wire [4:0] _state_reg_T_17 = _state_reg_T_12 ? _state_reg_T_13 : _state_reg_T_16; // @[Mux.scala 101:16]
+  reg [2:0] write_reg; // @[ysyx_25030077_IFU.scala 44:28]
+  wire  _write_reg_T = write_reg == 3'h1; // @[ysyx_25030077_IFU.scala 46:20]
+  wire  _write_reg_T_3 = write_reg == 3'h2; // @[ysyx_25030077_IFU.scala 47:20]
+  wire  _write_reg_T_4 = j == 2'h3; // @[ysyx_25030077_IFU.scala 47:48]
+  wire  _write_reg_T_6 = write_reg == 3'h4; // @[ysyx_25030077_IFU.scala 48:20]
+  wire [2:0] _write_reg_T_8 = _state_reg_T_10 ? 3'h1 : 3'h4; // @[ysyx_25030077_IFU.scala 48:45]
+  wire [1:0] _k_T_4 = k + 2'h1; // @[ysyx_25030077_IFU.scala 52:82]
+  wire [1:0] _k_T_5 = _state_reg_T_6 ? 2'h0 : _k_T_4; // @[ysyx_25030077_IFU.scala 52:63]
+  wire [1:0] _j_T_4 = j + 2'h1; // @[ysyx_25030077_IFU.scala 56:64]
+  wire [1:0] _q_T_4 = q + 2'h1; // @[ysyx_25030077_IFU.scala 60:66]
+  wire  _sdram_data_0_T_1 = _state_reg_T_5 & io_r_valid; // @[ysyx_25030077_IFU.scala 62:57]
+  wire [3:0] _T = {index,2'h0}; // @[Cat.scala 31:58]
+  wire  _sram_tag_T_2 = _write_reg_T_3 & j == 2'h0; // @[ysyx_25030077_IFU.scala 67:76]
+  wire [21:0] _GEN_33 = 4'h1 == _T ? sram_tag_1 : sram_tag_0; // @[ysyx_25030077_IFU.scala 67:{46,46}]
+  wire [21:0] _GEN_34 = 4'h2 == _T ? sram_tag_2 : _GEN_33; // @[ysyx_25030077_IFU.scala 67:{46,46}]
+  wire [21:0] _GEN_35 = 4'h3 == _T ? sram_tag_3 : _GEN_34; // @[ysyx_25030077_IFU.scala 67:{46,46}]
+  wire [21:0] _GEN_36 = 4'h4 == _T ? sram_tag_4 : _GEN_35; // @[ysyx_25030077_IFU.scala 67:{46,46}]
+  wire [21:0] _GEN_37 = 4'h5 == _T ? sram_tag_5 : _GEN_36; // @[ysyx_25030077_IFU.scala 67:{46,46}]
+  wire [21:0] _GEN_38 = 4'h6 == _T ? sram_tag_6 : _GEN_37; // @[ysyx_25030077_IFU.scala 67:{46,46}]
+  wire [21:0] _GEN_39 = 4'h7 == _T ? sram_tag_7 : _GEN_38; // @[ysyx_25030077_IFU.scala 67:{46,46}]
+  wire [21:0] _GEN_40 = 4'h8 == _T ? sram_tag_8 : _GEN_39; // @[ysyx_25030077_IFU.scala 67:{46,46}]
+  wire [21:0] _GEN_41 = 4'h9 == _T ? sram_tag_9 : _GEN_40; // @[ysyx_25030077_IFU.scala 67:{46,46}]
+  wire [21:0] _GEN_42 = 4'ha == _T ? sram_tag_10 : _GEN_41; // @[ysyx_25030077_IFU.scala 67:{46,46}]
+  wire [21:0] _GEN_43 = 4'hb == _T ? sram_tag_11 : _GEN_42; // @[ysyx_25030077_IFU.scala 67:{46,46}]
+  wire [21:0] _GEN_44 = 4'hc == _T ? sram_tag_12 : _GEN_43; // @[ysyx_25030077_IFU.scala 67:{46,46}]
+  wire [21:0] _GEN_45 = 4'hd == _T ? sram_tag_13 : _GEN_44; // @[ysyx_25030077_IFU.scala 67:{46,46}]
+  wire [21:0] _GEN_46 = 4'he == _T ? sram_tag_14 : _GEN_45; // @[ysyx_25030077_IFU.scala 67:{46,46}]
+  wire [21:0] _GEN_47 = 4'hf == _T ? sram_tag_15 : _GEN_46; // @[ysyx_25030077_IFU.scala 67:{46,46}]
+  wire [21:0] _sram_tag_T_4 = _write_reg_T_3 & j == 2'h0 ? tag : _GEN_47; // @[ysyx_25030077_IFU.scala 67:46]
+  wire [21:0] _GEN_48 = 4'h0 == _T ? _sram_tag_T_4 : sram_tag_0; // @[ysyx_25030077_IFU.scala 21:28 67:{40,40}]
+  wire [21:0] _GEN_49 = 4'h1 == _T ? _sram_tag_T_4 : sram_tag_1; // @[ysyx_25030077_IFU.scala 21:28 67:{40,40}]
+  wire [21:0] _GEN_50 = 4'h2 == _T ? _sram_tag_T_4 : sram_tag_2; // @[ysyx_25030077_IFU.scala 21:28 67:{40,40}]
+  wire [21:0] _GEN_51 = 4'h3 == _T ? _sram_tag_T_4 : sram_tag_3; // @[ysyx_25030077_IFU.scala 21:28 67:{40,40}]
+  wire [21:0] _GEN_52 = 4'h4 == _T ? _sram_tag_T_4 : sram_tag_4; // @[ysyx_25030077_IFU.scala 21:28 67:{40,40}]
+  wire [21:0] _GEN_53 = 4'h5 == _T ? _sram_tag_T_4 : sram_tag_5; // @[ysyx_25030077_IFU.scala 21:28 67:{40,40}]
+  wire [21:0] _GEN_54 = 4'h6 == _T ? _sram_tag_T_4 : sram_tag_6; // @[ysyx_25030077_IFU.scala 21:28 67:{40,40}]
+  wire [21:0] _GEN_55 = 4'h7 == _T ? _sram_tag_T_4 : sram_tag_7; // @[ysyx_25030077_IFU.scala 21:28 67:{40,40}]
+  wire [21:0] _GEN_56 = 4'h8 == _T ? _sram_tag_T_4 : sram_tag_8; // @[ysyx_25030077_IFU.scala 21:28 67:{40,40}]
+  wire [21:0] _GEN_57 = 4'h9 == _T ? _sram_tag_T_4 : sram_tag_9; // @[ysyx_25030077_IFU.scala 21:28 67:{40,40}]
+  wire [21:0] _GEN_58 = 4'ha == _T ? _sram_tag_T_4 : sram_tag_10; // @[ysyx_25030077_IFU.scala 21:28 67:{40,40}]
+  wire [21:0] _GEN_59 = 4'hb == _T ? _sram_tag_T_4 : sram_tag_11; // @[ysyx_25030077_IFU.scala 21:28 67:{40,40}]
+  wire [21:0] _GEN_60 = 4'hc == _T ? _sram_tag_T_4 : sram_tag_12; // @[ysyx_25030077_IFU.scala 21:28 67:{40,40}]
+  wire [21:0] _GEN_61 = 4'hd == _T ? _sram_tag_T_4 : sram_tag_13; // @[ysyx_25030077_IFU.scala 21:28 67:{40,40}]
+  wire [21:0] _GEN_62 = 4'he == _T ? _sram_tag_T_4 : sram_tag_14; // @[ysyx_25030077_IFU.scala 21:28 67:{40,40}]
+  wire [21:0] _GEN_63 = 4'hf == _T ? _sram_tag_T_4 : sram_tag_15; // @[ysyx_25030077_IFU.scala 21:28 67:{40,40}]
+  wire [3:0] _T_1 = {index,2'h1}; // @[Cat.scala 31:58]
+  wire  _sram_tag_T_7 = _write_reg_T_3 & j == 2'h1; // @[ysyx_25030077_IFU.scala 68:76]
+  wire [21:0] _GEN_65 = 4'h1 == _T_1 ? sram_tag_1 : sram_tag_0; // @[ysyx_25030077_IFU.scala 68:{46,46}]
+  wire [21:0] _GEN_66 = 4'h2 == _T_1 ? sram_tag_2 : _GEN_65; // @[ysyx_25030077_IFU.scala 68:{46,46}]
+  wire [21:0] _GEN_67 = 4'h3 == _T_1 ? sram_tag_3 : _GEN_66; // @[ysyx_25030077_IFU.scala 68:{46,46}]
+  wire [21:0] _GEN_68 = 4'h4 == _T_1 ? sram_tag_4 : _GEN_67; // @[ysyx_25030077_IFU.scala 68:{46,46}]
+  wire [21:0] _GEN_69 = 4'h5 == _T_1 ? sram_tag_5 : _GEN_68; // @[ysyx_25030077_IFU.scala 68:{46,46}]
+  wire [21:0] _GEN_70 = 4'h6 == _T_1 ? sram_tag_6 : _GEN_69; // @[ysyx_25030077_IFU.scala 68:{46,46}]
+  wire [21:0] _GEN_71 = 4'h7 == _T_1 ? sram_tag_7 : _GEN_70; // @[ysyx_25030077_IFU.scala 68:{46,46}]
+  wire [21:0] _GEN_72 = 4'h8 == _T_1 ? sram_tag_8 : _GEN_71; // @[ysyx_25030077_IFU.scala 68:{46,46}]
+  wire [21:0] _GEN_73 = 4'h9 == _T_1 ? sram_tag_9 : _GEN_72; // @[ysyx_25030077_IFU.scala 68:{46,46}]
+  wire [21:0] _GEN_74 = 4'ha == _T_1 ? sram_tag_10 : _GEN_73; // @[ysyx_25030077_IFU.scala 68:{46,46}]
+  wire [21:0] _GEN_75 = 4'hb == _T_1 ? sram_tag_11 : _GEN_74; // @[ysyx_25030077_IFU.scala 68:{46,46}]
+  wire [21:0] _GEN_76 = 4'hc == _T_1 ? sram_tag_12 : _GEN_75; // @[ysyx_25030077_IFU.scala 68:{46,46}]
+  wire [21:0] _GEN_77 = 4'hd == _T_1 ? sram_tag_13 : _GEN_76; // @[ysyx_25030077_IFU.scala 68:{46,46}]
+  wire [21:0] _GEN_78 = 4'he == _T_1 ? sram_tag_14 : _GEN_77; // @[ysyx_25030077_IFU.scala 68:{46,46}]
+  wire [21:0] _GEN_79 = 4'hf == _T_1 ? sram_tag_15 : _GEN_78; // @[ysyx_25030077_IFU.scala 68:{46,46}]
+  wire [21:0] _sram_tag_T_9 = _write_reg_T_3 & j == 2'h1 ? tag : _GEN_79; // @[ysyx_25030077_IFU.scala 68:46]
+  wire [3:0] _T_2 = {index,2'h2}; // @[Cat.scala 31:58]
+  wire  _sram_tag_T_12 = _write_reg_T_3 & j == 2'h2; // @[ysyx_25030077_IFU.scala 69:76]
+  wire [21:0] _GEN_97 = 4'h1 == _T_2 ? sram_tag_1 : sram_tag_0; // @[ysyx_25030077_IFU.scala 69:{46,46}]
+  wire [21:0] _GEN_98 = 4'h2 == _T_2 ? sram_tag_2 : _GEN_97; // @[ysyx_25030077_IFU.scala 69:{46,46}]
+  wire [21:0] _GEN_99 = 4'h3 == _T_2 ? sram_tag_3 : _GEN_98; // @[ysyx_25030077_IFU.scala 69:{46,46}]
+  wire [21:0] _GEN_100 = 4'h4 == _T_2 ? sram_tag_4 : _GEN_99; // @[ysyx_25030077_IFU.scala 69:{46,46}]
+  wire [21:0] _GEN_101 = 4'h5 == _T_2 ? sram_tag_5 : _GEN_100; // @[ysyx_25030077_IFU.scala 69:{46,46}]
+  wire [21:0] _GEN_102 = 4'h6 == _T_2 ? sram_tag_6 : _GEN_101; // @[ysyx_25030077_IFU.scala 69:{46,46}]
+  wire [21:0] _GEN_103 = 4'h7 == _T_2 ? sram_tag_7 : _GEN_102; // @[ysyx_25030077_IFU.scala 69:{46,46}]
+  wire [21:0] _GEN_104 = 4'h8 == _T_2 ? sram_tag_8 : _GEN_103; // @[ysyx_25030077_IFU.scala 69:{46,46}]
+  wire [21:0] _GEN_105 = 4'h9 == _T_2 ? sram_tag_9 : _GEN_104; // @[ysyx_25030077_IFU.scala 69:{46,46}]
+  wire [21:0] _GEN_106 = 4'ha == _T_2 ? sram_tag_10 : _GEN_105; // @[ysyx_25030077_IFU.scala 69:{46,46}]
+  wire [21:0] _GEN_107 = 4'hb == _T_2 ? sram_tag_11 : _GEN_106; // @[ysyx_25030077_IFU.scala 69:{46,46}]
+  wire [21:0] _GEN_108 = 4'hc == _T_2 ? sram_tag_12 : _GEN_107; // @[ysyx_25030077_IFU.scala 69:{46,46}]
+  wire [21:0] _GEN_109 = 4'hd == _T_2 ? sram_tag_13 : _GEN_108; // @[ysyx_25030077_IFU.scala 69:{46,46}]
+  wire [21:0] _GEN_110 = 4'he == _T_2 ? sram_tag_14 : _GEN_109; // @[ysyx_25030077_IFU.scala 69:{46,46}]
+  wire [21:0] _GEN_111 = 4'hf == _T_2 ? sram_tag_15 : _GEN_110; // @[ysyx_25030077_IFU.scala 69:{46,46}]
+  wire [3:0] _T_3 = {index,2'h3}; // @[Cat.scala 31:58]
+  wire  _sram_tag_T_17 = _write_reg_T_3 & _write_reg_T_4; // @[ysyx_25030077_IFU.scala 70:76]
+  wire [21:0] _GEN_129 = 4'h1 == _T_3 ? sram_tag_1 : sram_tag_0; // @[ysyx_25030077_IFU.scala 70:{46,46}]
+  wire [21:0] _GEN_130 = 4'h2 == _T_3 ? sram_tag_2 : _GEN_129; // @[ysyx_25030077_IFU.scala 70:{46,46}]
+  wire [21:0] _GEN_131 = 4'h3 == _T_3 ? sram_tag_3 : _GEN_130; // @[ysyx_25030077_IFU.scala 70:{46,46}]
+  wire [21:0] _GEN_132 = 4'h4 == _T_3 ? sram_tag_4 : _GEN_131; // @[ysyx_25030077_IFU.scala 70:{46,46}]
+  wire [21:0] _GEN_133 = 4'h5 == _T_3 ? sram_tag_5 : _GEN_132; // @[ysyx_25030077_IFU.scala 70:{46,46}]
+  wire [21:0] _GEN_134 = 4'h6 == _T_3 ? sram_tag_6 : _GEN_133; // @[ysyx_25030077_IFU.scala 70:{46,46}]
+  wire [21:0] _GEN_135 = 4'h7 == _T_3 ? sram_tag_7 : _GEN_134; // @[ysyx_25030077_IFU.scala 70:{46,46}]
+  wire [21:0] _GEN_136 = 4'h8 == _T_3 ? sram_tag_8 : _GEN_135; // @[ysyx_25030077_IFU.scala 70:{46,46}]
+  wire [21:0] _GEN_137 = 4'h9 == _T_3 ? sram_tag_9 : _GEN_136; // @[ysyx_25030077_IFU.scala 70:{46,46}]
+  wire [21:0] _GEN_138 = 4'ha == _T_3 ? sram_tag_10 : _GEN_137; // @[ysyx_25030077_IFU.scala 70:{46,46}]
+  wire [21:0] _GEN_139 = 4'hb == _T_3 ? sram_tag_11 : _GEN_138; // @[ysyx_25030077_IFU.scala 70:{46,46}]
+  wire [21:0] _GEN_140 = 4'hc == _T_3 ? sram_tag_12 : _GEN_139; // @[ysyx_25030077_IFU.scala 70:{46,46}]
+  wire [21:0] _GEN_141 = 4'hd == _T_3 ? sram_tag_13 : _GEN_140; // @[ysyx_25030077_IFU.scala 70:{46,46}]
+  wire [21:0] _GEN_142 = 4'he == _T_3 ? sram_tag_14 : _GEN_141; // @[ysyx_25030077_IFU.scala 70:{46,46}]
+  wire  _GEN_161 = 4'h1 == _T ? sram_valid_1 : sram_valid_0; // @[ysyx_25030077_IFU.scala 72:{48,48}]
+  wire  _GEN_162 = 4'h2 == _T ? sram_valid_2 : _GEN_161; // @[ysyx_25030077_IFU.scala 72:{48,48}]
+  wire  _GEN_163 = 4'h3 == _T ? sram_valid_3 : _GEN_162; // @[ysyx_25030077_IFU.scala 72:{48,48}]
+  wire  _GEN_164 = 4'h4 == _T ? sram_valid_4 : _GEN_163; // @[ysyx_25030077_IFU.scala 72:{48,48}]
+  wire  _GEN_165 = 4'h5 == _T ? sram_valid_5 : _GEN_164; // @[ysyx_25030077_IFU.scala 72:{48,48}]
+  wire  _GEN_166 = 4'h6 == _T ? sram_valid_6 : _GEN_165; // @[ysyx_25030077_IFU.scala 72:{48,48}]
+  wire  _GEN_167 = 4'h7 == _T ? sram_valid_7 : _GEN_166; // @[ysyx_25030077_IFU.scala 72:{48,48}]
+  wire  _GEN_168 = 4'h8 == _T ? sram_valid_8 : _GEN_167; // @[ysyx_25030077_IFU.scala 72:{48,48}]
+  wire  _GEN_169 = 4'h9 == _T ? sram_valid_9 : _GEN_168; // @[ysyx_25030077_IFU.scala 72:{48,48}]
+  wire  _GEN_170 = 4'ha == _T ? sram_valid_10 : _GEN_169; // @[ysyx_25030077_IFU.scala 72:{48,48}]
+  wire  _GEN_171 = 4'hb == _T ? sram_valid_11 : _GEN_170; // @[ysyx_25030077_IFU.scala 72:{48,48}]
+  wire  _GEN_172 = 4'hc == _T ? sram_valid_12 : _GEN_171; // @[ysyx_25030077_IFU.scala 72:{48,48}]
+  wire  _GEN_173 = 4'hd == _T ? sram_valid_13 : _GEN_172; // @[ysyx_25030077_IFU.scala 72:{48,48}]
+  wire  _GEN_174 = 4'he == _T ? sram_valid_14 : _GEN_173; // @[ysyx_25030077_IFU.scala 72:{48,48}]
+  wire  _GEN_175 = 4'hf == _T ? sram_valid_15 : _GEN_174; // @[ysyx_25030077_IFU.scala 72:{48,48}]
+  wire  _GEN_176 = 4'h0 == _T ? _sram_tag_T_2 | _GEN_175 : sram_valid_0; // @[ysyx_25030077_IFU.scala 24:30 72:{42,42}]
+  wire  _GEN_177 = 4'h1 == _T ? _sram_tag_T_2 | _GEN_175 : sram_valid_1; // @[ysyx_25030077_IFU.scala 24:30 72:{42,42}]
+  wire  _GEN_178 = 4'h2 == _T ? _sram_tag_T_2 | _GEN_175 : sram_valid_2; // @[ysyx_25030077_IFU.scala 24:30 72:{42,42}]
+  wire  _GEN_179 = 4'h3 == _T ? _sram_tag_T_2 | _GEN_175 : sram_valid_3; // @[ysyx_25030077_IFU.scala 24:30 72:{42,42}]
+  wire  _GEN_180 = 4'h4 == _T ? _sram_tag_T_2 | _GEN_175 : sram_valid_4; // @[ysyx_25030077_IFU.scala 24:30 72:{42,42}]
+  wire  _GEN_181 = 4'h5 == _T ? _sram_tag_T_2 | _GEN_175 : sram_valid_5; // @[ysyx_25030077_IFU.scala 24:30 72:{42,42}]
+  wire  _GEN_182 = 4'h6 == _T ? _sram_tag_T_2 | _GEN_175 : sram_valid_6; // @[ysyx_25030077_IFU.scala 24:30 72:{42,42}]
+  wire  _GEN_183 = 4'h7 == _T ? _sram_tag_T_2 | _GEN_175 : sram_valid_7; // @[ysyx_25030077_IFU.scala 24:30 72:{42,42}]
+  wire  _GEN_184 = 4'h8 == _T ? _sram_tag_T_2 | _GEN_175 : sram_valid_8; // @[ysyx_25030077_IFU.scala 24:30 72:{42,42}]
+  wire  _GEN_185 = 4'h9 == _T ? _sram_tag_T_2 | _GEN_175 : sram_valid_9; // @[ysyx_25030077_IFU.scala 24:30 72:{42,42}]
+  wire  _GEN_186 = 4'ha == _T ? _sram_tag_T_2 | _GEN_175 : sram_valid_10; // @[ysyx_25030077_IFU.scala 24:30 72:{42,42}]
+  wire  _GEN_187 = 4'hb == _T ? _sram_tag_T_2 | _GEN_175 : sram_valid_11; // @[ysyx_25030077_IFU.scala 24:30 72:{42,42}]
+  wire  _GEN_188 = 4'hc == _T ? _sram_tag_T_2 | _GEN_175 : sram_valid_12; // @[ysyx_25030077_IFU.scala 24:30 72:{42,42}]
+  wire  _GEN_189 = 4'hd == _T ? _sram_tag_T_2 | _GEN_175 : sram_valid_13; // @[ysyx_25030077_IFU.scala 24:30 72:{42,42}]
+  wire  _GEN_190 = 4'he == _T ? _sram_tag_T_2 | _GEN_175 : sram_valid_14; // @[ysyx_25030077_IFU.scala 24:30 72:{42,42}]
+  wire  _GEN_191 = 4'hf == _T ? _sram_tag_T_2 | _GEN_175 : sram_valid_15; // @[ysyx_25030077_IFU.scala 24:30 72:{42,42}]
+  wire  _GEN_193 = 4'h1 == _T_1 ? sram_valid_1 : sram_valid_0; // @[ysyx_25030077_IFU.scala 73:{48,48}]
+  wire  _GEN_194 = 4'h2 == _T_1 ? sram_valid_2 : _GEN_193; // @[ysyx_25030077_IFU.scala 73:{48,48}]
+  wire  _GEN_195 = 4'h3 == _T_1 ? sram_valid_3 : _GEN_194; // @[ysyx_25030077_IFU.scala 73:{48,48}]
+  wire  _GEN_196 = 4'h4 == _T_1 ? sram_valid_4 : _GEN_195; // @[ysyx_25030077_IFU.scala 73:{48,48}]
+  wire  _GEN_197 = 4'h5 == _T_1 ? sram_valid_5 : _GEN_196; // @[ysyx_25030077_IFU.scala 73:{48,48}]
+  wire  _GEN_198 = 4'h6 == _T_1 ? sram_valid_6 : _GEN_197; // @[ysyx_25030077_IFU.scala 73:{48,48}]
+  wire  _GEN_199 = 4'h7 == _T_1 ? sram_valid_7 : _GEN_198; // @[ysyx_25030077_IFU.scala 73:{48,48}]
+  wire  _GEN_200 = 4'h8 == _T_1 ? sram_valid_8 : _GEN_199; // @[ysyx_25030077_IFU.scala 73:{48,48}]
+  wire  _GEN_201 = 4'h9 == _T_1 ? sram_valid_9 : _GEN_200; // @[ysyx_25030077_IFU.scala 73:{48,48}]
+  wire  _GEN_202 = 4'ha == _T_1 ? sram_valid_10 : _GEN_201; // @[ysyx_25030077_IFU.scala 73:{48,48}]
+  wire  _GEN_203 = 4'hb == _T_1 ? sram_valid_11 : _GEN_202; // @[ysyx_25030077_IFU.scala 73:{48,48}]
+  wire  _GEN_204 = 4'hc == _T_1 ? sram_valid_12 : _GEN_203; // @[ysyx_25030077_IFU.scala 73:{48,48}]
+  wire  _GEN_205 = 4'hd == _T_1 ? sram_valid_13 : _GEN_204; // @[ysyx_25030077_IFU.scala 73:{48,48}]
+  wire  _GEN_206 = 4'he == _T_1 ? sram_valid_14 : _GEN_205; // @[ysyx_25030077_IFU.scala 73:{48,48}]
+  wire  _GEN_207 = 4'hf == _T_1 ? sram_valid_15 : _GEN_206; // @[ysyx_25030077_IFU.scala 73:{48,48}]
+  wire  _GEN_225 = 4'h1 == _T_2 ? sram_valid_1 : sram_valid_0; // @[ysyx_25030077_IFU.scala 74:{48,48}]
+  wire  _GEN_226 = 4'h2 == _T_2 ? sram_valid_2 : _GEN_225; // @[ysyx_25030077_IFU.scala 74:{48,48}]
+  wire  _GEN_227 = 4'h3 == _T_2 ? sram_valid_3 : _GEN_226; // @[ysyx_25030077_IFU.scala 74:{48,48}]
+  wire  _GEN_228 = 4'h4 == _T_2 ? sram_valid_4 : _GEN_227; // @[ysyx_25030077_IFU.scala 74:{48,48}]
+  wire  _GEN_229 = 4'h5 == _T_2 ? sram_valid_5 : _GEN_228; // @[ysyx_25030077_IFU.scala 74:{48,48}]
+  wire  _GEN_230 = 4'h6 == _T_2 ? sram_valid_6 : _GEN_229; // @[ysyx_25030077_IFU.scala 74:{48,48}]
+  wire  _GEN_231 = 4'h7 == _T_2 ? sram_valid_7 : _GEN_230; // @[ysyx_25030077_IFU.scala 74:{48,48}]
+  wire  _GEN_232 = 4'h8 == _T_2 ? sram_valid_8 : _GEN_231; // @[ysyx_25030077_IFU.scala 74:{48,48}]
+  wire  _GEN_233 = 4'h9 == _T_2 ? sram_valid_9 : _GEN_232; // @[ysyx_25030077_IFU.scala 74:{48,48}]
+  wire  _GEN_234 = 4'ha == _T_2 ? sram_valid_10 : _GEN_233; // @[ysyx_25030077_IFU.scala 74:{48,48}]
+  wire  _GEN_235 = 4'hb == _T_2 ? sram_valid_11 : _GEN_234; // @[ysyx_25030077_IFU.scala 74:{48,48}]
+  wire  _GEN_236 = 4'hc == _T_2 ? sram_valid_12 : _GEN_235; // @[ysyx_25030077_IFU.scala 74:{48,48}]
+  wire  _GEN_237 = 4'hd == _T_2 ? sram_valid_13 : _GEN_236; // @[ysyx_25030077_IFU.scala 74:{48,48}]
+  wire  _GEN_238 = 4'he == _T_2 ? sram_valid_14 : _GEN_237; // @[ysyx_25030077_IFU.scala 74:{48,48}]
+  wire  _GEN_239 = 4'hf == _T_2 ? sram_valid_15 : _GEN_238; // @[ysyx_25030077_IFU.scala 74:{48,48}]
+  wire  _GEN_257 = 4'h1 == _T_3 ? sram_valid_1 : sram_valid_0; // @[ysyx_25030077_IFU.scala 75:{48,48}]
+  wire  _GEN_258 = 4'h2 == _T_3 ? sram_valid_2 : _GEN_257; // @[ysyx_25030077_IFU.scala 75:{48,48}]
+  wire  _GEN_259 = 4'h3 == _T_3 ? sram_valid_3 : _GEN_258; // @[ysyx_25030077_IFU.scala 75:{48,48}]
+  wire  _GEN_260 = 4'h4 == _T_3 ? sram_valid_4 : _GEN_259; // @[ysyx_25030077_IFU.scala 75:{48,48}]
+  wire  _GEN_261 = 4'h5 == _T_3 ? sram_valid_5 : _GEN_260; // @[ysyx_25030077_IFU.scala 75:{48,48}]
+  wire  _GEN_262 = 4'h6 == _T_3 ? sram_valid_6 : _GEN_261; // @[ysyx_25030077_IFU.scala 75:{48,48}]
+  wire  _GEN_263 = 4'h7 == _T_3 ? sram_valid_7 : _GEN_262; // @[ysyx_25030077_IFU.scala 75:{48,48}]
+  wire  _GEN_264 = 4'h8 == _T_3 ? sram_valid_8 : _GEN_263; // @[ysyx_25030077_IFU.scala 75:{48,48}]
+  wire  _GEN_265 = 4'h9 == _T_3 ? sram_valid_9 : _GEN_264; // @[ysyx_25030077_IFU.scala 75:{48,48}]
+  wire  _GEN_266 = 4'ha == _T_3 ? sram_valid_10 : _GEN_265; // @[ysyx_25030077_IFU.scala 75:{48,48}]
+  wire  _GEN_267 = 4'hb == _T_3 ? sram_valid_11 : _GEN_266; // @[ysyx_25030077_IFU.scala 75:{48,48}]
+  wire  _GEN_268 = 4'hc == _T_3 ? sram_valid_12 : _GEN_267; // @[ysyx_25030077_IFU.scala 75:{48,48}]
+  wire  _GEN_269 = 4'hd == _T_3 ? sram_valid_13 : _GEN_268; // @[ysyx_25030077_IFU.scala 75:{48,48}]
+  wire  _GEN_270 = 4'he == _T_3 ? sram_valid_14 : _GEN_269; // @[ysyx_25030077_IFU.scala 75:{48,48}]
+  wire  _GEN_271 = 4'hf == _T_3 ? sram_valid_15 : _GEN_270; // @[ysyx_25030077_IFU.scala 75:{48,48}]
+  wire [31:0] _GEN_289 = 4'h1 == _T ? sram_inst_1 : sram_inst_0; // @[ysyx_25030077_IFU.scala 77:{47,47}]
+  wire [31:0] _GEN_290 = 4'h2 == _T ? sram_inst_2 : _GEN_289; // @[ysyx_25030077_IFU.scala 77:{47,47}]
+  wire [31:0] _GEN_291 = 4'h3 == _T ? sram_inst_3 : _GEN_290; // @[ysyx_25030077_IFU.scala 77:{47,47}]
+  wire [31:0] _GEN_292 = 4'h4 == _T ? sram_inst_4 : _GEN_291; // @[ysyx_25030077_IFU.scala 77:{47,47}]
+  wire [31:0] _GEN_293 = 4'h5 == _T ? sram_inst_5 : _GEN_292; // @[ysyx_25030077_IFU.scala 77:{47,47}]
+  wire [31:0] _GEN_294 = 4'h6 == _T ? sram_inst_6 : _GEN_293; // @[ysyx_25030077_IFU.scala 77:{47,47}]
+  wire [31:0] _GEN_295 = 4'h7 == _T ? sram_inst_7 : _GEN_294; // @[ysyx_25030077_IFU.scala 77:{47,47}]
+  wire [31:0] _GEN_296 = 4'h8 == _T ? sram_inst_8 : _GEN_295; // @[ysyx_25030077_IFU.scala 77:{47,47}]
+  wire [31:0] _GEN_297 = 4'h9 == _T ? sram_inst_9 : _GEN_296; // @[ysyx_25030077_IFU.scala 77:{47,47}]
+  wire [31:0] _GEN_298 = 4'ha == _T ? sram_inst_10 : _GEN_297; // @[ysyx_25030077_IFU.scala 77:{47,47}]
+  wire [31:0] _GEN_299 = 4'hb == _T ? sram_inst_11 : _GEN_298; // @[ysyx_25030077_IFU.scala 77:{47,47}]
+  wire [31:0] _GEN_300 = 4'hc == _T ? sram_inst_12 : _GEN_299; // @[ysyx_25030077_IFU.scala 77:{47,47}]
+  wire [31:0] _GEN_301 = 4'hd == _T ? sram_inst_13 : _GEN_300; // @[ysyx_25030077_IFU.scala 77:{47,47}]
+  wire [31:0] _GEN_302 = 4'he == _T ? sram_inst_14 : _GEN_301; // @[ysyx_25030077_IFU.scala 77:{47,47}]
+  wire [31:0] _GEN_303 = 4'hf == _T ? sram_inst_15 : _GEN_302; // @[ysyx_25030077_IFU.scala 77:{47,47}]
+  wire [31:0] _sram_inst_T_4 = _state_reg_T_9 & q == 2'h0 ? sdram_data_0 : _GEN_303; // @[ysyx_25030077_IFU.scala 77:47]
+  wire [31:0] _GEN_304 = 4'h0 == _T ? _sram_inst_T_4 : sram_inst_0; // @[ysyx_25030077_IFU.scala 22:28 77:{41,41}]
+  wire [31:0] _GEN_305 = 4'h1 == _T ? _sram_inst_T_4 : sram_inst_1; // @[ysyx_25030077_IFU.scala 22:28 77:{41,41}]
+  wire [31:0] _GEN_306 = 4'h2 == _T ? _sram_inst_T_4 : sram_inst_2; // @[ysyx_25030077_IFU.scala 22:28 77:{41,41}]
+  wire [31:0] _GEN_307 = 4'h3 == _T ? _sram_inst_T_4 : sram_inst_3; // @[ysyx_25030077_IFU.scala 22:28 77:{41,41}]
+  wire [31:0] _GEN_308 = 4'h4 == _T ? _sram_inst_T_4 : sram_inst_4; // @[ysyx_25030077_IFU.scala 22:28 77:{41,41}]
+  wire [31:0] _GEN_309 = 4'h5 == _T ? _sram_inst_T_4 : sram_inst_5; // @[ysyx_25030077_IFU.scala 22:28 77:{41,41}]
+  wire [31:0] _GEN_310 = 4'h6 == _T ? _sram_inst_T_4 : sram_inst_6; // @[ysyx_25030077_IFU.scala 22:28 77:{41,41}]
+  wire [31:0] _GEN_311 = 4'h7 == _T ? _sram_inst_T_4 : sram_inst_7; // @[ysyx_25030077_IFU.scala 22:28 77:{41,41}]
+  wire [31:0] _GEN_312 = 4'h8 == _T ? _sram_inst_T_4 : sram_inst_8; // @[ysyx_25030077_IFU.scala 22:28 77:{41,41}]
+  wire [31:0] _GEN_313 = 4'h9 == _T ? _sram_inst_T_4 : sram_inst_9; // @[ysyx_25030077_IFU.scala 22:28 77:{41,41}]
+  wire [31:0] _GEN_314 = 4'ha == _T ? _sram_inst_T_4 : sram_inst_10; // @[ysyx_25030077_IFU.scala 22:28 77:{41,41}]
+  wire [31:0] _GEN_315 = 4'hb == _T ? _sram_inst_T_4 : sram_inst_11; // @[ysyx_25030077_IFU.scala 22:28 77:{41,41}]
+  wire [31:0] _GEN_316 = 4'hc == _T ? _sram_inst_T_4 : sram_inst_12; // @[ysyx_25030077_IFU.scala 22:28 77:{41,41}]
+  wire [31:0] _GEN_317 = 4'hd == _T ? _sram_inst_T_4 : sram_inst_13; // @[ysyx_25030077_IFU.scala 22:28 77:{41,41}]
+  wire [31:0] _GEN_318 = 4'he == _T ? _sram_inst_T_4 : sram_inst_14; // @[ysyx_25030077_IFU.scala 22:28 77:{41,41}]
+  wire [31:0] _GEN_319 = 4'hf == _T ? _sram_inst_T_4 : sram_inst_15; // @[ysyx_25030077_IFU.scala 22:28 77:{41,41}]
+  wire [31:0] _GEN_321 = 4'h1 == _T_1 ? sram_inst_1 : sram_inst_0; // @[ysyx_25030077_IFU.scala 78:{47,47}]
+  wire [31:0] _GEN_322 = 4'h2 == _T_1 ? sram_inst_2 : _GEN_321; // @[ysyx_25030077_IFU.scala 78:{47,47}]
+  wire [31:0] _GEN_323 = 4'h3 == _T_1 ? sram_inst_3 : _GEN_322; // @[ysyx_25030077_IFU.scala 78:{47,47}]
+  wire [31:0] _GEN_324 = 4'h4 == _T_1 ? sram_inst_4 : _GEN_323; // @[ysyx_25030077_IFU.scala 78:{47,47}]
+  wire [31:0] _GEN_325 = 4'h5 == _T_1 ? sram_inst_5 : _GEN_324; // @[ysyx_25030077_IFU.scala 78:{47,47}]
+  wire [31:0] _GEN_326 = 4'h6 == _T_1 ? sram_inst_6 : _GEN_325; // @[ysyx_25030077_IFU.scala 78:{47,47}]
+  wire [31:0] _GEN_327 = 4'h7 == _T_1 ? sram_inst_7 : _GEN_326; // @[ysyx_25030077_IFU.scala 78:{47,47}]
+  wire [31:0] _GEN_328 = 4'h8 == _T_1 ? sram_inst_8 : _GEN_327; // @[ysyx_25030077_IFU.scala 78:{47,47}]
+  wire [31:0] _GEN_329 = 4'h9 == _T_1 ? sram_inst_9 : _GEN_328; // @[ysyx_25030077_IFU.scala 78:{47,47}]
+  wire [31:0] _GEN_330 = 4'ha == _T_1 ? sram_inst_10 : _GEN_329; // @[ysyx_25030077_IFU.scala 78:{47,47}]
+  wire [31:0] _GEN_331 = 4'hb == _T_1 ? sram_inst_11 : _GEN_330; // @[ysyx_25030077_IFU.scala 78:{47,47}]
+  wire [31:0] _GEN_332 = 4'hc == _T_1 ? sram_inst_12 : _GEN_331; // @[ysyx_25030077_IFU.scala 78:{47,47}]
+  wire [31:0] _GEN_333 = 4'hd == _T_1 ? sram_inst_13 : _GEN_332; // @[ysyx_25030077_IFU.scala 78:{47,47}]
+  wire [31:0] _GEN_334 = 4'he == _T_1 ? sram_inst_14 : _GEN_333; // @[ysyx_25030077_IFU.scala 78:{47,47}]
+  wire [31:0] _GEN_335 = 4'hf == _T_1 ? sram_inst_15 : _GEN_334; // @[ysyx_25030077_IFU.scala 78:{47,47}]
+  wire [31:0] _sram_inst_T_9 = _state_reg_T_9 & q == 2'h1 ? sdram_data_1 : _GEN_335; // @[ysyx_25030077_IFU.scala 78:47]
+  wire [31:0] _GEN_353 = 4'h1 == _T_2 ? sram_inst_1 : sram_inst_0; // @[ysyx_25030077_IFU.scala 79:{47,47}]
+  wire [31:0] _GEN_354 = 4'h2 == _T_2 ? sram_inst_2 : _GEN_353; // @[ysyx_25030077_IFU.scala 79:{47,47}]
+  wire [31:0] _GEN_355 = 4'h3 == _T_2 ? sram_inst_3 : _GEN_354; // @[ysyx_25030077_IFU.scala 79:{47,47}]
+  wire [31:0] _GEN_356 = 4'h4 == _T_2 ? sram_inst_4 : _GEN_355; // @[ysyx_25030077_IFU.scala 79:{47,47}]
+  wire [31:0] _GEN_357 = 4'h5 == _T_2 ? sram_inst_5 : _GEN_356; // @[ysyx_25030077_IFU.scala 79:{47,47}]
+  wire [31:0] _GEN_358 = 4'h6 == _T_2 ? sram_inst_6 : _GEN_357; // @[ysyx_25030077_IFU.scala 79:{47,47}]
+  wire [31:0] _GEN_359 = 4'h7 == _T_2 ? sram_inst_7 : _GEN_358; // @[ysyx_25030077_IFU.scala 79:{47,47}]
+  wire [31:0] _GEN_360 = 4'h8 == _T_2 ? sram_inst_8 : _GEN_359; // @[ysyx_25030077_IFU.scala 79:{47,47}]
+  wire [31:0] _GEN_361 = 4'h9 == _T_2 ? sram_inst_9 : _GEN_360; // @[ysyx_25030077_IFU.scala 79:{47,47}]
+  wire [31:0] _GEN_362 = 4'ha == _T_2 ? sram_inst_10 : _GEN_361; // @[ysyx_25030077_IFU.scala 79:{47,47}]
+  wire [31:0] _GEN_363 = 4'hb == _T_2 ? sram_inst_11 : _GEN_362; // @[ysyx_25030077_IFU.scala 79:{47,47}]
+  wire [31:0] _GEN_364 = 4'hc == _T_2 ? sram_inst_12 : _GEN_363; // @[ysyx_25030077_IFU.scala 79:{47,47}]
+  wire [31:0] _GEN_365 = 4'hd == _T_2 ? sram_inst_13 : _GEN_364; // @[ysyx_25030077_IFU.scala 79:{47,47}]
+  wire [31:0] _GEN_366 = 4'he == _T_2 ? sram_inst_14 : _GEN_365; // @[ysyx_25030077_IFU.scala 79:{47,47}]
+  wire [31:0] _GEN_367 = 4'hf == _T_2 ? sram_inst_15 : _GEN_366; // @[ysyx_25030077_IFU.scala 79:{47,47}]
+  wire [31:0] _GEN_385 = 4'h1 == _T_3 ? sram_inst_1 : sram_inst_0; // @[ysyx_25030077_IFU.scala 80:{47,47}]
+  wire [31:0] _GEN_386 = 4'h2 == _T_3 ? sram_inst_2 : _GEN_385; // @[ysyx_25030077_IFU.scala 80:{47,47}]
+  wire [31:0] _GEN_387 = 4'h3 == _T_3 ? sram_inst_3 : _GEN_386; // @[ysyx_25030077_IFU.scala 80:{47,47}]
+  wire [31:0] _GEN_388 = 4'h4 == _T_3 ? sram_inst_4 : _GEN_387; // @[ysyx_25030077_IFU.scala 80:{47,47}]
+  wire [31:0] _GEN_389 = 4'h5 == _T_3 ? sram_inst_5 : _GEN_388; // @[ysyx_25030077_IFU.scala 80:{47,47}]
+  wire [31:0] _GEN_390 = 4'h6 == _T_3 ? sram_inst_6 : _GEN_389; // @[ysyx_25030077_IFU.scala 80:{47,47}]
+  wire [31:0] _GEN_391 = 4'h7 == _T_3 ? sram_inst_7 : _GEN_390; // @[ysyx_25030077_IFU.scala 80:{47,47}]
+  wire [31:0] _GEN_392 = 4'h8 == _T_3 ? sram_inst_8 : _GEN_391; // @[ysyx_25030077_IFU.scala 80:{47,47}]
+  wire [31:0] _GEN_393 = 4'h9 == _T_3 ? sram_inst_9 : _GEN_392; // @[ysyx_25030077_IFU.scala 80:{47,47}]
+  wire [31:0] _GEN_394 = 4'ha == _T_3 ? sram_inst_10 : _GEN_393; // @[ysyx_25030077_IFU.scala 80:{47,47}]
+  wire [31:0] _GEN_395 = 4'hb == _T_3 ? sram_inst_11 : _GEN_394; // @[ysyx_25030077_IFU.scala 80:{47,47}]
+  wire [31:0] _GEN_396 = 4'hc == _T_3 ? sram_inst_12 : _GEN_395; // @[ysyx_25030077_IFU.scala 80:{47,47}]
+  wire [31:0] _GEN_397 = 4'hd == _T_3 ? sram_inst_13 : _GEN_396; // @[ysyx_25030077_IFU.scala 80:{47,47}]
+  wire [31:0] _GEN_398 = 4'he == _T_3 ? sram_inst_14 : _GEN_397; // @[ysyx_25030077_IFU.scala 80:{47,47}]
+  wire  _ar_valid_reg_T_3 = _state_reg_T_2 & is_hit; // @[ysyx_25030077_IFU.scala 83:74]
+  wire  _ar_valid_reg_T_7 = _state_reg_T_12 | _state_reg_T_5; // @[ysyx_25030077_IFU.scala 84:40]
+  wire  _ar_valid_reg_T_9 = ar_valid_reg & io_ar_ready ? 1'h0 : ar_valid_reg; // @[ysyx_25030077_IFU.scala 84:80]
+  wire [31:0] _ar_addr_reg_T_4 = {io_pc[31:4],4'h0}; // @[Cat.scala 31:58]
+  wire [31:0] _GEN_417 = 4'h1 == _is_hit_T ? sram_inst_1 : sram_inst_0; // @[ysyx_25030077_IFU.scala 98:{47,47}]
+  wire [31:0] _GEN_418 = 4'h2 == _is_hit_T ? sram_inst_2 : _GEN_417; // @[ysyx_25030077_IFU.scala 98:{47,47}]
+  wire [31:0] _GEN_419 = 4'h3 == _is_hit_T ? sram_inst_3 : _GEN_418; // @[ysyx_25030077_IFU.scala 98:{47,47}]
+  wire [31:0] _GEN_420 = 4'h4 == _is_hit_T ? sram_inst_4 : _GEN_419; // @[ysyx_25030077_IFU.scala 98:{47,47}]
+  wire [31:0] _GEN_421 = 4'h5 == _is_hit_T ? sram_inst_5 : _GEN_420; // @[ysyx_25030077_IFU.scala 98:{47,47}]
+  wire [31:0] _GEN_422 = 4'h6 == _is_hit_T ? sram_inst_6 : _GEN_421; // @[ysyx_25030077_IFU.scala 98:{47,47}]
+  wire [31:0] _GEN_423 = 4'h7 == _is_hit_T ? sram_inst_7 : _GEN_422; // @[ysyx_25030077_IFU.scala 98:{47,47}]
+  wire [31:0] _GEN_424 = 4'h8 == _is_hit_T ? sram_inst_8 : _GEN_423; // @[ysyx_25030077_IFU.scala 98:{47,47}]
+  wire [31:0] _GEN_425 = 4'h9 == _is_hit_T ? sram_inst_9 : _GEN_424; // @[ysyx_25030077_IFU.scala 98:{47,47}]
+  wire [31:0] _GEN_426 = 4'ha == _is_hit_T ? sram_inst_10 : _GEN_425; // @[ysyx_25030077_IFU.scala 98:{47,47}]
+  wire [31:0] _GEN_427 = 4'hb == _is_hit_T ? sram_inst_11 : _GEN_426; // @[ysyx_25030077_IFU.scala 98:{47,47}]
+  wire [31:0] _GEN_428 = 4'hc == _is_hit_T ? sram_inst_12 : _GEN_427; // @[ysyx_25030077_IFU.scala 98:{47,47}]
+  wire [31:0] _GEN_429 = 4'hd == _is_hit_T ? sram_inst_13 : _GEN_428; // @[ysyx_25030077_IFU.scala 98:{47,47}]
+  wire [31:0] _GEN_430 = 4'he == _is_hit_T ? sram_inst_14 : _GEN_429; // @[ysyx_25030077_IFU.scala 98:{47,47}]
+  wire [31:0] _rdata_reg_T_11 = io_r_valid & k == offset ? io_r_data : rdata_reg; // @[ysyx_25030077_IFU.scala 100:47]
+  assign io_out_valid = state_reg == 5'h10; // @[ysyx_25030077_IFU.scala 93:32]
+  assign io_out_bits_pc = io_pc; // @[ysyx_25030077_IFU.scala 94:22]
+  assign io_out_bits_inst = rdata_reg; // @[ysyx_25030077_IFU.scala 102:22]
+  assign io_out_bits_is_err1 = io_err1_in; // @[ysyx_25030077_IFU.scala 95:25]
+  assign io_ar_addr = ar_addr_reg; // @[ysyx_25030077_IFU.scala 91:17]
+  assign io_ar_valid = ar_valid_reg; // @[ysyx_25030077_IFU.scala 86:17]
+  assign io_ar_burst = {{1'd0}, ar_addr_reg[31:28] == 4'ha}; // @[ysyx_25030077_IFU.scala 92:17]
+  assign io_r_ready = 1'h1; // @[ysyx_25030077_IFU.scala 34:16]
   always @(posedge clock) begin
-    if (reset) begin // @[ysyx_25030077_IFU.scala 34:28]
-      state_reg <= 3'h0; // @[ysyx_25030077_IFU.scala 34:28]
-    end else if (_state_reg_T) begin // @[Mux.scala 101:16]
-      if (io_pc[31:28] == 4'ha) begin // @[ysyx_25030077_IFU.scala 54:35]
-        state_reg <= 3'h1;
+    if (reset) begin // @[ysyx_25030077_IFU.scala 21:28]
+      sram_tag_0 <= 22'h0; // @[ysyx_25030077_IFU.scala 21:28]
+    end else if (4'h0 == _T_3) begin // @[ysyx_25030077_IFU.scala 70:40]
+      if (_write_reg_T_3 & _write_reg_T_4) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_0 <= tag;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_0 <= sram_tag_15; // @[ysyx_25030077_IFU.scala 70:46]
       end else begin
-        state_reg <= 3'h7;
+        sram_tag_0 <= _GEN_142;
       end
-    end else if (_state_reg_T_4) begin // @[Mux.scala 101:16]
-      state_reg <= {{1'd0}, _state_reg_T_9};
-    end else if (_state_reg_T_10) begin // @[Mux.scala 101:16]
-      state_reg <= _state_reg_T_11;
-    end else begin
-      state_reg <= _state_reg_T_30;
-    end
-    if (reset) begin // @[ysyx_25030077_IFU.scala 35:28]
-      rdata_reg <= 32'h0; // @[ysyx_25030077_IFU.scala 35:28]
-    end else if ((_state_reg_T_14 & _data0_T_2 | _state_reg_T_10 | _state_reg_T_24) & io_r_valid) begin // @[ysyx_25030077_IFU.scala 99:22]
-      rdata_reg <= io_r_data;
-    end
-    if (reset) begin // @[ysyx_25030077_IFU.scala 36:31]
-      ar_valid_reg <= 1'h0; // @[ysyx_25030077_IFU.scala 36:31]
-    end else begin
-      ar_valid_reg <= _ar_valid_reg_T_14; // @[ysyx_25030077_IFU.scala 82:18]
-    end
-    if (reset) begin // @[ysyx_25030077_IFU.scala 37:31]
-      ar_addr_reg <= 32'h0; // @[ysyx_25030077_IFU.scala 37:31]
-    end else if (_state_reg_T) begin // @[Mux.scala 101:16]
-      if (_state_reg_T_2) begin // @[ysyx_25030077_IFU.scala 89:35]
-        ar_addr_reg <= _serach_addr_T_2;
+    end else if (4'h0 == _T_2) begin // @[ysyx_25030077_IFU.scala 69:40]
+      if (_write_reg_T_3 & j == 2'h2) begin // @[ysyx_25030077_IFU.scala 69:46]
+        sram_tag_0 <= tag;
       end else begin
-        ar_addr_reg <= io_pc;
+        sram_tag_0 <= _GEN_111;
       end
-    end else if (_state_reg_T_4) begin // @[Mux.scala 101:16]
-      if (io_r_valid) begin // @[ysyx_25030077_IFU.scala 90:35]
-        ar_addr_reg <= _ar_addr_reg_T_11;
+    end else if (4'h0 == _T_1) begin // @[ysyx_25030077_IFU.scala 68:40]
+      sram_tag_0 <= _sram_tag_T_9; // @[ysyx_25030077_IFU.scala 68:40]
+    end else begin
+      sram_tag_0 <= _GEN_48;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 21:28]
+      sram_tag_1 <= 22'h0; // @[ysyx_25030077_IFU.scala 21:28]
+    end else if (4'h1 == _T_3) begin // @[ysyx_25030077_IFU.scala 70:40]
+      if (_write_reg_T_3 & _write_reg_T_4) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_1 <= tag;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_1 <= sram_tag_15; // @[ysyx_25030077_IFU.scala 70:46]
+      end else begin
+        sram_tag_1 <= _GEN_142;
+      end
+    end else if (4'h1 == _T_2) begin // @[ysyx_25030077_IFU.scala 69:40]
+      if (_write_reg_T_3 & j == 2'h2) begin // @[ysyx_25030077_IFU.scala 69:46]
+        sram_tag_1 <= tag;
+      end else begin
+        sram_tag_1 <= _GEN_111;
+      end
+    end else if (4'h1 == _T_1) begin // @[ysyx_25030077_IFU.scala 68:40]
+      sram_tag_1 <= _sram_tag_T_9; // @[ysyx_25030077_IFU.scala 68:40]
+    end else begin
+      sram_tag_1 <= _GEN_49;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 21:28]
+      sram_tag_2 <= 22'h0; // @[ysyx_25030077_IFU.scala 21:28]
+    end else if (4'h2 == _T_3) begin // @[ysyx_25030077_IFU.scala 70:40]
+      if (_write_reg_T_3 & _write_reg_T_4) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_2 <= tag;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_2 <= sram_tag_15; // @[ysyx_25030077_IFU.scala 70:46]
+      end else begin
+        sram_tag_2 <= _GEN_142;
+      end
+    end else if (4'h2 == _T_2) begin // @[ysyx_25030077_IFU.scala 69:40]
+      if (_write_reg_T_3 & j == 2'h2) begin // @[ysyx_25030077_IFU.scala 69:46]
+        sram_tag_2 <= tag;
+      end else begin
+        sram_tag_2 <= _GEN_111;
+      end
+    end else if (4'h2 == _T_1) begin // @[ysyx_25030077_IFU.scala 68:40]
+      sram_tag_2 <= _sram_tag_T_9; // @[ysyx_25030077_IFU.scala 68:40]
+    end else begin
+      sram_tag_2 <= _GEN_50;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 21:28]
+      sram_tag_3 <= 22'h0; // @[ysyx_25030077_IFU.scala 21:28]
+    end else if (4'h3 == _T_3) begin // @[ysyx_25030077_IFU.scala 70:40]
+      if (_write_reg_T_3 & _write_reg_T_4) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_3 <= tag;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_3 <= sram_tag_15; // @[ysyx_25030077_IFU.scala 70:46]
+      end else begin
+        sram_tag_3 <= _GEN_142;
+      end
+    end else if (4'h3 == _T_2) begin // @[ysyx_25030077_IFU.scala 69:40]
+      if (_write_reg_T_3 & j == 2'h2) begin // @[ysyx_25030077_IFU.scala 69:46]
+        sram_tag_3 <= tag;
+      end else begin
+        sram_tag_3 <= _GEN_111;
+      end
+    end else if (4'h3 == _T_1) begin // @[ysyx_25030077_IFU.scala 68:40]
+      sram_tag_3 <= _sram_tag_T_9; // @[ysyx_25030077_IFU.scala 68:40]
+    end else begin
+      sram_tag_3 <= _GEN_51;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 21:28]
+      sram_tag_4 <= 22'h0; // @[ysyx_25030077_IFU.scala 21:28]
+    end else if (4'h4 == _T_3) begin // @[ysyx_25030077_IFU.scala 70:40]
+      if (_write_reg_T_3 & _write_reg_T_4) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_4 <= tag;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_4 <= sram_tag_15; // @[ysyx_25030077_IFU.scala 70:46]
+      end else begin
+        sram_tag_4 <= _GEN_142;
+      end
+    end else if (4'h4 == _T_2) begin // @[ysyx_25030077_IFU.scala 69:40]
+      if (_write_reg_T_3 & j == 2'h2) begin // @[ysyx_25030077_IFU.scala 69:46]
+        sram_tag_4 <= tag;
+      end else begin
+        sram_tag_4 <= _GEN_111;
+      end
+    end else if (4'h4 == _T_1) begin // @[ysyx_25030077_IFU.scala 68:40]
+      sram_tag_4 <= _sram_tag_T_9; // @[ysyx_25030077_IFU.scala 68:40]
+    end else begin
+      sram_tag_4 <= _GEN_52;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 21:28]
+      sram_tag_5 <= 22'h0; // @[ysyx_25030077_IFU.scala 21:28]
+    end else if (4'h5 == _T_3) begin // @[ysyx_25030077_IFU.scala 70:40]
+      if (_write_reg_T_3 & _write_reg_T_4) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_5 <= tag;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_5 <= sram_tag_15; // @[ysyx_25030077_IFU.scala 70:46]
+      end else begin
+        sram_tag_5 <= _GEN_142;
+      end
+    end else if (4'h5 == _T_2) begin // @[ysyx_25030077_IFU.scala 69:40]
+      if (_write_reg_T_3 & j == 2'h2) begin // @[ysyx_25030077_IFU.scala 69:46]
+        sram_tag_5 <= tag;
+      end else begin
+        sram_tag_5 <= _GEN_111;
+      end
+    end else if (4'h5 == _T_1) begin // @[ysyx_25030077_IFU.scala 68:40]
+      sram_tag_5 <= _sram_tag_T_9; // @[ysyx_25030077_IFU.scala 68:40]
+    end else begin
+      sram_tag_5 <= _GEN_53;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 21:28]
+      sram_tag_6 <= 22'h0; // @[ysyx_25030077_IFU.scala 21:28]
+    end else if (4'h6 == _T_3) begin // @[ysyx_25030077_IFU.scala 70:40]
+      if (_write_reg_T_3 & _write_reg_T_4) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_6 <= tag;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_6 <= sram_tag_15; // @[ysyx_25030077_IFU.scala 70:46]
+      end else begin
+        sram_tag_6 <= _GEN_142;
+      end
+    end else if (4'h6 == _T_2) begin // @[ysyx_25030077_IFU.scala 69:40]
+      if (_write_reg_T_3 & j == 2'h2) begin // @[ysyx_25030077_IFU.scala 69:46]
+        sram_tag_6 <= tag;
+      end else begin
+        sram_tag_6 <= _GEN_111;
+      end
+    end else if (4'h6 == _T_1) begin // @[ysyx_25030077_IFU.scala 68:40]
+      sram_tag_6 <= _sram_tag_T_9; // @[ysyx_25030077_IFU.scala 68:40]
+    end else begin
+      sram_tag_6 <= _GEN_54;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 21:28]
+      sram_tag_7 <= 22'h0; // @[ysyx_25030077_IFU.scala 21:28]
+    end else if (4'h7 == _T_3) begin // @[ysyx_25030077_IFU.scala 70:40]
+      if (_write_reg_T_3 & _write_reg_T_4) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_7 <= tag;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_7 <= sram_tag_15; // @[ysyx_25030077_IFU.scala 70:46]
+      end else begin
+        sram_tag_7 <= _GEN_142;
+      end
+    end else if (4'h7 == _T_2) begin // @[ysyx_25030077_IFU.scala 69:40]
+      if (_write_reg_T_3 & j == 2'h2) begin // @[ysyx_25030077_IFU.scala 69:46]
+        sram_tag_7 <= tag;
+      end else begin
+        sram_tag_7 <= _GEN_111;
+      end
+    end else if (4'h7 == _T_1) begin // @[ysyx_25030077_IFU.scala 68:40]
+      sram_tag_7 <= _sram_tag_T_9; // @[ysyx_25030077_IFU.scala 68:40]
+    end else begin
+      sram_tag_7 <= _GEN_55;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 21:28]
+      sram_tag_8 <= 22'h0; // @[ysyx_25030077_IFU.scala 21:28]
+    end else if (4'h8 == _T_3) begin // @[ysyx_25030077_IFU.scala 70:40]
+      if (_write_reg_T_3 & _write_reg_T_4) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_8 <= tag;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_8 <= sram_tag_15; // @[ysyx_25030077_IFU.scala 70:46]
+      end else begin
+        sram_tag_8 <= _GEN_142;
+      end
+    end else if (4'h8 == _T_2) begin // @[ysyx_25030077_IFU.scala 69:40]
+      if (_write_reg_T_3 & j == 2'h2) begin // @[ysyx_25030077_IFU.scala 69:46]
+        sram_tag_8 <= tag;
+      end else begin
+        sram_tag_8 <= _GEN_111;
+      end
+    end else if (4'h8 == _T_1) begin // @[ysyx_25030077_IFU.scala 68:40]
+      sram_tag_8 <= _sram_tag_T_9; // @[ysyx_25030077_IFU.scala 68:40]
+    end else begin
+      sram_tag_8 <= _GEN_56;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 21:28]
+      sram_tag_9 <= 22'h0; // @[ysyx_25030077_IFU.scala 21:28]
+    end else if (4'h9 == _T_3) begin // @[ysyx_25030077_IFU.scala 70:40]
+      if (_write_reg_T_3 & _write_reg_T_4) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_9 <= tag;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_9 <= sram_tag_15; // @[ysyx_25030077_IFU.scala 70:46]
+      end else begin
+        sram_tag_9 <= _GEN_142;
+      end
+    end else if (4'h9 == _T_2) begin // @[ysyx_25030077_IFU.scala 69:40]
+      if (_write_reg_T_3 & j == 2'h2) begin // @[ysyx_25030077_IFU.scala 69:46]
+        sram_tag_9 <= tag;
+      end else begin
+        sram_tag_9 <= _GEN_111;
+      end
+    end else if (4'h9 == _T_1) begin // @[ysyx_25030077_IFU.scala 68:40]
+      sram_tag_9 <= _sram_tag_T_9; // @[ysyx_25030077_IFU.scala 68:40]
+    end else begin
+      sram_tag_9 <= _GEN_57;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 21:28]
+      sram_tag_10 <= 22'h0; // @[ysyx_25030077_IFU.scala 21:28]
+    end else if (4'ha == _T_3) begin // @[ysyx_25030077_IFU.scala 70:40]
+      if (_write_reg_T_3 & _write_reg_T_4) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_10 <= tag;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_10 <= sram_tag_15; // @[ysyx_25030077_IFU.scala 70:46]
+      end else begin
+        sram_tag_10 <= _GEN_142;
+      end
+    end else if (4'ha == _T_2) begin // @[ysyx_25030077_IFU.scala 69:40]
+      if (_write_reg_T_3 & j == 2'h2) begin // @[ysyx_25030077_IFU.scala 69:46]
+        sram_tag_10 <= tag;
+      end else begin
+        sram_tag_10 <= _GEN_111;
+      end
+    end else if (4'ha == _T_1) begin // @[ysyx_25030077_IFU.scala 68:40]
+      sram_tag_10 <= _sram_tag_T_9; // @[ysyx_25030077_IFU.scala 68:40]
+    end else begin
+      sram_tag_10 <= _GEN_58;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 21:28]
+      sram_tag_11 <= 22'h0; // @[ysyx_25030077_IFU.scala 21:28]
+    end else if (4'hb == _T_3) begin // @[ysyx_25030077_IFU.scala 70:40]
+      if (_write_reg_T_3 & _write_reg_T_4) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_11 <= tag;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_11 <= sram_tag_15; // @[ysyx_25030077_IFU.scala 70:46]
+      end else begin
+        sram_tag_11 <= _GEN_142;
+      end
+    end else if (4'hb == _T_2) begin // @[ysyx_25030077_IFU.scala 69:40]
+      if (_write_reg_T_3 & j == 2'h2) begin // @[ysyx_25030077_IFU.scala 69:46]
+        sram_tag_11 <= tag;
+      end else begin
+        sram_tag_11 <= _GEN_111;
+      end
+    end else if (4'hb == _T_1) begin // @[ysyx_25030077_IFU.scala 68:40]
+      sram_tag_11 <= _sram_tag_T_9; // @[ysyx_25030077_IFU.scala 68:40]
+    end else begin
+      sram_tag_11 <= _GEN_59;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 21:28]
+      sram_tag_12 <= 22'h0; // @[ysyx_25030077_IFU.scala 21:28]
+    end else if (4'hc == _T_3) begin // @[ysyx_25030077_IFU.scala 70:40]
+      if (_write_reg_T_3 & _write_reg_T_4) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_12 <= tag;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_12 <= sram_tag_15; // @[ysyx_25030077_IFU.scala 70:46]
+      end else begin
+        sram_tag_12 <= _GEN_142;
+      end
+    end else if (4'hc == _T_2) begin // @[ysyx_25030077_IFU.scala 69:40]
+      if (_write_reg_T_3 & j == 2'h2) begin // @[ysyx_25030077_IFU.scala 69:46]
+        sram_tag_12 <= tag;
+      end else begin
+        sram_tag_12 <= _GEN_111;
+      end
+    end else if (4'hc == _T_1) begin // @[ysyx_25030077_IFU.scala 68:40]
+      sram_tag_12 <= _sram_tag_T_9; // @[ysyx_25030077_IFU.scala 68:40]
+    end else begin
+      sram_tag_12 <= _GEN_60;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 21:28]
+      sram_tag_13 <= 22'h0; // @[ysyx_25030077_IFU.scala 21:28]
+    end else if (4'hd == _T_3) begin // @[ysyx_25030077_IFU.scala 70:40]
+      if (_write_reg_T_3 & _write_reg_T_4) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_13 <= tag;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_13 <= sram_tag_15; // @[ysyx_25030077_IFU.scala 70:46]
+      end else begin
+        sram_tag_13 <= _GEN_142;
+      end
+    end else if (4'hd == _T_2) begin // @[ysyx_25030077_IFU.scala 69:40]
+      if (_write_reg_T_3 & j == 2'h2) begin // @[ysyx_25030077_IFU.scala 69:46]
+        sram_tag_13 <= tag;
+      end else begin
+        sram_tag_13 <= _GEN_111;
+      end
+    end else if (4'hd == _T_1) begin // @[ysyx_25030077_IFU.scala 68:40]
+      sram_tag_13 <= _sram_tag_T_9; // @[ysyx_25030077_IFU.scala 68:40]
+    end else begin
+      sram_tag_13 <= _GEN_61;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 21:28]
+      sram_tag_14 <= 22'h0; // @[ysyx_25030077_IFU.scala 21:28]
+    end else if (4'he == _T_3) begin // @[ysyx_25030077_IFU.scala 70:40]
+      if (_write_reg_T_3 & _write_reg_T_4) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_14 <= tag;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_14 <= sram_tag_15; // @[ysyx_25030077_IFU.scala 70:46]
+      end else begin
+        sram_tag_14 <= _GEN_142;
+      end
+    end else if (4'he == _T_2) begin // @[ysyx_25030077_IFU.scala 69:40]
+      if (_write_reg_T_3 & j == 2'h2) begin // @[ysyx_25030077_IFU.scala 69:46]
+        sram_tag_14 <= tag;
+      end else begin
+        sram_tag_14 <= _GEN_111;
+      end
+    end else if (4'he == _T_1) begin // @[ysyx_25030077_IFU.scala 68:40]
+      sram_tag_14 <= _sram_tag_T_9; // @[ysyx_25030077_IFU.scala 68:40]
+    end else begin
+      sram_tag_14 <= _GEN_62;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 21:28]
+      sram_tag_15 <= 22'h0; // @[ysyx_25030077_IFU.scala 21:28]
+    end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 70:40]
+      if (_write_reg_T_3 & _write_reg_T_4) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_15 <= tag;
+      end else if (!(4'hf == _T_3)) begin // @[ysyx_25030077_IFU.scala 70:46]
+        sram_tag_15 <= _GEN_142;
+      end
+    end else if (4'hf == _T_2) begin // @[ysyx_25030077_IFU.scala 69:40]
+      if (_write_reg_T_3 & j == 2'h2) begin // @[ysyx_25030077_IFU.scala 69:46]
+        sram_tag_15 <= tag;
+      end else begin
+        sram_tag_15 <= _GEN_111;
+      end
+    end else if (4'hf == _T_1) begin // @[ysyx_25030077_IFU.scala 68:40]
+      sram_tag_15 <= _sram_tag_T_9; // @[ysyx_25030077_IFU.scala 68:40]
+    end else begin
+      sram_tag_15 <= _GEN_63;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 22:28]
+      sram_inst_0 <= 32'h0; // @[ysyx_25030077_IFU.scala 22:28]
+    end else if (4'h0 == _T_3) begin // @[ysyx_25030077_IFU.scala 80:41]
+      if (_state_reg_T_9 & _state_reg_T_10) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_0 <= sdram_data_3;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_0 <= sram_inst_15; // @[ysyx_25030077_IFU.scala 80:47]
+      end else begin
+        sram_inst_0 <= _GEN_398;
+      end
+    end else if (4'h0 == _T_2) begin // @[ysyx_25030077_IFU.scala 79:41]
+      if (_state_reg_T_9 & q == 2'h2) begin // @[ysyx_25030077_IFU.scala 79:47]
+        sram_inst_0 <= sdram_data_2;
+      end else begin
+        sram_inst_0 <= _GEN_367;
+      end
+    end else if (4'h0 == _T_1) begin // @[ysyx_25030077_IFU.scala 78:41]
+      sram_inst_0 <= _sram_inst_T_9; // @[ysyx_25030077_IFU.scala 78:41]
+    end else begin
+      sram_inst_0 <= _GEN_304;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 22:28]
+      sram_inst_1 <= 32'h0; // @[ysyx_25030077_IFU.scala 22:28]
+    end else if (4'h1 == _T_3) begin // @[ysyx_25030077_IFU.scala 80:41]
+      if (_state_reg_T_9 & _state_reg_T_10) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_1 <= sdram_data_3;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_1 <= sram_inst_15; // @[ysyx_25030077_IFU.scala 80:47]
+      end else begin
+        sram_inst_1 <= _GEN_398;
+      end
+    end else if (4'h1 == _T_2) begin // @[ysyx_25030077_IFU.scala 79:41]
+      if (_state_reg_T_9 & q == 2'h2) begin // @[ysyx_25030077_IFU.scala 79:47]
+        sram_inst_1 <= sdram_data_2;
+      end else begin
+        sram_inst_1 <= _GEN_367;
+      end
+    end else if (4'h1 == _T_1) begin // @[ysyx_25030077_IFU.scala 78:41]
+      sram_inst_1 <= _sram_inst_T_9; // @[ysyx_25030077_IFU.scala 78:41]
+    end else begin
+      sram_inst_1 <= _GEN_305;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 22:28]
+      sram_inst_2 <= 32'h0; // @[ysyx_25030077_IFU.scala 22:28]
+    end else if (4'h2 == _T_3) begin // @[ysyx_25030077_IFU.scala 80:41]
+      if (_state_reg_T_9 & _state_reg_T_10) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_2 <= sdram_data_3;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_2 <= sram_inst_15; // @[ysyx_25030077_IFU.scala 80:47]
+      end else begin
+        sram_inst_2 <= _GEN_398;
+      end
+    end else if (4'h2 == _T_2) begin // @[ysyx_25030077_IFU.scala 79:41]
+      if (_state_reg_T_9 & q == 2'h2) begin // @[ysyx_25030077_IFU.scala 79:47]
+        sram_inst_2 <= sdram_data_2;
+      end else begin
+        sram_inst_2 <= _GEN_367;
+      end
+    end else if (4'h2 == _T_1) begin // @[ysyx_25030077_IFU.scala 78:41]
+      sram_inst_2 <= _sram_inst_T_9; // @[ysyx_25030077_IFU.scala 78:41]
+    end else begin
+      sram_inst_2 <= _GEN_306;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 22:28]
+      sram_inst_3 <= 32'h0; // @[ysyx_25030077_IFU.scala 22:28]
+    end else if (4'h3 == _T_3) begin // @[ysyx_25030077_IFU.scala 80:41]
+      if (_state_reg_T_9 & _state_reg_T_10) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_3 <= sdram_data_3;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_3 <= sram_inst_15; // @[ysyx_25030077_IFU.scala 80:47]
+      end else begin
+        sram_inst_3 <= _GEN_398;
+      end
+    end else if (4'h3 == _T_2) begin // @[ysyx_25030077_IFU.scala 79:41]
+      if (_state_reg_T_9 & q == 2'h2) begin // @[ysyx_25030077_IFU.scala 79:47]
+        sram_inst_3 <= sdram_data_2;
+      end else begin
+        sram_inst_3 <= _GEN_367;
+      end
+    end else if (4'h3 == _T_1) begin // @[ysyx_25030077_IFU.scala 78:41]
+      sram_inst_3 <= _sram_inst_T_9; // @[ysyx_25030077_IFU.scala 78:41]
+    end else begin
+      sram_inst_3 <= _GEN_307;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 22:28]
+      sram_inst_4 <= 32'h0; // @[ysyx_25030077_IFU.scala 22:28]
+    end else if (4'h4 == _T_3) begin // @[ysyx_25030077_IFU.scala 80:41]
+      if (_state_reg_T_9 & _state_reg_T_10) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_4 <= sdram_data_3;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_4 <= sram_inst_15; // @[ysyx_25030077_IFU.scala 80:47]
+      end else begin
+        sram_inst_4 <= _GEN_398;
+      end
+    end else if (4'h4 == _T_2) begin // @[ysyx_25030077_IFU.scala 79:41]
+      if (_state_reg_T_9 & q == 2'h2) begin // @[ysyx_25030077_IFU.scala 79:47]
+        sram_inst_4 <= sdram_data_2;
+      end else begin
+        sram_inst_4 <= _GEN_367;
+      end
+    end else if (4'h4 == _T_1) begin // @[ysyx_25030077_IFU.scala 78:41]
+      sram_inst_4 <= _sram_inst_T_9; // @[ysyx_25030077_IFU.scala 78:41]
+    end else begin
+      sram_inst_4 <= _GEN_308;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 22:28]
+      sram_inst_5 <= 32'h0; // @[ysyx_25030077_IFU.scala 22:28]
+    end else if (4'h5 == _T_3) begin // @[ysyx_25030077_IFU.scala 80:41]
+      if (_state_reg_T_9 & _state_reg_T_10) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_5 <= sdram_data_3;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_5 <= sram_inst_15; // @[ysyx_25030077_IFU.scala 80:47]
+      end else begin
+        sram_inst_5 <= _GEN_398;
+      end
+    end else if (4'h5 == _T_2) begin // @[ysyx_25030077_IFU.scala 79:41]
+      if (_state_reg_T_9 & q == 2'h2) begin // @[ysyx_25030077_IFU.scala 79:47]
+        sram_inst_5 <= sdram_data_2;
+      end else begin
+        sram_inst_5 <= _GEN_367;
+      end
+    end else if (4'h5 == _T_1) begin // @[ysyx_25030077_IFU.scala 78:41]
+      sram_inst_5 <= _sram_inst_T_9; // @[ysyx_25030077_IFU.scala 78:41]
+    end else begin
+      sram_inst_5 <= _GEN_309;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 22:28]
+      sram_inst_6 <= 32'h0; // @[ysyx_25030077_IFU.scala 22:28]
+    end else if (4'h6 == _T_3) begin // @[ysyx_25030077_IFU.scala 80:41]
+      if (_state_reg_T_9 & _state_reg_T_10) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_6 <= sdram_data_3;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_6 <= sram_inst_15; // @[ysyx_25030077_IFU.scala 80:47]
+      end else begin
+        sram_inst_6 <= _GEN_398;
+      end
+    end else if (4'h6 == _T_2) begin // @[ysyx_25030077_IFU.scala 79:41]
+      if (_state_reg_T_9 & q == 2'h2) begin // @[ysyx_25030077_IFU.scala 79:47]
+        sram_inst_6 <= sdram_data_2;
+      end else begin
+        sram_inst_6 <= _GEN_367;
+      end
+    end else if (4'h6 == _T_1) begin // @[ysyx_25030077_IFU.scala 78:41]
+      sram_inst_6 <= _sram_inst_T_9; // @[ysyx_25030077_IFU.scala 78:41]
+    end else begin
+      sram_inst_6 <= _GEN_310;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 22:28]
+      sram_inst_7 <= 32'h0; // @[ysyx_25030077_IFU.scala 22:28]
+    end else if (4'h7 == _T_3) begin // @[ysyx_25030077_IFU.scala 80:41]
+      if (_state_reg_T_9 & _state_reg_T_10) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_7 <= sdram_data_3;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_7 <= sram_inst_15; // @[ysyx_25030077_IFU.scala 80:47]
+      end else begin
+        sram_inst_7 <= _GEN_398;
+      end
+    end else if (4'h7 == _T_2) begin // @[ysyx_25030077_IFU.scala 79:41]
+      if (_state_reg_T_9 & q == 2'h2) begin // @[ysyx_25030077_IFU.scala 79:47]
+        sram_inst_7 <= sdram_data_2;
+      end else begin
+        sram_inst_7 <= _GEN_367;
+      end
+    end else if (4'h7 == _T_1) begin // @[ysyx_25030077_IFU.scala 78:41]
+      sram_inst_7 <= _sram_inst_T_9; // @[ysyx_25030077_IFU.scala 78:41]
+    end else begin
+      sram_inst_7 <= _GEN_311;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 22:28]
+      sram_inst_8 <= 32'h0; // @[ysyx_25030077_IFU.scala 22:28]
+    end else if (4'h8 == _T_3) begin // @[ysyx_25030077_IFU.scala 80:41]
+      if (_state_reg_T_9 & _state_reg_T_10) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_8 <= sdram_data_3;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_8 <= sram_inst_15; // @[ysyx_25030077_IFU.scala 80:47]
+      end else begin
+        sram_inst_8 <= _GEN_398;
+      end
+    end else if (4'h8 == _T_2) begin // @[ysyx_25030077_IFU.scala 79:41]
+      if (_state_reg_T_9 & q == 2'h2) begin // @[ysyx_25030077_IFU.scala 79:47]
+        sram_inst_8 <= sdram_data_2;
+      end else begin
+        sram_inst_8 <= _GEN_367;
+      end
+    end else if (4'h8 == _T_1) begin // @[ysyx_25030077_IFU.scala 78:41]
+      sram_inst_8 <= _sram_inst_T_9; // @[ysyx_25030077_IFU.scala 78:41]
+    end else begin
+      sram_inst_8 <= _GEN_312;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 22:28]
+      sram_inst_9 <= 32'h0; // @[ysyx_25030077_IFU.scala 22:28]
+    end else if (4'h9 == _T_3) begin // @[ysyx_25030077_IFU.scala 80:41]
+      if (_state_reg_T_9 & _state_reg_T_10) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_9 <= sdram_data_3;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_9 <= sram_inst_15; // @[ysyx_25030077_IFU.scala 80:47]
+      end else begin
+        sram_inst_9 <= _GEN_398;
+      end
+    end else if (4'h9 == _T_2) begin // @[ysyx_25030077_IFU.scala 79:41]
+      if (_state_reg_T_9 & q == 2'h2) begin // @[ysyx_25030077_IFU.scala 79:47]
+        sram_inst_9 <= sdram_data_2;
+      end else begin
+        sram_inst_9 <= _GEN_367;
+      end
+    end else if (4'h9 == _T_1) begin // @[ysyx_25030077_IFU.scala 78:41]
+      sram_inst_9 <= _sram_inst_T_9; // @[ysyx_25030077_IFU.scala 78:41]
+    end else begin
+      sram_inst_9 <= _GEN_313;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 22:28]
+      sram_inst_10 <= 32'h0; // @[ysyx_25030077_IFU.scala 22:28]
+    end else if (4'ha == _T_3) begin // @[ysyx_25030077_IFU.scala 80:41]
+      if (_state_reg_T_9 & _state_reg_T_10) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_10 <= sdram_data_3;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_10 <= sram_inst_15; // @[ysyx_25030077_IFU.scala 80:47]
+      end else begin
+        sram_inst_10 <= _GEN_398;
+      end
+    end else if (4'ha == _T_2) begin // @[ysyx_25030077_IFU.scala 79:41]
+      if (_state_reg_T_9 & q == 2'h2) begin // @[ysyx_25030077_IFU.scala 79:47]
+        sram_inst_10 <= sdram_data_2;
+      end else begin
+        sram_inst_10 <= _GEN_367;
+      end
+    end else if (4'ha == _T_1) begin // @[ysyx_25030077_IFU.scala 78:41]
+      sram_inst_10 <= _sram_inst_T_9; // @[ysyx_25030077_IFU.scala 78:41]
+    end else begin
+      sram_inst_10 <= _GEN_314;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 22:28]
+      sram_inst_11 <= 32'h0; // @[ysyx_25030077_IFU.scala 22:28]
+    end else if (4'hb == _T_3) begin // @[ysyx_25030077_IFU.scala 80:41]
+      if (_state_reg_T_9 & _state_reg_T_10) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_11 <= sdram_data_3;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_11 <= sram_inst_15; // @[ysyx_25030077_IFU.scala 80:47]
+      end else begin
+        sram_inst_11 <= _GEN_398;
+      end
+    end else if (4'hb == _T_2) begin // @[ysyx_25030077_IFU.scala 79:41]
+      if (_state_reg_T_9 & q == 2'h2) begin // @[ysyx_25030077_IFU.scala 79:47]
+        sram_inst_11 <= sdram_data_2;
+      end else begin
+        sram_inst_11 <= _GEN_367;
+      end
+    end else if (4'hb == _T_1) begin // @[ysyx_25030077_IFU.scala 78:41]
+      sram_inst_11 <= _sram_inst_T_9; // @[ysyx_25030077_IFU.scala 78:41]
+    end else begin
+      sram_inst_11 <= _GEN_315;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 22:28]
+      sram_inst_12 <= 32'h0; // @[ysyx_25030077_IFU.scala 22:28]
+    end else if (4'hc == _T_3) begin // @[ysyx_25030077_IFU.scala 80:41]
+      if (_state_reg_T_9 & _state_reg_T_10) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_12 <= sdram_data_3;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_12 <= sram_inst_15; // @[ysyx_25030077_IFU.scala 80:47]
+      end else begin
+        sram_inst_12 <= _GEN_398;
+      end
+    end else if (4'hc == _T_2) begin // @[ysyx_25030077_IFU.scala 79:41]
+      if (_state_reg_T_9 & q == 2'h2) begin // @[ysyx_25030077_IFU.scala 79:47]
+        sram_inst_12 <= sdram_data_2;
+      end else begin
+        sram_inst_12 <= _GEN_367;
+      end
+    end else if (4'hc == _T_1) begin // @[ysyx_25030077_IFU.scala 78:41]
+      sram_inst_12 <= _sram_inst_T_9; // @[ysyx_25030077_IFU.scala 78:41]
+    end else begin
+      sram_inst_12 <= _GEN_316;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 22:28]
+      sram_inst_13 <= 32'h0; // @[ysyx_25030077_IFU.scala 22:28]
+    end else if (4'hd == _T_3) begin // @[ysyx_25030077_IFU.scala 80:41]
+      if (_state_reg_T_9 & _state_reg_T_10) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_13 <= sdram_data_3;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_13 <= sram_inst_15; // @[ysyx_25030077_IFU.scala 80:47]
+      end else begin
+        sram_inst_13 <= _GEN_398;
+      end
+    end else if (4'hd == _T_2) begin // @[ysyx_25030077_IFU.scala 79:41]
+      if (_state_reg_T_9 & q == 2'h2) begin // @[ysyx_25030077_IFU.scala 79:47]
+        sram_inst_13 <= sdram_data_2;
+      end else begin
+        sram_inst_13 <= _GEN_367;
+      end
+    end else if (4'hd == _T_1) begin // @[ysyx_25030077_IFU.scala 78:41]
+      sram_inst_13 <= _sram_inst_T_9; // @[ysyx_25030077_IFU.scala 78:41]
+    end else begin
+      sram_inst_13 <= _GEN_317;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 22:28]
+      sram_inst_14 <= 32'h0; // @[ysyx_25030077_IFU.scala 22:28]
+    end else if (4'he == _T_3) begin // @[ysyx_25030077_IFU.scala 80:41]
+      if (_state_reg_T_9 & _state_reg_T_10) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_14 <= sdram_data_3;
+      end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_14 <= sram_inst_15; // @[ysyx_25030077_IFU.scala 80:47]
+      end else begin
+        sram_inst_14 <= _GEN_398;
+      end
+    end else if (4'he == _T_2) begin // @[ysyx_25030077_IFU.scala 79:41]
+      if (_state_reg_T_9 & q == 2'h2) begin // @[ysyx_25030077_IFU.scala 79:47]
+        sram_inst_14 <= sdram_data_2;
+      end else begin
+        sram_inst_14 <= _GEN_367;
+      end
+    end else if (4'he == _T_1) begin // @[ysyx_25030077_IFU.scala 78:41]
+      sram_inst_14 <= _sram_inst_T_9; // @[ysyx_25030077_IFU.scala 78:41]
+    end else begin
+      sram_inst_14 <= _GEN_318;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 22:28]
+      sram_inst_15 <= 32'h0; // @[ysyx_25030077_IFU.scala 22:28]
+    end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 80:41]
+      if (_state_reg_T_9 & _state_reg_T_10) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_15 <= sdram_data_3;
+      end else if (!(4'hf == _T_3)) begin // @[ysyx_25030077_IFU.scala 80:47]
+        sram_inst_15 <= _GEN_398;
+      end
+    end else if (4'hf == _T_2) begin // @[ysyx_25030077_IFU.scala 79:41]
+      if (_state_reg_T_9 & q == 2'h2) begin // @[ysyx_25030077_IFU.scala 79:47]
+        sram_inst_15 <= sdram_data_2;
+      end else begin
+        sram_inst_15 <= _GEN_367;
+      end
+    end else if (4'hf == _T_1) begin // @[ysyx_25030077_IFU.scala 78:41]
+      sram_inst_15 <= _sram_inst_T_9; // @[ysyx_25030077_IFU.scala 78:41]
+    end else begin
+      sram_inst_15 <= _GEN_319;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 23:29]
+      sdram_data_0 <= 32'h0; // @[ysyx_25030077_IFU.scala 23:29]
+    end else if (_state_reg_T_5 & io_r_valid & k == 2'h0) begin // @[ysyx_25030077_IFU.scala 62:25]
+      sdram_data_0 <= io_r_data;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 23:29]
+      sdram_data_1 <= 32'h0; // @[ysyx_25030077_IFU.scala 23:29]
+    end else if (_sdram_data_0_T_1 & k == 2'h1) begin // @[ysyx_25030077_IFU.scala 63:25]
+      sdram_data_1 <= io_r_data;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 23:29]
+      sdram_data_2 <= 32'h0; // @[ysyx_25030077_IFU.scala 23:29]
+    end else if (_sdram_data_0_T_1 & k == 2'h2) begin // @[ysyx_25030077_IFU.scala 64:25]
+      sdram_data_2 <= io_r_data;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 23:29]
+      sdram_data_3 <= 32'h0; // @[ysyx_25030077_IFU.scala 23:29]
+    end else if (_sdram_data_0_T_1 & _state_reg_T_6) begin // @[ysyx_25030077_IFU.scala 65:25]
+      sdram_data_3 <= io_r_data;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 24:30]
+      sram_valid_0 <= 1'h0; // @[ysyx_25030077_IFU.scala 24:30]
+    end else if (4'h0 == _T_3) begin // @[ysyx_25030077_IFU.scala 75:42]
+      sram_valid_0 <= _sram_tag_T_17 | _GEN_271; // @[ysyx_25030077_IFU.scala 75:42]
+    end else if (4'h0 == _T_2) begin // @[ysyx_25030077_IFU.scala 74:42]
+      sram_valid_0 <= _sram_tag_T_12 | _GEN_239; // @[ysyx_25030077_IFU.scala 74:42]
+    end else if (4'h0 == _T_1) begin // @[ysyx_25030077_IFU.scala 73:42]
+      sram_valid_0 <= _sram_tag_T_7 | _GEN_207; // @[ysyx_25030077_IFU.scala 73:42]
+    end else begin
+      sram_valid_0 <= _GEN_176;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 24:30]
+      sram_valid_1 <= 1'h0; // @[ysyx_25030077_IFU.scala 24:30]
+    end else if (4'h1 == _T_3) begin // @[ysyx_25030077_IFU.scala 75:42]
+      sram_valid_1 <= _sram_tag_T_17 | _GEN_271; // @[ysyx_25030077_IFU.scala 75:42]
+    end else if (4'h1 == _T_2) begin // @[ysyx_25030077_IFU.scala 74:42]
+      sram_valid_1 <= _sram_tag_T_12 | _GEN_239; // @[ysyx_25030077_IFU.scala 74:42]
+    end else if (4'h1 == _T_1) begin // @[ysyx_25030077_IFU.scala 73:42]
+      sram_valid_1 <= _sram_tag_T_7 | _GEN_207; // @[ysyx_25030077_IFU.scala 73:42]
+    end else begin
+      sram_valid_1 <= _GEN_177;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 24:30]
+      sram_valid_2 <= 1'h0; // @[ysyx_25030077_IFU.scala 24:30]
+    end else if (4'h2 == _T_3) begin // @[ysyx_25030077_IFU.scala 75:42]
+      sram_valid_2 <= _sram_tag_T_17 | _GEN_271; // @[ysyx_25030077_IFU.scala 75:42]
+    end else if (4'h2 == _T_2) begin // @[ysyx_25030077_IFU.scala 74:42]
+      sram_valid_2 <= _sram_tag_T_12 | _GEN_239; // @[ysyx_25030077_IFU.scala 74:42]
+    end else if (4'h2 == _T_1) begin // @[ysyx_25030077_IFU.scala 73:42]
+      sram_valid_2 <= _sram_tag_T_7 | _GEN_207; // @[ysyx_25030077_IFU.scala 73:42]
+    end else begin
+      sram_valid_2 <= _GEN_178;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 24:30]
+      sram_valid_3 <= 1'h0; // @[ysyx_25030077_IFU.scala 24:30]
+    end else if (4'h3 == _T_3) begin // @[ysyx_25030077_IFU.scala 75:42]
+      sram_valid_3 <= _sram_tag_T_17 | _GEN_271; // @[ysyx_25030077_IFU.scala 75:42]
+    end else if (4'h3 == _T_2) begin // @[ysyx_25030077_IFU.scala 74:42]
+      sram_valid_3 <= _sram_tag_T_12 | _GEN_239; // @[ysyx_25030077_IFU.scala 74:42]
+    end else if (4'h3 == _T_1) begin // @[ysyx_25030077_IFU.scala 73:42]
+      sram_valid_3 <= _sram_tag_T_7 | _GEN_207; // @[ysyx_25030077_IFU.scala 73:42]
+    end else begin
+      sram_valid_3 <= _GEN_179;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 24:30]
+      sram_valid_4 <= 1'h0; // @[ysyx_25030077_IFU.scala 24:30]
+    end else if (4'h4 == _T_3) begin // @[ysyx_25030077_IFU.scala 75:42]
+      sram_valid_4 <= _sram_tag_T_17 | _GEN_271; // @[ysyx_25030077_IFU.scala 75:42]
+    end else if (4'h4 == _T_2) begin // @[ysyx_25030077_IFU.scala 74:42]
+      sram_valid_4 <= _sram_tag_T_12 | _GEN_239; // @[ysyx_25030077_IFU.scala 74:42]
+    end else if (4'h4 == _T_1) begin // @[ysyx_25030077_IFU.scala 73:42]
+      sram_valid_4 <= _sram_tag_T_7 | _GEN_207; // @[ysyx_25030077_IFU.scala 73:42]
+    end else begin
+      sram_valid_4 <= _GEN_180;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 24:30]
+      sram_valid_5 <= 1'h0; // @[ysyx_25030077_IFU.scala 24:30]
+    end else if (4'h5 == _T_3) begin // @[ysyx_25030077_IFU.scala 75:42]
+      sram_valid_5 <= _sram_tag_T_17 | _GEN_271; // @[ysyx_25030077_IFU.scala 75:42]
+    end else if (4'h5 == _T_2) begin // @[ysyx_25030077_IFU.scala 74:42]
+      sram_valid_5 <= _sram_tag_T_12 | _GEN_239; // @[ysyx_25030077_IFU.scala 74:42]
+    end else if (4'h5 == _T_1) begin // @[ysyx_25030077_IFU.scala 73:42]
+      sram_valid_5 <= _sram_tag_T_7 | _GEN_207; // @[ysyx_25030077_IFU.scala 73:42]
+    end else begin
+      sram_valid_5 <= _GEN_181;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 24:30]
+      sram_valid_6 <= 1'h0; // @[ysyx_25030077_IFU.scala 24:30]
+    end else if (4'h6 == _T_3) begin // @[ysyx_25030077_IFU.scala 75:42]
+      sram_valid_6 <= _sram_tag_T_17 | _GEN_271; // @[ysyx_25030077_IFU.scala 75:42]
+    end else if (4'h6 == _T_2) begin // @[ysyx_25030077_IFU.scala 74:42]
+      sram_valid_6 <= _sram_tag_T_12 | _GEN_239; // @[ysyx_25030077_IFU.scala 74:42]
+    end else if (4'h6 == _T_1) begin // @[ysyx_25030077_IFU.scala 73:42]
+      sram_valid_6 <= _sram_tag_T_7 | _GEN_207; // @[ysyx_25030077_IFU.scala 73:42]
+    end else begin
+      sram_valid_6 <= _GEN_182;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 24:30]
+      sram_valid_7 <= 1'h0; // @[ysyx_25030077_IFU.scala 24:30]
+    end else if (4'h7 == _T_3) begin // @[ysyx_25030077_IFU.scala 75:42]
+      sram_valid_7 <= _sram_tag_T_17 | _GEN_271; // @[ysyx_25030077_IFU.scala 75:42]
+    end else if (4'h7 == _T_2) begin // @[ysyx_25030077_IFU.scala 74:42]
+      sram_valid_7 <= _sram_tag_T_12 | _GEN_239; // @[ysyx_25030077_IFU.scala 74:42]
+    end else if (4'h7 == _T_1) begin // @[ysyx_25030077_IFU.scala 73:42]
+      sram_valid_7 <= _sram_tag_T_7 | _GEN_207; // @[ysyx_25030077_IFU.scala 73:42]
+    end else begin
+      sram_valid_7 <= _GEN_183;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 24:30]
+      sram_valid_8 <= 1'h0; // @[ysyx_25030077_IFU.scala 24:30]
+    end else if (4'h8 == _T_3) begin // @[ysyx_25030077_IFU.scala 75:42]
+      sram_valid_8 <= _sram_tag_T_17 | _GEN_271; // @[ysyx_25030077_IFU.scala 75:42]
+    end else if (4'h8 == _T_2) begin // @[ysyx_25030077_IFU.scala 74:42]
+      sram_valid_8 <= _sram_tag_T_12 | _GEN_239; // @[ysyx_25030077_IFU.scala 74:42]
+    end else if (4'h8 == _T_1) begin // @[ysyx_25030077_IFU.scala 73:42]
+      sram_valid_8 <= _sram_tag_T_7 | _GEN_207; // @[ysyx_25030077_IFU.scala 73:42]
+    end else begin
+      sram_valid_8 <= _GEN_184;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 24:30]
+      sram_valid_9 <= 1'h0; // @[ysyx_25030077_IFU.scala 24:30]
+    end else if (4'h9 == _T_3) begin // @[ysyx_25030077_IFU.scala 75:42]
+      sram_valid_9 <= _sram_tag_T_17 | _GEN_271; // @[ysyx_25030077_IFU.scala 75:42]
+    end else if (4'h9 == _T_2) begin // @[ysyx_25030077_IFU.scala 74:42]
+      sram_valid_9 <= _sram_tag_T_12 | _GEN_239; // @[ysyx_25030077_IFU.scala 74:42]
+    end else if (4'h9 == _T_1) begin // @[ysyx_25030077_IFU.scala 73:42]
+      sram_valid_9 <= _sram_tag_T_7 | _GEN_207; // @[ysyx_25030077_IFU.scala 73:42]
+    end else begin
+      sram_valid_9 <= _GEN_185;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 24:30]
+      sram_valid_10 <= 1'h0; // @[ysyx_25030077_IFU.scala 24:30]
+    end else if (4'ha == _T_3) begin // @[ysyx_25030077_IFU.scala 75:42]
+      sram_valid_10 <= _sram_tag_T_17 | _GEN_271; // @[ysyx_25030077_IFU.scala 75:42]
+    end else if (4'ha == _T_2) begin // @[ysyx_25030077_IFU.scala 74:42]
+      sram_valid_10 <= _sram_tag_T_12 | _GEN_239; // @[ysyx_25030077_IFU.scala 74:42]
+    end else if (4'ha == _T_1) begin // @[ysyx_25030077_IFU.scala 73:42]
+      sram_valid_10 <= _sram_tag_T_7 | _GEN_207; // @[ysyx_25030077_IFU.scala 73:42]
+    end else begin
+      sram_valid_10 <= _GEN_186;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 24:30]
+      sram_valid_11 <= 1'h0; // @[ysyx_25030077_IFU.scala 24:30]
+    end else if (4'hb == _T_3) begin // @[ysyx_25030077_IFU.scala 75:42]
+      sram_valid_11 <= _sram_tag_T_17 | _GEN_271; // @[ysyx_25030077_IFU.scala 75:42]
+    end else if (4'hb == _T_2) begin // @[ysyx_25030077_IFU.scala 74:42]
+      sram_valid_11 <= _sram_tag_T_12 | _GEN_239; // @[ysyx_25030077_IFU.scala 74:42]
+    end else if (4'hb == _T_1) begin // @[ysyx_25030077_IFU.scala 73:42]
+      sram_valid_11 <= _sram_tag_T_7 | _GEN_207; // @[ysyx_25030077_IFU.scala 73:42]
+    end else begin
+      sram_valid_11 <= _GEN_187;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 24:30]
+      sram_valid_12 <= 1'h0; // @[ysyx_25030077_IFU.scala 24:30]
+    end else if (4'hc == _T_3) begin // @[ysyx_25030077_IFU.scala 75:42]
+      sram_valid_12 <= _sram_tag_T_17 | _GEN_271; // @[ysyx_25030077_IFU.scala 75:42]
+    end else if (4'hc == _T_2) begin // @[ysyx_25030077_IFU.scala 74:42]
+      sram_valid_12 <= _sram_tag_T_12 | _GEN_239; // @[ysyx_25030077_IFU.scala 74:42]
+    end else if (4'hc == _T_1) begin // @[ysyx_25030077_IFU.scala 73:42]
+      sram_valid_12 <= _sram_tag_T_7 | _GEN_207; // @[ysyx_25030077_IFU.scala 73:42]
+    end else begin
+      sram_valid_12 <= _GEN_188;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 24:30]
+      sram_valid_13 <= 1'h0; // @[ysyx_25030077_IFU.scala 24:30]
+    end else if (4'hd == _T_3) begin // @[ysyx_25030077_IFU.scala 75:42]
+      sram_valid_13 <= _sram_tag_T_17 | _GEN_271; // @[ysyx_25030077_IFU.scala 75:42]
+    end else if (4'hd == _T_2) begin // @[ysyx_25030077_IFU.scala 74:42]
+      sram_valid_13 <= _sram_tag_T_12 | _GEN_239; // @[ysyx_25030077_IFU.scala 74:42]
+    end else if (4'hd == _T_1) begin // @[ysyx_25030077_IFU.scala 73:42]
+      sram_valid_13 <= _sram_tag_T_7 | _GEN_207; // @[ysyx_25030077_IFU.scala 73:42]
+    end else begin
+      sram_valid_13 <= _GEN_189;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 24:30]
+      sram_valid_14 <= 1'h0; // @[ysyx_25030077_IFU.scala 24:30]
+    end else if (4'he == _T_3) begin // @[ysyx_25030077_IFU.scala 75:42]
+      sram_valid_14 <= _sram_tag_T_17 | _GEN_271; // @[ysyx_25030077_IFU.scala 75:42]
+    end else if (4'he == _T_2) begin // @[ysyx_25030077_IFU.scala 74:42]
+      sram_valid_14 <= _sram_tag_T_12 | _GEN_239; // @[ysyx_25030077_IFU.scala 74:42]
+    end else if (4'he == _T_1) begin // @[ysyx_25030077_IFU.scala 73:42]
+      sram_valid_14 <= _sram_tag_T_7 | _GEN_207; // @[ysyx_25030077_IFU.scala 73:42]
+    end else begin
+      sram_valid_14 <= _GEN_190;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 24:30]
+      sram_valid_15 <= 1'h0; // @[ysyx_25030077_IFU.scala 24:30]
+    end else if (4'hf == _T_3) begin // @[ysyx_25030077_IFU.scala 75:42]
+      sram_valid_15 <= _sram_tag_T_17 | _GEN_271; // @[ysyx_25030077_IFU.scala 75:42]
+    end else if (4'hf == _T_2) begin // @[ysyx_25030077_IFU.scala 74:42]
+      sram_valid_15 <= _sram_tag_T_12 | _GEN_239; // @[ysyx_25030077_IFU.scala 74:42]
+    end else if (4'hf == _T_1) begin // @[ysyx_25030077_IFU.scala 73:42]
+      sram_valid_15 <= _sram_tag_T_7 | _GEN_207; // @[ysyx_25030077_IFU.scala 73:42]
+    end else begin
+      sram_valid_15 <= _GEN_191;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 28:20]
+      j <= 2'h0; // @[ysyx_25030077_IFU.scala 28:20]
+    end else if (_write_reg_T) begin // @[Mux.scala 101:16]
+      j <= 2'h0;
+    end else if (_write_reg_T_3) begin // @[Mux.scala 101:16]
+      if (_write_reg_T_4) begin // @[ysyx_25030077_IFU.scala 56:45]
+        j <= 2'h0;
+      end else begin
+        j <= _j_T_4;
       end
     end
-    if (reset) begin // @[ysyx_25030077_IFU.scala 39:20]
-      j <= 3'h0; // @[ysyx_25030077_IFU.scala 39:20]
+    if (reset) begin // @[ysyx_25030077_IFU.scala 29:20]
+      k <= 2'h0; // @[ysyx_25030077_IFU.scala 29:20]
     end else if (_state_reg_T) begin // @[Mux.scala 101:16]
-      j <= 3'h0;
-    end else if (_state_reg_T_4) begin // @[Mux.scala 101:16]
-      if (io_r_valid) begin // @[ysyx_25030077_IFU.scala 66:35]
-        j <= _serach_addr_T_4;
-      end
-    end
-    if (reset) begin // @[ysyx_25030077_IFU.scala 40:20]
-      k <= 3'h0; // @[ysyx_25030077_IFU.scala 40:20]
-    end else if (_state_reg_T) begin // @[Mux.scala 101:16]
-      k <= 3'h0;
-    end else if (_state_reg_T_14) begin // @[Mux.scala 101:16]
-      if (io_r_valid) begin // @[ysyx_25030077_IFU.scala 70:35]
+      k <= 2'h0;
+    end else if (_state_reg_T_5) begin // @[Mux.scala 101:16]
+      if (io_r_valid) begin // @[ysyx_25030077_IFU.scala 52:47]
         k <= _k_T_5;
       end
-    end else if (_state_reg_T_18) begin // @[Mux.scala 101:16]
-      k <= _k_T_10;
     end
-    if (reset) begin // @[ysyx_25030077_IFU.scala 41:23]
-      temp <= 3'h0; // @[ysyx_25030077_IFU.scala 41:23]
-    end else if (_state_reg_T_20 & io_w_ready & _state_reg_T_21 & is_full) begin // @[ysyx_25030077_IFU.scala 80:16]
-      temp <= _temp_T_6;
-    end
-    if (reset) begin // @[ysyx_25030077_IFU.scala 42:26]
-      is_full <= 1'h0; // @[ysyx_25030077_IFU.scala 42:26]
-    end else if (_state_reg_T_4) begin // @[Mux.scala 101:16]
-      if (io_r_valid) begin // @[ysyx_25030077_IFU.scala 97:35]
-        is_full <= _state_reg_T_5 & ~is_notvalid;
+    if (reset) begin // @[ysyx_25030077_IFU.scala 30:20]
+      q <= 2'h0; // @[ysyx_25030077_IFU.scala 30:20]
+    end else if (_state_reg_T) begin // @[Mux.scala 101:16]
+      q <= 2'h0;
+    end else if (_state_reg_T_9) begin // @[Mux.scala 101:16]
+      if (_state_reg_T_10) begin // @[ysyx_25030077_IFU.scala 60:47]
+        q <= 2'h0;
+      end else begin
+        q <= _q_T_4;
       end
     end
-    if (reset) begin // @[ysyx_25030077_IFU.scala 48:24]
-      data0 <= 32'h0; // @[ysyx_25030077_IFU.scala 48:24]
-    end else if (_state_reg_T_14 & io_r_valid & k == 3'h0) begin // @[ysyx_25030077_IFU.scala 74:17]
-      data0 <= io_r_data;
+    if (reset) begin // @[ysyx_25030077_IFU.scala 31:28]
+      rdata_reg <= 32'h0; // @[ysyx_25030077_IFU.scala 31:28]
+    end else if (_state_reg_T) begin // @[Mux.scala 101:16]
+      if (_ar_valid_reg_T_3) begin // @[ysyx_25030077_IFU.scala 98:47]
+        if (4'hf == _is_hit_T) begin // @[ysyx_25030077_IFU.scala 98:47]
+          rdata_reg <= sram_inst_15; // @[ysyx_25030077_IFU.scala 98:47]
+        end else begin
+          rdata_reg <= _GEN_430;
+        end
+      end
+    end else if (_state_reg_T_12) begin // @[Mux.scala 101:16]
+      if (io_r_valid) begin // @[ysyx_25030077_IFU.scala 99:47]
+        rdata_reg <= io_r_data;
+      end
+    end else if (_state_reg_T_5) begin // @[Mux.scala 101:16]
+      rdata_reg <= _rdata_reg_T_11;
     end
-    if (reset) begin // @[ysyx_25030077_IFU.scala 49:24]
-      data1 <= 32'h0; // @[ysyx_25030077_IFU.scala 49:24]
-    end else if (_data0_T_1 & k == 3'h1) begin // @[ysyx_25030077_IFU.scala 75:17]
-      data1 <= io_r_data;
-    end
-    if (reset) begin // @[ysyx_25030077_IFU.scala 50:24]
-      data2 <= 32'h0; // @[ysyx_25030077_IFU.scala 50:24]
-    end else if (_data0_T_1 & k == 3'h2) begin // @[ysyx_25030077_IFU.scala 76:17]
-      data2 <= io_r_data;
-    end
-    if (reset) begin // @[ysyx_25030077_IFU.scala 51:24]
-      data3 <= 32'h0; // @[ysyx_25030077_IFU.scala 51:24]
-    end else if (_data0_T_1 & _state_reg_T_15) begin // @[ysyx_25030077_IFU.scala 77:17]
-      data3 <= io_r_data;
-    end
-    if (reset) begin // @[ysyx_25030077_IFU.scala 101:31]
-      aw_valid_reg <= 1'h0; // @[ysyx_25030077_IFU.scala 101:31]
-    end else if (_state_reg_T_14) begin // @[Mux.scala 101:16]
-      aw_valid_reg <= _aw_valid_reg_T_2;
-    end else if (_state_reg_T_18) begin // @[Mux.scala 101:16]
-      if (aw_valid_reg) begin // @[ysyx_25030077_IFU.scala 104:35]
-        aw_valid_reg <= _aw_valid_reg_T_5;
+    if (reset) begin // @[ysyx_25030077_IFU.scala 32:31]
+      ar_valid_reg <= 1'h0; // @[ysyx_25030077_IFU.scala 32:31]
+    end else if (_state_reg_T) begin // @[Mux.scala 101:16]
+      if (_state_reg_T_2 & is_hit) begin // @[ysyx_25030077_IFU.scala 83:47]
+        ar_valid_reg <= 1'h0;
       end else begin
-        aw_valid_reg <= io_b_valid;
+        ar_valid_reg <= 1'h1;
       end
     end else begin
-      aw_valid_reg <= _state_reg_T_20 & _aw_valid_reg_T_13;
+      ar_valid_reg <= _ar_valid_reg_T_7 & _ar_valid_reg_T_9;
     end
-    if (reset) begin // @[ysyx_25030077_IFU.scala 115:30]
-      w_valid_reg <= 1'h0; // @[ysyx_25030077_IFU.scala 115:30]
-    end else if (_state_reg_T_14) begin // @[Mux.scala 101:16]
-      w_valid_reg <= _aw_valid_reg_T_2;
-    end else if (_state_reg_T_18) begin // @[Mux.scala 101:16]
-      if (w_valid_reg) begin // @[ysyx_25030077_IFU.scala 118:35]
-        w_valid_reg <= _w_valid_reg_T_5;
+    if (reset) begin // @[ysyx_25030077_IFU.scala 33:31]
+      ar_addr_reg <= 32'h0; // @[ysyx_25030077_IFU.scala 33:31]
+    end else if (_state_reg_T) begin // @[Mux.scala 101:16]
+      if (io_pc[31:28] == 4'h3) begin // @[ysyx_25030077_IFU.scala 89:47]
+        ar_addr_reg <= io_pc;
       end else begin
-        w_valid_reg <= io_b_valid;
+        ar_addr_reg <= _ar_addr_reg_T_4;
       end
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 35:28]
+      state_reg <= 5'h1; // @[ysyx_25030077_IFU.scala 35:28]
+    end else if (_state_reg_T) begin // @[Mux.scala 101:16]
+      if (io_pc[31:28] == 4'ha) begin // @[ysyx_25030077_IFU.scala 38:47]
+        if (is_hit) begin // @[ysyx_25030077_IFU.scala 38:76]
+          state_reg <= 5'h10;
+        end else begin
+          state_reg <= 5'h2;
+        end
+      end else begin
+        state_reg <= 5'h8;
+      end
+    end else if (_state_reg_T_5) begin // @[Mux.scala 101:16]
+      if (io_r_valid) begin // @[ysyx_25030077_IFU.scala 39:47]
+        state_reg <= _state_reg_T_7;
+      end else begin
+        state_reg <= 5'h2;
+      end
+    end else if (_state_reg_T_9) begin // @[Mux.scala 101:16]
+      state_reg <= _state_reg_T_11;
     end else begin
-      w_valid_reg <= _state_reg_T_20 & _w_valid_reg_T_13;
+      state_reg <= _state_reg_T_17;
+    end
+    if (reset) begin // @[ysyx_25030077_IFU.scala 44:28]
+      write_reg <= 3'h1; // @[ysyx_25030077_IFU.scala 44:28]
+    end else if (_write_reg_T) begin // @[Mux.scala 101:16]
+      if (_state_reg_T_5) begin // @[ysyx_25030077_IFU.scala 46:45]
+        write_reg <= 3'h2;
+      end else begin
+        write_reg <= 3'h1;
+      end
+    end else if (_write_reg_T_3) begin // @[Mux.scala 101:16]
+      if (j == 2'h3) begin // @[ysyx_25030077_IFU.scala 47:45]
+        write_reg <= 3'h4;
+      end else begin
+        write_reg <= 3'h2;
+      end
+    end else if (_write_reg_T_6) begin // @[Mux.scala 101:16]
+      write_reg <= _write_reg_T_8;
+    end else begin
+      write_reg <= 3'h1;
     end
   end
 // Register and memory initialization
@@ -317,33 +1475,125 @@ initial begin
     `endif
 `ifdef RANDOMIZE_REG_INIT
   _RAND_0 = {1{`RANDOM}};
-  state_reg = _RAND_0[2:0];
+  sram_tag_0 = _RAND_0[21:0];
   _RAND_1 = {1{`RANDOM}};
-  rdata_reg = _RAND_1[31:0];
+  sram_tag_1 = _RAND_1[21:0];
   _RAND_2 = {1{`RANDOM}};
-  ar_valid_reg = _RAND_2[0:0];
+  sram_tag_2 = _RAND_2[21:0];
   _RAND_3 = {1{`RANDOM}};
-  ar_addr_reg = _RAND_3[31:0];
+  sram_tag_3 = _RAND_3[21:0];
   _RAND_4 = {1{`RANDOM}};
-  j = _RAND_4[2:0];
+  sram_tag_4 = _RAND_4[21:0];
   _RAND_5 = {1{`RANDOM}};
-  k = _RAND_5[2:0];
+  sram_tag_5 = _RAND_5[21:0];
   _RAND_6 = {1{`RANDOM}};
-  temp = _RAND_6[2:0];
+  sram_tag_6 = _RAND_6[21:0];
   _RAND_7 = {1{`RANDOM}};
-  is_full = _RAND_7[0:0];
+  sram_tag_7 = _RAND_7[21:0];
   _RAND_8 = {1{`RANDOM}};
-  data0 = _RAND_8[31:0];
+  sram_tag_8 = _RAND_8[21:0];
   _RAND_9 = {1{`RANDOM}};
-  data1 = _RAND_9[31:0];
+  sram_tag_9 = _RAND_9[21:0];
   _RAND_10 = {1{`RANDOM}};
-  data2 = _RAND_10[31:0];
+  sram_tag_10 = _RAND_10[21:0];
   _RAND_11 = {1{`RANDOM}};
-  data3 = _RAND_11[31:0];
+  sram_tag_11 = _RAND_11[21:0];
   _RAND_12 = {1{`RANDOM}};
-  aw_valid_reg = _RAND_12[0:0];
+  sram_tag_12 = _RAND_12[21:0];
   _RAND_13 = {1{`RANDOM}};
-  w_valid_reg = _RAND_13[0:0];
+  sram_tag_13 = _RAND_13[21:0];
+  _RAND_14 = {1{`RANDOM}};
+  sram_tag_14 = _RAND_14[21:0];
+  _RAND_15 = {1{`RANDOM}};
+  sram_tag_15 = _RAND_15[21:0];
+  _RAND_16 = {1{`RANDOM}};
+  sram_inst_0 = _RAND_16[31:0];
+  _RAND_17 = {1{`RANDOM}};
+  sram_inst_1 = _RAND_17[31:0];
+  _RAND_18 = {1{`RANDOM}};
+  sram_inst_2 = _RAND_18[31:0];
+  _RAND_19 = {1{`RANDOM}};
+  sram_inst_3 = _RAND_19[31:0];
+  _RAND_20 = {1{`RANDOM}};
+  sram_inst_4 = _RAND_20[31:0];
+  _RAND_21 = {1{`RANDOM}};
+  sram_inst_5 = _RAND_21[31:0];
+  _RAND_22 = {1{`RANDOM}};
+  sram_inst_6 = _RAND_22[31:0];
+  _RAND_23 = {1{`RANDOM}};
+  sram_inst_7 = _RAND_23[31:0];
+  _RAND_24 = {1{`RANDOM}};
+  sram_inst_8 = _RAND_24[31:0];
+  _RAND_25 = {1{`RANDOM}};
+  sram_inst_9 = _RAND_25[31:0];
+  _RAND_26 = {1{`RANDOM}};
+  sram_inst_10 = _RAND_26[31:0];
+  _RAND_27 = {1{`RANDOM}};
+  sram_inst_11 = _RAND_27[31:0];
+  _RAND_28 = {1{`RANDOM}};
+  sram_inst_12 = _RAND_28[31:0];
+  _RAND_29 = {1{`RANDOM}};
+  sram_inst_13 = _RAND_29[31:0];
+  _RAND_30 = {1{`RANDOM}};
+  sram_inst_14 = _RAND_30[31:0];
+  _RAND_31 = {1{`RANDOM}};
+  sram_inst_15 = _RAND_31[31:0];
+  _RAND_32 = {1{`RANDOM}};
+  sdram_data_0 = _RAND_32[31:0];
+  _RAND_33 = {1{`RANDOM}};
+  sdram_data_1 = _RAND_33[31:0];
+  _RAND_34 = {1{`RANDOM}};
+  sdram_data_2 = _RAND_34[31:0];
+  _RAND_35 = {1{`RANDOM}};
+  sdram_data_3 = _RAND_35[31:0];
+  _RAND_36 = {1{`RANDOM}};
+  sram_valid_0 = _RAND_36[0:0];
+  _RAND_37 = {1{`RANDOM}};
+  sram_valid_1 = _RAND_37[0:0];
+  _RAND_38 = {1{`RANDOM}};
+  sram_valid_2 = _RAND_38[0:0];
+  _RAND_39 = {1{`RANDOM}};
+  sram_valid_3 = _RAND_39[0:0];
+  _RAND_40 = {1{`RANDOM}};
+  sram_valid_4 = _RAND_40[0:0];
+  _RAND_41 = {1{`RANDOM}};
+  sram_valid_5 = _RAND_41[0:0];
+  _RAND_42 = {1{`RANDOM}};
+  sram_valid_6 = _RAND_42[0:0];
+  _RAND_43 = {1{`RANDOM}};
+  sram_valid_7 = _RAND_43[0:0];
+  _RAND_44 = {1{`RANDOM}};
+  sram_valid_8 = _RAND_44[0:0];
+  _RAND_45 = {1{`RANDOM}};
+  sram_valid_9 = _RAND_45[0:0];
+  _RAND_46 = {1{`RANDOM}};
+  sram_valid_10 = _RAND_46[0:0];
+  _RAND_47 = {1{`RANDOM}};
+  sram_valid_11 = _RAND_47[0:0];
+  _RAND_48 = {1{`RANDOM}};
+  sram_valid_12 = _RAND_48[0:0];
+  _RAND_49 = {1{`RANDOM}};
+  sram_valid_13 = _RAND_49[0:0];
+  _RAND_50 = {1{`RANDOM}};
+  sram_valid_14 = _RAND_50[0:0];
+  _RAND_51 = {1{`RANDOM}};
+  sram_valid_15 = _RAND_51[0:0];
+  _RAND_52 = {1{`RANDOM}};
+  j = _RAND_52[1:0];
+  _RAND_53 = {1{`RANDOM}};
+  k = _RAND_53[1:0];
+  _RAND_54 = {1{`RANDOM}};
+  q = _RAND_54[1:0];
+  _RAND_55 = {1{`RANDOM}};
+  rdata_reg = _RAND_55[31:0];
+  _RAND_56 = {1{`RANDOM}};
+  ar_valid_reg = _RAND_56[0:0];
+  _RAND_57 = {1{`RANDOM}};
+  ar_addr_reg = _RAND_57[31:0];
+  _RAND_58 = {1{`RANDOM}};
+  state_reg = _RAND_58[4:0];
+  _RAND_59 = {1{`RANDOM}};
+  write_reg = _RAND_59[2:0];
 `endif // RANDOMIZE_REG_INIT
   `endif // RANDOMIZE
 end // initial
@@ -1501,14 +2751,6 @@ module ysyx_25030077_arbiter(
   input         io_IFU_r_ready,
   output        io_IFU_r_valid,
   output [31:0] io_IFU_r_data,
-  input         io_IFU_b_ready,
-  output        io_IFU_b_valid,
-  input         io_IFU_aw_valid,
-  input  [31:0] io_IFU_aw_addr,
-  output        io_IFU_aw_ready,
-  input         io_IFU_w_valid,
-  input  [31:0] io_IFU_w_data,
-  output        io_IFU_w_ready,
   input         io_LSU_ar_valid,
   input  [31:0] io_LSU_ar_addr,
   output        io_LSU_ar_ready,
@@ -1563,54 +2805,49 @@ module ysyx_25030077_arbiter(
   reg [1:0] r_cnt; // @[ysyx_25030077_arbiter.scala 79:22]
   reg [1:0] ar_len; // @[ysyx_25030077_arbiter.scala 80:23]
   wire  _state_T = state == 3'h0; // @[ysyx_25030077_arbiter.scala 82:16]
-  wire [2:0] _state_T_5 = io_IFU_aw_valid & io_axi_aw_ready ? 3'h4 : 3'h0; // @[ysyx_25030077_arbiter.scala 85:44]
-  wire [2:0] _state_T_6 = io_IFU_ar_valid & io_axi_ar_ready ? 3'h1 : _state_T_5; // @[ysyx_25030077_arbiter.scala 84:40]
-  wire  _state_T_9 = state == 3'h1; // @[ysyx_25030077_arbiter.scala 86:16]
-  wire  _state_T_10 = io_IFU_r_ready & io_axi_r_valid; // @[ysyx_25030077_arbiter.scala 86:47]
-  wire  _state_T_14 = state == 3'h2; // @[ysyx_25030077_arbiter.scala 87:16]
-  wire [2:0] _state_T_16 = io_LSU_r_ready & io_axi_r_valid ? 3'h0 : 3'h2; // @[ysyx_25030077_arbiter.scala 87:31]
-  wire  _state_T_17 = state == 3'h3; // @[ysyx_25030077_arbiter.scala 88:16]
-  wire [2:0] _state_T_19 = io_LSU_b_ready & io_axi_b_valid ? 3'h0 : 3'h3; // @[ysyx_25030077_arbiter.scala 88:31]
-  wire  _state_T_20 = state == 3'h4; // @[ysyx_25030077_arbiter.scala 89:16]
-  wire [2:0] _state_T_22 = io_IFU_b_ready & io_axi_b_valid ? 3'h0 : 3'h4; // @[ysyx_25030077_arbiter.scala 89:31]
-  wire [2:0] _state_T_23 = _state_T_20 ? _state_T_22 : state; // @[Mux.scala 101:16]
-  wire [2:0] _state_T_24 = _state_T_17 ? _state_T_19 : _state_T_23; // @[Mux.scala 101:16]
-  wire [31:0] _io_axi_ar_addr_T_2 = _state_T_9 ? io_IFU_ar_addr : 32'h0; // @[ysyx_25030077_arbiter.scala 93:61]
-  wire [1:0] _io_axi_ar_id_T_2 = _state_T_9 ? 2'h2 : 2'h0; // @[ysyx_25030077_arbiter.scala 94:50]
-  wire [1:0] _io_axi_ar_id_T_3 = _state_T_14 ? 2'h1 : _io_axi_ar_id_T_2; // @[ysyx_25030077_arbiter.scala 94:25]
-  wire  _rsize_T = io_LSU_rw_type == 4'h4; // @[ysyx_25030077_arbiter.scala 102:29]
-  wire  _rsize_T_1 = io_LSU_rw_type == 4'h5; // @[ysyx_25030077_arbiter.scala 103:29]
-  wire  _rsize_T_2 = io_LSU_rw_type == 4'h6; // @[ysyx_25030077_arbiter.scala 104:29]
-  wire  _rsize_T_3 = io_LSU_rw_type == 4'h7; // @[ysyx_25030077_arbiter.scala 105:29]
-  wire  _rsize_T_4 = io_LSU_rw_type == 4'h8; // @[ysyx_25030077_arbiter.scala 106:29]
+  wire [2:0] _state_T_4 = io_IFU_ar_valid & io_axi_ar_ready ? 3'h1 : 3'h0; // @[ysyx_25030077_arbiter.scala 84:40]
+  wire  _state_T_7 = state == 3'h1; // @[ysyx_25030077_arbiter.scala 85:16]
+  wire  _state_T_8 = io_IFU_r_ready & io_axi_r_valid; // @[ysyx_25030077_arbiter.scala 85:47]
+  wire  _state_T_12 = state == 3'h2; // @[ysyx_25030077_arbiter.scala 86:16]
+  wire [2:0] _state_T_14 = io_LSU_r_ready & io_axi_r_valid ? 3'h0 : 3'h2; // @[ysyx_25030077_arbiter.scala 86:31]
+  wire  _state_T_15 = state == 3'h3; // @[ysyx_25030077_arbiter.scala 87:16]
+  wire [2:0] _state_T_17 = io_LSU_b_ready & io_axi_b_valid ? 3'h0 : 3'h3; // @[ysyx_25030077_arbiter.scala 87:31]
+  wire [2:0] _state_T_18 = _state_T_15 ? _state_T_17 : state; // @[Mux.scala 101:16]
+  wire [31:0] _io_axi_ar_addr_T_2 = _state_T_7 ? io_IFU_ar_addr : 32'h0; // @[ysyx_25030077_arbiter.scala 91:61]
+  wire  _rsize_T = io_LSU_rw_type == 4'h4; // @[ysyx_25030077_arbiter.scala 97:29]
+  wire  _rsize_T_1 = io_LSU_rw_type == 4'h5; // @[ysyx_25030077_arbiter.scala 98:29]
+  wire  _rsize_T_2 = io_LSU_rw_type == 4'h6; // @[ysyx_25030077_arbiter.scala 99:29]
+  wire  _rsize_T_3 = io_LSU_rw_type == 4'h7; // @[ysyx_25030077_arbiter.scala 100:29]
+  wire  _rsize_T_4 = io_LSU_rw_type == 4'h8; // @[ysyx_25030077_arbiter.scala 101:29]
   wire [1:0] _rsize_T_5 = _rsize_T_4 ? 2'h2 : 2'h0; // @[Mux.scala 101:16]
   wire [1:0] _rsize_T_6 = _rsize_T_3 ? 2'h1 : _rsize_T_5; // @[Mux.scala 101:16]
   wire [1:0] _rsize_T_7 = _rsize_T_2 ? 2'h1 : _rsize_T_6; // @[Mux.scala 101:16]
   wire [1:0] _rsize_T_8 = _rsize_T_1 ? 2'h0 : _rsize_T_7; // @[Mux.scala 101:16]
   wire [1:0] rsize = _rsize_T ? 2'h0 : _rsize_T_8; // @[Mux.scala 101:16]
-  wire [1:0] _io_axi_ar_size_T_3 = _state_T_14 ? rsize : _io_axi_ar_id_T_2; // @[ysyx_25030077_arbiter.scala 108:25]
-  wire [1:0] _io_axi_ar_len_T_2 = io_IFU_ar_brust == 2'h1 ? 2'h3 : 2'h0; // @[ysyx_25030077_arbiter.scala 109:42]
-  wire [1:0] _io_axi_ar_len_T_3 = _state_T_9 ? _io_axi_ar_len_T_2 : 2'h0; // @[ysyx_25030077_arbiter.scala 109:23]
-  wire [1:0] _r_cnt_T_4 = r_cnt + 2'h1; // @[ysyx_25030077_arbiter.scala 112:98]
-  wire [31:0] _io_axi_aw_addr_T_2 = _state_T_20 ? io_IFU_aw_addr : 32'h0; // @[ysyx_25030077_arbiter.scala 115:61]
-  wire  _wsize_T = io_LSU_rw_type == 4'h1; // @[ysyx_25030077_arbiter.scala 119:39]
-  wire  _wsize_T_1 = io_LSU_rw_type == 4'h2; // @[ysyx_25030077_arbiter.scala 120:39]
-  wire  _wsize_T_2 = io_LSU_rw_type == 4'h3; // @[ysyx_25030077_arbiter.scala 121:39]
+  wire [1:0] _io_axi_ar_size_T_2 = _state_T_7 ? 2'h2 : 2'h0; // @[ysyx_25030077_arbiter.scala 103:51]
+  wire [1:0] _io_axi_ar_size_T_3 = _state_T_12 ? rsize : _io_axi_ar_size_T_2; // @[ysyx_25030077_arbiter.scala 103:25]
+  wire [1:0] _io_axi_ar_len_T_2 = io_IFU_ar_brust == 2'h1 ? 2'h3 : 2'h0; // @[ysyx_25030077_arbiter.scala 105:42]
+  wire [1:0] _io_axi_ar_len_T_3 = _state_T_7 ? _io_axi_ar_len_T_2 : 2'h0; // @[ysyx_25030077_arbiter.scala 105:23]
+  wire [1:0] _r_cnt_T_4 = r_cnt + 2'h1; // @[ysyx_25030077_arbiter.scala 108:98]
+  wire  _wsize_T = io_LSU_rw_type == 4'h1; // @[ysyx_25030077_arbiter.scala 114:39]
+  wire  _wsize_T_1 = io_LSU_rw_type == 4'h2; // @[ysyx_25030077_arbiter.scala 115:39]
+  wire  _wsize_T_2 = io_LSU_rw_type == 4'h3; // @[ysyx_25030077_arbiter.scala 116:39]
   wire [1:0] wsize = _wsize_T ? 2'h2 : {{1'd0}, _wsize_T_1}; // @[Mux.scala 101:16]
-  wire [1:0] _io_axi_aw_size_T_2 = _state_T_20 ? 2'h2 : 2'h0; // @[ysyx_25030077_arbiter.scala 123:51]
-  wire [1:0] _io_axi_aw_size_T_3 = _state_T_17 ? wsize : _io_axi_aw_size_T_2; // @[ysyx_25030077_arbiter.scala 123:25]
-  wire  _w_data_T_3 = ~io_LSU_aw_addr[1]; // @[ysyx_25030077_arbiter.scala 128:74]
+  wire  _io_axi_aw_size_T_1 = state == 3'h4; // @[ysyx_25030077_arbiter.scala 118:58]
+  wire [1:0] _io_axi_aw_size_T_2 = state == 3'h4 ? 2'h2 : 2'h0; // @[ysyx_25030077_arbiter.scala 118:51]
+  wire [1:0] _io_axi_aw_size_T_3 = _state_T_15 ? wsize : _io_axi_aw_size_T_2; // @[ysyx_25030077_arbiter.scala 118:25]
+  wire  _w_data_T_3 = ~io_LSU_aw_addr[1]; // @[ysyx_25030077_arbiter.scala 123:74]
   wire [31:0] _w_data_T_5 = {16'h0,io_LSU_w_data[15:0]}; // @[Cat.scala 31:58]
   wire [31:0] _w_data_T_9 = {io_LSU_w_data[15:0],16'h0}; // @[Cat.scala 31:58]
   wire [31:0] _w_data_T_10 = io_LSU_aw_addr[1] ? _w_data_T_9 : 32'h0; // @[Mux.scala 101:16]
   wire [31:0] _w_data_T_11 = _w_data_T_3 ? _w_data_T_5 : _w_data_T_10; // @[Mux.scala 101:16]
-  wire  _w_data_T_14 = io_LSU_aw_addr[1:0] == 2'h0; // @[ysyx_25030077_arbiter.scala 132:77]
+  wire  _w_data_T_14 = io_LSU_aw_addr[1:0] == 2'h0; // @[ysyx_25030077_arbiter.scala 127:77]
   wire [31:0] _w_data_T_16 = {24'h0,io_LSU_w_data[7:0]}; // @[Cat.scala 31:58]
-  wire  _w_data_T_18 = io_LSU_aw_addr[1:0] == 2'h1; // @[ysyx_25030077_arbiter.scala 133:77]
+  wire  _w_data_T_18 = io_LSU_aw_addr[1:0] == 2'h1; // @[ysyx_25030077_arbiter.scala 128:77]
   wire [31:0] _w_data_T_20 = {16'h0,io_LSU_w_data[7:0],8'h0}; // @[Cat.scala 31:58]
-  wire  _w_data_T_22 = io_LSU_aw_addr[1:0] == 2'h2; // @[ysyx_25030077_arbiter.scala 134:77]
+  wire  _w_data_T_22 = io_LSU_aw_addr[1:0] == 2'h2; // @[ysyx_25030077_arbiter.scala 129:77]
   wire [31:0] _w_data_T_24 = {8'h0,io_LSU_w_data[7:0],16'h0}; // @[Cat.scala 31:58]
-  wire  _w_data_T_26 = io_LSU_aw_addr[1:0] == 2'h3; // @[ysyx_25030077_arbiter.scala 135:77]
+  wire  _w_data_T_26 = io_LSU_aw_addr[1:0] == 2'h3; // @[ysyx_25030077_arbiter.scala 130:77]
   wire [31:0] _w_data_T_28 = {io_LSU_w_data[7:0],24'h0}; // @[Cat.scala 31:58]
   wire [31:0] _w_data_T_29 = _w_data_T_26 ? _w_data_T_28 : 32'h0; // @[Mux.scala 101:16]
   wire [31:0] _w_data_T_30 = _w_data_T_22 ? _w_data_T_24 : _w_data_T_29; // @[Mux.scala 101:16]
@@ -1619,7 +2856,6 @@ module ysyx_25030077_arbiter(
   wire [31:0] _w_data_T_33 = _wsize_T_2 ? _w_data_T_32 : 32'h0; // @[Mux.scala 101:16]
   wire [31:0] _w_data_T_34 = _wsize_T_1 ? _w_data_T_11 : _w_data_T_33; // @[Mux.scala 101:16]
   wire [31:0] w_data = _wsize_T ? io_LSU_w_data : _w_data_T_34; // @[Mux.scala 101:16]
-  wire [31:0] _io_axi_w_data_T_2 = _state_T_20 ? io_IFU_w_data : 32'h0; // @[ysyx_25030077_arbiter.scala 138:52]
   wire [3:0] _strb_T_6 = io_LSU_aw_addr[1] ? 4'hc : 4'h0; // @[Mux.scala 101:16]
   wire [3:0] _strb_T_7 = _w_data_T_3 ? 4'h3 : _strb_T_6; // @[Mux.scala 101:16]
   wire [3:0] _strb_T_17 = _w_data_T_26 ? 4'h8 : 4'h0; // @[Mux.scala 101:16]
@@ -1629,20 +2865,20 @@ module ysyx_25030077_arbiter(
   wire [3:0] _strb_T_21 = _wsize_T_2 ? _strb_T_20 : 4'h0; // @[Mux.scala 101:16]
   wire [3:0] _strb_T_22 = _wsize_T_1 ? _strb_T_7 : _strb_T_21; // @[Mux.scala 101:16]
   wire [3:0] strb = _wsize_T ? 4'hf : _strb_T_22; // @[Mux.scala 101:16]
-  wire  is_sram = ~(io_axi_ar_addr[31:28] == 4'h3); // @[ysyx_25030077_arbiter.scala 154:18]
-  wire  _rdata_sram_T_3 = io_axi_ar_addr[1:0] == 2'h0; // @[ysyx_25030077_arbiter.scala 158:79]
+  wire  is_sram = ~(io_axi_ar_addr[31:28] == 4'h3); // @[ysyx_25030077_arbiter.scala 148:18]
+  wire  _rdata_sram_T_3 = io_axi_ar_addr[1:0] == 2'h0; // @[ysyx_25030077_arbiter.scala 152:79]
   wire [31:0] _rdata_sram_T_5 = {24'h0,io_axi_r_data[7:0]}; // @[Cat.scala 31:58]
-  wire  _rdata_sram_T_7 = io_axi_ar_addr[1:0] == 2'h1; // @[ysyx_25030077_arbiter.scala 159:79]
+  wire  _rdata_sram_T_7 = io_axi_ar_addr[1:0] == 2'h1; // @[ysyx_25030077_arbiter.scala 153:79]
   wire [31:0] _rdata_sram_T_9 = {24'h0,io_axi_r_data[15:8]}; // @[Cat.scala 31:58]
-  wire  _rdata_sram_T_11 = io_axi_ar_addr[1:0] == 2'h2; // @[ysyx_25030077_arbiter.scala 160:79]
+  wire  _rdata_sram_T_11 = io_axi_ar_addr[1:0] == 2'h2; // @[ysyx_25030077_arbiter.scala 154:79]
   wire [31:0] _rdata_sram_T_13 = {24'h0,io_axi_r_data[23:16]}; // @[Cat.scala 31:58]
-  wire  _rdata_sram_T_15 = io_axi_ar_addr[1:0] == 2'h3; // @[ysyx_25030077_arbiter.scala 161:79]
+  wire  _rdata_sram_T_15 = io_axi_ar_addr[1:0] == 2'h3; // @[ysyx_25030077_arbiter.scala 155:79]
   wire [31:0] _rdata_sram_T_17 = {24'h0,io_axi_r_data[31:24]}; // @[Cat.scala 31:58]
   wire [31:0] _rdata_sram_T_18 = _rdata_sram_T_15 ? _rdata_sram_T_17 : 32'h0; // @[Mux.scala 101:16]
   wire [31:0] _rdata_sram_T_19 = _rdata_sram_T_11 ? _rdata_sram_T_13 : _rdata_sram_T_18; // @[Mux.scala 101:16]
   wire [31:0] _rdata_sram_T_20 = _rdata_sram_T_7 ? _rdata_sram_T_9 : _rdata_sram_T_19; // @[Mux.scala 101:16]
   wire [31:0] _rdata_sram_T_21 = _rdata_sram_T_3 ? _rdata_sram_T_5 : _rdata_sram_T_20; // @[Mux.scala 101:16]
-  wire  _rdata_sram_T_24 = ~io_axi_ar_addr[1]; // @[ysyx_25030077_arbiter.scala 164:76]
+  wire  _rdata_sram_T_24 = ~io_axi_ar_addr[1]; // @[ysyx_25030077_arbiter.scala 158:76]
   wire [15:0] _rdata_sram_T_27 = io_axi_r_data[15] ? 16'hffff : 16'h0; // @[Bitwise.scala 74:12]
   wire [31:0] _rdata_sram_T_29 = {_rdata_sram_T_27,io_axi_r_data[15:0]}; // @[Cat.scala 31:58]
   wire [15:0] _rdata_sram_T_34 = io_axi_r_data[31] ? 16'hffff : 16'h0; // @[Bitwise.scala 74:12]
@@ -1675,38 +2911,35 @@ module ysyx_25030077_arbiter(
   wire [31:0] _rdata_mrom_T_21 = _rsize_T_2 ? _rdata_sram_T_29 : _rdata_mrom_T_20; // @[Mux.scala 101:16]
   wire [31:0] _rdata_mrom_T_22 = _rsize_T_1 ? _rdata_sram_T_5 : _rdata_mrom_T_21; // @[Mux.scala 101:16]
   wire [31:0] rdata_mrom = _rsize_T_4 ? io_axi_r_data : _rdata_mrom_T_22; // @[Mux.scala 101:16]
-  wire [31:0] rdata = is_sram ? rdata_sram : rdata_mrom; // @[ysyx_25030077_arbiter.scala 187:18]
-  wire [3:0] _io_axi_w_strb_T_2 = _state_T_20 ? 4'hf : 4'h0; // @[ysyx_25030077_arbiter.scala 188:48]
-  assign io_IFU_ar_ready = _state_T_9 & io_axi_ar_ready; // @[ysyx_25030077_arbiter.scala 95:25]
-  assign io_IFU_r_valid = _state_T_9 & io_axi_r_valid; // @[ysyx_25030077_arbiter.scala 190:24]
-  assign io_IFU_r_data = _state_T_9 ? io_axi_r_data : 32'h0; // @[ysyx_25030077_arbiter.scala 192:24]
-  assign io_IFU_b_valid = _state_T_20 & io_axi_b_valid; // @[ysyx_25030077_arbiter.scala 197:24]
-  assign io_IFU_aw_ready = _state_T_20 & io_axi_aw_ready; // @[ysyx_25030077_arbiter.scala 117:25]
-  assign io_IFU_w_ready = _state_T_20 & io_axi_w_ready; // @[ysyx_25030077_arbiter.scala 140:24]
-  assign io_LSU_ar_ready = _state_T_14 & io_axi_ar_ready; // @[ysyx_25030077_arbiter.scala 98:25]
-  assign io_LSU_r_valid = _state_T_14 & io_axi_r_valid; // @[ysyx_25030077_arbiter.scala 191:24]
-  assign io_LSU_r_data = _state_T_14 ? rdata : 32'h0; // @[ysyx_25030077_arbiter.scala 193:24]
-  assign io_LSU_b_valid = _state_T_17 & io_axi_b_valid; // @[ysyx_25030077_arbiter.scala 196:24]
-  assign io_LSU_aw_ready = _state_T_17 & io_axi_aw_ready; // @[ysyx_25030077_arbiter.scala 116:25]
-  assign io_LSU_w_ready = _state_T_17 & io_axi_w_ready; // @[ysyx_25030077_arbiter.scala 139:24]
-  assign io_axi_ar_valid = _state_T_14 ? io_LSU_ar_valid : _state_T_9 & io_IFU_ar_valid; // @[ysyx_25030077_arbiter.scala 92:25]
-  assign io_axi_ar_addr = _state_T_14 ? io_LSU_ar_addr : _io_axi_ar_addr_T_2; // @[ysyx_25030077_arbiter.scala 93:25]
-  assign io_axi_ar_id = {{2'd0}, _io_axi_ar_id_T_3}; // @[ysyx_25030077_arbiter.scala 94:19]
-  assign io_axi_ar_len = {{6'd0}, _io_axi_ar_len_T_3}; // @[ysyx_25030077_arbiter.scala 109:17]
-  assign io_axi_ar_size = {{1'd0}, _io_axi_ar_size_T_3}; // @[ysyx_25030077_arbiter.scala 108:19]
-  assign io_axi_ar_burst = _state_T_9 ? io_IFU_ar_brust : 2'h0; // @[ysyx_25030077_arbiter.scala 110:25]
-  assign io_axi_aw_valid = _state_T_17 ? io_LSU_aw_valid : _state_T_20 & io_IFU_aw_valid; // @[ysyx_25030077_arbiter.scala 114:25]
-  assign io_axi_aw_addr = _state_T_17 ? io_LSU_aw_addr : _io_axi_aw_addr_T_2; // @[ysyx_25030077_arbiter.scala 115:25]
+  wire [31:0] rdata = is_sram ? rdata_sram : rdata_mrom; // @[ysyx_25030077_arbiter.scala 181:18]
+  wire [3:0] _io_axi_w_strb_T_2 = _io_axi_aw_size_T_1 ? 4'hf : 4'h0; // @[ysyx_25030077_arbiter.scala 182:48]
+  assign io_IFU_ar_ready = _state_T_7 & io_axi_ar_ready; // @[ysyx_25030077_arbiter.scala 104:25]
+  assign io_IFU_r_valid = _state_T_7 & io_axi_r_valid; // @[ysyx_25030077_arbiter.scala 184:24]
+  assign io_IFU_r_data = _state_T_7 ? io_axi_r_data : 32'h0; // @[ysyx_25030077_arbiter.scala 186:24]
+  assign io_LSU_ar_ready = _state_T_12 & io_axi_ar_ready; // @[ysyx_25030077_arbiter.scala 93:25]
+  assign io_LSU_r_valid = _state_T_12 & io_axi_r_valid; // @[ysyx_25030077_arbiter.scala 185:24]
+  assign io_LSU_r_data = _state_T_12 ? rdata : 32'h0; // @[ysyx_25030077_arbiter.scala 187:24]
+  assign io_LSU_b_valid = _state_T_15 & io_axi_b_valid; // @[ysyx_25030077_arbiter.scala 190:24]
+  assign io_LSU_aw_ready = _state_T_15 & io_axi_aw_ready; // @[ysyx_25030077_arbiter.scala 112:25]
+  assign io_LSU_w_ready = _state_T_15 & io_axi_w_ready; // @[ysyx_25030077_arbiter.scala 134:24]
+  assign io_axi_ar_valid = _state_T_12 ? io_LSU_ar_valid : _state_T_7 & io_IFU_ar_valid; // @[ysyx_25030077_arbiter.scala 90:25]
+  assign io_axi_ar_addr = _state_T_12 ? io_LSU_ar_addr : _io_axi_ar_addr_T_2; // @[ysyx_25030077_arbiter.scala 91:25]
+  assign io_axi_ar_id = 4'h0; // @[ysyx_25030077_arbiter.scala 92:19]
+  assign io_axi_ar_len = {{6'd0}, _io_axi_ar_len_T_3}; // @[ysyx_25030077_arbiter.scala 105:17]
+  assign io_axi_ar_size = {{1'd0}, _io_axi_ar_size_T_3}; // @[ysyx_25030077_arbiter.scala 103:19]
+  assign io_axi_ar_burst = _state_T_7 ? io_IFU_ar_brust : 2'h0; // @[ysyx_25030077_arbiter.scala 106:25]
+  assign io_axi_aw_valid = _state_T_15 & io_LSU_aw_valid; // @[ysyx_25030077_arbiter.scala 110:25]
+  assign io_axi_aw_addr = _state_T_15 ? io_LSU_aw_addr : 32'h0; // @[ysyx_25030077_arbiter.scala 111:25]
   assign io_axi_aw_id = 4'h0; // @[ysyx_25030077_arbiter.scala 73:16]
   assign io_axi_aw_len = 8'h0; // @[ysyx_25030077_arbiter.scala 74:17]
-  assign io_axi_aw_size = {{1'd0}, _io_axi_aw_size_T_3}; // @[ysyx_25030077_arbiter.scala 123:19]
+  assign io_axi_aw_size = {{1'd0}, _io_axi_aw_size_T_3}; // @[ysyx_25030077_arbiter.scala 118:19]
   assign io_axi_aw_burst = 2'h0; // @[ysyx_25030077_arbiter.scala 75:19]
-  assign io_axi_w_valid = _state_T_17 ? io_LSU_w_valid : _state_T_20 & io_IFU_w_valid; // @[ysyx_25030077_arbiter.scala 124:24]
-  assign io_axi_w_data = _state_T_17 ? w_data : _io_axi_w_data_T_2; // @[ysyx_25030077_arbiter.scala 138:24]
-  assign io_axi_w_strb = _state_T_17 ? strb : _io_axi_w_strb_T_2; // @[ysyx_25030077_arbiter.scala 188:23]
+  assign io_axi_w_valid = _state_T_15 & io_LSU_w_valid; // @[ysyx_25030077_arbiter.scala 119:24]
+  assign io_axi_w_data = _state_T_15 ? w_data : 32'h0; // @[ysyx_25030077_arbiter.scala 133:24]
+  assign io_axi_w_strb = _state_T_15 ? strb : _io_axi_w_strb_T_2; // @[ysyx_25030077_arbiter.scala 182:23]
   assign io_axi_w_last = 1'h1; // @[ysyx_25030077_arbiter.scala 76:17]
-  assign io_axi_r_ready = _state_T_9 ? io_IFU_r_ready : _state_T_14 & io_LSU_r_ready; // @[ysyx_25030077_arbiter.scala 194:24]
-  assign io_axi_b_ready = _state_T_17 ? io_LSU_b_ready : _state_T_20 & io_IFU_b_ready; // @[ysyx_25030077_arbiter.scala 198:24]
+  assign io_axi_r_ready = _state_T_7 ? io_IFU_r_ready : _state_T_12 & io_LSU_r_ready; // @[ysyx_25030077_arbiter.scala 188:24]
+  assign io_axi_b_ready = _state_T_15 & io_LSU_b_ready; // @[ysyx_25030077_arbiter.scala 191:24]
   always @(posedge clock) begin
     if (reset) begin // @[ysyx_25030077_arbiter.scala 78:22]
       state <= 3'h0; // @[ysyx_25030077_arbiter.scala 78:22]
@@ -1716,24 +2949,24 @@ module ysyx_25030077_arbiter(
       end else if (io_LSU_aw_valid & io_axi_aw_ready) begin // @[ysyx_25030077_arbiter.scala 83:35]
         state <= 3'h3;
       end else begin
-        state <= _state_T_6;
+        state <= _state_T_4;
       end
-    end else if (_state_T_9) begin // @[Mux.scala 101:16]
-      if (io_IFU_r_ready & io_axi_r_valid & ar_len == r_cnt) begin // @[ysyx_25030077_arbiter.scala 86:31]
+    end else if (_state_T_7) begin // @[Mux.scala 101:16]
+      if (io_IFU_r_ready & io_axi_r_valid & ar_len == r_cnt) begin // @[ysyx_25030077_arbiter.scala 85:31]
         state <= 3'h0;
       end else begin
         state <= 3'h1;
       end
-    end else if (_state_T_14) begin // @[Mux.scala 101:16]
-      state <= _state_T_16;
+    end else if (_state_T_12) begin // @[Mux.scala 101:16]
+      state <= _state_T_14;
     end else begin
-      state <= _state_T_24;
+      state <= _state_T_18;
     end
     if (reset) begin // @[ysyx_25030077_arbiter.scala 79:22]
       r_cnt <= 2'h0; // @[ysyx_25030077_arbiter.scala 79:22]
-    end else if (_state_T_9) begin // @[ysyx_25030077_arbiter.scala 112:16]
-      if (_state_T_10) begin // @[ysyx_25030077_arbiter.scala 112:35]
-        if (r_cnt != ar_len) begin // @[ysyx_25030077_arbiter.scala 112:73]
+    end else if (_state_T_7) begin // @[ysyx_25030077_arbiter.scala 108:16]
+      if (_state_T_8) begin // @[ysyx_25030077_arbiter.scala 108:35]
+        if (r_cnt != ar_len) begin // @[ysyx_25030077_arbiter.scala 108:73]
           r_cnt <= _r_cnt_T_4;
         end else begin
           r_cnt <= 2'h0;
@@ -1744,8 +2977,8 @@ module ysyx_25030077_arbiter(
     end
     if (reset) begin // @[ysyx_25030077_arbiter.scala 80:23]
       ar_len <= 2'h0; // @[ysyx_25030077_arbiter.scala 80:23]
-    end else if (_state_T_9) begin // @[ysyx_25030077_arbiter.scala 109:23]
-      if (io_IFU_ar_brust == 2'h1) begin // @[ysyx_25030077_arbiter.scala 109:42]
+    end else if (_state_T_7) begin // @[ysyx_25030077_arbiter.scala 105:23]
+      if (io_IFU_ar_brust == 2'h1) begin // @[ysyx_25030077_arbiter.scala 105:42]
         ar_len <= 2'h3;
       end else begin
         ar_len <= 2'h0;
@@ -1929,14 +3162,6 @@ module ysyx_25030077(
   wire  a_ifu_io_r_valid; // @[ysyx_25030077.scala 87:21]
   wire [31:0] a_ifu_io_r_data; // @[ysyx_25030077.scala 87:21]
   wire  a_ifu_io_r_ready; // @[ysyx_25030077.scala 87:21]
-  wire  a_ifu_io_b_valid; // @[ysyx_25030077.scala 87:21]
-  wire  a_ifu_io_b_ready; // @[ysyx_25030077.scala 87:21]
-  wire  a_ifu_io_aw_valid; // @[ysyx_25030077.scala 87:21]
-  wire [31:0] a_ifu_io_aw_addr; // @[ysyx_25030077.scala 87:21]
-  wire  a_ifu_io_aw_ready; // @[ysyx_25030077.scala 87:21]
-  wire  a_ifu_io_w_valid; // @[ysyx_25030077.scala 87:21]
-  wire [31:0] a_ifu_io_w_data; // @[ysyx_25030077.scala 87:21]
-  wire  a_ifu_io_w_ready; // @[ysyx_25030077.scala 87:21]
   wire  b_idu_clock; // @[ysyx_25030077.scala 88:21]
   wire  b_idu_reset; // @[ysyx_25030077.scala 88:21]
   wire  b_idu_io_in_ready; // @[ysyx_25030077.scala 88:21]
@@ -2058,14 +3283,6 @@ module ysyx_25030077(
   wire  f_arbiter_io_IFU_r_ready; // @[ysyx_25030077.scala 93:25]
   wire  f_arbiter_io_IFU_r_valid; // @[ysyx_25030077.scala 93:25]
   wire [31:0] f_arbiter_io_IFU_r_data; // @[ysyx_25030077.scala 93:25]
-  wire  f_arbiter_io_IFU_b_ready; // @[ysyx_25030077.scala 93:25]
-  wire  f_arbiter_io_IFU_b_valid; // @[ysyx_25030077.scala 93:25]
-  wire  f_arbiter_io_IFU_aw_valid; // @[ysyx_25030077.scala 93:25]
-  wire [31:0] f_arbiter_io_IFU_aw_addr; // @[ysyx_25030077.scala 93:25]
-  wire  f_arbiter_io_IFU_aw_ready; // @[ysyx_25030077.scala 93:25]
-  wire  f_arbiter_io_IFU_w_valid; // @[ysyx_25030077.scala 93:25]
-  wire [31:0] f_arbiter_io_IFU_w_data; // @[ysyx_25030077.scala 93:25]
-  wire  f_arbiter_io_IFU_w_ready; // @[ysyx_25030077.scala 93:25]
   wire  f_arbiter_io_LSU_ar_valid; // @[ysyx_25030077.scala 93:25]
   wire [31:0] f_arbiter_io_LSU_ar_addr; // @[ysyx_25030077.scala 93:25]
   wire  f_arbiter_io_LSU_ar_ready; // @[ysyx_25030077.scala 93:25]
@@ -2164,15 +3381,7 @@ module ysyx_25030077(
     .io_ar_burst(a_ifu_io_ar_burst),
     .io_r_valid(a_ifu_io_r_valid),
     .io_r_data(a_ifu_io_r_data),
-    .io_r_ready(a_ifu_io_r_ready),
-    .io_b_valid(a_ifu_io_b_valid),
-    .io_b_ready(a_ifu_io_b_ready),
-    .io_aw_valid(a_ifu_io_aw_valid),
-    .io_aw_addr(a_ifu_io_aw_addr),
-    .io_aw_ready(a_ifu_io_aw_ready),
-    .io_w_valid(a_ifu_io_w_valid),
-    .io_w_data(a_ifu_io_w_data),
-    .io_w_ready(a_ifu_io_w_ready)
+    .io_r_ready(a_ifu_io_r_ready)
   );
   ysyx_25030077_IDU b_idu ( // @[ysyx_25030077.scala 88:21]
     .clock(b_idu_clock),
@@ -2306,14 +3515,6 @@ module ysyx_25030077(
     .io_IFU_r_ready(f_arbiter_io_IFU_r_ready),
     .io_IFU_r_valid(f_arbiter_io_IFU_r_valid),
     .io_IFU_r_data(f_arbiter_io_IFU_r_data),
-    .io_IFU_b_ready(f_arbiter_io_IFU_b_ready),
-    .io_IFU_b_valid(f_arbiter_io_IFU_b_valid),
-    .io_IFU_aw_valid(f_arbiter_io_IFU_aw_valid),
-    .io_IFU_aw_addr(f_arbiter_io_IFU_aw_addr),
-    .io_IFU_aw_ready(f_arbiter_io_IFU_aw_ready),
-    .io_IFU_w_valid(f_arbiter_io_IFU_w_valid),
-    .io_IFU_w_data(f_arbiter_io_IFU_w_data),
-    .io_IFU_w_ready(f_arbiter_io_IFU_w_ready),
     .io_LSU_ar_valid(f_arbiter_io_LSU_ar_valid),
     .io_LSU_ar_addr(f_arbiter_io_LSU_ar_addr),
     .io_LSU_ar_ready(f_arbiter_io_LSU_ar_ready),
@@ -2404,9 +3605,6 @@ module ysyx_25030077(
   assign a_ifu_io_ar_ready = f_arbiter_io_IFU_ar_ready; // @[ysyx_25030077.scala 119:21]
   assign a_ifu_io_r_valid = f_arbiter_io_IFU_r_valid; // @[ysyx_25030077.scala 120:21]
   assign a_ifu_io_r_data = f_arbiter_io_IFU_r_data; // @[ysyx_25030077.scala 121:21]
-  assign a_ifu_io_b_valid = f_arbiter_io_IFU_b_valid; // @[ysyx_25030077.scala 122:21]
-  assign a_ifu_io_aw_ready = f_arbiter_io_IFU_aw_ready; // @[ysyx_25030077.scala 123:21]
-  assign a_ifu_io_w_ready = f_arbiter_io_IFU_w_ready; // @[ysyx_25030077.scala 124:21]
   assign b_idu_clock = clock;
   assign b_idu_reset = reset;
   assign b_idu_io_in_valid = a_ifu_io_out_valid; // @[ChiselHelpers.scala.scala 25:18]
@@ -2475,11 +3673,6 @@ module ysyx_25030077(
   assign f_arbiter_io_IFU_ar_addr = a_ifu_io_ar_addr; // @[ysyx_25030077.scala 153:28]
   assign f_arbiter_io_IFU_ar_brust = a_ifu_io_ar_burst; // @[ysyx_25030077.scala 155:28]
   assign f_arbiter_io_IFU_r_ready = a_ifu_io_r_ready; // @[ysyx_25030077.scala 158:28]
-  assign f_arbiter_io_IFU_b_ready = a_ifu_io_b_ready; // @[ysyx_25030077.scala 170:28]
-  assign f_arbiter_io_IFU_aw_valid = a_ifu_io_aw_valid; // @[ysyx_25030077.scala 163:28]
-  assign f_arbiter_io_IFU_aw_addr = a_ifu_io_aw_addr; // @[ysyx_25030077.scala 162:28]
-  assign f_arbiter_io_IFU_w_valid = a_ifu_io_w_valid; // @[ysyx_25030077.scala 167:28]
-  assign f_arbiter_io_IFU_w_data = a_ifu_io_w_data; // @[ysyx_25030077.scala 166:28]
   assign f_arbiter_io_LSU_ar_valid = d_lsu_io_ar_valid; // @[ysyx_25030077.scala 157:28]
   assign f_arbiter_io_LSU_ar_addr = d_lsu_io_ar_addr; // @[ysyx_25030077.scala 156:28]
   assign f_arbiter_io_LSU_r_ready = d_lsu_io_r_ready; // @[ysyx_25030077.scala 159:28]

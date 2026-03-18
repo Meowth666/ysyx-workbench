@@ -10,14 +10,14 @@ class ysyx_25030077_arbiter extends Module {
     val IFU_r_ready  = Input(Bool())
     val IFU_r_valid = Output(Bool())
     val IFU_r_data  = Output(UInt(32.W)) 
-    val IFU_b_ready = Input(Bool())
-    val IFU_b_valid = Output(Bool())
-    val IFU_aw_valid = Input(Bool())
-    val IFU_aw_addr = Input(UInt(32.W))
-    val IFU_aw_ready = Output(Bool())
-    val IFU_w_valid = Input(Bool())
-    val IFU_w_data = Input(UInt(32.W))
-    val IFU_w_ready = Output(Bool())
+    // val IFU_b_ready = Input(Bool())
+    // val IFU_b_valid = Output(Bool())
+    // val IFU_aw_valid = Input(Bool())
+    // val IFU_aw_addr = Input(UInt(32.W))
+    // val IFU_aw_ready = Output(Bool())
+    // val IFU_w_valid = Input(Bool())
+    // val IFU_w_data = Input(UInt(32.W))
+    // val IFU_w_ready = Output(Bool())
 
     val LSU_ar_valid = Input(Bool())
     val LSU_ar_addr = Input(UInt(32.W))
@@ -81,20 +81,15 @@ class ysyx_25030077_arbiter extends Module {
   state := MuxCase(state, Seq(
         (state === 0.U) -> Mux(io.LSU_ar_valid && io.axi_ar_ready, 2.U(3.W),
                                Mux(io.LSU_aw_valid && io.axi_aw_ready, 3.U(3.W), 
-                                    Mux(io.IFU_ar_valid && io.axi_ar_ready, 1.U(3.W), 
-                                        Mux(io.IFU_aw_valid && io.axi_aw_ready, 4.U(3.W), 0.U(3.W))))),
+                                    Mux(io.IFU_ar_valid && io.axi_ar_ready, 1.U(3.W), 0.U(3.W)))),
         (state === 1.U) -> Mux(io.IFU_r_ready && io.axi_r_valid && (ar_len === r_cnt), 0.U(3.W), 1.U(3.W)),
         (state === 2.U) -> Mux(io.LSU_r_ready && io.axi_r_valid, 0.U(3.W), 2.U(3.W)),
-        (state === 3.U) -> Mux(io.LSU_b_ready && io.axi_b_valid, 0.U(3.W), 3.U(3.W)),
-        (state === 4.U) -> Mux(io.IFU_b_ready && io.axi_b_valid, 0.U(3.W), 4.U(3.W))
+        (state === 3.U) -> Mux(io.LSU_b_ready && io.axi_b_valid, 0.U(3.W), 3.U(3.W))
   ))
 
   io.axi_ar_valid := Mux(state === 2.U, io.LSU_ar_valid, Mux(state === 1.U, io.IFU_ar_valid, 0.U))
   io.axi_ar_addr  := Mux(state === 2.U, io.LSU_ar_addr , Mux(state === 1.U, io.IFU_ar_addr, 0.U))
-  io.axi_ar_id    := Mux(state === 2.U, 1.U , Mux(state === 1.U, 2.U , 0.U))
-  io.IFU_ar_ready := Mux(state === 1.U, io.axi_ar_ready, false.B)
-  io.IFU_aw_ready := Mux(state === 4.U, io.axi_aw_ready, false.B)
-  io.IFU_w_ready  := Mux(state === 4.U, io.axi_w_ready , false.B)
+  io.axi_ar_id    := 0.U
   io.LSU_ar_ready := Mux(state === 2.U, io.axi_ar_ready, false.B)
   io.LSU_aw_ready := Mux(state === 3.U, io.axi_aw_ready, false.B)
   io.LSU_w_ready  := Mux(state === 3.U, io.axi_w_ready , false.B)
@@ -106,22 +101,22 @@ class ysyx_25030077_arbiter extends Module {
             (io.LSU_rw_type === 8.U) -> 2.U
         )) 
   io.axi_ar_size  := Mux(state === 2.U, rsize, Mux(state === 1.U, 2.U, 0.U))
+  io.IFU_ar_ready := Mux(state === 1.U, io.axi_ar_ready, false.B)
   io.axi_ar_len := Mux(state === 1.U, Mux(io.IFU_ar_brust === 1.U, 3.U, 0.U), 0.U)
   io.axi_ar_burst := Mux(state === 1.U, io.IFU_ar_brust, 0.U)
   ar_len := Mux(state === 1.U, Mux(io.IFU_ar_brust === 1.U, 3.U, 0.U), 0.U)
   r_cnt  := Mux(state === 1.U, Mux(io.IFU_r_ready && io.axi_r_valid, Mux(r_cnt =/= ar_len, r_cnt + 1.U, 0.U), r_cnt), 0.U)
 
-  io.axi_aw_valid := Mux(state === 3.U, io.LSU_aw_valid, Mux(state === 4.U, io.IFU_aw_valid, 0.U))
-  io.axi_aw_addr  := Mux(state === 3.U, io.LSU_aw_addr,  Mux(state === 4.U, io.IFU_aw_addr,  0.U))
+  io.axi_aw_valid := Mux(state === 3.U, io.LSU_aw_valid, 0.U)
+  io.axi_aw_addr  := Mux(state === 3.U, io.LSU_aw_addr,  0.U)
   io.LSU_aw_ready := Mux(state === 3.U, io.axi_aw_ready, false.B)
-  io.IFU_aw_ready := Mux(state === 4.U, io.axi_aw_ready, false.B)
   val wsize = MuxCase(0.U, Seq(
                       (io.LSU_rw_type === 1.U) -> 2.U,      
                       (io.LSU_rw_type === 2.U) -> 1.U,
                       (io.LSU_rw_type === 3.U) -> 0.U
   )) 
   io.axi_aw_size  := Mux(state === 3.U, wsize, Mux(state === 4.U, 2.U, 0.U))
-  io.axi_w_valid := Mux(state === 3.U, io.LSU_w_valid, Mux(state === 4.U, io.IFU_w_valid, 0.U))
+  io.axi_w_valid := Mux(state === 3.U, io.LSU_w_valid, 0.U)
   val w_data = MuxCase(0.U, Seq(
                             (io.LSU_rw_type === 1.U) -> io.LSU_w_data,      
                             (io.LSU_rw_type === 2.U) -> MuxCase(0.U, Seq(    
@@ -135,9 +130,8 @@ class ysyx_25030077_arbiter extends Module {
                                                       (io.LSU_aw_addr(1, 0) === 3.U) -> Cat(io.LSU_w_data(7, 0), 0.U(24.W))
                                                      ))
                      ))
-  io.axi_w_data  := Mux(state === 3.U, w_data , Mux(state === 4.U, io.IFU_w_data, 0.U))
+  io.axi_w_data  := Mux(state === 3.U, w_data , 0.U)
   io.LSU_w_ready := Mux(state === 3.U, io.axi_w_ready, false.B)
-  io.IFU_w_ready := Mux(state === 4.U, io.axi_w_ready, false.B)
   val strb = MuxCase(0.U, Seq(
                     (io.LSU_rw_type === 1.U) -> 15.U,      
                     (io.LSU_rw_type === 2.U) -> MuxCase(0.U, Seq(    
@@ -194,6 +188,5 @@ class ysyx_25030077_arbiter extends Module {
   io.axi_r_ready := Mux(state === 1.U, io.IFU_r_ready, Mux(state === 2.U, io.LSU_r_ready, false.B))
 
   io.LSU_b_valid := Mux(state === 3.U, io.axi_b_valid, false.B)
-  io.IFU_b_valid := Mux(state === 4.U, io.axi_b_valid, false.B)
-  io.axi_b_ready := Mux(state === 3.U, io.LSU_b_ready, Mux(state === 4.U, io.IFU_b_ready, false.B))
+  io.axi_b_ready := Mux(state === 3.U, io.LSU_b_ready, false.B)
 }
