@@ -7,3 +7,4 @@
 Soc流水线选择：
 在指令后添加TARGET=pipline以运行流水线处理器   
 添加TARGET=nvboard在nvboard运行程序
+
