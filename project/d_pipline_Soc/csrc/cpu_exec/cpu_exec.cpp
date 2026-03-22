@@ -498,7 +498,7 @@ int cpu_exec(int n){
 			uint32_t out_valid = err & 0x8;
 			if(out_valid != 0)
 				pc_read += 1;
-			if(err == 0){
+			if(err0 == 0 && inst != inst_pre){
 				if(inst == 0x100073 && inst_pre == 0x8067){
 					flag = 1;
 					success = 1;

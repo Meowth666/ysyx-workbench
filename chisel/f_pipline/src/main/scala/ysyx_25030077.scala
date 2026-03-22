@@ -119,9 +119,9 @@ class ysyx_25030077 extends Module {
   a_ifu.io.ar_ready := f_arbiter.io.IFU_ar_ready
   a_ifu.io.r_valid  := f_arbiter.io.IFU_r_valid
   a_ifu.io.r_data   := f_arbiter.io.IFU_r_data
-  a_ifu.io.b_valid  := f_arbiter.io.IFU_b_valid
-  a_ifu.io.aw_ready := f_arbiter.io.IFU_aw_ready
-  a_ifu.io.w_ready  := f_arbiter.io.IFU_w_ready
+  // a_ifu.io.b_valid  := f_arbiter.io.IFU_b_valid
+  // a_ifu.io.aw_ready := f_arbiter.io.IFU_aw_ready
+  // a_ifu.io.w_ready  := f_arbiter.io.IFU_w_ready
   
   b_idu.io.rs1_data := g_gpr.io.rdata_rs1
   b_idu.io.rs2_data := g_gpr.io.rdata_rs2
@@ -159,15 +159,15 @@ class ysyx_25030077 extends Module {
   f_arbiter.io.LSU_r_ready := d_lsu.io.r_ready
   f_arbiter.io.LSU_aw_addr := d_lsu.io.aw_addr
   f_arbiter.io.LSU_aw_valid:= d_lsu.io.aw_valid
-  f_arbiter.io.IFU_aw_addr := a_ifu.io.aw_addr
-  f_arbiter.io.IFU_aw_valid:= a_ifu.io.aw_valid
+  // f_arbiter.io.IFU_aw_addr := a_ifu.io.aw_addr
+  // f_arbiter.io.IFU_aw_valid:= a_ifu.io.aw_valid
   f_arbiter.io.LSU_w_data  := d_lsu.io.w_data
   f_arbiter.io.LSU_w_valid := d_lsu.io.w_valid
-  f_arbiter.io.IFU_w_data  := a_ifu.io.w_data
-  f_arbiter.io.IFU_w_valid := a_ifu.io.w_valid
+  // f_arbiter.io.IFU_w_data  := a_ifu.io.w_data
+  // f_arbiter.io.IFU_w_valid := a_ifu.io.w_valid
   f_arbiter.io.LSU_rw_type := d_lsu.io.rw_type
   f_arbiter.io.LSU_b_ready := d_lsu.io.b_ready
-  f_arbiter.io.IFU_b_ready := a_ifu.io.b_ready
+  // f_arbiter.io.IFU_b_ready := a_ifu.io.b_ready
 
   f_arbiter.io.axi_ar_ready := io.master_arready
   f_arbiter.io.axi_aw_ready := io.master_awready

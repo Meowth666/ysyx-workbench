@@ -1,0 +1,32 @@
+pid:9087 2026-03-21T18:08:40.286360577 [t1] running server in /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/src/main/scala/out/mill-daemon
+pid:9087 2026-03-21T18:08:40.306570013 [t1] acceptTimeout=Some(30 minutes)
+pid:9087 2026-03-21T18:08:40.317721707 [t1] server file locked
+pid:9087 2026-03-21T18:08:40.328022331 [t1] listening on port 36355
+pid:9087 2026-03-21T18:08:40.330461667 [t1] handling run for Socket[addr=/127.0.0.1,port=51920,localport=36355]
+pid:9087 2026-03-21T18:08:40.333422381 [t22] prepareConnection Socket[addr=/127.0.0.1,port=51920,localport=36355]
+pid:9087 2026-03-21T18:08:40.335752366 [t22] 1 active connections
+pid:9087 2026-03-21T18:08:40.342996587 [t23] handleConnection: starting RPC server
+pid:9087 2026-03-21T18:08:40.375685032 [t23] handleConnection: running RPC server
+pid:9087 2026-03-21T18:08:40.376094648 [t23] [MillDaemon-Socket[addr=/127.0.0.1,port=51920,localport=36355]] Initializing Mill RPC server... Waiting for the `initialize` message.
+pid:9087 2026-03-21T18:08:40.437884882 [t23] [MillDaemon-Socket[addr=/127.0.0.1,port=51920,localport=36355]] Initialized, waiting for messages.
+pid:9087 2026-03-21T18:08:41.104601729 [t23] [MillDaemon-Socket[addr=/127.0.0.1,port=51920,localport=36355]] Transport wire broken.
+pid:9087 2026-03-21T18:08:41.105400319 [t23] handleConnection: RPC server finished normally, exitCode=0
+pid:9087 2026-03-21T18:08:41.106196851 [t22] done=true, idle=true, lastClientAlive=true
+pid:9087 2026-03-21T18:08:41.108171266 [t22] 0 active connections
+pid:9087 2026-03-21T18:12:43.70092258 [t1] handling run for Socket[addr=/127.0.0.1,port=41942,localport=36355]
+pid:9087 2026-03-21T18:12:43.701593416 [t42] prepareConnection Socket[addr=/127.0.0.1,port=41942,localport=36355]
+pid:9087 2026-03-21T18:12:43.702081027 [t42] 1 active connections
+pid:9087 2026-03-21T18:12:43.702448767 [t43] handleConnection: starting RPC server
+pid:9087 2026-03-21T18:12:43.702658908 [t43] handleConnection: running RPC server
+pid:9087 2026-03-21T18:12:43.702795201 [t43] [MillDaemon-Socket[addr=/127.0.0.1,port=41942,localport=36355]] Initializing Mill RPC server... Waiting for the `initialize` message.
+pid:9087 2026-03-21T18:12:43.704215741 [t43] [MillDaemon-Socket[addr=/127.0.0.1,port=41942,localport=36355]] Initialized, waiting for messages.
+pid:9087 2026-03-21T18:12:43.824459303 [t43] [MillDaemon-Socket[addr=/127.0.0.1,port=41942,localport=36355]] Transport wire broken.
+pid:9087 2026-03-21T18:12:43.825092287 [t43] handleConnection: RPC server finished normally, exitCode=0
+pid:9087 2026-03-21T18:12:43.825624944 [t42] done=true, idle=true, lastClientAlive=true
+pid:9087 2026-03-21T18:12:43.826854273 [t42] 0 active connections
+pid:9087 2026-03-21T18:42:43.828338361 [t21] shutting down due inactivity
+pid:9087 2026-03-21T18:42:43.832490058 [t1] removing /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/src/main/scala/out/mill-daemon/socketPort
+pid:9087 2026-03-21T18:42:43.832736647 [t1] removed /home/meowth/ysyx/ysyx-workbench/chisel/0_formal_ver/src/main/scala/out/mill-daemon/socketPort
+pid:9087 2026-03-21T18:42:43.83285722 [t1] releasing daemonLock
+pid:9087 2026-03-21T18:42:43.833276751 [t1] daemonLock released
+pid:9087 2026-03-21T18:42:43.833404091 [t1] exiting server

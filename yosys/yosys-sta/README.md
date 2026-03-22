@@ -4,7 +4,6 @@
 用到的开源EDA工具包括:
 * 开源综合器Yosys
 * iEDA团队自研的开源EDA工具集, 这些工具会被编译成一个二进制文件`iEDA`, 本项目中用到的子工具包括
-  * 网表优化工具iNO
   * 静态时序分析(STA)工具iSTA
   * 功耗分析工具iPA
 
@@ -18,7 +17,7 @@
   * iSTA的内部技术可参考[第一期iEDA Tutorial](https://www.bilibili.com/video/BV1a14y1B7uz)
 * iEDA团队的完整工作可参考以下文章
   * [Xingquan Li, Simin Tao, Zengrong Huang, et al. An Open-Source Intelligent Physical Implementation Toolkit and Library[C]. International Symposium of EDA, 2023.](https://github.com/OSCC-Project/iEDA/blob/master/docs/paper/ISEDA'23-iEDA-final.pdf)
-* 目前支持开源PDK nangate45, 具体可在安装依赖(见下文)后阅读nangate45的README
+* 目前支持开源PDK icsprout55, 具体可在安装依赖(见下文)后阅读icsprout55的README
 
 ## 安装依赖
 
@@ -32,7 +31,7 @@
 apt install libunwind-dev liblzma-dev # iEDA的依赖库
 # or
 yum install libunwind liblzma
-make init # 下载预编译的iEDA和nangate45工艺库
+make init # 下载预编译的iEDA和icsprout55工艺库
 ```
 完成后, 测试iEDA能否运行:
 ```
@@ -48,22 +47,18 @@ vim README.md  # 请参考iEDA项目的README中的操作进行构建
 
 ## 评估样例设计
 
-项目包含一个样例设计GCD, 可通过以下命令进行综合, 并评估其在nangate45工艺上的时序表现.
+项目包含一个样例设计GCD, 可通过以下命令进行综合, 并评估其在icsprout55工艺上的时序表现.
 
 ```shell
 make sta
 ```
 
 运行后, 可在`result/gcd-500MHz/`目录下查看评估结果. 部分文件说明如下:
-* `gcd.netlist.syn.v` - Yosys综合的网表文件
+* `gcd.netlist.v` - Yosys综合的网表文件
+* `gcd.netlist.v.sim` - Yosys综合的网表文件, 用于网表仿真
 * `synth_stat.txt` - Yosys综合的面积报告
 * `synth_check.txt` - Yosys综合的检查报告, 用户需仔细阅读并决定是否需要排除相应警告
 * `yosys.log` - Yosys综合的完整日志
-* `gcd.netlist.fixed.v` - iNO优化扇出后的网表文件
-* `fix-fanout.log` - iNO优化扇出的日志
-* `synth_stat_fixed.txt` - 优化扇出后Yosys综合的面积报告
-* `synth_check_fixed.txt` - 优化扇出后Yosys综合的检查报告
-* `yosys-fixed.log` - 优化扇出后Yosys综合的完整日志
 * `gcd.rpt` - iSTA的时序分析报告, 包含WNS, TNS和时序路径
 * `gcd.cap` - iSTA的电容违例报告
 * `gcd.fanout` - iSTA的扇出违例报告

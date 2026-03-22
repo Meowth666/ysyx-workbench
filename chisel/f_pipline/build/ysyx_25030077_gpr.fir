@@ -4,7 +4,7 @@ circuit ysyx_25030077_gpr :
     input reset : UInt<1>
     output io : { flip rs1_addr : UInt<5>, flip rs2_addr : UInt<5>, rdata_rs1 : UInt<32>, rdata_rs2 : UInt<32>, flip rd_addr : UInt<5>, flip rd_data : UInt<32>, flip rd_valid : UInt<1>}
 
-    wire _regs_WIRE : UInt<32>[32] @[ysyx_25030077_gpr.scala 16:29]
+    wire _regs_WIRE : UInt<32>[16] @[ysyx_25030077_gpr.scala 16:29]
     _regs_WIRE[0] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
     _regs_WIRE[1] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
     _regs_WIRE[2] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
@@ -21,28 +21,15 @@ circuit ysyx_25030077_gpr :
     _regs_WIRE[13] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
     _regs_WIRE[14] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
     _regs_WIRE[15] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
-    _regs_WIRE[16] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
-    _regs_WIRE[17] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
-    _regs_WIRE[18] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
-    _regs_WIRE[19] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
-    _regs_WIRE[20] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
-    _regs_WIRE[21] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
-    _regs_WIRE[22] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
-    _regs_WIRE[23] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
-    _regs_WIRE[24] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
-    _regs_WIRE[25] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
-    _regs_WIRE[26] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
-    _regs_WIRE[27] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
-    _regs_WIRE[28] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
-    _regs_WIRE[29] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
-    _regs_WIRE[30] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
-    _regs_WIRE[31] <= UInt<32>("h0") @[ysyx_25030077_gpr.scala 16:29]
-    reg regs : UInt<32>[32], clock with :
+    reg regs : UInt<32>[16], clock with :
       reset => (reset, _regs_WIRE) @[ysyx_25030077_gpr.scala 16:21]
-    io.rdata_rs1 <= regs[io.rs1_addr] @[ysyx_25030077_gpr.scala 17:16]
-    io.rdata_rs2 <= regs[io.rs2_addr] @[ysyx_25030077_gpr.scala 18:16]
+    node _io_rdata_rs1_T = bits(io.rs1_addr, 3, 0)
+    io.rdata_rs1 <= regs[_io_rdata_rs1_T] @[ysyx_25030077_gpr.scala 17:16]
+    node _io_rdata_rs2_T = bits(io.rs2_addr, 3, 0)
+    io.rdata_rs2 <= regs[_io_rdata_rs2_T] @[ysyx_25030077_gpr.scala 18:16]
     node _T = neq(io.rd_addr, UInt<1>("h0")) @[ysyx_25030077_gpr.scala 19:36]
     node _T_1 = and(io.rd_valid, _T) @[ysyx_25030077_gpr.scala 19:21]
     when _T_1 : @[ysyx_25030077_gpr.scala 19:46]
-      regs[io.rd_addr] <= io.rd_data @[ysyx_25030077_gpr.scala 20:22]
+      node _T_2 = bits(io.rd_addr, 3, 0)
+      regs[_T_2] <= io.rd_data @[ysyx_25030077_gpr.scala 20:22]
 

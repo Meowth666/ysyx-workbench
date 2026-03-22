@@ -1,4 +1,37 @@
-[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_arbiter.scala:95:141: ';' expected but ')' found.[0m
-[0m[[0m[31merror[0m] [0m[0m  io.axi_ar_addr  := Mux((io.LSU_ar_valid || (state === 2.U)), io.LSU_ar_addr , Mux(io.IFU_ar_valid|| (state === 1.U)), io.IFU_ar_addr, 0.U))[0m
-[0m[[0m[31merror[0m] [0m[0m                                                                                                                                            ^[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:62:5: not found: value sdram_data[0m
+[0m[[0m[31merror[0m] [0m[0m    sdram_data(0) := Mux((state_reg === "b00010".U && io.r_valid && k === 0.U), io.r_data, sdram_data(0))[0m
+[0m[[0m[31merror[0m] [0m[0m    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:62:92: not found: value sdram_data[0m
+[0m[[0m[31merror[0m] [0m[0m    sdram_data(0) := Mux((state_reg === "b00010".U && io.r_valid && k === 0.U), io.r_data, sdram_data(0))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:63:5: not found: value sdram_data[0m
+[0m[[0m[31merror[0m] [0m[0m    sdram_data(1) := Mux((state_reg === "b00010".U && io.r_valid && k === 1.U), io.r_data, sdram_data(1))[0m
+[0m[[0m[31merror[0m] [0m[0m    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:63:92: not found: value sdram_data[0m
+[0m[[0m[31merror[0m] [0m[0m    sdram_data(1) := Mux((state_reg === "b00010".U && io.r_valid && k === 1.U), io.r_data, sdram_data(1))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:64:5: not found: value sdram_data[0m
+[0m[[0m[31merror[0m] [0m[0m    sdram_data(2) := Mux((state_reg === "b00010".U && io.r_valid && k === 2.U), io.r_data, sdram_data(2))[0m
+[0m[[0m[31merror[0m] [0m[0m    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:64:92: not found: value sdram_data[0m
+[0m[[0m[31merror[0m] [0m[0m    sdram_data(2) := Mux((state_reg === "b00010".U && io.r_valid && k === 2.U), io.r_data, sdram_data(2))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:65:5: not found: value sdram_data[0m
+[0m[[0m[31merror[0m] [0m[0m    sdram_data(3) := Mux((state_reg === "b00010".U && io.r_valid && k === 3.U), io.r_data, sdram_data(3))[0m
+[0m[[0m[31merror[0m] [0m[0m    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:65:92: not found: value sdram_data[0m
+[0m[[0m[31merror[0m] [0m[0m    sdram_data(3) := Mux((state_reg === "b00010".U && io.r_valid && k === 3.U), io.r_data, sdram_data(3))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:72:84: not found: value sdram_data[0m
+[0m[[0m[31merror[0m] [0m[0m    sram_inst(Cat(index, "b00".U)) := Mux((state_reg === "b00100".U && q === 0.U), sdram_data(0), sram_inst(Cat(index, "b00".U)))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:73:84: not found: value sdram_data[0m
+[0m[[0m[31merror[0m] [0m[0m    sram_inst(Cat(index, "b01".U)) := Mux((state_reg === "b00100".U && q === 1.U), sdram_data(1), sram_inst(Cat(index, "b01".U)))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:74:84: not found: value sdram_data[0m
+[0m[[0m[31merror[0m] [0m[0m    sram_inst(Cat(index, "b10".U)) := Mux((state_reg === "b00100".U && q === 2.U), sdram_data(2), sram_inst(Cat(index, "b10".U)))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:75:84: not found: value sdram_data[0m
+[0m[[0m[31merror[0m] [0m[0m    sram_inst(Cat(index, "b11".U)) := Mux((state_reg === "b00100".U && q === 3.U), sdram_data(3), sram_inst(Cat(index, "b11".U))) [0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m12 errors found[0m

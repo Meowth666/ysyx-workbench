@@ -120,12 +120,12 @@ void simulate(char *filename, int cache_size, int block_size, int assoc) {
 int main() {
     // 测试不同的cache参数
     int cache_sizes[] = {64}; // 单位字节
-    int block_sizes[] = {4};  // 单位字节
-    int assocs[] = {1, 2, 4, 8};
+    int block_sizes[] = {16};  // 单位字节
+    int assocs[] = {1, 2, 4};
 
     for (int i = 0; i < 1; i++) {
         for (int j = 0; j < 1; j++) {
-            for (int k = 0; k < 4; k++) {
+            for (int k = 0; k < 3; k++) {
                 simulate("train_soc_itrace.txt",
                          cache_sizes[i],
                          block_sizes[j],

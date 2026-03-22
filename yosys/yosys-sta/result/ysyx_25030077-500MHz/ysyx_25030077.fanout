@@ -1,15 +1,15 @@
-Generate the report at 2025-12-05T20:21:10, GitVersion: aa25008b3778a76ae1975c839d4cc459f7f7b3b7.
-+------------+-----------+--------+-------------+-------------+------+
-| Net / Pin  | MaxFanout | Fanout | FanoutSlack | LibCellPort | Note |
-+------------+-----------+--------+-------------+-------------+------+
-| _02617_    |           |        |             |             |      |
-| _23607_:ZN | NA        | 1      | NA          | INV_X1/ZN   |      |
-| _02628_    |           |        |             |             |      |
-| _23618_:ZN | NA        | 1      | NA          | NOR2_X1/ZN  |      |
-| _02616_    |           |        |             |             |      |
-| _23606_:ZN | NA        | 2      | NA          | INV_X1/ZN   |      |
-| _02631_    |           |        |             |             |      |
-| _23621_:ZN | NA        | 1      | NA          | NOR2_X1/ZN  |      |
-| _01498_    |           |        |             |             |      |
-| _22467_:Z  | NA        | 10     | NA          | CLKBUF_X2/Z |      |
-+------------+-----------+--------+-------------+-------------+------+
+Generate the report at 2026-03-17T19:52:13, GitVersion: aa25008b3778a76ae1975c839d4cc459f7f7b3b7.
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+--------+-------------+-----------------+------+
+| Net / Pin                                                                                                                                                 | MaxFanout | Fanout | FanoutSlack | LibCellPort     | Note |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+--------+-------------+-----------------+------+
+| g_gpr.regs_5_6_                                                                                                                                           |           |        |             |                 |      |
+| g_gpr.regs_5_6__reg_p:Q                                                                                                                                   | NA        | 2      | NA          | DFFQX1H7L/Q     |      |
+| a_ifu.ar_addr_reg_27__reg_p_D_NOR4X1H7L_Y_C_OAI31X0P5H7L_Y_B0_OAI211X0P7H7L_Y_A0_AOI2BB2X0P5H7L_A0N_B0_OAI211X0P7H7L_A1_C0                                |           |        |             |                 |      |
+| a_ifu.ar_addr_reg_27__reg_p_D_NOR4X1H7L_Y_C_OAI31X0P5H7L_Y_B0_OAI211X0P7H7L_Y_A0_AOI2BB2X0P5H7L_A0N_B0_OAI211X0P7H7L_A1_C0_NAND2BX0P5H7L_Y:Y              | NA        | 1      | NA          | NAND2BX0P5H7L/Y |      |
+| g_gpr.regs_6_11_                                                                                                                                          |           |        |             |                 |      |
+| g_gpr.regs_6_11__reg_p:Q                                                                                                                                  | NA        | 2      | NA          | DFFQX1H7L/Q     |      |
+| a_ifu.ar_addr_reg_1__NAND2X0P5H7L_B_Y_OAI21X0P5H7L_A1_B0                                                                                                  |           |        |             |                 |      |
+| a_ifu.ar_addr_reg_1__NAND2X0P5H7L_B_Y_OAI21X0P5H7L_A1_B0_NAND2X0P5H7L_Y:Y                                                                                 | NA        | 1      | NA          | NAND2X0P5H7L/Y  |      |
+| a_ifu.ar_addr_reg_27__reg_p_D_NOR4X1H7L_Y_C_OAI31X0P5H7L_Y_B0_OAI211X0P7H7L_Y_A0_AOI2BB2X0P5H7L_A0N_B0_OAI211X0P7H7L_A1_Y_NOR3X0P5H7L_A_B                 |           |        |             |                 |      |
+| a_ifu.ar_addr_reg_27__reg_p_D_NOR4X1H7L_Y_C_OAI31X0P5H7L_Y_B0_OAI211X0P7H7L_Y_A0_AOI2BB2X0P5H7L_A0N_B0_OAI211X0P7H7L_A1_Y_NOR3X0P5H7L_A_B_XOR2X0P5H7L_Y:Y | NA        | 1      | NA          | XOR2X0P5H7L/Y   |      |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+--------+-------------+-----------------+------+

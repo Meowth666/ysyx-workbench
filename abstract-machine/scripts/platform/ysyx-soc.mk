@@ -14,9 +14,9 @@ LDFLAGS   += --defsym=_pmem_start=0x30000000  --defsym=_entry_offset=0x0 --defsy
 LDFLAGS   += --gc-sections -e _start
 
 MAINARGS_MAX_LEN = 64
+
 MAINARGS_PLACEHOLDER = the_insert-arg_rule_in_Makefile_will_insert_mainargs_here
 CFLAGS += -DMAINARGS_MAX_LEN=$(MAINARGS_MAX_LEN) -DMAINARGS_PLACEHOLDER=$(MAINARGS_PLACEHOLDER)
-
 insert-arg: image
 	@python $(AM_HOME)/tools/insert-arg.py $(IMAGE).bin $(MAINARGS_MAX_LEN) $(MAINARGS_PLACEHOLDER) "$(mainargs)"
 
@@ -26,22 +26,19 @@ image: image-dep
 	@$(OBJCOPY) -S --set-section-flags .bss=alloc,contents -O binary $(IMAGE).elf $(IMAGE).bin
 # 默认值
 SOC_HOME ?= /home/meowth/ysyx/ysyx-workbench/project/b_SoC
+OBJ_HOME ?= $(SOC_HOME)/obj_dir/VysyxSoCFull
 # 根据用户传入的 TARGET 设置不同路径
 ifeq ($(TARGET),pipline)
     SOC_HOME := /home/meowth/ysyx/ysyx-workbench/project/d_pipline_Soc
+endif
+ifeq ($(TARGET),nvboard)
+    OBJ_HOME := $(SOC_HOME)/build/ysyxSoCFull
 endif
 DIFF_SO = /home/meowth/ysyx/ysyx-workbench/nemu/build/riscv32-nemu-interpreter-so
 # wave
 run: insert-arg
 	@cd $(SOC_HOME) && \
-    $(SOC_HOME)/obj_dir/VysyxSoCFull -e $(IMAGE).elf -d $(DIFF_SO) $(IMAGE).bin mainargs=1
-# nvboard
-# run: insert-arg
-# 	@cd $(SOC_HOME) && \
-#     $(SOC_HOME)/build/ysyxSoCFull -e $(IMAGE).elf -d $(DIFF_SO) $(IMAGE).bin mainargs=1
+    $(OBJ_HOME) -e $(IMAGE).elf -d $(DIFF_SO) $(IMAGE).bin mainargs=1
 
-# run: insert-arg
-# 	@cd $(SOC_HOME) && \
-#     $(SOC_HOME)/obj_dir/VysyxSoCFull -e $(IMAGE).elf -d $(DIFF_SO) $(IMAGE).bin mainargs=1
 
 .PHONY: insert-arg

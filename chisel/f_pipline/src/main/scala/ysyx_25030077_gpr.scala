@@ -13,7 +13,7 @@ class ysyx_25030077_gpr extends Module {
     val rd_valid = Input(Bool())
   })
   dontTouchBundleRecursive(io)
-  val regs = RegInit(VecInit(Seq.fill(32)(0.U(32.W))))
+  val regs = RegInit(VecInit(Seq.fill(16)(0.U(32.W))))
   io.rdata_rs1 := regs(io.rs1_addr)
   io.rdata_rs2 := regs(io.rs2_addr)
   when (io.rd_valid && (io.rd_addr =/= 0.U)) {
