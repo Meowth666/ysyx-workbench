@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
 #else
   init_monitor(argc, argv);
 #endif
-  FILE *btrace_init =fopen("outputs/btrace.txt","a");
+  FILE *btrace_init =fopen("outputs/btrace.txt","w");
   fclose(btrace_init);
   /* Start engine. */
   engine_start();
