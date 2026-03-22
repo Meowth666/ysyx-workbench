@@ -475,6 +475,7 @@ int cpu_init(int argc, char** argv){
 long long ifu_ar;
 int is_ifu_ar = 0;
 long long TMT = 0;
+long long J_cnt = 0;
 long long lsu_ar;
 uint32_t inst0 = 0;
 uint32_t inst_all_pre = 0;
@@ -497,11 +498,14 @@ int cpu_exec(int n){
 			uint32_t inst = inst_read();
 			uint32_t err0 = err & 0x7;
 			uint32_t out_valid = err & 0x8;
+			uint32_t j_type = err & 0xf0;
 			if(inst != inst_all_pre){
 				pc_read += 1;
 				inst_all_pre = inst;
 			}
 			if(err0 == 0 && inst != inst_pre){
+				if(j_type != 0)
+					J_cnt += 1;
 				if(inst == 0x100073 && inst_pre == 0x8067){
 					flag = 1;
 					success = 1;
@@ -538,6 +542,7 @@ int cpu_exec(int n){
 	printf("周期 : %lld    指令数 = %lld    ipc = %lld\n", cycs, inst_cnts, cycs / inst_cnts);
 	printf("IFU尝试从sdram读指令数 = %lld\n", pc_read);
 	printf("无效执行指令数: %lld  占比%.2lf\n", (pc_read - inst_cnts), (float)(pc_read - inst_cnts)/pc_read);
+	printf("跳转指令数： %ld\n", J_cnt);
 	fclose(itrace);          
 	return 0;
 }
