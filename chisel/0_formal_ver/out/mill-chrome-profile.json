@@ -1,16 +1,10 @@
 [
-{"ph":"B","name":"mill mill resolve _","cat":"job","ts":130,"pid":1,"tid":1},
-{"ph":"C","name":"CPU Count","ts":269,"pid":1,"args":{"CPUS":12}},
-{"ph":"C","name":"CPU Load 0.0-1.0","ts":269,"pid":1,"args":{"load":0.1350409029266372}},
-{"ph":"B","name":"meta-level 0","cat":"job","ts":18340,"pid":1,"tid":1},
-{"ph":"B","name":"resolve resolve _","cat":"job","ts":32296,"pid":1,"tid":1},
-{"ph":"E","ts":36943,"pid":1,"tid":1},
-{"ph":"B","name":"planning","cat":"job","ts":37280,"pid":1,"tid":1},
-{"ph":"E","ts":43690,"pid":1,"tid":1},
-{"ph":"B","name":"execution","cat":"job","ts":43753,"pid":1,"tid":1},
-{"ph":"B","name":"resolve","cat":"job","ts":44710,"pid":1,"tid":1},
-{"ph":"E","ts":91473,"pid":1,"tid":1},
-{"ph":"E","ts":94259,"pid":1,"tid":1},
-{"ph":"E","ts":94598,"pid":1,"tid":1},
-{"ph":"E","ts":138162,"pid":1,"tid":1}
+{"ph":"B","name":"mill mill __.test","cat":"job","ts":4149,"pid":1,"tid":1},
+{"ph":"C","name":"CPU Count","ts":12572,"pid":1,"args":{"CPUS":12}},
+{"ph":"C","name":"CPU Load 0.0-1.0","ts":12572,"pid":1,"args":{"load":0}},
+{"ph":"B","name":"meta-level 0","cat":"job","ts":193380,"pid":1,"tid":1},
+{"ph":"B","name":"resolve __.test","cat":"job","ts":289511,"pid":1,"tid":1},
+{"ph":"E","ts":424027,"pid":1,"tid":1},
+{"ph":"E","ts":429993,"pid":1,"tid":1},
+{"ph":"E","ts":433762,"pid":1,"tid":1}
 ]

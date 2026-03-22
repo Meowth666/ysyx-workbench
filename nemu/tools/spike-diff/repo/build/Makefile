@@ -93,12 +93,12 @@ VPATH := $(addprefix $(src_dir)/, $(sprojs_enabled))
 # These all appear on the command line, from lowest precedence to
 # highest.
 
-default-CFLAGS   := -DPREFIX=\"$(prefix)\" -Wall -Wno-unused -Wno-nonportable-include-path -O2 -fPIC
+default-CFLAGS   := -DPREFIX=\"$(prefix)\" -Wall -Wno-unused -Wno-nonportable-include-path -g -O2 -fPIC
 default-CXXFLAGS := $(default-CFLAGS) -std=c++17
 
 mcppbs-CPPFLAGS := 
-mcppbs-CFLAGS   := $(default-CFLAGS) -O2
-mcppbs-CXXFLAGS := $(mcppbs-CFLAGS) $(default-CXXFLAGS) -O2
+mcppbs-CFLAGS   := $(default-CFLAGS) -g -O2
+mcppbs-CXXFLAGS := $(mcppbs-CFLAGS) $(default-CXXFLAGS) -g -O2
 
 CC            := gcc
 CXX           := g++

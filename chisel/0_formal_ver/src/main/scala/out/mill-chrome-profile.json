@@ -1,0 +1,16 @@
+[
+{"ph":"B","name":"mill mill resolve _","cat":"job","ts":117,"pid":1,"tid":1},
+{"ph":"C","name":"CPU Count","ts":223,"pid":1,"args":{"CPUS":12}},
+{"ph":"C","name":"CPU Load 0.0-1.0","ts":223,"pid":1,"args":{"load":0.024589488148402613}},
+{"ph":"B","name":"meta-level 0","cat":"job","ts":16385,"pid":1,"tid":1},
+{"ph":"B","name":"resolve resolve _","cat":"job","ts":21869,"pid":1,"tid":1},
+{"ph":"E","ts":24125,"pid":1,"tid":1},
+{"ph":"B","name":"planning","cat":"job","ts":24290,"pid":1,"tid":1},
+{"ph":"E","ts":28420,"pid":1,"tid":1},
+{"ph":"B","name":"execution","cat":"job","ts":28444,"pid":1,"tid":1},
+{"ph":"B","name":"resolve","cat":"job","ts":28785,"pid":1,"tid":1},
+{"ph":"E","ts":56976,"pid":1,"tid":1},
+{"ph":"E","ts":58572,"pid":1,"tid":1},
+{"ph":"E","ts":58871,"pid":1,"tid":1},
+{"ph":"E","ts":66055,"pid":1,"tid":1}
+]
