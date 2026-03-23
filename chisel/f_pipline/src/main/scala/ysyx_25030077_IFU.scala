@@ -18,6 +18,7 @@ class ysyx_25030077_IFU extends Module {
         val r_ready = Output(Bool())
     })
     ChiselHelpers.dontTouchBundleRecursive(io)
+<<<<<<< HEAD
     val sram_tag  = RegInit(VecInit(Seq.fill(16)(0.U(22.W))))
     val sram_inst = RegInit(VecInit(Seq.fill(16)(0.U(32.W))))
     val sdram_data = RegInit(VecInit(Seq.fill(4)(0.U(32.W))))
@@ -26,6 +27,15 @@ class ysyx_25030077_IFU extends Module {
     val index = io.pc(5, 4)
     val offset = io.pc(3, 2)
     val j = RegInit(0.U(2.W))
+=======
+    val sram_tag  = RegInit(VecInit(Seq.fill(4)(0.U(22.W))))
+    val sram_inst = RegInit(VecInit(Seq.fill(16)(0.U(32.W))))
+    val sdram_data = RegInit(VecInit(Seq.fill(4)(0.U(32.W))))
+    val sram_valid =  RegInit(VecInit(Seq.fill(4)(0.U(1.W))))
+    val tag = io.pc(27, 6)
+    val index = io.pc(5, 4)
+    val offset = io.pc(3, 2)
+>>>>>>> btrace_branch
     val k = RegInit(0.U(2.W))
     val q = RegInit(0.U(2.W))
     val rdata_reg = RegInit(0.U(32.W))
@@ -33,7 +43,11 @@ class ysyx_25030077_IFU extends Module {
     val ar_addr_reg  = RegInit(0.U(32.W))
     io.r_ready := true.B
     val state_reg = RegInit("b00001".U(5.W))
+<<<<<<< HEAD
     val is_hit = ((sram_tag(Cat(index, offset)) === tag) && (sram_valid(Cat(index, offset)) === "b1".U))
+=======
+    val is_hit = ((sram_tag(index) === tag) && (sram_valid(index) === "b1".U))
+>>>>>>> btrace_branch
     state_reg := MuxCase("b00001".U(5.W), Seq(
         (state_reg === "b00001".U(5.W)) -> Mux(io.pc(31, 28) === 0xa.U, Mux(is_hit, "b10000".U(5.W), "b00010".U(5.W)), "b01000".U(5.W)),
         (state_reg === "b00010".U(5.W)) -> Mux(io.r_valid, Mux(k === 3.U, "b00100".U(5.W), "b00010".U(5.W)), "b00010".U(5.W)),
@@ -44,17 +58,24 @@ class ysyx_25030077_IFU extends Module {
     val write_reg = RegInit("b001".U(3.W))
     write_reg := MuxCase("b001".U(3.W), Seq(
         (write_reg === "b001".U(3.W)) -> Mux(state_reg === "b00010".U(5.W) , "b010".U(3.W), "b001".U(3.W)),
+<<<<<<< HEAD
         (write_reg === "b010".U(3.W)) -> Mux(j === 3.U, "b100".U(3.W), "b010".U(3.W)),
+=======
+        (write_reg === "b010".U(3.W)) -> "b100".U(3.W),
+>>>>>>> btrace_branch
         (write_reg === "b100".U(3.W)) -> Mux(q === 3.U, "b001".U(3.W), "b100".U(3.W)),
     ))
     k := MuxCase(k, Seq(
         (state_reg === "b00001".U(5.W)) -> 0.U,
         (state_reg === "b00010".U(5.W)) -> Mux(io.r_valid, Mux(k === 3.U, 0.U, k + 1.U), k)
     ))
+<<<<<<< HEAD
     j := MuxCase(j, Seq(
         (write_reg === "b001".U(3.W)) -> 0.U,
         (write_reg === "b010".U(3.W)) -> Mux(j === 3.U, 0.U, j + 1.U)
     ))
+=======
+>>>>>>> btrace_branch
     q := MuxCase(q, Seq(
         (state_reg === "b00001".U(5.W)) -> 0.U,
         (state_reg === "b00100".U(5.W)) -> Mux(q === 3.U, 0.U, q + 1.U)
@@ -64,6 +85,7 @@ class ysyx_25030077_IFU extends Module {
     sdram_data(2) := Mux((state_reg === "b00010".U(5.W) && io.r_valid && k === 2.U), io.r_data, sdram_data(2))
     sdram_data(3) := Mux((state_reg === "b00010".U(5.W) && io.r_valid && k === 3.U), io.r_data, sdram_data(3))
 
+<<<<<<< HEAD
     sram_tag(Cat(index, "b00".U(2.W))) := Mux((write_reg === "b010".U(3.W) && j === 0.U), tag, sram_tag(Cat(index, "b00".U(2.W))))
     sram_tag(Cat(index, "b01".U(2.W))) := Mux((write_reg === "b010".U(3.W) && j === 1.U), tag, sram_tag(Cat(index, "b01".U(2.W))))
     sram_tag(Cat(index, "b10".U(2.W))) := Mux((write_reg === "b010".U(3.W) && j === 2.U), tag, sram_tag(Cat(index, "b10".U(2.W))))
@@ -73,6 +95,11 @@ class ysyx_25030077_IFU extends Module {
     sram_valid(Cat(index, "b01".U(2.W))) := Mux((write_reg === "b010".U(3.W) && j === 1.U), "b1".U, sram_valid(Cat(index, "b01".U(2.W))))
     sram_valid(Cat(index, "b10".U(2.W))) := Mux((write_reg === "b010".U(3.W) && j === 2.U), "b1".U, sram_valid(Cat(index, "b10".U(2.W))))
     sram_valid(Cat(index, "b11".U(2.W))) := Mux((write_reg === "b010".U(3.W) && j === 3.U), "b1".U, sram_valid(Cat(index, "b11".U(2.W)))) 
+=======
+    sram_tag(index) := Mux(write_reg === "b010".U(3.W), tag, sram_tag(index))
+
+    sram_valid(index) := Mux(write_reg === "b010".U(3.W), "b1".U, sram_valid(index))
+>>>>>>> btrace_branch
 
     sram_inst(Cat(index, "b00".U(2.W))) := Mux((state_reg === "b00100".U(5.W) && q === 0.U), sdram_data(0), sram_inst(Cat(index, "b00".U(2.W))))
     sram_inst(Cat(index, "b01".U(2.W))) := Mux((state_reg === "b00100".U(5.W) && q === 1.U), sdram_data(1), sram_inst(Cat(index, "b01".U(2.W))))
