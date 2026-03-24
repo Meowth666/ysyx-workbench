@@ -61,9 +61,9 @@ enum {
 #define CSRC() do { *imm = BITS(i, 31, 20);} while(0)
 
 void btrace_write(int b_type, uint32_t pc_now, uint32_t pc_target, uint32_t pc_result){
-  FILE *btrace_Write =fopen("outputs/btrace.txt","a");
-  fprintf(btrace_Write,"%d  %x  %x %x\n", b_type, pc_now, pc_target, pc_result); 
-  fclose(btrace_Write);
+  // FILE *btrace_Write =fopen("outputs/btrace.txt","a");
+  // fprintf(btrace_Write,"%d  %x  %x %x\n", b_type, pc_now, pc_target, pc_result); 
+  // fclose(btrace_Write);
 }
 
 void ftrace_check(int type,Decode *s,word_t imm, int rd){
