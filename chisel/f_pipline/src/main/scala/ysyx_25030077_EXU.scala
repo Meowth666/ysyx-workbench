@@ -10,11 +10,50 @@ class ysyx_25030077_EXU extends Module {
     val state = Output(Bool())
   })
   ChiselHelpers.dontTouchBundleRecursive(io)
+  val csr_mepc = RegInit(0.U(32.W))
+  val csr_mtvec= RegInit(0.U(32.W))
+  val csr_mstatus= RegInit(0.U(32.W))
+  val csr_mcause = RegInit(0.U(32.W))
+  val csr_mvenproid = RegInit(0.U(32.W))
+  val csr_mvarchid  = RegInit(0.U(32.W))
   val data1 = MuxCase(io.in.bits.rs1_data, Seq(
     (io.in.bits.data_type === 2.U(4.W)) -> 0.U,
     (io.in.bits.data_type === 4.U(4.W)) -> io.in.bits.pc_data, 
     (io.in.bits.data_type === 5.U(4.W)) -> io.in.bits.pc_data, 
     (io.in.bits.data_type === 6.U(4.W)) -> io.in.bits.pc_data, 
+  ))
+  val csr_data = MuxCase(0.U, Seq(
+    (io.in.bits.imm_data === "h00000341".U(32.W)) -> csr_mepc,
+    (io.in.bits.imm_data === "h00000305".U(32.W)) -> csr_mtvec, 
+    (io.in.bits.imm_data === "h00000300".U(32.W)) -> csr_mstatus, 
+    (io.in.bits.imm_data === "h00000342".U(32.W)) -> csr_mcause, 
+    (io.in.bits.imm_data === "h00000F11".U(32.W)) -> csr_mvenproid, 
+    (io.in.bits.imm_data === "h00000F12".U(32.W)) -> csr_mvarchid
+  ))
+
+  csr_mepc := Mux(io.in.bits.ecall_mret === 1.U(2.W), io.in.bits.pc_data, MuxCase(csr_mepc, Seq(
+    (io.in.bits.imm_data === "h00000341".U(32.W) && io.in.bits.csr_type === 1.U(4.W)) -> (csr_mepc  | data1),
+    (io.in.bits.imm_data === "h00000341".U(32.W) && io.in.bits.csr_type === 2.U(4.W)) -> data1
+  )))
+  csr_mtvec := MuxCase(csr_mtvec, Seq(
+    (io.in.bits.imm_data === "h00000305".U(32.W) && io.in.bits.csr_type === 1.U(4.W)) -> (csr_mtvec  | data1),
+    (io.in.bits.imm_data === "h00000305".U(32.W) && io.in.bits.csr_type === 2.U(4.W)) -> data1
+  ))
+  csr_mstatus := MuxCase(csr_mstatus, Seq(
+    (io.in.bits.imm_data === "h00000300".U(32.W) && io.in.bits.csr_type === 1.U(4.W)) -> (csr_mstatus | data1),
+    (io.in.bits.imm_data === "h00000300".U(32.W) && io.in.bits.csr_type === 2.U(4.W)) -> data1
+  ))
+  csr_mcause := Mux(io.in.bits.ecall_mret === 1.U(2.W), 11.U(32.W), MuxCase(csr_mcause, Seq(
+    (io.in.bits.imm_data === "h00000342".U(32.W) && io.in.bits.csr_type === 1.U(4.W)) -> (csr_mcause  | data1),
+    (io.in.bits.imm_data === "h00000342".U(32.W) && io.in.bits.csr_type === 2.U(4.W)) -> data1
+  )))
+  csr_mvenproid := MuxCase(csr_mvenproid, Seq(
+    (io.in.bits.imm_data === "h00000f11".U(32.W) && io.in.bits.csr_type === 1.U(4.W)) -> (csr_mvenproid  | data1),
+    (io.in.bits.imm_data === "h00000f11".U(32.W) && io.in.bits.csr_type === 2.U(4.W)) -> data1
+  ))
+  csr_mvarchid := MuxCase(csr_mvarchid, Seq(
+    (io.in.bits.imm_data === "h00000f12".U(32.W) && io.in.bits.csr_type === 1.U(4.W)) -> (csr_mvarchid  | data1),
+    (io.in.bits.imm_data === "h00000f12".U(32.W) && io.in.bits.csr_type === 2.U(4.W)) -> data1
   ))
   val data2 = MuxCase(io.in.bits.imm_data, Seq(
     (io.in.bits.data_type === 3.U(4.W)) -> io.in.bits.rs2_data,        
@@ -31,7 +70,9 @@ class ysyx_25030077_EXU extends Module {
     (io.in.bits.pc_next_type === 5.U(4.W)) -> Mux(data1.asSInt < data2.asSInt, io.in.bits.pc_data + io.in.bits.imm_data, pc_est), // blt
     (io.in.bits.pc_next_type === 6.U(4.W)) -> Mux(data1.asSInt >= data2.asSInt, io.in.bits.pc_data + io.in.bits.imm_data, pc_est), // bge
     (io.in.bits.pc_next_type === 7.U(4.W)) -> Mux(data1 < data2, io.in.bits.pc_data + io.in.bits.imm_data, pc_est), // bltu
-    (io.in.bits.pc_next_type === 8.U(4.W)) -> Mux(data1 >= data2, io.in.bits.pc_data + io.in.bits.imm_data, pc_est) // bgeu
+    (io.in.bits.pc_next_type === 8.U(4.W)) -> Mux(data1 >= data2, io.in.bits.pc_data + io.in.bits.imm_data, pc_est), // bgeu
+    (io.in.bits.pc_next_type === 9.U(4.W)) -> csr_mtvec,
+    (io.in.bits.pc_next_type ===10.U(4.W)) -> csr_mepc
   ))
   val out33 = MuxCase((data1 +& data2), Seq(
     (io.in.bits.exu_type === 1.U(4.W)) -> Cat(0.U(1.W), (data1 ^ data2)),
@@ -42,7 +83,8 @@ class ysyx_25030077_EXU extends Module {
     (io.in.bits.exu_type === 6.U(4.W)) -> Cat(0.U(1.W), (data1.asSInt >> data2(4,0)).asSInt), 
     (io.in.bits.exu_type === 7.U(4.W)) -> Cat(0.U(32.W),(data1.asSInt < data2.asSInt)), 
     (io.in.bits.exu_type === 8.U(4.W)) -> Cat(0.U(32.W), (data1 < data2)), 
-    (io.in.bits.exu_type === 9.U(4.W)) -> (data1 -& data2)
+    (io.in.bits.exu_type === 9.U(4.W)) -> (data1 -& data2),
+    (io.in.bits.exu_type ===10.U(4.W)) -> Cat(0.U(1.W), csr_data)
   ))
   val valid_out_reg = RegInit(false.B)
   valid_out_reg := MuxCase(false.B, Seq(

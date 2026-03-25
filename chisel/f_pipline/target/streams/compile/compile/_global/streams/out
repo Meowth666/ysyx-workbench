@@ -1,37 +1,37 @@
-[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:62:5: not found: value sdram_data[0m
-[0m[[0m[31merror[0m] [0m[0m    sdram_data(0) := Mux((state_reg === "b00010".U && io.r_valid && k === 0.U), io.r_data, sdram_data(0))[0m
-[0m[[0m[31merror[0m] [0m[0m    ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:62:92: not found: value sdram_data[0m
-[0m[[0m[31merror[0m] [0m[0m    sdram_data(0) := Mux((state_reg === "b00010".U && io.r_valid && k === 0.U), io.r_data, sdram_data(0))[0m
-[0m[[0m[31merror[0m] [0m[0m                                                                                           ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:63:5: not found: value sdram_data[0m
-[0m[[0m[31merror[0m] [0m[0m    sdram_data(1) := Mux((state_reg === "b00010".U && io.r_valid && k === 1.U), io.r_data, sdram_data(1))[0m
-[0m[[0m[31merror[0m] [0m[0m    ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:63:92: not found: value sdram_data[0m
-[0m[[0m[31merror[0m] [0m[0m    sdram_data(1) := Mux((state_reg === "b00010".U && io.r_valid && k === 1.U), io.r_data, sdram_data(1))[0m
-[0m[[0m[31merror[0m] [0m[0m                                                                                           ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:64:5: not found: value sdram_data[0m
-[0m[[0m[31merror[0m] [0m[0m    sdram_data(2) := Mux((state_reg === "b00010".U && io.r_valid && k === 2.U), io.r_data, sdram_data(2))[0m
-[0m[[0m[31merror[0m] [0m[0m    ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:64:92: not found: value sdram_data[0m
-[0m[[0m[31merror[0m] [0m[0m    sdram_data(2) := Mux((state_reg === "b00010".U && io.r_valid && k === 2.U), io.r_data, sdram_data(2))[0m
-[0m[[0m[31merror[0m] [0m[0m                                                                                           ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:65:5: not found: value sdram_data[0m
-[0m[[0m[31merror[0m] [0m[0m    sdram_data(3) := Mux((state_reg === "b00010".U && io.r_valid && k === 3.U), io.r_data, sdram_data(3))[0m
-[0m[[0m[31merror[0m] [0m[0m    ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:65:92: not found: value sdram_data[0m
-[0m[[0m[31merror[0m] [0m[0m    sdram_data(3) := Mux((state_reg === "b00010".U && io.r_valid && k === 3.U), io.r_data, sdram_data(3))[0m
-[0m[[0m[31merror[0m] [0m[0m                                                                                           ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:72:84: not found: value sdram_data[0m
-[0m[[0m[31merror[0m] [0m[0m    sram_inst(Cat(index, "b00".U)) := Mux((state_reg === "b00100".U && q === 0.U), sdram_data(0), sram_inst(Cat(index, "b00".U)))[0m
-[0m[[0m[31merror[0m] [0m[0m                                                                                   ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:73:84: not found: value sdram_data[0m
-[0m[[0m[31merror[0m] [0m[0m    sram_inst(Cat(index, "b01".U)) := Mux((state_reg === "b00100".U && q === 1.U), sdram_data(1), sram_inst(Cat(index, "b01".U)))[0m
-[0m[[0m[31merror[0m] [0m[0m                                                                                   ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:74:84: not found: value sdram_data[0m
-[0m[[0m[31merror[0m] [0m[0m    sram_inst(Cat(index, "b10".U)) := Mux((state_reg === "b00100".U && q === 2.U), sdram_data(2), sram_inst(Cat(index, "b10".U)))[0m
-[0m[[0m[31merror[0m] [0m[0m                                                                                   ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_IFU.scala:75:84: not found: value sdram_data[0m
-[0m[[0m[31merror[0m] [0m[0m    sram_inst(Cat(index, "b11".U)) := Mux((state_reg === "b00100".U && q === 3.U), sdram_data(3), sram_inst(Cat(index, "b11".U))) [0m
-[0m[[0m[31merror[0m] [0m[0m                                                                                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_EXU.scala:35:59: value csr_type is not a member of chisel3.util.DecoupledIO[IDU_EXU][0m
+[0m[[0m[31merror[0m] [0m[0m    (io.in.bits.imm_data === "h00000300".U(32.W) && io.in.csr_type === 1.U(4.W)) -> (csr_mepc  | data1),[0m
+[0m[[0m[31merror[0m] [0m[0m                                                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_EXU.scala:36:59: value csr_type is not a member of chisel3.util.DecoupledIO[IDU_EXU][0m
+[0m[[0m[31merror[0m] [0m[0m    (io.in.bits.imm_data === "h00000300".U(32.W) && io.in.csr_type === 2.U(4.W)) -> data1[0m
+[0m[[0m[31merror[0m] [0m[0m                                                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_EXU.scala:39:59: value csr_type is not a member of chisel3.util.DecoupledIO[IDU_EXU][0m
+[0m[[0m[31merror[0m] [0m[0m    (io.in.bits.imm_data === "h00000305".U(32.W) && io.in.csr_type === 1.U(4.W)) -> (csr_mtvec  | data1),[0m
+[0m[[0m[31merror[0m] [0m[0m                                                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_EXU.scala:40:59: value csr_type is not a member of chisel3.util.DecoupledIO[IDU_EXU][0m
+[0m[[0m[31merror[0m] [0m[0m    (io.in.bits.imm_data === "h00000305".U(32.W) && io.in.csr_type === 2.U(4.W)) -> data1[0m
+[0m[[0m[31merror[0m] [0m[0m                                                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_EXU.scala:43:59: value csr_type is not a member of chisel3.util.DecoupledIO[IDU_EXU][0m
+[0m[[0m[31merror[0m] [0m[0m    (io.in.bits.imm_data === "h00000341".U(32.W) && io.in.csr_type === 1.U(4.W)) -> (csr_mstatus | data1),[0m
+[0m[[0m[31merror[0m] [0m[0m                                                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_EXU.scala:44:59: value csr_type is not a member of chisel3.util.DecoupledIO[IDU_EXU][0m
+[0m[[0m[31merror[0m] [0m[0m    (io.in.bits.imm_data === "h00000341".U(32.W) && io.in.csr_type === 2.U(4.W)) -> data1[0m
+[0m[[0m[31merror[0m] [0m[0m                                                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_EXU.scala:47:59: value csr_type is not a member of chisel3.util.DecoupledIO[IDU_EXU][0m
+[0m[[0m[31merror[0m] [0m[0m    (io.in.bits.imm_data === "h00000342".U(32.W) && io.in.csr_type === 1.U(4.W)) -> (csr_mcause  | data1),[0m
+[0m[[0m[31merror[0m] [0m[0m                                                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_EXU.scala:48:59: value csr_type is not a member of chisel3.util.DecoupledIO[IDU_EXU][0m
+[0m[[0m[31merror[0m] [0m[0m    (io.in.bits.imm_data === "h00000342".U(32.W) && io.in.csr_type === 2.U(4.W)) -> data1[0m
+[0m[[0m[31merror[0m] [0m[0m                                                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_EXU.scala:51:59: value csr_type is not a member of chisel3.util.DecoupledIO[IDU_EXU][0m
+[0m[[0m[31merror[0m] [0m[0m    (io.in.bits.imm_data === "h00000f11".U(32.W) && io.in.csr_type === 1.U(4.W)) -> (csr_mvenproid  | data1),[0m
+[0m[[0m[31merror[0m] [0m[0m                                                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_EXU.scala:52:59: value csr_type is not a member of chisel3.util.DecoupledIO[IDU_EXU][0m
+[0m[[0m[31merror[0m] [0m[0m    (io.in.bits.imm_data === "h00000f11".U(32.W) && io.in.csr_type === 2.U(4.W)) -> data1[0m
+[0m[[0m[31merror[0m] [0m[0m                                                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_EXU.scala:55:59: value csr_type is not a member of chisel3.util.DecoupledIO[IDU_EXU][0m
+[0m[[0m[31merror[0m] [0m[0m    (io.in.bits.imm_data === "h00000f12".U(32.W) && io.in.csr_type === 1.U(4.W)) -> (csr_mvarchid  | data1),[0m
+[0m[[0m[31merror[0m] [0m[0m                                                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/meowth/ysyx/ysyx-workbench/chisel/f_pipline/src/main/scala/ysyx_25030077_EXU.scala:56:59: value csr_type is not a member of chisel3.util.DecoupledIO[IDU_EXU][0m
+[0m[[0m[31merror[0m] [0m[0m    (io.in.bits.imm_data === "h00000f12".U(32.W) && io.in.csr_type === 2.U(4.W)) -> data1[0m
+[0m[[0m[31merror[0m] [0m[0m                                                          ^[0m
 [0m[[0m[31merror[0m] [0m[0m12 errors found[0m

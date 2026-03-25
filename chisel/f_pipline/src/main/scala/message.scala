@@ -16,6 +16,8 @@ class IDU_EXU extends Bundle {
   val rs2_data = UInt(32.W)
   val imm_data = UInt(32.W)
   val pc_data  = UInt(32.W)
+  val csr_type = UInt(2.W)
+  val ecall_mret = UInt(2.W)
   val is_err1 = Bool()
   val is_err2 = Bool()
 }

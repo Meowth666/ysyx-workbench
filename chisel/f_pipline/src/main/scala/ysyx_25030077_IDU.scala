@@ -62,7 +62,11 @@ class ysyx_25030077_IDU extends Module {
   val islw  = Cat(io.in.bits.inst(14,12), io.in.bits.inst(6,0)) === "b0100000011".U
   val islh  = Cat(io.in.bits.inst(14,12), io.in.bits.inst(6,0)) === "b0010000011".U
   val islhu = Cat(io.in.bits.inst(14,12), io.in.bits.inst(6,0)) === "b1010000011".U
-  
+
+  val iscsrrs  = Cat(io.in.bits.inst(14,12), io.in.bits.inst(6,0)) === "b0101110011".U
+  val iscsrrw  = Cat(io.in.bits.inst(14,12), io.in.bits.inst(6,0)) === "b0011110011".U
+  val isecall   = io.in.bits.inst === "b00000000000000000000000001110011".U
+  val ismret    = io.in.bits.inst === "b00110000001000000000000001110011".U
   val isebreak  = io.in.bits.inst === "b00000000000100000000000001110011".U
 
   val inst_type = MuxCase(0.U(4.W), Seq(
@@ -75,9 +79,9 @@ class ysyx_25030077_IDU extends Module {
     (isbeq || isbne || isblt || isbge || isbltu || isbgeu)  -> 7.U(4.W), //beq,bne,blt,bge,bltu,bgeu
     (issw || issb || issh)  -> 8.U(4.W), //sw,sh,sb
     (islw || islb || islh || islbu || islhu)  -> 9.U(4.W), //lb,lbu,lh,lhu,lw
-    (issrai || isslli || issrli)  -> 10.U(4.W) //slli,srli,srai
+    (issrai || isslli || issrli)  -> 10.U(4.W), //slli,srli,srai
+    (iscsrrs || iscsrrw) -> 11.U(4.W)
   ))
-  
   val imm = MuxCase(0.U(32.W), Seq(
     (inst_type === 1.U(4.W)) -> Cat(Fill(20, io.in.bits.inst(31)), io.in.bits.inst(31,20)), // I 型
     (inst_type === 2.U(4.W)) -> Cat(io.in.bits.inst(31,12), Fill(12, 0.U)),               // U 型
@@ -88,6 +92,7 @@ class ysyx_25030077_IDU extends Module {
     (inst_type === 8.U(4.W)) -> Cat(Fill(20, io.in.bits.inst(31)), io.in.bits.inst(31,25), io.in.bits.inst(11,7)), // S 型
     (inst_type === 9.U(4.W)) -> Cat(Fill(20, io.in.bits.inst(31)), io.in.bits.inst(31,20)), // I 型
     (inst_type ===10.U(4.W)) -> io.in.bits.inst(25,20), // I 型
+    (inst_type ===11.U(4.W)) -> Cat(Fill(20, 0.U), io.in.bits.inst(31,20))
   ))
 
   io.out.bits.exu_type := MuxCase(0.U(4.W), Seq(
@@ -99,7 +104,8 @@ class ysyx_25030077_IDU extends Module {
     (issrai || issra)  -> 6.U(4.W),
     (isslti || isslt)  -> 7.U(4.W),
     (issltiu|| issltu) -> 8.U(4.W),
-    (issub)            -> 9.U(4.W)
+    (issub)            -> 9.U(4.W),
+    (iscsrrs|| iscsrrw)-> 10.U(4.W)
   ))
 
   io.out.bits.LSU_type := MuxCase(0.U(4.W), Seq(
@@ -111,6 +117,16 @@ class ysyx_25030077_IDU extends Module {
     islh  -> 6.U(4.W),
     islhu -> 7.U(4.W),
     islw  -> 8.U(4.W)
+  ))
+
+  io.out.bits.csr_type := MuxCase(0.U(4.W), Seq(
+    iscsrrs  -> 1.U(4.W),
+    iscsrrw  -> 2.U(4.W)
+  ))
+
+  io.out.bits.ecall_mret := MuxCase(0.U(4.W), Seq(
+    isecall  -> 1.U(4.W),
+    ismret   -> 2.U(4.W)
   ))
 
   io.out.bits.rd_addr := MuxCase(io.in.bits.inst(11,7), Seq(
@@ -158,7 +174,9 @@ class ysyx_25030077_IDU extends Module {
     isblt  -> 5.U(4.W),
     isbge  -> 6.U(4.W),
     isbltu -> 7.U(4.W),
-    isbgeu -> 8.U(4.W)
+    isbgeu -> 8.U(4.W),
+    isecall-> 9.U(4.W),
+    ismret ->10.U(4.W)
   ))
   io.out.valid := valid_out_reg
   // ready 反压
