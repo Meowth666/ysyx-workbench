@@ -36,8 +36,15 @@ class ysyx_25030077_LSU extends Module {
   val valid_in_dly = RegInit(false.B)
   valid_in_dly := io.in.valid && ready_in_reg
   val is_err_in = ~(io.in.bits.is_err1 || io.in.bits.is_err2)
+  val clint_reg = RegInit(0.U(64.W))
+  val is_clint1 = (io.in.bits.result === "h02000000".U(32.W) && io.in.bits.LSU_type === 8.U(4.W))
+  val is_clint2 = (io.in.bits.result === "h02000004".U(32.W) && io.in.bits.LSU_type === 8.U(4.W))
+  clint_reg := clint_reg + 5.U
   data_out_reg := MuxCase(data_out_reg, Seq(
-                    (lsu_state === 1.U) -> Mux(is_err_in,  io.in.bits.result, 0.U),
+                    (lsu_state === 1.U) -> Mux(is_err_in,  MuxCase(io.in.bits.result, Seq(
+                                                (is_clint1 === 1.U) -> clint_reg(31, 0),
+                                                (is_clint2 === 1.U) -> clint_reg(63, 32)
+                                              )), 0.U),
                     (lsu_state === 2.U) -> Mux(io.b_valid, 0.U, data_out_reg),
                     (lsu_state === 3.U) -> Mux(io.r_valid, io.r_data, data_out_reg)
   ))
@@ -64,7 +71,7 @@ class ysyx_25030077_LSU extends Module {
   ))
   lsu_state := MuxCase(lsu_state, Seq(
     (lsu_state === 0.U) -> Mux(valid_in_dly, MuxCase(3.U(2.W), Seq(
-      ((io.in.bits.LSU_type === 0.U(4.W)) || (~is_err_in)) -> 1.U(2.W),
+      ((io.in.bits.LSU_type === 0.U(4.W)) || (~is_err_in) || (io.in.bits.result(31, 24) === "h02".U(8.W))) -> 1.U(2.W),
        (io.in.bits.LSU_type === 1.U(4.W)) -> 2.U(2.W),
        (io.in.bits.LSU_type === 2.U(4.W)) -> 2.U(2.W),
        (io.in.bits.LSU_type === 3.U(4.W)) -> 2.U(2.W)

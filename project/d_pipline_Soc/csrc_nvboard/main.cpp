@@ -18,7 +18,6 @@
 //long load_img(const char* img_file);
 int HINT = 0;
 
-void csr_init();
 void reg_init();
 void init_monitor(int argc, char **argv);
 int  cpu_exec();
@@ -26,7 +25,6 @@ int  cpu_exec();
 int main(int argc, char** argv){
 	Verilated::commandArgs(argc, argv);
 	printf("Welcome to use ysyx-workbench!\n");
-	csr_init();
 	reg_init();
 	init_monitor(argc, argv);
 	printf("Start to execute instructions...\n");

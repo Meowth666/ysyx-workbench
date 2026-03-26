@@ -34,6 +34,10 @@ endif
 ifeq ($(TARGET),nvboard)
     OBJ_HOME := $(SOC_HOME)/build/ysyxSoCFull
 endif
+ifeq ($(TARGET),pip_nvb)
+    SOC_HOME := /home/meowth/ysyx/ysyx-workbench/project/d_pipline_Soc
+    OBJ_HOME := $(SOC_HOME)/build/ysyxSoCFull
+endif
 DIFF_SO = /home/meowth/ysyx/ysyx-workbench/nemu/build/riscv32-nemu-interpreter-so
 # wave
 run: insert-arg

@@ -78,14 +78,8 @@ void isa_reg_display() {
     int i;
     printf("\ndut-pc=%x\n",pc);
     for(i = 0;i < 32;i++){
-      // if(reg_data[i] >= 0x02000000){
         printf("dut-%3s = %-#11x",regs[i],reg_data[i]);
         if(i % 3 == 0) printf("\n");
-      
-      // else{
-      //   printf("dut-%3s = %-11d",regs[i],reg_data[i]);
-      //   if(i % 3 == 0) printf("\n");
-      //   } 
       }
     printf("\n");
   }

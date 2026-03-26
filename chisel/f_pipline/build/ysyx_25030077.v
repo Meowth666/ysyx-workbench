@@ -1640,7 +1640,7 @@ module ysyx_25030077_EXU(
       csr_mcause <= data1;
     end
     if (reset) begin // @[ysyx_25030077_EXU.scala 17:30]
-      csr_mvenproid <= 32'h0; // @[ysyx_25030077_EXU.scala 17:30]
+      csr_mvenproid <= 32'h79737978; // @[ysyx_25030077_EXU.scala 17:30]
     end else if (_csr_mvenproid_T_2) begin // @[Mux.scala 101:16]
       csr_mvenproid <= _csr_mvenproid_T_3;
     end else if (_csr_mvenproid_T_6) begin // @[Mux.scala 101:16]
@@ -1651,7 +1651,7 @@ module ysyx_25030077_EXU(
       end
     end
     if (reset) begin // @[ysyx_25030077_EXU.scala 18:30]
-      csr_mvarchid <= 32'h0; // @[ysyx_25030077_EXU.scala 18:30]
+      csr_mvarchid <= 32'h17dedbd; // @[ysyx_25030077_EXU.scala 18:30]
     end else if (_csr_mvarchid_T_2) begin // @[Mux.scala 101:16]
       csr_mvarchid <= _csr_mvarchid_T_3;
     end else if (_csr_mvarchid_T_6) begin // @[Mux.scala 101:16]
@@ -1795,11 +1795,12 @@ module ysyx_25030077_LSU(
   reg [31:0] _RAND_3;
   reg [31:0] _RAND_4;
   reg [31:0] _RAND_5;
-  reg [31:0] _RAND_6;
+  reg [63:0] _RAND_6;
   reg [31:0] _RAND_7;
   reg [31:0] _RAND_8;
   reg [31:0] _RAND_9;
   reg [31:0] _RAND_10;
+  reg [31:0] _RAND_11;
 `endif // RANDOMIZE_REG_INIT
   reg  valid_out_reg; // @[ysyx_25030077_LSU.scala 31:30]
   reg [1:0] lsu_state; // @[ysyx_25030077_LSU.scala 32:26]
@@ -1809,61 +1810,67 @@ module ysyx_25030077_LSU(
   reg  valid_in_dly; // @[ysyx_25030077_LSU.scala 36:29]
   wire  _valid_in_dly_T = io_in_valid & ready_in_reg; // @[ysyx_25030077_LSU.scala 37:31]
   wire  is_err_in = ~(io_in_bits_is_err1 | io_in_bits_is_err2); // @[ysyx_25030077_LSU.scala 38:19]
-  wire  _data_out_reg_T = lsu_state == 2'h1; // @[ysyx_25030077_LSU.scala 40:32]
-  wire  _data_out_reg_T_2 = lsu_state == 2'h2; // @[ysyx_25030077_LSU.scala 41:32]
-  wire  _data_out_reg_T_4 = lsu_state == 2'h3; // @[ysyx_25030077_LSU.scala 42:32]
-  wire [31:0] _data_out_reg_T_5 = io_r_valid ? io_r_data : data_out_reg; // @[ysyx_25030077_LSU.scala 42:47]
-  wire [4:0] _addr_out_reg_T_5 = io_r_valid ? io_in_bits_rd_addr : addr_out_reg; // @[ysyx_25030077_LSU.scala 48:47]
-  wire  _valid_out_reg_T_1 = ~valid_out_reg; // @[ysyx_25030077_LSU.scala 54:20]
-  wire  _valid_out_reg_T_8 = _data_out_reg_T_2 ? io_b_valid : _data_out_reg_T_4 & io_r_valid; // @[Mux.scala 101:16]
-  wire  _ready_in_reg_T = io_in_valid ? 1'h0 : 1'h1; // @[ysyx_25030077_LSU.scala 62:24]
-  wire  _ready_in_reg_T_1 = ~ready_in_reg; // @[ysyx_25030077_LSU.scala 63:19]
-  wire  _ready_in_reg_T_2 = valid_out_reg & io_out_ready; // @[ysyx_25030077_LSU.scala 63:53]
+  reg [63:0] clint_reg; // @[ysyx_25030077_LSU.scala 39:26]
+  wire  _is_clint1_T_1 = io_in_bits_LSU_type == 4'h8; // @[ysyx_25030077_LSU.scala 40:85]
+  wire  is_clint1 = io_in_bits_result == 32'h2000000 & io_in_bits_LSU_type == 4'h8; // @[ysyx_25030077_LSU.scala 40:62]
+  wire  is_clint2 = io_in_bits_result == 32'h2000004 & _is_clint1_T_1; // @[ysyx_25030077_LSU.scala 41:62]
+  wire [63:0] _clint_reg_T_1 = clint_reg + 64'h5; // @[ysyx_25030077_LSU.scala 42:26]
+  wire  _data_out_reg_T = lsu_state == 2'h1; // @[ysyx_25030077_LSU.scala 44:32]
+  wire [31:0] _data_out_reg_T_5 = is_clint2 ? clint_reg[63:32] : io_in_bits_result; // @[Mux.scala 101:16]
+  wire  _data_out_reg_T_8 = lsu_state == 2'h2; // @[ysyx_25030077_LSU.scala 48:32]
+  wire  _data_out_reg_T_10 = lsu_state == 2'h3; // @[ysyx_25030077_LSU.scala 49:32]
+  wire [31:0] _data_out_reg_T_11 = io_r_valid ? io_r_data : data_out_reg; // @[ysyx_25030077_LSU.scala 49:47]
+  wire [4:0] _addr_out_reg_T_5 = io_r_valid ? io_in_bits_rd_addr : addr_out_reg; // @[ysyx_25030077_LSU.scala 55:47]
+  wire  _valid_out_reg_T_1 = ~valid_out_reg; // @[ysyx_25030077_LSU.scala 61:20]
+  wire  _valid_out_reg_T_8 = _data_out_reg_T_8 ? io_b_valid : _data_out_reg_T_10 & io_r_valid; // @[Mux.scala 101:16]
+  wire  _ready_in_reg_T = io_in_valid ? 1'h0 : 1'h1; // @[ysyx_25030077_LSU.scala 69:24]
+  wire  _ready_in_reg_T_1 = ~ready_in_reg; // @[ysyx_25030077_LSU.scala 70:19]
+  wire  _ready_in_reg_T_2 = valid_out_reg & io_out_ready; // @[ysyx_25030077_LSU.scala 70:53]
   wire  _ready_in_reg_T_5 = ready_in_reg ? _ready_in_reg_T : _ready_in_reg_T_1 & _ready_in_reg_T_2; // @[Mux.scala 101:16]
-  wire  _lsu_state_T = lsu_state == 2'h0; // @[ysyx_25030077_LSU.scala 66:16]
-  wire  _lsu_state_T_3 = io_in_bits_LSU_type == 4'h0 | ~is_err_in; // @[ysyx_25030077_LSU.scala 67:43]
-  wire  _lsu_state_T_4 = io_in_bits_LSU_type == 4'h1; // @[ysyx_25030077_LSU.scala 68:29]
-  wire  _lsu_state_T_5 = io_in_bits_LSU_type == 4'h2; // @[ysyx_25030077_LSU.scala 69:29]
-  wire  _lsu_state_T_6 = io_in_bits_LSU_type == 4'h3; // @[ysyx_25030077_LSU.scala 70:29]
-  wire [1:0] _lsu_state_T_7 = _lsu_state_T_6 ? 2'h2 : 2'h3; // @[Mux.scala 101:16]
-  wire [1:0] _lsu_state_T_8 = _lsu_state_T_5 ? 2'h2 : _lsu_state_T_7; // @[Mux.scala 101:16]
-  wire [1:0] _lsu_state_T_9 = _lsu_state_T_4 ? 2'h2 : _lsu_state_T_8; // @[Mux.scala 101:16]
-  wire [1:0] _lsu_state_T_14 = io_b_valid ? 2'h0 : lsu_state; // @[ysyx_25030077_LSU.scala 73:31]
-  wire [1:0] _lsu_state_T_16 = io_r_valid ? 2'h0 : lsu_state; // @[ysyx_25030077_LSU.scala 74:31]
-  wire [1:0] _lsu_state_T_17 = _data_out_reg_T_4 ? _lsu_state_T_16 : lsu_state; // @[Mux.scala 101:16]
-  reg  state_reg; // @[ysyx_25030077_LSU.scala 78:26]
-  wire  _state_reg_T_2 = ~state_reg; // @[ysyx_25030077_LSU.scala 81:16]
-  reg  ar_valid_reg; // @[ysyx_25030077_LSU.scala 85:29]
-  reg  aw_valid_reg; // @[ysyx_25030077_LSU.scala 86:29]
-  reg  w_valid_reg; // @[ysyx_25030077_LSU.scala 87:29]
-  reg [1:0] state_dly; // @[ysyx_25030077_LSU.scala 88:26]
-  wire  _ar_valid_reg_T_1 = ~ar_valid_reg; // @[ysyx_25030077_LSU.scala 92:19]
-  wire  _ar_valid_reg_T_3 = state_dly == 2'h0; // @[ysyx_25030077_LSU.scala 92:73]
-  wire  _ar_valid_reg_T_4 = _data_out_reg_T_4 & state_dly == 2'h0; // @[ysyx_25030077_LSU.scala 92:59]
-  wire  _aw_valid_reg_T_1 = ~aw_valid_reg; // @[ysyx_25030077_LSU.scala 96:19]
-  wire  _aw_valid_reg_T_4 = _data_out_reg_T_2 & _ar_valid_reg_T_3; // @[ysyx_25030077_LSU.scala 96:59]
-  wire  _w_valid_reg_T_1 = ~w_valid_reg; // @[ysyx_25030077_LSU.scala 100:18]
-  assign io_in_ready = ready_in_reg; // @[ysyx_25030077_LSU.scala 76:16]
-  assign io_out_valid = valid_out_reg; // @[ysyx_25030077_LSU.scala 77:16]
-  assign io_out_bits_rd_addr = addr_out_reg; // @[ysyx_25030077_LSU.scala 50:23]
-  assign io_out_bits_rd_data = data_out_reg; // @[ysyx_25030077_LSU.scala 51:23]
+  wire  _lsu_state_T = lsu_state == 2'h0; // @[ysyx_25030077_LSU.scala 73:16]
+  wire  _lsu_state_T_6 = io_in_bits_LSU_type == 4'h0 | ~is_err_in | io_in_bits_result[31:24] == 8'h2; // @[ysyx_25030077_LSU.scala 74:59]
+  wire  _lsu_state_T_7 = io_in_bits_LSU_type == 4'h1; // @[ysyx_25030077_LSU.scala 75:29]
+  wire  _lsu_state_T_8 = io_in_bits_LSU_type == 4'h2; // @[ysyx_25030077_LSU.scala 76:29]
+  wire  _lsu_state_T_9 = io_in_bits_LSU_type == 4'h3; // @[ysyx_25030077_LSU.scala 77:29]
+  wire [1:0] _lsu_state_T_10 = _lsu_state_T_9 ? 2'h2 : 2'h3; // @[Mux.scala 101:16]
+  wire [1:0] _lsu_state_T_11 = _lsu_state_T_8 ? 2'h2 : _lsu_state_T_10; // @[Mux.scala 101:16]
+  wire [1:0] _lsu_state_T_12 = _lsu_state_T_7 ? 2'h2 : _lsu_state_T_11; // @[Mux.scala 101:16]
+  wire [1:0] _lsu_state_T_17 = io_b_valid ? 2'h0 : lsu_state; // @[ysyx_25030077_LSU.scala 80:31]
+  wire [1:0] _lsu_state_T_19 = io_r_valid ? 2'h0 : lsu_state; // @[ysyx_25030077_LSU.scala 81:31]
+  wire [1:0] _lsu_state_T_20 = _data_out_reg_T_10 ? _lsu_state_T_19 : lsu_state; // @[Mux.scala 101:16]
+  reg  state_reg; // @[ysyx_25030077_LSU.scala 85:26]
+  wire  _state_reg_T_2 = ~state_reg; // @[ysyx_25030077_LSU.scala 88:16]
+  reg  ar_valid_reg; // @[ysyx_25030077_LSU.scala 92:29]
+  reg  aw_valid_reg; // @[ysyx_25030077_LSU.scala 93:29]
+  reg  w_valid_reg; // @[ysyx_25030077_LSU.scala 94:29]
+  reg [1:0] state_dly; // @[ysyx_25030077_LSU.scala 95:26]
+  wire  _ar_valid_reg_T_1 = ~ar_valid_reg; // @[ysyx_25030077_LSU.scala 99:19]
+  wire  _ar_valid_reg_T_3 = state_dly == 2'h0; // @[ysyx_25030077_LSU.scala 99:73]
+  wire  _ar_valid_reg_T_4 = _data_out_reg_T_10 & state_dly == 2'h0; // @[ysyx_25030077_LSU.scala 99:59]
+  wire  _aw_valid_reg_T_1 = ~aw_valid_reg; // @[ysyx_25030077_LSU.scala 103:19]
+  wire  _aw_valid_reg_T_4 = _data_out_reg_T_8 & _ar_valid_reg_T_3; // @[ysyx_25030077_LSU.scala 103:59]
+  wire  _w_valid_reg_T_1 = ~w_valid_reg; // @[ysyx_25030077_LSU.scala 107:18]
+  assign io_in_ready = ready_in_reg; // @[ysyx_25030077_LSU.scala 83:16]
+  assign io_out_valid = valid_out_reg; // @[ysyx_25030077_LSU.scala 84:16]
+  assign io_out_bits_rd_addr = addr_out_reg; // @[ysyx_25030077_LSU.scala 57:23]
+  assign io_out_bits_rd_data = data_out_reg; // @[ysyx_25030077_LSU.scala 58:23]
   assign io_out_bits_is_err1 = io_in_bits_is_err1; // @[ysyx_25030077_LSU.scala 26:23]
   assign io_out_bits_is_err2 = io_in_bits_is_err2; // @[ysyx_25030077_LSU.scala 27:23]
-  assign io_state = state_reg & is_err_in; // @[ysyx_25030077_LSU.scala 83:25]
-  assign io_ar_addr = io_in_bits_result; // @[ysyx_25030077_LSU.scala 106:15]
-  assign io_ar_valid = ar_valid_reg; // @[ysyx_25030077_LSU.scala 103:15]
+  assign io_state = state_reg & is_err_in; // @[ysyx_25030077_LSU.scala 90:25]
+  assign io_ar_addr = io_in_bits_result; // @[ysyx_25030077_LSU.scala 113:15]
+  assign io_ar_valid = ar_valid_reg; // @[ysyx_25030077_LSU.scala 110:15]
   assign io_r_ready = 1'h1; // @[ysyx_25030077_LSU.scala 29:14]
   assign io_b_ready = 1'h1; // @[ysyx_25030077_LSU.scala 30:14]
-  assign io_aw_valid = aw_valid_reg; // @[ysyx_25030077_LSU.scala 104:15]
-  assign io_aw_addr = io_in_bits_result; // @[ysyx_25030077_LSU.scala 107:15]
-  assign io_w_valid = w_valid_reg; // @[ysyx_25030077_LSU.scala 105:15]
-  assign io_w_data = io_in_bits_rs2_data; // @[ysyx_25030077_LSU.scala 108:15]
-  assign io_rw_type = io_in_bits_LSU_type; // @[ysyx_25030077_LSU.scala 102:14]
+  assign io_aw_valid = aw_valid_reg; // @[ysyx_25030077_LSU.scala 111:15]
+  assign io_aw_addr = io_in_bits_result; // @[ysyx_25030077_LSU.scala 114:15]
+  assign io_w_valid = w_valid_reg; // @[ysyx_25030077_LSU.scala 112:15]
+  assign io_w_data = io_in_bits_rs2_data; // @[ysyx_25030077_LSU.scala 115:15]
+  assign io_rw_type = io_in_bits_LSU_type; // @[ysyx_25030077_LSU.scala 109:14]
   always @(posedge clock) begin
     if (reset) begin // @[ysyx_25030077_LSU.scala 31:30]
       valid_out_reg <= 1'h0; // @[ysyx_25030077_LSU.scala 31:30]
     end else if (valid_out_reg) begin // @[Mux.scala 101:16]
-      if (io_out_ready) begin // @[ysyx_25030077_LSU.scala 53:25]
+      if (io_out_ready) begin // @[ysyx_25030077_LSU.scala 60:25]
         valid_out_reg <= 1'h0;
       end else begin
         valid_out_reg <= 1'h1;
@@ -1874,49 +1881,53 @@ module ysyx_25030077_LSU(
     if (reset) begin // @[ysyx_25030077_LSU.scala 32:26]
       lsu_state <= 2'h0; // @[ysyx_25030077_LSU.scala 32:26]
     end else if (_lsu_state_T) begin // @[Mux.scala 101:16]
-      if (valid_in_dly) begin // @[ysyx_25030077_LSU.scala 66:31]
-        if (_lsu_state_T_3) begin // @[Mux.scala 101:16]
+      if (valid_in_dly) begin // @[ysyx_25030077_LSU.scala 73:31]
+        if (_lsu_state_T_6) begin // @[Mux.scala 101:16]
           lsu_state <= 2'h1;
         end else begin
-          lsu_state <= _lsu_state_T_9;
+          lsu_state <= _lsu_state_T_12;
         end
       end
     end else if (_data_out_reg_T) begin // @[Mux.scala 101:16]
       lsu_state <= 2'h0;
-    end else if (_data_out_reg_T_2) begin // @[Mux.scala 101:16]
-      lsu_state <= _lsu_state_T_14;
-    end else begin
+    end else if (_data_out_reg_T_8) begin // @[Mux.scala 101:16]
       lsu_state <= _lsu_state_T_17;
+    end else begin
+      lsu_state <= _lsu_state_T_20;
     end
-    ready_in_reg <= reset | _ready_in_reg_T_5; // @[ysyx_25030077_LSU.scala 33:{29,29} 61:16]
+    ready_in_reg <= reset | _ready_in_reg_T_5; // @[ysyx_25030077_LSU.scala 33:{29,29} 68:16]
     if (reset) begin // @[ysyx_25030077_LSU.scala 34:29]
       data_out_reg <= 32'h0; // @[ysyx_25030077_LSU.scala 34:29]
     end else if (_data_out_reg_T) begin // @[Mux.scala 101:16]
-      if (is_err_in) begin // @[ysyx_25030077_LSU.scala 40:47]
-        data_out_reg <= io_in_bits_result;
+      if (is_err_in) begin // @[ysyx_25030077_LSU.scala 44:47]
+        if (is_clint1) begin // @[Mux.scala 101:16]
+          data_out_reg <= clint_reg[31:0];
+        end else begin
+          data_out_reg <= _data_out_reg_T_5;
+        end
       end else begin
         data_out_reg <= 32'h0;
       end
-    end else if (_data_out_reg_T_2) begin // @[Mux.scala 101:16]
-      if (io_b_valid) begin // @[ysyx_25030077_LSU.scala 41:47]
+    end else if (_data_out_reg_T_8) begin // @[Mux.scala 101:16]
+      if (io_b_valid) begin // @[ysyx_25030077_LSU.scala 48:47]
         data_out_reg <= 32'h0;
       end
-    end else if (_data_out_reg_T_4) begin // @[Mux.scala 101:16]
-      data_out_reg <= _data_out_reg_T_5;
+    end else if (_data_out_reg_T_10) begin // @[Mux.scala 101:16]
+      data_out_reg <= _data_out_reg_T_11;
     end
     if (reset) begin // @[ysyx_25030077_LSU.scala 35:29]
       addr_out_reg <= 5'h0; // @[ysyx_25030077_LSU.scala 35:29]
     end else if (_data_out_reg_T) begin // @[Mux.scala 101:16]
-      if (is_err_in) begin // @[ysyx_25030077_LSU.scala 46:47]
+      if (is_err_in) begin // @[ysyx_25030077_LSU.scala 53:47]
         addr_out_reg <= io_in_bits_rd_addr;
       end else begin
         addr_out_reg <= 5'h0;
       end
-    end else if (_data_out_reg_T_2) begin // @[Mux.scala 101:16]
-      if (io_b_valid) begin // @[ysyx_25030077_LSU.scala 47:47]
+    end else if (_data_out_reg_T_8) begin // @[Mux.scala 101:16]
+      if (io_b_valid) begin // @[ysyx_25030077_LSU.scala 54:47]
         addr_out_reg <= 5'h0;
       end
-    end else if (_data_out_reg_T_4) begin // @[Mux.scala 101:16]
+    end else if (_data_out_reg_T_10) begin // @[Mux.scala 101:16]
       addr_out_reg <= _addr_out_reg_T_5;
     end
     if (reset) begin // @[ysyx_25030077_LSU.scala 36:29]
@@ -1924,10 +1935,15 @@ module ysyx_25030077_LSU(
     end else begin
       valid_in_dly <= io_in_valid & ready_in_reg; // @[ysyx_25030077_LSU.scala 37:16]
     end
-    if (reset) begin // @[ysyx_25030077_LSU.scala 78:26]
-      state_reg <= 1'h0; // @[ysyx_25030077_LSU.scala 78:26]
+    if (reset) begin // @[ysyx_25030077_LSU.scala 39:26]
+      clint_reg <= 64'h0; // @[ysyx_25030077_LSU.scala 39:26]
+    end else begin
+      clint_reg <= _clint_reg_T_1; // @[ysyx_25030077_LSU.scala 42:13]
+    end
+    if (reset) begin // @[ysyx_25030077_LSU.scala 85:26]
+      state_reg <= 1'h0; // @[ysyx_25030077_LSU.scala 85:26]
     end else if (state_reg) begin // @[Mux.scala 101:16]
-      if (_ready_in_reg_T_2) begin // @[ysyx_25030077_LSU.scala 80:21]
+      if (_ready_in_reg_T_2) begin // @[ysyx_25030077_LSU.scala 87:21]
         state_reg <= 1'h0;
       end else begin
         state_reg <= 1'h1;
@@ -1935,10 +1951,10 @@ module ysyx_25030077_LSU(
     end else begin
       state_reg <= _state_reg_T_2 & _valid_in_dly_T;
     end
-    if (reset) begin // @[ysyx_25030077_LSU.scala 85:29]
-      ar_valid_reg <= 1'h0; // @[ysyx_25030077_LSU.scala 85:29]
+    if (reset) begin // @[ysyx_25030077_LSU.scala 92:29]
+      ar_valid_reg <= 1'h0; // @[ysyx_25030077_LSU.scala 92:29]
     end else if (ar_valid_reg) begin // @[Mux.scala 101:16]
-      if (io_ar_ready) begin // @[ysyx_25030077_LSU.scala 91:24]
+      if (io_ar_ready) begin // @[ysyx_25030077_LSU.scala 98:24]
         ar_valid_reg <= 1'h0;
       end else begin
         ar_valid_reg <= 1'h1;
@@ -1946,10 +1962,10 @@ module ysyx_25030077_LSU(
     end else begin
       ar_valid_reg <= _ar_valid_reg_T_1 & _ar_valid_reg_T_4;
     end
-    if (reset) begin // @[ysyx_25030077_LSU.scala 86:29]
-      aw_valid_reg <= 1'h0; // @[ysyx_25030077_LSU.scala 86:29]
+    if (reset) begin // @[ysyx_25030077_LSU.scala 93:29]
+      aw_valid_reg <= 1'h0; // @[ysyx_25030077_LSU.scala 93:29]
     end else if (aw_valid_reg) begin // @[Mux.scala 101:16]
-      if (io_aw_ready) begin // @[ysyx_25030077_LSU.scala 95:24]
+      if (io_aw_ready) begin // @[ysyx_25030077_LSU.scala 102:24]
         aw_valid_reg <= 1'h0;
       end else begin
         aw_valid_reg <= 1'h1;
@@ -1957,10 +1973,10 @@ module ysyx_25030077_LSU(
     end else begin
       aw_valid_reg <= _aw_valid_reg_T_1 & _aw_valid_reg_T_4;
     end
-    if (reset) begin // @[ysyx_25030077_LSU.scala 87:29]
-      w_valid_reg <= 1'h0; // @[ysyx_25030077_LSU.scala 87:29]
+    if (reset) begin // @[ysyx_25030077_LSU.scala 94:29]
+      w_valid_reg <= 1'h0; // @[ysyx_25030077_LSU.scala 94:29]
     end else if (w_valid_reg) begin // @[Mux.scala 101:16]
-      if (io_w_ready) begin // @[ysyx_25030077_LSU.scala 99:23]
+      if (io_w_ready) begin // @[ysyx_25030077_LSU.scala 106:23]
         w_valid_reg <= 1'h0;
       end else begin
         w_valid_reg <= 1'h1;
@@ -1968,10 +1984,10 @@ module ysyx_25030077_LSU(
     end else begin
       w_valid_reg <= _w_valid_reg_T_1 & _aw_valid_reg_T_4;
     end
-    if (reset) begin // @[ysyx_25030077_LSU.scala 88:26]
-      state_dly <= 2'h0; // @[ysyx_25030077_LSU.scala 88:26]
+    if (reset) begin // @[ysyx_25030077_LSU.scala 95:26]
+      state_dly <= 2'h0; // @[ysyx_25030077_LSU.scala 95:26]
     end else begin
-      state_dly <= lsu_state; // @[ysyx_25030077_LSU.scala 89:13]
+      state_dly <= lsu_state; // @[ysyx_25030077_LSU.scala 96:13]
     end
   end
 // Register and memory initialization
@@ -2022,16 +2038,18 @@ initial begin
   addr_out_reg = _RAND_4[4:0];
   _RAND_5 = {1{`RANDOM}};
   valid_in_dly = _RAND_5[0:0];
-  _RAND_6 = {1{`RANDOM}};
-  state_reg = _RAND_6[0:0];
+  _RAND_6 = {2{`RANDOM}};
+  clint_reg = _RAND_6[63:0];
   _RAND_7 = {1{`RANDOM}};
-  ar_valid_reg = _RAND_7[0:0];
+  state_reg = _RAND_7[0:0];
   _RAND_8 = {1{`RANDOM}};
-  aw_valid_reg = _RAND_8[0:0];
+  ar_valid_reg = _RAND_8[0:0];
   _RAND_9 = {1{`RANDOM}};
-  w_valid_reg = _RAND_9[0:0];
+  aw_valid_reg = _RAND_9[0:0];
   _RAND_10 = {1{`RANDOM}};
-  state_dly = _RAND_10[1:0];
+  w_valid_reg = _RAND_10[0:0];
+  _RAND_11 = {1{`RANDOM}};
+  state_dly = _RAND_11[1:0];
 `endif // RANDOMIZE_REG_INIT
   `endif // RANDOMIZE
 end // initial

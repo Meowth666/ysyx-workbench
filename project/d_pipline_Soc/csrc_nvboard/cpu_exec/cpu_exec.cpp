@@ -28,7 +28,6 @@ void print_itrace(FILE *itrace, int pc_data, uint32_t insn32);
 int is_S(int x);
 int is_L(int x);
 void reg_new(int addr, int data);
-int  new_reg();
 void write_addr(uint32_t paddr, uint32_t data, int size);
 void ftrace_check(uint32_t pc, uint32_t dnpc, uint32_t inst);
 void difftest_step();
@@ -297,73 +296,57 @@ extern "C" void sdram_write (int bank, int addr, int dqm, int cnt, int data) {
 		}			
 }
 uint64_t data_save = 0;
-extern "C" void sdram_read (int bank, int addr, int cnt, int* data) { 
+svBitVecVal sdram_read(const svBitVecVal* bank, const svBitVecVal* addr) { 
 	// printf("sdram_read: bank = %d, addr = %d\n", bank, addr);
-	int col = addr & 0x3FF;
+	svBitVecVal data;
+	int col = *addr & 0x3FF;
 	uint16_t data0, data1;
 	int is_overflow = 0;
+	uint32_t addr_sdram = 0xa0000000 + ((uint32_t)((row[*bank] & 0x1FFF) << 14)) | ((uint32_t)((*bank & 0x3) << 12)) | (uint32_t)(col << 2);
 	if(col < 512)
-		switch(bank){
+		switch(*bank){
 			case 0:
-				data0 = sdram0_bank1[row[bank]][col];
-				data1 = sdram1_bank1[row[bank]][col];
+				data0 = sdram0_bank1[row[*bank]][col];
+				data1 = sdram1_bank1[row[*bank]][col];
 				break;
 			case 1:
-				data0 = sdram0_bank2[row[bank]][col];
-				data1 = sdram1_bank2[row[bank]][col];
+				data0 = sdram0_bank2[row[*bank]][col];
+				data1 = sdram1_bank2[row[*bank]][col];
 				break;
 			case 2:
-				data0 = sdram0_bank3[row[bank]][col];
-				data1 = sdram1_bank3[row[bank]][col];
+				data0 = sdram0_bank3[row[*bank]][col];
+				data1 = sdram1_bank3[row[*bank]][col];
 				break;
 			case 3:
-				data0 = sdram0_bank4[row[bank]][col];
-				data1 = sdram1_bank4[row[bank]][col];
+				data0 = sdram0_bank4[row[*bank]][col];
+				data1 = sdram1_bank4[row[*bank]][col];
 				break;
 			default:
 				break;
 		}
 	else
-		switch(bank){
+		switch(*bank){
 			case 0:
-				data0 = sdram2_bank1[row[bank]][col - 512];
-				data1 = sdram3_bank1[row[bank]][col - 512];
+				data0 = sdram2_bank1[row[*bank]][col - 512];
+				data1 = sdram3_bank1[row[*bank]][col - 512];
 				break;
 			case 1:
-				data0 = sdram2_bank2[row[bank]][col - 512];
-				data1 = sdram3_bank2[row[bank]][col - 512];
+				data0 = sdram2_bank2[row[*bank]][col - 512];
+				data1 = sdram3_bank2[row[*bank]][col - 512];
 				break;
 			case 2:	
-				data0 = sdram2_bank3[row[bank]][col - 512];
-				data1 = sdram3_bank3[row[bank]][col - 512];
+				data0 = sdram2_bank3[row[*bank]][col - 512];
+				data1 = sdram3_bank3[row[*bank]][col - 512];
 				break;
 			case 3:
-				data0 = sdram2_bank4[row[bank]][col - 512];
-				data1 = sdram3_bank4[row[bank]][col - 512];
+				data0 = sdram2_bank4[row[*bank]][col - 512];
+				data1 = sdram3_bank4[row[*bank]][col - 512];
 				break;
 			default:
 				break;
 		}
-	*data = (uint32_t)((data1 << 16) | data0);
-	if(*data == 1048691 && insn32 == 32871){
-		//printf("instruction = %x\n", instruction);
-		success = 1;
-	}
-	else if(*data == 1048691){
-		flag = 1;
-	}
-	insn32 = *data;
-	// data_save = (data_save >> 16) | ((uint64_t)(*data & 0xFFFF) << 48);
-	// uint32_t insn32 = (uint32_t)(data_save & 0xFFFFFFFF);
-	// uint32_t ins_now = (uint32_t)((data_save >> 32) & 0xFFFFFFFF);
-	// // printf("data_save = %x ins_now = %x, insn32 = %x\n",data_save, ins_now, insn32);
-	// if(ins_now == 1048691 && insn32 == 32871){
-	// 	//printf("instruction = %x\n", instruction);
-	// 	success = 1;
-	// }
-	// else if(ins_now == 1048691){
-	// 	flag = 1;
-	// }
+	data = (uint32_t)((data1 << 16) | data0);
+	return data;
 }
 // uint32_t flash_array[20] = {0xff010113, 0x00112623, 0x00812423, 0x01010413, 0x100007b7, 0x04100713, 0x00e78023, 0x100007b7, 0x04300713, 0x00e78023, 0x100007b7, 0x04d00713, 0x00e78023, 0x0000006f};
 // uint32_t flash_array[20] = {1,1,4,5,1,4,1,9,1,9};
@@ -452,43 +435,8 @@ extern "C" void vga_write(int32_t addr, int32_t data) {
 	// printf("w = %d h = %d", addr1 / 640, addr1 % 640);
 	vga_array[addr / 640][addr % 640] = data;
 }
-void csr_init(){
-	csr[MVENDORID] = 0x79737978;
-	csr[MARCHID]   = 25030077;
-}
 
 int ins_cnt = 0;
-svBitVecVal ecall_read(const svBitVecVal* pc, const svBitVecVal* type_p){
-	// printf("ecall_read: pc = %x, type = %d\n", *pc, *type_p);
-	if(*type_p == 11){
-		// printf("ecall: %x\n", *pc);
-		csr[MEPC] = (uint32_t)*pc;
-		csr[MCAUSE] = 11;
-		assert(csr[MTVEC] != 0);
-		return csr[MTVEC];
-	}
-	if(*type_p == 12){
-		// printf("mret: %x\n", *pc);
-		// printf("%x\n", csr[MEPC]);
-		return csr[MEPC];
-	}
-	return 0;
-}
-svBitVecVal csr_read(const svBitVecVal* rs1, const svBitVecVal* imm, const svBitVecVal* sw){
-	if(*sw == 11){
-		// printf("iz: %d csr_read: rs1 = %x, imm = %x, sw = %d\n",iz, *rs1, *imm, *sw);
-		svBitVecVal t = csr[*imm];
-		csr[*imm] = *rs1;
-		return t;
-	}
-	if(*sw == 12){
-		// printf("iz: %d csr_read: rs1 = %x, imm = %x, sw = %d\n",iz, *rs1, *imm, *sw);
-		svBitVecVal t = csr[*imm];
-		csr[*imm] = t | *rs1;
-		return t;
-	}
-	return 0;
-}
 
 int cpu_exec(){
 	nvboard_bind_all_pins(&dut);

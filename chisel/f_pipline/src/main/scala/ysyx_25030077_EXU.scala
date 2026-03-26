@@ -14,8 +14,8 @@ class ysyx_25030077_EXU extends Module {
   val csr_mtvec= RegInit(0.U(32.W))
   val csr_mstatus= RegInit(0.U(32.W))
   val csr_mcause = RegInit(0.U(32.W))
-  val csr_mvenproid = RegInit(0.U(32.W))
-  val csr_mvarchid  = RegInit(0.U(32.W))
+  val csr_mvenproid = RegInit("h79737978".U(32.W))
+  val csr_mvarchid  = RegInit(25030077.U(32.W))
   val data1 = MuxCase(io.in.bits.rs1_data, Seq(
     (io.in.bits.data_type === 2.U(4.W)) -> 0.U,
     (io.in.bits.data_type === 4.U(4.W)) -> io.in.bits.pc_data, 

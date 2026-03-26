@@ -182,7 +182,7 @@ int main() {
     while (io_read(AM_TIMER_UPTIME).us < next_us) ;
   } while (!snake.dead);
 
-  printf("GAME OVER\nPress Q to Exit\n");
-  while (read_key() != AM_KEY_Q);
+  printf("GAME OVER\n");
+  // while (read_key() != AM_KEY_Q);
   return 0;
 }

@@ -15,6 +15,9 @@ VerilatedFstC* tfp = new VerilatedFstC;
 VysyxSoCFull* ysyxSoCFull = new VysyxSoCFull{contextp};
 extern int inst_read();
 extern int err_read();
+extern int state_read();
+extern int pc_read();
+extern int lsu_read();
 void pc_new(int data);
 void print_itrace(FILE *itrace, int pc_data, uint32_t insn32);
 void ftrace_check(uint32_t pc, uint32_t dnpc, uint32_t inst);
@@ -51,7 +54,7 @@ extern "C" void sdram_active (int bank, int addr) {
 	row[bank] = addr;
 }
 long long inst_cnts = 0;
-long long pc_read = 0;
+long long pc_read_cnt = 0;
 long long lsu_cnts = 0;
 long long lsu_cycs = 0;
 long long ifu_cycs = 0;
@@ -65,6 +68,8 @@ long long fenzhi_cnts = 0;
 
 int type = 0;
 long long cycs = 0;
+long long ifu_cycs_pre = 0;
+long long lsu_cycs_pre = 0;
 
 extern "C" void sdram_write (int bank, int addr, int dqm, int cnt, int data) { 
 	uint32_t dqm0 = (dqm & 0x3);
@@ -479,6 +484,14 @@ long long J_cnt = 0;
 long long lsu_ar;
 uint32_t inst0 = 0;
 uint32_t inst_all_pre = 0;
+long long flash_read_cyc = 0;
+long long sdram_read_cyc = 0;
+long long flash_read_cnt = 0;
+long long sdram_read_cnt = 0;
+long long lsu_read_cnt = 0;
+long long lsu_read_cyc = 0;
+int ifu_flag = 0;
+int lsu_flag = 0;
 // struct section elf_section[20];
 int cpu_exec(int n){
 	int pc_data;
@@ -499,8 +512,45 @@ int cpu_exec(int n){
 			uint32_t err0 = err & 0x7;
 			uint32_t out_valid = err & 0x8;
 			uint32_t j_type = err & 0xf0;
+			
+			scope = svGetScopeFromName("TOP.ysyxSoCFull.asic.cpu.cpu.a_ifu");
+			svSetScope(scope);
+			uint32_t state = state_read() & 0x1f;
+			uint32_t pc_head = (state_read() & 0x1e0) >> 5;
+
+			scope = svGetScopeFromName("TOP.ysyxSoCFull.asic.cpu.cpu.d_lsu");
+			svSetScope(scope);
+			uint32_t ar_valid = (lsu_read() & 0x2) >> 1;
+			uint32_t r_valid  = lsu_read() & 0x1;
+			// printf("%d\n", state);
+			if(state == 1 && ifu_flag == 0){
+				ifu_cycs_pre = cycs;
+				ifu_flag = 1;
+			}
+			else if(state == 16 && ifu_flag == 1){
+				if(pc_head == 3){
+					flash_read_cnt ++;
+					flash_read_cyc = flash_read_cyc + (cycs - ifu_cycs_pre);
+				}
+				else if(pc_head == 10){
+					sdram_read_cnt ++;
+					sdram_read_cyc = sdram_read_cyc + (cycs - ifu_cycs_pre);
+				}
+				ifu_flag = 0;
+			}
+
+			if(ar_valid == 1 && lsu_flag == 0){
+				lsu_cycs_pre = cycs;
+				lsu_flag = 1;
+			}
+			else if(r_valid == 1 && lsu_flag == 1){
+				lsu_read_cnt ++;
+				lsu_read_cyc = lsu_read_cyc + (cycs - lsu_cycs_pre);
+				lsu_flag = 0;
+			}
+
 			if(inst != inst_all_pre){
-				pc_read += 1;
+				pc_read_cnt += 1;
 				inst_all_pre = inst;
 			}
 			if(err0 == 0 && inst != inst_pre){
@@ -540,9 +590,13 @@ int cpu_exec(int n){
 		// }
 	}
 	printf("周期 : %lld    指令数 = %lld    ipc = %lld\n", cycs, inst_cnts, cycs / inst_cnts);
-	printf("IFU尝试从sdram读指令数 = %lld\n", pc_read);
-	printf("无效执行指令数: %lld  占比%.2lf\n", (pc_read - inst_cnts), (float)(pc_read - inst_cnts)/pc_read);
+	printf("IFU尝试从sdram读指令数 = %lld\n", pc_read_cnt);
+	printf("无效执行指令数: %lld  占比%.2lf\n", (pc_read_cnt - inst_cnts), (float)(pc_read_cnt - inst_cnts)/pc_read_cnt);
 	printf("跳转指令数： %lld\n", J_cnt);
+	printf("flash读取指令数: %lld, 平均周期: %.2lf\n", flash_read_cnt, (float)(flash_read_cyc) / flash_read_cnt);
+	printf("sdram读取指令数: %lld, 平均周期: %.2lf\n", sdram_read_cnt, (float)(sdram_read_cyc) / sdram_read_cnt);
+	printf("读取指令周期总数: %lld, 占比: %.2lf\n", sdram_read_cyc + flash_read_cyc, (float)(sdram_read_cyc + flash_read_cyc) / cycs);
+	printf("lsu读取数据数: %lld, 平均周期: %.2lf, 占比: %.2lf\n", lsu_read_cnt, (float)(lsu_read_cyc) / lsu_read_cnt, (float)(lsu_read_cyc) / cycs);
 	fclose(itrace);          
 	return 0;
 }
